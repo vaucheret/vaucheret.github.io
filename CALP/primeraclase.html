@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Conceptos Avanzados en Lenguajes de Programación</title>
+<meta name="author" content="(Claudio Vaucheret and Marcelo Amaolo)"/>
+<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js-master/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
+<h1>Conceptos Avanzados en Lenguajes de Programación</h1><h2>Claudio Vaucheret and Marcelo Amaolo</h2><h2><a href="mailto:cv@fi.uncoma.edu.ar and">cv@fi.uncoma.edu.ar and</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-08-16 mar&gt;</span></span></h2>
+</section>
+<section id="table-of-contents">
+<nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline2">primera transparencia</a>
+<ul>
+<li><a href="#/slide-orgheadline1">hola</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</section>
+
+<section>
+<section id="slide-orgheadline2">
+<div class="slide-header"></div>
+<h2 id="orgheadline2">primera transparencia</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline1">
+<div class="slide-header"></div>
+<h3 id="orgheadline1">hola</h3>
+<div class="slide-footer"></div>
+</section>
+</section>
+</div>
+</div>
+<script src="../reveal.js-master/lib/js/head.min.js"></script>
+<script src="../reveal.js-master/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+,});
+</script>
+</body>
+</html>
