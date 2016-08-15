@@ -37,20 +37,160 @@
 #+AUTHOR: Claudio Vaucheret / Marcelo Amaolo
 #+EMAIL: cv@fi.uncoma.edu.ar / marcelo.amaolo@fi.uncoma.edu.ar
 
+* Introducción
+
 * Evolución de los Lenguajes de Programación
 
- 
+** Lenguajes de Programación
+
+[[file:evolleng.png]]
+
 ** Evolución de los primeros lenguajes
  #+ATTR_REVEAL: :frag (roll-in)
 
+**  Konrad Zuze's language de la computadora Z4.
+
 *** Zuse's Plankalkül
 
-*** Pseudocodigos
+- Desarrollado en 1945
+- Nunca implementado
+- Su descripción fue publicada en 1972.
+- Tipos de datos: bit, Integer and float tipos compuestos.
+- arreglos y registros
 
-*** IBM 704 y Fortran
+#+BEGIN_SRC lisp
+  | A + 1 => A
+V | 4        5
+S | 1.n      1.n
+#+END_SRC
 
-*** Primera sofisticación: ALGOL 60
 
-*** Aplicaciones Comerciales: COBOL
 
-*** Comienzo de tiempo compartido: BASIC
+
+** Codigo Máquina: pseudocodigos ¿?
+
+*** Escribir en lenguaje máquina
+
+- poco legibles y modificables
+- sin indices ni punto flotante
+- direccionamiento absoluto
+
+*** Shorte Code Mauchly (1949) 
+
+- computadora BINAC 
+- Expresiones eran codificadas de izquierda a derecha
+- Ejemplos de operaciones:
+
+#+BEGIN_SRC lisp
+01 - 06 abs value 1n (n+2)nd power
+02 ) 07 +         2n (n+2)nd root
+03 = 08 pause     4n if <= n
+04 / 09 (         58 print and tab
+#+END_SRC
+
+La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
+
+#+BEGIN_SRC lisp
+00 X0 03 20 06 Y0
+#+END_SRC
+
+*** Speedcoding
+
+- Desarrollado por John Backus en 1954 para IBM 701
+- Pseudo operaciones para funciones aritméticas y matemtaticas
+  - bifurcación condicional e incondicional
+  - registros autoincrementales para acceso a arreglos
+  - 4.2 millisegundos la instruccion de suma y 700 palabras para el programa
+  - 2 semanas de programación en pocas horas!!!
+
+*** Otros sistemas relacionados
+
+- Sistema de "compilación" UNIVAC
+  - Desarrollado por el equipo de Brace Hopper
+  - Pseudocodigo expandido en código máquina (macros)
+- David J Wheeler (Universidad de Cambridge) (1950)
+  - Desarrollo un método de usar bloques de direccionamiento reubicables
+- Wilkes (1951-1957) desarrollo lenguaje /assembler/ con estas ideas
+
+
+** IBM 704 y Fortran
+
+*** Fortan 
+- Fortran 0: 1954 - no implementado
+- Fortran 1 1957
+  - Diseñado para la nueva IBM 704, que tenía registros y aritmética
+    de punto flotante
+  - Entorno de Desarrollo
+    - Las Computadoras eran pequeñas y confiables
+    - Las aplicaciones eran científicas
+    - Sin metodología ni herramientas de programación
+    - Importancia en *eficiencia*
+
+*** Proceso de Diseño
+- El impacto del entorno en el diseño de Fortran
+  - Sin necesidad de almacenamiento dinámico
+  - Necesidad de un buen manejo de arreglos y ciclos
+  - Sin manejo de cadenas, aritmética decimal o herramientas de
+    entrada/salida (de uso comercial)
+
+*** Fortran I
+- Primera versión implementada de Fortrand
+  - Nombres hasta 6 caracteres
+  - Ciclos iterativos con post condición (*DO*)
+  - I/O formateada
+  - subprogramas definidos por el usuario
+  - Sentencias condicionales de tres modos (*IF* aritmético)
+  - sentencias sin tipo de datos
+
+*** Fortran I
+- Primera versión implementada
+  - Sin compilación separada
+  - Compilador distribuido en Abril de 1957,
+  - Programas de mas de 400 lineas raramente compilaban correctamente,
+    principalmente debido a la pobre confiabilidad de la IBM 704
+  - La Codificación era verdaderamente rápida
+  - Rapidamente se volvió ampliamente usado
+
+*** Fortran II
+- Distribuido en 1958
+  - Compilación independiente
+  - Se corrigieron muchos errores
+
+*** Fortran IV
+- Desarrollado durante 1960-1962
+  - Declaración explicita de tipos
+  - Sentencia de selección lógica
+  - Nombres de programas podian se pasados como parámetros
+  - ANSI standard en 1966
+
+*** Fortran 77
+- Se volvió el nuevo estandard en 1978
+  - Manejo de cadenas de caracteres
+  - sentencia de control de ciclos lógico
+  - sentencia *IF-THEN-ELSE*
+
+*** Fortran 90
+- Con los mas significativos cámbios desde el Fortran 77
+  - Módulos
+  - Arreglos dinámicos
+  - Punteros
+  - Recursión
+  - sentencia *CASE*
+  - chequeo de tipos en los parametros
+
+*** Evaluación de Fortran
+- Compiladores altamente optimizados (todas las versiones anteriores a 90)
+  - Los tipos y almacenamiento de todas las variables eran fijas antes del
+    tiempo de ejecución.
+- Dramaticamente cambió para siempre el modo en que las computadoras
+  fueron usadas
+- Caracterizados como la /lingua franca/ del mundo de la computación
+
+
+** Programación Funcional: LISP
+
+** Primera sofisticación: ALGOL 60
+
+** Aplicaciones Comerciales: COBOL
+
+** Comienzo de tiempo compartido: BASIC 
