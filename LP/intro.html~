@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Lenguajes Declarativos</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<link rel="stylesheet" href="reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal.js-master/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
+<h1>Lenguajes Declarativos</h1><h2>Claudio Vaucheret</h2><h2><a href="mailto:cv@fi.uncoma.edu.ar">cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-11 lun&gt;</span></span></h2>
+</section>
+<section id="table-of-contents">
+<nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline3">Lenguajes Declarativos</a>
+<ul>
+<li><a href="#/slide-orgheadline1">Características</a></li>
+<li><a href="#/slide-orgheadline2">Lenguajes</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline25">Prolog</a>
+<ul>
+<li><a href="#/slide-orgheadline4">Programación en Lógica</a></li>
+<li><a href="#/slide-orgheadline8">Ejemplo fibonacci</a>
+<ul>
+<li><a href="#/slide-orgheadline5">sucesion de fibonacci</a></li>
+<li><a href="#/slide-orgheadline6">Conejos</a></li>
+<li><a href="#/slide-orgheadline7">programa</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline13">Sintaxis</a>
+<ul>
+<li><a href="#/slide-orgheadline9">Atomos</a></li>
+<li><a href="#/slide-orgheadline10">Números</a></li>
+<li><a href="#/slide-orgheadline11">Variables</a></li>
+<li><a href="#/slide-orgheadline12">Términos Complejos</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline14">Listas</a></li>
+<li><a href="#/slide-orgheadline24">Ejemplo Autómata Finito</a>
+<ul>
+<li><a href="#/slide-orgheadline15">Código</a></li>
+<li><a href="#/slide-orgheadline16">Código</a></li>
+<li><a href="#/slide-orgheadline17">Código</a></li>
+<li><a href="#/slide-orgheadline18">Arbol SLD</a></li>
+<li><a href="#/slide-orgheadline19">Arbol SLD</a></li>
+<li><a href="#/slide-orgheadline20">Arbol SLD</a></li>
+<li><a href="#/slide-orgheadline21">Arbol SLD</a></li>
+<li><a href="#/slide-orgheadline22">Arbol SLD</a></li>
+<li><a href="#/slide-orgheadline23">\(Tp^n\)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</section>
+
+<section>
+<section id="slide-orgheadline3">
+<div class="slide-header"></div>
+<h2 id="orgheadline3">Lenguajes Declarativos</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline1">
+<div class="slide-header"></div>
+<h3 id="orgheadline1">Características</h3>
+<ul>
+<li class="fragment roll-in">Programa es Lógica + Control (Kowalski)</li>
+
+<li class="fragment roll-in">X = X + 1 ¿que significa?</li>
+
+<li class="fragment roll-in">Semánticas equivalentes a la operacional</li>
+
+<li class="fragment roll-in">Programa es Algoritmo + Estructura de Datos (Wirth)</li>
+
+<li class="fragment roll-in">Debugging, Correctitud, Prueba de Programas</li>
+
+<li class="fragment roll-in">Análisis de Programas, Web Semantics</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline2">
+<div class="slide-header"></div>
+<h3 id="orgheadline2">Lenguajes</h3>
+<ul>
+<li>Prolog
+<ul>
+<li>Ciao Prolog  <a href="http://ciao-lang.org/">http://ciao-lang.org/</a></li>
+<li>Swi Prolog   <a href="http://www.swi-prolog.org/">http://www.swi-prolog.org/</a></li>
+
+</ul></li>
+<li>Haskell
+<a href="https://www.haskell.org/">https://www.haskell.org/</a></li>
+<li>Mercury
+<a href="https://mercurylang.org/">https://mercurylang.org/</a></li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline25">
+<div class="slide-header"></div>
+<h2 id="orgheadline25">Prolog</h2>
+<div class="outline-text-2" id="text-orgheadline25">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline4">
+<div class="slide-header"></div>
+<h3 id="orgheadline4">Programación en Lógica</h3>
+<ul>
+<li class="fragment roll-in">Cláusulas de Horn</li>
+<li class="fragment roll-in">Resolución SLD (basado en resolución de Robinson)</li>
+<li class="fragment roll-in">Lógica como lenguaje de programación</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline8">
+<div class="slide-header"></div>
+<h3 id="orgheadline8">Ejemplo fibonacci</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline5">
+<div class="slide-header"></div>
+<h4 id="orgheadline5">sucesion de fibonacci</h4>
+<p>
+En matemáticas, la sucesión de Fibonacci (a veces llamada erróneamente
+serie de Fibonacci) es la siguiente sucesión infinita de números
+naturales:
+</p>
+
+<p>
+\(1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597 \ldots\)
+</p>
+
+<p>
+La sucesión comienza con los números 1 y 1 y a partir de estos,
+<b>cada término es la suma de los dos anteriores</b>, es la relación de
+recurrencia que la define.
+</p>
+
+<p>
+A los elementos de esta sucesión se les llama números de
+Fibonacci. Esta sucesión fue descrita en Europa por Leonardo de Pisa,
+matemático italiano del siglo XIII también conocido como
+Fibonacci. Tiene numerosas aplicaciones en ciencias de la computación,
+matemáticas y teoría de juegos. También aparece en configuraciones
+biológicas, como por ejemplo en las ramas de los árboles, en la
+disposición de las hojas en el tallo, en las flores de alcachofas y
+girasoles, en las inflorescencias del brécol romanesco y en la
+configuración de las piñas de las coníferas.
+</p>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline6">
+<div class="slide-header"></div>
+<h4 id="orgheadline6">Conejos</h4>
+<p>
+una forma de exponer la sucesión de fibonacci es presentando el
+crecimiento de una población de conejos con las siguientes reglas:
+</p>
+
+<ul>
+<li>un conejo adulto, cada mes se reproduce a si mismo generando un
+conejo joven.</li>
+<li>un conejo joven se vuelve adulto en un mes.</li>
+
+</ul>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">mes</th>
+<th scope="col" class="org-right">0</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">5</th>
+<th scope="col" class="org-right">6</th>
+<th scope="col" class="org-right">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">adultos</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">5</td>
+<td class="org-right">8</td>
+<td class="org-right">13</td>
+</tr>
+
+<tr>
+<td class="org-left">jovenes</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">5</td>
+<td class="org-right">8</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">total</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">5</td>
+<td class="org-right">8</td>
+<td class="org-right">13</td>
+<td class="org-right">21</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline7">
+<div class="slide-header"></div>
+<h4 id="orgheadline7">programa</h4>
+<div class="org-src-container">
+
+<pre  class="src src-prolog">:- <span style="color: #b0c4de;">module</span>(fibonacci,<span style="color: #00ffff;">[</span><span style="color: #87cefa;">f/2</span><span style="color: #00ffff;">]</span>).
+
+:- use_package(fsyntax).
+:- fun_eval arith(true).
+:- fun_eval defined(true).
+
+
+<span style="color: #87cefa;">f</span>(0) := 1.
+<span style="color: #87cefa;">f</span>(1) := 1.
+<span style="color: #87cefa;">f</span>(<span style="color: #eedd82;">N</span>) :=  f(<span style="color: #eedd82;">N</span> - 1) + f(<span style="color: #eedd82;">N</span> - 2) :- <span style="color: #eedd82;">N</span> &gt;= 2.
+</pre>
+</div>
+
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline13">
+<div class="slide-header"></div>
+<h3 id="orgheadline13">Sintaxis</h3>
+<p>
+Términos:
+</p>
+<ul>
+<li>Atomos</li>
+<li>Números</li>
+<li>Variables</li>
+<li>Términos Complejos</li>
+
+</ul>
+
+<p>
+los caracteres válidos son:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #eedd82;">A</span> , <span style="color: #eedd82;">B</span>  ...  <span style="color: #eedd82;">Z</span>
+a , b  ...  <span style="color: #87cefa;">z</span>
++ , - , * , / , &lt; , &gt; , = , : , . , &amp; , ~
+</pre>
+</div>
+
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline9">
+<div class="slide-header"></div>
+<h4 id="orgheadline9">Atomos</h4>
+<p>
+Un átomo es:
+</p>
+<ol>
+<li>Una cadena de caracteres de letras mayúsculas, minusculas, digitos
+y guión bajo, que comience con una letra minúscula.</li>
+
+</ol>
+<p>
+ejemplos:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-prolog">casa trabajo alberto eLLio x21
+</pre>
+</div>
+<ol>
+<li><p>
+Una secuencia arbitraria de caracteres encerrado en comillas
+ simples.
+ejemplos:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #ffa07a;">'Alberto'</span> <span style="color: #ffa07a;">'Dolar21'</span> <span style="color: #ffa07a;">'EL Paso'</span> <span style="color: #ffa07a;">'&amp;^%si'</span>
+</pre>
+</div></li>
+<li>una cadena de solo caracteres especiales.</li>
+
+</ol>
+<p>
+ejemplos
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-prolog">@= ===&gt; :-
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline10">
+<div class="slide-header"></div>
+<h4 id="orgheadline10">Números</h4>
+<p>
+ejemplos
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-prolog">-8 -1 34 23.98 10001 1697.877443
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline11">
+<div class="slide-header"></div>
+<h4 id="orgheadline11">Variables</h4>
+<p>
+Una variable es una cadena de caracteres de letras mayúsculas,
+minúsculas, digitos, guión bajo, que comience con una letra mayúscula
+o con un guión bajo. 
+ejemplos:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #eedd82;">X</span> <span style="color: #eedd82;">Y</span> <span style="color: #eedd82;">Variable</span> <span style="color: #eedd82;">_etiqueta</span> <span style="color: #eedd82;">X_526</span> <span style="color: #eedd82;">List</span> <span style="color: #eedd82;">HEAD</span>
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline12">
+<div class="slide-header"></div>
+<h4 id="orgheadline12">Términos Complejos</h4>
+<p>
+Un término se compone de un functor seguido de cero a N argumentos entre paréntesis y separados
+por comas. Cada argumento es un término.
+</p>
+
+<p>
+ejemplos:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">fecha</span>(12,octubre,2016)
+<span style="color: #87cefa;">animal_peligroso</span>(<span style="color: #ffa07a;">'Leon'</span>)
+<span style="color: #87cefa;">arbol</span>(23,arbol(12,nil,nil),nil)
+</pre>
+</div>
+
+
+<figure>
+<p><img src="compoundterms.png" alt="compoundterms.png">
+</p>
+</figure>
+
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline14">
+<div class="slide-header"></div>
+<h3 id="orgheadline14">Listas</h3>
+<ul>
+<li class="fragment roll-in">.(1,.(2,.(3,.(4,[]))))   dos argumentos Cabeza y Cola ./2</li>
+<li class="fragment roll-in">[1|[2|[3|[4|[]]]]]    notacion alternativa [|]</li>
+<li class="fragment roll-in">[1,2|[3|[4|[]]]]  = [1,2,3|[4|[]]] = [1,2,3,4|[]] = [1,2,3,4]</li>
+<li class="fragment roll-in">Unificar [a,1,b,4,c] = [X,Y|Z] &#x2014;&gt; X=a, Y=1, Z=[b,4,c]</li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline24">
+<div class="slide-header"></div>
+<h3 id="orgheadline24">Ejemplo Autómata Finito</h3>
+
+<figure>
+<p><img src="automata.png" alt="automata.png">
+</p>
+</figure>
+
+<ul>
+<li><p>
+Ejemplos de cadenas aceptadas:
+</p>
+
+<p>
+aabbab, ab, aaab, babab
+</p></li>
+
+<li><p>
+Ejemplos de cadenas rechazadas
+</p>
+
+<p>
+aabb, aa, bb, ababa
+</p></li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline15">
+<div class="slide-header"></div>
+<h4 id="orgheadline15">Código</h4>
+<p>
+El código en prolog que representa el autómata es
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">final</span>(s3).
+
+<span style="color: #87cefa;">trans</span>(s1,a,s1).
+<span style="color: #87cefa;">trans</span>(s1,a,s2).
+<span style="color: #87cefa;">trans</span>(s1,b,s1).
+<span style="color: #87cefa;">trans</span>(s2,b,s3).
+<span style="color: #87cefa;">trans</span>(s3,b,s4).
+
+<span style="color: #87cefa;">silent</span>(s2,s4).
+<span style="color: #87cefa;">silent</span>(s3,s1).
+</pre>
+</div>
+
+<figure>
+<p><img src="automata.png" alt="automata.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline16">
+<div class="slide-header"></div>
+<h4 id="orgheadline16">Código</h4>
+<p>
+el código que representa el reconocedor de las cadenas es
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">accepts_</span>(<span style="color: #eedd82;">State</span>,<span style="color: #00ffff;">[]</span>):-
+        final(<span style="color: #eedd82;">State</span>).
+
+<span style="color: #87cefa;">accepts_</span>(<span style="color: #eedd82;">State</span>,<span style="color: #00ffff;">[</span><span style="color: #eedd82;">X</span><span style="color: #00ffff;">|</span><span style="color: #eedd82;">Rest</span><span style="color: #00ffff;">]</span>):-
+        trans(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">X</span>,<span style="color: #eedd82;">State1</span>),
+        accepts_(<span style="color: #eedd82;">State1</span>,<span style="color: #eedd82;">Rest</span>).
+
+<span style="color: #87cefa;">accepts_</span>(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">String</span>):-
+        silent(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">State1</span>),
+        accepts_(<span style="color: #eedd82;">State1</span>,<span style="color: #eedd82;">String</span>).
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline17">
+<div class="slide-header"></div>
+<h4 id="orgheadline17">Código</h4>
+<p>
+el código principal es 
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog">:- <span style="color: #b0c4de;">module</span>(automata,<span style="color: #00ffff;">[</span><span style="color: #87cefa;">main/1</span><span style="color: #00ffff;">]</span>,<span style="color: #eedd82;">_</span>).
+:- <span style="color: #b0c4de;">use_module</span>(library(iso_char)).
+
+<span style="color: #87cefa;">main</span>(<span style="color: #00ffff;">[</span><span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">Chain</span><span style="color: #00ffff;">]</span>):-
+        ( accepts(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">Chain</span>) <span style="color: #00ffff;">-&gt;</span> display(<span style="color: #ffa07a;">'aceptada '</span>),nl
+        <span style="color: #00ffff;">;</span>
+            display(<span style="color: #ffa07a;">'rechazada '</span>),nl
+        ).
+<span style="color: #87cefa;">main</span>(<span style="color: #eedd82;">_</span>):- display(<span style="color: #ffa07a;">'especificar estado y cadena '</span>),nl.
+
+<span style="color: #87cefa;">accepts</span>(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">String</span>):-
+        atom_chars(<span style="color: #eedd82;">String</span>, <span style="color: #eedd82;">Chars</span>),
+        accepts_(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">Chars</span>).
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline18">
+<div class="slide-header"></div>
+<h4 id="orgheadline18">Arbol SLD</h4>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">accept</span>(s1,<span style="color: #00ffff;">[</span>a,a,b<span style="color: #00ffff;">]</span>).
+</pre>
+</div>
+
+<figure>
+<p><img src="acceptaab.png" alt="acceptaab.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline19">
+<div class="slide-header"></div>
+<h4 id="orgheadline19">Arbol SLD</h4>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">accept</span>(s1,<span style="color: #00ffff;">[</span>a,b<span style="color: #00ffff;">]</span>).
+</pre>
+</div>
+
+<figure>
+<p><img src="accepts1ab.png" alt="accepts1ab.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline20">
+<div class="slide-header"></div>
+<h4 id="orgheadline20">Arbol SLD</h4>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">accept</span>(s1,<span style="color: #00ffff;">[</span>b<span style="color: #00ffff;">]</span>).
+</pre>
+</div>
+
+<figure>
+<p><img src="accepts1b.png" alt="accepts1b.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline21">
+<div class="slide-header"></div>
+<h4 id="orgheadline21">Arbol SLD</h4>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">accept</span>(s2,<span style="color: #00ffff;">[</span>b<span style="color: #00ffff;">]</span>).
+</pre>
+</div>
+
+<figure>
+<p><img src="accepts2b.png" alt="accepts2b.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline22">
+<div class="slide-header"></div>
+<h4 id="orgheadline22">Arbol SLD</h4>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">accept</span>(s4,<span style="color: #00ffff;">[</span>b<span style="color: #00ffff;">]</span>).
+</pre>
+</div>
+
+<figure>
+<p><img src="accepts4b.png" alt="accepts4b.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline23">
+<div class="slide-header"></div>
+<h4 id="orgheadline23">\(Tp^n\)</h4>
+<p>
+\(U = \{ a,b,s1,s2,s3,s4,[],[a],[b] ,[s1],\ldots,[a,a],[a,b],\ldots\}\)
+</p>
+
+<p>
+\(Bp = \{final(a),final(b),\ldots, trans(a,a,a) , trans(a,b,a) , \ldots\) 
+</p>
+
+<p>
+\(accepts(a,a), accepts(a,[]) \ldots \}\)
+</p>
+
+<p>
+\(Tp(\{\}) = \{final(s3),trans(s1,a,s1),trans(s1,a,s2),trans(s1,b,s1)\)
+</p>
+
+<p>
+\(trans(s2,b,s3),trans(s3,b,s4),silent(s2,s4),silent(s3,s1)\}\)
+</p>
+
+</section>
+<section>
+
+<p>
+\(Tp^1(\{\}) = Tp(\{\}) \cup \{accepts(s3,[])\}\)
+</p>
+
+<p>
+\(Tp^2(\{\}) = Tp^1(\{\}) \cup \{accepts(s2,[b]\}\)
+</p>
+
+<p>
+\(Tp^3(\{\}) = Tp^2(\{\}) \cup \{accepts(s1,[a,b])\}\)
+</p>
+
+<p>
+\(Tp^4(\{\}) = Tp^3(\{\}) \cup \{accepts(s3,[a,b])\)
+</p>
+
+<p>
+\(accepts(s1,[a,a,b]),accepts(s1,[b,a,b])\}\)
+</p>
+
+<p>
+\(Tp^5(\{\}) = Tp^4(\{\}) \cup \{accepts(s2,[b,a,b])\)
+</p>
+
+<p>
+\(accepts(s3,[a,a,b]),accepts(s3,[b,a,b]),accepts(s1,[a,a,a,b])\)
+</p>
+
+<p>
+\(accepts(s1,[b,a,a,b]),accepts(s1,[a,b,a,b]),accepts(s1,[b,b,a,b])\}\)
+</p>
+<div class="slide-footer"></div>
+</section>
+</section>
+</div>
+</div>
+<script src="reveal.js-master/lib/js/head.min.js"></script>
+<script src="reveal.js-master/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+,});
+</script>
+</body>
+</html>
