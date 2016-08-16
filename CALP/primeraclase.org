@@ -468,8 +468,414 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 
 ** Programación Funcional: LISP
 
+*** LISP
+- /LISt Processing Language/
+  + Diseñado en el MIT por McCarthy
+- Investigación en AI necesitaba un lenguaje
+  + Procesamiento de datos en Listas (en lugar de arreglos)
+  + Computación simbólica (en lugar de numérica)
+- Solo dos tipos de datos: átomos y listas
+- Basado en el *Lambda calculus*
+
+*** Representación de Listas LISP
+
+[[file:represlistas.png]]
+
+*** Evaluación de LISP
+- Pionero en programación funcional
+  - Sin necesidad de variables o asignación
+  - Control via recursión y expresiones condicionales
+- Aún un lenguaje dominante para IA
+- COMMON LISP y Scheme son dialectos contemporaneos de LISP
+- ML, Miranda, Haskell son lenguajes relacionados
+
+*** Scheme
+- Desarrollado en el MIT a mediados de los 70
+- Pequeño
+- Extensivo uso de alcance estático
+- Funciones como entidades de primera clase
+- Sintaxis simple, ideal para aplicaciones educativas
+
+*** COMMON LISP
+- Un esfuerzo por combinar características de varios dialectos de LISP
+  en un solo lenguaje
+- Grande y Complejo
+
 ** Primera sofisticación: ALGOL 60
+
+*** Algol 60
+- Entorno de Desarrollo
+  - FORTRAN había arribado para las IBM 70x
+  - Muchos lenguajes se habían desarrollado para máquinas específicas
+  - Ningún lenguaje era portable; todos eran dependiente de las máquinas
+  - No existía ningún lenguaje universal para comunicar algoritmos
+- ALGOL 60 fue el resultado del esfuerzo de designar un lenguaje universal
+
+*** Primitivo proceso de diseño
+- Encuentro de ACM y GAMM para cuatro dias de diseño (27 de Mayo al 1
+  de Junio de 1958)
+- Metas del Lenguaje
+  + Cercano a la notación matemática
+  + Bueno para describir algoritmos
+  + Traducible a lenguaje máquina
+
+*** ALGOL 58
+- El concepto de tipos fue formalizado
+- Los nombre podrían tener cualquier longitud
+- Los arreglos podrían tener cualquier número de subíndices
+- Los parámetros fueron separados por modo (Entrada y Salida)
+- Subíndices fueron colocados entre corchetes
+- Sentencias compuestas (*begin ... end*)
+- Punto y coma como separador de sentencias
+- Operador de asignación fue *:=*
+- *if* tenía una cláusula *else-if*
+- Sin E/S - "podría hacerlo dependiente de la máquina"
+
+*** Implementación de ALGOL 58
+- Sin intención de ser implementado, sin embargo variaciones de él si
+  lo fueron (MAD, JOVIAL)
+- Aunque IBM fue inicialmente entusiasta, todo soporte fue quitado a
+  mediados de 1959
+
+*** ALGOL 60
+- Se modificó ALGOL 58 en una reunión de 6 dias en Paris
+- Nuevas Características
+  + Estructura de bloques (alcance local)
+  + Dos métodos de pasaje de parámetros
+  + Recursión de subprogramas
+  + arreglos dinámicos (basados en pilas)
+  + Todavía sin E/S ni manejo de cadenas de caracteres
+
+*** Evaluación de ALGOL 60
+- Exitoso
+  + Fue el modo estándar de publicar algoritmos por los siguientes 20 años
+  + Todo subsecuente lenguaje imperativo fue basado en él
+  + Primer lenguaje independiente de la máquina
+  + Primer lenguaje cuya sintaxis fue formalmente definida (BNF)
+
+*** Evaluación de ALGOL 60
+- Fracaso
+  - Nunca fue ampliamente usado, especialmente en U.S.
+  - Razones:
+    + Falta de E/S y el conjunto de caracteres lo hacía no portable
+    + Demasiado flexible para implementar
+    + atrincheramiento de Fortran
+    + Falta de soporte de IBM
 
 ** Aplicaciones Comerciales: COBOL
 
-** Comienzo de tiempo compartido: BASIC 
+*** COBOL Commercial Buisness Language
+- Entorno de Desarrollo
+  + UNIVAC comenzó a usra FLOW-MATIC
+  + USAF comenzó a usar AIMACO
+  + IBM desarrolló COMTRAN
+
+*** COBOL Historia
+- Basado en FLOW-MATIC
+- características de FLOW-MATIC:
+  + Nombres de mas de 12 caracteres, con guiones incluidos
+  + Nombres en Inglés para los operadores aritméticos
+  + Datos y códigos completamente separados
+  + Verbos eran las primeras palabras en toda sentencia
+
+*** COBOL proceso de diseño
+- Primera reunión de diseño (Pentagon) - Mayo de 1959
+- Metas de Diseño
+  + Debe lucir como simple Ingles
+  + Facil de usar, aún si esto significara menor potencia
+  + Debe ampliar la base de los usuarios de computadoras
+  + No debe estar sesgado por los actuales problemas de compiladores.
+- Los miembros del comité eran todos de los fabricantes de
+  computadoras y divisiones del DoD
+- Problemas de Diseño: expresiones aritméticas? Desacuerdo entre fabricantes
+
+*** Evaluación de COBOL
+- Contribuciones
+  + Primeras facilidades de Macros en un lenguaje de alto nivel
+  + Estructuras de datos jerárquicos (registros)
+  + Sentencias de selección anidadas
+  + Nombres largas (mas de 30 caracteres), con guiones
+  + División de Datos separadas
+
+*** Influencia del Departamento de Defensa
+- Primer lenguaje requerido por DoD
+  + Podría haber fallado sin Dod
+- Aún es el lenguaje mas usado en aplicaciones comerciales
+
+
+** Comienzo de tiempo compartido: BASIC
+
+*** BASIC
+- Diseñado por Kemeny & Kurtz en Dartmouth
+- Metas de diseño
+  + Facil de aprender y usar por estudiantes que no sean de ciencias
+  + Debe ser placentero y amigable
+  + Acceso Libre
+  + El tiempo del usuario es mas importatne que el tiempo de computación
+- Dialecto popular actual: Visual BASIC
+- Primer lenguaje ampliamente usado con tiempo compartido
+
+** Todo para Todos: PL/I
+
+*** PL/I
+- Diseñado por IBM y SHARE
+- Situación de la computación en 1964 (desde el punto de vista de IBM)
+  - Computación científica
+    - Computadoras IBM 1620 y 7090
+    - FORTRAN
+    - grupo de usuarios SHARE
+  - Computación de empresas
+    - Computadoras IBM 1401, 7080
+    - COBOL
+    - grupo de usuarios GUIDE
+
+*** Antecedentes PL/I 
+- En 1965
+  - usuarios científicos comenzaron a necesitar Entrada/Salida mas
+    elaborada, como tenía COBOL; y usuarios empresariales comenzaron a
+    necesitar aritmética de punto flotante y arreglos
+  - Muchas empresas empezaron a necesitar dos clases de computadoras,
+    lenguajes y personal de soporte. Demaciado Costo.
+- La solución mas obvia:
+  - Construir una nueva computadora para ambas clases de aplicaciones
+  - Diseñar un nuevo lenguaje para ambas clases de aplicaciones.
+
+*** Proceso de diseño
+- Diseñado en 5 meses por un comité bipartito:
+  + tres miembros de IBM y tres miembros de SHARE
+- Concepto inicial
+  + Una extensión de Fortran IV
+- Inicialmente llamado NPL (Nuevo Lenguaje de Programación)
+- El nombre cambió a PL/I en 1965
+
+*** Evaluación de PL/I
+- contribuciones de PL/I
+  + Primer nivel de concurrencia
+  + Primer manejador de excepciones
+  + llave de selección de recursión
+  + Primer tipo de dato puntero
+- Muchas características fueron pobremente diseñadas
+- Demasiado grande y demaciado complejo
+
+** Lenguajes Dinámicos
+
+*** APL y SNOBOL
+- Caracterizados por tipos dinámicos y administración dinámica de memoria
+- Las Variables son sin tipos
+  - Una variable adquiere un tipo cuando se le asigna un valor
+- El almacenamiento se le asigna a una variable cuando se le asigna un valor
+
+*** APL: (/A Programming Language/)
+- Diseñado como un lenguaje de descripción de hardware en IBM por Ken
+  Iverson alrededor de 1960
+  - Altamente expresivo (muchos operadores, tambien para arreglos de
+    varias dimensiones)
+  - Programas muy difíciles de leer
+- Aún en uso con mínimos cambios
+
+*** SNOBOL
+- Diseñado como un lenguaje de manipulación de cadena de caracteres en
+  los laboratorios BELL por Farber, Griswold y Polensky
+- Operaciones poderosas para comparar patrones de cadenas de caracteres
+- Mas lento que los lenguajes alternativos (y por lo tanto no usado
+  para escribir editores)
+- Aún usado para tareas de procesamiento de texto
+
+** El comienzo de la Abstracción de Datos
+
+*** Simula 67
+- Diseñado originalmente para sistemas de simulación en Noruega por
+  Nygaard y Dahl
+- Basado en Algol 60 y Simla I
+- Principales contribuciones
+  + Co-rutinas, una clase de subprogramas
+  + Implementado en una estructura llamada /class/
+  + Las /Classes/ son la base para la abstracción de datos
+  + Las /Classes/ son las estructuras tanto para los datos locales y
+    la funcionalidad
+
+** Diseño Ortogonal
+
+*** ALGOL 68
+- Continúa el desarrollo de ALGOL 60 pero no es un superconjunto de
+  ese lenguaje
+- Fuente de muchas nuevas ideas (aún cuando el lenguaje mismo nunca
+  fue ampliamente usado)
+- El diseño es basado en el concepto de ortogonalidad
+  - Pocos conceptos principales, con pocos mecanismos de combinación
+
+*** Evaluación de ALGOL 68
+- Contribuciones
+  + Estructuras de datos definidas por el usuario
+  + Tipos Referencias
+  + Arreglos dinámicos
+- Comentarios
+  + Menor uso que ALGOL 60
+  + Tuvo gran influencia en los lenguajes subsecuentes, especialmente
+    Pascal, C y Ada
+
+*** Principales Descendientes de ALGOL
+- El lenguaje ALGOS impactó en todos los lenguajes imperativos
+  - Pascal
+  - C
+  - Modula/Modula 2
+  - Ada
+  - Oberon
+  - C++/Java
+  - Perl
+  - ...
+
+*** PASCAL - 1971
+- Desarrollado por Wirth (un miembro del comité de Algol 68)
+- Diseñado para enseñar programación estructurada
+- Pequeño, simple, nada realmente nuevo
+- Gran impacto en la enseñanza de la programación
+  - Desde mediados de los 70 hasta fines de los 90, fue el lenguaje
+    mas ampliamente usado para enseñar programación.
+
+*** C - 1971
+- Diseñado para programar sistemas (en los laboratorios DELL por
+  Dennis Richie)
+- Evolución de BCLP, B, pero también de ALGOL 68
+- Poderoso conjunto de operadores, pero con débil chequeo de tipos.
+- Inicialmente difundido a través de UNIX
+- Muchas areas de aplicación
+
+*** PERL
+- Relacionado a ALGOL solo a través de C
+- Un lenguaje de /scripting/
+  - un /script/ es un archivo que contiene instrucciones para ser ejecutadas
+  - otros ejemplos: sh, awk, tcl/tk
+- Desarrollado por Larry Wall
+- Las variables de Perl estan estáticamente tipeadas y declaradas implicitamente.
+  - Tres espacios de nombres definidos denotados por el primer
+    caracter del nombre de la variable
+- Poderoso pero también peligroso
+- Ampliamente usado como lenguaje de propósito general
+
+** Programación basado en la Lógica
+
+*** Prolog
+- Desarrollado por Comerauer y Roussel (Universidad de Aix-Marseille),
+  con ayuda de Kowalski (Universidad de Edinburgh)
+- Basado en lógica formal
+- No es procedural
+- Puede se resumido como un sistema de base de datos inteligente que
+  usa procesos de inferir la verdad de consultas dadas
+- Poca eficiencia
+
+** Historia del mas grande esfuerzo de diseño
+
+*** Ada
+- Enorme esfuerzo de Diseño, involucrando cientos de personas, mucho
+  dinero y alrededor de 8 años
+  - requerimientos de Strawman (Abril de 1975)
+  - requerimientos de Woodman (Agosto de 1975)
+  - requerimientos de Tinman (1976)
+  - equipamiento de Ironman (1977)
+  - requerimeintos de Stellman (1978)
+- Nombrado Ada por Augusta Ada Byron conocida por ser la primera programadora
+
+*** Evaluación de Ada
+- Contribuciones
+  - /Packages/ soporte para abstraccion de datos
+  - Manejo de excepciones - muy elaborado
+  - Unidad de programas genérico
+  - Concurrencia - a través del modelo de tareas
+- Comentarios
+  - Diseño Competitivo
+  - Incluye todo lo conocido de ingeniería de software y diseño de lenguajes
+  - Los primeros compiladores fueron muy dificultosos: el primero
+    realmente usable apareció recién 5 años despues que el diseño fue
+    completado
+
+*** Ada 95
+- Ada 95 (comenzó en 1988)
+  - Soporte para OOP a través de derivación de tipos
+  - Mejores mecanismos de control para compartir datos
+  - Nuevas características de concurrencia
+  - Librerías mas flexibles
+- Su popularidad sufrió debido a que el DoD no requirió mas su uso y
+  también debido a la popularidad de C++
+
+** Programación Orientada a Objetos (OOP)
+
+*** Smalltalk
+- Desarrollado en Xerox PARC, inicialmente pro Alan Kay, luego por
+  Adele Goldberg
+- Primera implementación completa de un lenguaje orientado a objetos
+  (abstracción de datos, herencia y ligadura dinámica de tipos)
+- Pionero en el diseñode interface gráfica del usuario
+- Promocionó OOP
+
+*** Combinando OOP y Programación Imperativa: C++
+- Desarrollado en Laboratorios BELL por Stroustrup en 1980
+- Evolución desde C y SIMULA 67
+- Facilidades para oop, tomadas paralelamente de SIMULA 67
+- Provee manejo de excepciones
+- Un lenguaje grande y complejo, porque soporta tanto programacion procedural como OO
+- Rápidamente creció en popularidad
+- estandar ANSI aprovado en Noviembre de 1997
+
+*** Lenguajes OOP relacionados
+- Eiffel (diseñado por Bertrand Meyer 1992)
+  - No directamente derivado de otros lenguajes
+  - mas pequeño y simple que C++, pero aún con la mayoría de su potencia
+  - Falta de popularidad con respecto a C++ debido a que los entusiastas
+    de C++ eran ya programadores de C.
+- Delphi (Borland)
+  - Pascal mas características para soportar OOP
+  - mas elegante y seguro que C++
+
+*** Un lenguaje imperativo orientado a Objetos: Java
+- Desarrollado en Sun a principios de los 90
+  - C y C++ no era satisfactorio para dispositivos electrónicos embebidos
+- Basado en C++
+  - Simplificado significativamente (no incluye *struct*, *union*,
+    *enum*, punteros aritméticos y la mitad de las asignaciones
+    coercitivas de C++)
+  - soporta /solo/ OOP
+  - Tiene referencias, pero no punteros
+  - Incluye soporte para applets y formas de concurrencias
+
+*** Evaluación de Java
+- Elimina características inseguras de C++
+- Características de concurrencia
+- Librerías para applets, GUI's, acceso a base de datos
+- Portable: concepto de Máquina Virtual, compilador JIT
+- Ampliamente usado para paginas de la WWW
+- El uso en otras áreas se incrementó mas rápido que otros lenguajes
+
+** Lenguajes de /Scripting/ para la WWW
+
+*** /Scripting/
+- JavaScript
+  + Una aventura en conjunto de Netscape y Sun Microsystem
+  + Usada en programación WEB (del lado del cliente) para crear
+    documentos HTML dinámicos
+  + Relacionado a Java, solo a través de la sintaxis similar
+- PHP
+  + PHP: Preprocesador Hipertexto
+  + Usado para programación WEB (del lado del servidor), produce
+    codigo HTML como salida
+- Python
+  + Un lenguaje orientado a objetos interpretado
+  + chequeo de tipos pero tipeado dinámicamente
+  + Soporta CGI y procesamiento de formularios
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+

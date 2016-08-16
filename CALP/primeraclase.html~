@@ -70,7 +70,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline53">Evolución de los Lenguajes de Programación</a>
+<li><a href="#/slide-orgheadline65">Evolución de los Lenguajes de Programación</a>
 <ul>
 <li><a href="#/slide-orgheadline30">Lenguajes de Programación</a></li>
 <li><a href="#/slide-orgheadline31">Evolución de los primeros lenguajes</a></li>
@@ -100,10 +100,28 @@
 <li><a href="#/slide-orgheadline47">Evaluación de Fortran</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline49">Programación Funcional: LISP</a></li>
-<li><a href="#/slide-orgheadline50">Primera sofisticación: ALGOL 60</a></li>
-<li><a href="#/slide-orgheadline51">Aplicaciones Comerciales: COBOL</a></li>
-<li><a href="#/slide-orgheadline52">Comienzo de tiempo compartido: BASIC</a></li>
+<li><a href="#/slide-orgheadline54">Programación Funcional: LISP</a>
+<ul>
+<li><a href="#/slide-orgheadline49">LISP</a></li>
+<li><a href="#/slide-orgheadline50">Representación de Listas LISP</a></li>
+<li><a href="#/slide-orgheadline51">Evaluación de LISP</a></li>
+<li><a href="#/slide-orgheadline52">Scheme</a></li>
+<li><a href="#/slide-orgheadline53">COMMON LISP</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline62">Primera sofisticación: ALGOL 60</a>
+<ul>
+<li><a href="#/slide-orgheadline55">Algol 60</a></li>
+<li><a href="#/slide-orgheadline56">Primitivo proceso de diseño</a></li>
+<li><a href="#/slide-orgheadline57">ALGOL 58</a></li>
+<li><a href="#/slide-orgheadline58">Implementación de ALGOL 58</a></li>
+<li><a href="#/slide-orgheadline59">ALGOL 60</a></li>
+<li><a href="#/slide-orgheadline60">Evaluación de ALGOL 60</a></li>
+<li><a href="#/slide-orgheadline61">Evaluación de ALGOL 60</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline63">Aplicaciones Comerciales: COBOL</a></li>
+<li><a href="#/slide-orgheadline64">Comienzo de tiempo compartido: BASIC</a></li>
 </ul>
 </li>
 </ul>
@@ -736,10 +754,10 @@ sobre UNIX</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline53">
+<section id="slide-orgheadline65">
 <div class="slide-header"></div>
-<h2 id="orgheadline53">Evolución de los Lenguajes de Programación</h2>
-<div class="outline-text-2" id="text-orgheadline53">
+<h2 id="orgheadline65">Evolución de los Lenguajes de Programación</h2>
+<div class="outline-text-2" id="text-orgheadline65">
 </div><div class="slide-footer"></div>
 </section>
 </section>
@@ -1062,33 +1080,235 @@ fueron usadas</li>
 </section>
 </section>
 <section>
+<section id="slide-orgheadline54">
+<div class="slide-header"></div>
+<h3 id="orgheadline54">Programación Funcional: LISP</h3>
+<div class="outline-text-3" id="text-orgheadline54">
+</div><div class="slide-footer"></div>
+</section>
 <section id="slide-orgheadline49">
 <div class="slide-header"></div>
-<h3 id="orgheadline49">Programación Funcional: LISP</h3>
+<h4 id="orgheadline49">LISP</h4>
+<ul>
+<li><i>LISt Processing Language</i>
+<ul>
+<li>Diseñado en el MIT por McCarthy</li>
+
+</ul></li>
+<li>Investigación en AI necesitaba un lenguaje
+<ul>
+<li>Procesamiento de datos en Listas (en lugar de arreglos)</li>
+<li>Computación simbólica (en lugar de numérica)</li>
+
+</ul></li>
+<li>Solo dos tipos de datos: átomos y listas</li>
+<li>Basado en el <b>Lambda calculus</b></li>
+
+</ul>
 
 <div class="slide-footer"></div>
 </section>
-</section>
-<section>
 <section id="slide-orgheadline50">
 <div class="slide-header"></div>
-<h3 id="orgheadline50">Primera sofisticación: ALGOL 60</h3>
+<h4 id="orgheadline50">Representación de Listas LISP</h4>
+
+<figure>
+<p><img src="represlistas.png" alt="represlistas.png">
+</p>
+</figure>
 
 <div class="slide-footer"></div>
 </section>
-</section>
-<section>
 <section id="slide-orgheadline51">
 <div class="slide-header"></div>
-<h3 id="orgheadline51">Aplicaciones Comerciales: COBOL</h3>
+<h4 id="orgheadline51">Evaluación de LISP</h4>
+<ul>
+<li>Pionero en programación funcional
+<ul>
+<li>Sin necesidad de variables o asignación</li>
+<li>Control via recursión y expresiones condicionales</li>
+
+</ul></li>
+<li>Aún un lenguaje dominante para IA</li>
+<li>COMMON LISP y Scheme son dialectos contemporaneos de LISP</li>
+<li>ML, Miranda, Haskell son lenguajes relacionados</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline52">
+<div class="slide-header"></div>
+<h4 id="orgheadline52">Scheme</h4>
+<ul>
+<li>Desarrollado en el MIT a mediados de los 70</li>
+<li>Pequeño</li>
+<li>Extensivo uso de alcance estático</li>
+<li>Funciones como entidades de primera clase</li>
+<li>Sintaxis simple, ideal para aplicaciones educativas</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline53">
+<div class="slide-header"></div>
+<h4 id="orgheadline53">COMMON LISP</h4>
+<ul>
+<li>Un esfuerzo por combinar características de varios dialectos de LISP
+en un solo lenguaje</li>
+<li>Grande y Complejo</li>
+
+</ul>
 
 <div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline52">
+<section id="slide-orgheadline62">
 <div class="slide-header"></div>
-<h3 id="orgheadline52">Comienzo de tiempo compartido: BASIC</h3>
+<h3 id="orgheadline62">Primera sofisticación: ALGOL 60</h3>
+<div class="outline-text-3" id="text-orgheadline62">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline55">
+<div class="slide-header"></div>
+<h4 id="orgheadline55">Algol 60</h4>
+<ul>
+<li>Entorno de Desarrollo
+<ul>
+<li>FORTRAN había arribado para las IBM 70x</li>
+<li>Muchos lenguajes se habían desarrollado para máquinas específicas</li>
+<li>Ningún lenguaje era portable; todos eran dependiente de las máquinas</li>
+<li>No existía ningún lenguaje universal para comunicar algoritmos</li>
+
+</ul></li>
+<li>ALGOL 60 fue el resultado del esfuerzo de designar un lenguaje universal</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline56">
+<div class="slide-header"></div>
+<h4 id="orgheadline56">Primitivo proceso de diseño</h4>
+<ul>
+<li>Encuentro de ACM y GAMM para cuatro dias de diseño (27 de Mayo al 1
+de Junio de 1958)</li>
+<li>Metas del Lenguaje
+<ul>
+<li>Cercano a la notación matemática</li>
+<li>Bueno para describir algoritmos</li>
+<li>Traducible a lenguaje máquina</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline57">
+<div class="slide-header"></div>
+<h4 id="orgheadline57">ALGOL 58</h4>
+<ul>
+<li>El concepto de tipos fue formalizado</li>
+<li>Los nombre podrían tener cualquier longitud</li>
+<li>Los arreglos podrían tener cualquier número de subíndices</li>
+<li>Los parámetros fueron separados por modo (Entrada y Salida)</li>
+<li>Subíndices fueron colocados entre corchetes</li>
+<li>Sentencias compuestas (<b>begin &#x2026; end</b>)</li>
+<li>Punto y coma como separador de sentencias</li>
+<li>Operador de asignación fue <b>:=</b></li>
+<li><b>if</b> tenía una cláusula <b>else-if</b></li>
+<li>Sin E/S - "podría hacerlo dependiente de la máquina"</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline58">
+<div class="slide-header"></div>
+<h4 id="orgheadline58">Implementación de ALGOL 58</h4>
+<ul>
+<li>Sin intención de ser implementado, sin embargo variaciones de él si
+lo fueron (MAD, JOVIAL)</li>
+<li>Aunque IBM fue inicialmente entusiasta, todo soporte fue quitado a
+mediados de 1959</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline59">
+<div class="slide-header"></div>
+<h4 id="orgheadline59">ALGOL 60</h4>
+<ul>
+<li>Se modificó ALGOL 58 en una reunión de 6 dias en Paris</li>
+<li>Nuevas Características
+<ul>
+<li>Estructura de bloques (alcance local)</li>
+<li>Dos métodos de pasaje de parámetros</li>
+<li>Recursión de subprogramas</li>
+<li>arreglos dinámicos (basados en pilas)</li>
+<li>Todavía sin E/S ni manejo de cadenas de caracteres</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline60">
+<div class="slide-header"></div>
+<h4 id="orgheadline60">Evaluación de ALGOL 60</h4>
+<ul>
+<li>Exitoso
+<ul>
+<li>Fue el modo estándar de publicar algoritmos por los siguientes 20 años</li>
+<li>Todo subsecuente lenguaje imperativo fue basado en él</li>
+<li>Primer lenguaje independiente de la máquina</li>
+<li>Primer lenguaje cuya sintaxis fue formalmente definida (BNF)</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline61">
+<div class="slide-header"></div>
+<h4 id="orgheadline61">Evaluación de ALGOL 60</h4>
+<ul>
+<li>Fracaso
+<ul>
+<li>Nunca fue ampliamente usado, especialmente en U.S.</li>
+<li>Razones:
+<ul>
+<li>Falta de E/S y el conjunto de caracteres lo hacía no portable</li>
+<li>Demasiado flexible para implementar</li>
+<li>Falta de soporte de IBM</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline63">
+<div class="slide-header"></div>
+<h3 id="orgheadline63">Aplicaciones Comerciales: COBOL</h3>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline64">
+<div class="slide-header"></div>
+<h3 id="orgheadline64">Comienzo de tiempo compartido: BASIC</h3>
 <div class="slide-footer"></div>
 </section>
 </section>
