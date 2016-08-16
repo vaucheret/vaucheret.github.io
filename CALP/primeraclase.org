@@ -103,6 +103,220 @@
   - Un conjunto conveniente de modos de especificar operaciones
   - Ejemplo: La inclusión de la sentencia *FOR* en  muchos lenguajes modernos
 
+*** Confiabilidad
+
+- Chequeo de Tipos
+  - verificación de errores de tipos
+- Manejo de Excepciones
+  - interceptar errores en ejecución y tomar medidas correctivas
+- Aliasing
+  - Presencia de dos o mas distintas referencias para el mismo lugar
+    de memoria
+- Legibilidad y Escribilidad
+  - Un lenguage que no soporta modos "naturales" de expresar un
+    algoritmo necesariamente usará aproximaciones "no naturales" y asi
+    reducirá la confiabilidad
+
+*** Costo
+- Costo de ...
+  + Entrenar programadores para usar un lenguaje
+  + Escribir programas (cercano a aplicaciones particulares)
+  + Compilar programas
+  + Ejecutar programas
+  + Implementar Lenguajes (disponibilidad de compiladores libres)
+  + Confiabilidad: Confiabilidad pobre lleva a altos costos
+  + Mantener programas
+
+*** Otros
+- Portabildad
+  + La facilidad con que los programas puedan moverse de una
+    implementación a otra
+- Generalidad
+  + Su aplicabilidad a un amplio rango de aplicaciones.
+- Bien definido
+  + La completitud y precisión de la definición oficial del lenguaje
+
+** Influencias en el diseño de los lenguajes
+ - Arquitectura de Computadoras
+   + Lenguajes son desarrollados alrededor de la arquitectura de
+     computadora prevaleciente, conocida como arquitectura de /von Neumann/
+ - Metodologías de Programación
+   + Nuevas metodologías de desarrollo de software (e.g. desarrollode
+     software orientado a objetos) llevan a nuevos paradigmas y por
+     extensión a nuevos lenguajes de programación
+
+*** Influencia de la Arquitectura de Computadoras
+
+- Arquitectura de Computadora bien conocida: Von Neumann
+- Lenguajes Imperativos mas dominantes debido a la arquitectura
+  dominante
+  + Datos y Programas almacenados en memoria
+  + Memoria Separada de la CPU
+  + Instrucciones y Datos son conducidos desde la Memoria a la CPU
+  + Bases para los lenguajes imperativos
+    - Variables modelan celdas de memoria
+    - La iteración es eficiente
+
+*** Arquitectura de Von Neumann
+
+[[file:vonneumann.png]] 
+
+*** Influencia de las Metodogías de Programación
+- Décadas de los 50 y 60: Simples aplicaciones; preocupación principal
+  la eficiencia
+- Finales de los 60: Eficiencia de programación toma importancia:
+  legibilidad, mejores estructuras de control
+  + Programación Estructurada
+  + Diseño /top-down/ y refinamiento /step-wise/
+- Finales de los 70: De Orientación a Procesos a Orientación a Datos.
+  + Abstracción de Datos
+- Mediados de los 80: Programación orientada a Objetos
+  - Abstracción de Datos + Herencia + Polimorfismo
+
+*** Categoría de Lenguajes
+- Imperativa
+  + Variables, sentencias de asignación e iteración
+  + Ejemplos: C, Pascal
+- Funcional
+  + Principal medio de computación es aplicar funciones a parámetros
+  + Ejemplos: LISP, Scheme
+- Lógica
+  + Basado en Reglas
+  + Ejemplo: Prolog
+- Orientado a Objetos
+  + abstracción de datos, herencia, ligadura tardía
+  + Ejemplos: Java, C++
+- Marcado
+  + No programación per se, pero usados para especificar la
+    información mostrada en documentos web
+  + Ejemplos: XHTML, XML
+
+*** Compromisos en el diseño de Lenguajes
+- Confiabilidad vs. Costo de ejecución
+  + Ejemplo: Java exige que todas las referencias a elementos de los
+    arreglos sean chequeadas si la indexación es correcta, pero esto
+    incrementa el costo de ejecución
+- Legibilidad vs. Escribilidad
+  + Ejemplo: APL provee muchos operadores poderosos (y un gran numero
+    de nuevos simbolos) permitiendo que complejas operaciones sean
+    escritas en un programa compacto pero con el costo de pobre legibilidad
+- Flexibilidad vs. Confiabilidad
+  + Ejemplo: Los punteros de C++ son poderosos y muy flexibles pero de
+    un uso poco confiable.
+
+** Métodos de Implementación 
+- Compilación
+  + Los programas son traducidos al lenguaje máquina
+- Interpretación Pura
+  + Los programas son interpretados por otro programa llamado intérprete
+- Sistemas de implementación híbridos
+  + Un compromiso entre compilación y interpretación pura
+
+*** Capas de Implementación de Lenguajes
+
+[[file:interfacecapas.png]]
+
+*** Compilación
+- Traduce programas de alto nivel (lenguaje fuente) en codigo máquina
+- Traducción lenta, ejecución rápida
+- El proceso de compilación tiene varias faces:
+  + análisis lexico: convierte caracteres del programa fuente en
+    unidades léxicas
+  + análisis sintáctico: Transforma unidades léxicas en árboles
+    sintácticos /parse trees/
+  + análisis semántico: Genera código intermedio
+  + generación de código: Codigo máquina es generado
+
+*** El proceso de compilación
+
+[[file:procesocomp.png]] 
+
+*** Terminología Adicional de Compilación
+
+- Módulo de carga (imagen ejecutable) : El código del usuario y del
+  sistema juntos
+- /linking and loading/ Enlazado y Carga: El proceso de recolectar los
+  programas del sistema y enlazarlo al programa del usuario
+
+*** Ejecución del Código Máquina
+
+- ciclo de traer y ejecutar (sobre una arquitectura Von Neumann)
+
+#+BEGIN_SRC pascal
+repeat  por siempre
+   traer la instrucción apuntada por el contador
+   incrementar el contador
+   decodificar la instrucción
+   ejecutar la instrucción
+end repeat
+#+END_SRC
+
+*** /Cuello de botella/ de Von Neumann
+
+- La velocidad de conección entre la memoria de la computadora y su
+  procesador determina la velocidad de la computadora
+- Las intrucciones del programa son ejecutadas mucho mas rápido que la
+  velocidad de conección; por lo tanto ésta se vuelve el /cuello de botella/
+- Es conocido que /cuello de botella/ de la arquitectura de Von
+  Neumann es el principal factor en la velocidad de las computadoras
+
+*** Interpretación Pura
+- Sin traducción
+- Facil implementación de programas. Errores de tiempo de ejecución
+  pueden ser facilmente reconocidos
+- Ejecución mas lenta (10 a 100 veces mas lenta que programas compilados)
+- Frecuentemente requiere mas espacio
+- Se volvio infrecuente en lenguajes de alto nivel
+- Han retornado con lenguajes de /sripting/ para la Web (e.g. JavaScript)
+
+*** Proceso de Interpretación Pura
+
+[[file:procesointerppuro.png]]
+
+*** Sistemas de Implementación Híbrida
+- Un compromiso entre compilador y intérprete puro
+- El programa en lenguaje de alto nivel es traducido a un lenguaje
+  intermedio que permite facil interpretación
+- Mucho mas rápido que interpretación pura
+- Ejemplos
+  + Programas en Perl son parcialmente compilados para detectar
+    errores antes de la interpretación
+  + Implementaciones iniciales de Java fueron híbridas, la forma
+    intermedia /byte code/, proveyó portabilidad a toda máquina que
+    tenía un interprete de /byte code/ y un sistema de /run time/
+    (juntos son llamados la máquina virtual de java)
+
+*** Proceso de Implementación Híbrida
+
+[[file:procesohibrido.png]] 
+
+*** Sistemas de Implementación /ust in Time/
+- Inicialmente Los programas se traducen a un lenguaje intermedio
+- Luego el lenguaje intermedio se compila a código máquina
+- La versión en máquina se conserva para llamadas subsecuentes
+- Sistemas JIT son ampliamente usados para programas Java
+- Lenguajes .NET son implementados con sistemas JIT
+
+*** Preprocesadores
+- Macros de preprocesamiento (instrucciones) son comunmente usadas
+  para especificar que código de otros archivos sean incluidos
+- Un preprocesador procesa un programa inmediatamente antes de que el
+  programa se compilada para expandir las macros incluídas
+- Un ejemplo conocido: El preprocesador de C
+  + expands #include, #define, y macros similares
+
+*** Entornos de Programación 
+- Una colección de herramientas usadas en el desarrollo de software
+- UNIX
+  + un tradicional sistema operativo y colección de herramientas
+  + hoy en dia frecuentemente usado a través de un GUI que corren
+    sobre UNIX
+- Borland JBuilder
+  + Un entorno de programación integrado para Java
+- Microsoft Visual Studio .NET
+  + Un complejo entorno visual de desarrollo
+  + Usado para programar en C#, Visual Basic .NET, jscript, J# o C++
+  
 
 * Evolución de los Lenguajes de Programación
 
