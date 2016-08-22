@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Conceptos Avanzados en Lenguajes de Programación</title>
+<meta name="author" content="(Semanticas)"/>
+<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js-master/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
+<h1>Conceptos Avanzados en Lenguajes de Programación</h1><h2>Semanticas</h2><h2><a href="mailto:Claudio Vaucheret / cv@fi.uncoma.edu.ar">Claudio Vaucheret / cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-08-22 lun&gt;</span></span></h2>
+</section>
+<section id="table-of-contents">
+<nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline5">Introducción</a>
+<ul>
+<li><a href="#/slide-orgheadline1">Introducción</a></li>
+<li><a href="#/slide-orgheadline2">Definición Formal de Lenguajes</a></li>
+<li><a href="#/slide-orgheadline3">Métodos Formales de Describir la Sintaxis</a></li>
+<li><a href="#/slide-orgheadline4">BNF y Gramáticas Libres de Contexto</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline13">Semántica Estática</a>
+<ul>
+<li><a href="#/slide-orgheadline6">Gramáticas con atributos</a></li>
+<li><a href="#/slide-orgheadline7">Gramáticas con atributos: Definición</a></li>
+<li><a href="#/slide-orgheadline8">Gramáticas con atributos: Definición</a></li>
+<li><a href="#/slide-orgheadline9">Gramáticas con atributos: Un Ejemplo</a></li>
+<li><a href="#/slide-orgheadline10">Gramáticas con atributos: Un Ejemplo</a></li>
+<li><a href="#/slide-orgheadline11">Gramáticas con atributos</a></li>
+<li><a href="#/slide-orgheadline12">Gramáticas con atributos</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline19">Semántica Dinámica</a>
+<ul>
+<li><a href="#/slide-orgheadline14">Métodos Desarrollados</a></li>
+<li><a href="#/slide-orgheadline15">Semántica Operacional</a></li>
+<li><a href="#/slide-orgheadline16">Semántica Operacional</a></li>
+<li><a href="#/slide-orgheadline17">Semántica Denotacional</a></li>
+<li><a href="#/slide-orgheadline18">Semántica Axiomática</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</section>
+
+<section>
+<section id="slide-orgheadline5">
+<div class="slide-header"></div>
+<h2 id="orgheadline5">Introducción</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline1">
+<div class="slide-header"></div>
+<h3 id="orgheadline1">Introducción</h3>
+<ul>
+<li><b>Sintaxis</b>: La forma y estructura de las expresiones, sentencias y
+unidades del programa.</li>
+<li><b>Semántica</b>: El significado de las expresiones, sentencias, y
+unidades del programa.</li>
+<li>Sintaxis y Semántica proveen una Definición del Lenguaje
+<ul>
+<li>Usuarios de una Definición del Lenguaje
+<ul>
+<li>Otros diseñadores del Lenguaje</li>
+<li>Implementadores</li>
+<li>Programadores</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline2">
+<div class="slide-header"></div>
+<h3 id="orgheadline2">Definición Formal de Lenguajes</h3>
+<ul>
+<li><b>Reconocedores</b>
+<ul>
+<li>Un dispositivo de reconocimiento que lee cadenas del lenguaje y
+decide si las cadenas de entrada pertenecen al Lenguaje.</li>
+<li>Ejemplo, el analizador sintáctico de un compilador.</li>
+
+</ul></li>
+<li><b>Generadores</b>
+<ul>
+<li>Un dispositivo que genera sentencias de un lenguaje</li>
+<li>Se puede determinar si la sintaxis de una sentencia particular es
+correcta comparándola con la estructura del generador.</li>
+
+</ul></li>
+
+</ul>
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline3">
+<div class="slide-header"></div>
+<h3 id="orgheadline3">Métodos Formales de Describir la Sintaxis</h3>
+<ul>
+<li>Forma Backus-Naur y gramáticas libres de contexto
+<ul>
+<li>El método mas conocido para describir la sintaxis de un Lenguaje
+de Programación.</li>
+
+</ul></li>
+<li>BNF Extendida
+<ul>
+<li>Mejora la legibilidad de BNF</li>
+
+</ul></li>
+<li>Gramáticas y Reconocedores</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline4">
+<div class="slide-header"></div>
+<h3 id="orgheadline4">BNF y Gramáticas Libres de Contexto</h3>
+<ul>
+<li>Gramáticas libres de Contexto
+<ul>
+<li>Desarrollado por Noam Chomsky a mediados de 1950s</li>
+<li>Generadores de Lenguajes, medio de  describir la la sintaxis de
+lenguajes naturales</li>
+<li>Define clases de lenguajes</li>
+
+</ul></li>
+<li>Forma Backus-Naur (1959)
+<ul>
+<li>Inventado por John Backus para describir Algol 58</li>
+<li>Árboles sintacticos - ambiguedad del lenguaje</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline13">
+<div class="slide-header"></div>
+<h2 id="orgheadline13">Semántica Estática</h2>
+<div class="outline-text-2" id="text-orgheadline13">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline6">
+<div class="slide-header"></div>
+<h3 id="orgheadline6">Gramáticas con atributos</h3>
+<ul>
+<li>Las Gramáticas Libres de Contexto (GLC) no pueden describir toda la sintaxis de
+los lenguajes de programación.</li>
+<li>Agregados a GLC para introducir información semántica en los árboles sintácticos</li>
+<li>Principal aporte de las Gramáticas con atributos
+<ul>
+<li>Especificación de la semántica estática</li>
+<li>Diseño de Compiladores (chequeo de semántica estática)</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline7">
+<div class="slide-header"></div>
+<h3 id="orgheadline7">Gramáticas con atributos: Definición</h3>
+<ul>
+<li>Una Gramática con atributos es una gramática libre de contexto \(G =
+  (S,N,T,P)\) con los siguientes agregados:
+<ul>
+<li>Por cada símbolo de gramática \(x\) hay un conjunto \(A(x)\) de
+valores de atributos</li>
+<li>Cada regla tiene un conjunto de funciones que definen ciertos
+atributos de los no terminales en la regla</li>
+<li>Cada regla tiene un conjunto posiblemente vacío de predicados para
+chequear la consistencia de los atributos</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline8">
+<div class="slide-header"></div>
+<h3 id="orgheadline8">Gramáticas con atributos: Definición</h3>
+<ul>
+<li>Sea \(X_0 \to X_1 ... X_n\) una regla de la gramática libre de contexto</li>
+<li>Funciones de la forma \(S(X_0) = f(A(X_1), ... , A(X_n))\) definen
+<i>atributos sintetizados</i></li>
+<li>Funciones de la forma \(I(X_j) = f(A(X_0)), ... , f(A(X_{j-1}))\) para \(i
+  <= j <= n\), definen <i>atributos heredados</i></li>
+<li>Inicialmente hay <i>atributos intrínsecos</i> en las hojas de los árboles sintácticos</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline9">
+<div class="slide-header"></div>
+<h3 id="orgheadline9">Gramáticas con atributos: Un Ejemplo</h3>
+<ul>
+<li>Sintaxis
+<ul>
+<li>&lt;assingn&gt; &rarr; &lt;var&gt; = &lt;expr&gt;</li>
+<li>&lt;expr&gt; &rarr; &lt;var&gt; + &lt;var&gt; | &lt;var&gt;</li>
+<li>&lt;var&gt; &rarr; A | B | C</li>
+
+</ul></li>
+
+<li>tipo-real: sintetizado por &lt;var&gt; y &lt;expr&gt;</li>
+<li>tipo-esperado: heredado por &lt;expr&gt;</li>
+
+</ul>
+
+
+<figure>
+<p><img src="attribgram1.png" alt="attribgram1.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline10">
+<div class="slide-header"></div>
+<h3 id="orgheadline10">Gramáticas con atributos: Un Ejemplo</h3>
+<ol>
+<li>Regla sintáctica: &lt;assingn&gt; &rarr; &lt;var&gt; = &lt;expr&gt;
+<ul>
+<li>Regla semántica: &lt;expr&gt;.tipo-esperado &larr; &lt;var&gt;.tipo-real</li>
+
+</ul></li>
+<li>Regla sintáctica: &lt;expr&gt; &rarr; &lt;var&gt;[ 2] + &lt;var&gt;[ 3]
+<ul>
+<li><p>
+Regla semántica: &lt;expr&gt;.tipo-real  &larr;
+</p>
+
+<p>
+if (&lt;var&gt;[ 2].tipo-real = int) and (&lt;var&gt;[ 3].tipo-real = int)
+then int else real end if
+</p></li>
+
+<li>Predicado: &lt;expr&gt;.tipo-real = &lt;expr&gt;.tipo-esperado</li>
+
+</ul></li>
+
+<li>Regla sintáctica: &lt;expr&gt; &rarr; &lt;var&gt;
+<ul>
+<li>Regla semántica: &lt;expr&gt;.tipo-real &larr; &lt;var&gt;.tipo-real</li>
+<li>Predicado: &lt;expr&gt;.tipo-real = &lt;expr&gt;.tipo-esperado</li>
+
+</ul></li>
+
+<li>Regla sintáctica: &lt;var&gt; &rarr; A | B | C
+<ul>
+<li>Regla semántica:  &lt;var&gt;.tipo-real &larr; lookup (&lt;var&gt;.string)</li>
+
+</ul></li>
+
+</ol>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline11">
+<div class="slide-header"></div>
+<h3 id="orgheadline11">Gramáticas con atributos</h3>
+<ul>
+<li>¿Cómo se computan los valores de atributos?
+<ul>
+<li>Si todos los atributos fueran heredados, el árbol podría ser
+completado en un orden <i>top-down</i>.</li>
+<li>Si todos los atributos fueran sintetizados, el árbol podría ser
+completado en un orden <i>bottom-up</i></li>
+<li>En muchos casos, ambos casos de atributos son utilizados y se
+necesita una combinación de ambos órdenes.</li>
+
+</ul></li>
+
+</ul>
+
+
+<figure>
+<p><img src="attribgram2.png" alt="attribgram2.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline12">
+<div class="slide-header"></div>
+<h3 id="orgheadline12">Gramáticas con atributos</h3>
+<ol>
+<li>&lt;var&gt;.tipo-real &larr; look-up(A) (Regla 4)</li>
+<li>&lt;expr&gt;.tipo-esperado &larr; &lt;var&gt;.tipo-real (Regla 1)</li>
+<li><ul>
+<li>&lt;var&gt;[ 2].tipo-real &larr; look-up(A) (Regla 4)</li>
+<li>&lt;var&gt;[ 3].tipo-real &larr; look-up(B) (Regla 4)</li>
+
+</ul></li>
+<li>&lt;expr&gt;.tipo-real &larr; int o real (Regla 2)</li>
+
+<li>&lt;expr&gt;.tipo-esperado = &lt;expr&gt;.tipo-real es VERDADERO o FALSO (Regla 2)</li>
+
+</ol>
+
+
+<figure>
+<p><img src="attribgram3.png" alt="attribgram3.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline19">
+<div class="slide-header"></div>
+<h2 id="orgheadline19">Semántica Dinámica</h2>
+<div class="outline-text-2" id="text-orgheadline19">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline14">
+<div class="slide-header"></div>
+<h3 id="orgheadline14">Métodos Desarrollados</h3>
+<ul>
+<li>Semántica Operacional
+<ul>
+<li>Operaciones en una máquina abstracta</li>
+
+</ul></li>
+<li>Semántica Denotacional
+<ul>
+<li>Usa funciones para especificar la semántica, los programas se
+convierten en funciones para poder aplicar la teoría de funciones recursivas</li>
+
+</ul></li>
+<li>Semántica Axiomática
+<ul>
+<li>Aplica la lógica formal: afirmaciones (aserciones) para describir
+suposiciones y resultados deseados</li>
+<li>Los axiomas o reglas de inferencia son usados en cada tipo de
+sentencias.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline15">
+<div class="slide-header"></div>
+<h3 id="orgheadline15">Semántica Operacional</h3>
+<ul>
+<li>Describe el significado de un programa ejecutando sus sentencias
+sobre una máquina, simulada o real. Los cambios en el estado de la
+máquina (registros, memoria, etc) define el significado de la sentencia.</li>
+<li>Para el uso de una semántica operacional en un lenguaje de alto
+nivel se necesita una máquina virtual
+<ul>
+<li>Un intérprete de hardware puro podría ser muy costoso.</li>
+<li>Un intérprete de software puro también tiene problemas
+(dependiente de la máquina )</li>
+
+</ul></li>
+<li>Una mejor alternativa: Una simulación completa de la computadora
+<ul>
+<li>Construir un traductor del codigo fuente a un codigo maquina de
+una computadora idealizada</li>
+<li>Construir un simulador para la computadora idealizada</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline16">
+<div class="slide-header"></div>
+<h3 id="orgheadline16">Semántica Operacional</h3>
+<ul>
+<li>Simulador de Prolog en Prolog</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #87cefa;">mi</span>(true).
+<span style="color: #87cefa;">mi</span>((<span style="color: #eedd82;">A</span>,<span style="color: #eedd82;">B</span>)) :-
+        mi(<span style="color: #eedd82;">A</span>),
+        mi(<span style="color: #eedd82;">B</span>).
+<span style="color: #87cefa;">mi1</span>(<span style="color: #eedd82;">Goal</span>) :-
+        <span style="color: #eedd82;">Goal</span> \= true,
+        <span style="color: #eedd82;">Goal</span> \= (<span style="color: #eedd82;">_</span>,<span style="color: #eedd82;">_</span>),
+        clause(<span style="color: #eedd82;">Goal</span>, <span style="color: #eedd82;">Body</span>),
+        mi(<span style="color: #eedd82;">Body</span>).
+</pre>
+</div>
+
+<ul>
+<li>Evaluación:
+<ul>
+<li>Bueno usado informalmente.</li>
+<li>Extremadamente complejo usado formalmente.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline17">
+<div class="slide-header"></div>
+<h3 id="orgheadline17">Semántica Denotacional</h3>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline18">
+<div class="slide-header"></div>
+<h3 id="orgheadline18">Semántica Axiomática</h3>
+<div class="slide-footer"></div>
+</section>
+</section>
+</div>
+</div>
+<script src="../reveal.js-master/lib/js/head.min.js"></script>
+<script src="../reveal.js-master/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+,});
+</script>
+</body>
+</html>

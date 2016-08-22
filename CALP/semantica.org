@@ -1,0 +1,213 @@
+#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
+#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
+#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
+#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
+#+OPTIONS: reveal_title_slide:t reveal_width:-1
+#+REVEAL_MARGIN: -1
+#+REVEAL_MIN_SCALE: -1
+#+REVEAL_MAX_SCALE: -1
+#+REVEAL_ROOT: ../reveal.js-master
+#+REVEAL_TRANS: cube
+#+REVEAL_SPEED: default
+#+REVEAL_THEME: solarized
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_EXTRA_JS:
+#+REVEAL_HLEVEL: 2
+#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
+#+REVEAL_TITLE_SLIDE_BACKGROUND:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_PREAMBLE:
+#+REVEAL_HEAD_PREAMBLE:
+#+REVEAL_POSTAMBLE:
+#+REVEAL_MULTIPLEX_ID:
+#+REVEAL_MULTIPLEX_SECRET:
+#+REVEAL_MULTIPLEX_URL:
+#+REVEAL_MULTIPLEX_SOCKETIO_URL:
+#+REVEAL_SLIDE_HEADER:
+#+REVEAL_SLIDE_FOOTER:
+#+REVEAL_PLUGINS:
+#+REVEAL_DEFAULT_FRAG_STYLE:
+#+REVEAL_INIT_SCRIPT:
+
+#+TITLE: Conceptos Avanzados en Lenguajes de Programación
+#+DATE:  <2016-08-22 lun>
+#+AUTHOR: Semanticas 
+#+EMAIL: Claudio Vaucheret / cv@fi.uncoma.edu.ar 
+
+* Introducción
+
+** Introducción
+
+- *Sintaxis*: La forma y estructura de las expresiones, sentencias y
+  unidades del programa.
+- *Semántica*: El significado de las expresiones, sentencias, y
+  unidades del programa.
+- Sintaxis y Semántica proveen una Definición del Lenguaje
+  + Usuarios de una Definición del Lenguaje
+    * Otros diseñadores del Lenguaje
+    * Implementadores
+    * Programadores
+
+** Definición Formal de Lenguajes
+- *Reconocedores*
+  + Un dispositivo de reconocimiento que lee cadenas del lenguaje y
+    decide si las cadenas de entrada pertenecen al Lenguaje.
+  + Ejemplo, el analizador sintáctico de un compilador.
+- *Generadores*
+  + Un dispositivo que genera sentencias de un lenguaje
+  + Se puede determinar si la sintaxis de una sentencia particular es
+    correcta comparándola con la estructura del generador.
+** Métodos Formales de Describir la Sintaxis
+- Forma Backus-Naur y gramáticas libres de contexto
+  + El método mas conocido para describir la sintaxis de un Lenguaje
+    de Programación.
+- BNF Extendida
+  + Mejora la legibilidad de BNF
+- Gramáticas y Reconocedores
+
+** BNF y Gramáticas Libres de Contexto 
+- Gramáticas libres de Contexto
+  + Desarrollado por Noam Chomsky a mediados de 1950s
+  + Generadores de Lenguajes, medio de  describir la la sintaxis de
+    lenguajes naturales
+  + Define clases de lenguajes
+- Forma Backus-Naur (1959)
+  + Inventado por John Backus para describir Algol 58
+  + Árboles sintacticos - ambiguedad del lenguaje
+
+* Semántica Estática
+
+** Gramáticas con atributos
+- Las Gramáticas Libres de Contexto (GLC) no pueden describir toda la sintaxis de
+  los lenguajes de programación.
+- Agregados a GLC para introducir información semántica en los árboles sintácticos
+- Principal aporte de las Gramáticas con atributos
+  + Especificación de la semántica estática
+  + Diseño de Compiladores (chequeo de semántica estática)
+
+** Gramáticas con atributos: Definición
+- Una Gramática con atributos es una gramática libre de contexto $G =
+  (S,N,T,P)$ con los siguientes agregados:
+  + Por cada símbolo de gramática $x$ hay un conjunto $A(x)$ de
+    valores de atributos
+  + Cada regla tiene un conjunto de funciones que definen ciertos
+    atributos de los no terminales en la regla
+  + Cada regla tiene un conjunto posiblemente vacío de predicados para
+    chequear la consistencia de los atributos
+
+** Gramáticas con atributos: Definición
+
+- Sea $X_0 \to X_1 ... X_n$ una regla de la gramática libre de contexto
+- Funciones de la forma $S(X_0) = f(A(X_1), ... , A(X_n))$ definen
+  /atributos sintetizados/
+- Funciones de la forma $I(X_j) = f(A(X_0)), ... , f(A(X_{j-1}))$ para $i
+  <= j <= n$, definen /atributos heredados/
+- Inicialmente hay /atributos intrínsecos/ en las hojas de los árboles sintácticos
+
+** Gramáticas con atributos: Un Ejemplo
+- Sintaxis
+  - <assingn> \to <var> = <expr>
+  - <expr> \to <var> + <var> | <var>
+  - <var> \to A | B | C
+
+- tipo-real: sintetizado por <var> y <expr>
+- tipo-esperado: heredado por <expr>
+
+[[file:attribgram1.png]]
+
+** Gramáticas con atributos: Un Ejemplo
+1) Regla sintáctica: <assingn> \to <var> = <expr>
+   - Regla semántica: <expr>.tipo-esperado \leftarrow <var>.tipo-real
+2) Regla sintáctica: <expr> \to <var>[ 2] + <var>[ 3]
+   - Regla semántica: <expr>.tipo-real  \leftarrow
+
+     if (<var>[ 2].tipo-real = int) and (<var>[ 3].tipo-real = int)
+     then int else real end if
+
+   - Predicado: <expr>.tipo-real = <expr>.tipo-esperado
+
+3) Regla sintáctica: <expr> \to <var>
+   - Regla semántica: <expr>.tipo-real \leftarrow <var>.tipo-real
+   - Predicado: <expr>.tipo-real = <expr>.tipo-esperado
+
+4) Regla sintáctica: <var> \to A | B | C
+   - Regla semántica:  <var>.tipo-real \leftarrow lookup (<var>.string)
+
+** Gramáticas con atributos
+- ¿Cómo se computan los valores de atributos?
+  + Si todos los atributos fueran heredados, el árbol podría ser
+    completado en un orden /top-down/.
+  + Si todos los atributos fueran sintetizados, el árbol podría ser
+    completado en un orden /bottom-up/
+  + En muchos casos, ambos casos de atributos son utilizados y se
+    necesita una combinación de ambos órdenes.
+
+[[file:attribgram2.png]]
+
+** Gramáticas con atributos
+
+1) <var>.tipo-real \leftarrow look-up(A) (Regla 4)
+2) <expr>.tipo-esperado \leftarrow <var>.tipo-real (Regla 1)
+3) 
+   - <var>[ 2].tipo-real \leftarrow look-up(A) (Regla 4)
+   - <var>[ 3].tipo-real \leftarrow look-up(B) (Regla 4)
+4) <expr>.tipo-real \leftarrow int o real (Regla 2)
+
+5) <expr>.tipo-esperado = <expr>.tipo-real es VERDADERO o FALSO (Regla 2)
+
+[[file:attribgram3.png]]
+
+* Semántica Dinámica
+
+** Métodos Desarrollados
+- Semántica Operacional
+  - Operaciones en una máquina abstracta
+- Semántica Denotacional
+  - Usa funciones para especificar la semántica, los programas se
+    convierten en funciones para poder aplicar la teoría de funciones recursivas
+- Semántica Axiomática
+  - Aplica la lógica formal: afirmaciones (aserciones) para describir
+    suposiciones y resultados deseados
+  - Los axiomas o reglas de inferencia son usados en cada tipo de
+    sentencias.
+
+** Semántica Operacional
+- Describe el significado de un programa ejecutando sus sentencias
+  sobre una máquina, simulada o real. Los cambios en el estado de la
+  máquina (registros, memoria, etc) define el significado de la sentencia.
+- Para el uso de una semántica operacional en un lenguaje de alto
+  nivel se necesita una máquina virtual
+  - Un intérprete de hardware puro podría ser muy costoso.
+  - Un intérprete de software puro también tiene problemas
+    (dependiente de la máquina )
+- Una mejor alternativa: Una simulación completa de la computadora
+  - Construir un traductor del codigo fuente a un codigo maquina de
+    una computadora idealizada
+  - Construir un simulador para la computadora idealizada
+
+** Semántica Operacional
+
+- Simulador de Prolog en Prolog
+
+#+BEGIN_SRC prolog
+mi(true).
+mi((A,B)) :-
+        mi(A),
+        mi(B).
+mi1(Goal) :-
+        Goal \= true,
+        Goal \= (_,_),
+        clause(Goal, Body),
+        mi(Body).
+#+END_SRC
+
+- Evaluación:
+  - Bueno usado informalmente.
+  - Extremadamente complejo usado formalmente.
+
+** Semántica Denotacional
+
+** Semántica Axiomática
