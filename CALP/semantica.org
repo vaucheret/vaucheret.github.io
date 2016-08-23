@@ -337,6 +337,19 @@ mi1(Goal) :-
   Q'}{\{P'\} \ S \ \{Q'\}} \]
 
 *** Axiomas
+#+ATTR_REVEAL: :frag (roll-in)
+- \( x = 2 * y - 3 \{x > 25 \}  \) 
+- \( 2 * y - 3 > 25  \)
+- \( y > 14  \)
+- \( x = x + y - 3 \{x > 10 \}  \)
+- \( x + y - 3 > 10  \)
+- \( y > 13 - x  \)
+
+*** Axiomas
+ \[ \frac{ \{x > 3\} \ x = x - 3 \ \{x > 0\}, (x > 5) \Rightarrow (x >
+  3), (x > 0) \Rightarrow (X > 0)}{\{x > 5\} \ x = x - 3 \ \{x > 0\}} \]
+
+*** Axiomas
 - Una regla de inferencia para secuencias
   - \( \{P1\} S1 \{P2\} \)
   - \( \{P2\} S2 \{P3\} \)
@@ -344,9 +357,44 @@ mi1(Goal) :-
 \[ \frac{ \{P1\} \ S1 \ \{P2\}, \{P2\} \ S2 \ \{P3\}}{\{P1\} \ S1;S2 \ \{P3\}} \]
 
 *** Axiomas
+- \( y = 3 * x + 1  \);
+
+- \( x =  y + 3 \);
+
+- \(\{ x < 10 \}  \)
+
+La precondición para la segunda asignación es \( y < 7 \) la cual es
+usada como postcondición para la primer sentencia. La precondición
+para la primera asignación puede ser computada 
+
+- \( 3 * x + 1 < 7  \)
+
+- \( x < 2 \)
+
+*** Axiomas
+- regla de inferencia para sentencias de selección  /if/
+
+ {P} *if* B *then* S1 *else* S2 {Q}
+
+\[ \frac{ \{B \ and \ P \} \ S1 \ \{Q\}, \{(not B) \ and \ P\} \ S2 \ 
+\{Q\}}{\{P\} \ if \ B \ then \ S1 \ else \ S2 \ \{Q\}}\]
+
+*** Ejemplo
+- *if* \( x > 0 \) *then* \( y = y - 1 \) *else* \(  y =  y + 1  \)
+#+ATTR_REVEAL: :frag (roll-in)
+- con la postcondición \( \{ y > 0 \} \)
+- el axioma de asignación para la clausula *then*: \( y = y - 1  \{ y
+  > 0 \} \)  produce \( \{ y - 1 > 0 \} \) o \( \{ y > 1 \} \)
+- el axioma de asignación para la clausula *else*: \( y = y + 1  \{ y
+  > 0 \} \)  produce \( \{ y + 1 > 0 \} \) o \( \{ y > -1 \} \)
+- Como \( \{ y > 1 \} \Rightarrow \{ y > -1 \}\) la regla de
+  consecuencia nos permite usar \( \{ y > 1 \} \) como precondición
+  del total de la sentencia
+
+*** Axiomas
 - Una regla de inferencia para un ciclo /while/
 
- {P} while B do S end {Q}
+ {P} *while* B *do* S *end* {Q}
 
 \[ \frac{ (I \ and \ B ) S \{I\} }{\{I\} \ while \ B \ do \ S \{I \
 and (not B)\}} \]
@@ -356,7 +404,7 @@ and (not B)\}} \]
 *** Axiomas
 - Características del /invariante/: /I/ debe satisfacer las siguientes
   condiciones:
-  - \( P \Rightarrow I \) el invariante de ser inicialmente verdadero
+  - \( P \Rightarrow I \) el invariante debe ser inicialmente verdadero
   - \( \{I\} \ B \ \{I\}  \) la evaluación de la parte booleana no
     debe cambiar la validez de /I/
   - \( \{I \ and \ B \} \ S \ \{I\}  \) /I/ no cambia por la ejecución
@@ -364,6 +412,31 @@ and (not B)\}} \]
   - \( (I \ and \ (not \ B)) \Rightarrow Q \) si /I/ es verdadero y
     /B/ es falso es implicado /Q/
   - El ciclo termina
+
+*** Ejemplo
+- *while* \( y <> x \) *do* \( y = y + 1 \) *end* \( \{ y = x \} \) 
+#+ATTR_REVEAL: :frag (roll-in)
+- Para cero iteraciones la precondición mas débil es \( \{ y = x \} \)
+- Para una iteración es: \[ wp( y = y + 1, \{y = x\}) = \{ y + 1 = x \} = \{ y = x - 1 \} \]
+- Para dos iteraciones es:\[ wp( y = y + 1, \{y = x - 1\}) = \{ y + 1 = x - 1\} = \{ y = x - 2 \} \]
+- Para tres iteraciones es:\[ wp( y = y + 1, \{y = x - 2\}) = \{ y + 1 = x - 2\} = \{ y = x - 3 \} \]
+- Es obvio que \(\{y <  x \} \)es suficiente para los casos de uno o mas
+  iteraciones. Combinado con \(\{y = x \} \)para el caso base
+  obtenemos  \( \{y <= x \}\), que puede ser el invariante del ciclo.
+
+*** Ejemplo
+  - \( P \Rightarrow I \) \( \{y <= x \} \Rightarrow \{y <= x \} \) 
+  - \( \{I\} \ B \ \{I\}  \)  \( \{y <= x \} \ \{y <> x \}  \ \{y <= x\}  \) 
+  - \( \{I \ and \ B \} \ S \ \{I\}  \) \( \{y <= x \ and \ y <> x \}
+    \ y = y + 1 \ \{y <= x\}  \) aplicando el axioma de asignación a \( y
+    = y + 1 \{ y <= x \} \) tenemos \( \{y + 1 <= x \}\) que es
+    equivalente a \( \{y < x \}\) el cual es implicado por \( \{y < x
+    \ and \ y <> x\}\).
+  - \( (I \ and \ (not \ B)) \Rightarrow Q \) \( \{(y <= x) \ and \ (not
+    \ y <> x)\} \Rightarrow \{y = x\} \) sigue \( \{(y <= x) \ and \ (y
+    = x)\} \Rightarrow \{y = x\} \) sigue \( \{y = x \} \Rightarrow \{y = x\} \)
+  - El ciclo termina
+
 
 *** Invariante
 - El invariante es la versión mas debil de la postcondición del ciclo,

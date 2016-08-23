@@ -49,7 +49,7 @@
 <li><a href="#/slide-orgheadline12">Gramáticas con atributos</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline36">Semántica Dinámica</a>
+<li><a href="#/slide-orgheadline44">Semántica Dinámica</a>
 <ul>
 <li><a href="#/slide-orgheadline14">Métodos Desarrollados</a></li>
 <li><a href="#/slide-orgheadline17">Semántica Operacional</a>
@@ -70,7 +70,7 @@
 <li><a href="#/slide-orgheadline25">Evaluación</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline35">Semántica Axiomática</a>
+<li><a href="#/slide-orgheadline43">Semántica Axiomática</a>
 <ul>
 <li><a href="#/slide-orgheadline27">Semántica Axiomática</a></li>
 <li><a href="#/slide-orgheadline28">Semántica Axiomática</a></li>
@@ -80,6 +80,14 @@
 <li><a href="#/slide-orgheadline32">Axiomas</a></li>
 <li><a href="#/slide-orgheadline33">Axiomas</a></li>
 <li><a href="#/slide-orgheadline34">Axiomas</a></li>
+<li><a href="#/slide-orgheadline35">Axiomas</a></li>
+<li><a href="#/slide-orgheadline36">Axiomas</a></li>
+<li><a href="#/slide-orgheadline37">Axiomas</a></li>
+<li><a href="#/slide-orgheadline38">Axiomas</a></li>
+<li><a href="#/slide-orgheadline39">Ejemplo</a></li>
+<li><a href="#/slide-orgheadline40">Ejemplo</a></li>
+<li><a href="#/slide-orgheadline41">Invariante</a></li>
+<li><a href="#/slide-orgheadline42">Evaluación</a></li>
 </ul>
 </li>
 </ul>
@@ -387,10 +395,10 @@ necesita una combinación de ambos órdenes.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline36">
+<section id="slide-orgheadline44">
 <div class="slide-header"></div>
-<h2 id="orgheadline36">Semántica Dinámica</h2>
-<div class="outline-text-2" id="text-orgheadline36">
+<h2 id="orgheadline44">Semántica Dinámica</h2>
+<div class="outline-text-2" id="text-orgheadline44">
 </div><div class="slide-footer"></div>
 </section>
 </section>
@@ -686,10 +694,10 @@ con rigor matemático</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline35">
+<section id="slide-orgheadline43">
 <div class="slide-header"></div>
-<h3 id="orgheadline35">Semántica Axiomática</h3>
-<div class="outline-text-3" id="text-orgheadline35">
+<h3 id="orgheadline43">Semántica Axiomática</h3>
+<div class="outline-text-3" id="text-orgheadline43">
 </div><div class="slide-footer"></div>
 </section>
 <section id="slide-orgheadline27">
@@ -782,6 +790,31 @@ La regla de la Consecuencia
 <div class="slide-header"></div>
 <h4 id="orgheadline32">Axiomas</h4>
 <ul>
+<li class="fragment roll-in">\( x = 2 * y - 3 \{x > 25 \}  \)</li>
+<li class="fragment roll-in">\( 2 * y - 3 > 25  \)</li>
+<li class="fragment roll-in">\( y > 14  \)</li>
+<li class="fragment roll-in">\( x = x + y - 3 \{x > 10 \}  \)</li>
+<li class="fragment roll-in">\( x + y - 3 > 10  \)</li>
+<li class="fragment roll-in">\( y > 13 - x  \)</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline33">
+<div class="slide-header"></div>
+<h4 id="orgheadline33">Axiomas</h4>
+<p>
+\[ \frac{ \{x > 3\} \ x = x - 3 \ \{x > 0\}, (x > 5) \Rightarrow (x >
+  3), (x > 0) \Rightarrow (X > 0)}{\{x > 5\} \ x = x - 3 \ \{x > 0\}} \]
+</p>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline34">
+<div class="slide-header"></div>
+<h4 id="orgheadline34">Axiomas</h4>
+<ul>
 <li>Una regla de inferencia para secuencias
 <ul>
 <li>\( \{P1\} S1 \{P2\} \)</li>
@@ -797,16 +830,69 @@ La regla de la Consecuencia
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline33">
+<section id="slide-orgheadline35">
 <div class="slide-header"></div>
-<h4 id="orgheadline33">Axiomas</h4>
+<h4 id="orgheadline35">Axiomas</h4>
+<ul>
+<li>\( y = 3 * x + 1  \);</li>
+
+<li>\( x =  y + 3 \);</li>
+
+<li>\(\{ x < 10 \}  \)</li>
+
+</ul>
+
+<p>
+La precondición para la segunda asignación es \( y < 7 \) la cual es
+usada como postcondición para la primer sentencia. La precondición
+para la primera asignación puede ser computada 
+</p>
+
+<ul>
+<li>\( 3 * x + 1 < 7  \)</li>
+
+<li>\( x < 2 \)</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline36">
+<div class="slide-header"></div>
+<h4 id="orgheadline36">Axiomas</h4>
+<ul>
+<li><p>
+regla de inferencia para sentencias de selección  <i>if</i>
+</p>
+
+<p>
+{P} <b>if</b> B <b>then</b> S1 <b>else</b> S2 {Q}
+</p></li>
+
+</ul>
+
+<p>
+\[ \frac{ \{B \ and \ P \} \ S1 \ \{Q\}, \{(not B) \ and \ P\} \ S2 \ 
+\{Q\}}{\{P\} \ if \ B \ then \ S1 \ else \ S2 \ \{Q\}}\]
+</p>
+
+<p>
+donde <i>I</i> es el <i>invariante</i> (la hipótesis inductiva)
+</p>
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline37">
+<div class="slide-header"></div>
+<h4 id="orgheadline37">Axiomas</h4>
 <ul>
 <li><p>
 Una regla de inferencia para un ciclo <i>while</i>
 </p>
 
 <p>
-{P} while B do S end {Q}
+{P} <b>while</b> B <b>do</b> S <b>end</b> {Q}
 </p></li>
 
 </ul>
@@ -822,14 +908,14 @@ donde <i>I</i> es el <i>invariante</i> (la hipótesis inductiva)
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline34">
+<section id="slide-orgheadline38">
 <div class="slide-header"></div>
-<h4 id="orgheadline34">Axiomas</h4>
+<h4 id="orgheadline38">Axiomas</h4>
 <ul>
 <li>Características del <i>invariante</i>: <i>I</i> debe satisfacer las siguientes
 condiciones:
 <ul>
-<li>\( P \Rightarrow I \) el invariante de ser inicialmente verdadero</li>
+<li>\( P \Rightarrow I \) el invariante debe ser inicialmente verdadero</li>
 <li>\( \{I\} \ B \ \{I\}  \) la evaluación de la parte booleana no
 debe cambiar la validez de <i>I</i></li>
 <li>\( \{I \ and \ B \} \ S \ \{I\}  \) <i>I</i> no cambia por la ejecución
@@ -839,6 +925,76 @@ del cuerpo del ciclo  iterativo</li>
 <li>El ciclo termina</li>
 
 </ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline39">
+<div class="slide-header"></div>
+<h4 id="orgheadline39">Ejemplo</h4>
+<ul>
+<li><b>while</b> \( y <> x \) <b>do</b> \( y = y + 1 \) <b>end</b> \( \{ y = x \} \)</li>
+
+</ul>
+<ul>
+<li class="fragment roll-in">Para cero iteraciones la precondición mas débil es \( \{ y = x \} \)</li>
+<li class="fragment roll-in">Para una iteración es: \[ wp( y = y + 1, \{y = x\}) = \{ y + 1 = x \} = \{ y = x - 1 \} \]</li>
+<li class="fragment roll-in">Para dos iteraciones es:\[ wp( y = y + 1, \{y = x - 1\}) = \{ y + 1 = x - 1\} = \{ y = x - 2 \} \]</li>
+<li class="fragment roll-in">Para tres iteraciones es:\[ wp( y = y + 1, \{y = x - 2\}) = \{ y + 1 = x - 2\} = \{ y = x - 3 \} \]</li>
+<li class="fragment roll-in">Es obvio que \(\{y <  x \} \)es suficiente para los casos de uno o mas
+iteraciones. Combinado con \(\{y = x \} \)para el caso base
+obtenemos  \( \{y <= x \}\), que puede ser el invariante del ciclo.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline40">
+<div class="slide-header"></div>
+<h4 id="orgheadline40">Ejemplo</h4>
+<ul>
+<li>\( P \Rightarrow I \) \( \{y <= x \} \Rightarrow \{y <= x \} \)</li>
+<li>\( \{I\} \ B \ \{I\}  \)  \( \{y <= x \} \ \{y <> x \}  \ \{y <= x\}  \)</li>
+<li>\( \{I \ and \ B \} \ S \ \{I\}  \) \( \{y <= x \ and \ y <> x \}
+    \ y = y + 1 \ \{y <= x\}  \) aplicando el axioma de asignación a \( y
+    = y + 1 \{ y <= x \} \) tenemos \( \{y + 1 <= x \}\) que es
+equivalente a \( \{y < x \}\) el cual es implicado por \( \{y < x
+    \ and \ y <> x\}\).</li>
+<li>\( (I \ and \ (not \ B)) \Rightarrow Q \) \( \{(y <= x) \ and \ (not
+    \ y <> x)\} \Rightarrow \{y = x\} \) sigue \( \{(y <= x) \ and \ (y
+    = x)\} \Rightarrow \{y = x\} \) sigue \( \{y = x \} \Rightarrow \{y = x\} \)</li>
+<li>El ciclo termina</li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline41">
+<div class="slide-header"></div>
+<h4 id="orgheadline41">Invariante</h4>
+<ul>
+<li>El invariante es la versión mas debil de la postcondición del ciclo,
+y es también una precondición.</li>
+<li>Debe ser lo suficientemente debil para satsifacer a priori el
+comienzo del ciclo, pero cuando se combina con la condición de
+salida debe ser los suficientemente fuerte para forzar la verdad de
+la postcondición</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline42">
+<div class="slide-header"></div>
+<h4 id="orgheadline42">Evaluación</h4>
+<ul>
+<li>Desarrollar axiomas y reglas de inferencia para todas las
+sentencias en un lenguaje es dificultoso</li>
+<li>Es una buena herramienta para la verificación de programas y un
+excelente marco para razonar los programas, pero no es útil para los
+usuarios del lenguaje y desarrolladores de compiladores</li>
 
 </ul>
 <div class="slide-footer"></div>
