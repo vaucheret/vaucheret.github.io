@@ -49,6 +49,15 @@
 <li><a href="#/slide-orgheadline12">Gramáticas con atributos</a></li>
 </ul>
 </li>
+<li><a href="#/slide-orgheadline19">Semántica Dinámica</a>
+<ul>
+<li><a href="#/slide-orgheadline14">Métodos Desarrollados</a></li>
+<li><a href="#/slide-orgheadline15">Semántica Operacional</a></li>
+<li><a href="#/slide-orgheadline16">Semántica Operacional</a></li>
+<li><a href="#/slide-orgheadline17">Semántica Denotacional</a></li>
+<li><a href="#/slide-orgheadline18">Semántica Axiomática</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </nav>
@@ -347,6 +356,125 @@ necesita una combinación de ambos órdenes.</li>
 <p><img src="attribgram3.png" alt="attribgram3.png">
 </p>
 </figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline19">
+<div class="slide-header"></div>
+<h2 id="orgheadline19">Semántica Dinámica</h2>
+<div class="outline-text-2" id="text-orgheadline19">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline14">
+<div class="slide-header"></div>
+<h3 id="orgheadline14">Métodos Desarrollados</h3>
+<ul>
+<li>Semántica Operacional
+<ul>
+<li>Operaciones en una máquina abstracta</li>
+
+</ul></li>
+<li>Semántica Denotacional
+<ul>
+<li>Usa funciones para especificar la semántica, los programas se
+convierten en funciones para poder aplicar la teoría de funciones recursivas</li>
+
+</ul></li>
+<li>Semántica Axiomática
+<ul>
+<li>Aplica la lógica formal: afirmaciones (aserciones) para describir
+suposiciones y resultados deseados</li>
+<li>Los axiomas o reglas de inferencia son usados en cada tipo de
+sentencias.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline15">
+<div class="slide-header"></div>
+<h3 id="orgheadline15">Semántica Operacional</h3>
+<ul>
+<li>Describe el significado de un programa ejecutando sus sentencias
+sobre una máquina, simulada o real. Los cambios en el estado de la
+máquina (registros, memoria, etc) define el significado de la sentencia.</li>
+<li>Para el uso de una semántica operacional en un lenguaje de alto
+nivel se necesita una máquina virtual
+<ul>
+<li>Un intérprete de hardware puro podría ser muy costoso.</li>
+<li>Un intérprete de software puro también tiene problemas
+(dependiente de la máquina )</li>
+
+</ul></li>
+<li>Una mejor alternativa: Una simulación completa de la computadora
+<ul>
+<li>Construir un traductor del codigo fuente a un codigo maquina de
+una computadora idealizada</li>
+<li>Construir un simulador para la computadora idealizada</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline16">
+<div class="slide-header"></div>
+<h3 id="orgheadline16">Semántica Operacional</h3>
+<ul>
+<li>Simulador de Prolog en Prolog</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><span style="color: #0000ff;">mi</span>(true).
+<span style="color: #0000ff;">mi</span>((<span style="color: #b8860b;">A</span>,<span style="color: #b8860b;">B</span>)) :-
+        mi(<span style="color: #b8860b;">A</span>),
+        mi(<span style="color: #b8860b;">B</span>).
+<span style="color: #0000ff;">mi1</span>(<span style="color: #b8860b;">Goal</span>) :-
+        <span style="color: #b8860b;">Goal</span> \= true,
+        <span style="color: #b8860b;">Goal</span> \= (<span style="color: #b8860b;">_</span>,<span style="color: #b8860b;">_</span>),
+        clause(<span style="color: #b8860b;">Goal</span>, <span style="color: #b8860b;">Body</span>),
+        mi(<span style="color: #b8860b;">Body</span>).
+</pre>
+</div>
+
+<ul>
+<li>Evaluación:
+<ul>
+<li>Bueno usado informalmente.</li>
+<li>Extremadamente complejo usado formalmente.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline17">
+<div class="slide-header"></div>
+<h3 id="orgheadline17">Semántica Denotacional</h3>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline18">
+<div class="slide-header"></div>
+<h3 id="orgheadline18">Semántica Axiomática</h3>
 <div class="slide-footer"></div>
 </section>
 </section>

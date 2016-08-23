@@ -109,7 +109,7 @@
 
 ** Gramáticas con atributos: Un Ejemplo
 - Sintaxis
-  - <assingn> \to <var> = <expr>
+  - <assign> \to <var> = <expr>
   - <expr> \to <var> + <var> | <var>
   - <var> \to A | B | C
 
@@ -119,7 +119,7 @@
 [[file:attribgram1.png]]
 
 ** Gramáticas con atributos: Un Ejemplo
-1) Regla sintáctica: <assingn> \to <var> = <expr>
+1) Regla sintáctica: <assign> \to <var> = <expr>
    - Regla semántica: <expr>.tipo-esperado \leftarrow <var>.tipo-real
 2) Regla sintáctica: <expr> \to <var>[ 2] + <var>[ 3]
    - Regla semántica: <expr>.tipo-real  \leftarrow
@@ -209,5 +209,10 @@ mi1(Goal) :-
   - Extremadamente complejo usado formalmente.
 
 ** Semántica Denotacional
-
+- Basado en la teoría de funciones recursivas
+- El método de descripción semántica mas abstracto
+- Originalmente desarrollado por Scott y Strachey (1970)
+- El proceso de construir una especificación denotacional para un
+  lenguaje es definir un objeto matemático por cada entidad del Lenguaje
+  - Define una función que mapea instancias del 
 ** Semántica Axiomática

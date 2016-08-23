@@ -243,7 +243,7 @@ chequear la consistencia de los atributos</li>
 <ul>
 <li>Sintaxis
 <ul>
-<li>&lt;assingn&gt; &rarr; &lt;var&gt; = &lt;expr&gt;</li>
+<li>&lt;assign&gt; &rarr; &lt;var&gt; = &lt;expr&gt;</li>
 <li>&lt;expr&gt; &rarr; &lt;var&gt; + &lt;var&gt; | &lt;var&gt;</li>
 <li>&lt;var&gt; &rarr; A | B | C</li>
 
@@ -268,7 +268,7 @@ chequear la consistencia de los atributos</li>
 <div class="slide-header"></div>
 <h3 id="orgheadline10">Gramáticas con atributos: Un Ejemplo</h3>
 <ol>
-<li>Regla sintáctica: &lt;assingn&gt; &rarr; &lt;var&gt; = &lt;expr&gt;
+<li>Regla sintáctica: &lt;assign&gt; &rarr; &lt;var&gt; = &lt;expr&gt;
 <ul>
 <li>Regla semántica: &lt;expr&gt;.tipo-esperado &larr; &lt;var&gt;.tipo-real</li>
 
@@ -438,15 +438,15 @@ una computadora idealizada</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #87cefa;">mi</span>(true).
-<span style="color: #87cefa;">mi</span>((<span style="color: #eedd82;">A</span>,<span style="color: #eedd82;">B</span>)) :-
-        mi(<span style="color: #eedd82;">A</span>),
-        mi(<span style="color: #eedd82;">B</span>).
-<span style="color: #87cefa;">mi1</span>(<span style="color: #eedd82;">Goal</span>) :-
-        <span style="color: #eedd82;">Goal</span> \= true,
-        <span style="color: #eedd82;">Goal</span> \= (<span style="color: #eedd82;">_</span>,<span style="color: #eedd82;">_</span>),
-        clause(<span style="color: #eedd82;">Goal</span>, <span style="color: #eedd82;">Body</span>),
-        mi(<span style="color: #eedd82;">Body</span>).
+<pre  class="src src-prolog"><span style="color: #0000ff;">mi</span>(true).
+<span style="color: #0000ff;">mi</span>((<span style="color: #b8860b;">A</span>,<span style="color: #b8860b;">B</span>)) :-
+        mi(<span style="color: #b8860b;">A</span>),
+        mi(<span style="color: #b8860b;">B</span>).
+<span style="color: #0000ff;">mi1</span>(<span style="color: #b8860b;">Goal</span>) :-
+        <span style="color: #b8860b;">Goal</span> \= true,
+        <span style="color: #b8860b;">Goal</span> \= (<span style="color: #b8860b;">_</span>,<span style="color: #b8860b;">_</span>),
+        clause(<span style="color: #b8860b;">Goal</span>, <span style="color: #b8860b;">Body</span>),
+        mi(<span style="color: #b8860b;">Body</span>).
 </pre>
 </div>
 
