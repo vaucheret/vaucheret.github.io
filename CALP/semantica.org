@@ -175,6 +175,7 @@
     sentencias.
 
 ** Semántica Operacional
+*** Semántica Operacional
 - Describe el significado de un programa ejecutando sus sentencias
   sobre una máquina, simulada o real. Los cambios en el estado de la
   máquina (registros, memoria, etc) define el significado de la sentencia.
@@ -188,7 +189,7 @@
     una computadora idealizada
   - Construir un simulador para la computadora idealizada
 
-** Semántica Operacional
+*** Semántica Operacional
 
 - Simulador de Prolog en Prolog
 
@@ -209,10 +210,172 @@ mi1(Goal) :-
   - Extremadamente complejo usado formalmente.
 
 ** Semántica Denotacional
+*** Semántica Denotacional
 - Basado en la teoría de funciones recursivas
 - El método de descripción semántica mas abstracto
 - Originalmente desarrollado por Scott y Strachey (1970)
 - El proceso de construir una especificación denotacional para un
   lenguaje es definir un objeto matemático por cada entidad del Lenguaje
-  - Define una función que mapea instancias del 
+  - Define una función que relaciona instancias de las entidades del
+    lenguaje con instancias de los objetos matemáticos correspondientes
+- El significado de las construcciones del lenguaje son definidos solo
+  por los valores de las variables del programa
+
+*** Semántica Denotacional vs Semántica Operacional
+- En la semántica operacional los cambios de estado son definidos por
+  algoritmos codificados
+- En la semántica denotacional los cambios de estado son definidos por
+  funciones matemáticas rigurosas.
+- El estado de un programa son los valores de todas las variables
+  actuales  $s = { < i_1,v_1 >,< i_2,v_2 >, ... ,< i_n,v_n > }$ 
+- Sea  /VARMAP/ una función que, cuando recibe un nombre de variable y
+  un estado retorna el valor actual de esa variable $VARMAP(i_j, s) = v_j$
+
+*** Números Decimales
+- <dec-num> \to 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+- M_{dec} ('0') = 0,  M_{dec} ('1') = 1, ... , M_{dec} ('9') = 9
+- M_{dec} ( <dec-num> '0') = 10 * M_{dec} ( <dec-num> )
+- M_{dec} ( <dec-num> '1') = 10 * M_{dec} ( <dec-num> ) + 1
+- ...
+- M_{dec} ( <dec-num> '9') = 10 * M_{dec} ( <dec-num> ) + 9
+
+*** Expresiones
+- relaciona expresiones a Z \cup { error }
+- suponiendo que las expresiones son números decimales, variables, o
+  expresiones binarias teniendo un operador aritmético y dos
+  operandos, cada uno de los cuales puede ser una expresión.
+- M_e ( < expr >, s) = case < expr > of 
+  - < dec-num > \to M_{dec} ( < dec-num > , s)
+  - < var > \to if VARMAP(< var >, s) 
+  - < binary-expr > \to 
+    - if (M_e(< binary-expr > . <left-expr > , s) = undef
+      - OR M_e(< binary-expr > . < right-expr > , s) = undef)
+    - then error
+    - else
+      - if (< binary-expr >.< operator > = ‘+’ then
+      - M_e(< binary-expr >.< left-expr >, s) + M_e(< binary-expr >.<
+        right-expr >, s)
+      - else M_e(< binary-expr >.< left-expr >, s) * M_e(< binary-expr
+        >.< right-expr >, s)
+- ...
+
+*** asignación
+- M_a ( X := E, s) = 
+  - if M_e(E, s) = error
+    - then error
+    - else s' = { < i_{1}',v_{1}' >, < i_{2}',v_{2}' >, ... , < i_{n}',v_{n}' >},
+      - where for j = 1, 2, ... n,
+        - v_{j}' = varmap(i_j, s) if i_j <> x
+          -  = M_e(E, s) if i_j = x
+
+*** Ciclo 'while'
+- M_l(while B do L, s) =
+  - if M_b(B, s) = undef
+    - then error
+    - else if M_b(B, s) = false
+      - then s
+      - else if M_{sl}(L, s) = error
+        - then error
+        - else M_l(while B do L, M_{sl}(L, s))
+
+*** Ciclo
+- El significado del ciclo es el valor de las variables del programa
+  después de que las sentencias del ciclo han sido ejecutadas el
+  número prescrito de veces, asumiendo que no ha habido errores
+- En esencia el ciclo ha sido convertido de iterativo a recursivo,
+  donde el control recursivo es definido por otra función recursiva de estados
+- La recursión comparada con la iteración es mas facil de describir
+  con rigor matemático
+
+*** Evaluación 
+- Puede ser usado para probar la corrección de programas
+- Provee un modo riguroso de pensar los programas
+- Puede ser una ayuda al diseño de lenguajes
+- Ha sido usado en sistemas de generación de compiladores
+- A causa de su complejidad es de poco uso para los usuarios del lenguaje
+
+
+
 ** Semántica Axiomática
+
+*** Semántica Axiomática
+- Basado en Lógica Formal (cálculo de predicados)
+- Propósito original: Verificación formal de programas
+- Axiomas o reglas de inferencia son definidas para cada tipo de
+  sentencia del lenguaje (para permitir transformaciones de
+  expresiones a otras expresiones)
+- Las expresiones son llamadas /aserciones/ (afirmaciones)
+
+*** Semántica Axiomática
+- Una aserción antes de una sentencia (una /precondición/ establece
+  las relaciones y restricciones entre variables que son verdaderas en
+  ese punto de la ejecución
+- Una aserción que sigue a una sentencia es una /postcondición/
+- Una /precondición mas débil/ es la menos restrictiva precondición
+  que garantiza la postcondición
+
+*** Semántica Axiomática 
+- La Forma es {P} sentencia {Q}
+- Un ejemplo
+  - a = b + 1 {a > 1}
+  - una posible precondición: {b > 10)
+  - /precondición mas débil/: {b > 0}
+
+*** Proceso de prueba de programa
+- La postcondición para el programa entero es el resultado deseado
+  - Se trabaja hacia atrás a través del programa hasta la primer
+    sentencia. Si la precondición sobre la primer sentencias está
+    inferida por la especificación de entrada del programa, entonces
+    el programa es correcto.
+
+*** Axiomas
+- Un axioma para la asignación
+  - ( x = E ): \( \{Q_{x \to E}\} \ x = E \ \{Q\} \)
+- La regla de la Consecuencia
+
+ \[ \frac{ \{P\} \ S \ \{Q\}, P' \Rightarrow P, Q \Rightarrow
+  Q'}{\{P'\} \ S \ \{Q'\}} \]
+
+*** Axiomas
+- Una regla de inferencia para secuencias
+  - \( \{P1\} S1 \{P2\} \)
+  - \( \{P2\} S2 \{P3\} \)
+
+\[ \frac{ \{P1\} \ S1 \ \{P2\}, \{P2\} \ S2 \ \{P3\}}{\{P1\} \ S1;S2 \ \{P3\}} \]
+
+*** Axiomas
+- Una regla de inferencia para un ciclo /while/
+
+ {P} while B do S end {Q}
+
+\[ \frac{ (I \ and \ B ) S \{I\} }{\{I\} \ while \ B \ do \ S \{I \
+and (not B)\}} \]
+
+ donde /I/ es el /invariante/ (la hipótesis inductiva)
+
+*** Axiomas
+- Características del /invariante/: /I/ debe satisfacer las siguientes
+  condiciones:
+  - \( P \Rightarrow I \) el invariante de ser inicialmente verdadero
+  - \( \{I\} \ B \ \{I\}  \) la evaluación de la parte booleana no
+    debe cambiar la validez de /I/
+  - \( \{I \ and \ B \} \ S \ \{I\}  \) /I/ no cambia por la ejecución
+    del cuerpo del ciclo  iterativo
+  - \( (I \ and \ (not \ B)) \Rightarrow Q \) si /I/ es verdadero y
+    /B/ es falso es implicado /Q/
+  - El ciclo termina
+
+*** Invariante
+- El invariante es la versión mas debil de la postcondición del ciclo,
+  y es también una precondición.
+- Debe ser lo suficientemente debil para satsifacer a priori el
+  comienzo del ciclo, pero cuando se combina con la condición de
+  salida debe ser los suficientemente fuerte para forzar la verdad de
+  la postcondición
+
+*** Evaluación
+- Desarrollar axiomas y reglas de inferencia para todas las
+  sentencias en un lenguaje es dificultoso
+- Es una buena herramienta para la verificación de programas y un
+  excelente marco para razonar los programas, pero no es útil para los
+  usuarios del lenguaje y desarrolladores de compiladores

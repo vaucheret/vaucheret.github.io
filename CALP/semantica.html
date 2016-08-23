@@ -49,13 +49,41 @@
 <li><a href="#/slide-orgheadline12">Gramáticas con atributos</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline19">Semántica Dinámica</a>
+<li><a href="#/slide-orgheadline38">Semántica Dinámica</a>
 <ul>
 <li><a href="#/slide-orgheadline14">Métodos Desarrollados</a></li>
+<li><a href="#/slide-orgheadline17">Semántica Operacional</a>
+<ul>
 <li><a href="#/slide-orgheadline15">Semántica Operacional</a></li>
 <li><a href="#/slide-orgheadline16">Semántica Operacional</a></li>
-<li><a href="#/slide-orgheadline17">Semántica Denotacional</a></li>
-<li><a href="#/slide-orgheadline18">Semántica Axiomática</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline26">Semántica Denotacional</a>
+<ul>
+<li><a href="#/slide-orgheadline18">Semántica Denotacional</a></li>
+<li><a href="#/slide-orgheadline19">Semántica Denotacional vs Semántica Operacional</a></li>
+<li><a href="#/slide-orgheadline20">Números Decimales</a></li>
+<li><a href="#/slide-orgheadline21">Expresiones</a></li>
+<li><a href="#/slide-orgheadline22">asignación</a></li>
+<li><a href="#/slide-orgheadline23">Ciclo 'while'</a></li>
+<li><a href="#/slide-orgheadline24">Ciclo</a></li>
+<li><a href="#/slide-orgheadline25">Evaluación</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline37">Semántica Axiomática</a>
+<ul>
+<li><a href="#/slide-orgheadline27">Semántica Axiomática</a></li>
+<li><a href="#/slide-orgheadline28">Semántica Axiomática</a></li>
+<li><a href="#/slide-orgheadline29">Semántica Axiomática</a></li>
+<li><a href="#/slide-orgheadline30">Proceso de prueba de programa</a></li>
+<li><a href="#/slide-orgheadline31">Axiomas</a></li>
+<li><a href="#/slide-orgheadline32">Axiomas</a></li>
+<li><a href="#/slide-orgheadline33">Axiomas</a></li>
+<li><a href="#/slide-orgheadline34">Axiomas</a></li>
+<li><a href="#/slide-orgheadline35">Invariante</a></li>
+<li><a href="#/slide-orgheadline36">Evaluación</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -361,10 +389,10 @@ necesita una combinación de ambos órdenes.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline19">
+<section id="slide-orgheadline38">
 <div class="slide-header"></div>
-<h2 id="orgheadline19">Semántica Dinámica</h2>
-<div class="outline-text-2" id="text-orgheadline19">
+<h2 id="orgheadline38">Semántica Dinámica</h2>
+<div class="outline-text-2" id="text-orgheadline38">
 </div><div class="slide-footer"></div>
 </section>
 </section>
@@ -399,9 +427,15 @@ sentencias.</li>
 </section>
 </section>
 <section>
+<section id="slide-orgheadline17">
+<div class="slide-header"></div>
+<h3 id="orgheadline17">Semántica Operacional</h3>
+<div class="outline-text-3" id="text-orgheadline17">
+</div><div class="slide-footer"></div>
+</section>
 <section id="slide-orgheadline15">
 <div class="slide-header"></div>
-<h3 id="orgheadline15">Semántica Operacional</h3>
+<h4 id="orgheadline15">Semántica Operacional</h4>
 <ul>
 <li>Describe el significado de un programa ejecutando sus sentencias
 sobre una máquina, simulada o real. Los cambios en el estado de la
@@ -426,11 +460,9 @@ una computadora idealizada</li>
 
 <div class="slide-footer"></div>
 </section>
-</section>
-<section>
 <section id="slide-orgheadline16">
 <div class="slide-header"></div>
-<h3 id="orgheadline16">Semántica Operacional</h3>
+<h4 id="orgheadline16">Semántica Operacional</h4>
 <ul>
 <li>Simulador de Prolog en Prolog</li>
 
@@ -438,15 +470,15 @@ una computadora idealizada</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">mi</span>(true).
-<span style="color: #0000ff;">mi</span>((<span style="color: #b8860b;">A</span>,<span style="color: #b8860b;">B</span>)) :-
-        mi(<span style="color: #b8860b;">A</span>),
-        mi(<span style="color: #b8860b;">B</span>).
-<span style="color: #0000ff;">mi1</span>(<span style="color: #b8860b;">Goal</span>) :-
-        <span style="color: #b8860b;">Goal</span> \= true,
-        <span style="color: #b8860b;">Goal</span> \= (<span style="color: #b8860b;">_</span>,<span style="color: #b8860b;">_</span>),
-        clause(<span style="color: #b8860b;">Goal</span>, <span style="color: #b8860b;">Body</span>),
-        mi(<span style="color: #b8860b;">Body</span>).
+<pre  class="src src-prolog"><span style="color: #87cefa;">mi</span>(true).
+<span style="color: #87cefa;">mi</span>((<span style="color: #eedd82;">A</span>,<span style="color: #eedd82;">B</span>)) :-
+        mi(<span style="color: #eedd82;">A</span>),
+        mi(<span style="color: #eedd82;">B</span>).
+<span style="color: #87cefa;">mi1</span>(<span style="color: #eedd82;">Goal</span>) :-
+        <span style="color: #eedd82;">Goal</span> \= true,
+        <span style="color: #eedd82;">Goal</span> \= (<span style="color: #eedd82;">_</span>,<span style="color: #eedd82;">_</span>),
+        clause(<span style="color: #eedd82;">Goal</span>, <span style="color: #eedd82;">Body</span>),
+        mi(<span style="color: #eedd82;">Body</span>).
 </pre>
 </div>
 
@@ -464,17 +496,382 @@ una computadora idealizada</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline17">
+<section id="slide-orgheadline26">
 <div class="slide-header"></div>
-<h3 id="orgheadline17">Semántica Denotacional</h3>
+<h3 id="orgheadline26">Semántica Denotacional</h3>
+<div class="outline-text-3" id="text-orgheadline26">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline18">
+<div class="slide-header"></div>
+<h4 id="orgheadline18">Semántica Denotacional</h4>
+<ul>
+<li>Basado en la teoría de funciones recursivas</li>
+<li>El método de descripción semántica mas abstracto</li>
+<li>Originalmente desarrollado por Scott y Strachey (1970)</li>
+<li>El proceso de construir una especificación denotacional para un
+lenguaje es definir un objeto matemático por cada entidad del Lenguaje
+<ul>
+<li>Define una función que relaciona instancias de las entidades del
+lenguaje con instancias de los objetos matemáticos correspondientes</li>
+
+</ul></li>
+<li>El significado de las construcciones del lenguaje son definidos solo
+por los valores de las variables del programa</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline19">
+<div class="slide-header"></div>
+<h4 id="orgheadline19">Semántica Denotacional vs Semántica Operacional</h4>
+<ul>
+<li>En la semántica operacional los cambios de estado son definidos por
+algoritmos codificados</li>
+<li>En la semántica denotacional los cambios de estado son definidos por
+funciones matemáticas rigurosas.</li>
+<li>El estado de un programa son los valores de todas las variables
+actuales  \(s = { < i_1,v_1 >,< i_2,v_2 >, ... ,< i_n,v_n > }\)</li>
+<li>Sea  <i>VARMAP</i> una función que, cuando recibe un nombre de variable y
+un estado retorna el valor actual de esa variable \(VARMAP(i_j, s) = v_j\)</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline20">
+<div class="slide-header"></div>
+<h4 id="orgheadline20">Números Decimales</h4>
+<ul>
+<li>&lt;dec-num&gt; &rarr; 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |</li>
+<li>M<sub>dec</sub> ('0') = 0,  M<sub>dec</sub> ('1') = 1, &#x2026; , M<sub>dec</sub> ('9') = 9</li>
+<li>M<sub>dec</sub> ( &lt;dec-num&gt; '0') = 10 * M<sub>dec</sub> ( &lt;dec-num&gt; )</li>
+<li>M<sub>dec</sub> ( &lt;dec-num&gt; '1') = 10 * M<sub>dec</sub> ( &lt;dec-num&gt; ) + 1</li>
+<li>&#x2026;</li>
+<li>M<sub>dec</sub> ( &lt;dec-num&gt; '9') = 10 * M<sub>dec</sub> ( &lt;dec-num&gt; ) + 9</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline21">
+<div class="slide-header"></div>
+<h4 id="orgheadline21">Expresiones</h4>
+<ul>
+<li>relaciona expresiones a Z &cup; { error }</li>
+<li>suponiendo que las expresiones son números decimales, variables, o
+expresiones binarias teniendo un operador aritmético y dos
+operandos, cada uno de los cuales puede ser una expresión.</li>
+<li>M<sub>e</sub> ( &lt; expr &gt;, s) = case &lt; expr &gt; of 
+<ul>
+<li>&lt; dec-num &gt; &rarr; M<sub>dec</sub> ( &lt; dec-num &gt; , s)</li>
+<li>&lt; var &gt; &rarr; if VARMAP(&lt; var &gt;, s)</li>
+<li>&lt; binary-expr &gt; &rarr; 
+<ul>
+<li>if (M<sub>e</sub>(&lt; binary-expr &gt; . &lt;left-expr &gt; , s) = undef
+<ul>
+<li>OR M<sub>e</sub>(&lt; binary-expr &gt; . &lt; right-expr &gt; , s) = undef)</li>
+
+</ul></li>
+<li>then error</li>
+<li>else
+<ul>
+<li>if (&lt; binary-expr &gt;.&lt; operator &gt; = ‘+’ then</li>
+<li>M<sub>e</sub>(&lt; binary-expr &gt;.&lt; left-expr &gt;, s) + M<sub>e</sub>(&lt; binary-expr &gt;.&lt;
+right-expr &gt;, s)</li>
+<li>else M<sub>e</sub>(&lt; binary-expr &gt;.&lt; left-expr &gt;, s) * M<sub>e</sub>(&lt; binary-expr
+&gt;.&lt; right-expr &gt;, s)</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+<li>&#x2026;</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline22">
+<div class="slide-header"></div>
+<h4 id="orgheadline22">asignación</h4>
+<ul>
+<li>M<sub>a</sub> ( X := E, s) = 
+<ul>
+<li>if M<sub>e</sub>(E, s) = error
+<ul>
+<li>then error</li>
+<li>else s' = { &lt; i<sub>1</sub>',v<sub>1</sub>' &gt;, &lt; i<sub>2</sub>',v<sub>2</sub>' &gt;, &#x2026; , &lt; i<sub>n</sub>',v<sub>n</sub>' &gt;},
+<ul>
+<li>where for j = 1, 2, &#x2026; n,
+<ul>
+<li>v<sub>j</sub>' = varmap(i<sub>j</sub>, s) if i<sub>j</sub> &lt;&gt; x
+<ul>
+<li>= M<sub>e</sub>(E, s) if i<sub>j</sub> = x</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline23">
+<div class="slide-header"></div>
+<h4 id="orgheadline23">Ciclo 'while'</h4>
+<ul>
+<li>M<sub>l</sub>(while B do L, s) =
+<ul>
+<li>if M<sub>b</sub>(B, s) = undef
+<ul>
+<li>then error</li>
+<li>else if M<sub>b</sub>(B, s) = false
+<ul>
+<li>then s</li>
+<li>else if M<sub>sl</sub>(L, s) = error
+<ul>
+<li>then error</li>
+<li>else M<sub>l</sub>(while B do L, M<sub>sl</sub>(L, s))</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline24">
+<div class="slide-header"></div>
+<h4 id="orgheadline24">Ciclo</h4>
+<ul>
+<li>El significado del ciclo es el valor de las variables del programa
+después de que las sentencias del ciclo han sido ejecutadas el
+número prescrito de veces, asumiendo que no ha habido errores</li>
+<li>En esencia el ciclo ha sido convertido de iterativo a recursivo,
+donde el control recursivo es definido por otra función recursiva de estados</li>
+<li>La recursión comparada con la iteración es mas facil de describir
+con rigor matemático</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline25">
+<div class="slide-header"></div>
+<h4 id="orgheadline25">Evaluación</h4>
+<ul>
+<li>Puede ser usado para probar la corrección de programas</li>
+<li>Provee un modo riguroso de pensar los programas</li>
+<li>Puede ser una ayuda al diseño de lenguajes</li>
+<li>Ha sido usado en sistemas de generación de compiladores</li>
+<li>A causa de su complejidad es de poco uso para los usuarios del lenguaje</li>
+
+</ul>
+
+
 
 <div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline18">
+<section id="slide-orgheadline37">
 <div class="slide-header"></div>
-<h3 id="orgheadline18">Semántica Axiomática</h3>
+<h3 id="orgheadline37">Semántica Axiomática</h3>
+<div class="outline-text-3" id="text-orgheadline37">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline27">
+<div class="slide-header"></div>
+<h4 id="orgheadline27">Semántica Axiomática</h4>
+<ul>
+<li>Basado en Lógica Formal (cálculo de predicados)</li>
+<li>Propósito original: Verificación formal de programas</li>
+<li>Axiomas o reglas de inferencia son definidas para cada tipo de
+sentencia del lenguaje (para permitir transformaciones de
+expresiones a otras expresiones)</li>
+<li>Las expresiones son llamadas <i>aserciones</i> (afirmaciones)</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline28">
+<div class="slide-header"></div>
+<h4 id="orgheadline28">Semántica Axiomática</h4>
+<ul>
+<li>Una aserción antes de una sentencia (una <i>precondición</i> establece
+las relaciones y restricciones entre variables que son verdaderas en
+ese punto de la ejecución</li>
+<li>Una aserción que sigue a una sentencia es una <i>postcondición</i></li>
+<li>Una <i>precondición mas débil</i> es la menos restrictiva precondición
+que garantiza la postcondición</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline29">
+<div class="slide-header"></div>
+<h4 id="orgheadline29">Semántica Axiomática</h4>
+<ul>
+<li>La Forma es {P} sentencia {Q}</li>
+<li>Un ejemplo
+<ul>
+<li>a = b + 1 {a &gt; 1}</li>
+<li>una posible precondición: {b &gt; 10)</li>
+<li><i>precondición mas débil</i>: {b &gt; 0}</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline30">
+<div class="slide-header"></div>
+<h4 id="orgheadline30">Proceso de prueba de programa</h4>
+<ul>
+<li>La postcondición para el programa entero es el resultado deseado
+<ul>
+<li>Se trabaja hacia atrás a través del programa hasta la primer
+sentencia. Si la precondición sobre la primer sentencias está
+inferida por la especificación de entrada del programa, entonces
+el programa es correcto.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline31">
+<div class="slide-header"></div>
+<h4 id="orgheadline31">Axiomas</h4>
+<ul>
+<li>Un axioma para la asignación
+<ul>
+<li>( x = E ): \( \{Q_{x \to E}\} \ x = E \ \{Q\} \)</li>
+
+</ul></li>
+<li><p>
+La regla de la Consecuencia
+</p>
+
+<p>
+\[ \frac{ \{P\} \ S \ \{Q\}, P' \Rightarrow P, Q \Rightarrow
+  Q'}{\{P'\} \ S \ \{Q'\}} \]
+</p></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline32">
+<div class="slide-header"></div>
+<h4 id="orgheadline32">Axiomas</h4>
+<ul>
+<li>Una regla de inferencia para secuencias
+<ul>
+<li>\( \{P1\} S1 \{P2\} \)</li>
+<li>\( \{P2\} S2 \{P3\} \)</li>
+
+</ul></li>
+
+</ul>
+
+<p>
+\[ \frac{ \{P1\} \ S1 \ \{P2\}, \{P2\} \ S2 \ \{P3\}}{\{P1\} \ S1;S2 \ \{P3\}} \]
+</p>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline33">
+<div class="slide-header"></div>
+<h4 id="orgheadline33">Axiomas</h4>
+<ul>
+<li><p>
+Una regla de inferencia para un ciclo <i>while</i>
+</p>
+
+<p>
+{P} while B do S end {Q}
+</p></li>
+
+</ul>
+
+<p>
+\[ \frac{ (I \ and \ B ) S \{I\} }{\{I\} \ while \ B \ do \ S \{I \
+and (not B)\}} \]
+</p>
+
+<p>
+donde <i>I</i> es el <i>invariante</i> (la hipótesis inductiva)
+</p>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline34">
+<div class="slide-header"></div>
+<h4 id="orgheadline34">Axiomas</h4>
+<ul>
+<li>Características del <i>invariante</i>: <i>I</i> debe satisfacer las siguientes
+condiciones:
+<ul>
+<li>\( P \Rightarrow I \) el invariante de ser inicialmente verdadero</li>
+<li>\( \{I\} \ B \ \{I\}  \) la evaluación de la parte booleana no
+debe cambiar la validez de <i>I</i></li>
+<li>\( \{I \ and \ B \} \ S \ \{I\}  \) <i>I</i> no cambia por la ejecución
+del cuerpo del ciclo  iterativo</li>
+<li>\( (I \ and \ (not \ B)) \Rightarrow Q \) si <i>I</i> es verdadero y
+<i>B</i> es falso es implicado <i>Q</i></li>
+<li>El ciclo termina</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline35">
+<div class="slide-header"></div>
+<h4 id="orgheadline35">Invariante</h4>
+<ul>
+<li>El invariante es la versión mas debil de la postcondición del ciclo,
+y es también una precondición.</li>
+<li>Debe ser lo suficientemente debil para satsifacer a priori el
+comienzo del ciclo, pero cuando se combina con la condición de
+salida debe ser los suficientemente fuerte para forzar la verdad de
+la postcondición</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline36">
+<div class="slide-header"></div>
+<h4 id="orgheadline36">Evaluación</h4>
+<ul>
+<li>Desarrollar axiomas y reglas de inferencia para todas las
+sentencias en un lenguaje es dificultoso</li>
+<li>Es una buena herramienta para la verificación de programas y un
+excelente marco para razonar los programas, pero no es útil para los
+usuarios del lenguaje y desarrolladores de compiladores</li>
+
+</ul>
 <div class="slide-footer"></div>
 </section>
 </section>
