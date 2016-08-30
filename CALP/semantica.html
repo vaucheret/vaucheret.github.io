@@ -425,6 +425,7 @@ convierten en funciones para poder aplicar la teoría de funciones recursivas</l
 suposiciones y resultados deseados</li>
 <li>Los axiomas o reglas de inferencia son usados en cada tipo de
 sentencias.</li>
+<li>Marcelo</li>
 
 </ul></li>
 
@@ -477,15 +478,15 @@ una computadora idealizada</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #87cefa;">mi</span>(true).
-<span style="color: #87cefa;">mi</span>((<span style="color: #eedd82;">A</span>,<span style="color: #eedd82;">B</span>)) :-
-        mi(<span style="color: #eedd82;">A</span>),
-        mi(<span style="color: #eedd82;">B</span>).
-<span style="color: #87cefa;">mi1</span>(<span style="color: #eedd82;">Goal</span>) :-
-        <span style="color: #eedd82;">Goal</span> \= true,
-        <span style="color: #eedd82;">Goal</span> \= (<span style="color: #eedd82;">_</span>,<span style="color: #eedd82;">_</span>),
-        clause(<span style="color: #eedd82;">Goal</span>, <span style="color: #eedd82;">Body</span>),
-        mi(<span style="color: #eedd82;">Body</span>).
+<pre  class="src src-prolog"><span style="color: #0000ff;">mi</span>(true).
+<span style="color: #0000ff;">mi</span>((<span style="color: #b8860b;">A</span>,<span style="color: #b8860b;">B</span>)) :-
+        mi(<span style="color: #b8860b;">A</span>),
+        mi(<span style="color: #b8860b;">B</span>).
+<span style="color: #0000ff;">mi1</span>(<span style="color: #b8860b;">Goal</span>) :-
+        <span style="color: #b8860b;">Goal</span> \= true,
+        <span style="color: #b8860b;">Goal</span> \= (<span style="color: #b8860b;">_</span>,<span style="color: #b8860b;">_</span>),
+        clause(<span style="color: #b8860b;">Goal</span>, <span style="color: #b8860b;">Body</span>),
+        mi(<span style="color: #b8860b;">Body</span>).
 </pre>
 </div>
 

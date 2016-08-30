@@ -49,7 +49,7 @@
 <li><a href="#/slide-orgheadline12">Gramáticas con atributos</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline44">Semántica Dinámica</a>
+<li><a href="#/slide-orgheadline45">Semántica Dinámica</a>
 <ul>
 <li><a href="#/slide-orgheadline14">Métodos Desarrollados</a></li>
 <li><a href="#/slide-orgheadline17">Semántica Operacional</a>
@@ -70,7 +70,7 @@
 <li><a href="#/slide-orgheadline25">Evaluación</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline43">Semántica Axiomática</a>
+<li><a href="#/slide-orgheadline44">Semántica Axiomática</a>
 <ul>
 <li><a href="#/slide-orgheadline27">Semántica Axiomática</a></li>
 <li><a href="#/slide-orgheadline28">Semántica Axiomática</a></li>
@@ -82,12 +82,13 @@
 <li><a href="#/slide-orgheadline34">Axiomas</a></li>
 <li><a href="#/slide-orgheadline35">Axiomas</a></li>
 <li><a href="#/slide-orgheadline36">Axiomas</a></li>
-<li><a href="#/slide-orgheadline37">Axiomas</a></li>
+<li><a href="#/slide-orgheadline37">Ejemplo</a></li>
 <li><a href="#/slide-orgheadline38">Axiomas</a></li>
-<li><a href="#/slide-orgheadline39">Ejemplo</a></li>
+<li><a href="#/slide-orgheadline39">Axiomas</a></li>
 <li><a href="#/slide-orgheadline40">Ejemplo</a></li>
-<li><a href="#/slide-orgheadline41">Invariante</a></li>
-<li><a href="#/slide-orgheadline42">Evaluación</a></li>
+<li><a href="#/slide-orgheadline41">Ejemplo</a></li>
+<li><a href="#/slide-orgheadline42">Invariante</a></li>
+<li><a href="#/slide-orgheadline43">Evaluación</a></li>
 </ul>
 </li>
 </ul>
@@ -395,10 +396,10 @@ necesita una combinación de ambos órdenes.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline44">
+<section id="slide-orgheadline45">
 <div class="slide-header"></div>
-<h2 id="orgheadline44">Semántica Dinámica</h2>
-<div class="outline-text-2" id="text-orgheadline44">
+<h2 id="orgheadline45">Semántica Dinámica</h2>
+<div class="outline-text-2" id="text-orgheadline45">
 </div><div class="slide-footer"></div>
 </section>
 </section>
@@ -476,15 +477,15 @@ una computadora idealizada</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #87cefa;">mi</span>(true).
-<span style="color: #87cefa;">mi</span>((<span style="color: #eedd82;">A</span>,<span style="color: #eedd82;">B</span>)) :-
-        mi(<span style="color: #eedd82;">A</span>),
-        mi(<span style="color: #eedd82;">B</span>).
-<span style="color: #87cefa;">mi1</span>(<span style="color: #eedd82;">Goal</span>) :-
-        <span style="color: #eedd82;">Goal</span> \= true,
-        <span style="color: #eedd82;">Goal</span> \= (<span style="color: #eedd82;">_</span>,<span style="color: #eedd82;">_</span>),
-        clause(<span style="color: #eedd82;">Goal</span>, <span style="color: #eedd82;">Body</span>),
-        mi(<span style="color: #eedd82;">Body</span>).
+<pre  class="src src-prolog"><span style="color: #0000ff;">mi</span>(true).
+<span style="color: #0000ff;">mi</span>((<span style="color: #b8860b;">A</span>,<span style="color: #b8860b;">B</span>)) :-
+        mi(<span style="color: #b8860b;">A</span>),
+        mi(<span style="color: #b8860b;">B</span>).
+<span style="color: #0000ff;">mi1</span>(<span style="color: #b8860b;">Goal</span>) :-
+        <span style="color: #b8860b;">Goal</span> \= true,
+        <span style="color: #b8860b;">Goal</span> \= (<span style="color: #b8860b;">_</span>,<span style="color: #b8860b;">_</span>),
+        clause(<span style="color: #b8860b;">Goal</span>, <span style="color: #b8860b;">Body</span>),
+        mi(<span style="color: #b8860b;">Body</span>).
 </pre>
 </div>
 
@@ -694,10 +695,10 @@ con rigor matemático</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline43">
+<section id="slide-orgheadline44">
 <div class="slide-header"></div>
-<h3 id="orgheadline43">Semántica Axiomática</h3>
-<div class="outline-text-3" id="text-orgheadline43">
+<h3 id="orgheadline44">Semántica Axiomática</h3>
+<div class="outline-text-3" id="text-orgheadline44">
 </div><div class="slide-footer"></div>
 </section>
 <section id="slide-orgheadline27">
@@ -876,16 +877,32 @@ regla de inferencia para sentencias de selección  <i>if</i>
 \{Q\}}{\{P\} \ if \ B \ then \ S1 \ else \ S2 \ \{Q\}}\]
 </p>
 
-<p>
-donde <i>I</i> es el <i>invariante</i> (la hipótesis inductiva)
-</p>
-
-
 <div class="slide-footer"></div>
 </section>
 <section id="slide-orgheadline37">
 <div class="slide-header"></div>
-<h4 id="orgheadline37">Axiomas</h4>
+<h4 id="orgheadline37">Ejemplo</h4>
+<ul>
+<li><b>if</b> \( x > 0 \) <b>then</b> \( y = y - 1 \) <b>else</b> \(  y =  y + 1  \)</li>
+
+</ul>
+<ul>
+<li class="fragment roll-in">con la postcondición \( \{ y > 0 \} \)</li>
+<li class="fragment roll-in">el axioma de asignación para la clausula <b>then</b>: \( y = y - 1  \{ y
+  > 0 \} \)  produce \( \{ y - 1 > 0 \} \) o \( \{ y > 1 \} \)</li>
+<li class="fragment roll-in">el axioma de asignación para la clausula <b>else</b>: \( y = y + 1  \{ y
+  > 0 \} \)  produce \( \{ y + 1 > 0 \} \) o \( \{ y > -1 \} \)</li>
+<li class="fragment roll-in">Como \( \{ y > 1 \} \Rightarrow \{ y > -1 \}\) la regla de
+consecuencia nos permite usar \( \{ y > 1 \} \) como precondición
+del total de la sentencia</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline38">
+<div class="slide-header"></div>
+<h4 id="orgheadline38">Axiomas</h4>
 <ul>
 <li><p>
 Una regla de inferencia para un ciclo <i>while</i>
@@ -908,9 +925,9 @@ donde <i>I</i> es el <i>invariante</i> (la hipótesis inductiva)
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline38">
+<section id="slide-orgheadline39">
 <div class="slide-header"></div>
-<h4 id="orgheadline38">Axiomas</h4>
+<h4 id="orgheadline39">Axiomas</h4>
 <ul>
 <li>Características del <i>invariante</i>: <i>I</i> debe satisfacer las siguientes
 condiciones:
@@ -930,9 +947,9 @@ del cuerpo del ciclo  iterativo</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline39">
+<section id="slide-orgheadline40">
 <div class="slide-header"></div>
-<h4 id="orgheadline39">Ejemplo</h4>
+<h4 id="orgheadline40">Ejemplo</h4>
 <ul>
 <li><b>while</b> \( y <> x \) <b>do</b> \( y = y + 1 \) <b>end</b> \( \{ y = x \} \)</li>
 
@@ -950,9 +967,9 @@ obtenemos  \( \{y <= x \}\), que puede ser el invariante del ciclo.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline40">
+<section id="slide-orgheadline41">
 <div class="slide-header"></div>
-<h4 id="orgheadline40">Ejemplo</h4>
+<h4 id="orgheadline41">Ejemplo</h4>
 <ul>
 <li>\( P \Rightarrow I \) \( \{y <= x \} \Rightarrow \{y <= x \} \)</li>
 <li>\( \{I\} \ B \ \{I\}  \)  \( \{y <= x \} \ \{y <> x \}  \ \{y <= x\}  \)</li>
@@ -971,9 +988,9 @@ equivalente a \( \{y < x \}\) el cual es implicado por \( \{y < x
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline41">
+<section id="slide-orgheadline42">
 <div class="slide-header"></div>
-<h4 id="orgheadline41">Invariante</h4>
+<h4 id="orgheadline42">Invariante</h4>
 <ul>
 <li>El invariante es la versión mas debil de la postcondición del ciclo,
 y es también una precondición.</li>
@@ -986,9 +1003,9 @@ la postcondición</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline42">
+<section id="slide-orgheadline43">
 <div class="slide-header"></div>
-<h4 id="orgheadline42">Evaluación</h4>
+<h4 id="orgheadline43">Evaluación</h4>
 <ul>
 <li>Desarrollar axiomas y reglas de inferencia para todas las
 sentencias en un lenguaje es dificultoso</li>
