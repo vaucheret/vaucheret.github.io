@@ -256,14 +256,14 @@ significado detrás de esas declaraciones</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><span style="color: #98fb98;">TYPE</span> stack_element = <span style="color: #98fb98;">INTEGER</span>; <span style="color: #ff4500;">(* </span><span style="color: #ff4500;">or whatever type the user prefers *)</span> 
+<pre  class="src src-pascal"><span style="color: #228b22;">TYPE</span> stack_element = <span style="color: #228b22;">INTEGER</span>; <span style="color: #b22222;">(* </span><span style="color: #b22222;">or whatever type the user prefers *)</span> 
 MODULE stack; 
 IMPORT stack_element; 
 EXPORT push, pop; 
 ...
-<span style="color: #00ffff;">PROCEDURE</span> <span style="color: #87cefa;">push</span>(elem : stack_element); 
+<span style="color: #a020f0;">PROCEDURE</span> <span style="color: #0000ff;">push</span>(elem : stack_element); 
 ...
-<span style="color: #00ffff;">PROCEDURE</span> <span style="color: #87cefa;">pop</span>() : stack_element; 
+<span style="color: #a020f0;">PROCEDURE</span> <span style="color: #0000ff;">pop</span>() : stack_element; 
 ...
 </pre>
 </div>
@@ -273,14 +273,14 @@ EXPORT push, pop;
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><span style="color: #98fb98;">TYPE</span> celsius_temp = <span style="color: #98fb98;">REAL</span>; 
-fahrenheit_temp = <span style="color: #98fb98;">REAL</span>; 
-<span style="color: #98fb98;">VAR</span> c : celsius_temp; 
+<pre  class="src src-pascal"><span style="color: #228b22;">TYPE</span> celsius_temp = <span style="color: #228b22;">REAL</span>; 
+fahrenheit_temp = <span style="color: #228b22;">REAL</span>; 
+<span style="color: #228b22;">VAR</span> c : celsius_temp; 
     f : fahrenheit_temp; 
 
-<span style="color: #00ffff;">BEGIN</span> <span style="color: #ff4500;">(* </span><span style="color: #ff4500;">alias_types *)</span>
+<span style="color: #a020f0;">BEGIN</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">alias_types *)</span>
     c := 100.0;
-    f := c;                 <span style="color: #ff4500;">(* </span><span style="color: #ff4500;">this should probably be an error *)</span>
+    f := c;                 <span style="color: #b22222;">(* </span><span style="color: #b22222;">this should probably be an error *)</span>
 </pre>
 </div>
 
@@ -309,7 +309,7 @@ diferente se espera, uno normalmente obtiene un error.</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><span style="color: #98fb98;">var</span> a : <span style="color: #98fb98;">integer</span>; b, c : <span style="color: #98fb98;">real</span>;
+<pre  class="src src-pascal"><span style="color: #228b22;">var</span> a : <span style="color: #228b22;">integer</span>; b, c : <span style="color: #228b22;">real</span>;
 ...
 
 c := a + b;
@@ -786,15 +786,15 @@ datos en el cual los elementos individuales son identificados por su nombre</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Employee_Name_Type</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">record</span>
-   First : String (<span style="color: #7fffd4;">1..20</span>);
-   Middle : String (<span style="color: #7fffd4;">1..10</span>);
-   Last : String (<span style="color: #7fffd4;">1..20</span>);
-<span style="color: #00ffff;">end</span> <span style="color: #00ffff;">record</span>;
-<span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Employee_Record_Type</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">record</span>
+<pre  class="src src-ada"><span style="color: #a020f0;">type</span> <span style="color: #228b22;">Employee_Name_Type</span> <span style="color: #a020f0;">is</span> <span style="color: #a020f0;">record</span>
+   First : String (<span style="color: #5f9ea0;">1..20</span>);
+   Middle : String (<span style="color: #5f9ea0;">1..10</span>);
+   Last : String (<span style="color: #5f9ea0;">1..20</span>);
+<span style="color: #a020f0;">end</span> <span style="color: #a020f0;">record</span>;
+<span style="color: #a020f0;">type</span> <span style="color: #228b22;">Employee_Record_Type</span> <span style="color: #a020f0;">is</span> <span style="color: #a020f0;">record</span>
    Employee_Name: Employee_Name_Type;
    Hourly_Rate: Float;
-<span style="color: #00ffff;">end</span> <span style="color: #00ffff;">record</span>;
+<span style="color: #a020f0;">end</span> <span style="color: #a020f0;">record</span>;
 Employee_Record: Employee_Record_Type;
 </pre>
 </div>
@@ -899,19 +899,19 @@ de tipo llamado <i>discriminante</i>
 <h4 id="orgheadline38">tipo Union de Ada</h4>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Shape</span> <span style="color: #00ffff;">is</span> (Circle, Triangle, Rectangle);
-<span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Colors</span> <span style="color: #00ffff;">is</span> (Red, Green, Blue);
-<span style="color: #00ffff;">type</span> <span style="color: #87cefa;">Figure</span> (Form: Shape) <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">record</span>
+<pre  class="src src-ada"><span style="color: #a020f0;">type</span> <span style="color: #228b22;">Shape</span> <span style="color: #a020f0;">is</span> (Circle, Triangle, Rectangle);
+<span style="color: #a020f0;">type</span> <span style="color: #228b22;">Colors</span> <span style="color: #a020f0;">is</span> (Red, Green, Blue);
+<span style="color: #a020f0;">type</span> <span style="color: #0000ff;">Figure</span> (Form: Shape) <span style="color: #a020f0;">is</span> <span style="color: #a020f0;">record</span>
   Filled: Boolean;
   Color: Colors;
-  <span style="color: #00ffff;">case</span> Form <span style="color: #00ffff;">is</span> 
-      <span style="color: #00ffff;">When</span> Circle =&gt; Diameter : Float;
-      <span style="color: #00ffff;">When</span> Triangle =&gt; 
+  <span style="color: #a020f0;">case</span> Form <span style="color: #a020f0;">is</span> 
+      <span style="color: #a020f0;">When</span> Circle =&gt; Diameter : Float;
+      <span style="color: #a020f0;">When</span> Triangle =&gt; 
              LeftSide, Rightside: Integer;
              Angle: Float;
-      <span style="color: #00ffff;">when</span> Rectangle =&gt; Side1,Side2: Integer;
-  <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">case</span>;
-<span style="color: #00ffff;">end</span> <span style="color: #00ffff;">record</span>;
+      <span style="color: #a020f0;">when</span> Rectangle =&gt; Side1,Side2: Integer;
+  <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">case</span>;
+<span style="color: #a020f0;">end</span> <span style="color: #a020f0;">record</span>;
 </pre>
 </div>
 

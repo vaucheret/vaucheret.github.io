@@ -30,7 +30,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgheadline40">Introducción</a>
+<li><a href="#/slide-orgheadline49">Introducción</a>
 <ul>
 <li><a href="#/slide-orgheadline7">Tipos de Datos</a>
 <ul>
@@ -71,18 +71,30 @@
 <li><a href="#/slide-orgheadline29">Arreglos Asociativos</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline39">Tipo Registros</a>
+<li><a href="#/slide-orgheadline31">Strings</a></li>
+<li><a href="#/slide-orgheadline40">Tipo Registros</a>
 <ul>
-<li><a href="#/slide-orgheadline31">Tipo Registros</a></li>
-<li><a href="#/slide-orgheadline32">Registros</a></li>
-<li><a href="#/slide-orgheadline33">Operaciónes de Registros</a></li>
-<li><a href="#/slide-orgheadline34">Comparación con Arreglos</a></li>
-<li><a href="#/slide-orgheadline35">Implementación de Registros</a></li>
-<li><a href="#/slide-orgheadline36">Tipo Uniones</a></li>
-<li><a href="#/slide-orgheadline37">tipo Union de Ada</a></li>
-<li><a href="#/slide-orgheadline38">Evaluación de Uniones</a></li>
+<li><a href="#/slide-orgheadline32">Tipo Registros</a></li>
+<li><a href="#/slide-orgheadline33">Registros</a></li>
+<li><a href="#/slide-orgheadline34">Operaciónes de Registros</a></li>
+<li><a href="#/slide-orgheadline35">Comparación con Arreglos</a></li>
+<li><a href="#/slide-orgheadline36">Implementación de Registros</a></li>
+<li><a href="#/slide-orgheadline37">Tipo Uniones</a></li>
+<li><a href="#/slide-orgheadline38">tipo Union de Ada</a></li>
+<li><a href="#/slide-orgheadline39">Evaluación de Uniones</a></li>
 </ul>
 </li>
+<li><a href="#/slide-orgheadline46">Punteros y Tipos Recursivos</a>
+<ul>
+<li><a href="#/slide-orgheadline41">Tipo Punteros</a></li>
+<li><a href="#/slide-orgheadline42">Punteros y Tipos Recursivos</a></li>
+<li><a href="#/slide-orgheadline43">Punteros y Tipos Recursivos</a></li>
+<li><a href="#/slide-orgheadline44">Punteros y Tipos Recursivos</a></li>
+<li><a href="#/slide-orgheadline45">Punteros y Tipos Recursivos</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline47">Listas</a></li>
+<li><a href="#/slide-orgheadline48">Archivos y Entrada/Salida</a></li>
 </ul>
 </li>
 </ul>
@@ -91,10 +103,10 @@
 </section>
 
 <section>
-<section id="slide-orgheadline40">
+<section id="slide-orgheadline49">
 <div class="slide-header"></div>
-<h2 id="orgheadline40">Introducción</h2>
-<div class="outline-text-2" id="text-orgheadline40">
+<h2 id="orgheadline49">Introducción</h2>
+<div class="outline-text-2" id="text-orgheadline49">
 </div><div class="slide-footer"></div>
 </section>
 </section>
@@ -709,13 +721,34 @@ paréntesis
 
 </ul>
 
+
 <div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline39">
+<section id="slide-orgheadline31">
 <div class="slide-header"></div>
-<h3 id="orgheadline39">Tipo Registros</h3>
+<h3 id="orgheadline31">Strings</h3>
+<ul>
+<li><i>Strings</i> son en realidad arreglos de caracteres</li>
+<li>Son frecuentemente casos especiales, para darles flexibilidad (como
+polimorfismo y tamaño dinámico) que no es disponible para arreglos
+en general
+<ul>
+<li>Es mas facil proveer estas cosas para <i>strings</i> que para arreglos
+en general porque los <i>strings</i> son de una dimensión y no circulares.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline40">
+<div class="slide-header"></div>
+<h3 id="orgheadline40">Tipo Registros</h3>
 <ul>
 <li>Un registro es un conjunto posiblemente heterogeneo de elementos de
 datos en el cual los elementos individuales son identificados por su nombre</li>
@@ -730,9 +763,9 @@ datos en el cual los elementos individuales son identificados por su nombre</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline31">
+<section id="slide-orgheadline32">
 <div class="slide-header"></div>
-<h4 id="orgheadline31">Tipo Registros</h4>
+<h4 id="orgheadline32">Tipo Registros</h4>
 <ul>
 <li>Cobol</li>
 
@@ -768,9 +801,9 @@ Employee_Record: Employee_Record_Type;
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline32">
+<section id="slide-orgheadline33">
 <div class="slide-header"></div>
-<h4 id="orgheadline32">Registros</h4>
+<h4 id="orgheadline33">Registros</h4>
 <ul>
 <li>Referencia a los campos
 <ul>
@@ -787,9 +820,9 @@ siempre que la referencia sea no ambigua. Ej: <code>FIRST OF EMP-REC</code> en <
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline33">
+<section id="slide-orgheadline34">
 <div class="slide-header"></div>
-<h4 id="orgheadline33">Operaciónes de Registros</h4>
+<h4 id="orgheadline34">Operaciónes de Registros</h4>
 <ul>
 <li>La asignación es muy común si los tipos son identicos</li>
 <li><b>Ada</b> permite comparación de registros</li>
@@ -805,9 +838,9 @@ el registro destino.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline34">
+<section id="slide-orgheadline35">
 <div class="slide-header"></div>
-<h4 id="orgheadline34">Comparación con Arreglos</h4>
+<h4 id="orgheadline35">Comparación con Arreglos</h4>
 <ul>
 <li>Tiene un diseño directo y seguro</li>
 <li>Son usados cuando el agrupamiento de datos es heterogeneo</li>
@@ -818,9 +851,9 @@ nombres de los campos es estático</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline35">
+<section id="slide-orgheadline36">
 <div class="slide-header"></div>
-<h4 id="orgheadline35">Implementación de Registros</h4>
+<h4 id="orgheadline36">Implementación de Registros</h4>
 
 <figure>
 <p><img src="implementregistros.png" alt="implementregistros.png">
@@ -834,9 +867,9 @@ asociado con cada campo.
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline36">
+<section id="slide-orgheadline37">
 <div class="slide-header"></div>
-<h4 id="orgheadline36">Tipo Uniones</h4>
+<h4 id="orgheadline37">Tipo Uniones</h4>
 <ul>
 <li>Una <i>Union</i> es un tipo a cuyas variables se les permite
 almacenar diferentes valores de tipo (estructura) en diferentes tiempos durantes
@@ -861,9 +894,9 @@ de tipo llamado <i>discriminante</i>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline37">
+<section id="slide-orgheadline38">
 <div class="slide-header"></div>
-<h4 id="orgheadline37">tipo Union de Ada</h4>
+<h4 id="orgheadline38">tipo Union de Ada</h4>
 <div class="org-src-container">
 
 <pre  class="src src-ada"><span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Shape</span> <span style="color: #00ffff;">is</span> (Circle, Triangle, Rectangle);
@@ -889,10 +922,11 @@ de tipo llamado <i>discriminante</i>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline38">
+<section id="slide-orgheadline39">
 <div class="slide-header"></div>
-<h4 id="orgheadline38">Evaluación de Uniones</h4>
+<h4 id="orgheadline39">Evaluación de Uniones</h4>
 <ul>
+<li>también llamados registros variantes</li>
 <li>Es una construcción potencialmente insegura
 <ul>
 <li>no permite chequeo de tipos o es muy caro</li>
@@ -901,6 +935,182 @@ de tipo llamado <i>discriminante</i>
 <li><b>Java</b> y <b>C#</b> no soportan uniones
 <ul>
 <li>Como reflejo de la creciente preocupación por la seguridad en los lenguajes de programación</li>
+
+</ul></li>
+<li>La falta de discriminante (tag) significa que uno no sabe lo que hay almacenado</li>
+<li>La posibilidad de cambiar el discriminante permite acceder a campos erroneamente</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline46">
+<div class="slide-header"></div>
+<h3 id="orgheadline46">Punteros y Tipos Recursivos</h3>
+<div class="outline-text-3" id="text-orgheadline46">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline41">
+<div class="slide-header"></div>
+<h4 id="orgheadline41">Tipo Punteros</h4>
+<ul>
+<li>Los Punteros sirven para dos propósitos:
+<ul>
+<li>acceso eficiente (y a veces intuitivo) a objetos muy elaborados
+(como en <b>C</b>)</li>
+<li>creación dinámica de estructuras ligadas, en conjunción con
+administración de memoria <i>heap</i></li>
+
+</ul></li>
+<li>Varios lenguajes (e.g. <b>Pascal</b> ) restringen los punteros para
+acceder a cosas en el <i>heap</i></li>
+<li>Los punteros son usados en un modo <i>por valor</i> de las variables
+<ul>
+<li>No se necesitan como modo <i>por referencia</i></li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline42">
+<div class="slide-header"></div>
+<h4 id="orgheadline42">Punteros y Tipos Recursivos</h4>
+
+<figure>
+<p><img src="lisppunt.png" alt="lisppunt.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline43">
+<div class="slide-header"></div>
+<h4 id="orgheadline43">Punteros y Tipos Recursivos</h4>
+<ul>
+<li><b>C</b> punteros y arreglos
+<ul>
+<li><code>int *a == int a[]</code></li>
+<li>~int **a == int *a[]</li>
+
+</ul></li>
+<li>Las equivalencias no siempre ocurren
+<ul>
+<li>Especificamente, una declaración aloja un arreglo si se especifica
+un tamaño para la primera dimensión</li>
+<li>en caso contrario aloja un puntero
+<ul>
+<li><code>int **a, int *a[]</code> puntero a puntero a int</li>
+<li><code>int *a[n]</code>,  arreglo de <i>n</i> elementos de punteros</li>
+<li><code>int a[n][m]</code> arreglo de dos dimensiones</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline44">
+<div class="slide-header"></div>
+<h4 id="orgheadline44">Punteros y Tipos Recursivos</h4>
+<ul>
+<li>El compilador tiene que ser capaz de establecer el tamaño de las
+cosas apuntadas por los punteros
+<ul>
+<li>Por lo tanto las siguientes no son válidas:
+<ul>
+<li><code>int a[][]</code> mal</li>
+<li><code>int (*a)[]</code> mal</li>
+
+</ul></li>
+<li>regla de declaración de <b>C</b>: lee a la derecha tanto como puede
+(sujeto a paréntesis), luego a la izquierda, y luego sube de nivel
+y repite.
+<ul>
+<li><code>int *a[n]</code> arreglo de <i>n</i> elementos de punteros a enteros</li>
+<li><code>int (*a)[n]</code> puntero a un arreglo de <i>n</i> elementos de enteros</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline45">
+<div class="slide-header"></div>
+<h4 id="orgheadline45">Punteros y Tipos Recursivos</h4>
+<ul>
+<li>Los problemas con punteros <i>cogados</i> se deben a:
+<ul>
+<li>desalojo explícito de objetos del <i>heap</i>
+<ul>
+<li>solo en lenguajes que tienen explícito desalojo</li>
+
+</ul></li>
+<li>desalojo implícito de objetos elaborados</li>
+
+</ul></li>
+<li>Dos mecanismos de implementación para atrapar punteros <i>colgados</i>
+<ul>
+<li><i>Tombstones</i> lapidas</li>
+<li><i>Locks and Keys</i> llaves y cerraduras</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline47">
+<div class="slide-header"></div>
+<h3 id="orgheadline47">Listas</h3>
+<ul>
+<li>Una <i>Lista</i> es definida recursivamente ya sea como una lista vacía o
+un par consistente de un objeto (que puede ser una lista o un átomo)
+y otra lista (mas corta)
+<ul>
+<li>Las <i>Listas</i> son ideales para programar en lenguajes lógicos y funcionales
+<ul>
+<li>En <b>Lisp</b> de hecho un programa <i>es</i> una lista, y puede
+extenderse a si mismo para construir una lista y ejecutarla</li>
+
+</ul></li>
+<li>Las <i>Listas</i> pueden usarse en programas imperativos.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline48">
+<div class="slide-header"></div>
+<h3 id="orgheadline48">Archivos y Entrada/Salida</h3>
+<ul>
+<li>Entrada/Salida (E/S) facilita al programa a comunicarse con el mundo externo
+<ul>
+<li>E/S interactiva y E/S con archivos</li>
+
+</ul></li>
+<li>Interactivo generalmente implica comunicación con usuarios humanos y
+dispositivos físicos</li>
+<li>Archivos generalmente se refieren a almacenamiento fuera de linea
+implementado por el sistema operativo.</li>
+<li>Archivos pueden ser categorizados en:
+<ul>
+<li>Temporarios</li>
+<li>Persistentes</li>
 
 </ul></li>
 
