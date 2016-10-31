@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Conceptos Avanzados en Lenguajes de Programación</title>
+<meta name="author" content="(Concurrencia)"/>
+<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js-master/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
+<h1>Conceptos Avanzados en Lenguajes de Programación</h1><h2>Concurrencia</h2><h2><a href="mailto:Claudio Vaucheret / cv@fi.uncoma.edu.ar">Claudio Vaucheret / cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-17 lun&gt;</span></span></h2>
+</section>
+<section id="table-of-contents">
+<nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline5">Introducción</a>
+<ul>
+<li><a href="#/slide-orgheadline1">Introducción</a></li>
+<li><a href="#/slide-orgheadline2">Arquitecturas de Multiprocesador</a></li>
+<li><a href="#/slide-orgheadline3">Categorías de Concurrencia</a></li>
+<li><a href="#/slide-orgheadline4">Motivación para el estudio de la concurrencia</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline16">Introducción a la concurrencia a nivel de Subprograma</a>
+<ul>
+<li><a href="#/slide-orgheadline6">Introducción a la concurrencia a nivel de Subprograma</a></li>
+<li><a href="#/slide-orgheadline7">Dos categorías generales de tareas</a></li>
+<li><a href="#/slide-orgheadline8">Sincronización de Tareas</a></li>
+<li><a href="#/slide-orgheadline9">Clases de sincronización</a></li>
+<li><a href="#/slide-orgheadline10">Necesidad de Sincronización de Competición</a></li>
+<li><a href="#/slide-orgheadline11">Planificador</a></li>
+<li><a href="#/slide-orgheadline12">Estados de Ejecución de las Tareas</a></li>
+<li><a href="#/slide-orgheadline13">Estados de Ejecución de las Tareas</a></li>
+<li><a href="#/slide-orgheadline14">Liveness y Deadlock</a></li>
+<li><a href="#/slide-orgheadline15">Métodos de proveer sincronización</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline29">Los semáforos</a>
+<ul>
+<li><a href="#/slide-orgheadline17">Los semáforos</a></li>
+<li><a href="#/slide-orgheadline18">Sincronización de Cooperación con semáforos</a></li>
+<li><a href="#/slide-orgheadline19">Sincronización de Cooperación con semáforos</a></li>
+<li><a href="#/slide-orgheadline20">Sincronización de Cooperación con semáforos</a></li>
+<li><a href="#/slide-orgheadline21">Semaforo: operación <i>wait</i></a></li>
+<li><a href="#/slide-orgheadline22">Semáforos: Operación <i>Release</i></a></li>
+<li><a href="#/slide-orgheadline23">Codigo Productor/Consumidor</a></li>
+<li><a href="#/slide-orgheadline24">Código Productor/Consumidor</a></li>
+<li><a href="#/slide-orgheadline25">Sincronización de Competición con Semáforos</a></li>
+<li><a href="#/slide-orgheadline26">Código Productor/Consumidor</a></li>
+<li><a href="#/slide-orgheadline27">Código Productor/Consumidor</a></li>
+<li><a href="#/slide-orgheadline28">Evaluación de Semáforos</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline30">monitores</a></li>
+<li><a href="#/slide-orgheadline31">Pasaje de mensajes</a></li>
+</ul>
+</div>
+</nav>
+</section>
+
+<section>
+<section id="slide-orgheadline5">
+<div class="slide-header"></div>
+<h2 id="orgheadline5">Introducción</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline1">
+<div class="slide-header"></div>
+<h3 id="orgheadline1">Introducción</h3>
+<ul>
+<li>La concurrencia puede ocurrir en cuatro niveles:
+<ul>
+<li>instrucciónes de maquina</li>
+<li>el de sentencias de lenguajes de alto nivel</li>
+<li>unidad</li>
+<li>programa</li>
+
+</ul></li>
+<li>En lenguajes de programación nos interesan a nivel sentencias del
+lenguaje y unidades de programa.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline2">
+<div class="slide-header"></div>
+<h3 id="orgheadline2">Arquitecturas de Multiprocesador</h3>
+<ul>
+<li>Finales de los años 1950 - un procesador de propósito general y uno
+o más procesadores de propósito especial para las operaciones de
+entrada y salida</li>
+<li>Principios de 1960 varios procesadores completos, para la
+concurrencia a nivel de programa</li>
+<li>A mediados de 1960 - múltiples procesadores parciales, que se
+utilizan para la concurrencia a nivel de instrucción</li>
+<li>Maquinas de Simple instrucción y Múltiples Datos (SIMD)</li>
+<li>Maquinas de Multiple instrucciones y Múltiples Datos (MIMD)
+<ul>
+<li>procesadores independientes que se pueden sincronizar (a nivel de
+concurrencia de unidad)</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline3">
+<div class="slide-header"></div>
+<h3 id="orgheadline3">Categorías de Concurrencia</h3>
+<ul>
+<li>Un <i>hilo de control</i> en un programa es la secuencia de los puntos
+del programa alcanzados por el flujo de la ejecución del programa</li>
+<li>Categorías de concurrencia:
+<ul>
+<li><i>concurrencia física</i> - procesadores independientes múltiples (múltiples hilos de control)</li>
+<li><i>concurrencia lógica</i> - La apariencia de concurrencia física es
+presentada por un procesador de tiempo compartido (software puede
+ser diseñado como si hubieran múltiples hilos de control)</li>
+
+</ul></li>
+<li>Corrutinas (cuasi-concurrencia) tienen un único hilo de ejecución.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline4">
+<div class="slide-header"></div>
+<h3 id="orgheadline4">Motivación para el estudio de la concurrencia</h3>
+<ul>
+<li>Implica una forma diferente de diseño de software que puede ser muy
+útil, muchas situaciones del mundo real contienen concurrencia</li>
+<li>Computadoras con multiprocesadores de concurrencia física son ampliamente utilizados.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline16">
+<div class="slide-header"></div>
+<h2 id="orgheadline16">Introducción a la concurrencia a nivel de Subprograma</h2>
+<div class="outline-text-2" id="text-orgheadline16">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline6">
+<div class="slide-header"></div>
+<h3 id="orgheadline6">Introducción a la concurrencia a nivel de Subprograma</h3>
+<ul>
+<li>Una tarea o proceso es una unidad de programa que puede estar en ejecución concurrente con otras unidades de programa</li>
+<li>Tareas difieren de subprogramas comunes, en que:
+<ul>
+<li>Una tarea puede iniciarse de forma implícita</li>
+<li>Cuando una unidad de programa inicia la ejecución de una tarea, no
+necesariamente suspende su ejecución.</li>
+<li>Cuando se ha completado la ejecución de una tarea, el control
+puede no volver al llamador</li>
+<li>Tareas por lo general trabajan en conjunto.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline7">
+<div class="slide-header"></div>
+<h3 id="orgheadline7">Dos categorías generales de tareas</h3>
+<ul>
+<li><i>tareas pesadas</i> ejecutan en su propio espacio de direcciones y
+tienen sus propias pilas de tiempo de ejecución.</li>
+<li><i>tareas livianas</i> todas se ejecutan en el mismo espacio de
+direcciones y usan la misma pila de tiempo de ejecución.</li>
+<li>Una tarea es <i>disjunta</i> si no se comunica ni afecta a la ejecución
+de cualquier otra tarea en el programa de ningún modo.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline8">
+<div class="slide-header"></div>
+<h3 id="orgheadline8">Sincronización de Tareas</h3>
+<ul>
+<li>Un mecanismo que controla el orden en que las tareas se ejecutan</li>
+<li>Dos tipos de sincronización
+<ul>
+<li>sincronización de cooperaciónm</li>
+<li>sincronización de competencia</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline9">
+<div class="slide-header"></div>
+<h3 id="orgheadline9">Clases de sincronización</h3>
+<ul>
+<li><b>Cooperación:</b> La tarea A debe esperar a que la tarea B termine
+alguna actividad específica antes de poder continuar su
+ejecución, por ejemplo, el problema del productor-consumidor</li>
+<li><b>Competencia:</b> dos o más tareas deben utilizar algún recurso que no
+se pueden utilizar simultáneamente, por ejemplo, un contador
+compartido
+<ul>
+<li>La competencia se suele realizar mediante el acceso mutuamente excluyente.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline10">
+<div class="slide-header"></div>
+<h3 id="orgheadline10">Necesidad de Sincronización de Competición</h3>
+
+<figure>
+<p><img src="competsincr.png" alt="competsincr.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline11">
+<div class="slide-header"></div>
+<h3 id="orgheadline11">Planificador</h3>
+<ul>
+<li>Proporcionar sincronización requiere un mecanismo para retrasar la
+ejecución de tareas</li>
+<li>el control de ejecución de tareas se mantiene mediante un programa
+llamado <i>planificador</i> (scheduler), que asigna la ejecución de
+tareas a los procesadores disponibles.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline12">
+<div class="slide-header"></div>
+<h3 id="orgheadline12">Estados de Ejecución de las Tareas</h3>
+<ul>
+<li><b>Nueva</b> - creada, pero aún no se ha inicializada</li>
+<li><b>Ejecutable</b> o <b>lista</b> - lista para funcionar, pero no se está ejecutando actualmente (sin procesador disponible)</li>
+<li><b>Ejecutando</b></li>
+<li><b>Bloqueada</b> - ha estado funcionando, pero ahora no puede continuar (por lo general a la espera de que se produzca algún evento)</li>
+<li><b>Muerta</b> - no más activa en ningún sentido.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline13">
+<div class="slide-header"></div>
+<h3 id="orgheadline13">Estados de Ejecución de las Tareas</h3>
+
+<figure>
+<p><img src="estadostareas.png" alt="estadostareas.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline14">
+<div class="slide-header"></div>
+<h3 id="orgheadline14">Liveness y Deadlock</h3>
+<ul>
+<li><i>Liveness</i> es una característica que una unidad de programa puede o
+puede  no tener</li>
+<li>En código secuencial, significa que la unidad finalmente completará su ejecución.</li>
+<li>En un entorno concurrente, una tarea puede perder fácilmente su <i>liveness</i></li>
+<li>Si todas las tareas en un entorno concurrente pierden su <i>liveness</i>,
+se denomina <i>deadlock</i></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline15">
+<div class="slide-header"></div>
+<h3 id="orgheadline15">Métodos de proveer sincronización</h3>
+<ul>
+<li>Semáforos</li>
+<li>Monitores</li>
+<li>Pasaje de Mensajes</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline29">
+<div class="slide-header"></div>
+<h2 id="orgheadline29">Los semáforos</h2>
+<div class="outline-text-2" id="text-orgheadline29">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline17">
+<div class="slide-header"></div>
+<h3 id="orgheadline17">Los semáforos</h3>
+<ul>
+<li>Dijkstra - 1965</li>
+<li>Un semáforo es una estructura de datos que consta de un contador y una cola para almacenar descriptores de tareas.</li>
+<li>Los semáforos se pueden utilizar para implementar guardas en el
+código que accede a estructuras de datos compartidos</li>
+<li>Los semáforos tienen sólo dos operaciones, esperar y liberar (originalmente llamado P y V por Dijkstra)</li>
+<li>Los semáforos se pueden utilizar para proporcionar tanto
+sincronización de competencia y de cooperación.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline18">
+<div class="slide-header"></div>
+<h3 id="orgheadline18">Sincronización de Cooperación con semáforos</h3>
+<ul>
+<li>Ejemplo: Un buffer compartido</li>
+<li>El buffer se implementa como un Tipo de Dato Abstracto con las
+operaciones <i>DEPOSIT</i> y <i>FETCH</i> como las únicas formas de acceder al
+buffer.</li>
+<li>Se usan dos semáforos de cooperación: <i>emptyspots</i> y <i>fullspots</i></li>
+<li>Los contadores de semáforos se utilizan para almacenar el número de
+espacios vacíos y espacios cargados en el buffer.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline19">
+<div class="slide-header"></div>
+<h3 id="orgheadline19">Sincronización de Cooperación con semáforos</h3>
+<ul>
+<li><i>DEPOSIT</i> debe comprobar primero <i>emptyspots</i> para ver si hay espacio en el buffer</li>
+<li>Si hay espacio, el contador de <i>emptyspots</i> disminuye y el valor es insertado</li>
+<li>Si no hay espacio, la tarea se almacena en la cola de <i>emptyspots</i></li>
+<li>Cuando <i>DEPOSIT</i> termina,  debe incrementar el contador de <i>fullspots</i></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline20">
+<div class="slide-header"></div>
+<h3 id="orgheadline20">Sincronización de Cooperación con semáforos</h3>
+<ul>
+<li><i>FETCH</i> debe comprobar <i>fullspots</i> para ver si hay un valor.
+<ul>
+<li>Si hay un spot completo, el contador de <i>fullspots</i> se decrementa y se elimina el valor.</li>
+<li>Si no hay valores en el buffer, la tarea debe ser colocado en la cola de <i>fullspots</i>.</li>
+<li>cuando <i>FETCH</i> termina, incrementa el contador de <i>emptyspots</i>.</li>
+
+</ul></li>
+<li>Las operaciones de <i>FETCH</i> y <i>DEPOSIT</i> en los semáforos se llevan a
+cabo a través de dos operaciones del semáforo llamadas <i>wait</i> y
+<i>release</i>.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline21">
+<div class="slide-header"></div>
+<h3 id="orgheadline21">Semaforo: operación <i>wait</i></h3>
+<div class="org-src-container">
+
+<pre  class="src src-pascal">wait(aSemaphore)
+<span style="color: #00ffff;">if</span> aSemaphore&#8217;s counter &gt; 0 <span style="color: #00ffff;">then</span> 
+   decrement aSemaphore&#8217;s counter
+<span style="color: #00ffff;">else</span> 
+   put the caller <span style="color: #00ffff;">in</span> aSemaphore&#8217;s queue
+   attempt <span style="color: #00ffff;">to</span> transfer control <span style="color: #00ffff;">to</span> a ready task 
+     -- <span style="color: #00ffff;">if</span> the task ready queue is empty, 
+     -- deadlock occurs 
+<span style="color: #00ffff;">end</span>
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline22">
+<div class="slide-header"></div>
+<h3 id="orgheadline22">Semáforos: Operación <i>Release</i></h3>
+<div class="org-src-container">
+
+<pre  class="src src-pascal">release(aSemaphore)
+<span style="color: #00ffff;">if</span> aSemaphore&#8217;s queue is empty <span style="color: #00ffff;">then</span>
+   increment aSemaphore&#8217;s counter
+<span style="color: #00ffff;">else</span>
+   put the calling task <span style="color: #00ffff;">in</span> the task ready queue
+   transfer control <span style="color: #00ffff;">to</span> a task from aSemaphore&#8217;s queue
+<span style="color: #00ffff;">end</span>
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline23">
+<div class="slide-header"></div>
+<h3 id="orgheadline23">Codigo Productor/Consumidor</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada">semaphore fullspots, emptyspots;
+fullstops.count = <span style="color: #7fffd4;">0</span>;
+emptyspots.count = BUFLEN;
+<span style="color: #00ffff;">task</span> <span style="color: #87cefa;">producer</span>;
+        <span style="color: #00ffff;">loop</span>
+        <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">produce VALUE &#8211;-</span>
+        wait (emptyspots); {wait <span style="color: #00ffff;">for</span> space}
+        DEPOSIT(VALUE);
+        release(fullspots); {increase filled}
+        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">producer</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline24">
+<div class="slide-header"></div>
+<h3 id="orgheadline24">Código Productor/Consumidor</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">consumer</span>;
+        <span style="color: #00ffff;">loop</span>
+        wait (fullspots);{wait till <span style="color: #00ffff;">not</span> empty}}
+        FETCH(VALUE);
+        release(emptyspots); {increase empty}
+        <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">consume VALUE &#8211;-</span>
+        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">consumer</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline25">
+<div class="slide-header"></div>
+<h3 id="orgheadline25">Sincronización de Competición con Semáforos</h3>
+<ul>
+<li>Un tercer semáforo, llamado <i>acces</i>, se utiliza para controlar el
+acceso (sincronización de competencia)
+<ul>
+<li>El contador de <i>acces</i> sólo tendrá los valores 0 y 1</li>
+<li>Tal semáforo se llama un <i>semáforo binario</i></li>
+
+</ul></li>
+<li>Tener en cuenta que <i>wait</i> y <i>release</i> debe ser atómicos.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline26">
+<div class="slide-header"></div>
+<h3 id="orgheadline26">Código Productor/Consumidor</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada">semaphore <span style="color: #00ffff;">access</span>, fullspots, emptyspots;
+<span style="color: #00ffff;">access</span>.count = <span style="color: #7fffd4;">0</span>;
+fullstops.count = <span style="color: #7fffd4;">0</span>;
+emptyspots.count = BUFLEN;
+<span style="color: #00ffff;">task</span> <span style="color: #87cefa;">producer</span>;
+        <span style="color: #00ffff;">loop</span>
+        <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">produce VALUE &#8211;-</span>
+        wait(emptyspots); {wait <span style="color: #00ffff;">for</span> space}
+        wait(<span style="color: #00ffff;">access</span>);     {wait <span style="color: #00ffff;">for</span> <span style="color: #00ffff;">access</span>)
+        DEPOSIT(VALUE);
+        release(<span style="color: #00ffff;">access</span>); {relinquish <span style="color: #00ffff;">access</span>}
+        release(fullspots); {increase filled}
+        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">producer</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline27">
+<div class="slide-header"></div>
+<h3 id="orgheadline27">Código Productor/Consumidor</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">consumer</span>;
+        <span style="color: #00ffff;">loop</span>
+        wait(fullspots);{wait till <span style="color: #00ffff;">not</span> empty}
+        wait(<span style="color: #00ffff;">access</span>);   {wait <span style="color: #00ffff;">for</span> <span style="color: #00ffff;">access</span>}
+        FETCH(VALUE);
+        release(<span style="color: #00ffff;">access</span>); {relinquish <span style="color: #00ffff;">access</span>}
+        release(emptyspots); {increase empty}
+        <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">consume VALUE &#8211;-</span>
+        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">consumer</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline28">
+<div class="slide-header"></div>
+<h3 id="orgheadline28">Evaluación de Semáforos</h3>
+<ul>
+<li>El mal uso de los semáforos puede provocar fallos en la
+sincronización de la cooperación, por ejemplo, el buffer tendrá
+overflow si el <i>wait</i> de <i>fullspots</i> falla.</li>
+<li>El mal uso de los semáforos puede provocar fallos en la
+sincronización de la competencia, por ejemplo, el programa entrara
+en <i>Deadlock</i> si el <i>release</i> de <i>access</i> falla.</li>
+
+</ul>
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline30">
+<div class="slide-header"></div>
+<h2 id="orgheadline30">monitores</h2>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline31">
+<div class="slide-header"></div>
+<h2 id="orgheadline31">Pasaje de mensajes</h2>
+<div class="slide-footer"></div>
+</section>
+</section>
+</div>
+</div>
+<script src="../reveal.js-master/lib/js/head.min.js"></script>
+<script src="../reveal.js-master/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+,});
+</script>
+</body>
+</html>

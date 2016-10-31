@@ -1,0 +1,287 @@
+#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
+#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
+#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
+#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
+#+OPTIONS: reveal_title_slide:t reveal_width:-1
+#+REVEAL_MARGIN: -1
+#+REVEAL_MIN_SCALE: -1
+#+REVEAL_MAX_SCALE: -1
+#+REVEAL_ROOT: ../reveal.js-master
+#+REVEAL_TRANS: cube
+#+REVEAL_SPEED: default
+#+REVEAL_THEME: solarized
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_EXTRA_JS:
+#+REVEAL_HLEVEL: 2
+#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
+#+REVEAL_TITLE_SLIDE_BACKGROUND:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_PREAMBLE:
+#+REVEAL_HEAD_PREAMBLE:
+#+REVEAL_POSTAMBLE:
+#+REVEAL_MULTIPLEX_ID:
+#+REVEAL_MULTIPLEX_SECRET:
+#+REVEAL_MULTIPLEX_URL:
+#+REVEAL_MULTIPLEX_SOCKETIO_URL:
+#+REVEAL_SLIDE_HEADER:
+#+REVEAL_SLIDE_FOOTER:
+#+REVEAL_PLUGINS:
+#+REVEAL_DEFAULT_FRAG_STYLE:
+#+REVEAL_INIT_SCRIPT:
+
+#+TITLE: Conceptos Avanzados en Lenguajes de Programación
+#+DATE:  <2016-10-17 lun>
+#+AUTHOR: Concurrencia
+#+EMAIL: Claudio Vaucheret / cv@fi.uncoma.edu.ar 
+
+* Introducción
+
+** Introducción
+- La concurrencia puede ocurrir en cuatro niveles:
+  - instrucciónes de maquina
+  - el de sentencias de lenguajes de alto nivel
+  - unidad
+  - programa
+- En lenguajes de programación nos interesan a nivel sentencias del
+  lenguaje y unidades de programa.
+
+** Arquitecturas de Multiprocesador
+- Finales de los años 1950 - un procesador de propósito general y uno
+  o más procesadores de propósito especial para las operaciones de
+  entrada y salida
+- Principios de 1960 varios procesadores completos, para la
+  concurrencia a nivel de programa
+- A mediados de 1960 - múltiples procesadores parciales, que se
+  utilizan para la concurrencia a nivel de instrucción
+- Maquinas de Simple instrucción y Múltiples Datos (SIMD)
+- Maquinas de Multiple instrucciones y Múltiples Datos (MIMD)
+  - procesadores independientes que se pueden sincronizar (a nivel de
+    concurrencia de unidad)
+
+** Categorías de Concurrencia
+- Un /hilo de control/ en un programa es la secuencia de los puntos
+  del programa alcanzados por el flujo de la ejecución del programa
+- Categorías de concurrencia:
+  - /concurrencia física/ - procesadores independientes múltiples (múltiples hilos de control)
+  - /concurrencia lógica/ - La apariencia de concurrencia física es
+    presentada por un procesador de tiempo compartido (software puede
+    ser diseñado como si hubieran múltiples hilos de control)
+- Corrutinas (cuasi-concurrencia) tienen un único hilo de ejecución.
+
+** Motivación para el estudio de la concurrencia
+- Implica una forma diferente de diseño de software que puede ser muy
+  útil, muchas situaciones del mundo real contienen concurrencia
+- Computadoras con multiprocesadores de concurrencia física son ampliamente utilizados.
+
+* Introducción a la concurrencia a nivel de Subprograma 
+
+** Introducción a la concurrencia a nivel de Subprograma 
+- Una tarea o proceso es una unidad de programa que puede estar en ejecución concurrente con otras unidades de programa
+- Tareas difieren de subprogramas comunes, en que:
+  - Una tarea puede iniciarse de forma implícita
+  - Cuando una unidad de programa inicia la ejecución de una tarea, no
+    necesariamente suspende su ejecución.
+  - Cuando se ha completado la ejecución de una tarea, el control
+    puede no volver al llamador
+  - Tareas por lo general trabajan en conjunto.
+
+** Dos categorías generales de tareas
+- /tareas pesadas/ ejecutan en su propio espacio de direcciones y
+  tienen sus propias pilas de tiempo de ejecución.
+- /tareas livianas/ todas se ejecutan en el mismo espacio de
+  direcciones y usan la misma pila de tiempo de ejecución.
+- Una tarea es /disjunta/ si no se comunica ni afecta a la ejecución
+  de cualquier otra tarea en el programa de ningún modo.
+
+** Sincronización de Tareas
+- Un mecanismo que controla el orden en que las tareas se ejecutan
+- Dos tipos de sincronización
+  - sincronización de cooperaciónm
+  - sincronización de competencia
+
+** Clases de sincronización 
+- *Cooperación:* La tarea A debe esperar a que la tarea B termine
+  alguna actividad específica antes de poder continuar su
+  ejecución, por ejemplo, el problema del productor-consumidor
+- *Competencia:* dos o más tareas deben utilizar algún recurso que no
+  se pueden utilizar simultáneamente, por ejemplo, un contador
+  compartido
+  - La competencia se suele realizar mediante el acceso mutuamente excluyente.
+
+** Necesidad de Sincronización de Competición
+
+[[file:competsincr.png]]
+
+** Planificador
+- Proporcionar sincronización requiere un mecanismo para retrasar la
+  ejecución de tareas
+- el control de ejecución de tareas se mantiene mediante un programa
+  llamado /planificador/ (scheduler), que asigna la ejecución de
+  tareas a los procesadores disponibles.
+
+** Estados de Ejecución de las Tareas
+- *Nueva* - creada, pero aún no se ha inicializada
+- *Ejecutable* o *lista* - lista para funcionar, pero no se está ejecutando actualmente (sin procesador disponible)
+- *Ejecutando*
+- *Bloqueada* - ha estado funcionando, pero ahora no puede continuar (por lo general a la espera de que se produzca algún evento)
+- *Muerta* - no más activa en ningún sentido.
+
+** Estados de Ejecución de las Tareas
+
+[[file:estadostareas.png]]
+
+** Liveness y Deadlock
+- /Liveness/ es una característica que una unidad de programa puede o
+  puede  no tener
+- En código secuencial, significa que la unidad finalmente completará su ejecución.
+- En un entorno concurrente, una tarea puede perder fácilmente su /liveness/
+- Si todas las tareas en un entorno concurrente pierden su /liveness/,
+  se denomina /deadlock/
+
+** Métodos de proveer sincronización
+- Semáforos
+- Monitores
+- Pasaje de Mensajes
+
+* Los semáforos
+
+** Los semáforos
+- Dijkstra - 1965
+- Un semáforo es una estructura de datos que consta de un contador y una cola para almacenar descriptores de tareas.
+- Los semáforos se pueden utilizar para implementar guardas en el
+  código que accede a estructuras de datos compartidos
+- Los semáforos tienen sólo dos operaciones, esperar y liberar (originalmente llamado P y V por Dijkstra)
+- Los semáforos se pueden utilizar para proporcionar tanto
+  sincronización de competencia y de cooperación.
+
+** Sincronización de Cooperación con semáforos
+- Ejemplo: Un buffer compartido
+- El buffer se implementa como un Tipo de Dato Abstracto con las
+  operaciones /DEPOSIT/ y /FETCH/ como las únicas formas de acceder al
+  buffer.
+- Se usan dos semáforos de cooperación: /emptyspots/ y /fullspots/
+- Los contadores de semáforos se utilizan para almacenar el número de
+  espacios vacíos y espacios cargados en el buffer.
+
+** Sincronización de Cooperación con semáforos
+- /DEPOSIT/ debe comprobar primero /emptyspots/ para ver si hay espacio en el buffer
+- Si hay espacio, el contador de /emptyspots/ disminuye y el valor es insertado
+- Si no hay espacio, la tarea se almacena en la cola de /emptyspots/
+- Cuando /DEPOSIT/ termina,  debe incrementar el contador de /fullspots/
+
+** Sincronización de Cooperación con semáforos
+- /FETCH/ debe comprobar /fullspots/ para ver si hay un valor.
+  - Si hay un spot completo, el contador de /fullspots/ se decrementa y se elimina el valor.
+  - Si no hay valores en el buffer, la tarea debe ser colocado en la cola de /fullspots/.
+  - cuando /FETCH/ termina, incrementa el contador de /emptyspots/.
+- Las operaciones de /FETCH/ y /DEPOSIT/ en los semáforos se llevan a
+  cabo a través de dos operaciones del semáforo llamadas /wait/ y
+  /release/.
+
+** Semaforo: operación /wait/
+
+#+BEGIN_SRC pascal
+wait(aSemaphore)
+if aSemaphore’s counter > 0 then 
+   decrement aSemaphore’s counter
+else 
+   put the caller in aSemaphore’s queue
+   attempt to transfer control to a ready task 
+     -- if the task ready queue is empty, 
+     -- deadlock occurs 
+end
+#+END_SRC
+
+** Semáforos: Operación /Release/
+
+#+BEGIN_SRC pascal
+release(aSemaphore)
+if aSemaphore’s queue is empty then
+   increment aSemaphore’s counter
+else
+   put the calling task in the task ready queue
+   transfer control to a task from aSemaphore’s queue
+end
+#+END_SRC
+
+** Codigo Productor/Consumidor
+
+#+BEGIN_SRC ada
+semaphore fullspots, emptyspots;
+fullstops.count = 0;
+emptyspots.count = BUFLEN;
+task producer;
+	loop
+	-- produce VALUE –-
+	wait (emptyspots); {wait for space}
+	DEPOSIT(VALUE);
+	release(fullspots); {increase filled}
+	end loop;
+end producer;
+#+END_SRC
+
+** Código Productor/Consumidor
+#+BEGIN_SRC ada
+task consumer;
+	loop
+	wait (fullspots);{wait till not empty}}
+	FETCH(VALUE);
+	release(emptyspots); {increase empty}
+	-- consume VALUE –-
+	end loop;
+end consumer;
+#+END_SRC
+
+** Sincronización de Competición con Semáforos
+- Un tercer semáforo, llamado /acces/, se utiliza para controlar el
+  acceso (sincronización de competencia)
+  - El contador de /acces/ sólo tendrá los valores 0 y 1
+  - Tal semáforo se llama un /semáforo binario/
+- Tener en cuenta que /wait/ y /release/ debe ser atómicos.
+
+** Código Productor/Consumidor
+#+BEGIN_SRC ada
+semaphore access, fullspots, emptyspots;
+access.count = 0;
+fullstops.count = 0;
+emptyspots.count = BUFLEN;
+task producer;
+	loop
+	-- produce VALUE –-
+	wait(emptyspots); {wait for space}
+	wait(access);     {wait for access)
+	DEPOSIT(VALUE);
+	release(access); {relinquish access}
+	release(fullspots); {increase filled}
+	end loop;
+end producer;
+#+END_SRC
+
+** Código Productor/Consumidor
+#+BEGIN_SRC ada
+task consumer;
+	loop
+	wait(fullspots);{wait till not empty}
+	wait(access);   {wait for access}
+	FETCH(VALUE);
+	release(access); {relinquish access}
+	release(emptyspots); {increase empty}
+	-- consume VALUE –-
+	end loop;
+end consumer;
+#+END_SRC
+
+** Evaluación de Semáforos
+- El mal uso de los semáforos puede provocar fallos en la
+  sincronización de la cooperación, por ejemplo, el buffer tendrá
+  overflow si el /wait/ de /fullspots/ falla.
+- El mal uso de los semáforos puede provocar fallos en la
+  sincronización de la competencia, por ejemplo, el programa entrara
+  en /Deadlock/ si el /release/ de /access/ falla.
+* monitores
+
+* Pasaje de mensajes
+

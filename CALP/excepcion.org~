@@ -1,0 +1,344 @@
+#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
+#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
+#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
+#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
+#+OPTIONS: reveal_title_slide:t reveal_width:-1
+#+REVEAL_MARGIN: -1
+#+REVEAL_MIN_SCALE: -1
+#+REVEAL_MAX_SCALE: -1
+#+REVEAL_ROOT: ../reveal.js-master
+#+REVEAL_TRANS: cube
+#+REVEAL_SPEED: default
+#+REVEAL_THEME: solarized
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_EXTRA_JS:
+#+REVEAL_HLEVEL: 2
+#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
+#+REVEAL_TITLE_SLIDE_BACKGROUND:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_PREAMBLE:
+#+REVEAL_HEAD_PREAMBLE:
+#+REVEAL_POSTAMBLE:
+#+REVEAL_MULTIPLEX_ID:
+#+REVEAL_MULTIPLEX_SECRET:
+#+REVEAL_MULTIPLEX_URL:
+#+REVEAL_MULTIPLEX_SOCKETIO_URL:
+#+REVEAL_SLIDE_HEADER:
+#+REVEAL_SLIDE_FOOTER:
+#+REVEAL_PLUGINS:
+#+REVEAL_DEFAULT_FRAG_STYLE:
+#+REVEAL_INIT_SCRIPT:
+
+#+TITLE: Conceptos Avanzados en Lenguajes de Programación
+#+DATE:  <2016-10-17 lun>
+#+AUTHOR: Manejo de Excepciónes y Eventos
+#+EMAIL: Claudio Vaucheret / cv@fi.uncoma.edu.ar 
+
+* Introducción a Manejo de Excepciones
+
+** Introducción a Manejo de Excepciones
+- En un lenguaje sin manejo de excepciones
+  - Cuando una excepción ocurre, el control retorna al sistema
+    operativo, donde un mensaje es mostrado y el programa termina
+- En un lenguaje con manejo de excepciones
+  - Los programas están autorizados para atrapar algunas excepciones, 
+    proporcionando de este modo la posibilidad de solucionar el
+    problema y continuar la ejecución.
+
+** Conceptos Básicos
+- Muchos lenguajes permiten atrapar errores de entrada y salida
+  (incluyendo EOF)
+- Una /excepción/ es un evento inusual, ya sea erróneo o no,
+  detectable por hardware o software, que puede requerir procesamiento especial.
+- El procesamiento especial que puede ser requerido después de
+  detectar una excepción se llama /manejo de excepciones/.
+- La unidad de código que realiza esta tarea se llama /Controlador de
+  excepción/.
+
+** Alternativas al Manejo de Excepciones
+- Una excepción se genera cuando se produce el evento asociado
+- En un lenguaje que no tenga capacidades de manejo de excepciones
+  todavía se puede definir, detectar, plantear y gestionar las
+  excepciones (las definidas por el usuario, y detectadas por el software)
+- Alternativas
+  - Enviar un parámetro auxiliar o usar un valor de retorno para
+    indicar el estado del subprograma
+  - Pasar un parametro etiqueta  a todos los subprogramas
+  - Pasar un subprograma que maneja excepciones a todos los subprogramas.
+
+** Ventajas de Manejo de Excepciones provisto por el lenguaje. 
+- El código de detección de errores es tedioso de escribir y desordena
+  el programa oscureciendo su lógica.
+- propagación de excepción permite un alto nivel de reutilización de
+  código de control de excepciones.
+
+** Cuestiones de Diseño
+- ¿Cómo y donde los manejadores de excepciones son especificados y
+  cual es su alcance?
+- ¿Como una ocurrencia de excepción se liga a un manejador de excepción?
+- ¿De dónde continuar la ejecución, en todo caso, después de que un
+  controlador de excepciones completa su ejecución?
+- ¿Cómo se especifican las excepciones definidas por el usuario?
+
+** Cuestiones de Diseño
+- ¿Debería haber un manejador de excepciones para los programas que no
+  proveen el suyo propio?
+- ¿Pueden las excepciones predefinidas ser explícitamente generadas?
+- ¿Los errores detectables por hardware deben ser tratados como
+  excepciones que pueden ser manejados?
+- ¿Hay excepciones predefinidas?
+- ¿Pueden las excepciones se deshabilitadas? ¿Como?
+
+** Flujo de control del Controlador de Exepciones
+
+[[file:resumeexpeption.png]]
+
+* Manejo de Excepciones en *Ada*
+
+** Manejo de Excepciones en *Ada*
+- Un controlador de excepciones en Ada puede ocurrir ya sea en el
+  cuerpo de un subprograma, el cuerpo de un paquete, en una tarea o en
+  un bloque.
+- Debido a que los controladores de excepciones suelen ser locales
+  para el código en el que la excepción puede ser despertada, no
+  tienen parámetros.
+
+** Controlador de Excepciones en *Ada*
+- Controlador
+#+BEGIN_SRC ada
+when exception_choice{|exception_choice} => statement_sequence
+#+END_SRC
+- exception-choice
+#+BEGIN_SRC ada
+exception_name | others
+#+END_SRC
+- Los manejadores son colocados al final del bloque o unidad en la que
+  ocurren.
+
+** Vinculando Excepciones a Controladores
+
+ - Si el bloque o unidad en la que se produce una excepción no tiene
+   un controlador para esa excepción, la excepción se propaga a otro
+   lugar para ser manejado.
+   - /Procedimientos/:  Se propagan al procedimiento llamador.
+   - /Bloques/: Se propagan al ámbito en el que aparece.
+   - /Cuerpo de un Package/: Se propagan a la parte de declaración de
+     la unidad que declaró el paquete (si se trata de una unidad de
+     librería, el programa termina)
+   - /Task/: sin propagación; si tiene un controlador, lo ejecuta; en
+     todo caso lo marca "completado"
+
+** Vinculando Excepciones a Controladores
+- El bloque o unidad que genera una excepción, pero no lo maneja,
+  siempre se termina (también cualquier bloque o unidad a la que se
+  propaga y que no lo maneja).
+
+** Otras decisiones de diseño
+- Excepciones definidas por el usuario
+#+BEGIN_SRC ada
+ecxeption_name_list : exception;
+#+END_SRC
+- Despertando Excepciones 
+#+BEGIN_SRC ada
+raise [exception_name]
+#+END_SRC
+   (exception-name no es requerido si esta en un manejador, en este
+   caso propaga la misma excepción)  
+- Las excepciones pueden ser deshabilitadas con:
+#+BEGIN_SRC ada
+  pragma SUPRESS(exception_list)
+#+END_SRC
+
+** Excepciones Predefinidas
+- *CONSTRAINT-ERROR* restricciones de indices, restricciones de rango, etc
+- *NUMERIC-ERROR* operaciones numéricas que no pueden retornar un
+  valor correcto (overflow, división por cero etc.)
+- *PROGRAM-ERROR* llamada a un subprograma cuyo cuerpo no ha sido elaborado.
+- *STORAGE-ERROR* se termina la memoria heap.
+- *TASKING-ERROR* un error asociado con /tasks/.
+
+** Evaluación
+- El diseño de *Ada* para el manejo de excepciones encarnó el estado del
+  arte en el diseño de lenguajes en 1980.
+- Un avance significativo sobre *PL/I*
+- Ada fue el único lenguaje ampliamente utilizado con manejo de
+  excepciones hasta que éste fue agregado a *C++*
+* Manejo de Excepciones en *C++*
+** Manejo de Excepciones en *C++*
+- Agregado a *C++* en 1990
+- Diseño basado en el de *CLU*, *Ada*, y *ML*
+** Controladores de Excepción en *C++*
+#+BEGIN_SRC C++
+try {
+-- codigo en el que se espera surga una excepción
+}
+catch (formal parameter) {
+-- codigo del controlador
+}
+...
+catch (formal parameter) {
+-- codigo del controlador
+}
+#+END_SRC
+** La función ~catch~
+- ~catch~ es el nombre de todos los controladores -- Es un nombre
+  sobrecargado, por lo tanto los parámetros deben ser únicos.
+- El parámetro formal no necesita ser una variable
+  - Puede ser simplemente un nombre para distinguir el controlador de
+    los otros
+- El parámetro formal puede ser usado para transferir información al
+  controlador
+- El parámetro formal puede ser ($\ldots$), en cuyo caso maneja todas
+  las excepciones que no han sido manejadas.
+** Lanzar Excepciones
+- Las excepciones son lanzadas explícitamente por la sentencia ~trow [expression];~
+- Un ~trow~ sin operandos sólo puede aparecer en un controlador;
+  cuando aparece, simplemente relanza la excepción, que a
+  continuación se maneja en otro lado.
+- El tipo de la expresión desambigua  cual manejador corresponde.
+** Excepciones no manejadas
+- Una excepción no controlada se propaga a la función que llamó a
+  la función que la propaga.
+- Esta propagación continúa eventualmente a la función principal
+- Si no se encuentra ningún controlador, el programa se termina.
+** Excepciones no manejadas
+- Después de un controlador completa su ejecución, el control fluye a
+  la sentencia siguiente del último controlador en la secuencia de los
+  controladores de los cuales es un elemento.
+- Otras opciones de diseño
+  - Todas las excepciones son definidas por el usuario.
+  - Las excepciones ni se especifican ni se declaran.
+  - Las funciones pueden listar las excepciones que pueden despertar.
+  - Sin una especificación, una función puede despertar cualquier
+    excepción.
+** Evaluación
+ - Las excepciones no son nombradas y que las excepciones detectables
+   por software  o hardware y del sistema no puede ser manejadas.
+ - Vincular excepciones a los manejadores a través del tipo del parámetro no promueve la legibilidad.
+* Manejo de Excepciones en *Java*
+** Manejo de Excepciones en *Java*
+- Basado en la de *C++*, pero más en línea con la filosofía de programación orientada a objetos.
+- Todas las excepciones son objetos de clases que son descendientes de la clase ~Throwable~
+** Clases de Excepciones
+- La librería de Java incluye dos subclases de ~Throwable~: 
+  - ~Error~
+    - Lanzada por el intérprete de Java para eventos tales como
+      /overflow/ del /heap/.
+    - Nunca manejados por programas de usuario
+  - ~Excepción~
+    - excepciones definidas por el usuario son generalmente subclases de esta
+    - Tiene dos subclases predefinidas, ~IOException~ y
+      ~RuntimeException~ (por ejemplo,
+      ~ArrayIndexOutOfBoundsException~ y ~NullPointerException~
+** Controlador de excepciones en *Java*
+- Igual que los de *C++*, excepto que todas las capturas requieren un
+  parámetro con nombre y todos los parámetros deben ser descendientes
+  de ~Throwable~
+- Sintaxis de la cláusula try es exactamente la de *C++*
+- Las excepciones son lanzadas con un ~throw~, al igual que en *C++*,
+  pero con frecuencia incluye el operador ~new~ para crear el objeto,
+  como en: ~throw new MiExcepción ();~
+** Vinculando Excepciones a Manejadores
+- Asociaciar una excepción a un controlador es más simple en Java que en *C++*
+  - Una excepción se liga al  primer controlador con un parámetro de la misma clase que el objeto lanzado o en un ancestro de ella.
+- Una excepción puede ser manejada y relanza mediante la inclusión de un ~throw~ en el controlador (un controlador también podría lanzar una excepción diferente)
+** Vinculando Excepciones a Manejadores
+- Si no se encuentra ningún controlador en el constructor del ~try~,
+  la búsqueda continúa en el ~try~ más cercano que lo contenga, etc.
+- Si no se encuentra ningún controlador en el método, la excepción se propaga a quien haya llamado al método
+- Si no se encuentra un controlador (en todo el camino hasta el ~main~), el programa termina.
+- Para asegurar que todas las excepciones sean capturadas, un
+  controlador que captura todas las excepciones, puede ser incluido en cualquier construcción ~try~
+  - Sólo tiene que utilizar un parámetro ~Exception class~
+  - Por supuesto, tiene que estar en el último ~try~.
+** Excepciones chequadas y no chequeadas
+- La cláusula throw de Java es bastante diferente de la cláusula throw de *C++*
+- Excepciones de la clases ~error~  y ~RuntimeException~ y todos sus
+  descendientes se llaman excepciones no chequeadas
+- Todas las demás excepciones se llaman excepciones chequeadas
+- Las excepciones chequeadas que pueden ser lanzadas por un método podrán ser:
+  - Enumerados en la cláusula ~throw~ , o
+  - Manejado en el método
+** Otras Decisiones de Diseño 
+- Un método no puede declarar más excepciones en su cláusula ~throws~
+  que las que el método sobrescribe
+- Un método que llama a otro método que enumera una excepción chequeada en su cláusula ~throws~ tiene tres alternativas para hacer frente a esa excepción:
+  - Capturar y manejar la excepción
+  - Detectar la excepción y lanzar una excepción que aparece en su propia cláusula ~throws~
+  - Declararla en su cláusula ~throws~ y no manejarla
+** La Cláusula ~finally~
+- Puede aparecer al final de una construcción ~try~
+
+- Forma:
+
+#+BEGIN_SRC C 
+finally {
+...
+}
+#+END_SRC
+
+- Propósito: Especificar el código que se va a ejecutar, independientemente de lo que suceda en la construcción ~try~
+
+
+** Ejemplo
+- Una construción ~try~  con una cláusula ~finally~ pueda ser usada
+  fuera del manejo de excepción:
+
+#+BEGIN_SRC C
+try {
+		for (index = 0; index < 100; index++) {
+			…
+			if (…) {
+				return;
+			}  //** end of if
+	}  //** end of try clause
+	finally {
+		…
+	}  //** end of try construct
+#+END_SRC
+
+** Aserciones  
+- Sentencias en el programa que declaran una expresión booleana en relación con el estado actual de la computación.
+- Cuando se evalua verdadera no pasa nada.
+- Cuando se evalua falsa una excepción es lanzada ~AssertionError~
+- Se puede desactivar durante el tiempo de ejecución sin modificar el programa o recompilarlo
+- Dos formas
+  - assert: condition;
+  - assert: condición: expresión;
+* Introducción a Manejo de Eventos
+** Introducción a Manejo de Eventos
+- Un /evento/ es creado por una acción externa tal como una interacción con el usuario a través de una interfaz gráfica de usuario.
+- El /controlador de eventos/ es un segmento de código que se llama en respuesta a un evento.
+
+** Componentes Swing GUI de Java
+- /Text box/ es un objeto de la clase ~JTextField~
+- /radio button/ es un objeto de la clase ~JRadioButton~
+- el /display/ del applet es un marco, una estructura multicapa.
+- un panel de contenido es una capa, en donde los applets ponen su salida
+- Los componentes de la GUI se pueden colocar en un marco.
+- objetos controladores de distribución se utilizan para controlar la ubicación de los componentes.
+
+** El Modelo de Eventos de Java
+- interacciones del usuario con componentes GUI crean eventos que
+  pueden ser capturadas por los controladores de eventos, llamados
+  /detectores de eventos/
+- Un generador de eventos le dice a un detector de un evento mediante el envío de un mensaje
+- Una interfaz se utiliza para hacer que los métodos de gestión de eventos se ajusten a un protocolo estándar
+- Una clase que implementa un detector debe implementar una interfaz para el detector.
+
+**  Clases de Eventos
+- Clases de Eventos Semántios
+  - ~ActionEvent~
+  - ~ItemEventp~
+  - ~TextEvent~
+- Clases de eventos de bajo nivel
+- ~ComponentEvent~
+- ~KeyEvent~
+- ~MouseEvent~
+- ~MouseMotionEvent~
+- ~FocusEvent~
+
+
