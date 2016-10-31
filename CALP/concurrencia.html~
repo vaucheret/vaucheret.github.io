@@ -67,9 +67,14 @@
 <li><a href="#/slide-orgheadline28">Evaluación de Semáforos</a></li>
 </ul>
 </li>
+<li><a href="#/slide-orgheadline33">monitores</a>
+<ul>
 <li><a href="#/slide-orgheadline30">monitores</a></li>
-<li><a href="#/slide-orgheadline31">Pasaje de mensajes</a></li>
-<li><a href="#/slide-orgheadline32">Threads de Java</a></li>
+<li><a href="#/slide-orgheadline31">Sincronización de Competición</a></li>
+<li><a href="#/slide-orgheadline32">Sincronización de Cooperación</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline34">Pasaje de mensajes</a></li>
 </ul>
 </div>
 </nav>
@@ -359,7 +364,7 @@ se denomina <i>deadlock</i></li>
 código que accede a estructuras de datos compartidos</li>
 <li>Los semáforos tienen sólo dos operaciones, esperar y liberar (originalmente llamado P y V por Dijkstra)</li>
 <li>Los semáforos se pueden utilizar para proporcionar tanto
-sincorinzación de competencia y de cooperación.</li>
+sincronización de competencia y de cooperación.</li>
 
 </ul>
 
@@ -583,13 +588,28 @@ sincronización de la competencia, por ejemplo, el programa entrara
 en <i>Deadlock</i> si el <i>release</i> de <i>access</i> falla.</li>
 
 </ul>
+
 <div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline33">
+<div class="slide-header"></div>
+<h2 id="orgheadline33">monitores</h2>
+<div class="outline-text-2" id="text-orgheadline33">
+</div><div class="slide-footer"></div>
 </section>
 </section>
 <section>
 <section id="slide-orgheadline30">
 <div class="slide-header"></div>
-<h2 id="orgheadline30">monitores</h2>
+<h3 id="orgheadline30">monitores</h3>
+<ul>
+<li><b>Pascal</b> concurrente, <b>Modula</b>, <b>Mesa</b>, <b>Ada</b>, <b>Java</b>, <b>C#</b></li>
+<li>La idea: encapsular los datos compartidos y sus operaciones para restringir el acceso</li>
+<li>Un monitor es un tipo abstracto de datos para los datos compartidos</li>
+
+</ul>
 
 <div class="slide-footer"></div>
 </section>
@@ -597,14 +617,49 @@ en <i>Deadlock</i> si el <i>release</i> de <i>access</i> falla.</li>
 <section>
 <section id="slide-orgheadline31">
 <div class="slide-header"></div>
-<h2 id="orgheadline31">Pasaje de mensajes</h2>
+<h3 id="orgheadline31">Sincronización de Competición</h3>
+<ul>
+<li>Los datos compartidos son residentes en el monitor (en lugar de en las unidades de cliente)</li>
+<li>Todo acceso recide en el monitor
+<ul>
+<li>el monitor garantiza la sincronización al permitir un solo acceso a la vez</li>
+<li>Las llamadas a procedimientos del monitor se ponen en cola de
+forma implícita si el monitor está ocupado en el momento de la
+llamada.</li>
+
+</ul></li>
+
+</ul>
+
 <div class="slide-footer"></div>
 </section>
 </section>
 <section>
 <section id="slide-orgheadline32">
 <div class="slide-header"></div>
-<h2 id="orgheadline32">Threads de Java</h2>
+<h3 id="orgheadline32">Sincronización de Cooperación</h3>
+<ul>
+<li>Cooperación entre procesos es todavía una tarea de programación
+<ul>
+<li>El programador debe garantizar que un buffer compartido no
+experimenta overflow o underflow</li>
+
+</ul></li>
+
+</ul>
+
+
+<figure>
+<p><img src="monitor.png" alt="monitor.png">
+</p>
+</figure>
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline34">
+<div class="slide-header"></div>
+<h2 id="orgheadline34">Pasaje de mensajes</h2>
 <div class="slide-footer"></div>
 </section>
 </section>

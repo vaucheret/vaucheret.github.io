@@ -281,7 +281,35 @@ end consumer;
 - El mal uso de los semáforos puede provocar fallos en la
   sincronización de la competencia, por ejemplo, el programa entrara
   en /Deadlock/ si el /release/ de /access/ falla.
+
 * monitores
+
+** monitores
+- *Pascal* concurrente, *Modula*, *Mesa*, *Ada*, *Java*, *C#*
+- La idea: encapsular los datos compartidos y sus operaciones para restringir el acceso
+- Un monitor es un tipo abstracto de datos para los datos compartidos
+
+** Sincronización de Competición
+- Los datos compartidos son residentes en el monitor (en lugar de en las unidades de cliente)
+- Todo acceso recide en el monitor
+  - el monitor garantiza la sincronización al permitir un solo acceso a la vez
+  - Las llamadas a procedimientos del monitor se ponen en cola de
+    forma implícita si el monitor está ocupado en el momento de la
+    llamada.
+
+** Sincronización de Cooperación
+- Cooperación entre procesos es todavía una tarea de programación
+  - El programador debe garantizar que un buffer compartido no
+    experimenta overflow o underflow
+
+[[file:monitor.png]]
+
+** Evaluación de Monitores
+- Es un mejor modo de proporcionar la sincronización de la competencia que los semáforos.
+- Los semáforos se pueden utilizar para implementar monitores
+- Los monitores pueden ser utilizados para implementar semáforos
+- Soporte para la sincronización de cooperación es muy similar al de
+  los semáforos, por lo que tiene los mismos problemas
 
 * Pasaje de mensajes
 
