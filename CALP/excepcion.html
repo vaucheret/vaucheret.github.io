@@ -262,7 +262,7 @@ tienen parámetros.</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">when</span> exception_choice{|exception_choice} =&gt; statement_sequence
+<pre  class="src src-ada"><span style="color: #a020f0;">when</span> exception_choice{|exception_choice} =&gt; statement_sequence
 </pre>
 </div>
 <ul>
@@ -271,7 +271,7 @@ tienen parámetros.</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada">exception_name | <span style="color: #00ffff;">others</span>
+<pre  class="src src-ada">exception_name | <span style="color: #a020f0;">others</span>
 </pre>
 </div>
 <ul>
@@ -331,7 +331,7 @@ propaga y que no lo maneja).</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada">ecxeption_name_list : <span style="color: #00ffff;">exception</span>;
+<pre  class="src src-ada">ecxeption_name_list : <span style="color: #a020f0;">exception</span>;
 </pre>
 </div>
 <ul>
@@ -340,7 +340,7 @@ propaga y que no lo maneja).</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">raise</span> [exception_name]
+<pre  class="src src-ada"><span style="color: #a020f0;">raise</span> [exception_name]
 </pre>
 </div>
 <p>
@@ -353,7 +353,7 @@ caso propaga la misma excepción)
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">pragma</span> <span style="color: #87cefa;">SUPRESS</span>(exception_list)
+<pre  class="src src-ada"><span style="color: #a020f0;">pragma</span> <span style="color: #0000ff;">SUPRESS</span>(exception_list)
 </pre>
 </div>
 
@@ -418,14 +418,14 @@ excepciones hasta que éste fue agregado a <b>C++</b></li>
 <h3 id="orgheadline18">Controladores de Excepción en <b>C++</b></h3>
 <div class="org-src-container">
 
-<pre  class="src src-C++"><span style="color: #00ffff;">try</span> {
+<pre  class="src src-C++"><span style="color: #a020f0;">try</span> {
 -- codigo en el que se espera surga una excepci&#243;n
 }
-<span style="color: #00ffff;">catch</span> (<span style="color: #98fb98;">formal</span> <span style="color: #eedd82;">parameter</span>) {
+<span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">formal</span> <span style="color: #b8860b;">parameter</span>) {
 -- codigo del controlador
 }
 ...
-<span style="color: #00ffff;">catch</span> (<span style="color: #98fb98;">formal</span> <span style="color: #eedd82;">parameter</span>) {
+<span style="color: #a020f0;">catch</span> (<span style="color: #228b22;">formal</span> <span style="color: #b8860b;">parameter</span>) {
 -- codigo del controlador
 }
 </pre>
@@ -703,15 +703,15 @@ fuera del manejo de excepción:</li>
 <div class="org-src-container">
 
 <pre  class="src src-C">try {
-                <span style="color: #00ffff;">for</span> (index = 0; index &lt; 100; index++) {
+                <span style="color: #a020f0;">for</span> (index = 0; index &lt; 100; index++) {
                         &#8230;
-                        <span style="color: #00ffff;">if</span> (&#8230;) {
-                                <span style="color: #00ffff;">return</span>;
-                        }  <span style="color: #ff4500;">//</span><span style="color: #ff4500;">** end of if</span>
-        }  <span style="color: #ff4500;">//</span><span style="color: #ff4500;">** end of try clause</span>
+                        <span style="color: #a020f0;">if</span> (&#8230;) {
+                                <span style="color: #a020f0;">return</span>;
+                        }  <span style="color: #b22222;">//</span><span style="color: #b22222;">** end of if</span>
+        }  <span style="color: #b22222;">//</span><span style="color: #b22222;">** end of try clause</span>
         finally {
                 &#8230;
-        }  <span style="color: #ff4500;">//</span><span style="color: #ff4500;">** end of try construct</span>
+        }  <span style="color: #b22222;">//</span><span style="color: #b22222;">** end of try construct</span>
 </pre>
 </div>
 

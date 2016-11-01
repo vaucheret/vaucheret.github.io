@@ -75,7 +75,31 @@
 <li><a href="#/slide-orgheadline33">Evaluación de Monitores</a></li>
 </ul>
 </li>
+<li><a href="#/slide-orgheadline56">Pasaje de mensajes</a>
+<ul>
 <li><a href="#/slide-orgheadline35">Pasaje de mensajes</a></li>
+<li><a href="#/slide-orgheadline36">Pasaje de mensajes <i>Rendezvous</i></a></li>
+<li><a href="#/slide-orgheadline37">Soporte de <b>Ada</b> para concurrencia</a></li>
+<li><a href="#/slide-orgheadline38">Cuerpo de la Tarea</a></li>
+<li><a href="#/slide-orgheadline39">Ejemplo de Cuerpo de Tarea</a></li>
+<li><a href="#/slide-orgheadline40">Semántica del pasaje de mensajes de <b>Ada</b></a></li>
+<li><a href="#/slide-orgheadline41">Líneas de tiempo del <i>Rendevous</i></a></li>
+<li><a href="#/slide-orgheadline42">Servidor y actor</a></li>
+<li><a href="#/slide-orgheadline43">Representación Gráfica del <i>Rendezvous</i></a></li>
+<li><a href="#/slide-orgheadline44">Ejemplo de tarea <i>Actor</i></a></li>
+<li><a href="#/slide-orgheadline45">Múltiples puntos de entrada</a></li>
+<li><a href="#/slide-orgheadline46">Una tarea con múltiples entradas</a></li>
+<li><a href="#/slide-orgheadline47">Semántica de tareas con multiples clausulas select</a></li>
+<li><a href="#/slide-orgheadline48">Sincronización de Cooperación con Pasaje de Mensajes</a></li>
+<li><a href="#/slide-orgheadline49">Semántica del <i>select</i> con cláusulas <i>accept</i> con guardas</a></li>
+<li><a href="#/slide-orgheadline50">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</a></li>
+<li><a href="#/slide-orgheadline51">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</a></li>
+<li><a href="#/slide-orgheadline52">Sincronización de Competición con Pasaje de Mensajes</a></li>
+<li><a href="#/slide-orgheadline53">Concurrencia en Ada 95</a></li>
+<li><a href="#/slide-orgheadline54">Objetos Protegidos de Ada 95</a></li>
+<li><a href="#/slide-orgheadline55">Evaluación de <b>Ada</b></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </nav>
@@ -675,9 +699,440 @@ los semáforos, por lo que tiene los mismos problemas</li>
 </section>
 </section>
 <section>
+<section id="slide-orgheadline56">
+<div class="slide-header"></div>
+<h2 id="orgheadline56">Pasaje de mensajes</h2>
+<div class="outline-text-2" id="text-orgheadline56">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
 <section id="slide-orgheadline35">
 <div class="slide-header"></div>
-<h2 id="orgheadline35">Pasaje de mensajes</h2>
+<h3 id="orgheadline35">Pasaje de mensajes</h3>
+<ul>
+<li>El paso de mensajes es un modelo general para la concurrencia
+<ul>
+<li>Puede modelar tanto los semáforos como los monitores</li>
+<li>No es sólo para la sincronización de la competencia</li>
+
+</ul></li>
+<li>Idea central: la comunicación de tareas es como ver a un médico, la
+mayoría de las veces te espera o lo esperas, pero cuando tu y él
+esten listo, te reunirás o tendras un <i>rendezvous</i></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline36">
+<div class="slide-header"></div>
+<h3 id="orgheadline36">Pasaje de mensajes <i>Rendezvous</i></h3>
+<ul>
+<li>Un mecanismo para permitir que una tarea indique cuándo está
+dispuesta a aceptar mensajes</li>
+<li>Las tareas necesitan una manera de recordar quién está esperando que
+su mensaje sea aceptado y alguna forma "justa" de elegir el
+siguiente mensaje</li>
+<li>Cuando el mensaje de una tarea remitente es aceptado por una
+tarea receptora, la transmisión de mensaje real se denomina <i>rendezvous</i></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline37">
+<div class="slide-header"></div>
+<h3 id="orgheadline37">Soporte de <b>Ada</b> para concurrencia</h3>
+<ul>
+<li>El modelo de mensajes de Ada 83
+<ul>
+<li>Las tareas de Ada tienen parte de especificación y cuerpo como los
+paquetes; La especificación tiene la interfaz, que es la
+colección de puntos de entrada:</li>
+
+</ul></li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">Task_Example</span> <span style="color: #00ffff;">is</span>
+        <span style="color: #00ffff;">entry</span> <span style="color: #87cefa;">ENTRY_1</span> (Item : <span style="color: #00ffff;">in</span> <span style="color: #98fb98;">Integer</span>);
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">Task_Example</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline38">
+<div class="slide-header"></div>
+<h3 id="orgheadline38">Cuerpo de la Tarea</h3>
+<ul>
+<li>El cuerpo de la tarea describe la acción que tiene lugar cuando se
+produce un <i>rendezvous</i></li>
+<li>Una tarea que envía un mensaje se suspende mientras espera que el
+mensaje sea aceptado y durante el <i>rendezvous</i></li>
+<li>Los puntos de entrada en la especificación se describen con
+cláusulas de <i>accept</i> en el cuerpo:</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">entry_name</span> (formal parameters) <span style="color: #00ffff;">do</span>
+    ...
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">entry_name</span>
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline39">
+<div class="slide-header"></div>
+<h3 id="orgheadline39">Ejemplo de Cuerpo de Tarea</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">TASK_EXAMPLE</span> <span style="color: #00ffff;">is</span>
+     <span style="color: #00ffff;">begin</span>
+     <span style="color: #00ffff;">loop</span>
+     <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">ENTRY_1</span> (ITEM: <span style="color: #00ffff;">in</span> <span style="color: #98fb98;">FLOAT</span>) <span style="color: #00ffff;">do</span>
+     ...
+     <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">ENTRY_1</span>;
+     <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+   <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">TASK_EXAMPLE</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline40">
+<div class="slide-header"></div>
+<h3 id="orgheadline40">Semántica del pasaje de mensajes de <b>Ada</b></h3>
+<ul>
+<li>La tarea se ejecuta hasta la parte superior de la cláusula <i>accept</i> y
+espera un mensaje</li>
+<li>Durante la ejecución de la cláusula <i>accept</i>, el remitente suspende
+su ejecución</li>
+<li>Los parámetors del <i>accept</i> pueden transmitir información en una o
+ambas direcciones</li>
+<li>Cada cláusula <i>accept</i> tiene una cola asociada para almacenar
+mensajes en espera.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline41">
+<div class="slide-header"></div>
+<h3 id="orgheadline41">Líneas de tiempo del <i>Rendevous</i></h3>
+
+<figure>
+<p><img src="rendevous.png" alt="rendevous.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline42">
+<div class="slide-header"></div>
+<h3 id="orgheadline42">Servidor y actor</h3>
+<ul>
+<li>Una tarea que tiene cláusulas <i>accept</i>, pero ningún otro código
+se llama una tarea servidor</li>
+<li>Una tarea sin cláusulas <i>accept</i> se denomina tarea actor
+<ul>
+<li>Una tarea de actor puede enviar mensajes a otras tareas</li>
+<li>Nota: Un remitente debe conocer el nombre de entrada del receptor, pero no viceversa (asimétrico)</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline43">
+<div class="slide-header"></div>
+<h3 id="orgheadline43">Representación Gráfica del <i>Rendezvous</i></h3>
+
+<figure>
+<p><img src="rendevous2.png" alt="rendevous2.png"> 
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline44">
+<div class="slide-header"></div>
+<h3 id="orgheadline44">Ejemplo de tarea <i>Actor</i></h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">WATER_MONITOR</span>; <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">specification</span>
+<span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">WATER_MONITOR</span> <span style="color: #00ffff;">is</span> <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">body</span>
+<span style="color: #00ffff;">begin</span>
+  <span style="color: #00ffff;">loop</span>
+  <span style="color: #00ffff;">if</span> WATER_LEVEL &gt; MAX_LEVEL
+    <span style="color: #00ffff;">then</span> SOUND_ALARM;
+  <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">if</span>;
+  <span style="color: #00ffff;">delay</span> <span style="color: #7fffd4;">1.0</span>; <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">No further execution</span>
+            <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">for at least 1 second</span>
+  <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">WATER_MONITOR</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline45">
+<div class="slide-header"></div>
+<h3 id="orgheadline45">Múltiples puntos de entrada</h3>
+<ul>
+<li>Las tareas pueden tener más de un punto de entrada
+<ul>
+<li>La especificación de la tarea tiene una cláusula de entrada para
+cada una.</li>
+<li>El cuerpo de la tarea tiene una cláusula de <i>accept</i> para cada
+cláusula de entrada, colocada en una cláusula de <i>select</i>, que
+está en un bucle.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline46">
+<div class="slide-header"></div>
+<h3 id="orgheadline46">Una tarea con múltiples entradas</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">TASK_EXAMPLE</span> <span style="color: #00ffff;">is</span>
+      <span style="color: #00ffff;">loop</span>
+        <span style="color: #00ffff;">select</span> 
+          <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">ENTRY_1</span> (formal params) <span style="color: #00ffff;">do</span>
+          ...
+          <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">ENTRY_1</span>;
+          ...
+        <span style="color: #00ffff;">or</span>
+          <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">ENTRY_2</span> (formal params) <span style="color: #00ffff;">do</span>
+          ...
+          <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">ENTRY_2</span>;
+          ...
+        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">select</span>;
+      <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+    <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">TASK_EXAMPLE</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline47">
+<div class="slide-header"></div>
+<h3 id="orgheadline47">Semántica de tareas con multiples clausulas select</h3>
+<ul>
+<li>Si exactamente una cola de entrada no esta vacía, elija un mensaje de ella</li>
+<li>Si más de una cola de entrada no esta vacía, elije una, de forma no determinística, para aceptar un mensaje</li>
+<li>Si todos están vacíos, espera</li>
+<li>La construcción se llama a menudo una <i>espera selectiva</i></li>
+<li>Cláusula <i>accept</i> extendida - código que sigue a la cláusula, pero antes de la siguiente cláusula
+<ul>
+<li>Ejecutado simultáneamente con la tarea remitente</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline48">
+<div class="slide-header"></div>
+<h3 id="orgheadline48">Sincronización de Cooperación con Pasaje de Mensajes</h3>
+<ul>
+<li>Provisto por cláusulas <i>accept</i> con guardas:</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">when</span> <span style="color: #00ffff;">not</span> FULL(BUFFER) =&gt;
+    <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">DEPOSIT</span>(NEW_VALUE) <span style="color: #00ffff;">do</span>
+</pre>
+</div>
+<ul>
+<li>Una cláusula <i>accept</i> con una cláusula <i>when</i> es abierta o cerrada
+<ul>
+<li>Una cláusula cuya guarda es verdadera se llama <i>abierta</i></li>
+<li>una cláusula cuya guarda es falsa se llama <i>cerrada</i></li>
+<li>una cláusula sin guarda es siempre abierta.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline49">
+<div class="slide-header"></div>
+<h3 id="orgheadline49">Semántica del <i>select</i> con cláusulas <i>accept</i> con guardas</h3>
+<ul>
+<li><i>select</i> primero verifica las guardas de todas las cláusulas</li>
+<li>Si exactamente una está abierta, se comprueba la cola de mensajes</li>
+<li>Si más de uno está abierto, no deterministicamente se elige una cola
+entre ellas para comprobar los mensajes.</li>
+<li>Si todos están cerrados, es un error de tiempo de ejecución</li>
+<li>Una cláusula <i>select</i> puede incluir una cláusula <i>else</i> para evitar el error
+<ul>
+<li>Cuando se completa la cláusula <i>else</i>, el bucle se repite</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline50">
+<div class="slide-header"></div>
+<h3 id="orgheadline50">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">GAS_STATION_ATTENDANT</span> <span style="color: #00ffff;">is</span>
+        <span style="color: #00ffff;">entry</span> <span style="color: #87cefa;">SERVICE_ISLAND</span> (CAR : CAR_TYPE);
+        <span style="color: #00ffff;">entry</span> <span style="color: #87cefa;">GARAGE</span> (CAR : CAR_TYPE);
+        <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">GAS_STATION_ATTENDANT</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline51">
+<div class="slide-header"></div>
+<h3 id="orgheadline51">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">GAS_STATION_ATTENDANT</span> <span style="color: #00ffff;">is</span>
+  <span style="color: #00ffff;">begin</span>
+    <span style="color: #00ffff;">loop</span>
+      <span style="color: #00ffff;">select</span>
+        <span style="color: #00ffff;">when</span> GAS_AVAILABLE =&gt;
+                   <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">SERVICE_ISLAND</span> (CAR : CAR_TYPE) <span style="color: #00ffff;">do</span>
+                 FILL_WITH_GAS (CAR);
+               <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">SERVICE_ISLAND</span>;
+      <span style="color: #00ffff;">or</span>
+             <span style="color: #00ffff;">when</span> GARAGE_AVAILABLE =&gt;
+               <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">GARAGE</span> (CAR : CAR_TYPE) <span style="color: #00ffff;">do</span>
+                 FIX (CAR);
+               <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">GARAGE</span>;
+      <span style="color: #00ffff;">else</span>
+             SLEEP;
+      <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">select</span>;
+    <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+  <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">GAS_STATION_ATTENDANT</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline52">
+<div class="slide-header"></div>
+<h3 id="orgheadline52">Sincronización de Competición con Pasaje de Mensajes</h3>
+<ul>
+<li>Modela el acceso mutuamente exclusivo a los datos compartidos</li>
+<li>Ejemplo: un búfer compartido</li>
+<li>Encapsula el búfer y sus operaciones en una tarea</li>
+<li>La sincronización de la competencia está implícita en la semántica de las cláusulas <i>accept</i>
+<ul>
+<li>Sólo una cláusula <i>accept</i> en una tarea puede estar activa en un momento dado.</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline53">
+<div class="slide-header"></div>
+<h3 id="orgheadline53">Concurrencia en Ada 95</h3>
+<ul>
+<li>Ada 95 incluye las características de Ada 83 para la concurrencia, además
+de dos nuevas características:
+<ul>
+<li>Objetos protegidos: una forma más eficiente de implementar datos
+compartidos para permitir el acceso a una estructura de datos
+compartida que se puede hacer sin <i>rendezvous</i></li>
+<li>Comunicación asincrónica</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline54">
+<div class="slide-header"></div>
+<h3 id="orgheadline54">Objetos Protegidos de Ada 95</h3>
+<ul>
+<li>Un objeto protegido es similar a un tipo de dato abstracto</li>
+<li>El acceso a un objeto protegido es a través de mensajes pasados a
+las entradas, como con una tarea, o a través de subprogramas protegidos</li>
+<li>Un procedimiento protegido proporciona acceso de lectura y escritura mutuamente exclusivo a objetos protegidos</li>
+<li>Una función protegida proporciona acceso concurrente de sólo lectura
+a objetos protegidos.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline55">
+<div class="slide-header"></div>
+<h3 id="orgheadline55">Evaluación de <b>Ada</b></h3>
+<ul>
+<li>El modelo de concurrencia de pasaje de mensajes es potente y general.</li>
+<li>Los objetos protegidos son una mejor manera de proporcionar datos compartidos sincronizados</li>
+<li>En ausencia de procesadores distribuidos, la elección entre
+monitores y tareas con el paso de mensajes es algo una cuestión de
+gusto</li>
+<li>Para sistemas distribuidos, el paso de mensajes es un mejor modelo para la concurrencia.</li>
+
+</ul>
 <div class="slide-footer"></div>
 </section>
 </section>

@@ -67,14 +67,27 @@
 <li><a href="#/slide-orgheadline28">Evaluación de Semáforos</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline33">monitores</a>
+<li><a href="#/slide-orgheadline34">monitores</a>
 <ul>
 <li><a href="#/slide-orgheadline30">monitores</a></li>
 <li><a href="#/slide-orgheadline31">Sincronización de Competición</a></li>
 <li><a href="#/slide-orgheadline32">Sincronización de Cooperación</a></li>
+<li><a href="#/slide-orgheadline33">Evaluación de Monitores</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline34">Pasaje de mensajes</a></li>
+<li><a href="#/slide-orgheadline44">Pasaje de mensajes</a>
+<ul>
+<li><a href="#/slide-orgheadline35">Pasaje de mensajes</a></li>
+<li><a href="#/slide-orgheadline36">Pasaje de mensajes <i>Rendezvous</i></a></li>
+<li><a href="#/slide-orgheadline37">Soporte de <b>Ada</b> para concurrencia</a></li>
+<li><a href="#/slide-orgheadline38">Cuerpo de la Tarea</a></li>
+<li><a href="#/slide-orgheadline39">Ejemplo de Cuerpo de Tarea</a></li>
+<li><a href="#/slide-orgheadline40">Semántica del pasaje de mensajes de <b>Ada</b></a></li>
+<li><a href="#/slide-orgheadline41">Líneas de tiempo del <i>Rendevous</i></a></li>
+<li><a href="#/slide-orgheadline42">Servidor y actor</a></li>
+<li><a href="#/slide-orgheadline43">Representación Gráfica del <i>Rendezvous</i></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </nav>
@@ -593,10 +606,10 @@ en <i>Deadlock</i> si el <i>release</i> de <i>access</i> falla.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline33">
+<section id="slide-orgheadline34">
 <div class="slide-header"></div>
-<h2 id="orgheadline33">monitores</h2>
-<div class="outline-text-2" id="text-orgheadline33">
+<h2 id="orgheadline34">monitores</h2>
+<div class="outline-text-2" id="text-orgheadline34">
 </div><div class="slide-footer"></div>
 </section>
 </section>
@@ -653,13 +666,203 @@ experimenta overflow o underflow</li>
 <p><img src="monitor.png" alt="monitor.png">
 </p>
 </figure>
+
 <div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline34">
+<section id="slide-orgheadline33">
 <div class="slide-header"></div>
-<h2 id="orgheadline34">Pasaje de mensajes</h2>
+<h3 id="orgheadline33">Evaluación de Monitores</h3>
+<ul>
+<li>Es un mejor modo de proporcionar la sincronización de la competencia que los semáforos.</li>
+<li>Los semáforos se pueden utilizar para implementar monitores</li>
+<li>Los monitores pueden ser utilizados para implementar semáforos</li>
+<li>Soporte para la sincronización de cooperación es muy similar al de
+los semáforos, por lo que tiene los mismos problemas</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline44">
+<div class="slide-header"></div>
+<h2 id="orgheadline44">Pasaje de mensajes</h2>
+<div class="outline-text-2" id="text-orgheadline44">
+</div><div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline35">
+<div class="slide-header"></div>
+<h3 id="orgheadline35">Pasaje de mensajes</h3>
+<ul>
+<li>El paso de mensajes es un modelo general para la concurrencia
+<ul>
+<li>Puede modelar tanto los semáforos como los monitores</li>
+<li>No es sólo para la sincronización de la competencia</li>
+
+</ul></li>
+<li>Idea central: la comunicación de tareas es como ver a un médico, la
+mayoría de las veces te espera o lo esperas, pero cuando tu y él
+esten listo, te reunirás o tendras un <i>rendezvous</i></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline36">
+<div class="slide-header"></div>
+<h3 id="orgheadline36">Pasaje de mensajes <i>Rendezvous</i></h3>
+<ul>
+<li>Un mecanismo para permitir que una tarea indique cuándo está
+dispuesta a aceptar mensajes</li>
+<li>Las tareas necesitan una manera de recordar quién está esperando que
+su mensaje sea aceptado y alguna forma "justa" de elegir el
+siguiente mensaje</li>
+<li>Cuando el mensaje de una tarea remitente es aceptado por una
+tarea receptora, la transmisión de mensaje real se denomina <i>rendezvous</i></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline37">
+<div class="slide-header"></div>
+<h3 id="orgheadline37">Soporte de <b>Ada</b> para concurrencia</h3>
+<ul>
+<li>El modelo de mensajes de Ada 83
+<ul>
+<li>Las tareas de Ada tienen parte de especificación y cuerpo como los
+paquetes; La especificación tiene la interfaz, que es la
+colección de puntos de entrada:</li>
+
+</ul></li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">Task_Example</span> <span style="color: #00ffff;">is</span>
+        <span style="color: #00ffff;">entry</span> <span style="color: #87cefa;">ENTRY_1</span> (Item : <span style="color: #00ffff;">in</span> <span style="color: #98fb98;">Integer</span>);
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">Task_Example</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline38">
+<div class="slide-header"></div>
+<h3 id="orgheadline38">Cuerpo de la Tarea</h3>
+<ul>
+<li>El cuerpo de la tarea describe la acción que tiene lugar cuando se
+produce un <i>rendezvous</i></li>
+<li>Una tarea que envía un mensaje se suspende mientras espera que el
+mensaje sea aceptado y durante el <i>rendezvous</i></li>
+<li>Los puntos de entrada en la especificación se describen con
+cláusulas de <i>accept</i> en el cuerpo:</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">entry_name</span> (formal parameters) <span style="color: #00ffff;">do</span>
+    ...
+<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">entry_name</span>
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline39">
+<div class="slide-header"></div>
+<h3 id="orgheadline39">Ejemplo de Cuerpo de Tarea</h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">TASK_EXAMPLE</span> <span style="color: #00ffff;">is</span>
+     <span style="color: #00ffff;">begin</span>
+     <span style="color: #00ffff;">loop</span>
+     <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">ENTRY_1</span> (ITEM: <span style="color: #00ffff;">in</span> <span style="color: #98fb98;">FLOAT</span>) <span style="color: #00ffff;">do</span>
+     ...
+     <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">ENTRY_1</span>;
+     <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
+   <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">TASK_EXAMPLE</span>;
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline40">
+<div class="slide-header"></div>
+<h3 id="orgheadline40">Semántica del pasaje de mensajes de <b>Ada</b></h3>
+<ul>
+<li>La tarea se ejecuta hasta la parte superior de la cláusula <i>accept</i> y
+espera un mensaje</li>
+<li>Durante la ejecución de la cláusula <i>accept</i>, el remitente suspende
+su ejecución</li>
+<li>Los parámetors del <i>accept</i> pueden transmitir información en una o
+ambas direcciones</li>
+<li>Cada cláusula <i>accept</i> tiene una cola asociada para almacenar
+mensajes en espera.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline41">
+<div class="slide-header"></div>
+<h3 id="orgheadline41">Líneas de tiempo del <i>Rendevous</i></h3>
+
+<figure>
+<p><img src="rendevous.png" alt="rendevous.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline42">
+<div class="slide-header"></div>
+<h3 id="orgheadline42">Servidor y actor</h3>
+<ul>
+<li>Una tarea que tiene cláusulas <i>accept</i>, pero ningún otro código
+se llama una tarea servidor</li>
+<li>Una tarea sin cláusulas <i>accept</i> se denomina tarea actor
+<ul>
+<li>Una tarea de actor puede enviar mensajes a otras tareas</li>
+<li>Nota: Un remitente debe conocer el nombre de entrada del receptor, pero no viceversa (asimétrico)</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline43">
+<div class="slide-header"></div>
+<h3 id="orgheadline43">Representación Gráfica del <i>Rendezvous</i></h3>
+
+<figure>
+<p><img src="rendevous2.png" alt="rendevous2.png"> 
+</p>
+</figure>
 <div class="slide-footer"></div>
 </section>
 </section>

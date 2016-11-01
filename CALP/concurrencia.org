@@ -313,3 +313,218 @@ end consumer;
 
 * Pasaje de mensajes
 
+** Pasaje de mensajes
+- El paso de mensajes es un modelo general para la concurrencia
+  - Puede modelar tanto los semáforos como los monitores
+  - No es sólo para la sincronización de la competencia
+- Idea central: la comunicación de tareas es como ver a un médico, la
+  mayoría de las veces te espera o lo esperas, pero cuando tu y él
+  esten listo, te reunirás o tendras un /rendezvous/
+
+** Pasaje de mensajes /Rendezvous/
+- Un mecanismo para permitir que una tarea indique cuándo está
+  dispuesta a aceptar mensajes
+- Las tareas necesitan una manera de recordar quién está esperando que
+  su mensaje sea aceptado y alguna forma "justa" de elegir el
+  siguiente mensaje
+- Cuando el mensaje de una tarea remitente es aceptado por una
+  tarea receptora, la transmisión de mensaje real se denomina /rendezvous/
+
+** Soporte de *Ada* para concurrencia
+- El modelo de mensajes de Ada 83
+  - Las tareas de Ada tienen parte de especificación y cuerpo como los
+    paquetes; La especificación tiene la interfaz, que es la
+    colección de puntos de entrada:
+
+#+BEGIN_SRC ada
+task Task_Example is
+	entry ENTRY_1 (Item : in Integer);
+end Task_Example;
+#+END_SRC
+
+** Cuerpo de la Tarea
+- El cuerpo de la tarea describe la acción que tiene lugar cuando se
+  produce un /rendezvous/
+- Una tarea que envía un mensaje se suspende mientras espera que el
+  mensaje sea aceptado y durante el /rendezvous/
+- Los puntos de entrada en la especificación se describen con
+  cláusulas de /accept/ en el cuerpo:
+
+#+BEGIN_SRC ada
+accept entry_name (formal parameters) do
+    ...
+end entry_name
+#+END_SRC
+
+** Ejemplo de Cuerpo de Tarea
+#+BEGIN_SRC ada
+task body TASK_EXAMPLE is
+     begin
+     loop
+     accept ENTRY_1 (ITEM: in FLOAT) do
+     ...
+     end ENTRY_1;
+     end loop;
+   end TASK_EXAMPLE;
+#+END_SRC
+
+** Semántica del pasaje de mensajes de *Ada*
+- La tarea se ejecuta hasta la parte superior de la cláusula /accept/ y
+  espera un mensaje
+- Durante la ejecución de la cláusula /accept/, el remitente suspende
+  su ejecución
+- Los parámetors del /accept/ pueden transmitir información en una o
+  ambas direcciones
+- Cada cláusula /accept/ tiene una cola asociada para almacenar
+  mensajes en espera.
+
+** Líneas de tiempo del /Rendevous/
+
+[[file:rendevous.png]]
+
+** Servidor y actor
+- Una tarea que tiene cláusulas /accept/, pero ningún otro código
+  se llama una tarea servidor
+- Una tarea sin cláusulas /accept/ se denomina tarea actor
+  - Una tarea de actor puede enviar mensajes a otras tareas
+  - Nota: Un remitente debe conocer el nombre de entrada del receptor, pero no viceversa (asimétrico)
+
+** Representación Gráfica del /Rendezvous/
+
+[[file:rendevous2.png]] 
+
+** Ejemplo de tarea /Actor/
+
+#+BEGIN_SRC ada
+task WATER_MONITOR; -- specification
+task body WATER_MONITOR is -- body
+begin
+  loop
+  if WATER_LEVEL > MAX_LEVEL
+    then SOUND_ALARM;
+  end if;
+  delay 1.0; -- No further execution
+            -- for at least 1 second
+  end loop;
+end WATER_MONITOR;
+#+END_SRC
+
+** Múltiples puntos de entrada
+- Las tareas pueden tener más de un punto de entrada
+  - La especificación de la tarea tiene una cláusula de entrada para
+    cada una.
+  - El cuerpo de la tarea tiene una cláusula de /accept/ para cada
+    cláusula de entrada, colocada en una cláusula de /select/, que
+    está en un bucle.
+
+** Una tarea con múltiples entradas
+
+#+BEGIN_SRC ada
+task body TASK_EXAMPLE is
+      loop
+        select 
+          accept ENTRY_1 (formal params) do
+          ...
+          end ENTRY_1;
+          ...
+        or
+          accept ENTRY_2 (formal params) do
+          ...
+          end ENTRY_2;
+          ...
+        end select;
+      end loop;
+    end TASK_EXAMPLE;
+#+END_SRC
+
+** Semántica de tareas con multiples clausulas select
+- Si exactamente una cola de entrada no esta vacía, elija un mensaje de ella
+- Si más de una cola de entrada no esta vacía, elije una, de forma no determinística, para aceptar un mensaje
+- Si todos están vacíos, espera
+- La construcción se llama a menudo una /espera selectiva/
+- Cláusula /accept/ extendida - código que sigue a la cláusula, pero antes de la siguiente cláusula
+  - Ejecutado simultáneamente con la tarea remitente
+
+** Sincronización de Cooperación con Pasaje de Mensajes
+- Provisto por cláusulas /accept/ con guardas:
+#+BEGIN_SRC ada
+when not FULL(BUFFER) =>
+    accept DEPOSIT(NEW_VALUE) do
+#+END_SRC
+- Una cláusula /accept/ con una cláusula /when/ es abierta o cerrada
+  - Una cláusula cuya guarda es verdadera se llama /abierta/
+  - una cláusula cuya guarda es falsa se llama /cerrada/
+  - una cláusula sin guarda es siempre abierta.
+
+** Semántica del /select/ con cláusulas /accept/ con guardas
+- /select/ primero verifica las guardas de todas las cláusulas
+- Si exactamente una está abierta, se comprueba la cola de mensajes
+- Si más de uno está abierto, no deterministicamente se elige una cola
+  entre ellas para comprobar los mensajes.
+- Si todos están cerrados, es un error de tiempo de ejecución
+- Una cláusula /select/ puede incluir una cláusula /else/ para evitar el error
+  - Cuando se completa la cláusula /else/, el bucle se repite
+
+** Ejemplo de Tarea con clausulas /accept/ con guardas
+
+#+BEGIN_SRC ada
+task GAS_STATION_ATTENDANT is
+  	entry SERVICE_ISLAND (CAR : CAR_TYPE);
+  	entry GARAGE (CAR : CAR_TYPE);
+	end GAS_STATION_ATTENDANT;
+#+END_SRC
+
+** Ejemplo de Tarea con clausulas /accept/ con guardas
+
+#+BEGIN_SRC ada
+task body GAS_STATION_ATTENDANT is
+  begin
+    loop
+      select
+        when GAS_AVAILABLE =>
+	   	   accept SERVICE_ISLAND (CAR : CAR_TYPE) do
+	         FILL_WITH_GAS (CAR);
+	       end SERVICE_ISLAND;
+      or
+	     when GARAGE_AVAILABLE =>
+	       accept GARAGE (CAR : CAR_TYPE) do
+	         FIX (CAR);
+	       end GARAGE;
+      else
+	     SLEEP;
+      end select;
+    end loop;
+  end GAS_STATION_ATTENDANT;
+#+END_SRC
+
+** Sincronización de Competición con Pasaje de Mensajes
+- Modela el acceso mutuamente exclusivo a los datos compartidos
+- Ejemplo: un búfer compartido
+- Encapsula el búfer y sus operaciones en una tarea
+- La sincronización de la competencia está implícita en la semántica de las cláusulas /accept/
+  - Sólo una cláusula /accept/ en una tarea puede estar activa en un momento dado.
+
+** Concurrencia en Ada 95
+- Ada 95 incluye las características de Ada 83 para la concurrencia, además
+  de dos nuevas características:
+  - Objetos protegidos: una forma más eficiente de implementar datos
+    compartidos para permitir el acceso a una estructura de datos
+    compartida que se puede hacer sin /rendezvous/
+  - Comunicación asincrónica
+
+** Objetos Protegidos de Ada 95
+- Un objeto protegido es similar a un tipo de dato abstracto
+- El acceso a un objeto protegido es a través de mensajes pasados a
+  las entradas, como con una tarea, o a través de subprogramas protegidos
+- Un procedimiento protegido proporciona acceso de lectura y escritura mutuamente exclusivo a objetos protegidos
+- Una función protegida proporciona acceso concurrente de sólo lectura
+  a objetos protegidos.
+
+** Evaluación de *Ada*
+- El modelo de concurrencia de pasaje de mensajes es potente y general.
+- Los objetos protegidos son una mejor manera de proporcionar datos compartidos sincronizados
+- En ausencia de procesadores distribuidos, la elección entre
+  monitores y tareas con el paso de mensajes es algo una cuestión de
+  gusto
+- Para sistemas distribuidos, el paso de mensajes es un mejor modelo para la concurrencia.
+

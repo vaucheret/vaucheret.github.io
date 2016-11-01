@@ -207,7 +207,7 @@ proveen el suyo propio?</li>
 <li>¿Los errores detectables por hardware deben ser tratados como
 excepciones que pueden ser manejados?</li>
 <li>¿Hay excepciones predefinidas?</li>
-<li>¿Pueden las excepciones se deshabilitadas? ¿Como?</li>
+<li>¿Pueden las excepciones ser deshabilitadas? ¿Como?</li>
 
 </ul>
 
@@ -511,9 +511,10 @@ excepción.</li>
 <div class="slide-header"></div>
 <h3 id="orgheadline23">Evaluación</h3>
 <ul>
-<li>Las excepciones no son nombradas y que las excepciones detectables
+<li>Las excepciones no tienen nombre y las excepciones detectables
 por software  o hardware y del sistema no puede ser manejadas.</li>
-<li>Vincular excepciones a los manejadores a través del tipo del parámetro no promueve la legibilidad.</li>
+<li>Vincular excepciones a los manejadores a través del tipo del
+parámetro no mejora la legibilidad.</li>
 
 </ul>
 <div class="slide-footer"></div>
@@ -590,7 +591,7 @@ como en: <code>throw new MiExcepción ();</code></li>
 <div class="slide-header"></div>
 <h3 id="orgheadline28">Vinculando Excepciones a Manejadores</h3>
 <ul>
-<li>Asociaciar una excepción a un controlador es más simple en Java que en <b>C++</b>
+<li>Asociar una excepción a un controlador es más simple en <b>Java</b> que en <b>C++</b>
 <ul>
 <li>Una excepción se liga al  primer controlador con un parámetro de la misma clase que el objeto lanzado o en un ancestro de ella.</li>
 
