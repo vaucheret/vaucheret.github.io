@@ -41,23 +41,25 @@
 * Problemas Prácticos del Voto Electrónico
 
 ** Problemas Prácticos del Voto Electrónico
+
 - El uso de dispositivos electrónicos en el procedimiento de emisión
   del voto introduce un "testigo" entre el votante y su voto, con la
   capacidad: 
+ #+ATTR_REVEAL: :frag (roll-in)
   - violar el secreto del voto (privacidad)
   - de cambiar la elección del votante (integridad)
 
 
 ** Problemas Prácticos del Voto Electrónico
-
+ #+ATTR_REVEAL: :frag (roll-in)
 - Todo sistema complejo tendrá inevitablemente errores.
 
 - En el caso del VE, ~además~ de los errores, tenemos que lidiar con
   posibles ataques internos que traten de esconder un fragmento de
   código malicioso ~intencional~
 
-- También se tiene el problema de la ~escalabilidad de las amenazas
-
+- También se tiene el problema de la ~escalabilidad~ de las amenazas
+ #+ATTR_REVEAL: :frag (roll-in)
   - En un sistema tradicional, para crear cambios a una escala
     suficiente para cambiar una elección deben estar involucrados
     muchos individuos
@@ -72,6 +74,7 @@
 
 ** En EEUU
 - Cientos de errores en diversos estados. Algunos destacados
+ #+ATTR_REVEAL: :frag (roll-in)
   - 2000: Volusia County, Florida: Gore recibió -16.022 (negativos)
 
     - Philip Meyer. Glitch led to ’Bush wins’ call, USA Today, 29 de
@@ -88,6 +91,7 @@
 #+REVEAL: split
   - 2007: "no system used in Ohio is without significant and serious
     risks to voting integrity" (Secretario de Estado).
+ #+ATTR_REVEAL: :frag (roll-in)
   - 2015: el sistema AVS WinVote:
     - Tiene password débiles que no pueden ser cambiadas
     - Usa Wired Equivalent Privacy (WEP) (mostrado inseguro en 2001 y
@@ -98,7 +102,9 @@
         https://www.schneier.com/blog/archives/2015/04/an_incredibly_i.html
 
 ** En Brasil
+ #+ATTR_REVEAL: :frag (roll-in)
 - Falla en la protección del secreto del voto:
+ #+ATTR_REVEAL: :frag (roll-in)
   - Se puede saber quien votó a quien por una mala implementación del
     mecanismo de aleatoriedad que supuestamente oculta el orden en el
     cual los votos fueron emitidos por los votantes.
@@ -110,8 +116,15 @@
   - Diego Aranha. Software vulnerabilities in the Brazilian voting
     machine, publicado en Design, Development, and Use of Secure
     Electronic Voting Systems (2014) y tambien en RealWorldCrypto2016.
-      
 
+** En India
+- hackers lograron manipular los resultados con un celular.
+  - S. Wolchok, E. Wustrow, J. A. Halderman, H. K. Prasad,
+    A. Kankipati, S. K. Sakhamuri, V. Yagati, y R. Gonggrijp. Security
+    analysis of India’s electronic voting machines, en Proceedings of
+    the 17th ACM conference on Computer and communications security,
+    2010, pp. 1–14. https://indiaevm.org/evm_tr2010-jul29.pdf,
+      
 ** En Holanda
 - dejó de usarse en 2007 al probarse que los votos podian ser leidos
   a varios metros de distancia usando *Van Eck Phreaking* (lectura a
@@ -124,14 +137,6 @@
 #+REVEAL: split
 
 #+REVEAL_HTML: <iframe  src="losproblemasdevotar.mp4" width="600" height="600"  ></iframe>
-
-** En India
-- hackers lograron manipular los resultados con un celular.
-  - S. Wolchok, E. Wustrow, J. A. Halderman, H. K. Prasad,
-    A. Kankipati, S. K. Sakhamuri, V. Yagati, y R. Gonggrijp. Security
-    analysis of India’s electronic voting machines, en Proceedings of
-    the 17th ACM conference on Computer and communications security,
-    2010, pp. 1–14. https://indiaevm.org/evm_tr2010-jul29.pdf,
 
 ** En Irlanda
 - evaluaron un sistema en elecciones piloto y determinaron que no se
@@ -154,12 +159,31 @@
   - Cuando se utilizan aparatos electrónicos de votación, los pasos
     esenciales de la gestión electoral y de la determinación del
     resultado deben ser pasibles de ser comprobados por el ciudadano
-    de manera confiable y sin conocimientos técnicos especiales. 
- 
+    de manera confiable y sin conocimientos técnicos especiales.
+
+** Finlandia
+- En 2006, el Parlamento aprobó el proyecto de Ley para la utilización
+  del voto electrónico en las elecciones municipales de 2008.
+- En 2008, se realizó una prueba de voto electrónico, en tres
+  municipios durante las elecciones municipales. Sin embargo, debido a
+  problemas de usabilidad la votación fue anulada. El sistema
+  utilizaba urnas electrónicas.
+- En 2010, el gobierno decidió no continuar de momento con la votación
+  electrónica. Mientras tanto observaría los avances en votación
+  electrónica a nivel internacional.
+
+** Reino Unido
+- Entre 2002 y 2007, el Reino Unido ha llevado a cabo más de treinta
+  pruebas pilotos con diferentes sistemas de votación electrónica.
+- En 2008, La Comisión Electoral declaró que con respecto a las
+  pruebas realizadas la seguridad y garantías adoptadas eran
+  insuficientes y en consecuencia, determinó que no se continuaría con
+  el voto electrónico. 
 
 * No es Voto Electrónico.  Es Boleta Electrónica!
 
 ** Aclaremos los términos
+ #+ATTR_REVEAL: :frag (roll-in)
 - Se pueden distinguir dos etapas en un proceso de votación moderno:
   - Creación del voto :: el elector selecciona de alguna forma entre
        las opciones disponibles y “crea" el voto, en algún formato,
@@ -172,6 +196,7 @@
   alguna de estas etapas.
 
 ** DRE's y IRE's
+ #+ATTR_REVEAL: :frag (roll-in)
 - En algunos sistemas de Voto Electrónico tanto la emisión como el
   conteo de votos se hacen en una sola máquina.
 - Estos sistemas suelen llamarse de *registro
@@ -270,6 +295,7 @@
     of voting systems". Mathematical and Computer Modelling 48 (9): 1628-45)
 
 ** Limitaciones y Utilidad del Teorema Hosp y Vora
+ #+ATTR_REVEAL: :frag (roll-in)
 - El teorema de Hosp y Vora no habla específicamente del VE, sino de cualquier sistema de votación.
 - Ademas, se refiere a los conceptos de integridad, verificabilidad y
   privacidad perfectas.
@@ -284,6 +310,7 @@
 * Sistema BUE (Vot.Ar) 
 
 ** Utilizado en CABA, Salta, Ciudad de Neuquén
+ #+ATTR_REVEAL: :frag (roll-in)
 - Emisión electrónica del voto: la elección del votante es impresa en
   forma térmica y ademas grabada en un chip RFID.
 - La boleta se deposita en una urna.
@@ -293,6 +320,7 @@
   electrónicamente. (en BsAs, en Salta hubo una auditoría postelección de algunas urnas).
 
 ** Defectos de BUE (Vot.Ar)
+ #+ATTR_REVEAL: :frag (roll-in)
 - El chip permite individualizar las boletas, pues vienen numerados.
 - Durante 7 años y varias auditorias no se detectó un error de
   programación que permitía generar una boleta que contuviera mas de
@@ -348,6 +376,7 @@
 [[file:jtagmesa.jpg]]
 
 ** Transmisión de Resultados
+ #+ATTR_REVEAL: :frag (roll-in)
 - Cualquiera podía acceder a los certificados criptográficos que se
   iban a usar en la elección, pudiendo de esta forma alterar la transmisión de los resultados.
 - Joaquin Sorianello avisó de este problema, y MSA en vez de premiarlo
@@ -358,6 +387,9 @@
 
 
 
+** Escritinio 
+
+#+REVEAL_HTML: <iframe  src="supermercado.mp4" width="600" height="600"  ></iframe>
 
 * Requerimientos 
 
@@ -414,7 +446,43 @@
      criptografía, se debe especificar cómo y quien se encargará de
      resguardar las claves criptográficas.
 
+* Requerimientos Incumplibles
 
+** ¿Auditoría?
+- el testing nunca puede asegurar la ausencia de defectos.
+- auditar el software y hardware
+- ¿y el compilador? 
+  - "Reflections on trusting trust" Ken Thompson Communications of the
+    ACM Volume 27 Issue 8, Aug 1984 Pages 761-763
+- ¿Cómo sabemos que el software que se va a ejecutar es el que fue auditado?
+
+* Alternativas 
+
+** BUP Boleta Unica de Papel
+ #+ATTR_REVEAL: :frag (roll-in)
+- Al contrario de la boleta partidaria, es provista por el estado
+- evita el robo de boletas
+- el votante utiliza dispositivo mecánico de votación (no electrónico)
+ #+ATTR_REVEAL: :frag (roll-in)
+  - un lapiz
+
+** Como en Córdoba
+
+[[file:cordoba.jpg]]
+
+** Como en Santa Fe
+
+[[file:boletastafe.jpg]]
+
+** Como los argentinos que viven en el exterior
+
+[[file:boletaexterior.jpg]] 
+
+** Dónde utilizar tecnología
+- conteo electrónico de BUP  (FAMAF Universidad Nacional de Córdoba)
+- acta electrónica (UNCOMA sistema gukena)
+- elimina el error en la confección de actas y la velocidad 
+  escrutinio es similar al voto electrónico.
 * Footnotes
 
 [fn:1] SIE 2016, 10o Simposio de Informática en el Estado, MIGUEL
