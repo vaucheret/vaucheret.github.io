@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Consideraciones sobre el voto electrónico</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js-master/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
+<h1>Consideraciones sobre el voto electrónico</h1><h2>Claudio Vaucheret</h2><h2><a href="mailto:cv@fi.uncoma.edu.ar">cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-02 vie&gt;</span></span></h2>
+</section>
+<section id="table-of-contents">
+<nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline2">Problemas Prácticos del Voto Electrónico</a>
+<ul>
+<li><a href="#/slide-orgheadline1">Problemas Prácticos del Voto Electrónico</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline9">Problemas Prácticos del VE En el Mundo</a>
+<ul>
+<li><a href="#/slide-orgheadline3">En EEUU</a></li>
+<li><a href="#/slide-orgheadline4">En Brasil</a></li>
+<li><a href="#/slide-orgheadline5">En Holanda</a></li>
+<li><a href="#/slide-orgheadline6">En India</a></li>
+<li><a href="#/slide-orgheadline7">En Irlanda</a></li>
+<li><a href="#/slide-orgheadline8">En Alemania</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline11">No es Voto Electrónico.  Es Boleta Electrónica!</a>
+<ul>
+<li><a href="#/slide-orgheadline10">Aclaremos los términos</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline20">Problemas Teóricos</a>
+<ul>
+<li><a href="#/slide-orgheadline12">Problemas Teóricos (para cualquier sistema de votación)</a></li>
+<li><a href="#/slide-orgheadline13">Integridad y Verificabilidad</a></li>
+<li><a href="#/slide-orgheadline14">Integridad</a></li>
+<li><a href="#/slide-orgheadline15">Verificabilidad</a></li>
+<li><a href="#/slide-orgheadline16">Integridad y Verificabilidad</a></li>
+<li><a href="#/slide-orgheadline17">Privacidad</a></li>
+<li><a href="#/slide-orgheadline18">El teorema de Hosp y Vora</a></li>
+<li><a href="#/slide-orgheadline19">Limitaciones y Utilidad del Teorema Hosp y Vora</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline30">Sistema BUE (Vot.Ar)</a>
+<ul>
+<li><a href="#/slide-orgheadline21">Utilizado en CABA, Salta, Ciudad de Neuquén</a></li>
+<li><a href="#/slide-orgheadline22">Defectos de BUE (Vot.Ar)</a></li>
+<li><a href="#/slide-orgheadline23">Lectura de RFID por celular (Javier Smaldone)</a></li>
+<li><a href="#/slide-orgheadline24">Lectura de escritura de RFID a distancia (Javier Smaldone)</a></li>
+<li><a href="#/slide-orgheadline25">BUE (Vot.Ar)</a></li>
+<li><a href="#/slide-orgheadline26">Sistema Oculto</a></li>
+<li><a href="#/slide-orgheadline27">Sistema Oculto</a></li>
+<li><a href="#/slide-orgheadline28">Sistema Oculto</a></li>
+<li><a href="#/slide-orgheadline29">Transmisión de Resultados</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline34">Requerimientos</a>
+<ul>
+<li><a href="#/slide-orgheadline31">Requerimientos Generales (MONTES,PENAZZI y WOLOVICK)</a></li>
+<li><a href="#/slide-orgheadline32">Requerimientos de la Máquina Emisora del voto</a></li>
+<li><a href="#/slide-orgheadline33">Requerimientos de la Máquina que Cuenta los Votos.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+</section>
+
+
+<section>
+<section id="slide-orgheadline2">
+<div class="slide-header"></div>
+<h2 id="orgheadline2">Problemas Prácticos del Voto Electrónico</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline1">
+<div class="slide-header"></div>
+<h3 id="orgheadline1">Problemas Prácticos del Voto Electrónico</h3>
+<ul>
+<li>Todo sistema complejo tendrá inevitablemente errores.</li>
+
+<li>En el caso del VE, <code>además</code> de los errores, tenemos que lidiar con
+posibles ataques internos que traten de esconder un fragmento de
+código malicioso <code>intencional</code></li>
+
+<li>También se tiene el problema de la <code>escalabilidad de las amenazas</code>
+
+<ul>
+<li>En un sistema tradicional, para crear cambios a una escala
+suficiente para cambiar una elección deben estar involucrados
+muchos individuos-</li>
+
+<li>En el VE, los individuos necesarios son mucho menos, y un par de
+líneas de código hábilmente ocultas pueden cambiar cientos de
+miles de votos.</li>
+
+</ul></li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline9">
+<div class="slide-header"></div>
+<h2 id="orgheadline9">Problemas Prácticos del VE En el Mundo</h2>
+<div class="outline-text-2" id="text-orgheadline9">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline3">
+<div class="slide-header"></div>
+<h3 id="orgheadline3">En EEUU</h3>
+<ul>
+<li>Cientos de errores en diversos estados. Algunos destacados
+<ul>
+<li>2000: Volusia County, Florida: Gore recibió -16.022 (negativos)
+
+<ul>
+<li>Philip Meyer. Glitch led to ’Bush wins’ call, USA Today, 29 de
+noviembre de 2000, <a href="http://www.unc.edu/~pmeyer/usat29nov2000.html">http://www.unc.edu/~pmeyer/usat29nov2000.html</a>,</li>
+
+</ul></li>
+
+<li>2003: Boone County, Iowa: sobre 50.000 votantes registrados el
+equipo electrónico conto 140.000.
+
+<ul>
+<li>Grant Gross. Voting machine glitch shows thousands of extra
+votes, 2013, <a href="http://www.networkworld.com/article/2328396/software/voting-machine-glitch-shows-thousands-of-extra-votes">http://www.networkworld.com/article/2328396/software/voting-machine-glitch-shows-thousands-of-extra-votes</a>.</li>
+
+</ul></li>
+
+<li>2007: California se descertificaron todas las máquinas de votación
+electrónica por considerarlas inseguras.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li>2007: "no system used in Ohio is without significant and serious
+risks to voting integrity" (Secretario de Estado).</li>
+<li>2015: el sistema AVS WinVote:
+<ul>
+<li>Tiene password débiles que no pueden ser cambiadas</li>
+<li>Usa Wired Equivalent Privacy (WEP) (mostrado inseguro en 2001 y
+reemplazado por WPA desde 2003).</li>
+<li>Usa una versión de Windows XP Embedded que no ha sido patcheada
+desde 2004.
+<ul>
+<li>Bruce Schneier. An Incredibly Insecure Voting Machine,
+<a href="https://www.schneier.com/blog/archives/2015/04/an_incredibly_i.html">https://www.schneier.com/blog/archives/2015/04/an_incredibly_i.html</a></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline4">
+<div class="slide-header"></div>
+<h3 id="orgheadline4">En Brasil</h3>
+<ul>
+<li>Falla en la protección del secreto del voto:
+<ul>
+<li>Se puede saber quien votó a quien por una mala implementación del
+mecanismo de aleatoriedad que supuestamente oculta el orden en el
+cual los votos fueron emitidos por los votantes.</li>
+<li>El sistema de verificación de identidad del votante esta enlazado
+con la máquina de votación.</li>
+
+</ul></li>
+<li>Uso de algoritmos criptográficos obsoletos.</li>
+<li>Vulnerables a amenazas internas.</li>
+<li>Falla en el uso de mecanismos de cifrado.
+<ul>
+<li>Diego Aranha. Software vulnerabilities in the Brazilian voting
+machine, publicado en Design, Development, and Use of Secure
+Electronic Voting Systems (2014) y tambien en RealWorldCrypto2016.</li>
+
+</ul></li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline5">
+<div class="slide-header"></div>
+<h3 id="orgheadline5">En Holanda</h3>
+<ul>
+<li>dejó de usarse en 2007 al probarse que los votos podian ser leidos
+a varios metros de distancia usando <b>Van Eck Phreaking</b> (lectura a
+distancia del monitor captando las radiaciones electromágneticas de
+la pantalla), y que los programas podían ser alterados.
+<ul>
+<li>R. Gonggrijp y W.J. Hengeveld. Studying the Nedap/Groenendaal ES3B
+voting computer: A computer security perspective. En Proc. 2007
+USENIX/ACCURATE Electronic Voting Technology Workshop (EVT ’07), Boston, 2007.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section>
+
+<iframe  src="losproblemasdevotar.mp4" width="600" height="600"  ></iframe>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline6">
+<div class="slide-header"></div>
+<h3 id="orgheadline6">En India</h3>
+<ul>
+<li>hackers lograron manipular los resultados con un celular.
+<ul>
+<li>S. Wolchok, E. Wustrow, J. A. Halderman, H. K. Prasad,
+A. Kankipati, S. K. Sakhamuri, V. Yagati, y R. Gonggrijp. Security
+analysis of India’s electronic voting machines, en Proceedings of
+the 17th ACM conference on Computer and communications security,
+2010, pp. 1–14. <a href="https://indiaevm.org/evm_tr2010-jul29.pdf">https://indiaevm.org/evm_tr2010-jul29.pdf</a>,</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline7">
+<div class="slide-header"></div>
+<h3 id="orgheadline7">En Irlanda</h3>
+<ul>
+<li>evaluaron un sistema en elecciones piloto y determinaron que no se
+podía garantizar la integridad de ninguna elección que usara ese
+sistema. Costo del experimento: 54 millones de euros.
+<ul>
+<li>Marie O’Halloran y Michael O’Regan. E-voting machines to be
+disposed of, The Irish Times, 6 de octubre de 2010, <a href="http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193">http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193</a>,</li>
+<li>Eliminated: After ten years and e55m, e-voting machines finally
+disposed of, TheJournal.ie, 28 de junio de 2012,
+<a href="http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012">http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012</a>,</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline8">
+<div class="slide-header"></div>
+<h3 id="orgheadline8">En Alemania</h3>
+<ul>
+<li>los sistemas usados hasta ese momento se declararon inconstitucionales.
+<ul>
+<li>El principio de la naturaleza pública de la elección, consagrado
+en el Art. 38 conjuntamente con el Art. 20, párrafos. 1 y. 2 de la
+Constitución, requiere que todos los pasos esenciales de la
+elección estén sometidos a la verificación por parte del público,
+siempre y cuando no haya otros aspectos constitucionales que
+justifiquen una excepción.</li>
+<li>Cuando se utilizan aparatos electrónicos de votación, los pasos
+esenciales de la gestión electoral y de la determinación del
+resultado deben ser pasibles de ser comprobados por el ciudadano
+de manera confiable y sin conocimientos técnicos especiales.</li>
+
+</ul></li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline11">
+<div class="slide-header"></div>
+<h2 id="orgheadline11">No es Voto Electrónico.  Es Boleta Electrónica!</h2>
+<div class="outline-text-2" id="text-orgheadline11">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline10">
+<div class="slide-header"></div>
+<h3 id="orgheadline10">Aclaremos los términos</h3>
+<ul>
+<li>Se pueden distinguir dos etapas en un proceso de votación moderno:
+<dl>
+<dt>Creación del voto</dt><dd>el elector selecciona de alguna forma entre
+las opciones disponibles y “crea" el voto, en algún formato,
+por ejemplo, seleccionando boletas y colocandolas en un sobre,
+marcando una boleta única, o interactuando con una máquina.</dd>
+<dt>Conteo de los votos</dt><dd>luego de cerrado el tiempo disponible para
+votar, se cuentan los votos resguardados.</dd>
+
+</dl></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline20">
+<div class="slide-header"></div>
+<h2 id="orgheadline20">Problemas Teóricos</h2>
+<div class="outline-text-2" id="text-orgheadline20">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline12">
+<div class="slide-header"></div>
+<h3 id="orgheadline12">Problemas Teóricos (para cualquier sistema de votación)</h3>
+<ul>
+<li>El requerimiento de privacidad diferencia un sistema de votación de
+un cajero automático, donde la identidad del extractor de dinero es
+conocida, y las transacciones quedan registradas.</li>
+<li>Estos requerimientos conflictúan entre sí pues para preservar la
+privacidad no es deseable guardar mucha información , pero para
+garantizar la verificabilidad se necesitan muchos registros.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline13">
+<div class="slide-header"></div>
+<h3 id="orgheadline13">Integridad y Verificabilidad</h3>
+<ul>
+<li>Dados votos \(v_i\), denotemos por \(\vec{V}\) el vector de votos \(v_i\)
+y \(\sum(\vec{V})\) al resultado (teórico) de sumar todos los votos y
+contar cuántos votos fueron para cada candidato.</li>
+<li>Por ejemplo, "51234 votos para A, 3456 votos para B", etc</li>
+<li>Cualquier sistema de votación deberá tener algún algoritmo que tome
+como entrada \(\vec{V}\) y posiblemente algunas otras variables
+\(\vec{X}\) , algunas de las cuales pueden ser aleatorias y devuelva
+una suma de votos. Llamemos <code>Conteo</code> a ese algoritmo.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline14">
+<div class="slide-header"></div>
+<h3 id="orgheadline14">Integridad</h3>
+<dl>
+<dt><b>Definición</b></dt><dd>Un sistema tendrá integridad perfecta si \(Conteo(V,X) = \sum(\vec{V}) \forall V, X\)
+
+<ul>
+<li>Los sistemas de conteo manual no tienen integridad perfecta, por
+los errores naturales del conteo manual.</li>
+
+<li>Los sistemas de conteo electrónico tienen mejor integridad y esta
+es una de las razones por las cuales se apoya el uso del VE.</li>
+
+<li>Pero hay que distinguir entre el resultado
+\(Conteo(\vec{V},\vec{X})\) que se <b>obtendría</b> si usaramos <code>Conteo</code>
+del resultado que <b>efectivamente produce</b> el sistema.</li>
+
+</ul></dd>
+
+</dl>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline15">
+<div class="slide-header"></div>
+<h3 id="orgheadline15">Verificabilidad</h3>
+<ul>
+<li>Denotaremos por \(ConteoOficial(\vec{V},\vec{X})\) al resultado que
+el sistema realmente produce como <i>output</i>.</li>
+<li>Sea \(R(\vec{V},\vec{X})\) el conjunto de registros que el sistema
+produce durante su operación.</li>
+<li>Esto no sólo incluye \(ConteoOficial(\vec{V},\vec{X})\) sino todo
+otro registro que permita demostrar que el sistema funcionó
+correctamente.</li>
+
+</ul>
+
+
+<dl>
+<dt><b>Definición</b></dt><dd>Un sistema tendrá verificabilidad perfecta si
+\(R(\vec{V},\vec{X})\) permite determinar con certeza si
+\(ConteoOficial(\vec{V},\vec{X}) = Conteo(\vec{V},\vec{X})\) o no.</dd>
+
+</dl>
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline16">
+<div class="slide-header"></div>
+<h3 id="orgheadline16">Integridad y Verificabilidad</h3>
+<ul>
+<li>Ejemplo: los vendedores de algúnos sistemas de VE proponen una
+“black box" en la cual entran sólo los votos \(\vec{V}\) y sale sólo
+la suma \(\sum(\vec{V})\)</li>
+<li>Como \(R(\vec{V},\vec{X}) = \emptyset\), estos sistemas tienen
+verificabilidad nula, asi que aún si tuvieran integridad perfecta,
+no nos interesan.</li>
+<li>Observar que en la definición de verificabilidad perfecta no se pide
+que \(ConteoOficial(\vec{V},\vec{X}) = Conteo(\vec{V},\vec{X})\), sino
+que esa proposición <i>pueda ser verificada</i> a partir de \(R(\vec{V},\vec{X})\)</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline17">
+<div class="slide-header"></div>
+<h3 id="orgheadline17">Privacidad</h3>
+<ul>
+<li>Observemos que el voto nunca es 100% secreto pues \(\sum(\vec{V})\)
+  revela ALGUNA información sobre los votos.</li>
+<li>Como ejemplo extremo, si todos los votos son para un mismo
+candidato, se saben quien voto por quien.</li>
+
+</ul>
+
+
+<dl>
+<dt><b>Definición</b></dt><dd>Se dice que un sistema tiene privacidad perfecta si
+la ÚNICA información sobre \(\vec{V}\) que se puede obtener de los
+registros del sistema es la información dada por \(\sum(\vec{V})\).</dd>
+
+</dl>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline18">
+<div class="slide-header"></div>
+<h3 id="orgheadline18">El teorema de Hosp y Vora</h3>
+<ul>
+<li>Hosp y Vora probaron un teorema que dice lo siguiente:</li>
+
+</ul>
+
+
+<dl>
+<dt><b>Teorema</b></dt><dd>No existe ningún sistema de votación (electrónico o no)
+que tenga al mismo tiempo las propiedades de integridad perfecta,
+verificabilidad perfecta y privacidad perfecta.
+
+<ul>
+<li>(Hosp, Ben, y Poorvi L. Vora. 2008.“An information-theoretic model
+of voting systems". Mathematical and Computer Modelling 48 (9): 1628-45)</li>
+
+</ul></dd>
+
+</dl>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline19">
+<div class="slide-header"></div>
+<h3 id="orgheadline19">Limitaciones y Utilidad del Teorema Hosp y Vora</h3>
+<ul>
+<li>El teorema de Hosp y Vora no habla específicamente del VE, sino de cualquier sistema de votación.</li>
+<li>Ademas, se refiere a los conceptos de integridad, verificabilidad y
+privacidad perfectas.</li>
+<li>Pero en general en la vida nos conformamos con probabilidades bajas
+aunque no sean cero.</li>
+<li>Asi que en principio, se podría bypassear las limitaciones de
+HospVora, aceptando alguna disminución de requerimientos.</li>
+<li>Pero en implementaciones no mecánicas del dispositivo de votación toma relevancia fundamental</li>
+<li>Hace el problema de votación muy diferente al de transacciones
+bancarias.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline30">
+<div class="slide-header"></div>
+<h2 id="orgheadline30">Sistema BUE (Vot.Ar)</h2>
+<div class="outline-text-2" id="text-orgheadline30">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline21">
+<div class="slide-header"></div>
+<h3 id="orgheadline21">Utilizado en CABA, Salta, Ciudad de Neuquén</h3>
+<ul>
+<li>Emisión electrónica del voto: la elección del votante es impresa en
+forma térmica y ademas grabada en un chip RFID.</li>
+<li>La boleta se deposita en una urna.</li>
+<li>Al final del dia se cuentan electrónicamente, acercando la boleta a un lector RFID.</li>
+<li>La máquina genera un acta la cual es transmitida electrónicamente.</li>
+<li>Sólo se cuentan a mano los votos que no pudieron ser leidos
+electrónicamente. (en BsAs, en Salta hubo una auditoría postelección de algunas urnas).</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline22">
+<div class="slide-header"></div>
+<h3 id="orgheadline22">Defectos de BUE (Vot.Ar)</h3>
+<ul>
+<li>El chip permite individualizar las boletas, pues vienen numerados.</li>
+<li>Durante 7 años y varias auditorias no se detectó un error de
+programación que permitía generar una boleta que contuviera mas de
+un voto. (al parecer ahora lo corrigieron, gracias a un hacker que advirtió el error).</li>
+<li>Puede ser leido por un celular llevado por el votante con solo
+acercar el celular a la boleta, permitiendo la compra de votos, como
+fue demostrado ya el año pasado.</li>
+<li>Este año esto fue mostrado en la Comisión de Asuntos
+Constitucionales de Diputados por Javier Smaldone.</li>
+<li>Con un simple "RFID burner" se pueden quemar los chips sin ser detectados.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline23">
+<div class="slide-header"></div>
+<h3 id="orgheadline23">Lectura de RFID por celular (Javier Smaldone)</h3>
+<iframe  src="comparandocopiandoyquemando.mp4" width="600" height="400"  ></iframe>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline24">
+<div class="slide-header"></div>
+<h3 id="orgheadline24">Lectura de escritura de RFID a distancia (Javier Smaldone)</h3>
+<iframe  src="DiferenciaciRFID.mp4" width="600" height="400"  ></iframe>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline25">
+<div class="slide-header"></div>
+<h3 id="orgheadline25">BUE (Vot.Ar)</h3>
+<ul>
+<li>Se hicieron declaraciones tales como:
+<ul>
+<li>"Ponemos un equipo, una máquina absolutamente boba, que no tiene
+disco rígido, que no tiene memoria, que no tiene capacidad de
+almacenamiento alguno" (Sergio Angelini, CEO de MSA)</li>
+<li>"No tiene memoria la máquina, porque es una impresora" (Guillermo
+Montenegro, Ministro de Justicia y Seguridad de CABA)</li>
+
+</ul></li>
+<li>pero la emisora de votos tiene un 2do núcleo de CPU no declarado con
+suficiente memoria para guardar todos los votos, el cual nunca fue
+auditado.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline26">
+<div class="slide-header"></div>
+<h3 id="orgheadline26">Sistema Oculto</h3>
+<ul>
+<li>El sistema está compuesto por dos computadoras independientes, cada
+una de las cuales ejecuta un sistema operativo y aplicaciones sobre
+él.</li>
+
+</ul>
+
+
+<figure>
+<p><img src="segunda.png" alt="segunda.png">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline27">
+<div class="slide-header"></div>
+<h3 id="orgheadline27">Sistema Oculto</h3>
+<ul>
+<li>El sistema basado en el procesador ARM tiene capacidad de
+almacenamiento permanente, suficiente para almacenar la información
+de los votos de más de una mesa.</li>
+<li>El sistema basado en el procesador ARM no ha sido auditado (ni su
+hardware ni su software).</li>
+
+</ul>
+
+
+
+<figure>
+<p><img src="segundohardware.jpg" alt="segundohardware.jpg">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline28">
+<div class="slide-header"></div>
+<h3 id="orgheadline28">Sistema Oculto</h3>
+<ul>
+<li>Llama la atención la colocación de un cable JTAG, accesible en la
+base del equipo, que podría servir para acceder a la memoria de
+almacenamiento permanente del sistema ARM.</li>
+
+</ul>
+
+
+<figure>
+<p><img src="jtagmesa.jpg" alt="jtagmesa.jpg">
+</p>
+</figure>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline29">
+<div class="slide-header"></div>
+<h3 id="orgheadline29">Transmisión de Resultados</h3>
+<ul>
+<li>Cualquiera podía acceder a los certificados criptográficos que se
+iban a usar en la elección, pudiendo de esta forma alterar la transmisión de los resultados.</li>
+<li>Joaquin Sorianello avisó de este problema, y MSA en vez de premiarlo
+lo denunció y le mandó la policia metropolitana.</li>
+<li>Luego de un año, la justicia metropolitana absolvió a Sorianello, y declaro que la seguridad de MSA era “vaga".</li>
+
+</ul>
+
+
+
+
+
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline34">
+<div class="slide-header"></div>
+<h2 id="orgheadline34">Requerimientos</h2>
+<div class="outline-text-2" id="text-orgheadline34">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline31">
+<div class="slide-header"></div>
+<h3 id="orgheadline31">Requerimientos Generales (MONTES,PENAZZI y WOLOVICK<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>)</h3>
+<dl>
+<dt>Requerimiento 1</dt><dd><b>(Reaseguro Individual)</b>. El votante debe contar
+con la certeza absoluta de la confiabilidad de su voto. Es decir
+que la máquina que lo crea no pueda revelarlo en ningún modo.</dd>
+<dt>Requerimiento 2</dt><dd><b>(transparencia)</b>
+<ul>
+<li>Debe evitarse cualquier sistema de VE que use Seguridad por Oscuridad</li>
+<li>Tiempo suficiente para que expertos de todo tipo puedan auditar el sistema</li>
+<li>el acceso al código debe ser abierto</li>
+<li>auditoría independiente del sistema completo incluyendo el
+hardware y sus resultados deben ser públicos</li>
+
+</ul></dd>
+
+</dl>
+</section>
+<section>
+<dl>
+<dt>Requerimiento 3</dt><dd><b>(Separación de Funciones)</b> El conteo electrónico
+debe ser realizado por una máquina físicamente distinta de la que
+emitió los votos.</dd>
+<dt>Requerimiento 4</dt><dd><b>(Capacidad de Auditoría no Electrónica)</b> El voto
+debe imprimirse en una boleta en forma legible por seres humanos.</dd>
+<dt>Requerimiento 5</dt><dd><b>(Independencia de la Identificación del
+Votante)</b> La identificación del votante debe ser hecha de forma
+independiente del sistema de emisión del voto. Deben estar
+prohibidos los sistemas que requieran la lectura de la huella
+digital, cualquier otro dato biométrico o la utilización de algún
+código individual para permitir usar la máquina de emisión de
+votos.</dd>
+
+</dl>
+</section>
+<section>
+<dl>
+<dt>Requerimiento 6</dt><dd><b>(Homologación)</b>. Debe existir un proceso de
+homologación con un norma que los sistemas deben cumplir, y estos
+deben ser sometidos a verificación por parte de terceros para
+asegurar el cumplimiento de los requerimientos establecidos por
+dicha norma.</dd>
+<dt>Requerimiento 7</dt><dd><b>(Autenticidad del Sistema)</b> Debe existir un
+mecanismo que garantice que el sistema usado el día de la
+elección es auténtico e idéntico al que ha sido homologado.</dd>
+
+</dl>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline32">
+<div class="slide-header"></div>
+<h3 id="orgheadline32">Requerimientos de la Máquina Emisora del voto</h3>
+<dl>
+<dt>Requerimiento 8</dt><dd><b>(No Persistencia)</b> La máquina que emite el voto
+no debe guardar ningún tipo de información sobre el voto o el
+votante. En consecuencia, nuevamente los DREs no deben se
+permitidos.</dd>
+<dt>Requerimiento 9</dt><dd><b>(Protección Contra Lecturas no Autorizadas)</b>. El
+sistema debe contar con una protección adecuada contra la lectura
+a distancia del voto.</dd>
+
+</dl>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline33">
+<div class="slide-header"></div>
+<h3 id="orgheadline33">Requerimientos de la Máquina que Cuenta los Votos.</h3>
+<dl>
+<dt>Requerimiento 10</dt><dd><b>(Anonimización de las Boletas)</b> Las boletas no
+deben tener ninguna forma de identificación, como por ejemplo
+números en serie, que permita diferenciar una boleta de otra y
+permita saber quien votó a quien con el simple expediente de
+contar en que orden se votó.</dd>
+<dt>Requerimiento 11</dt><dd><b>(Resguardo de Claves)</b>. En el caso de usar
+criptografía, se debe especificar cómo y quien se encargará de
+resguardar las claves criptográficas.</dd>
+
+</dl>
+</div>
+</div>
+<script src="../reveal.js-master/lib/js/head.min.js"></script>
+<script src="../reveal.js-master/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+,});
+</script>
+</body>
+</html>

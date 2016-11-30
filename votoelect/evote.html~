@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Consideraciones sobre el voto Electrónico</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js-master/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
+<h1>Consideraciones sobre el voto Electrónico</h1><h2>Claudio Vaucheret</h2><h2><a href="mailto:cv@fi.uncoma.edu.ar">cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-02 vie&gt;</span></span></h2>
+</section>
+<section id="table-of-contents">
+<nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline1">embedded</a></li>
+<li><a href="#/slide-orgheadline2">prueba</a></li>
+<li><a href="#/slide-orgheadline3">fin</a></li>
+</ul>
+</div>
+</nav>
+</section>
+
+<section>
+<section id="slide-orgheadline1">
+<div class="slide-header"></div>
+<h2 id="orgheadline1">embedded</h2>
+<ul>
+<li>uno</li>
+<li>dos</li>
+<li>tres</li>
+<li>cuatro</li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li>cinco</li>
+<li>seias</li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline2">
+<div class="slide-header"></div>
+<h2 id="orgheadline2">prueba</h2>
+<iframe data-autoplay="" src="DiferenciaciRFID.mp4" width="420" height="345"  ></iframe>
+
+<div class="slide-footer"></div>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline3">
+<div class="slide-header"></div>
+<h2 id="orgheadline3">fin</h2>
+<div class="slide-footer"></div>
+</section>
+</section>
+</div>
+</div>
+<script src="../reveal.js-master/lib/js/head.min.js"></script>
+<script src="../reveal.js-master/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+,});
+</script>
+</body>
+</html>

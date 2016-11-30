@@ -1,0 +1,421 @@
+#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
+#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
+#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
+#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
+#+OPTIONS: reveal_title_slide:t reveal_width:-1
+#+REVEAL_MARGIN: -1
+#+REVEAL_MIN_SCALE: -1
+#+REVEAL_MAX_SCALE: -1
+#+REVEAL_ROOT: ../reveal.js-master
+#+REVEAL_TRANS: cube
+#+REVEAL_SPEED: default
+#+REVEAL_THEME: solarized
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_EXTRA_JS:
+#+REVEAL_HLEVEL: 1
+#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
+#+REVEAL_TITLE_SLIDE_BACKGROUND:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_PREAMBLE:
+#+REVEAL_HEAD_PREAMBLE:
+#+REVEAL_POSTAMBLE:
+#+REVEAL_MULTIPLEX_ID:
+#+REVEAL_MULTIPLEX_SECRET:
+#+REVEAL_MULTIPLEX_URL:
+#+REVEAL_MULTIPLEX_SOCKETIO_URL:
+#+REVEAL_SLIDE_HEADER:
+#+REVEAL_SLIDE_FOOTER:
+#+REVEAL_PLUGINS:
+#+REVEAL_DEFAULT_FRAG_STYLE:
+#+REVEAL_INIT_SCRIPT:
+
+#+TITLE: Consideraciones sobre el voto electrónico
+#+DATE:  <2016-12-02 vie>
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL:  cv@fi.uncoma.edu.ar 
+
+
+* Problemas Prácticos del Voto Electrónico
+
+** Problemas Prácticos del Voto Electrónico
+- El uso de dispositivos electrónicos en el procedimiento de emisión
+  del voto introduce un "testigo" entre el votante y su voto, con la
+  capacidad: 
+  - violar el secreto del voto (privacidad)
+  - de cambiar la elección del votante (integridad)
+
+
+** Problemas Prácticos del Voto Electrónico
+
+- Todo sistema complejo tendrá inevitablemente errores.
+
+- En el caso del VE, ~además~ de los errores, tenemos que lidiar con
+  posibles ataques internos que traten de esconder un fragmento de
+  código malicioso ~intencional~
+
+- También se tiene el problema de la ~escalabilidad~ de las amenazas
+
+  - En un sistema tradicional, para crear cambios a una escala
+    suficiente para cambiar una elección deben estar involucrados
+    muchos individuos
+
+  - En el VE, los individuos necesarios son mucho menos, y un par de
+    líneas de código hábilmente ocultas pueden cambiar cientos de
+    miles de votos.
+
+
+
+* Problemas Prácticos del VE En el Mundo
+
+** En EEUU
+- Cientos de errores en diversos estados. Algunos destacados
+  - 2000: Volusia County, Florida: Gore recibió -16.022 (negativos)
+
+    - Philip Meyer. Glitch led to ’Bush wins’ call, USA Today, 29 de
+      noviembre de 2000, http://www.unc.edu/~pmeyer/usat29nov2000.html,
+
+  - 2003: Boone County, Iowa: sobre 50.000 votantes registrados el
+    equipo electrónico conto 140.000.
+
+    - Grant Gross. Voting machine glitch shows thousands of extra
+      votes, 2013, http://www.networkworld.com/article/2328396/software/voting-machine-glitch-shows-thousands-of-extra-votes.
+
+  - 2007: California se descertificaron todas las máquinas de votación
+    electrónica por considerarlas inseguras.
+#+REVEAL: split
+  - 2007: "no system used in Ohio is without significant and serious
+    risks to voting integrity" (Secretario de Estado).
+  - 2015: el sistema AVS WinVote:
+    - Tiene password débiles que no pueden ser cambiadas
+    - Usa Wired Equivalent Privacy (WEP) (mostrado inseguro en 2001 y
+      reemplazado por WPA desde 2003).
+    - Usa una versión de Windows XP Embedded que no ha sido patcheada
+      desde 2004.
+      - Bruce Schneier. An Incredibly Insecure Voting Machine,
+        https://www.schneier.com/blog/archives/2015/04/an_incredibly_i.html
+
+** En Brasil
+- Falla en la protección del secreto del voto:
+  - Se puede saber quien votó a quien por una mala implementación del
+    mecanismo de aleatoriedad que supuestamente oculta el orden en el
+    cual los votos fueron emitidos por los votantes.
+  - El sistema de verificación de identidad del votante esta enlazado
+    con la máquina de votación.
+- Uso de algoritmos criptográficos obsoletos.
+- Vulnerables a amenazas internas.
+- Falla en el uso de mecanismos de cifrado.
+  - Diego Aranha. Software vulnerabilities in the Brazilian voting
+    machine, publicado en Design, Development, and Use of Secure
+    Electronic Voting Systems (2014) y tambien en RealWorldCrypto2016.
+      
+
+** En Holanda
+- dejó de usarse en 2007 al probarse que los votos podian ser leidos
+  a varios metros de distancia usando *Van Eck Phreaking* (lectura a
+  distancia del monitor captando las radiaciones electromágneticas de
+  la pantalla), y que los programas podían ser alterados.
+  - R. Gonggrijp y W.J. Hengeveld. Studying the Nedap/Groenendaal ES3B
+    voting computer: A computer security perspective. En Proc. 2007
+    USENIX/ACCURATE Electronic Voting Technology Workshop (EVT ’07), Boston, 2007.
+
+#+REVEAL: split
+
+#+REVEAL_HTML: <iframe  src="losproblemasdevotar.mp4" width="600" height="600"  ></iframe>
+
+** En India
+- hackers lograron manipular los resultados con un celular.
+  - S. Wolchok, E. Wustrow, J. A. Halderman, H. K. Prasad,
+    A. Kankipati, S. K. Sakhamuri, V. Yagati, y R. Gonggrijp. Security
+    analysis of India’s electronic voting machines, en Proceedings of
+    the 17th ACM conference on Computer and communications security,
+    2010, pp. 1–14. https://indiaevm.org/evm_tr2010-jul29.pdf,
+
+** En Irlanda
+- evaluaron un sistema en elecciones piloto y determinaron que no se
+  podía garantizar la integridad de ninguna elección que usara ese
+  sistema. Costo del experimento: 54 millones de euros.
+  - Marie O’Halloran y Michael O’Regan. E-voting machines to be
+    disposed of, The Irish Times, 6 de octubre de 2010, http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193,
+  - Eliminated: After ten years and e55m, e-voting machines finally
+    disposed of, TheJournal.ie, 28 de junio de 2012,
+    http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012,
+
+** En Alemania
+- los sistemas usados hasta ese momento se declararon inconstitucionales.
+  - El principio de la naturaleza pública de la elección, consagrado
+    en el Art. 38 conjuntamente con el Art. 20, párrafos. 1 y. 2 de la
+    Constitución, requiere que todos los pasos esenciales de la
+    elección estén sometidos a la verificación por parte del público,
+    siempre y cuando no haya otros aspectos constitucionales que
+    justifiquen una excepción.
+  - Cuando se utilizan aparatos electrónicos de votación, los pasos
+    esenciales de la gestión electoral y de la determinación del
+    resultado deben ser pasibles de ser comprobados por el ciudadano
+    de manera confiable y sin conocimientos técnicos especiales. 
+ 
+
+* No es Voto Electrónico.  Es Boleta Electrónica!
+
+** Aclaremos los términos
+- Se pueden distinguir dos etapas en un proceso de votación moderno:
+  - Creación del voto :: el elector selecciona de alguna forma entre
+       las opciones disponibles y “crea" el voto, en algún formato,
+       por ejemplo, seleccionando boletas y colocandolas en un sobre,
+       marcando una boleta única, o interactuando con una máquina.
+  - Conteo de los votos :: luego de cerrado el tiempo disponible para
+       votar, se cuentan los votos resguardados.
+- Una definición posible es llamar "Voto Electrónico" a cualquier
+  sistema que introduzca computadoras (uso de medio electrónico) en
+  alguna de estas etapas.
+
+** DRE's y IRE's
+- En algunos sistemas de Voto Electrónico tanto la emisión como el
+  conteo de votos se hacen en una sola máquina.
+- Estos sistemas suelen llamarse de *registro
+  directo*. (Direct-Recording Electronic voting  machines (DRE).)
+- Otros sistemas separan físicamente la generación del voto del conteo
+  del voto, permitiendo que el elector realice una creación de un
+  objeto físico que representa su voto (un “token” o “boleta”), la
+  cual es depositada en una urna para ser contada posteriormente, ya
+  sea manual o electrónicamente.
+- Suelen ser llamados de *registro indirecto* (Indirect-Recording
+  Electronic voting machines (IRE)) o también Electronic Ballot
+  Printers (EBP). 
+
+* Problemas Teóricos 
+
+** Problemas Teóricos (para cualquier sistema de votación)
+
+- El requerimiento de privacidad diferencia un sistema de votación de
+  un cajero automático, donde la identidad del extractor de dinero es
+  conocida, y las transacciones quedan registradas.
+- Estos requerimientos conflictúan entre sí pues para preservar la
+  privacidad no es deseable guardar mucha información , pero para
+  garantizar la verificabilidad se necesitan muchos registros.
+
+** Integridad y Verificabilidad
+- Dados votos $v_i$, denotemos por $\vec{V}$ el vector de votos $v_i$
+  y $\sum(\vec{V})$ al resultado (teórico) de sumar todos los votos y
+  contar cuántos votos fueron para cada candidato.
+- Por ejemplo, "51234 votos para A, 3456 votos para B", etc
+- Cualquier sistema de votación deberá tener algún algoritmo que tome
+  como entrada $\vec{V}$ y posiblemente algunas otras variables
+  $\vec{X}$ , algunas de las cuales pueden ser aleatorias y devuelva
+  una suma de votos. Llamemos ~Conteo~ a ese algoritmo.
+
+** Integridad 
+ 
+- *Definición* :: Un sistema tendrá integridad perfecta si $Conteo(V,X) = \sum(\vec{V}) \forall V, X$
+
+  - Los sistemas de conteo manual no tienen integridad perfecta, por
+    los errores naturales del conteo manual.
+
+  - Los sistemas de conteo electrónico tienen mejor integridad y esta
+    es una de las razones por las cuales se apoya el uso del VE.
+
+  - Pero hay que distinguir entre el resultado
+    $Conteo(\vec{V},\vec{X})$ que se *obtendría* si usaramos ~Conteo~
+    del resultado que *efectivamente produce* el sistema.
+
+** Verificabilidad
+ - Denotaremos por $ConteoOficial(\vec{V},\vec{X})$ al resultado que
+   el sistema realmente produce como /output/.
+ - Sea $R(\vec{V},\vec{X})$ el conjunto de registros que el sistema
+   produce durante su operación.
+ - Esto no sólo incluye $ConteoOficial(\vec{V},\vec{X})$ sino todo
+   otro registro que permita demostrar que el sistema funcionó
+   correctamente.
+
+
+ + *Definición* :: Un sistema tendrá verificabilidad perfecta si
+      $R(\vec{V},\vec{X})$ permite determinar con certeza si
+      $ConteoOficial(\vec{V},\vec{X}) = Conteo(\vec{V},\vec{X})$ o no.
+
+
+** Integridad y Verificabilidad
+- Ejemplo: los vendedores de algúnos sistemas de VE proponen una
+  “black box" en la cual entran sólo los votos $\vec{V}$ y sale sólo
+  la suma $\sum(\vec{V})$
+- Como $R(\vec{V},\vec{X}) = \emptyset$, estos sistemas tienen
+  verificabilidad nula, asi que aún si tuvieran integridad perfecta,
+  no nos interesan.
+- Observar que en la definición de verificabilidad perfecta no se pide
+  que $ConteoOficial(\vec{V},\vec{X}) = Conteo(\vec{V},\vec{X})$, sino
+  que esa proposición /pueda ser verificada/ a partir de $R(\vec{V},\vec{X})$
+
+** Privacidad
+- Observemos que el voto nunca es 100% secreto pues $\sum(\vec{V})$
+  revela ALGUNA información sobre los votos.
+- Como ejemplo extremo, si todos los votos son para un mismo
+  candidato, se saben quien voto por quien.
+
+
++ *Definición* :: Se dice que un sistema tiene privacidad perfecta si
+     la ÚNICA información sobre $\vec{V}$ que se puede obtener de los
+     registros del sistema es la información dada por $\sum(\vec{V})$.
+
+** El teorema de Hosp y Vora
+
+- Hosp y Vora probaron un teorema que dice lo siguiente:
+
+
++ *Teorema* :: No existe ningún sistema de votación (electrónico o no)
+     que tenga al mismo tiempo las propiedades de integridad perfecta,
+     verificabilidad perfecta y privacidad perfecta.
+
+  - (Hosp, Ben, y Poorvi L. Vora. 2008.“An information-theoretic model
+    of voting systems". Mathematical and Computer Modelling 48 (9): 1628-45)
+
+** Limitaciones y Utilidad del Teorema Hosp y Vora
+- El teorema de Hosp y Vora no habla específicamente del VE, sino de cualquier sistema de votación.
+- Ademas, se refiere a los conceptos de integridad, verificabilidad y
+  privacidad perfectas.
+- Pero en general en la vida nos conformamos con probabilidades bajas
+  aunque no sean cero.
+- Asi que en principio, se podría bypassear las limitaciones de
+  HospVora, aceptando alguna disminución de requerimientos.
+- Pero en implementaciones no mecánicas del dispositivo de votación toma relevancia fundamental
+- Hace el problema de votación muy diferente al de transacciones
+  bancarias.
+
+* Sistema BUE (Vot.Ar) 
+
+** Utilizado en CABA, Salta, Ciudad de Neuquén
+- Emisión electrónica del voto: la elección del votante es impresa en
+  forma térmica y ademas grabada en un chip RFID.
+- La boleta se deposita en una urna.
+- Al final del dia se cuentan electrónicamente, acercando la boleta a un lector RFID.
+- La máquina genera un acta la cual es transmitida electrónicamente.
+- Sólo se cuentan a mano los votos que no pudieron ser leidos
+  electrónicamente. (en BsAs, en Salta hubo una auditoría postelección de algunas urnas).
+
+** Defectos de BUE (Vot.Ar)
+- El chip permite individualizar las boletas, pues vienen numerados.
+- Durante 7 años y varias auditorias no se detectó un error de
+  programación que permitía generar una boleta que contuviera mas de
+  un voto. (al parecer ahora lo corrigieron, gracias a un hacker que advirtió el error).
+- Puede ser leido por un celular llevado por el votante con solo
+  acercar el celular a la boleta, permitiendo la compra de votos, como
+  fue demostrado ya el año pasado.
+- Este año esto fue mostrado en la Comisión de Asuntos
+  Constitucionales de Diputados por Javier Smaldone.
+- Con un simple "RFID burner" se pueden quemar los chips sin ser detectados.
+
+** Lectura de RFID por celular (Javier Smaldone)
+
+#+REVEAL_HTML: <iframe  src="comparandocopiandoyquemando.mp4" width="600" height="400"  ></iframe>
+
+** Lectura de escritura de RFID a distancia (Javier Smaldone)
+
+#+REVEAL_HTML: <iframe  src="DiferenciaciRFID.mp4" width="600" height="400"  ></iframe>
+
+** BUE (Vot.Ar)
+- Se hicieron declaraciones tales como:
+  - "Ponemos un equipo, una máquina absolutamente boba, que no tiene
+    disco rígido, que no tiene memoria, que no tiene capacidad de
+    almacenamiento alguno" (Sergio Angelini, CEO de MSA)
+  - "No tiene memoria la máquina, porque es una impresora" (Guillermo
+    Montenegro, Ministro de Justicia y Seguridad de CABA)
+- pero la emisora de votos tiene un 2do núcleo de CPU no declarado con
+  suficiente memoria para guardar todos los votos, el cual nunca fue
+  auditado.
+
+** Sistema Oculto
+- El sistema está compuesto por dos computadoras independientes, cada
+  una de las cuales ejecuta un sistema operativo y aplicaciones sobre
+  él.
+
+[[file:segunda.png]]
+
+** Sistema Oculto
+- El sistema basado en el procesador ARM tiene capacidad de
+  almacenamiento permanente, suficiente para almacenar la información
+  de los votos de más de una mesa.
+- El sistema basado en el procesador ARM no ha sido auditado (ni su
+  hardware ni su software).
+
+
+[[file:segundohardware.jpg]]
+
+** Sistema Oculto
+- Llama la atención la colocación de un cable JTAG, accesible en la
+  base del equipo, que podría servir para acceder a la memoria de
+  almacenamiento permanente del sistema ARM.
+
+[[file:jtagmesa.jpg]]
+
+** Transmisión de Resultados
+- Cualquiera podía acceder a los certificados criptográficos que se
+  iban a usar en la elección, pudiendo de esta forma alterar la transmisión de los resultados.
+- Joaquin Sorianello avisó de este problema, y MSA en vez de premiarlo
+  lo denunció y le mandó la policia metropolitana.
+- Luego de un año, la justicia metropolitana absolvió a Sorianello, y declaro que la seguridad de MSA era “vaga".
+
+
+
+
+
+
+* Requerimientos 
+
+** Requerimientos Generales (MONTES,PENAZZI y WOLOVICK[fn:1])
+
+- Requerimiento 1 :: *(Reaseguro Individual)*. El votante debe contar
+     con la certeza absoluta de la confiabilidad de su voto. Es decir
+     que la máquina que lo crea no pueda revelarlo en ningún modo.
+- Requerimiento 2 :: *(transparencia)*
+  - Debe evitarse cualquier sistema de VE que use Seguridad por Oscuridad
+  - Tiempo suficiente para que expertos de todo tipo puedan auditar el sistema
+  - el acceso al código debe ser abierto
+  - auditoría independiente del sistema completo incluyendo el
+    hardware y sus resultados deben ser públicos
+#+REVEAL: split
+- Requerimiento 3 :: *(Separación de Funciones)* El conteo electrónico
+     debe ser realizado por una máquina físicamente distinta de la que
+     emitió los votos.
+- Requerimiento 4 :: *(Capacidad de Auditoría no Electrónica)* El voto
+     debe imprimirse en una boleta en forma legible por seres humanos.
+- Requerimiento 5 :: *(Independencia de la Identificación del
+     Votante)* La identificación del votante debe ser hecha de forma
+     independiente del sistema de emisión del voto. Deben estar
+     prohibidos los sistemas que requieran la lectura de la huella
+     digital, cualquier otro dato biométrico o la utilización de algún
+     código individual para permitir usar la máquina de emisión de
+     votos.
+#+REVEAL: split
+- Requerimiento 6 :: *(Homologación)*. Debe existir un proceso de
+    homologación con un norma que los sistemas deben cumplir, y estos
+    deben ser sometidos a verificación por parte de terceros para
+    asegurar el cumplimiento de los requerimientos establecidos por
+    dicha norma.
+- Requerimiento 7 :: *(Autenticidad del Sistema)* Debe existir un
+     mecanismo que garantice que el sistema usado el día de la
+     elección es auténtico e idéntico al que ha sido homologado.
+
+** Requerimientos de la Máquina Emisora del voto
+- Requerimiento 8 :: *(No Persistencia)* La máquina que emite el voto
+     no debe guardar ningún tipo de información sobre el voto o el
+     votante. En consecuencia, nuevamente los DREs no deben se
+     permitidos.
+- Requerimiento 9 :: *(Protección Contra Lecturas no Autorizadas)*. El
+     sistema debe contar con una protección adecuada contra la lectura
+     a distancia del voto.
+
+** Requerimientos de la Máquina que Cuenta los Votos.
+- Requerimiento 10 :: *(Anonimización de las Boletas)* Las boletas no
+     deben tener ninguna forma de identificación, como por ejemplo
+     números en serie, que permita diferenciar una boleta de otra y
+     permita saber quien votó a quien con el simple expediente de
+     contar en que orden se votó.
+- Requerimiento 11 :: *(Resguardo de Claves)*. En el caso de usar
+     criptografía, se debe especificar cómo y quien se encargará de
+     resguardar las claves criptográficas.
+
+
+* Footnotes
+
+[fn:1] SIE 2016, 10o Simposio de Informática en el Estado, MIGUEL
+MONTES 1 , DANIEL PENAZZI 2 , Y NICOLÁS WOLOVICK 3, 
