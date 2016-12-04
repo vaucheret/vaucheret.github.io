@@ -70,7 +70,7 @@
 
 
 
-* Problemas Prácticos del VE En el Mundo
+* Problemas Prácticos del *VE* En el Mundo
 
 ** En EEUU
 - Cientos de errores en diversos estados. Algunos destacados
@@ -89,9 +89,10 @@
   - 2007: California se descertificaron todas las máquinas de votación
     electrónica por considerarlas inseguras.
 #+REVEAL: split
-  - 2007: "no system used in Ohio is without significant and serious
-    risks to voting integrity" (Secretario de Estado).
- #+ATTR_REVEAL: :frag (roll-in)
+#+attr_html: :width 400px 
+#+attr_latex: :width 4in
+#+attr_org: :width 400px
+[[file:winvote.jpg]]
   - 2015: el sistema AVS WinVote:
     - Tiene password débiles que no pueden ser cambiadas
     - Usa Wired Equivalent Privacy (WEP) (mostrado inseguro en 2001 y
@@ -136,7 +137,7 @@
 
 #+REVEAL: split
 
-#+REVEAL_HTML: <iframe  src="losproblemasdevotar.mp4" width="600" height="600"  ></iframe>
+#+REVEAL_HTML: <iframe  src="https://ia801504.us.archive.org/2/items/ndateneo/holanda.webm" width="600" height="600"  ></iframe>
 
 ** En Irlanda
 - evaluaron un sistema en elecciones piloto y determinaron que no se
@@ -301,8 +302,6 @@
   privacidad perfectas.
 - Pero en general en la vida nos conformamos con probabilidades bajas
   aunque no sean cero.
-- Asi que en principio, se podría bypassear las limitaciones de
-  HospVora, aceptando alguna disminución de requerimientos.
 - Pero en implementaciones no mecánicas del dispositivo de votación toma relevancia fundamental
 - Hace el problema de votación muy diferente al de transacciones
   bancarias.
@@ -327,20 +326,19 @@
   un voto. (al parecer ahora lo corrigieron, gracias a un hacker que advirtió el error).
 - Puede ser leido por un celular llevado por el votante con solo
   acercar el celular a la boleta, permitiendo la compra de votos, como
-  fue demostrado ya el año pasado.
-- Este año esto fue mostrado en la Comisión de Asuntos
-  Constitucionales de Diputados por Javier Smaldone.
+  fue demostrado por Javer Smaldone en la Comisión de Asuntos
+  Constitucionales de Diputados.
 - Con un simple "RFID burner" se pueden quemar los chips sin ser detectados.
-- Se comprobó que un receptor de onda corta se puede saber a quien se
+- Se comprobó que con un receptor de onda corta se puede saber a quien se
   vota a 2,5 metros de distancia.
 
 ** Lectura de RFID por celular (Javier Smaldone)
 
-#+REVEAL_HTML: <iframe  src="comparandocopiandoyquemando.mp4" width="600" height="400"  ></iframe>
+#+REVEAL_HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/bJT6KLP6tWA" frameborder="0" allowfullscreen></iframe>
 
 ** Lectura de escritura de RFID a distancia (Javier Smaldone)
 
-#+REVEAL_HTML: <iframe  src="DiferenciaciRFID.mp4" width="600" height="400"  ></iframe>
+#+REVEAL_HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/yrFSQBj1Emo" frameborder="0" allowfullscreen></iframe>
 
 ** BUE (Vot.Ar)
 - Se hicieron declaraciones tales como:
@@ -391,14 +389,14 @@
 
 ** Escrutinio 
 
-#+REVEAL_HTML: <iframe  src="supermercado.mp4" width="600" height="600"  ></iframe>
+#+REVEAL_HTML: <iframe  src="https://archive.org/download/ndateneo/supermercado.mp4" width="600" height="600"  ></iframe>
 
 * Requerimientos 
 
 ** Requerimientos Generales (MONTES,PENAZZI y WOLOVICK[fn:1])
 
 - Requerimiento 1 :: *(Reaseguro Individual)*. El votante debe contar
-     con la certeza absoluta de la confiabilidad de su voto. Es decir
+     con la certeza absoluta de la confidencialidad de su voto. Es decir
      que la máquina que lo crea no pueda revelarlo en ningún modo.
 - Requerimiento 2 :: *(transparencia)*
   - Debe evitarse cualquier sistema de VE que use Seguridad por Oscuridad
@@ -460,13 +458,23 @@
 
 * Alternativas 
 
+** Herramientas criptográficas
+- Software Independence (Rivest,Wack)
+    Un sistema de votación electrónico es software-independiente si un
+  cambio indetectado en su software no puede producir un cambio
+  indetectado en el resultado de la elección
+- Cifrado Homomórfico 
+    En estos sistemas el contador cuenta los votos *sin saber* lo que
+  está contando.
+  - Gamal Exponencial
+- USABILIDAD 
 ** BUP Boleta Unica de Papel
  #+ATTR_REVEAL: :frag (roll-in)
 - Al contrario de la boleta partidaria, es provista por el estado
 - evita el robo de boletas
 - el votante utiliza dispositivo mecánico de votación (no electrónico)
  #+ATTR_REVEAL: :frag (roll-in)
-  - un lapiz
+  - un lápiz
 
 ** Como en Córdoba
 
@@ -497,6 +505,10 @@
 - Tiene despacho de comisión favorable la "boleta única electrónica"
 [[file:despacholegnqn1.png]]
 
+** En la provincia de Neuquén
+[[file:despcomnqn2.png]]
+** Fin
+- ¿Preguntas?
 * Footnotes
 
 [fn:1] SIE 2016, 10o Simposio de Informática en el Estado, MIGUEL
