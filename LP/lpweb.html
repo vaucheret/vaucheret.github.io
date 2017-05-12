@@ -204,11 +204,11 @@ El Código mas simple podría ser:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">main</span>(<span style="color: #b8860b;">_</span>) :-
-        write(<span style="color: #bc8f8f;">'Content-type: text/html'</span>), nl,nl,
-        write(<span style="color: #bc8f8f;">'&lt;HTML&gt;'</span>),
-        write(<span style="color: #bc8f8f;">'Hello world.'</span>),
-        write(<span style="color: #bc8f8f;">'&lt;/HTML&gt;'</span>).
+<pre  class="src src-prolog"><span style="color: #87cefa;">main</span>(<span style="color: #eedd82;">_</span>) :-
+        write(<span style="color: #ffa07a;">'Content-type: text/html'</span>), nl,nl,
+        write(<span style="color: #ffa07a;">'&lt;HTML&gt;'</span>),
+        write(<span style="color: #ffa07a;">'Hello world.'</span>),
+        write(<span style="color: #ffa07a;">'&lt;/HTML&gt;'</span>).
 </pre>
 </div>
 
@@ -262,13 +262,13 @@ Reversible
 
 <pre  class="src src-prolog">:- use_package(library(pillow)).
 
-<span style="color: #0000ff;">main</span>(<span style="color: #b8860b;">_</span>) :-
-        <span style="color: #b8860b;">T</span> = <span style="color: #a020f0;">[</span> cgi_reply,
-        html( <span style="color: #a020f0;">[</span>
-                  <span style="color: #bc8f8f;">'Hello'</span>,
+<span style="color: #87cefa;">main</span>(<span style="color: #eedd82;">_</span>) :-
+        <span style="color: #eedd82;">T</span> = <span style="color: #00ffff;">[</span> cgi_reply,
+        html( <span style="color: #00ffff;">[</span>
+                  <span style="color: #ffa07a;">'Hello'</span>,
                   b(world)
-              <span style="color: #a020f0;">]</span>),
-        output_html(<span style="color: #b8860b;">T</span>).
+              <span style="color: #00ffff;">]</span>),
+        output_html(<span style="color: #eedd82;">T</span>).
 </pre>
 </div>
 
@@ -295,21 +295,21 @@ Reversible
 <div class="org-src-container">
 
 <pre  class="src src-prolog">:- use_package(library(pillow)).
-:- <span style="color: #da70d6;">use_module</span>(library(write)).
+:- <span style="color: #b0c4de;">use_module</span>(library(write)).
 
-<span style="color: #0000ff;">main</span>(<span style="color: #b8860b;">_</span>):-
-        output_html(<span style="color: #a020f0;">[</span>
+<span style="color: #87cefa;">main</span>(<span style="color: #eedd82;">_</span>):-
+        output_html(<span style="color: #00ffff;">[</span>
                 cgi_reply,
                 start,
-                title(<span style="color: #bc8f8f;">'Telephone database'</span>),
-                heading(2,<span style="color: #bc8f8f;">'Telephone database'</span>),
+                title(<span style="color: #ffa07a;">'Telephone database'</span>),
+                heading(2,<span style="color: #ffa07a;">'Telephone database'</span>),
                 $,
-                start_form(<span style="color: #bc8f8f;">'http://localhost/~claudio/cgi-bin/phonedb3.pl'</span>),
-                <span style="color: #bc8f8f;">'Click here, enter name of clip member, and press Return:'</span>,
+                start_form(<span style="color: #ffa07a;">'http://localhost/~claudio/cgi-bin/phonedb3.pl'</span>),
+                <span style="color: #ffa07a;">'Click here, enter name of clip member, and press Return:'</span>,
                 \\,
-                input(text,<span style="color: #a020f0;">[</span>name=person_name,size=20<span style="color: #a020f0;">]</span>),
+                input(text,<span style="color: #00ffff;">[</span>name=person_name,size=20<span style="color: #00ffff;">]</span>),
                 end_form,
-                end<span style="color: #a020f0;">]</span>).
+                end<span style="color: #00ffff;">]</span>).
 </pre>
 </div>
 
