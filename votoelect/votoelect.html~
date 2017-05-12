@@ -23,7 +23,7 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
-<h1>Consideraciones sobre el voto electrónico</h1><h2>Claudio Vaucheret</h2><h2><a href="mailto:cv@fi.uncoma.edu.ar">cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-02 vie&gt;</span></span></h2>
+<h1>Consideraciones sobre el voto electrónico</h1><h2>Claudio Vaucheret</h2><h2><a href="mailto:cv@fi.uncoma.edu.ar">cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2017-04-24 lun&gt;</span></span></h2>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
@@ -38,14 +38,14 @@
 </li>
 <li><a href="#/slide-orgheadline12">Problemas Prácticos del <b>VE</b> En el Mundo</a>
 <ul>
-<li><a href="#/slide-orgheadline4">En EEUU</a></li>
-<li><a href="#/slide-orgheadline5">En Brasil</a></li>
-<li><a href="#/slide-orgheadline6">En India</a></li>
-<li><a href="#/slide-orgheadline7">En Holanda</a></li>
-<li><a href="#/slide-orgheadline8">En Irlanda</a></li>
-<li><a href="#/slide-orgheadline9">En Alemania</a></li>
-<li><a href="#/slide-orgheadline10">Finlandia</a></li>
-<li><a href="#/slide-orgheadline11">Reino Unido</a></li>
+<li><a href="#/slide-orgheadline4">En Alemania</a></li>
+<li><a href="#/slide-orgheadline5">En Irlanda</a></li>
+<li><a href="#/slide-orgheadline6">En Holanda</a></li>
+<li><a href="#/slide-orgheadline7">Finlandia</a></li>
+<li><a href="#/slide-orgheadline8">Reino Unido</a></li>
+<li><a href="#/slide-orgheadline9">En EEUU</a></li>
+<li><a href="#/slide-orgheadline10">En Brasil</a></li>
+<li><a href="#/slide-orgheadline11">En India</a></li>
 </ul>
 </li>
 <li><a href="#/slide-orgheadline15">No es Voto Electrónico.  Es Boleta Electrónica!</a>
@@ -54,7 +54,7 @@
 <li><a href="#/slide-orgheadline14">DRE's y IRE's</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline24">Problemas Teóricos</a>
+<li><a href="#/slide-orgheadline23">Problemas Teóricos</a>
 <ul>
 <li><a href="#/slide-orgheadline16">Problemas Teóricos (para cualquier sistema de votación)</a></li>
 <li><a href="#/slide-orgheadline17">Integridad y Verificabilidad</a></li>
@@ -63,51 +63,49 @@
 <li><a href="#/slide-orgheadline20">Integridad y Verificabilidad</a></li>
 <li><a href="#/slide-orgheadline21">Privacidad</a></li>
 <li><a href="#/slide-orgheadline22">El teorema de Hosp y Vora</a></li>
-<li><a href="#/slide-orgheadline23">Limitaciones y Utilidad del Teorema Hosp y Vora</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline35">Sistema BUE (Vot.Ar)</a>
+<li><a href="#/slide-orgheadline34">Sistema BUE (Vot.Ar)</a>
 <ul>
-<li><a href="#/slide-orgheadline25">Utilizado en CABA, Salta, Ciudad de Neuquén</a></li>
-<li><a href="#/slide-orgheadline26">Defectos de BUE (Vot.Ar)</a></li>
-<li><a href="#/slide-orgheadline27">Lectura de RFID por celular (Javier Smaldone)</a></li>
-<li><a href="#/slide-orgheadline28">Lectura de escritura de RFID a distancia (Javier Smaldone)</a></li>
-<li><a href="#/slide-orgheadline29">BUE (Vot.Ar)</a></li>
+<li><a href="#/slide-orgheadline24">Utilizado en CABA, Salta, Ciudad de Neuquén</a></li>
+<li><a href="#/slide-orgheadline25">Defectos de BUE (Vot.Ar)</a></li>
+<li><a href="#/slide-orgheadline26">Lectura de RFID por celular (Javier Smaldone)</a></li>
+<li><a href="#/slide-orgheadline27">Lectura de escritura de RFID a distancia (Javier Smaldone)</a></li>
+<li><a href="#/slide-orgheadline28">BUE (Vot.Ar)</a></li>
+<li><a href="#/slide-orgheadline29">Sistema Oculto</a></li>
 <li><a href="#/slide-orgheadline30">Sistema Oculto</a></li>
 <li><a href="#/slide-orgheadline31">Sistema Oculto</a></li>
-<li><a href="#/slide-orgheadline32">Sistema Oculto</a></li>
-<li><a href="#/slide-orgheadline33">Transmisión de Resultados</a></li>
-<li><a href="#/slide-orgheadline34">Escrutinio</a></li>
+<li><a href="#/slide-orgheadline32">Transmisión de Resultados</a></li>
+<li><a href="#/slide-orgheadline33">Escrutinio</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline39">Requerimientos</a>
+<li><a href="#/slide-orgheadline38">Requerimientos</a>
 <ul>
-<li><a href="#/slide-orgheadline36">Requerimientos Generales (MONTES,PENAZZI y WOLOVICK)</a></li>
-<li><a href="#/slide-orgheadline37">Requerimientos de la Máquina Emisora del voto</a></li>
-<li><a href="#/slide-orgheadline38">Requerimientos de la Máquina que Cuenta los Votos.</a></li>
+<li><a href="#/slide-orgheadline35">Requerimientos Generales (MONTES,PENAZZI y WOLOVICK)</a></li>
+<li><a href="#/slide-orgheadline36">Requerimientos de la Máquina Emisora del voto</a></li>
+<li><a href="#/slide-orgheadline37">Requerimientos de la Máquina que Cuenta los Votos.</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline41">Requerimientos Incumplibles</a>
+<li><a href="#/slide-orgheadline40">Requerimientos Incumplibles</a>
 <ul>
-<li><a href="#/slide-orgheadline40">¿Auditoría?</a></li>
+<li><a href="#/slide-orgheadline39">¿Auditoría?</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline48">Alternativas</a>
+<li><a href="#/slide-orgheadline46">Alternativas</a>
 <ul>
-<li><a href="#/slide-orgheadline42">Herramientas criptográficas</a></li>
-<li><a href="#/slide-orgheadline43">BUP Boleta Unica de Papel</a></li>
-<li><a href="#/slide-orgheadline44">Como en Córdoba</a></li>
-<li><a href="#/slide-orgheadline45">Como en Santa Fe</a></li>
-<li><a href="#/slide-orgheadline46">Como los argentinos que viven en el exterior</a></li>
-<li><a href="#/slide-orgheadline47">Dónde utilizar tecnología</a></li>
+<li><a href="#/slide-orgheadline41">BUP Boleta Unica de Papel</a></li>
+<li><a href="#/slide-orgheadline42">Como en Córdoba</a></li>
+<li><a href="#/slide-orgheadline43">Como en Santa Fe</a></li>
+<li><a href="#/slide-orgheadline44">Como los argentinos que viven en el exterior</a></li>
+<li><a href="#/slide-orgheadline45">Dónde utilizar tecnología</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline53">Situación Legislativa</a>
+<li><a href="#/slide-orgheadline51">Situación Legislativa</a>
 <ul>
-<li><a href="#/slide-orgheadline49">A nivel nacional</a></li>
-<li><a href="#/slide-orgheadline50">En la provincia de Neuquén</a></li>
-<li><a href="#/slide-orgheadline51">En la provincia de Neuquén</a></li>
-<li><a href="#/slide-orgheadline52">Fin</a></li>
+<li><a href="#/slide-orgheadline47">A nivel nacional</a></li>
+<li><a href="#/slide-orgheadline48">En la provincia de Neuquén</a></li>
+<li><a href="#/slide-orgheadline49">En la provincia de Neuquén</a></li>
+<li><a href="#/slide-orgheadline50">Fin</a></li>
 </ul>
 </li>
 </ul>
@@ -179,7 +177,122 @@ miles de votos.</li>
 </section>
 <section id="slide-orgheadline4">
 <div class="slide-header"></div>
-<h3 id="orgheadline4">En EEUU</h3>
+<h3 id="orgheadline4">En Alemania</h3>
+<ul>
+<li>los sistemas usados hasta ese momento se declararon inconstitucionales.
+<ul>
+<li>El principio de la naturaleza pública de la elección, consagrado
+en el Art. 38 conjuntamente con el Art. 20, párrafos. 1 y. 2 de la
+Constitución, requiere que todos los pasos esenciales de la
+elección estén sometidos a la verificación por parte del público,
+siempre y cuando no haya otros aspectos constitucionales que
+justifiquen una excepción.</li>
+<li>Cuando se utilizan aparatos electrónicos de votación, los pasos
+esenciales de la gestión electoral y de la determinación del
+resultado deben ser pasibles de ser comprobados por el ciudadano
+de manera confiable y sin conocimientos técnicos especiales.</li>
+<li>los procedimientos para examinar el sistema y la aprobación por
+parte del ministerio deben ser públicos. Cualquier interés de los
+fabricantes en proteger su secreto comercial debe estar
+subordinado al principio de la democracia</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline5">
+<div class="slide-header"></div>
+<h3 id="orgheadline5">En Irlanda</h3>
+<ul>
+<li>Primera propuesta en 1998, legislación en 2000, y primeras pruebas
+piloto en 2002.</li>
+<li>Un informe confidencial del Ministerio del Interior irlandés se
+filtró a la prensa: allí se aseguraba que la integridad del proceso
+electoral en los lugares donde se implementó el voto electrónico no
+estaba garantizada. Entre otras fallas, el memorando interno que
+tomó estado público destacaba la posibilidad de que un software
+malicioso sencillo de programar pudiera generar una pantalla falsa
+en la máquina para hacer votar incorrectamente al elector.</li>
+<li>finalmente en el 2009 determinaron que no se
+podía garantizar la integridad de ninguna elección que usara ese
+sistema. Costo del experimento: 54 millones de euros.
+<ul>
+<li>Marie O’Halloran y Michael O’Regan. E-voting machines to be
+disposed of, The Irish Times, 6 de octubre de 2010, <a href="http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193">http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193</a>,</li>
+<li>Eliminated: After ten years and e55m, e-voting machines finally
+disposed of, TheJournal.ie, 28 de junio de 2012,
+<a href="http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012">http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012</a>,</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline6">
+<div class="slide-header"></div>
+<h3 id="orgheadline6">En Holanda</h3>
+<ul>
+<li>dejó de usarse en 2008 al probarse que los votos podian ser leidos
+a varios metros de distancia usando <b>Van Eck Phreaking</b> (lectura a
+distancia del monitor captando las radiaciones electromágneticas de
+la pantalla), y que los programas podían ser alterados.
+<ul>
+<li>R. Gonggrijp y W.J. Hengeveld. Studying the Nedap/Groenendaal ES3B
+voting computer: A computer security perspective. En Proc. 2007
+USENIX/ACCURATE Electronic Voting Technology Workshop (EVT ’07), Boston, 2007.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section>
+
+<iframe  src="file:///home/claudio/tmp/orgfiles/slides/votoelect/losproblemasdevotar.mp4" width="600" height="600" frameborder="0" allowfullscreen ></iframe>
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline7">
+<div class="slide-header"></div>
+<h3 id="orgheadline7">Finlandia</h3>
+<ul>
+<li>En 2006, el Parlamento aprobó el proyecto de Ley para la utilización
+del voto electrónico en las elecciones municipales de 2008.</li>
+<li>En 2008, se realizó una prueba de voto electrónico, en tres
+municipios durante las elecciones municipales. Sin embargo, debido a
+problemas de usabilidad la votación fue anulada. El sistema
+utilizaba urnas electrónicas.</li>
+<li>En 2010, el gobierno decidió no continuar de momento con la votación
+electrónica. Los cuestionamientos fueron los mismos que en el resto
+de los países: problemas de implementación, bajas capacidades del
+sistema de ser auditado y el riesgo potencial pero cierto de que el
+software fuera intervenido y los resultados manipulados, según
+relató la propia auditoría del Ministerio de Justicia.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline8">
+<div class="slide-header"></div>
+<h3 id="orgheadline8">Reino Unido</h3>
+<ul>
+<li>Entre 2002 y 2007, el Reino Unido ha llevado a cabo más de treinta
+pruebas pilotos con diferentes sistemas de votación electrónica.</li>
+<li>En 2008, La Comisión Electoral declaró que con respecto a las
+pruebas realizadas la seguridad y garantías adoptadas eran
+insuficientes y en consecuencia, determinó que no se continuaría con
+el voto electrónico.</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline9">
+<div class="slide-header"></div>
+<h3 id="orgheadline9">En EEUU</h3>
 <ul>
 <li>Cientos de errores en diversos estados. Algunos destacados
 <ul>
@@ -230,12 +343,26 @@ desde 2004.
 </ul></li>
 
 </ul>
+</section>
+<section>
+<ul>
+<li>Un trabajo de tres organizaciones independientes (The Verified
+Voting Foundation, The Constitutional Litigation Clinic at Rutgers
+School of Law y The Common Cause Education Fund) revisó los sistemas
+y el funcionamiento de los sistemas en las elecciones de 2012, a
+partir de parámetros e indicadores construidos en elecciones
+anteriores por el Brennan Center.</li>
+<li>Dice el informe: "los autores creen que la boleta de papel y los
+sistemas ópticos de escrutinio, acompañados por sistemas de marcado
+de boletas accesibles para cualquiera, deben reemplazar a los
+sistemas de voto electrónico, con o sin respaldo de papel".</li>
 
+</ul>
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline5">
+<section id="slide-orgheadline10">
 <div class="slide-header"></div>
-<h3 id="orgheadline5">En Brasil</h3>
+<h3 id="orgheadline10">En Brasil</h3>
 <ul>
 <li class="fragment roll-in">Falla en la protección del secreto del voto:
 <ul>
@@ -260,9 +387,9 @@ Electronic Voting Systems (2014) y tambien en RealWorldCrypto2016.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline6">
+<section id="slide-orgheadline11">
 <div class="slide-header"></div>
-<h3 id="orgheadline6">En India</h3>
+<h3 id="orgheadline11">En India</h3>
 <ul>
 <li>hackers lograron manipular los resultados con un celular.
 <ul>
@@ -273,106 +400,6 @@ the 17th ACM conference on Computer and communications security,
 2010, pp. 1–14. <a href="https://indiaevm.org/evm_tr2010-jul29.pdf">https://indiaevm.org/evm_tr2010-jul29.pdf</a>,</li>
 
 </ul></li>
-
-</ul>
-
-<div class="slide-footer"></div>
-</section>
-<section id="slide-orgheadline7">
-<div class="slide-header"></div>
-<h3 id="orgheadline7">En Holanda</h3>
-<ul>
-<li>dejó de usarse en 2007 al probarse que los votos podian ser leidos
-a varios metros de distancia usando <b>Van Eck Phreaking</b> (lectura a
-distancia del monitor captando las radiaciones electromágneticas de
-la pantalla), y que los programas podían ser alterados.
-<ul>
-<li>R. Gonggrijp y W.J. Hengeveld. Studying the Nedap/Groenendaal ES3B
-voting computer: A computer security perspective. En Proc. 2007
-USENIX/ACCURATE Electronic Voting Technology Workshop (EVT ’07), Boston, 2007.</li>
-
-</ul></li>
-
-</ul>
-
-</section>
-<section>
-
-<iframe  src="https://ia801504.us.archive.org/2/items/ndateneo/holanda.webm" width="600" height="600"  ></iframe>
-
-<div class="slide-footer"></div>
-</section>
-<section id="slide-orgheadline8">
-<div class="slide-header"></div>
-<h3 id="orgheadline8">En Irlanda</h3>
-<ul>
-<li>evaluaron un sistema en elecciones piloto y determinaron que no se
-podía garantizar la integridad de ninguna elección que usara ese
-sistema. Costo del experimento: 54 millones de euros.
-<ul>
-<li>Marie O’Halloran y Michael O’Regan. E-voting machines to be
-disposed of, The Irish Times, 6 de octubre de 2010, <a href="http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193">http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193</a>,</li>
-<li>Eliminated: After ten years and e55m, e-voting machines finally
-disposed of, TheJournal.ie, 28 de junio de 2012,
-<a href="http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012">http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012</a>,</li>
-
-</ul></li>
-
-</ul>
-
-<div class="slide-footer"></div>
-</section>
-<section id="slide-orgheadline9">
-<div class="slide-header"></div>
-<h3 id="orgheadline9">En Alemania</h3>
-<ul>
-<li>los sistemas usados hasta ese momento se declararon inconstitucionales.
-<ul>
-<li>El principio de la naturaleza pública de la elección, consagrado
-en el Art. 38 conjuntamente con el Art. 20, párrafos. 1 y. 2 de la
-Constitución, requiere que todos los pasos esenciales de la
-elección estén sometidos a la verificación por parte del público,
-siempre y cuando no haya otros aspectos constitucionales que
-justifiquen una excepción.</li>
-<li>Cuando se utilizan aparatos electrónicos de votación, los pasos
-esenciales de la gestión electoral y de la determinación del
-resultado deben ser pasibles de ser comprobados por el ciudadano
-de manera confiable y sin conocimientos técnicos especiales.</li>
-
-</ul></li>
-
-</ul>
-
-<div class="slide-footer"></div>
-</section>
-<section id="slide-orgheadline10">
-<div class="slide-header"></div>
-<h3 id="orgheadline10">Finlandia</h3>
-<ul>
-<li>En 2006, el Parlamento aprobó el proyecto de Ley para la utilización
-del voto electrónico en las elecciones municipales de 2008.</li>
-<li>En 2008, se realizó una prueba de voto electrónico, en tres
-municipios durante las elecciones municipales. Sin embargo, debido a
-problemas de usabilidad la votación fue anulada. El sistema
-utilizaba urnas electrónicas.</li>
-<li>En 2010, el gobierno decidió no continuar de momento con la votación
-electrónica. Mientras tanto observaría los avances en votación
-electrónica a nivel internacional.</li>
-
-</ul>
-
-<div class="slide-footer"></div>
-</section>
-<section id="slide-orgheadline11">
-<div class="slide-header"></div>
-<h3 id="orgheadline11">Reino Unido</h3>
-<ul>
-<li>Entre 2002 y 2007, el Reino Unido ha llevado a cabo más de treinta
-pruebas pilotos con diferentes sistemas de votación electrónica.</li>
-<li>En 2008, La Comisión Electoral declaró que con respecto a las
-pruebas realizadas la seguridad y garantías adoptadas eran
-insuficientes y en consecuencia, determinó que no se continuaría con
-el voto electrónico.</li>
 
 </ul>
 
@@ -431,10 +458,10 @@ Printers (EBP).</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline24">
+<section id="slide-orgheadline23">
 <div class="slide-header"></div>
-<h2 id="orgheadline24">Problemas Teóricos</h2>
-<div class="outline-text-2" id="text-orgheadline24">
+<h2 id="orgheadline23">Problemas Teóricos</h2>
+<div class="outline-text-2" id="text-orgheadline23">
 </div><div class="slide-footer"></div>
 </section>
 <section id="slide-orgheadline16">
@@ -580,34 +607,17 @@ of voting systems". Mathematical and Computer Modelling 48 (9): 1628-45)</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline23">
-<div class="slide-header"></div>
-<h3 id="orgheadline23">Limitaciones y Utilidad del Teorema Hosp y Vora</h3>
-<ul>
-<li class="fragment roll-in">El teorema de Hosp y Vora no habla específicamente del VE, sino de cualquier sistema de votación.</li>
-<li class="fragment roll-in">Ademas, se refiere a los conceptos de integridad, verificabilidad y
-privacidad perfectas.</li>
-<li class="fragment roll-in">Pero en general en la vida nos conformamos con probabilidades bajas
-aunque no sean cero.</li>
-<li class="fragment roll-in">Pero en implementaciones no mecánicas del dispositivo de votación toma relevancia fundamental</li>
-<li class="fragment roll-in">Hace el problema de votación muy diferente al de transacciones
-bancarias.</li>
-
-</ul>
-
-<div class="slide-footer"></div>
-</section>
 </section>
 <section>
-<section id="slide-orgheadline35">
+<section id="slide-orgheadline34">
 <div class="slide-header"></div>
-<h2 id="orgheadline35">Sistema BUE (Vot.Ar)</h2>
-<div class="outline-text-2" id="text-orgheadline35">
+<h2 id="orgheadline34">Sistema BUE (Vot.Ar)</h2>
+<div class="outline-text-2" id="text-orgheadline34">
 </div><div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline25">
+<section id="slide-orgheadline24">
 <div class="slide-header"></div>
-<h3 id="orgheadline25">Utilizado en CABA, Salta, Ciudad de Neuquén</h3>
+<h3 id="orgheadline24">Utilizado en CABA, Salta, Ciudad de Neuquén</h3>
 <ul>
 <li class="fragment roll-in">Emisión electrónica del voto: la elección del votante es impresa en
 forma térmica y ademas grabada en un chip RFID.</li>
@@ -621,9 +631,9 @@ electrónicamente. (en BsAs, en Salta hubo una auditoría postelección de algun
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline26">
+<section id="slide-orgheadline25">
 <div class="slide-header"></div>
-<h3 id="orgheadline26">Defectos de BUE (Vot.Ar)</h3>
+<h3 id="orgheadline25">Defectos de BUE (Vot.Ar)</h3>
 <ul>
 <li class="fragment roll-in">El chip permite individualizar las boletas, pues vienen numerados.</li>
 <li class="fragment roll-in">Durante 7 años y varias auditorias no se detectó un error de
@@ -641,23 +651,22 @@ vota a 2,5 metros de distancia.</li>
 
 <div class="slide-footer"></div>
 </section>
+<section id="slide-orgheadline26">
+<div class="slide-header"></div>
+<h3 id="orgheadline26">Lectura de RFID por celular (Javier Smaldone)</h3>
+<iframe width="560" height="315" src="file:///home/claudio/tmp/orgfiles/slides/votoelect/comparandocopiandoyquemando.mp4" frameborder="0" allowfullscreen></iframe>
+
+<div class="slide-footer"></div>
+</section>
 <section id="slide-orgheadline27">
 <div class="slide-header"></div>
-<h3 id="orgheadline27">Lectura de RFID por celular (Javier Smaldone)</h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bJT6KLP6tWA" frameborder="0" allowfullscreen></iframe>
-
+<h3 id="orgheadline27">Lectura de escritura de RFID a distancia (Javier Smaldone)</h3>
+<iframe width="560" height="315" src="file:///home/claudio/tmp/orgfiles/slides/votoelect/DiferenciaciRFID.mp4" frameborder="0" allowfullscreen></iframe>
 <div class="slide-footer"></div>
 </section>
 <section id="slide-orgheadline28">
 <div class="slide-header"></div>
-<h3 id="orgheadline28">Lectura de escritura de RFID a distancia (Javier Smaldone)</h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yrFSQBj1Emo" frameborder="0" allowfullscreen></iframe>
-
-<div class="slide-footer"></div>
-</section>
-<section id="slide-orgheadline29">
-<div class="slide-header"></div>
-<h3 id="orgheadline29">BUE (Vot.Ar)</h3>
+<h3 id="orgheadline28">BUE (Vot.Ar)</h3>
 <ul>
 <li>Se hicieron declaraciones tales como:
 <ul>
@@ -676,9 +685,9 @@ auditado.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline30">
+<section id="slide-orgheadline29">
 <div class="slide-header"></div>
-<h3 id="orgheadline30">Sistema Oculto</h3>
+<h3 id="orgheadline29">Sistema Oculto</h3>
 <ul>
 <li>El sistema está compuesto por dos computadoras independientes, cada
 una de las cuales ejecuta un sistema operativo y aplicaciones sobre
@@ -694,9 +703,9 @@ una de las cuales ejecuta un sistema operativo y aplicaciones sobre
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline31">
+<section id="slide-orgheadline30">
 <div class="slide-header"></div>
-<h3 id="orgheadline31">Sistema Oculto</h3>
+<h3 id="orgheadline30">Sistema Oculto</h3>
 <ul>
 <li>El sistema basado en el procesador ARM tiene capacidad de
 almacenamiento permanente, suficiente para almacenar la información
@@ -715,9 +724,9 @@ hardware ni su software).</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline32">
+<section id="slide-orgheadline31">
 <div class="slide-header"></div>
-<h3 id="orgheadline32">Sistema Oculto</h3>
+<h3 id="orgheadline31">Sistema Oculto</h3>
 <ul>
 <li>Llama la atención la colocación de un cable JTAG, accesible en la
 base del equipo, que podría servir para acceder a la memoria de
@@ -733,9 +742,9 @@ almacenamiento permanente del sistema ARM.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline33">
+<section id="slide-orgheadline32">
 <div class="slide-header"></div>
-<h3 id="orgheadline33">Transmisión de Resultados</h3>
+<h3 id="orgheadline32">Transmisión de Resultados</h3>
 <ul>
 <li class="fragment roll-in">Cualquiera podía acceder a los certificados criptográficos que se
 iban a usar en la elección, pudiendo de esta forma alterar la transmisión de los resultados.</li>
@@ -751,24 +760,23 @@ lo denunció y le mandó la policia metropolitana.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline34">
+<section id="slide-orgheadline33">
 <div class="slide-header"></div>
-<h3 id="orgheadline34">Escrutinio</h3>
-<iframe  src="https://archive.org/download/ndateneo/supermercado.mp4" width="600" height="600"  ></iframe>
-
+<h3 id="orgheadline33">Escrutinio</h3>
+<iframe  src="file:///home/claudio/tmp/orgfiles/slides/votoelect/supermercado.mp4" width="600" height="600" frameborder="0" allowfullscreen></iframe>
 <div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline39">
+<section id="slide-orgheadline38">
 <div class="slide-header"></div>
-<h2 id="orgheadline39">Requerimientos</h2>
-<div class="outline-text-2" id="text-orgheadline39">
+<h2 id="orgheadline38">Requerimientos</h2>
+<div class="outline-text-2" id="text-orgheadline38">
 </div><div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline36">
+<section id="slide-orgheadline35">
 <div class="slide-header"></div>
-<h3 id="orgheadline36">Requerimientos Generales (MONTES,PENAZZI y WOLOVICK<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>)</h3>
+<h3 id="orgheadline35">Requerimientos Generales (MONTES,PENAZZI y WOLOVICK<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>)</h3>
 <dl>
 <dt>Requerimiento 1</dt><dd><b>(Reaseguro Individual)</b>. El votante debe contar
 con la certeza absoluta de la confidencialidad de su voto. Es decir
@@ -817,9 +825,9 @@ elección es auténtico e idéntico al que ha sido homologado.</dd>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline37">
+<section id="slide-orgheadline36">
 <div class="slide-header"></div>
-<h3 id="orgheadline37">Requerimientos de la Máquina Emisora del voto</h3>
+<h3 id="orgheadline36">Requerimientos de la Máquina Emisora del voto</h3>
 <dl>
 <dt>Requerimiento 8</dt><dd><b>(No Persistencia)</b> La máquina que emite el voto
 no debe guardar ningún tipo de información sobre el voto o el
@@ -833,9 +841,9 @@ a distancia del voto.</dd>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline38">
+<section id="slide-orgheadline37">
 <div class="slide-header"></div>
-<h3 id="orgheadline38">Requerimientos de la Máquina que Cuenta los Votos.</h3>
+<h3 id="orgheadline37">Requerimientos de la Máquina que Cuenta los Votos.</h3>
 <dl>
 <dt>Requerimiento 10</dt><dd><b>(Anonimización de las Boletas)</b> Las boletas no
 deben tener ninguna forma de identificación, como por ejemplo
@@ -852,15 +860,15 @@ resguardar las claves criptográficas.</dd>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline41">
-<div class="slide-header"></div>
-<h2 id="orgheadline41">Requerimientos Incumplibles</h2>
-<div class="outline-text-2" id="text-orgheadline41">
-</div><div class="slide-footer"></div>
-</section>
 <section id="slide-orgheadline40">
 <div class="slide-header"></div>
-<h3 id="orgheadline40">¿Auditoría?</h3>
+<h2 id="orgheadline40">Requerimientos Incumplibles</h2>
+<div class="outline-text-2" id="text-orgheadline40">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline39">
+<div class="slide-header"></div>
+<h3 id="orgheadline39">¿Auditoría?</h3>
 <ul>
 <li>el testing nunca puede asegurar la ausencia de defectos.</li>
 <li>auditar el software y hardware</li>
@@ -878,35 +886,15 @@ ACM Volume 27 Issue 8, Aug 1984 Pages 761-763</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline48">
+<section id="slide-orgheadline46">
 <div class="slide-header"></div>
-<h2 id="orgheadline48">Alternativas</h2>
-<div class="outline-text-2" id="text-orgheadline48">
+<h2 id="orgheadline46">Alternativas</h2>
+<div class="outline-text-2" id="text-orgheadline46">
 </div><div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline42">
+<section id="slide-orgheadline41">
 <div class="slide-header"></div>
-<h3 id="orgheadline42">Herramientas criptográficas</h3>
-<ul>
-<li>Software Independence (Rivest,Wack)
-  Un sistema de votación electrónico es software-independiente si un
-cambio indetectado en su software no puede producir un cambio
-indetectado en el resultado de la elección</li>
-<li>Cifrado Homomórfico 
-  En estos sistemas el contador cuenta los votos <b>sin saber</b> lo que
-está contando.
-<ul>
-<li>Gamal Exponencial</li>
-
-</ul></li>
-<li>USABILIDAD</li>
-
-</ul>
-<div class="slide-footer"></div>
-</section>
-<section id="slide-orgheadline43">
-<div class="slide-header"></div>
-<h3 id="orgheadline43">BUP Boleta Unica de Papel</h3>
+<h3 id="orgheadline41">BUP Boleta Unica de Papel</h3>
 <ul>
 <li class="fragment roll-in">Al contrario de la boleta partidaria, es provista por el estado</li>
 <li class="fragment roll-in">evita el robo de boletas</li>
@@ -920,9 +908,9 @@ está contando.
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline44">
+<section id="slide-orgheadline42">
 <div class="slide-header"></div>
-<h3 id="orgheadline44">Como en Córdoba</h3>
+<h3 id="orgheadline42">Como en Córdoba</h3>
 
 <figure>
 <p><img src="cordoba.jpg" alt="cordoba.jpg">
@@ -931,9 +919,9 @@ está contando.
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline45">
+<section id="slide-orgheadline43">
 <div class="slide-header"></div>
-<h3 id="orgheadline45">Como en Santa Fe</h3>
+<h3 id="orgheadline43">Como en Santa Fe</h3>
 
 <figure>
 <p><img src="boletastafe.jpg" alt="boletastafe.jpg">
@@ -942,9 +930,9 @@ está contando.
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline46">
+<section id="slide-orgheadline44">
 <div class="slide-header"></div>
-<h3 id="orgheadline46">Como los argentinos que viven en el exterior</h3>
+<h3 id="orgheadline44">Como los argentinos que viven en el exterior</h3>
 
 <figure>
 <p><img src="boletaexterior.jpg" alt="boletaexterior.jpg"> 
@@ -953,9 +941,9 @@ está contando.
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline47">
+<section id="slide-orgheadline45">
 <div class="slide-header"></div>
-<h3 id="orgheadline47">Dónde utilizar tecnología</h3>
+<h3 id="orgheadline45">Dónde utilizar tecnología</h3>
 <ul>
 <li>conteo electrónico de BUP  (FAMAF Universidad Nacional de Córdoba)</li>
 <li>acta electrónica (UNCOMA sistema gukena)</li>
@@ -968,15 +956,15 @@ escrutinio es similar al voto electrónico.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline53">
+<section id="slide-orgheadline51">
 <div class="slide-header"></div>
-<h2 id="orgheadline53">Situación Legislativa</h2>
-<div class="outline-text-2" id="text-orgheadline53">
+<h2 id="orgheadline51">Situación Legislativa</h2>
+<div class="outline-text-2" id="text-orgheadline51">
 </div><div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline49">
+<section id="slide-orgheadline47">
 <div class="slide-header"></div>
-<h3 id="orgheadline49">A nivel nacional</h3>
+<h3 id="orgheadline47">A nivel nacional</h3>
 <ul>
 <li>Se aprobó en Diputados y se encuentra en comisión en el Senado sin
 fecha de tratamiento.</li>
@@ -990,9 +978,9 @@ fecha de tratamiento.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline50">
+<section id="slide-orgheadline48">
 <div class="slide-header"></div>
-<h3 id="orgheadline50">En la provincia de Neuquén</h3>
+<h3 id="orgheadline48">En la provincia de Neuquén</h3>
 <ul>
 <li>Tiene despacho de comisión favorable la "boleta única electrónica"</li>
 
@@ -1005,9 +993,9 @@ fecha de tratamiento.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline51">
+<section id="slide-orgheadline49">
 <div class="slide-header"></div>
-<h3 id="orgheadline51">En la provincia de Neuquén</h3>
+<h3 id="orgheadline49">En la provincia de Neuquén</h3>
 
 <figure>
 <p><img src="despcomnqn2.png" alt="despcomnqn2.png">
@@ -1015,9 +1003,9 @@ fecha de tratamiento.</li>
 </figure>
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline52">
+<section id="slide-orgheadline50">
 <div class="slide-header"></div>
-<h3 id="orgheadline52">Fin</h3>
+<h3 id="orgheadline50">Fin</h3>
 <ul>
 <li>¿Preguntas?</li>
 

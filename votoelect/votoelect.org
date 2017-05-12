@@ -33,7 +33,7 @@
 #+REVEAL_INIT_SCRIPT:
 
 #+TITLE: Consideraciones sobre el voto electrónico
-#+DATE:  <2016-12-02 vie>
+#+DATE:  <2017-04-24 lun>
 #+AUTHOR: Claudio Vaucheret
 #+EMAIL:  cv@fi.uncoma.edu.ar 
 
@@ -72,6 +72,77 @@
 
 * Problemas Prácticos del *VE* En el Mundo
 
+** En Alemania
+- los sistemas usados hasta ese momento se declararon inconstitucionales.
+  - El principio de la naturaleza pública de la elección, consagrado
+    en el Art. 38 conjuntamente con el Art. 20, párrafos. 1 y. 2 de la
+    Constitución, requiere que todos los pasos esenciales de la
+    elección estén sometidos a la verificación por parte del público,
+    siempre y cuando no haya otros aspectos constitucionales que
+    justifiquen una excepción.
+  - Cuando se utilizan aparatos electrónicos de votación, los pasos
+    esenciales de la gestión electoral y de la determinación del
+    resultado deben ser pasibles de ser comprobados por el ciudadano
+    de manera confiable y sin conocimientos técnicos especiales.
+  - los procedimientos para examinar el sistema y la aprobación por
+    parte del ministerio deben ser públicos. Cualquier interés de los
+    fabricantes en proteger su secreto comercial debe estar
+    subordinado al principio de la democracia
+
+** En Irlanda
+- Primera propuesta en 1998, legislación en 2000, y primeras pruebas
+  piloto en 2002.
+- Un informe confidencial del Ministerio del Interior irlandés se
+  filtró a la prensa: allí se aseguraba que la integridad del proceso
+  electoral en los lugares donde se implementó el voto electrónico no
+  estaba garantizada. Entre otras fallas, el memorando interno que
+  tomó estado público destacaba la posibilidad de que un software
+  malicioso sencillo de programar pudiera generar una pantalla falsa
+  en la máquina para hacer votar incorrectamente al elector.
+- finalmente en el 2009 determinaron que no se
+  podía garantizar la integridad de ninguna elección que usara ese
+  sistema. Costo del experimento: 54 millones de euros.
+  - Marie O’Halloran y Michael O’Regan. E-voting machines to be
+    disposed of, The Irish Times, 6 de octubre de 2010, http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193,
+  - Eliminated: After ten years and e55m, e-voting machines finally
+    disposed of, TheJournal.ie, 28 de junio de 2012,
+    http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012,
+      
+** En Holanda
+- dejó de usarse en 2008 al probarse que los votos podian ser leidos
+  a varios metros de distancia usando *Van Eck Phreaking* (lectura a
+  distancia del monitor captando las radiaciones electromágneticas de
+  la pantalla), y que los programas podían ser alterados.
+  - R. Gonggrijp y W.J. Hengeveld. Studying the Nedap/Groenendaal ES3B
+    voting computer: A computer security perspective. En Proc. 2007
+    USENIX/ACCURATE Electronic Voting Technology Workshop (EVT ’07), Boston, 2007.
+
+#+REVEAL: split
+
+# #+REVEAL_HTML: <iframe  src="https://ia801504.us.archive.org/2/items/ndateneo/holanda.webm" width="600" height="600" frameborder="0" allowfullscreen ></iframe>
+#+REVEAL_HTML: <iframe  src="file:///home/claudio/tmp/orgfiles/slides/votoelect/losproblemasdevotar.mp4" width="600" height="600" frameborder="0" allowfullscreen ></iframe>
+** Finlandia
+- En 2006, el Parlamento aprobó el proyecto de Ley para la utilización
+  del voto electrónico en las elecciones municipales de 2008.
+- En 2008, se realizó una prueba de voto electrónico, en tres
+  municipios durante las elecciones municipales. Sin embargo, debido a
+  problemas de usabilidad la votación fue anulada. El sistema
+  utilizaba urnas electrónicas.
+- En 2010, el gobierno decidió no continuar de momento con la votación
+  electrónica. Los cuestionamientos fueron los mismos que en el resto
+  de los países: problemas de implementación, bajas capacidades del
+  sistema de ser auditado y el riesgo potencial pero cierto de que el
+  software fuera intervenido y los resultados manipulados, según
+  relató la propia auditoría del Ministerio de Justicia. 
+
+** Reino Unido
+- Entre 2002 y 2007, el Reino Unido ha llevado a cabo más de treinta
+  pruebas pilotos con diferentes sistemas de votación electrónica.
+- En 2008, La Comisión Electoral declaró que con respecto a las
+  pruebas realizadas la seguridad y garantías adoptadas eran
+  insuficientes y en consecuencia, determinó que no se continuaría con
+  el voto electrónico. 
+
 ** En EEUU
 - Cientos de errores en diversos estados. Algunos destacados
  #+ATTR_REVEAL: :frag (roll-in)
@@ -101,7 +172,17 @@
       desde 2004.
       - Bruce Schneier. An Incredibly Insecure Voting Machine,
         https://www.schneier.com/blog/archives/2015/04/an_incredibly_i.html
-
+#+REVEAL: split
+- Un trabajo de tres organizaciones independientes (The Verified
+  Voting Foundation, The Constitutional Litigation Clinic at Rutgers
+  School of Law y The Common Cause Education Fund) revisó los sistemas
+  y el funcionamiento de los sistemas en las elecciones de 2012, a
+  partir de parámetros e indicadores construidos en elecciones
+  anteriores por el Brennan Center. 
+- Dice el informe: "los autores creen que la boleta de papel y los
+  sistemas ópticos de escrutinio, acompañados por sistemas de marcado
+  de boletas accesibles para cualquiera, deben reemplazar a los
+  sistemas de voto electrónico, con o sin respaldo de papel".
 ** En Brasil
  #+ATTR_REVEAL: :frag (roll-in)
 - Falla en la protección del secreto del voto:
@@ -125,61 +206,6 @@
     analysis of India’s electronic voting machines, en Proceedings of
     the 17th ACM conference on Computer and communications security,
     2010, pp. 1–14. https://indiaevm.org/evm_tr2010-jul29.pdf,
-      
-** En Holanda
-- dejó de usarse en 2007 al probarse que los votos podian ser leidos
-  a varios metros de distancia usando *Van Eck Phreaking* (lectura a
-  distancia del monitor captando las radiaciones electromágneticas de
-  la pantalla), y que los programas podían ser alterados.
-  - R. Gonggrijp y W.J. Hengeveld. Studying the Nedap/Groenendaal ES3B
-    voting computer: A computer security perspective. En Proc. 2007
-    USENIX/ACCURATE Electronic Voting Technology Workshop (EVT ’07), Boston, 2007.
-
-#+REVEAL: split
-
-#+REVEAL_HTML: <iframe  src="https://ia801504.us.archive.org/2/items/ndateneo/holanda.webm" width="600" height="600" frameborder="0" allowfullscreen ></iframe>
-
-** En Irlanda
-- evaluaron un sistema en elecciones piloto y determinaron que no se
-  podía garantizar la integridad de ninguna elección que usara ese
-  sistema. Costo del experimento: 54 millones de euros.
-  - Marie O’Halloran y Michael O’Regan. E-voting machines to be
-    disposed of, The Irish Times, 6 de octubre de 2010, http://www.irishtimes.com/news/e-voting-machines-to-be-disposed-of-1.865193,
-  - Eliminated: After ten years and e55m, e-voting machines finally
-    disposed of, TheJournal.ie, 28 de junio de 2012,
-    http://www.thejournal.ie/e-voting-machines-disposed-phil-hogan-environment-fiasco-503678-Jun2012,
-
-** En Alemania
-- los sistemas usados hasta ese momento se declararon inconstitucionales.
-  - El principio de la naturaleza pública de la elección, consagrado
-    en el Art. 38 conjuntamente con el Art. 20, párrafos. 1 y. 2 de la
-    Constitución, requiere que todos los pasos esenciales de la
-    elección estén sometidos a la verificación por parte del público,
-    siempre y cuando no haya otros aspectos constitucionales que
-    justifiquen una excepción.
-  - Cuando se utilizan aparatos electrónicos de votación, los pasos
-    esenciales de la gestión electoral y de la determinación del
-    resultado deben ser pasibles de ser comprobados por el ciudadano
-    de manera confiable y sin conocimientos técnicos especiales.
-
-** Finlandia
-- En 2006, el Parlamento aprobó el proyecto de Ley para la utilización
-  del voto electrónico en las elecciones municipales de 2008.
-- En 2008, se realizó una prueba de voto electrónico, en tres
-  municipios durante las elecciones municipales. Sin embargo, debido a
-  problemas de usabilidad la votación fue anulada. El sistema
-  utilizaba urnas electrónicas.
-- En 2010, el gobierno decidió no continuar de momento con la votación
-  electrónica. Mientras tanto observaría los avances en votación
-  electrónica a nivel internacional.
-
-** Reino Unido
-- Entre 2002 y 2007, el Reino Unido ha llevado a cabo más de treinta
-  pruebas pilotos con diferentes sistemas de votación electrónica.
-- En 2008, La Comisión Electoral declaró que con respecto a las
-  pruebas realizadas la seguridad y garantías adoptadas eran
-  insuficientes y en consecuencia, determinó que no se continuaría con
-  el voto electrónico. 
 
 * No es Voto Electrónico.  Es Boleta Electrónica!
 
@@ -295,16 +321,16 @@
   - (Hosp, Ben, y Poorvi L. Vora. 2008.“An information-theoretic model
     of voting systems". Mathematical and Computer Modelling 48 (9): 1628-45)
 
-** Limitaciones y Utilidad del Teorema Hosp y Vora
- #+ATTR_REVEAL: :frag (roll-in)
-- El teorema de Hosp y Vora no habla específicamente del VE, sino de cualquier sistema de votación.
-- Ademas, se refiere a los conceptos de integridad, verificabilidad y
-  privacidad perfectas.
-- Pero en general en la vida nos conformamos con probabilidades bajas
-  aunque no sean cero.
-- Pero en implementaciones no mecánicas del dispositivo de votación toma relevancia fundamental
-- Hace el problema de votación muy diferente al de transacciones
-  bancarias.
+# ** Limitaciones y Utilidad del Teorema Hosp y Vora
+#  #+ATTR_REVEAL: :frag (roll-in)
+# - El teorema de Hosp y Vora no habla específicamente del VE, sino de cualquier sistema de votación.
+# - Ademas, se refiere a los conceptos de integridad, verificabilidad y
+#   privacidad perfectas.
+# - Pero en general en la vida nos conformamos con probabilidades bajas
+#   aunque no sean cero.
+# - Pero en implementaciones no mecánicas del dispositivo de votación toma relevancia fundamental
+# - Hace el problema de votación muy diferente al de transacciones
+#   bancarias.
 
 * Sistema BUE (Vot.Ar) 
 
@@ -334,12 +360,13 @@
 
 ** Lectura de RFID por celular (Javier Smaldone)
 
-#+REVEAL_HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/bJT6KLP6tWA" frameborder="0" allowfullscreen></iframe>
+#  #+REVEAL_HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/bJT6KLP6tWA" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="560" height="315" src="file:///home/claudio/tmp/orgfiles/slides/votoelect/comparandocopiandoyquemando.mp4" frameborder="0" allowfullscreen></iframe>
 
 ** Lectura de escritura de RFID a distancia (Javier Smaldone)
 
-#+REVEAL_HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/yrFSQBj1Emo" frameborder="0" allowfullscreen></iframe>
-
+# #+REVEAL_HTML: <iframe width="560" height="315" src="https://www.youtube.com/embed/yrFSQBj1Emo" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe width="560" height="315" src="file:///home/claudio/tmp/orgfiles/slides/votoelect/DiferenciaciRFID.mp4" frameborder="0" allowfullscreen></iframe>
 ** BUE (Vot.Ar)
 - Se hicieron declaraciones tales como:
   - "Ponemos un equipo, una máquina absolutamente boba, que no tiene
@@ -389,8 +416,8 @@
 
 ** Escrutinio 
 
-#+REVEAL_HTML: <iframe  src="https://archive.org/download/ndateneo/supermercado.mp4" width="600" height="600" frameborder="0" allowfullscreen></iframe>
-
+# #+REVEAL_HTML: <iframe  src="https://archive.org/download/ndateneo/supermercado.mp4" width="600" height="600" frameborder="0" allowfullscreen></iframe>
+#+REVEAL_HTML: <iframe  src="file:///home/claudio/tmp/orgfiles/slides/votoelect/supermercado.mp4" width="600" height="600" frameborder="0" allowfullscreen></iframe>
 * Requerimientos 
 
 ** Requerimientos Generales (MONTES,PENAZZI y WOLOVICK[fn:1])
@@ -458,16 +485,16 @@
 
 * Alternativas 
 
-** Herramientas criptográficas
-- Software Independence (Rivest,Wack)
-    Un sistema de votación electrónico es software-independiente si un
-  cambio indetectado en su software no puede producir un cambio
-  indetectado en el resultado de la elección
-- Cifrado Homomórfico 
-    En estos sistemas el contador cuenta los votos *sin saber* lo que
-  está contando.
-  - Gamal Exponencial
-- USABILIDAD 
+# ** Herramientas criptográficas
+# - Software Independence (Rivest,Wack)
+#     Un sistema de votación electrónico es software-independiente si un
+#   cambio indetectado en su software no puede producir un cambio
+#   indetectado en el resultado de la elección
+# - Cifrado Homomórfico 
+#     En estos sistemas el contador cuenta los votos *sin saber* lo que
+#   está contando.
+#   - Gamal Exponencial
+# - USABILIDAD 
 ** BUP Boleta Unica de Papel
  #+ATTR_REVEAL: :frag (roll-in)
 - Al contrario de la boleta partidaria, es provista por el estado
@@ -502,7 +529,7 @@
 [[file:banner.png]]
 
 ** En la provincia de Neuquén
-- Tiene despacho de comisión favorable la "boleta única electrónica"
+- Se aprobó la "boleta única electrónica"
 [[file:despacholegnqn1.png]]
 
 ** En la provincia de Neuquén
