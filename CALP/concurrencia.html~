@@ -457,14 +457,14 @@ cabo a través de dos operaciones del semáforo llamadas <i>wait</i> y
 <div class="org-src-container">
 
 <pre  class="src src-pascal">wait(aSemaphore)
-<span style="color: #00ffff;">if</span> aSemaphore&#8217;s counter &gt; 0 <span style="color: #00ffff;">then</span> 
+<span style="color: #a020f0;">if</span> aSemaphore&#8217;s counter &gt; 0 <span style="color: #a020f0;">then</span> 
    decrement aSemaphore&#8217;s counter
-<span style="color: #00ffff;">else</span> 
-   put the caller <span style="color: #00ffff;">in</span> aSemaphore&#8217;s queue
-   attempt <span style="color: #00ffff;">to</span> transfer control <span style="color: #00ffff;">to</span> a ready task 
-     -- <span style="color: #00ffff;">if</span> the task ready queue is empty, 
+<span style="color: #a020f0;">else</span> 
+   put the caller <span style="color: #a020f0;">in</span> aSemaphore&#8217;s queue
+   attempt <span style="color: #a020f0;">to</span> transfer control <span style="color: #a020f0;">to</span> a ready task 
+     -- <span style="color: #a020f0;">if</span> the task ready queue is empty, 
      -- deadlock occurs 
-<span style="color: #00ffff;">end</span>
+<span style="color: #a020f0;">end</span>
 </pre>
 </div>
 
@@ -478,12 +478,12 @@ cabo a través de dos operaciones del semáforo llamadas <i>wait</i> y
 <div class="org-src-container">
 
 <pre  class="src src-pascal">release(aSemaphore)
-<span style="color: #00ffff;">if</span> aSemaphore&#8217;s queue is empty <span style="color: #00ffff;">then</span>
+<span style="color: #a020f0;">if</span> aSemaphore&#8217;s queue is empty <span style="color: #a020f0;">then</span>
    increment aSemaphore&#8217;s counter
-<span style="color: #00ffff;">else</span>
-   put the calling task <span style="color: #00ffff;">in</span> the task ready queue
-   transfer control <span style="color: #00ffff;">to</span> a task from aSemaphore&#8217;s queue
-<span style="color: #00ffff;">end</span>
+<span style="color: #a020f0;">else</span>
+   put the calling task <span style="color: #a020f0;">in</span> the task ready queue
+   transfer control <span style="color: #a020f0;">to</span> a task from aSemaphore&#8217;s queue
+<span style="color: #a020f0;">end</span>
 </pre>
 </div>
 
@@ -497,16 +497,16 @@ cabo a través de dos operaciones del semáforo llamadas <i>wait</i> y
 <div class="org-src-container">
 
 <pre  class="src src-ada">semaphore fullspots, emptyspots;
-fullstops.count = <span style="color: #7fffd4;">0</span>;
+fullstops.count = <span style="color: #5f9ea0;">0</span>;
 emptyspots.count = BUFLEN;
-<span style="color: #00ffff;">task</span> <span style="color: #87cefa;">producer</span>;
-        <span style="color: #00ffff;">loop</span>
-        <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">produce VALUE &#8211;-</span>
-        wait (emptyspots); {wait <span style="color: #00ffff;">for</span> space}
+<span style="color: #a020f0;">task</span> <span style="color: #0000ff;">producer</span>;
+        <span style="color: #a020f0;">loop</span>
+        <span style="color: #b22222;">-- </span><span style="color: #b22222;">produce VALUE &#8211;-</span>
+        wait (emptyspots); {wait <span style="color: #a020f0;">for</span> space}
         DEPOSIT(VALUE);
         release(fullspots); {increase filled}
-        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">producer</span>;
+        <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">loop</span>;
+<span style="color: #a020f0;">end</span> <span style="color: #0000ff;">producer</span>;
 </pre>
 </div>
 
@@ -519,14 +519,14 @@ emptyspots.count = BUFLEN;
 <h3 id="orgheadline24">Código Productor/Consumidor</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">consumer</span>;
-        <span style="color: #00ffff;">loop</span>
-        wait (fullspots);{wait till <span style="color: #00ffff;">not</span> empty}}
+<pre  class="src src-ada"><span style="color: #a020f0;">task</span> <span style="color: #0000ff;">consumer</span>;
+        <span style="color: #a020f0;">loop</span>
+        wait (fullspots);{wait till <span style="color: #a020f0;">not</span> empty}}
         FETCH(VALUE);
         release(emptyspots); {increase empty}
-        <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">consume VALUE &#8211;-</span>
-        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">consumer</span>;
+        <span style="color: #b22222;">-- </span><span style="color: #b22222;">consume VALUE &#8211;-</span>
+        <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">loop</span>;
+<span style="color: #a020f0;">end</span> <span style="color: #0000ff;">consumer</span>;
 </pre>
 </div>
 
@@ -558,20 +558,20 @@ acceso (sincronización de competencia)
 <h3 id="orgheadline26">Código Productor/Consumidor</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada">semaphore <span style="color: #00ffff;">access</span>, fullspots, emptyspots;
-<span style="color: #00ffff;">access</span>.count = <span style="color: #7fffd4;">0</span>;
-fullstops.count = <span style="color: #7fffd4;">0</span>;
+<pre  class="src src-ada">semaphore <span style="color: #a020f0;">access</span>, fullspots, emptyspots;
+<span style="color: #a020f0;">access</span>.count = <span style="color: #5f9ea0;">0</span>;
+fullstops.count = <span style="color: #5f9ea0;">0</span>;
 emptyspots.count = BUFLEN;
-<span style="color: #00ffff;">task</span> <span style="color: #87cefa;">producer</span>;
-        <span style="color: #00ffff;">loop</span>
-        <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">produce VALUE &#8211;-</span>
-        wait(emptyspots); {wait <span style="color: #00ffff;">for</span> space}
-        wait(<span style="color: #00ffff;">access</span>);     {wait <span style="color: #00ffff;">for</span> <span style="color: #00ffff;">access</span>)
+<span style="color: #a020f0;">task</span> <span style="color: #0000ff;">producer</span>;
+        <span style="color: #a020f0;">loop</span>
+        <span style="color: #b22222;">-- </span><span style="color: #b22222;">produce VALUE &#8211;-</span>
+        wait(emptyspots); {wait <span style="color: #a020f0;">for</span> space}
+        wait(<span style="color: #a020f0;">access</span>);     {wait <span style="color: #a020f0;">for</span> <span style="color: #a020f0;">access</span>)
         DEPOSIT(VALUE);
-        release(<span style="color: #00ffff;">access</span>); {relinquish <span style="color: #00ffff;">access</span>}
+        release(<span style="color: #a020f0;">access</span>); {relinquish <span style="color: #a020f0;">access</span>}
         release(fullspots); {increase filled}
-        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">producer</span>;
+        <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">loop</span>;
+<span style="color: #a020f0;">end</span> <span style="color: #0000ff;">producer</span>;
 </pre>
 </div>
 
@@ -584,16 +584,16 @@ emptyspots.count = BUFLEN;
 <h3 id="orgheadline27">Código Productor/Consumidor</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">consumer</span>;
-        <span style="color: #00ffff;">loop</span>
-        wait(fullspots);{wait till <span style="color: #00ffff;">not</span> empty}
-        wait(<span style="color: #00ffff;">access</span>);   {wait <span style="color: #00ffff;">for</span> <span style="color: #00ffff;">access</span>}
+<pre  class="src src-ada"><span style="color: #a020f0;">task</span> <span style="color: #0000ff;">consumer</span>;
+        <span style="color: #a020f0;">loop</span>
+        wait(fullspots);{wait till <span style="color: #a020f0;">not</span> empty}
+        wait(<span style="color: #a020f0;">access</span>);   {wait <span style="color: #a020f0;">for</span> <span style="color: #a020f0;">access</span>}
         FETCH(VALUE);
-        release(<span style="color: #00ffff;">access</span>); {relinquish <span style="color: #00ffff;">access</span>}
+        release(<span style="color: #a020f0;">access</span>); {relinquish <span style="color: #a020f0;">access</span>}
         release(emptyspots); {increase empty}
-        <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">consume VALUE &#8211;-</span>
-        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">consumer</span>;
+        <span style="color: #b22222;">-- </span><span style="color: #b22222;">consume VALUE &#8211;-</span>
+        <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">loop</span>;
+<span style="color: #a020f0;">end</span> <span style="color: #0000ff;">consumer</span>;
 </pre>
 </div>
 
@@ -761,9 +761,9 @@ colección de puntos de entrada:</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">Task_Example</span> <span style="color: #00ffff;">is</span>
-        <span style="color: #00ffff;">entry</span> <span style="color: #87cefa;">ENTRY_1</span> (Item : <span style="color: #00ffff;">in</span> <span style="color: #98fb98;">Integer</span>);
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">Task_Example</span>;
+<pre  class="src src-ada"><span style="color: #a020f0;">task</span> <span style="color: #0000ff;">Task_Example</span> <span style="color: #a020f0;">is</span>
+        <span style="color: #a020f0;">entry</span> <span style="color: #0000ff;">ENTRY_1</span> (Item : <span style="color: #a020f0;">in</span> <span style="color: #228b22;">Integer</span>);
+<span style="color: #a020f0;">end</span> <span style="color: #0000ff;">Task_Example</span>;
 </pre>
 </div>
 
@@ -786,9 +786,9 @@ cláusulas de <i>accept</i> en el cuerpo:</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">entry_name</span> (formal parameters) <span style="color: #00ffff;">do</span>
+<pre  class="src src-ada"><span style="color: #a020f0;">accept</span> <span style="color: #0000ff;">entry_name</span> (formal parameters) <span style="color: #a020f0;">do</span>
     ...
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">entry_name</span>
+<span style="color: #a020f0;">end</span> <span style="color: #0000ff;">entry_name</span>
 </pre>
 </div>
 
@@ -801,14 +801,14 @@ cláusulas de <i>accept</i> en el cuerpo:</li>
 <h3 id="orgheadline39">Ejemplo de Cuerpo de Tarea</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">TASK_EXAMPLE</span> <span style="color: #00ffff;">is</span>
-     <span style="color: #00ffff;">begin</span>
-     <span style="color: #00ffff;">loop</span>
-     <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">ENTRY_1</span> (ITEM: <span style="color: #00ffff;">in</span> <span style="color: #98fb98;">FLOAT</span>) <span style="color: #00ffff;">do</span>
+<pre  class="src src-ada"><span style="color: #a020f0;">task body</span> <span style="color: #0000ff;">TASK_EXAMPLE</span> <span style="color: #a020f0;">is</span>
+     <span style="color: #a020f0;">begin</span>
+     <span style="color: #a020f0;">loop</span>
+     <span style="color: #a020f0;">accept</span> <span style="color: #0000ff;">ENTRY_1</span> (ITEM: <span style="color: #a020f0;">in</span> <span style="color: #228b22;">FLOAT</span>) <span style="color: #a020f0;">do</span>
      ...
-     <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">ENTRY_1</span>;
-     <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
-   <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">TASK_EXAMPLE</span>;
+     <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">ENTRY_1</span>;
+     <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">loop</span>;
+   <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">TASK_EXAMPLE</span>;
 </pre>
 </div>
 
@@ -885,17 +885,17 @@ se llama una tarea servidor</li>
 <h3 id="orgheadline44">Ejemplo de tarea <i>Actor</i></h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">WATER_MONITOR</span>; <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">specification</span>
-<span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">WATER_MONITOR</span> <span style="color: #00ffff;">is</span> <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">body</span>
-<span style="color: #00ffff;">begin</span>
-  <span style="color: #00ffff;">loop</span>
-  <span style="color: #00ffff;">if</span> WATER_LEVEL &gt; MAX_LEVEL
-    <span style="color: #00ffff;">then</span> SOUND_ALARM;
-  <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">if</span>;
-  <span style="color: #00ffff;">delay</span> <span style="color: #7fffd4;">1.0</span>; <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">No further execution</span>
-            <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">for at least 1 second</span>
-  <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">WATER_MONITOR</span>;
+<pre  class="src src-ada"><span style="color: #a020f0;">task</span> <span style="color: #0000ff;">WATER_MONITOR</span>; <span style="color: #b22222;">-- </span><span style="color: #b22222;">specification</span>
+<span style="color: #a020f0;">task body</span> <span style="color: #0000ff;">WATER_MONITOR</span> <span style="color: #a020f0;">is</span> <span style="color: #b22222;">-- </span><span style="color: #b22222;">body</span>
+<span style="color: #a020f0;">begin</span>
+  <span style="color: #a020f0;">loop</span>
+  <span style="color: #a020f0;">if</span> WATER_LEVEL &gt; MAX_LEVEL
+    <span style="color: #a020f0;">then</span> SOUND_ALARM;
+  <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">if</span>;
+  <span style="color: #a020f0;">delay</span> <span style="color: #5f9ea0;">1.0</span>; <span style="color: #b22222;">-- </span><span style="color: #b22222;">No further execution</span>
+            <span style="color: #b22222;">-- </span><span style="color: #b22222;">for at least 1 second</span>
+  <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">loop</span>;
+<span style="color: #a020f0;">end</span> <span style="color: #0000ff;">WATER_MONITOR</span>;
 </pre>
 </div>
 
@@ -928,21 +928,21 @@ está en un bucle.</li>
 <h3 id="orgheadline46">Una tarea con múltiples entradas</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">TASK_EXAMPLE</span> <span style="color: #00ffff;">is</span>
-      <span style="color: #00ffff;">loop</span>
-        <span style="color: #00ffff;">select</span> 
-          <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">ENTRY_1</span> (formal params) <span style="color: #00ffff;">do</span>
+<pre  class="src src-ada"><span style="color: #a020f0;">task body</span> <span style="color: #0000ff;">TASK_EXAMPLE</span> <span style="color: #a020f0;">is</span>
+      <span style="color: #a020f0;">loop</span>
+        <span style="color: #a020f0;">select</span> 
+          <span style="color: #a020f0;">accept</span> <span style="color: #0000ff;">ENTRY_1</span> (formal params) <span style="color: #a020f0;">do</span>
           ...
-          <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">ENTRY_1</span>;
+          <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">ENTRY_1</span>;
           ...
-        <span style="color: #00ffff;">or</span>
-          <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">ENTRY_2</span> (formal params) <span style="color: #00ffff;">do</span>
+        <span style="color: #a020f0;">or</span>
+          <span style="color: #a020f0;">accept</span> <span style="color: #0000ff;">ENTRY_2</span> (formal params) <span style="color: #a020f0;">do</span>
           ...
-          <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">ENTRY_2</span>;
+          <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">ENTRY_2</span>;
           ...
-        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">select</span>;
-      <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
-    <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">TASK_EXAMPLE</span>;
+        <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">select</span>;
+      <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">loop</span>;
+    <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">TASK_EXAMPLE</span>;
 </pre>
 </div>
 
@@ -979,8 +979,8 @@ está en un bucle.</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">when</span> <span style="color: #00ffff;">not</span> FULL(BUFFER) =&gt;
-    <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">DEPOSIT</span>(NEW_VALUE) <span style="color: #00ffff;">do</span>
+<pre  class="src src-ada"><span style="color: #a020f0;">when</span> <span style="color: #a020f0;">not</span> FULL(BUFFER) =&gt;
+    <span style="color: #a020f0;">accept</span> <span style="color: #0000ff;">DEPOSIT</span>(NEW_VALUE) <span style="color: #a020f0;">do</span>
 </pre>
 </div>
 <ul>
@@ -1024,10 +1024,10 @@ entre ellas para comprobar los mensajes.</li>
 <h3 id="orgheadline50">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">task</span> <span style="color: #87cefa;">GAS_STATION_ATTENDANT</span> <span style="color: #00ffff;">is</span>
-        <span style="color: #00ffff;">entry</span> <span style="color: #87cefa;">SERVICE_ISLAND</span> (CAR : CAR_TYPE);
-        <span style="color: #00ffff;">entry</span> <span style="color: #87cefa;">GARAGE</span> (CAR : CAR_TYPE);
-        <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">GAS_STATION_ATTENDANT</span>;
+<pre  class="src src-ada"><span style="color: #a020f0;">task</span> <span style="color: #0000ff;">GAS_STATION_ATTENDANT</span> <span style="color: #a020f0;">is</span>
+        <span style="color: #a020f0;">entry</span> <span style="color: #0000ff;">SERVICE_ISLAND</span> (CAR : CAR_TYPE);
+        <span style="color: #a020f0;">entry</span> <span style="color: #0000ff;">GARAGE</span> (CAR : CAR_TYPE);
+        <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">GAS_STATION_ATTENDANT</span>;
 </pre>
 </div>
 
@@ -1040,24 +1040,24 @@ entre ellas para comprobar los mensajes.</li>
 <h3 id="orgheadline51">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">task body</span> <span style="color: #87cefa;">GAS_STATION_ATTENDANT</span> <span style="color: #00ffff;">is</span>
-  <span style="color: #00ffff;">begin</span>
-    <span style="color: #00ffff;">loop</span>
-      <span style="color: #00ffff;">select</span>
-        <span style="color: #00ffff;">when</span> GAS_AVAILABLE =&gt;
-                   <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">SERVICE_ISLAND</span> (CAR : CAR_TYPE) <span style="color: #00ffff;">do</span>
+<pre  class="src src-ada"><span style="color: #a020f0;">task body</span> <span style="color: #0000ff;">GAS_STATION_ATTENDANT</span> <span style="color: #a020f0;">is</span>
+  <span style="color: #a020f0;">begin</span>
+    <span style="color: #a020f0;">loop</span>
+      <span style="color: #a020f0;">select</span>
+        <span style="color: #a020f0;">when</span> GAS_AVAILABLE =&gt;
+                   <span style="color: #a020f0;">accept</span> <span style="color: #0000ff;">SERVICE_ISLAND</span> (CAR : CAR_TYPE) <span style="color: #a020f0;">do</span>
                  FILL_WITH_GAS (CAR);
-               <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">SERVICE_ISLAND</span>;
-      <span style="color: #00ffff;">or</span>
-             <span style="color: #00ffff;">when</span> GARAGE_AVAILABLE =&gt;
-               <span style="color: #00ffff;">accept</span> <span style="color: #87cefa;">GARAGE</span> (CAR : CAR_TYPE) <span style="color: #00ffff;">do</span>
+               <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">SERVICE_ISLAND</span>;
+      <span style="color: #a020f0;">or</span>
+             <span style="color: #a020f0;">when</span> GARAGE_AVAILABLE =&gt;
+               <span style="color: #a020f0;">accept</span> <span style="color: #0000ff;">GARAGE</span> (CAR : CAR_TYPE) <span style="color: #a020f0;">do</span>
                  FIX (CAR);
-               <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">GARAGE</span>;
-      <span style="color: #00ffff;">else</span>
+               <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">GARAGE</span>;
+      <span style="color: #a020f0;">else</span>
              SLEEP;
-      <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">select</span>;
-    <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">loop</span>;
-  <span style="color: #00ffff;">end</span> <span style="color: #87cefa;">GAS_STATION_ATTENDANT</span>;
+      <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">select</span>;
+    <span style="color: #a020f0;">end</span> <span style="color: #a020f0;">loop</span>;
+  <span style="color: #a020f0;">end</span> <span style="color: #0000ff;">GAS_STATION_ATTENDANT</span>;
 </pre>
 </div>
 
