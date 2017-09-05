@@ -26,85 +26,85 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Tipo de Datos Abstractos y POO</h2><h2 class="date">2016-11-14 Mon 00:00</h2><p class="date">Created: 2017-09-05 Tue 11:18</p>
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Tipo de Datos Abstractos y POO</h2><h2 class="date">2017-09-05 Tue 00:00</h2><p class="date">Created: 2017-09-05 Tue 11:21</p>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org2fcd918">El concepto de Abstracción</a></li>
-<li><a href="#/slide-org93727c1">Introducción a la Abstracción del Dato</a></li>
-<li><a href="#/slide-org824f871">Ventajas de la Abstracción</a></li>
-<li><a href="#/slide-org0761c15">Cuestiones de Diseño</a></li>
-<li><a href="#/slide-org1126b21">Ejemplo en <b>ADA</b></a></li>
-<li><a href="#/slide-orgbc94185">Ejemplo en Ada</a></li>
-<li><a href="#/slide-org4e442aa">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-org08d634f">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-org410ec98">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-org3e6599c">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-orgde54095">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-org2c58b5e">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-org5b4ba8e">Evaluación de <b>Ada</b> y <b>C++</b></a></li>
-<li><a href="#/slide-orgc3fd426">Ejemplo en <b>java</b></a></li>
-<li><a href="#/slide-org5334055">Ejemplo en <b>java</b></a></li>
-<li><a href="#/slide-orgeafc07e">Tipo de Datos Abstracto Parametrizados</a></li>
-<li><a href="#/slide-orgee2d982">TDA parametrizado en <b>Ada</b></a></li>
-<li><a href="#/slide-orgc00111a">TDA parametrizado en <b>C++</b></a></li>
-<li><a href="#/slide-org214dd57">Encapsulación</a></li>
-<li><a href="#/slide-org0c7cf6d">Encapsulación en <b>C</b></a></li>
-<li><a href="#/slide-org925c449">Encapsulación en <b>C++</b></a></li>
-<li><a href="#/slide-org02b86f4">Paquetes de <b>Ada</b></a></li>
-<li><a href="#/slide-orgf4c5474">El Sistema de Módulos de <b>Ciao Prolog</b></a></li>
-<li><a href="#/slide-orga79e3bd">Encapsulación de Nombres</a></li>
-<li><a href="#/slide-org7413e29">Encapsulación de Nombres</a></li>
-<li><a href="#/slide-orge52a548">Programación Orientada a Objetos</a></li>
-<li><a href="#/slide-org9f708ed">Programación Orientada a Objetos</a></li>
-<li><a href="#/slide-org1af0f4b">Herencia</a></li>
-<li><a href="#/slide-org4feab04">Conceptos de la orientación a objetos</a></li>
-<li><a href="#/slide-org16fa436">Conceptos de la orientación a objetos</a></li>
-<li><a href="#/slide-org72e22bb">Conceptos de la orientación a objetos</a></li>
-<li><a href="#/slide-org741cbec">Conceptos de la orientación a objetos</a></li>
-<li><a href="#/slide-orge542cbd">Ligadura Dinámica</a></li>
-<li><a href="#/slide-org16d8da2">Ligadura Dinámica</a></li>
-<li><a href="#/slide-org2f50091">Cuestiones de Diseño para lenguajes de POO</a></li>
-<li><a href="#/slide-org021097a">La Exclusividad de Objetos</a></li>
-<li><a href="#/slide-orgbf026cb">Son las sublclases subtipos?</a></li>
-<li><a href="#/slide-orgf844f8f">Chequeo de tipos y Polimorfismo</a></li>
-<li><a href="#/slide-org1bdb3f1">Herencia única y múltiple</a></li>
-<li><a href="#/slide-orgf0990f6">Asignación de memoria de objetos y desalojo de memoria</a></li>
-<li><a href="#/slide-org2974175">Ligadura dinámica y estática</a></li>
-<li><a href="#/slide-org05f9bbb">Clases anidadas</a></li>
-<li><a href="#/slide-org2af2554">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
-<li><a href="#/slide-org66c8a3f">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
-<li><a href="#/slide-orgb7e2b78">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
-<li><a href="#/slide-org46fd1a7">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
-<li><a href="#/slide-org6dfbe8b">Soporte para orientación a objetos en <b>C++</b></a></li>
-<li><a href="#/slide-org1d5014b">Soporte para orientación a objetos en <b>C++</b></a></li>
-<li><a href="#/slide-org66633e4">Soporte para orientación a objetos en <b>C++</b></a></li>
-<li><a href="#/slide-org4f5baf4">Ejemplo de Herencia en <b>C++</b></a></li>
-<li><a href="#/slide-org3caa17c">Reexportación en <b>C++</b></a></li>
-<li><a href="#/slide-org0b7be5b">Reexportación</a></li>
-<li><a href="#/slide-orgc041ef4">Soporte de POO en <b>C++</b></a></li>
-<li><a href="#/slide-org3767285">Soporte de POO en <b>C++</b></a></li>
-<li><a href="#/slide-org5d1adbb">Soporte de POO en <b>C++</b></a></li>
-<li><a href="#/slide-org66a473e">Soporte de POO en <b>Java</b></a></li>
-<li><a href="#/slide-orgdfffcab">Soporte de POO en <b>Java</b></a></li>
-<li><a href="#/slide-org4e073ca">Soporte de POO en <b>Java</b></a></li>
-<li><a href="#/slide-org41a71e9">Soporte de POO en <b>Java</b></a></li>
-<li><a href="#/slide-orgc529e48">Soporte de POO en <b>Ciao Prolog</b></a></li>
-<li><a href="#/slide-orgae08dfa">Ejemplo POO <b>Ciao Prolog</b></a></li>
-<li><a href="#/slide-org22e1d3c">Ejemplo POO <b>Ciao Prolog</b></a></li>
-<li><a href="#/slide-org9a4fb49">Herencia en <b>Ciao Prolog</b></a></li>
+<li><a href="#/slide-org181c900">El concepto de Abstracción</a></li>
+<li><a href="#/slide-org09694ea">Introducción a la Abstracción del Dato</a></li>
+<li><a href="#/slide-org2d3c43b">Ventajas de la Abstracción</a></li>
+<li><a href="#/slide-org02306ce">Cuestiones de Diseño</a></li>
+<li><a href="#/slide-org9bc01f0">Ejemplo en <b>ADA</b></a></li>
+<li><a href="#/slide-org6cf29e2">Ejemplo en Ada</a></li>
+<li><a href="#/slide-org908bb9a">Ejemplo en <b>C++</b></a></li>
+<li><a href="#/slide-org41d2532">Ejemplo en <b>C++</b></a></li>
+<li><a href="#/slide-orga8e2aa1">Ejemplo en <b>C++</b></a></li>
+<li><a href="#/slide-org5a14d56">Ejemplo en <b>C++</b></a></li>
+<li><a href="#/slide-orgc68e983">Ejemplo en <b>C++</b></a></li>
+<li><a href="#/slide-org9b22fae">Ejemplo en <b>C++</b></a></li>
+<li><a href="#/slide-org7fcdae2">Evaluación de <b>Ada</b> y <b>C++</b></a></li>
+<li><a href="#/slide-org1986502">Ejemplo en <b>java</b></a></li>
+<li><a href="#/slide-org202eacd">Ejemplo en <b>java</b></a></li>
+<li><a href="#/slide-org8a37901">Tipo de Datos Abstracto Parametrizados</a></li>
+<li><a href="#/slide-org034175a">TDA parametrizado en <b>Ada</b></a></li>
+<li><a href="#/slide-org45103d3">TDA parametrizado en <b>C++</b></a></li>
+<li><a href="#/slide-org4e928ca">Encapsulación</a></li>
+<li><a href="#/slide-org1eeb8cf">Encapsulación en <b>C</b></a></li>
+<li><a href="#/slide-org9ad4958">Encapsulación en <b>C++</b></a></li>
+<li><a href="#/slide-org85a71b6">Paquetes de <b>Ada</b></a></li>
+<li><a href="#/slide-org87a0a30">El Sistema de Módulos de <b>Ciao Prolog</b></a></li>
+<li><a href="#/slide-orgfd90704">Encapsulación de Nombres</a></li>
+<li><a href="#/slide-org3dc42aa">Encapsulación de Nombres</a></li>
+<li><a href="#/slide-orgabeb08f">Programación Orientada a Objetos</a></li>
+<li><a href="#/slide-orgad0da4a">Programación Orientada a Objetos</a></li>
+<li><a href="#/slide-org50593e5">Herencia</a></li>
+<li><a href="#/slide-org7089fa9">Conceptos de la orientación a objetos</a></li>
+<li><a href="#/slide-orgb679c96">Conceptos de la orientación a objetos</a></li>
+<li><a href="#/slide-org2c55c39">Conceptos de la orientación a objetos</a></li>
+<li><a href="#/slide-org18e925e">Conceptos de la orientación a objetos</a></li>
+<li><a href="#/slide-org9ba27ff">Ligadura Dinámica</a></li>
+<li><a href="#/slide-org07badbc">Ligadura Dinámica</a></li>
+<li><a href="#/slide-org90c8b13">Cuestiones de Diseño para lenguajes de POO</a></li>
+<li><a href="#/slide-orga90b3a4">La Exclusividad de Objetos</a></li>
+<li><a href="#/slide-org829e203">Son las sublclases subtipos?</a></li>
+<li><a href="#/slide-org757c378">Chequeo de tipos y Polimorfismo</a></li>
+<li><a href="#/slide-orgb771506">Herencia única y múltiple</a></li>
+<li><a href="#/slide-org202ac8e">Asignación de memoria de objetos y desalojo de memoria</a></li>
+<li><a href="#/slide-orgd24afd0">Ligadura dinámica y estática</a></li>
+<li><a href="#/slide-orgcb0a8b0">Clases anidadas</a></li>
+<li><a href="#/slide-orgc182122">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
+<li><a href="#/slide-orgf97bd5d">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
+<li><a href="#/slide-orgef73094">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
+<li><a href="#/slide-orgc070b64">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
+<li><a href="#/slide-orgbf4fd6d">Soporte para orientación a objetos en <b>C++</b></a></li>
+<li><a href="#/slide-org8847206">Soporte para orientación a objetos en <b>C++</b></a></li>
+<li><a href="#/slide-org1cd1c38">Soporte para orientación a objetos en <b>C++</b></a></li>
+<li><a href="#/slide-org6701b30">Ejemplo de Herencia en <b>C++</b></a></li>
+<li><a href="#/slide-orgbc5548c">Reexportación en <b>C++</b></a></li>
+<li><a href="#/slide-orgc3b76ec">Reexportación</a></li>
+<li><a href="#/slide-org0e98d33">Soporte de POO en <b>C++</b></a></li>
+<li><a href="#/slide-orge6276af">Soporte de POO en <b>C++</b></a></li>
+<li><a href="#/slide-org28b965a">Soporte de POO en <b>C++</b></a></li>
+<li><a href="#/slide-orgb3dff8b">Soporte de POO en <b>Java</b></a></li>
+<li><a href="#/slide-org000b332">Soporte de POO en <b>Java</b></a></li>
+<li><a href="#/slide-org22e0c44">Soporte de POO en <b>Java</b></a></li>
+<li><a href="#/slide-org19269c8">Soporte de POO en <b>Java</b></a></li>
+<li><a href="#/slide-org309df9a">Soporte de POO en <b>Ciao Prolog</b></a></li>
+<li><a href="#/slide-org1ea8a38">Ejemplo POO <b>Ciao Prolog</b></a></li>
+<li><a href="#/slide-org7894f08">Ejemplo POO <b>Ciao Prolog</b></a></li>
+<li><a href="#/slide-orgc8c50d0">Herencia en <b>Ciao Prolog</b></a></li>
 </ul>
 </div>
 </nav>
 </section>
 
 <section>
-<section id="slide-org2fcd918">
+<section id="slide-org181c900">
 <div class="slide-header"></div>
-<h2 id="org2fcd918">El concepto de Abstracción</h2>
+<h2 id="org181c900">El concepto de Abstracción</h2>
 <ul>
 <li>Una abstracción es una vista o representación de una entidad que
 incluye sólo los atributos más significativos</li>
@@ -119,9 +119,9 @@ toda la ciencia de la computación)</li>
 </section>
 </section>
 <section>
-<section id="slide-org93727c1">
+<section id="slide-org09694ea">
 <div class="slide-header"></div>
-<h2 id="org93727c1">Introducción a la Abstracción del Dato</h2>
+<h2 id="org09694ea">Introducción a la Abstracción del Dato</h2>
 <ul>
 <li>Un <i>tipo de datos abstracto</i> (TDA) es un tipo de datos definido por
 el usuario que cumple las dos condiciones siguientes:
@@ -140,9 +140,9 @@ tipo</li>
 </section>
 </section>
 <section>
-<section id="slide-org824f871">
+<section id="slide-org2d3c43b">
 <div class="slide-header"></div>
-<h2 id="org824f871">Ventajas de la Abstracción</h2>
+<h2 id="org2d3c43b">Ventajas de la Abstracción</h2>
 <ul>
 <li>Ventaja de la primera condición
 <ul>
@@ -165,9 +165,9 @@ se cambie sin afectar el código de usuario.</li>
 </section>
 </section>
 <section>
-<section id="slide-org0761c15">
+<section id="slide-org02306ce">
 <div class="slide-header"></div>
-<h2 id="org0761c15">Cuestiones de Diseño</h2>
+<h2 id="org02306ce">Cuestiones de Diseño</h2>
 <ul>
 <li>Una unidad sintáctica para definir un TDA</li>
 <li>Operaciones integradas
@@ -192,9 +192,9 @@ se cambie sin afectar el código de usuario.</li>
 </section>
 </section>
 <section>
-<section id="slide-org1126b21">
+<section id="slide-org9bc01f0">
 <div class="slide-header"></div>
-<h2 id="org1126b21">Ejemplo en <b>ADA</b></h2>
+<h2 id="org9bc01f0">Ejemplo en <b>ADA</b></h2>
 <ul>
 <li>El constructor de encapsulación se denomina <i>package</i>
 <ul>
@@ -220,9 +220,9 @@ estructura apuntada en el paquete del cuerpo</li>
 </section>
 </section>
 <section>
-<section id="slide-orgbc94185">
+<section id="slide-org6cf29e2">
 <div class="slide-header"></div>
-<h2 id="orgbc94185">Ejemplo en Ada</h2>
+<h2 id="org6cf29e2">Ejemplo en Ada</h2>
 <div class="org-src-container">
 
 <pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">package</span> <span style="color: #1e90ff; font-weight: bold;">Stack_Pack</span> <span style="color: #40e0d0; font-weight: bold;">is</span>
@@ -247,9 +247,9 @@ estructura apuntada en el paquete del cuerpo</li>
 </section>
 </section>
 <section>
-<section id="slide-org4e442aa">
+<section id="slide-org908bb9a">
 <div class="slide-header"></div>
-<h2 id="org4e442aa">Ejemplo en <b>C++</b></h2>
+<h2 id="org908bb9a">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Basado en el tipo <i>struct</i> de <b>C</b> y en las clases de <b>Simula 67</b></li>
 <li>La clase es el dispositivo de encapsulación</li>
@@ -265,9 +265,9 @@ de <i>heap</i></li>
 </section>
 </section>
 <section>
-<section id="slide-org08d634f">
+<section id="slide-org41d2532">
 <div class="slide-header"></div>
-<h2 id="org08d634f">Ejemplo en <b>C++</b></h2>
+<h2 id="org41d2532">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Ocultamiento de la Información
 <ul>
@@ -283,9 +283,9 @@ de <i>heap</i></li>
 </section>
 </section>
 <section>
-<section id="slide-org410ec98">
+<section id="slide-orga8e2aa1">
 <div class="slide-header"></div>
-<h2 id="org410ec98">Ejemplo en <b>C++</b></h2>
+<h2 id="orga8e2aa1">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Constructores:
 <ul>
@@ -304,9 +304,9 @@ de <i>heap</i></li>
 </section>
 </section>
 <section>
-<section id="slide-org3e6599c">
+<section id="slide-org5a14d56">
 <div class="slide-header"></div>
-<h2 id="org3e6599c">Ejemplo en <b>C++</b></h2>
+<h2 id="org5a14d56">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Destructores:
 <ul>
@@ -325,9 +325,9 @@ destruye; Por lo general sólo para recuperar el almacenamiento del
 </section>
 </section>
 <section>
-<section id="slide-orgde54095">
+<section id="slide-orgc68e983">
 <div class="slide-header"></div>
-<h2 id="orgde54095">Ejemplo en <b>C++</b></h2>
+<h2 id="orgc68e983">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Funciones o clases <i>friend</i> - para proporcionar acceso a miembros
 privados a algunas unidades o funciones no relacionadas
@@ -342,9 +342,9 @@ privados a algunas unidades o funciones no relacionadas
 </section>
 </section>
 <section>
-<section id="slide-org2c58b5e">
+<section id="slide-org9b22fae">
 <div class="slide-header"></div>
-<h2 id="org2c58b5e">Ejemplo en <b>C++</b></h2>
+<h2 id="org9b22fae">Ejemplo en <b>C++</b></h2>
 <div class="org-src-container">
 
 <pre  class="src src-c++"><span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">stack</span> {
@@ -369,9 +369,9 @@ privados a algunas unidades o funciones no relacionadas
 </section>
 </section>
 <section>
-<section id="slide-org5b4ba8e">
+<section id="slide-org7fcdae2">
 <div class="slide-header"></div>
-<h2 id="org5b4ba8e">Evaluación de <b>Ada</b> y <b>C++</b></h2>
+<h2 id="org7fcdae2">Evaluación de <b>Ada</b> y <b>C++</b></h2>
 <ul>
 <li>El soporte de <b>C++</b> para TDAs es similar al poder expresivo de <b>Ada</b></li>
 <li>Ambos proporcionan mecanismos efectivos para la encapsulación y la ocultación de la información</li>
@@ -383,9 +383,9 @@ privados a algunas unidades o funciones no relacionadas
 </section>
 </section>
 <section>
-<section id="slide-orgc3fd426">
+<section id="slide-org1986502">
 <div class="slide-header"></div>
-<h2 id="orgc3fd426">Ejemplo en <b>java</b></h2>
+<h2 id="org1986502">Ejemplo en <b>java</b></h2>
 <ul>
 <li>Similar a <b>C++</b>, excepto:
 <ul>
@@ -409,9 +409,9 @@ el paquete.</li>
 </section>
 </section>
 <section>
-<section id="slide-org5334055">
+<section id="slide-org202eacd">
 <div class="slide-header"></div>
-<h2 id="org5334055">Ejemplo en <b>java</b></h2>
+<h2 id="org202eacd">Ejemplo en <b>java</b></h2>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">StackClass</span> {
@@ -436,9 +436,9 @@ el paquete.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgeafc07e">
+<section id="slide-org8a37901">
 <div class="slide-header"></div>
-<h2 id="orgeafc07e">Tipo de Datos Abstracto Parametrizados</h2>
+<h2 id="org8a37901">Tipo de Datos Abstracto Parametrizados</h2>
 <ul>
 <li>Los TDAs parametrizados permiten diseñar un TDA que puede almacenar
 cualquier tipo de elemento.</li>
@@ -452,9 +452,9 @@ cualquier tipo de elemento.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgee2d982">
+<section id="slide-org034175a">
 <div class="slide-header"></div>
-<h2 id="orgee2d982">TDA parametrizado en <b>Ada</b></h2>
+<h2 id="org034175a">TDA parametrizado en <b>Ada</b></h2>
 <ul>
 <li>Paquete genérico de <b>Ada</b>
 <ul>
@@ -488,9 +488,9 @@ Max_size: Positive;
 </section>
 </section>
 <section>
-<section id="slide-orgc00111a">
+<section id="slide-org45103d3">
 <div class="slide-header"></div>
-<h2 id="orgc00111a">TDA parametrizado en <b>C++</b></h2>
+<h2 id="org45103d3">TDA parametrizado en <b>C++</b></h2>
 <ul>
 <li>Las clases pueden ser algo genéricas escribiendo constructores
 parametrizados</li>
@@ -518,9 +518,9 @@ parametrizados</li>
 </section>
 </section>
 <section>
-<section id="slide-org214dd57">
+<section id="slide-org4e928ca">
 <div class="slide-header"></div>
-<h2 id="org214dd57">Encapsulación</h2>
+<h2 id="org4e928ca">Encapsulación</h2>
 <ul>
 <li>Los programas grandes tienen dos necesidades especiales:
 <ul>
@@ -539,9 +539,9 @@ relacionados en una unidad que puede ser compilada por separado
 </section>
 </section>
 <section>
-<section id="slide-org0c7cf6d">
+<section id="slide-org1eeb8cf">
 <div class="slide-header"></div>
-<h2 id="org0c7cf6d">Encapsulación en <b>C</b></h2>
+<h2 id="org1eeb8cf">Encapsulación en <b>C</b></h2>
 <ul>
 <li>Los archivos que contengan uno o más subprogramas pueden ser compilados independientemente</li>
 <li>La interfaz se coloca en un archivo de encabezado (<i>header</i>)</li>
@@ -554,9 +554,9 @@ relacionados en una unidad que puede ser compilada por separado
 </section>
 </section>
 <section>
-<section id="slide-org925c449">
+<section id="slide-org9ad4958">
 <div class="slide-header"></div>
-<h2 id="org925c449">Encapsulación en <b>C++</b></h2>
+<h2 id="org9ad4958">Encapsulación en <b>C++</b></h2>
 <ul>
 <li>Similar a C</li>
 <li>Adición de funciones  <i>friend</i> que tienen acceso a miembros privados de la clase <i>amiga</i></li>
@@ -567,9 +567,9 @@ relacionados en una unidad que puede ser compilada por separado
 </section>
 </section>
 <section>
-<section id="slide-org02b86f4">
+<section id="slide-org85a71b6">
 <div class="slide-header"></div>
-<h2 id="org02b86f4">Paquetes de <b>Ada</b></h2>
+<h2 id="org85a71b6">Paquetes de <b>Ada</b></h2>
 <ul>
 <li>La especificacipon de los paquetes de Ada pueden incluir cualquier número de declaraciones de datos y subprogramas</li>
 <li>Los paquetes Ada pueden ser compilados por separado</li>
@@ -581,9 +581,9 @@ relacionados en una unidad que puede ser compilada por separado
 </section>
 </section>
 <section>
-<section id="slide-orgf4c5474">
+<section id="slide-org87a0a30">
 <div class="slide-header"></div>
-<h2 id="orgf4c5474">El Sistema de Módulos de <b>Ciao Prolog</b></h2>
+<h2 id="org87a0a30">El Sistema de Módulos de <b>Ciao Prolog</b></h2>
 <ul>
 <li>Basado en Procedimientos
 <ul>
@@ -608,9 +608,9 @@ definen el predicado como multifile puede utilizar ese predicado.
 </section>
 </section>
 <section>
-<section id="slide-orga79e3bd">
+<section id="slide-orgfd90704">
 <div class="slide-header"></div>
-<h2 id="orga79e3bd">Encapsulación de Nombres</h2>
+<h2 id="orgfd90704">Encapsulación de Nombres</h2>
 <ul>
 <li>Los programas grandes definen muchos nombres globales; Necesitan una manera de dividirse en agrupaciones lógicas</li>
 <li>Un encapsulamiento de nombres utiliza para crear un nuevo ámbito para los nombres
@@ -630,9 +630,9 @@ calificar nombres utilizados fuera del espacio de nombres</li>
 </section>
 </section>
 <section>
-<section id="slide-org7413e29">
+<section id="slide-org3dc42aa">
 <div class="slide-header"></div>
-<h2 id="org7413e29">Encapsulación de Nombres</h2>
+<h2 id="org3dc42aa">Encapsulación de Nombres</h2>
 <ul>
 <li>Paquetes de <b>Java</b>
 <ul>
@@ -654,9 +654,9 @@ cláusula <code>with</code></li>
 </section>
 </section>
 <section>
-<section id="slide-orge52a548">
+<section id="slide-orgabeb08f">
 <div class="slide-header"></div>
-<h2 id="orge52a548">Programación Orientada a Objetos</h2>
+<h2 id="orgabeb08f">Programación Orientada a Objetos</h2>
 <ul>
 <li>Muchos lenguajes de programación orientada a objetos (POO)
 <ul>
@@ -673,9 +673,9 @@ cláusula <code>with</code></li>
 </section>
 </section>
 <section>
-<section id="slide-org9f708ed">
+<section id="slide-orgad0da4a">
 <div class="slide-header"></div>
-<h2 id="org9f708ed">Programación Orientada a Objetos</h2>
+<h2 id="orgad0da4a">Programación Orientada a Objetos</h2>
 <ul>
 <li>Tipos de datos abstractos</li>
 <li>Herencia
@@ -691,9 +691,9 @@ cláusula <code>with</code></li>
 </section>
 </section>
 <section>
-<section id="slide-org1af0f4b">
+<section id="slide-org50593e5">
 <div class="slide-header"></div>
-<h2 id="org1af0f4b">Herencia</h2>
+<h2 id="org50593e5">Herencia</h2>
 <ul>
 <li>Los aumentos de la productividad pueden provenir de la reutilización
 del software
@@ -714,9 +714,9 @@ jerarquía</li>
 </section>
 </section>
 <section>
-<section id="slide-org4feab04">
+<section id="slide-org7089fa9">
 <div class="slide-header"></div>
-<h2 id="org4feab04">Conceptos de la orientación a objetos</h2>
+<h2 id="org7089fa9">Conceptos de la orientación a objetos</h2>
 <ul>
 <li>Los TDA se llaman clases</li>
 <li>Las instancias de una clase se llaman objetos</li>
@@ -730,9 +730,9 @@ jerarquía</li>
 </section>
 </section>
 <section>
-<section id="slide-org16fa436">
+<section id="slide-orgb679c96">
 <div class="slide-header"></div>
-<h2 id="org16fa436">Conceptos de la orientación a objetos</h2>
+<h2 id="orgb679c96">Conceptos de la orientación a objetos</h2>
 <ul>
 <li>Las llamadas a los métodos se llaman <i>mensajes</i></li>
 <li>Toda la colección de métodos de un objeto se llama su <i>protocolo de mensajes</i> o <i>interfaz de mensajes</i></li>
@@ -745,9 +745,9 @@ jerarquía</li>
 </section>
 </section>
 <section>
-<section id="slide-org72e22bb">
+<section id="slide-org2c55c39">
 <div class="slide-header"></div>
-<h2 id="org72e22bb">Conceptos de la orientación a objetos</h2>
+<h2 id="org2c55c39">Conceptos de la orientación a objetos</h2>
 <ul>
 <li>La herencia puede ser complicada por el control de acceso a las entidades encapsuladas
 <ul>
@@ -769,9 +769,9 @@ jerarquía</li>
 </section>
 </section>
 <section>
-<section id="slide-org741cbec">
+<section id="slide-org18e925e">
 <div class="slide-header"></div>
-<h2 id="org741cbec">Conceptos de la orientación a objetos</h2>
+<h2 id="org18e925e">Conceptos de la orientación a objetos</h2>
 <ul>
 <li>Hay dos tipos de variables en una clase:
 <ul>
@@ -799,9 +799,9 @@ mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-orge542cbd">
+<section id="slide-org9ba27ff">
 <div class="slide-header"></div>
-<h2 id="orge542cbd">Ligadura Dinámica</h2>
+<h2 id="org9ba27ff">Ligadura Dinámica</h2>
 <ul>
 <li>Una <i>variable polimórfica</i> puede ser definida en una clase que sea
 capaz de referenciar (o apuntar) objetos de la clase y objetos de
@@ -818,9 +818,9 @@ desarrollo y el mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-org16d8da2">
+<section id="slide-org07badbc">
 <div class="slide-header"></div>
-<h2 id="org16d8da2">Ligadura Dinámica</h2>
+<h2 id="org07badbc">Ligadura Dinámica</h2>
 <ul>
 <li>Un <i>método virtual</i> es aquel que no incluye una definición (sólo define un protocolo)</li>
 <li>Una <i>clase abstracta</i> es aquella que incluye al menos un método virtual</li>
@@ -832,9 +832,9 @@ desarrollo y el mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-org2f50091">
+<section id="slide-org90c8b13">
 <div class="slide-header"></div>
-<h2 id="org2f50091">Cuestiones de Diseño para lenguajes de POO</h2>
+<h2 id="org90c8b13">Cuestiones de Diseño para lenguajes de POO</h2>
 <ul>
 <li>La Exclusividad de Objetos</li>
 <li>Subclases como subtipos</li>
@@ -850,9 +850,9 @@ desarrollo y el mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-org021097a">
+<section id="slide-orga90b3a4">
 <div class="slide-header"></div>
-<h2 id="org021097a">La Exclusividad de Objetos</h2>
+<h2 id="orga90b3a4">La Exclusividad de Objetos</h2>
 <ul>
 <li>Todo es un objeto
 <ul>
@@ -879,9 +879,9 @@ desarrollo y el mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-orgbf026cb">
+<section id="slide-org829e203">
 <div class="slide-header"></div>
-<h2 id="orgbf026cb">Son las sublclases subtipos?</h2>
+<h2 id="org829e203">Son las sublclases subtipos?</h2>
 <ul>
 <li>¿Existe una relación "is-a" entre un objeto de clase padre y un objeto de la subclase?
 <ul>
@@ -903,9 +903,9 @@ los métodos heredados en formas "compatibles"</li>
 </section>
 </section>
 <section>
-<section id="slide-orgf844f8f">
+<section id="slide-org757c378">
 <div class="slide-header"></div>
-<h2 id="orgf844f8f">Chequeo de tipos y Polimorfismo</h2>
+<h2 id="org757c378">Chequeo de tipos y Polimorfismo</h2>
 <ul>
 <li>El polimorfismo puede requerir la comprobación dinámica de los
 parámetros y el valor de retorno
@@ -923,9 +923,9 @@ estática</li>
 </section>
 </section>
 <section>
-<section id="slide-org1bdb3f1">
+<section id="slide-orgb771506">
 <div class="slide-header"></div>
-<h2 id="org1bdb3f1">Herencia única y múltiple</h2>
+<h2 id="orgb771506">Herencia única y múltiple</h2>
 <ul>
 <li>La herencia múltiple permite que una nueva clase herede de dos o más
 clases</li>
@@ -947,9 +947,9 @@ clases</li>
 </section>
 </section>
 <section>
-<section id="slide-orgf0990f6">
+<section id="slide-org202ac8e">
 <div class="slide-header"></div>
-<h2 id="orgf0990f6">Asignación de memoria de objetos y desalojo de memoria</h2>
+<h2 id="org202ac8e">Asignación de memoria de objetos y desalojo de memoria</h2>
 <ul>
 <li>¿A dónde se alojan los objetos?
 <ul>
@@ -976,9 +976,9 @@ uniformes a través de un puntero o variable de referencia
 </section>
 </section>
 <section>
-<section id="slide-org2974175">
+<section id="slide-orgd24afd0">
 <div class="slide-header"></div>
-<h2 id="org2974175">Ligadura dinámica y estática</h2>
+<h2 id="orgd24afd0">Ligadura dinámica y estática</h2>
 <ul>
 <li>¿Debería ser dinámica toda la vinculación de mensajes a los métodos?
 <ul>
@@ -994,9 +994,9 @@ uniformes a través de un puntero o variable de referencia
 </section>
 </section>
 <section>
-<section id="slide-org05f9bbb">
+<section id="slide-orgcb0a8b0">
 <div class="slide-header"></div>
-<h2 id="org05f9bbb">Clases anidadas</h2>
+<h2 id="orgcb0a8b0">Clases anidadas</h2>
 <ul>
 <li>Si una nueva clase es necesitada por sólo una clase, no hay razón
 para definirla para que pueda ser vista por otras clases
@@ -1019,9 +1019,9 @@ y viceversa</li>
 </section>
 </section>
 <section>
-<section id="slide-org2af2554">
+<section id="slide-orgc182122">
 <div class="slide-header"></div>
-<h2 id="org2af2554">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<h2 id="orgc182122">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
 <ul>
 <li>Smalltalk es un lenguaje OOP puro.</li>
 <li>Todo es un objeto.</li>
@@ -1037,9 +1037,9 @@ y viceversa</li>
 </section>
 </section>
 <section>
-<section id="slide-org66c8a3f">
+<section id="slide-orgf97bd5d">
 <div class="slide-header"></div>
-<h2 id="org66c8a3f">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<h2 id="orgf97bd5d">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
 <ul>
 <li>Chequeo de Tipos y polimorfismo
 <ul>
@@ -1062,9 +1062,9 @@ que no tiene ningún método de coincidencia</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb7e2b78">
+<section id="slide-orgef73094">
 <div class="slide-header"></div>
-<h2 id="orgb7e2b78">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<h2 id="orgef73094">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
 <ul>
 <li>Herencia
 <ul>
@@ -1081,9 +1081,9 @@ métodos de instancia y métodos de clase, de su superclase.</li>
 </section>
 </section>
 <section>
-<section id="slide-org46fd1a7">
+<section id="slide-orgc070b64">
 <div class="slide-header"></div>
-<h2 id="org46fd1a7">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<h2 id="orgc070b64">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
 <ul>
 <li>Evaluación de Smalltalk
 <ul>
@@ -1101,9 +1101,9 @@ métodos de instancia y métodos de clase, de su superclase.</li>
 </section>
 </section>
 <section>
-<section id="slide-org6dfbe8b">
+<section id="slide-orgbf4fd6d">
 <div class="slide-header"></div>
-<h2 id="org6dfbe8b">Soporte para orientación a objetos en <b>C++</b></h2>
+<h2 id="orgbf4fd6d">Soporte para orientación a objetos en <b>C++</b></h2>
 <ul>
 <li>Características generales:
 <ul>
@@ -1121,9 +1121,9 @@ métodos de instancia y métodos de clase, de su superclase.</li>
 </section>
 </section>
 <section>
-<section id="slide-org1d5014b">
+<section id="slide-org8847206">
 <div class="slide-header"></div>
-<h2 id="org1d5014b">Soporte para orientación a objetos en <b>C++</b></h2>
+<h2 id="org8847206">Soporte para orientación a objetos en <b>C++</b></h2>
 <ul>
 <li>Herencia
 <ul>
@@ -1144,9 +1144,9 @@ métodos de instancia y métodos de clase, de su superclase.</li>
 </section>
 </section>
 <section>
-<section id="slide-org66633e4">
+<section id="slide-org1cd1c38">
 <div class="slide-header"></div>
-<h2 id="org66633e4">Soporte para orientación a objetos en <b>C++</b></h2>
+<h2 id="org1cd1c38">Soporte para orientación a objetos en <b>C++</b></h2>
 <ul>
 <li>Además, el proceso de declarar una subclase puede ser con controles de
 acceso (privados o públicos), los cuales definen posibles cambios en
@@ -1164,9 +1164,9 @@ públicos y protegidos en las subclases</li>
 </section>
 </section>
 <section>
-<section id="slide-org4f5baf4">
+<section id="slide-org6701b30">
 <div class="slide-header"></div>
-<h2 id="org4f5baf4">Ejemplo de Herencia en <b>C++</b></h2>
+<h2 id="org6701b30">Ejemplo de Herencia en <b>C++</b></h2>
 <div class="org-src-container">
 
 <pre  class="src src-c++"><span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">base_class</span> {
@@ -1197,9 +1197,9 @@ públicos y protegidos en las subclases</li>
 </section>
 </section>
 <section>
-<section id="slide-org3caa17c">
+<section id="slide-orgbc5548c">
 <div class="slide-header"></div>
-<h2 id="org3caa17c">Reexportación en <b>C++</b></h2>
+<h2 id="orgbc5548c">Reexportación en <b>C++</b></h2>
 <ul>
 <li>Un miembro que no es accesible en una subclase (debido a la
 derivación privada) se puede declarar visible allí usando el
@@ -1220,9 +1220,9 @@ operador de resolución de alcance (::), por ejemplo,</li>
 </section>
 </section>
 <section>
-<section id="slide-org0b7be5b">
+<section id="slide-orgc3b76ec">
 <div class="slide-header"></div>
-<h2 id="org0b7be5b">Reexportación</h2>
+<h2 id="orgc3b76ec">Reexportación</h2>
 <ul>
 <li>Una motivación para usar la derivación privada:
 <ul>
@@ -1240,9 +1240,9 @@ en la definición de clase principal.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc041ef4">
+<section id="slide-org0e98d33">
 <div class="slide-header"></div>
-<h2 id="orgc041ef4">Soporte de POO en <b>C++</b></h2>
+<h2 id="org0e98d33">Soporte de POO en <b>C++</b></h2>
 <ul>
 <li>Se admite la herencia múltiple
 <ul>
@@ -1257,9 +1257,9 @@ hacer referencia utilizando el operador de resolución de alcance.</li>
 </section>
 </section>
 <section>
-<section id="slide-org3767285">
+<section id="slide-orge6276af">
 <div class="slide-header"></div>
-<h2 id="org3767285">Soporte de POO en <b>C++</b></h2>
+<h2 id="orge6276af">Soporte de POO en <b>C++</b></h2>
 <ul>
 <li>Ligadura dinámica
 <ul>
@@ -1277,9 +1277,9 @@ dinámicamente a los mensajes</li>
 </section>
 </section>
 <section>
-<section id="slide-org5d1adbb">
+<section id="slide-org28b965a">
 <div class="slide-header"></div>
-<h2 id="org5d1adbb">Soporte de POO en <b>C++</b></h2>
+<h2 id="org28b965a">Soporte de POO en <b>C++</b></h2>
 <ul>
 <li>Evaluación
 <ul>
@@ -1303,9 +1303,9 @@ dinámicamente
 </section>
 </section>
 <section>
-<section id="slide-org66a473e">
+<section id="slide-orgb3dff8b">
 <div class="slide-header"></div>
-<h2 id="org66a473e">Soporte de POO en <b>Java</b></h2>
+<h2 id="orgb3dff8b">Soporte de POO en <b>Java</b></h2>
 <ul>
 <li>Debido a su estrecha relación con <b>C++</b>, nos enfocamos en las diferencias de ese lenguaje</li>
 <li>Características generales
@@ -1325,9 +1325,9 @@ el objeto</li>
 </section>
 </section>
 <section>
-<section id="slide-orgdfffcab">
+<section id="slide-org000b332">
 <div class="slide-header"></div>
-<h2 id="orgdfffcab">Soporte de POO en <b>Java</b></h2>
+<h2 id="org000b332">Soporte de POO en <b>Java</b></h2>
 <ul>
 <li>Herencia
 <ul>
@@ -1356,9 +1356,9 @@ constantes nombradas, por ejemplo,</li>
 </section>
 </section>
 <section>
-<section id="slide-org4e073ca">
+<section id="slide-org22e0c44">
 <div class="slide-header"></div>
-<h2 id="org4e073ca">Soporte de POO en <b>Java</b></h2>
+<h2 id="org22e0c44">Soporte de POO en <b>Java</b></h2>
 <ul>
 <li>Ligadura dinámica</li>
 <li>En Java, todos los mensajes se enlazan dinámicamente a los métodos,
@@ -1373,9 +1373,9 @@ o privados, los cuales no permiten sobreescribir</li>
 </section>
 </section>
 <section>
-<section id="slide-org41a71e9">
+<section id="slide-org19269c8">
 <div class="slide-header"></div>
-<h2 id="org41a71e9">Soporte de POO en <b>Java</b></h2>
+<h2 id="org19269c8">Soporte de POO en <b>Java</b></h2>
 <ul>
 <li>Evaluación
 <ul>
@@ -1394,9 +1394,9 @@ métodos con sus definiciones</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc529e48">
+<section id="slide-org309df9a">
 <div class="slide-header"></div>
-<h2 id="orgc529e48">Soporte de POO en <b>Ciao Prolog</b></h2>
+<h2 id="org309df9a">Soporte de POO en <b>Ciao Prolog</b></h2>
 <ul>
 <li><b>O'Ciao</b> es un conjunto de bibliotecas que permite la programación
 orientada a objetos en Ciao Prolog.</li>
@@ -1415,9 +1415,9 @@ tradicionales son polimórficos por naturaleza.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgae08dfa">
+<section id="slide-org1ea8a38">
 <div class="slide-header"></div>
-<h2 id="orgae08dfa">Ejemplo POO <b>Ciao Prolog</b></h2>
+<h2 id="org1ea8a38">Ejemplo POO <b>Ciao Prolog</b></h2>
 <div class="org-src-container">
 
 <pre  class="src src-prolog">:- class(stack,<span style="color: #40e0d0; font-weight: bold;">[]</span>,<span style="color: #40e0d0; font-weight: bold;">[]</span>).
@@ -1450,9 +1450,9 @@ is_empty.
 </section>
 </section>
 <section>
-<section id="slide-org22e1d3c">
+<section id="slide-org7894f08">
 <div class="slide-header"></div>
-<h2 id="org22e1d3c">Ejemplo POO <b>Ciao Prolog</b></h2>
+<h2 id="org7894f08">Ejemplo POO <b>Ciao Prolog</b></h2>
 <div class="org-src-container">
 
 <pre  class="src src-prolog">?- use_package(objects).
@@ -1491,9 +1491,9 @@ yes
 </section>
 </section>
 <section>
-<section id="slide-org9a4fb49">
+<section id="slide-orgc8c50d0">
 <div class="slide-header"></div>
-<h2 id="org9a4fb49">Herencia en <b>Ciao Prolog</b></h2>
+<h2 id="orgc8c50d0">Herencia en <b>Ciao Prolog</b></h2>
 <div class="org-src-container">
 
 <pre  class="src src-prolog">:- class(specific).
