@@ -4,9 +4,14 @@
 <meta charset="utf-8"/>
 <title>Conceptos Avanzados en Lenguajes de Programación</title>
 <meta name="author" content="(Administración de Almacenamiento)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
 <link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+
 <link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
-<link rel="stylesheet" href=""/>
+
+
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -22,42 +27,41 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
-<h1>Conceptos Avanzados en Lenguajes de Programación</h1><h2>Administración de Almacenamiento</h2><h2><a href="mailto:Claudio Vaucheret / cv@fi.uncoma.edu.ar">Claudio Vaucheret / cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-08-29 lun&gt;</span></span></h2>
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Administración de Almacenamiento</h2><h2 class="date">2016-08-29 lun 00:00</h2><p class="date">Created: 2017-10-17 mar 15:39</p>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgheadline20">Introducción</a>
+<li><a href="#/slide-org30a0d62">Introducción</a>
 <ul>
-<li><a href="#/slide-orgheadline1">Tiempo de Vida del Objeto y Ligadura</a></li>
-<li><a href="#/slide-orgheadline2">Tiempos de vida distintos</a></li>
-<li><a href="#/slide-orgheadline3">Mecanismos de alojamiento</a></li>
-<li><a href="#/slide-orgheadline5">Alojamiento Estático</a>
+<li><a href="#/slide-orga9c1d5d">Tiempo de Vida del Objeto y Ligadura</a></li>
+<li><a href="#/slide-orgd5e0a12">Tiempos de vida distintos</a></li>
+<li><a href="#/slide-org72e0d4c">Mecanismos de alojamiento</a></li>
+<li><a href="#/slide-org3e608f9">Alojamiento Estático</a>
 <ul>
-<li><a href="#/slide-orgheadline4">Subrutinas</a></li>
+<li><a href="#/slide-orgec56092">Subrutinas</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline9">Alojamiento basado en Pila</a>
+<li><a href="#/slide-org5766037">Alojamiento basado en Pila</a>
 <ul>
-<li><a href="#/slide-orgheadline6">Subrutinas</a></li>
-<li><a href="#/slide-orgheadline7">Alojamiento basado en Pila</a></li>
-<li><a href="#/slide-orgheadline8">Alojamiento basado en Pila</a></li>
+<li><a href="#/slide-orge3de739">Subrutinas</a></li>
+<li><a href="#/slide-orgd83d4f2">Alojamiento basado en Pila</a></li>
+<li><a href="#/slide-orge22d4a5">Alojamiento basado en Pila</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgheadline19">Alojamiento basado en <i>Heap</i></a>
+<li><a href="#/slide-org9b6d6b1">Alojamiento basado en <i>Heap</i></a>
 <ul>
-<li><a href="#/slide-orgheadline10">Alojamiento basado en <i>Heap</i></a></li>
-<li><a href="#/slide-orgheadline11">Alojamiento basado en <i>Heap</i></a></li>
-<li><a href="#/slide-orgheadline12">Alojamiento basado en <i>Heap</i></a></li>
-<li><a href="#/slide-orgheadline13">Alojamiento basado en <i>Heap</i></a></li>
-<li><a href="#/slide-orgheadline14">Alojamiento basado en <i>Heap</i></a></li>
-<li><a href="#/slide-orgheadline15">Recolección de Basura</a></li>
-<li><a href="#/slide-orgheadline16">Trazado de la colección</a></li>
-<li><a href="#/slide-orgheadline17">Recolección de Basura</a></li>
-<li><a href="#/slide-orgheadline18">Recolección de Basura</a></li>
+<li><a href="#/slide-org1ec9d90">Alojamiento basado en <i>Heap</i></a></li>
+<li><a href="#/slide-orgfa13bc6">Alojamiento basado en <i>Heap</i></a></li>
+<li><a href="#/slide-org4803ec6">Alojamiento basado en <i>Heap</i></a></li>
+<li><a href="#/slide-orgff0535f">Alojamiento basado en <i>Heap</i></a></li>
+<li><a href="#/slide-orgefe713c">Alojamiento basado en <i>Heap</i></a></li>
+<li><a href="#/slide-orgf57e428">Recolección de Basura</a></li>
+<li><a href="#/slide-orge61379b">Trazado de la colección</a></li>
+<li><a href="#/slide-org392eb1e">Recolección de Basura</a></li>
+<li><a href="#/slide-org142dfb6">Recolección de Basura</a></li>
 </ul>
 </li>
 </ul>
@@ -68,17 +72,17 @@
 </section>
 
 <section>
-<section id="slide-orgheadline20">
+<section id="slide-org30a0d62">
 <div class="slide-header"></div>
-<h2 id="orgheadline20">Introducción</h2>
-<div class="outline-text-2" id="text-orgheadline20">
+<h2 id="org30a0d62">Introducción</h2>
+<div class="outline-text-2" id="text-org30a0d62">
 </div><div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline1">
+<section id="slide-orga9c1d5d">
 <div class="slide-header"></div>
-<h3 id="orgheadline1">Tiempo de Vida del Objeto y Ligadura</h3>
+<h3 id="orga9c1d5d">Tiempo de Vida del Objeto y Ligadura</h3>
 <ul>
 <li>Creación del objeto</li>
 <li>Creación de las ligaduras</li>
@@ -95,9 +99,9 @@ temporariamente en desuso</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline2">
+<section id="slide-orgd5e0a12">
 <div class="slide-header"></div>
-<h3 id="orgheadline2">Tiempos de vida distintos</h3>
+<h3 id="orgd5e0a12">Tiempos de vida distintos</h3>
 <ul>
 <li>Referencias colgadas
 <ul>
@@ -117,9 +121,9 @@ temporariamente en desuso</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline3">
+<section id="slide-org72e0d4c">
 <div class="slide-header"></div>
-<h3 id="orgheadline3">Mecanismos de alojamiento</h3>
+<h3 id="org72e0d4c">Mecanismos de alojamiento</h3>
 <ul>
 <li>Estático
 <ul>
@@ -145,9 +149,9 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline5">
+<section id="slide-org3e608f9">
 <div class="slide-header"></div>
-<h3 id="orgheadline5">Alojamiento Estático</h3>
+<h3 id="org3e608f9">Alojamiento Estático</h3>
 <ul>
 <li>Código</li>
 <li>Variables Globales</li>
@@ -159,22 +163,22 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline4">
+<section id="slide-orgec56092">
 <div class="slide-header"></div>
-<h4 id="orgheadline4">Subrutinas</h4>
+<h4 id="orgec56092">Subrutinas</h4>
 
 <figure>
-<p><img src="aljamestaticosub.png" alt="aljamestaticosub.png">
-</p>
+<img src="aljamestaticosub.png" alt="aljamestaticosub.png">
+
 </figure>
 
 <div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline9">
+<section id="slide-org5766037">
 <div class="slide-header"></div>
-<h3 id="orgheadline9">Alojamiento basado en Pila</h3>
+<h3 id="org5766037">Alojamiento basado en Pila</h3>
 <ul>
 <li>Pila central para:
 <ul>
@@ -194,20 +198,20 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline6">
+<section id="slide-orge3de739">
 <div class="slide-header"></div>
-<h4 id="orgheadline6">Subrutinas</h4>
+<h4 id="orge3de739">Subrutinas</h4>
 
 <figure>
-<p><img src="alojpilasubr.png" alt="alojpilasubr.png">
-</p>
+<img src="alojpilasubr.png" alt="alojpilasubr.png">
+
 </figure>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline7">
+<section id="slide-orgd83d4f2">
 <div class="slide-header"></div>
-<h4 id="orgheadline7">Alojamiento basado en Pila</h4>
+<h4 id="orgd83d4f2">Alojamiento basado en Pila</h4>
 <ul>
 <li>Contenido de un Registro de Activación
 <ul>
@@ -226,9 +230,9 @@ activación) en tiempo de compilación.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline8">
+<section id="slide-orge22d4a5">
 <div class="slide-header"></div>
-<h4 id="orgheadline8">Alojamiento basado en Pila</h4>
+<h4 id="orge22d4a5">Alojamiento basado en Pila</h4>
 <ul>
 <li>El mantenimiento de la Pila es responsabilidad de la <i>secuencia de
 llamado</i> del llamador, y de el <i>prologo</i> y el <i>epilogo</i> de la
@@ -251,9 +255,9 @@ el <i>epilogo</i></li>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline19">
+<section id="slide-org9b6d6b1">
 <div class="slide-header"></div>
-<h3 id="orgheadline19">Alojamiento basado en <i>Heap</i></h3>
+<h3 id="org9b6d6b1">Alojamiento basado en <i>Heap</i></h3>
 <ul>
 <li>Alojamiento Dinámico</li>
 
@@ -261,15 +265,15 @@ el <i>epilogo</i></li>
 
 
 <figure>
-<p><img src="alojdinheap.png" alt="alojdinheap.png">
-</p>
+<img src="alojdinheap.png" alt="alojdinheap.png">
+
 </figure>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline10">
+<section id="slide-org1ec9d90">
 <div class="slide-header"></div>
-<h4 id="orgheadline10">Alojamiento basado en <i>Heap</i></h4>
+<h4 id="org1ec9d90">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>Muchas posibles estrategias</li>
 <li>compromiso entre espacio y tiempo</li>
@@ -289,9 +293,9 @@ alojar un nuevo requerimiento.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline11">
+<section id="slide-orgfa13bc6">
 <div class="slide-header"></div>
-<h4 id="orgheadline11">Alojamiento basado en <i>Heap</i></h4>
+<h4 id="orgfa13bc6">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>Lista ligado de bloques libres</li>
 <li>Algoritmos de asignación
@@ -324,9 +328,9 @@ diponible se divide uno de \(2^{k+1}\)</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline12">
+<section id="slide-org4803ec6">
 <div class="slide-header"></div>
-<h4 id="orgheadline12">Alojamiento basado en <i>Heap</i></h4>
+<h4 id="org4803ec6">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>El problema de referencias sueltas (dangling) son debidas a
 <ul>
@@ -349,9 +353,9 @@ diponible se divide uno de \(2^{k+1}\)</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline13">
+<section id="slide-orgff0535f">
 <div class="slide-header"></div>
-<h4 id="orgheadline13">Alojamiento basado en <i>Heap</i></h4>
+<h4 id="orgff0535f">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li><i>Tombstones</i></li>
 
@@ -359,15 +363,15 @@ diponible se divide uno de \(2^{k+1}\)</li>
 
 
 <figure>
-<p><img src="tombstones.png" alt="tombstones.png">
-</p>
+<img src="tombstones.png" alt="tombstones.png">
+
 </figure>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline14">
+<section id="slide-orgefe713c">
 <div class="slide-header"></div>
-<h4 id="orgheadline14">Alojamiento basado en <i>Heap</i></h4>
+<h4 id="orgefe713c">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li><i>Locks and Keys</i></li>
 
@@ -375,15 +379,15 @@ diponible se divide uno de \(2^{k+1}\)</li>
 
 
 <figure>
-<p><img src="lockskeys.png" alt="lockskeys.png">
-</p>
+<img src="lockskeys.png" alt="lockskeys.png">
+
 </figure>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline15">
+<section id="slide-orgf57e428">
 <div class="slide-header"></div>
-<h4 id="orgheadline15">Recolección de Basura</h4>
+<h4 id="orgf57e428">Recolección de Basura</h4>
 <ul>
 <li><i>garbage collection</i>
 <ul>
@@ -397,15 +401,15 @@ diponible se divide uno de \(2^{k+1}\)</li>
 
 
 <figure>
-<p><img src="contadref.png" alt="contadref.png">
-</p>
+<img src="contadref.png" alt="contadref.png">
+
 </figure>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline16">
+<section id="slide-orge61379b">
 <div class="slide-header"></div>
-<h4 id="orgheadline16">Trazado de la colección</h4>
+<h4 id="orge61379b">Trazado de la colección</h4>
 <ul>
 <li>marcado y barrido (<i>mark and Sweep</i>
 <ol>
@@ -423,9 +427,9 @@ aún marcado como "usable" a la lista de bloques libres.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline17">
+<section id="slide-org392eb1e">
 <div class="slide-header"></div>
-<h4 id="orgheadline17">Recolección de Basura</h4>
+<h4 id="org392eb1e">Recolección de Basura</h4>
 <ul>
 <li>Reversión de puntero</li>
 
@@ -433,15 +437,15 @@ aún marcado como "usable" a la lista de bloques libres.</li>
 
 
 <figure>
-<p><img src="reversepoint.png" alt="reversepoint.png"> 
-</p>
+<img src="reversepoint.png" alt="reversepoint.png"> 
+
 </figure>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgheadline18">
+<section id="slide-org142dfb6">
 <div class="slide-header"></div>
-<h4 id="orgheadline18">Recolección de Basura</h4>
+<h4 id="org142dfb6">Recolección de Basura</h4>
 <ul>
 <li>Otras alternativas
 <ul>
@@ -469,7 +473,7 @@ controls: true,
 progress: true,
 history: false,
 center: true,
-slideNumber: true,
+slideNumber: 't',
 rollingLinks: false,
 keyboard: true,
 overview: true,
@@ -485,7 +489,11 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
-]
+ { src: '../reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 ,});
 </script>
 </body>

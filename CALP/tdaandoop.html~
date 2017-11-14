@@ -1,252 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<!-- 2017-09-05 mar 11:04 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Conceptos Avanzados en Lenguajes de Programación</title>
-<meta name="author" content="(Tipo de Datos Abstractos y POO)"/>
-<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
-<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
-<link rel="stylesheet" href=""/>
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-    if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = '../reveal.js-master/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-    }
+<meta name="generator" content="Org mode">
+<meta name="author" content="Tipo de Datos Abstractos y POO">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
 </script>
 </head>
 <body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
-<h1>Conceptos Avanzados en Lenguajes de Programación</h1><h2>Tipo de Datos Abstractos y POO</h2><h2><a href="mailto:Claudio Vaucheret / cv@fi.uncoma.edu.ar">Claudio Vaucheret / cv@fi.uncoma.edu.ar</a></h2><h2><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-14 lun&gt;</span></span></h2>
-</section>
-<section id="table-of-contents">
-<nav id="table-of-contents">
+<div id="content">
+<header>
+<h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1>
+</header><nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgheadline1">El concepto de Abstracción</a></li>
-<li><a href="#/slide-orgheadline2">Introducción a la Abstracción del Dato</a></li>
-<li><a href="#/slide-orgheadline3">Ventajas de la Abstracción</a></li>
-<li><a href="#/slide-orgheadline4">Cuestiones de Diseño</a></li>
-<li><a href="#/slide-orgheadline5">Ejemplo en <b>ADA</b></a></li>
-<li><a href="#/slide-orgheadline6">Ejemplo en Ada</a></li>
-<li><a href="#/slide-orgheadline7">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline8">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline9">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline10">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline11">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline12">Ejemplo en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline13">Evaluación de <b>Ada</b> y <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline14">Ejemplo en <b>java</b></a></li>
-<li><a href="#/slide-orgheadline15">Ejemplo en <b>java</b></a></li>
-<li><a href="#/slide-orgheadline16">Tipo de Datos Abstracto Parametrizados</a></li>
-<li><a href="#/slide-orgheadline17">TDA parametrizado en <b>Ada</b></a></li>
-<li><a href="#/slide-orgheadline18">TDA parametrizado en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline19">Encapsulación</a></li>
-<li><a href="#/slide-orgheadline20">Encapsulación en <b>C</b></a></li>
-<li><a href="#/slide-orgheadline21">Encapsulación en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline22">Paquetes de <b>Ada</b></a></li>
-<li><a href="#/slide-orgheadline23">El Sistema de Módulos de <b>Ciao Prolog</b></a></li>
-<li><a href="#/slide-orgheadline24">Encapsulación de Nombres</a></li>
-<li><a href="#/slide-orgheadline25">Encapsulación de Nombres</a></li>
-<li><a href="#/slide-orgheadline26">Programación Orientada a Objetos</a></li>
-<li><a href="#/slide-orgheadline27">Programación Orientada a Objetos</a></li>
-<li><a href="#/slide-orgheadline28">Herencia</a></li>
-<li><a href="#/slide-orgheadline29">Conceptos de la orientación a objetos</a></li>
-<li><a href="#/slide-orgheadline30">Conceptos de la orientación a objetos</a></li>
-<li><a href="#/slide-orgheadline31">Conceptos de la orientación a objetos</a></li>
-<li><a href="#/slide-orgheadline32">Conceptos de la orientación a objetos</a></li>
-<li><a href="#/slide-orgheadline33">Ligadura Dinámica</a></li>
-<li><a href="#/slide-orgheadline34">Ligadura Dinámica</a></li>
-<li><a href="#/slide-orgheadline35">Cuestiones de Diseño para lenguajes de POO</a></li>
-<li><a href="#/slide-orgheadline36">La Exclusividad de Objetos</a></li>
-<li><a href="#/slide-orgheadline37">Son las sublclases subtipos?</a></li>
-<li><a href="#/slide-orgheadline38">Chequeo de tipos y Polimorfismo</a></li>
-<li><a href="#/slide-orgheadline39">Herencia única y múltiple</a></li>
-<li><a href="#/slide-orgheadline40">Asignación de memoria de objetos y desalojo de memoria</a></li>
-<li><a href="#/slide-orgheadline41">Ligadura dinámica y estática</a></li>
-<li><a href="#/slide-orgheadline42">Clases anidadas</a></li>
-<li><a href="#/slide-orgheadline43">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
-<li><a href="#/slide-orgheadline44">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
-<li><a href="#/slide-orgheadline45">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
-<li><a href="#/slide-orgheadline46">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
-<li><a href="#/slide-orgheadline47">Soporte para orientación a objetos en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline48">Soporte para orientación a objetos en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline49">Soporte para orientación a objetos en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline50">Ejemplo de Herencia en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline51">Reexportación en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline52">Reexportación</a></li>
-<li><a href="#/slide-orgheadline53">Soporte de POO en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline54">Soporte de POO en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline55">Soporte de POO en <b>C++</b></a></li>
-<li><a href="#/slide-orgheadline56">Soporte de POO en <b>Java</b></a></li>
-<li><a href="#/slide-orgheadline57">Soporte de POO en <b>Java</b></a></li>
-<li><a href="#/slide-orgheadline58">Soporte de POO en <b>Java</b></a></li>
-<li><a href="#/slide-orgheadline59">Soporte de POO en <b>Java</b></a></li>
-<li><a href="#/slide-orgheadline60">Soporte de POO en <b>Ciao Prolog</b></a></li>
-<li><a href="#/slide-orgheadline61">Ejemplo POO <b>Ciao Prolog</b></a></li>
-<li><a href="#/slide-orgheadline62">Ejemplo POO <b>Ciao Prolog</b></a></li>
-<li><a href="#/slide-orgheadline63">Herencia en <b>Ciao Prolog</b></a></li>
+<li><a href="#org3e3c444">El concepto de Abstracción</a></li>
+<li><a href="#org12c6fe8">Introducción a la Abstracción del Dato</a></li>
+<li><a href="#org0fc7bf6">Ventajas de la Abstracción</a></li>
+<li><a href="#org906446a">Cuestiones de Diseño</a></li>
+<li><a href="#orgc4e935e">Ejemplo en <b>ADA</b></a></li>
+<li><a href="#org5a36840">Ejemplo en Ada</a></li>
+<li><a href="#org0a1eb88">Ejemplo en <b>C++</b></a></li>
+<li><a href="#orgabc7d68">Ejemplo en <b>C++</b></a></li>
+<li><a href="#orgd90f9c0">Ejemplo en <b>C++</b></a></li>
+<li><a href="#orgb54b40f">Ejemplo en <b>C++</b></a></li>
+<li><a href="#org55a9436">Ejemplo en <b>C++</b></a></li>
+<li><a href="#orge0a5c22">Ejemplo en <b>C++</b></a></li>
+<li><a href="#org09ad7a3">Evaluación de <b>Ada</b> y <b>C++</b></a></li>
+<li><a href="#org95fcddb">Ejemplo en <b>java</b></a></li>
+<li><a href="#org1556819">Ejemplo en <b>java</b></a></li>
+<li><a href="#org2b99a9e">Tipo de Datos Abstracto Parametrizados</a></li>
+<li><a href="#orgb6c0eac">TDA parametrizado en <b>Ada</b></a></li>
+<li><a href="#orgc06664c">TDA parametrizado en <b>C++</b></a></li>
+<li><a href="#org47ec5df">Encapsulación</a></li>
+<li><a href="#org70164ff">Encapsulación en <b>C</b></a></li>
+<li><a href="#org0bcc1d3">Encapsulación en <b>C++</b></a></li>
+<li><a href="#orge1a968c">Paquetes de <b>Ada</b></a></li>
+<li><a href="#org9a1097b">El Sistema de Módulos de <b>Ciao Prolog</b></a></li>
+<li><a href="#org091c090">Encapsulación de Nombres</a></li>
+<li><a href="#orgad1635d">Encapsulación de Nombres</a></li>
+<li><a href="#org8481d9e">Programación Orientada a Objetos</a></li>
+<li><a href="#org0d10c4c">Programación Orientada a Objetos</a></li>
+<li><a href="#orgb5dfb33">Herencia</a></li>
+<li><a href="#org80c25a7">Conceptos de la orientación a objetos</a></li>
+<li><a href="#orgad5f816">Conceptos de la orientación a objetos</a></li>
+<li><a href="#orga906401">Conceptos de la orientación a objetos</a></li>
+<li><a href="#org0059df7">Conceptos de la orientación a objetos</a></li>
+<li><a href="#orgc747052">Ligadura Dinámica</a></li>
+<li><a href="#orga328588">Ligadura Dinámica</a></li>
+<li><a href="#orgab8606f">Cuestiones de Diseño para lenguajes de POO</a></li>
+<li><a href="#org0656992">La Exclusividad de Objetos</a></li>
+<li><a href="#orgda33096">Son las sublclases subtipos?</a></li>
+<li><a href="#orga61f481">Chequeo de tipos y Polimorfismo</a></li>
+<li><a href="#orgb55f331">Herencia única y múltiple</a></li>
+<li><a href="#orgf65acd8">Asignación de memoria de objetos y desalojo de memoria</a></li>
+<li><a href="#org9f89821">Ligadura dinámica y estática</a></li>
+<li><a href="#org2092a58">Clases anidadas</a></li>
+<li><a href="#orgee60644">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
+<li><a href="#org89b503f">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
+<li><a href="#org1f070fa">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
+<li><a href="#org33a8568">Soporte para orientación a objetos en <b>Smalltalk</b></a></li>
+<li><a href="#orgf2f5d8d">Soporte para orientación a objetos en <b>C++</b></a></li>
+<li><a href="#org8a5b769">Soporte para orientación a objetos en <b>C++</b></a></li>
+<li><a href="#org9e8ad14">Soporte para orientación a objetos en <b>C++</b></a></li>
+<li><a href="#orgfa4b210">Ejemplo de Herencia en <b>C++</b></a></li>
+<li><a href="#orgaebb4a2">Reexportación en <b>C++</b></a></li>
+<li><a href="#orge057b08">Reexportación</a></li>
+<li><a href="#orgf672630">Soporte de POO en <b>C++</b></a></li>
+<li><a href="#orgf3dbebe">Soporte de POO en <b>C++</b></a></li>
+<li><a href="#orge4cd0aa">Soporte de POO en <b>C++</b></a></li>
+<li><a href="#orgb1467fc">Soporte de POO en <b>Java</b></a></li>
+<li><a href="#org259b503">Soporte de POO en <b>Java</b></a></li>
+<li><a href="#org0437f93">Soporte de POO en <b>Java</b></a></li>
+<li><a href="#org4a0d4a3">Soporte de POO en <b>Java</b></a></li>
+<li><a href="#org2571250">Soporte de POO en <b>Ciao Prolog</b></a></li>
+<li><a href="#orgd9758ea">Ejemplo POO <b>Ciao Prolog</b></a></li>
+<li><a href="#orgf8e5e50">Ejemplo POO <b>Ciao Prolog</b></a></li>
+<li><a href="#org22cc10a">Herencia en <b>Ciao Prolog</b></a></li>
 </ul>
 </div>
 </nav>
-</section>
 
-<section>
-<section id="slide-orgheadline1">
-<div class="slide-header"></div>
-<h2 id="orgheadline1">El concepto de Abstracción</h2>
-<ul>
+<div id="outline-container-org3e3c444" class="outline-2">
+<h2 id="org3e3c444">El concepto de Abstracción</h2>
+<div class="outline-text-2" id="text-org3e3c444">
+<ul class="org-ul">
 <li>Una abstracción es una vista o representación de una entidad que
 incluye sólo los atributos más significativos</li>
 <li>El concepto de abstracción es fundamental en la programación (y en
 toda la ciencia de la computación)</li>
 <li>Casi todos los lenguajes de programación admiten la abstracción de procesos con subprogramas</li>
 <li>Casi todos los lenguajes de programación diseñados desde 1980 soportan la abstracción de datos</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline2">
-<div class="slide-header"></div>
-<h2 id="orgheadline2">Introducción a la Abstracción del Dato</h2>
-<ul>
+<div id="outline-container-org12c6fe8" class="outline-2">
+<h2 id="org12c6fe8">Introducción a la Abstracción del Dato</h2>
+<div class="outline-text-2" id="text-org12c6fe8">
+<ul class="org-ul">
 <li>Un <i>tipo de datos abstracto</i> (TDA) es un tipo de datos definido por
 el usuario que cumple las dos condiciones siguientes:
-<ul>
+<ul class="org-ul">
 <li>La representación y las operaciones sobre los objetos del tipo se definen en una única unidad sintáctica</li>
 <li>La representación de objetos del tipo está oculta a las unidades
 de programa que utilizan estos objetos, por lo que las únicas
 operaciones posibles son las proporcionadas en la definición del
 tipo</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline3">
-<div class="slide-header"></div>
-<h2 id="orgheadline3">Ventajas de la Abstracción</h2>
-<ul>
+<div id="outline-container-org0fc7bf6" class="outline-2">
+<h2 id="org0fc7bf6">Ventajas de la Abstracción</h2>
+<div class="outline-text-2" id="text-org0fc7bf6">
+<ul class="org-ul">
 <li>Ventaja de la primera condición
-<ul>
+<ul class="org-ul">
 <li>Organización del programa, modificabilidad (todo lo relacionado
 con la estructura de datos está junto), y compilación separada</li>
-
 </ul></li>
 <li>Ventaja de la segunda condición
-<ul>
+<ul class="org-ul">
 <li>Fiabilidad - ocultando las representaciones de datos, el código de
 usuario no puede acceder directamente a objetos del tipo y asi
 depender de la representación, permitiendo que la representación
 se cambie sin afectar el código de usuario.</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline4">
-<div class="slide-header"></div>
-<h2 id="orgheadline4">Cuestiones de Diseño</h2>
-<ul>
+<div id="outline-container-org906446a" class="outline-2">
+<h2 id="org906446a">Cuestiones de Diseño</h2>
+<div class="outline-text-2" id="text-org906446a">
+<ul class="org-ul">
 <li>Una unidad sintáctica para definir un TDA</li>
 <li>Operaciones integradas
-<ul>
+<ul class="org-ul">
 <li>Asignación</li>
 <li>Comparación</li>
-
 </ul></li>
 <li>Operaciones comunes
-<ul>
+<ul class="org-ul">
 <li>Iteradores</li>
 <li>Accesores</li>
 <li>Constructores</li>
 <li>Destructores</li>
-
 </ul></li>
 <li>TDA parametrizados</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline5">
-<div class="slide-header"></div>
-<h2 id="orgheadline5">Ejemplo en <b>ADA</b></h2>
-<ul>
+<div id="outline-container-orgc4e935e" class="outline-2">
+<h2 id="orgc4e935e">Ejemplo en <b>ADA</b></h2>
+<div class="outline-text-2" id="text-orgc4e935e">
+<ul class="org-ul">
 <li>El constructor de encapsulación se denomina <i>package</i>
-<ul>
+<ul class="org-ul">
 <li>Especificación del <i>package</i> (la interfaz)</li>
 <li>Cuerpo del <i>package</i> (implementación de las entidades nombradas en la especificación)</li>
-
 </ul></li>
 <li>Ocultamiento de la información
-<ul>
+<ul class="org-ul">
 <li>La representación de tipo aparece en una parte de la especificación llamada la parte <i>privada</i>
-<ul>
+<ul class="org-ul">
 <li>Una forrma más restringida con tipos privados <i>limitados</i></li>
-
 </ul></li>
 <li>Defina el TDA como un puntero y proporciona la definición de la
 estructura apuntada en el paquete del cuerpo</li>
-
 </ul></li>
-
 </ul>
-
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline6">
-<div class="slide-header"></div>
-<h2 id="orgheadline6">Ejemplo en Ada</h2>
-<div class="org-src-container">
-
-<pre  class="src src-ada"><span style="color: #00ffff;">package</span> <span style="color: #87cefa;">Stack_Pack</span> <span style="color: #00ffff;">is</span>
-        <span style="color: #00ffff;">type</span> <span style="color: #98fb98;">stack_type</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">limited</span> <span style="color: #00ffff;">private</span>;
-        max_size: <span style="color: #00ffff;">constant</span> := <span style="color: #7fffd4;">100</span>;
-        <span style="color: #00ffff;">function</span> <span style="color: #87cefa;">empty</span>(stk: <span style="color: #00ffff;">in</span> <span style="color: #98fb98;">stack_type</span>) <span style="color: #00ffff;">return</span> Boolean;
-        <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">push</span>(stk: <span style="color: #00ffff;">in out</span> <span style="color: #98fb98;">stack_type</span>; elem:<span style="color: #00ffff;">in</span> <span style="color: #98fb98;">Integer</span>);
-        <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">pop</span>(stk: <span style="color: #00ffff;">in out</span> <span style="color: #98fb98;">stack_type</span>);
-        <span style="color: #00ffff;">function</span> <span style="color: #87cefa;">top</span>(stk: <span style="color: #00ffff;">in</span> <span style="color: #98fb98;">stack_type</span>) <span style="color: #00ffff;">return</span> Integer;
-
-        <span style="color: #00ffff;">private</span>  <span style="color: #ff4500;">-- </span><span style="color: #ff4500;">hidden from clients</span>
-        <span style="color: #00ffff;">type</span> <span style="color: #98fb98;">list_type</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">array</span> (<span style="color: #7fffd4;">1</span>..max_size) <span style="color: #00ffff;">of</span> <span style="color: #98fb98;">Integer</span>;
-        <span style="color: #00ffff;">type</span> <span style="color: #98fb98;">stack_type</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">record</span>
-                list: list_type;
-                topsub: Integer <span style="color: #00ffff;">range</span> <span style="color: #7fffd4;">0</span>..max_size) := <span style="color: #7fffd4;">0</span>;
-        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">record</span>;
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">Stack_Pack</span>
-</pre>
+</div>
 </div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline7">
-<div class="slide-header"></div>
-<h2 id="orgheadline7">Ejemplo en <b>C++</b></h2>
-<ul>
+<div id="outline-container-org5a36840" class="outline-2">
+<h2 id="org5a36840">Ejemplo en Ada</h2>
+<div class="outline-text-2" id="text-org5a36840">
+<div class="org-src-container">
+<pre class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">package</span> <span style="color: #1e90ff; font-weight: bold;">Stack_Pack</span> <span style="color: #40e0d0; font-weight: bold;">is</span>
+        <span style="color: #40e0d0; font-weight: bold;">type</span> <span style="color: #9ac0cd;">stack_type</span> <span style="color: #40e0d0; font-weight: bold;">is</span> <span style="color: #40e0d0; font-weight: bold;">limited</span> <span style="color: #40e0d0; font-weight: bold;">private</span>;
+        max_size: <span style="color: #40e0d0; font-weight: bold;">constant</span> := <span style="color: #ff6347; font-weight: bold;">100</span>;
+        <span style="color: #40e0d0; font-weight: bold;">function</span> <span style="color: #1e90ff; font-weight: bold;">empty</span>(stk: <span style="color: #40e0d0; font-weight: bold;">in</span> <span style="color: #9ac0cd;">stack_type</span>) <span style="color: #40e0d0; font-weight: bold;">return</span> Boolean;
+        <span style="color: #40e0d0; font-weight: bold;">procedure</span> <span style="color: #1e90ff; font-weight: bold;">push</span>(stk: <span style="color: #40e0d0; font-weight: bold;">in out</span> <span style="color: #9ac0cd;">stack_type</span>; elem:<span style="color: #40e0d0; font-weight: bold;">in</span> <span style="color: #9ac0cd;">Integer</span>);
+        <span style="color: #40e0d0; font-weight: bold;">procedure</span> <span style="color: #1e90ff; font-weight: bold;">pop</span>(stk: <span style="color: #40e0d0; font-weight: bold;">in out</span> <span style="color: #9ac0cd;">stack_type</span>);
+        <span style="color: #40e0d0; font-weight: bold;">function</span> <span style="color: #1e90ff; font-weight: bold;">top</span>(stk: <span style="color: #40e0d0; font-weight: bold;">in</span> <span style="color: #9ac0cd;">stack_type</span>) <span style="color: #40e0d0; font-weight: bold;">return</span> Integer;
+
+        <span style="color: #40e0d0; font-weight: bold;">private</span>  <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">hidden from clients</span>
+        <span style="color: #40e0d0; font-weight: bold;">type</span> <span style="color: #9ac0cd;">list_type</span> <span style="color: #40e0d0; font-weight: bold;">is</span> <span style="color: #40e0d0; font-weight: bold;">array</span> (<span style="color: #ff6347; font-weight: bold;">1</span>..max_size) <span style="color: #40e0d0; font-weight: bold;">of</span> <span style="color: #9ac0cd;">Integer</span>;
+        <span style="color: #40e0d0; font-weight: bold;">type</span> <span style="color: #9ac0cd;">stack_type</span> <span style="color: #40e0d0; font-weight: bold;">is</span> <span style="color: #40e0d0; font-weight: bold;">record</span>
+                list: list_type;
+                topsub: Integer <span style="color: #40e0d0; font-weight: bold;">range</span> <span style="color: #ff6347; font-weight: bold;">0</span>..max_size) := <span style="color: #ff6347; font-weight: bold;">0</span>;
+        <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">record</span>;
+<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">Stack_Pack</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0a1eb88" class="outline-2">
+<h2 id="org0a1eb88">Ejemplo en <b>C++</b></h2>
+<div class="outline-text-2" id="text-org0a1eb88">
+<ul class="org-ul">
 <li>Basado en el tipo <i>struct</i> de <b>C</b> y en las clases de <b>Simula 67</b></li>
 <li>La clase es el dispositivo de encapsulación</li>
 <li>Todas las <i>instancias</i> de una  clase comparten una copia única de las funciones miembro</li>
@@ -254,339 +429,280 @@ estructura apuntada en el paquete del cuerpo</li>
 datos de la clase</li>
 <li>Las instancias pueden ser estáticas, dinámicas de pila o dinámicas
 de <i>heap</i></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline8">
-<div class="slide-header"></div>
-<h2 id="orgheadline8">Ejemplo en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orgabc7d68" class="outline-2">
+<h2 id="orgabc7d68">Ejemplo en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgabc7d68">
+<ul class="org-ul">
 <li>Ocultamiento de la Información
-<ul>
+<ul class="org-ul">
 <li>cláusula <i>Private</i> para entidades ocultas</li>
 <li>cláusula <i>Public</i> para interface de entidades</li>
 <li>cláusula <i>Protected</i> para herencia</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline9">
-<div class="slide-header"></div>
-<h2 id="orgheadline9">Ejemplo en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orgd90f9c0" class="outline-2">
+<h2 id="orgd90f9c0">Ejemplo en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgd90f9c0">
+<ul class="org-ul">
 <li>Constructores:
-<ul>
+<ul class="org-ul">
 <li>Funciones para inicializar los miembros de datos de las instancias (no crean los objetos)</li>
 <li>También puede asignar almacenamiento si parte del objeto es <i>heap-dynamic</i></li>
 <li>Puede incluir parámetros para proporcionar la parametrización de los objetos</li>
 <li>Implicitamente llamado cuando se crea una instancia</li>
 <li>Se puede llamar explícitamente</li>
 <li>El nombre es el mismo que el nombre de la clase</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline10">
-<div class="slide-header"></div>
-<h2 id="orgheadline10">Ejemplo en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orgb54b40f" class="outline-2">
+<h2 id="orgb54b40f">Ejemplo en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgb54b40f">
+<ul class="org-ul">
 <li>Destructores:
-<ul>
+<ul class="org-ul">
 <li>Funciones de limpieza después de que que una instancia se
 destruye; Por lo general sólo para recuperar el almacenamiento del
 <i>Heap</i></li>
 <li>Implícitamente llamado cuando finaliza la vida útil del objeto</li>
 <li>Se puede llamar explícitamente</li>
 <li>El nombre es el nombre de la clase, precedido por un tilde (~)</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline11">
-<div class="slide-header"></div>
-<h2 id="orgheadline11">Ejemplo en <b>C++</b></h2>
-<ul>
+<div id="outline-container-org55a9436" class="outline-2">
+<h2 id="org55a9436">Ejemplo en <b>C++</b></h2>
+<div class="outline-text-2" id="text-org55a9436">
+<ul class="org-ul">
 <li>Funciones o clases <i>friend</i> - para proporcionar acceso a miembros
 privados a algunas unidades o funciones no relacionadas
-<ul>
+<ul class="org-ul">
 <li>necesaria en <b>C++</b></li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline12">
-<div class="slide-header"></div>
-<h2 id="orgheadline12">Ejemplo en <b>C++</b></h2>
+<div id="outline-container-orge0a5c22" class="outline-2">
+<h2 id="orge0a5c22">Ejemplo en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orge0a5c22">
 <div class="org-src-container">
-
-<pre  class="src src-c++"><span style="color: #00ffff;">class</span> <span style="color: #98fb98;">stack</span> {
-        <span style="color: #00ffff;">private</span>:
-                <span style="color: #98fb98;">int</span> *<span style="color: #eedd82;">stackPtr</span>, <span style="color: #eedd82;">maxLen</span>, <span style="color: #eedd82;">topPtr</span>;
-        <span style="color: #00ffff;">public</span>:
-                <span style="color: #87cefa;">stack</span>() { <span style="color: #ff4500;">// </span><span style="color: #ff4500;">a constructor</span>
-                        stackPtr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">int</span> [100];
+<pre class="src src-c++"><span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">stack</span> {
+        <span style="color: #40e0d0; font-weight: bold;">private</span>:
+                <span style="color: #9ac0cd;">int</span> *<span style="color: #bebebe; font-weight: bold;">stackPtr</span>, <span style="color: #bebebe; font-weight: bold;">maxLen</span>, <span style="color: #bebebe; font-weight: bold;">topPtr</span>;
+        <span style="color: #40e0d0; font-weight: bold;">public</span>:
+                <span style="color: #1e90ff; font-weight: bold;">stack</span>() { <span style="color: #ee82ee;">// </span><span style="color: #ee82ee;">a constructor</span>
+                        stackPtr = <span style="color: #40e0d0; font-weight: bold;">new</span> <span style="color: #9ac0cd;">int</span> [100];
                         maxLen = 99;
                         topPtr = -1;
                 };
-                ~<span style="color: #87cefa;">stack</span> () {<span style="color: #00ffff;">delete</span> [] stackPtr;};
-                <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">push</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">num</span>) {&#8230;};
-                <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">pop</span> () {&#8230;};
-                <span style="color: #98fb98;">int</span> <span style="color: #87cefa;">top</span> () {&#8230;};
-                <span style="color: #98fb98;">int</span> <span style="color: #87cefa;">empty</span> () {&#8230;};
+                ~<span style="color: #1e90ff; font-weight: bold;">stack</span> () {<span style="color: #40e0d0; font-weight: bold;">delete</span> [] stackPtr;};
+                <span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">push</span> (<span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">num</span>) {&#8230;};
+                <span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">pop</span> () {&#8230;};
+                <span style="color: #9ac0cd;">int</span> <span style="color: #1e90ff; font-weight: bold;">top</span> () {&#8230;};
+                <span style="color: #9ac0cd;">int</span> <span style="color: #1e90ff; font-weight: bold;">empty</span> () {&#8230;};
 }
 </pre>
 </div>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline13">
-<div class="slide-header"></div>
-<h2 id="orgheadline13">Evaluación de <b>Ada</b> y <b>C++</b></h2>
-<ul>
+<div id="outline-container-org09ad7a3" class="outline-2">
+<h2 id="org09ad7a3">Evaluación de <b>Ada</b> y <b>C++</b></h2>
+<div class="outline-text-2" id="text-org09ad7a3">
+<ul class="org-ul">
 <li>El soporte de <b>C++</b> para TDAs es similar al poder expresivo de <b>Ada</b></li>
 <li>Ambos proporcionan mecanismos efectivos para la encapsulación y la ocultación de la información</li>
 <li>Los paquetes de <b>Ada</b> son encapsulaciones más generales</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline14">
-<div class="slide-header"></div>
-<h2 id="orgheadline14">Ejemplo en <b>java</b></h2>
-<ul>
+<div id="outline-container-org95fcddb" class="outline-2">
+<h2 id="org95fcddb">Ejemplo en <b>java</b></h2>
+<div class="outline-text-2" id="text-org95fcddb">
+<ul class="org-ul">
 <li>Similar a <b>C++</b>, excepto:
-<ul>
+<ul class="org-ul">
 <li>Todos los tipos definidos por el usuario son clases</li>
 <li>Todos los objetos se asignan en la memoria <i>Heap</i> y se accede a través de variables de referencia</li>
 <li>Las entidades individuales de las clases tienen modificadores de control de acceso (privados o públicos), en lugar de cláusulas</li>
 <li><b>Java</b> tiene un segundo mecanismo de alcance, el alcance del
 paquete, que se puede utilizar en lugar de la clase <i>amiga</i>
-<ul>
+<ul class="org-ul">
 <li>Todas las entidades de todas las clases de un paquete que no
 tienen modificadores de control de acceso son visibles en todo
 el paquete.</li>
-
 </ul></li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline15">
-<div class="slide-header"></div>
-<h2 id="orgheadline15">Ejemplo en <b>java</b></h2>
+<div id="outline-container-org1556819" class="outline-2">
+<h2 id="org1556819">Ejemplo en <b>java</b></h2>
+<div class="outline-text-2" id="text-org1556819">
 <div class="org-src-container">
-
-<pre  class="src src-C++"><span style="color: #00ffff;">class</span> <span style="color: #98fb98;">StackClass</span> {
-        <span style="color: #00ffff;">private</span>:
-          <span style="color: #00ffff;">private</span> <span style="color: #98fb98;">int</span> [] *stackRef;
-          <span style="color: #00ffff;">private</span> <span style="color: #98fb98;">int</span> [] maxLen, topIndex;
-          <span style="color: #00ffff;">public</span> StackClass() { <span style="color: #ff4500;">// </span><span style="color: #ff4500;">a constructor</span>
-                        stackRef = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">int</span> [100];
+<pre class="src src-C++"><span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">StackClass</span> {
+        <span style="color: #40e0d0; font-weight: bold;">private</span>:
+          <span style="color: #40e0d0; font-weight: bold;">private</span> <span style="color: #9ac0cd;">int</span> [] *stackRef;
+          <span style="color: #40e0d0; font-weight: bold;">private</span> <span style="color: #9ac0cd;">int</span> [] maxLen, topIndex;
+          <span style="color: #40e0d0; font-weight: bold;">public</span> StackClass() { <span style="color: #ee82ee;">// </span><span style="color: #ee82ee;">a constructor</span>
+                        stackRef = <span style="color: #40e0d0; font-weight: bold;">new</span> <span style="color: #9ac0cd;">int</span> [100];
                         maxLen = 99;
                         topPtr = -1;
                 };
-                <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">void</span> push (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">num</span>) {...};
-                <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">void</span> pop () {...};
-                <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">int</span> top () {...};
-                <span style="color: #00ffff;">public</span> boolean empty () {...};
+                <span style="color: #40e0d0; font-weight: bold;">public</span> <span style="color: #9ac0cd;">void</span> push (<span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">num</span>) {...};
+                <span style="color: #40e0d0; font-weight: bold;">public</span> <span style="color: #9ac0cd;">void</span> pop () {...};
+                <span style="color: #40e0d0; font-weight: bold;">public</span> <span style="color: #9ac0cd;">int</span> top () {...};
+                <span style="color: #40e0d0; font-weight: bold;">public</span> boolean empty () {...};
 }
 </pre>
 </div>
+</div>
+</div>
 
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline16">
-<div class="slide-header"></div>
-<h2 id="orgheadline16">Tipo de Datos Abstracto Parametrizados</h2>
-<ul>
+<div id="outline-container-org2b99a9e" class="outline-2">
+<h2 id="org2b99a9e">Tipo de Datos Abstracto Parametrizados</h2>
+<div class="outline-text-2" id="text-org2b99a9e">
+<ul class="org-ul">
 <li>Los TDAs parametrizados permiten diseñar un TDA que puede almacenar
 cualquier tipo de elemento.</li>
 <li>También conocido como clases genéricas</li>
 <li><b>C++</b> y <b>Ada</b> proporcionan soporte para TDAs parametrizados.</li>
 <li><b>Java 5.0</b> proporciona una forma restringida de TDAs parametrizados</li>
-
 </ul>
-
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline17">
-<div class="slide-header"></div>
-<h2 id="orgheadline17">TDA parametrizado en <b>Ada</b></h2>
-<ul>
-<li>Paquete genérico de <b>Ada</b>
-<ul>
-<li>ejemplo hacer que el tipo <i>pila</i> sea más flexible haciendo que el
-tipo del elemento y el tamaño de la pila sean genéricos.</li>
-
-</ul></li>
-
-</ul>
-
-
-<div class="org-src-container">
-
-<pre  class="src src-ada"><span style="color: #00ffff;">generic</span>
-Max_size: Positive;
-<span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Elem_Type</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">Private</span>;
-<span style="color: #00ffff;">package</span> <span style="color: #87cefa;">Generic_Stack</span> <span style="color: #00ffff;">is</span> 
-&#8230;
-<span style="color: #00ffff;">function</span> <span style="color: #87cefa;">Top</span>(Stk: <span style="color: #00ffff;">in out</span> <span style="color: #98fb98;">StackType</span>) <span style="color: #00ffff;">return</span> Elem_type;
-&#8230;
-<span style="color: #00ffff;">end</span> <span style="color: #87cefa;">Generic_Stack</span>;
-
-
-
-<span style="color: #00ffff;">Package</span> <span style="color: #87cefa;">Integer_Stack</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">new</span> <span style="color: #87cefa;">Generics_Stack</span>(<span style="color: #7fffd4;">100</span>,Integer);
-<span style="color: #00ffff;">Package</span> <span style="color: #87cefa;">Float_Stack</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">new</span> <span style="color: #87cefa;">Generics_Stack</span>(<span style="color: #7fffd4;">100</span>,Float);
-</pre>
+</div>
 </div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline18">
-<div class="slide-header"></div>
-<h2 id="orgheadline18">TDA parametrizado en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orgb6c0eac" class="outline-2">
+<h2 id="orgb6c0eac">TDA parametrizado en <b>Ada</b></h2>
+<div class="outline-text-2" id="text-orgb6c0eac">
+<ul class="org-ul">
+<li>Paquete genérico de <b>Ada</b>
+<ul class="org-ul">
+<li>ejemplo hacer que el tipo <i>pila</i> sea más flexible haciendo que el
+tipo del elemento y el tamaño de la pila sean genéricos.</li>
+</ul></li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">generic</span>
+Max_size: Positive;
+<span style="color: #40e0d0; font-weight: bold;">type</span> <span style="color: #9ac0cd;">Elem_Type</span> <span style="color: #40e0d0; font-weight: bold;">is</span> <span style="color: #40e0d0; font-weight: bold;">Private</span>;
+<span style="color: #40e0d0; font-weight: bold;">package</span> <span style="color: #1e90ff; font-weight: bold;">Generic_Stack</span> <span style="color: #40e0d0; font-weight: bold;">is</span> 
+&#8230;
+<span style="color: #40e0d0; font-weight: bold;">function</span> <span style="color: #1e90ff; font-weight: bold;">Top</span>(Stk: <span style="color: #40e0d0; font-weight: bold;">in out</span> <span style="color: #9ac0cd;">StackType</span>) <span style="color: #40e0d0; font-weight: bold;">return</span> Elem_type;
+&#8230;
+<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">Generic_Stack</span>;
+
+
+
+<span style="color: #40e0d0; font-weight: bold;">Package</span> <span style="color: #1e90ff; font-weight: bold;">Integer_Stack</span> <span style="color: #40e0d0; font-weight: bold;">is</span> <span style="color: #40e0d0; font-weight: bold;">new</span> <span style="color: #1e90ff; font-weight: bold;">Generics_Stack</span>(<span style="color: #ff6347; font-weight: bold;">100</span>,Integer);
+<span style="color: #40e0d0; font-weight: bold;">Package</span> <span style="color: #1e90ff; font-weight: bold;">Float_Stack</span> <span style="color: #40e0d0; font-weight: bold;">is</span> <span style="color: #40e0d0; font-weight: bold;">new</span> <span style="color: #1e90ff; font-weight: bold;">Generics_Stack</span>(<span style="color: #ff6347; font-weight: bold;">100</span>,Float);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc06664c" class="outline-2">
+<h2 id="orgc06664c">TDA parametrizado en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgc06664c">
+<ul class="org-ul">
 <li>Las clases pueden ser algo genéricas escribiendo constructores
 parametrizados</li>
-
 </ul>
 
 <div class="org-src-container">
-
-<pre  class="src src-c++"><span style="color: #00ffff;">template</span> &lt;<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">type</span>&gt;
-        <span style="color: #00ffff;">class</span> <span style="color: #98fb98;">stack</span> {
+<pre class="src src-c++"><span style="color: #40e0d0; font-weight: bold;">template</span> &lt;<span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">type</span>&gt;
+        <span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">stack</span> {
         &#8230;
-        stack (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">size</span>) {
-        stk_ptr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">int</span> [size]; 
+        stack (<span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">size</span>) {
+        stk_ptr = <span style="color: #40e0d0; font-weight: bold;">new</span> <span style="color: #9ac0cd;">int</span> [size]; 
         max_len = size - 1;
          top = -1;
         };
                 &#8230;
      }
 
-        <span style="color: #98fb98;">stack</span> <span style="color: #87cefa;">stk</span>(100);
+        <span style="color: #9ac0cd;">stack</span> <span style="color: #1e90ff; font-weight: bold;">stk</span>(100);
 </pre>
 </div>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline19">
-<div class="slide-header"></div>
-<h2 id="orgheadline19">Encapsulación</h2>
-<ul>
+<div id="outline-container-org47ec5df" class="outline-2">
+<h2 id="org47ec5df">Encapsulación</h2>
+<div class="outline-text-2" id="text-org47ec5df">
+<ul class="org-ul">
 <li>Los programas grandes tienen dos necesidades especiales:
-<ul>
+<ul class="org-ul">
 <li>Algún medio de organización, aparte de la simple división en subprogramas</li>
 <li>Algún medio de compilación parcial (unidades de compilación que son más pequeñas que el programa completo)</li>
-
 </ul></li>
 <li>Solución obvia: agrupación de subprogramas que están lógicamente
 relacionados en una unidad que puede ser compilada por separado
 (unidades de compilación)</li>
 <li>Tal procedimiento se llaman encapsulación</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline20">
-<div class="slide-header"></div>
-<h2 id="orgheadline20">Encapsulación en <b>C</b></h2>
-<ul>
+<div id="outline-container-org70164ff" class="outline-2">
+<h2 id="org70164ff">Encapsulación en <b>C</b></h2>
+<div class="outline-text-2" id="text-org70164ff">
+<ul class="org-ul">
 <li>Los archivos que contengan uno o más subprogramas pueden ser compilados independientemente</li>
 <li>La interfaz se coloca en un archivo de encabezado (<i>header</i>)</li>
 <li>Problema: el enlazador no comprueba los tipos entre un encabezado y la implementación asociada</li>
 <li>especificación del preprocesador <code>#include</code></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline21">
-<div class="slide-header"></div>
-<h2 id="orgheadline21">Encapsulación en <b>C++</b></h2>
-<ul>
+<div id="outline-container-org0bcc1d3" class="outline-2">
+<h2 id="org0bcc1d3">Encapsulación en <b>C++</b></h2>
+<div class="outline-text-2" id="text-org0bcc1d3">
+<ul class="org-ul">
 <li>Similar a C</li>
 <li>Adición de funciones  <i>friend</i> que tienen acceso a miembros privados de la clase <i>amiga</i></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline22">
-<div class="slide-header"></div>
-<h2 id="orgheadline22">Paquetes de <b>Ada</b></h2>
-<ul>
+<div id="outline-container-orge1a968c" class="outline-2">
+<h2 id="orge1a968c">Paquetes de <b>Ada</b></h2>
+<div class="outline-text-2" id="text-orge1a968c">
+<ul class="org-ul">
 <li>La especificacipon de los paquetes de Ada pueden incluir cualquier número de declaraciones de datos y subprogramas</li>
 <li>Los paquetes Ada pueden ser compilados por separado</li>
 <li>Las especificaciones de un paquete y las partes del cuerpo pueden ser compiladas por separado</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline23">
-<div class="slide-header"></div>
-<h2 id="orgheadline23">El Sistema de Módulos de <b>Ciao Prolog</b></h2>
-<ul>
+<div id="outline-container-org9a1097b" class="outline-2">
+<h2 id="org9a1097b">El Sistema de Módulos de <b>Ciao Prolog</b></h2>
+<div class="outline-text-2" id="text-org9a1097b">
+<ul class="org-ul">
 <li>Basado en Procedimientos
-<ul>
+<ul class="org-ul">
 <li>Esto significa que Los nombres de predicado son locales a un
 módulo, pero los nombres de <code>functor/atom</code> en los datos son
 compartidos (Al menos por defecto).</li>
-
 </ul></li>
 <li>Los predicados visibles en un módulo son los predicados definidos en
 ese módulo mas los predicados importados de otros módulos.</li>
@@ -594,211 +710,169 @@ ese módulo mas los predicados importados de otros módulos.</li>
 <li>la definición de operadores son locales al módulo</li>
 <li>Predicados multifiles (definidos con <code>multifile/1</code>)  pueden ser
 definidos por Cláusulas distribuidas en varios módulos, y todos los módulos que</li>
-
 </ul>
 <p>
 definen el predicado como multifile puede utilizar ese predicado.
 </p>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline24">
-<div class="slide-header"></div>
-<h2 id="orgheadline24">Encapsulación de Nombres</h2>
-<ul>
+<div id="outline-container-org091c090" class="outline-2">
+<h2 id="org091c090">Encapsulación de Nombres</h2>
+<div class="outline-text-2" id="text-org091c090">
+<ul class="org-ul">
 <li>Los programas grandes definen muchos nombres globales; Necesitan una manera de dividirse en agrupaciones lógicas</li>
 <li>Un encapsulamiento de nombres utiliza para crear un nuevo ámbito para los nombres
-<ul>
+<ul class="org-ul">
 <li><i>Namespaces</i> en <b>C++</b>
-<ul>
+<ul class="org-ul">
 <li>Puede colocar cada biblioteca en su propio espacio de nombres y
 calificar nombres utilizados fuera del espacio de nombres</li>
-
 </ul></li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline25">
-<div class="slide-header"></div>
-<h2 id="orgheadline25">Encapsulación de Nombres</h2>
-<ul>
+<div id="outline-container-orgad1635d" class="outline-2">
+<h2 id="orgad1635d">Encapsulación de Nombres</h2>
+<div class="outline-text-2" id="text-orgad1635d">
+<ul class="org-ul">
 <li>Paquetes de <b>Java</b>
-<ul>
+<ul class="org-ul">
 <li>Los paquetes pueden contener más de una definición de clase; Las clases en un paquete son <i>amigas parciales</i></li>
 <li>Los clientes de un paquete pueden usar un nombre completo o utilizar la declaración <code>import</code></li>
-
 </ul></li>
 <li>Paquetes de <b>Ada</b>
-<ul>
+<ul class="org-ul">
 <li>Los paquetes se definen en jerarquías que corresponden a jerarquías de archivos</li>
 <li>La visibilidad desde una unidad de programa se obtiene con la
 cláusula <code>with</code></li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline26">
-<div class="slide-header"></div>
-<h2 id="orgheadline26">Programación Orientada a Objetos</h2>
-<ul>
+<div id="outline-container-org8481d9e" class="outline-2">
+<h2 id="org8481d9e">Programación Orientada a Objetos</h2>
+<div class="outline-text-2" id="text-org8481d9e">
+<ul class="org-ul">
 <li>Muchos lenguajes de programación orientada a objetos (POO)
-<ul>
+<ul class="org-ul">
 <li>Algunos soportan la programación orientada a procedimientos y datos (por ejemplo, Ada y C ++)</li>
 <li>Algunos soportan programacion funcional (por ejemplo, CLOS)</li>
 <li>Los lenguajes más recientes no soportan otros paradigmas pero usan sus estructuras imperativas (por ejemplo, Java y C #)</li>
 <li>Algunos son lenguajes de POO puro (por ejemplo, Smalltalk)</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline27">
-<div class="slide-header"></div>
-<h2 id="orgheadline27">Programación Orientada a Objetos</h2>
-<ul>
+<div id="outline-container-org0d10c4c" class="outline-2">
+<h2 id="org0d10c4c">Programación Orientada a Objetos</h2>
+<div class="outline-text-2" id="text-org0d10c4c">
+<ul class="org-ul">
 <li>Tipos de datos abstractos</li>
 <li>Herencia
-<ul>
+<ul class="org-ul">
 <li>La herencia es el tema central en OOP y en los lenguajes que lo soportan</li>
-
 </ul></li>
 <li>Polimorfismo</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline28">
-<div class="slide-header"></div>
-<h2 id="orgheadline28">Herencia</h2>
-<ul>
+<div id="outline-container-orgb5dfb33" class="outline-2">
+<h2 id="orgb5dfb33">Herencia</h2>
+<div class="outline-text-2" id="text-orgb5dfb33">
+<ul class="org-ul">
 <li>Los aumentos de la productividad pueden provenir de la reutilización
 del software
-<ul>
+<ul class="org-ul">
 <li>TDAs son difíciles de reutilizar</li>
 <li>Todos los TDA son independientes y al mismo nivel</li>
-
 </ul></li>
 <li>La herencia permite que nuevas clases se definan en términos de las
 ya existentes, es decir, permitiéndoles heredar partes comunes</li>
 <li>La herencia aborda ambas de las preocupaciones anteriores -
 reutilizar TDA después de cambios menores y definir clases en una
 jerarquía</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline29">
-<div class="slide-header"></div>
-<h2 id="orgheadline29">Conceptos de la orientación a objetos</h2>
-<ul>
+<div id="outline-container-org80c25a7" class="outline-2">
+<h2 id="org80c25a7">Conceptos de la orientación a objetos</h2>
+<div class="outline-text-2" id="text-org80c25a7">
+<ul class="org-ul">
 <li>Los TDA se llaman clases</li>
 <li>Las instancias de una clase se llaman objetos</li>
 <li>Una clase que hereda es una clase <i>derivada</i> o una <i>subclase</i></li>
 <li>La clase de la que hereda otra clase es una clase <i>padre</i> o <i>superclase</i></li>
 <li>Los subprogramas que definen operaciones sobre objetos se llaman <i>métodos</i></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline30">
-<div class="slide-header"></div>
-<h2 id="orgheadline30">Conceptos de la orientación a objetos</h2>
-<ul>
+<div id="outline-container-orgad5f816" class="outline-2">
+<h2 id="orgad5f816">Conceptos de la orientación a objetos</h2>
+<div class="outline-text-2" id="text-orgad5f816">
+<ul class="org-ul">
 <li>Las llamadas a los métodos se llaman <i>mensajes</i></li>
 <li>Toda la colección de métodos de un objeto se llama su <i>protocolo de mensajes</i> o <i>interfaz de mensajes</i></li>
 <li>Los mensajes tienen dos partes: el nombre del método y el objeto de destino</li>
 <li>En el caso más simple, una clase hereda todas las entidades de su padre</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline31">
-<div class="slide-header"></div>
-<h2 id="orgheadline31">Conceptos de la orientación a objetos</h2>
-<ul>
+<div id="outline-container-orga906401" class="outline-2">
+<h2 id="orga906401">Conceptos de la orientación a objetos</h2>
+<div class="outline-text-2" id="text-orga906401">
+<ul class="org-ul">
 <li>La herencia puede ser complicada por el control de acceso a las entidades encapsuladas
-<ul>
+<ul class="org-ul">
 <li>Una clase puede ocultar entidades a sus subclases</li>
 <li>Una clase puede ocultar entidades a sus clientes</li>
 <li>Una clase también puede ocultar entidades para sus clientes mientras permite que sus subclases los vean</li>
-
 </ul></li>
 <li>Además una clase puede modificar el método de heredar
-<ul>
+<ul class="org-ul">
 <li>El nuevo reemplaza al heredado</li>
 <li>El método en el padre es sobrescrito.</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline32">
-<div class="slide-header"></div>
-<h2 id="orgheadline32">Conceptos de la orientación a objetos</h2>
-<ul>
+<div id="outline-container-org0059df7" class="outline-2">
+<h2 id="org0059df7">Conceptos de la orientación a objetos</h2>
+<div class="outline-text-2" id="text-org0059df7">
+<ul class="org-ul">
 <li>Hay dos tipos de variables en una clase:
-<ul>
+<ul class="org-ul">
 <li>Variables de clase</li>
 <li>Variables de instancia</li>
-
 </ul></li>
 <li>Hay dos tipos de métodos en una clase:
-<ul>
+<ul class="org-ul">
 <li>Métodos de clase - acepta mensajes de una clase</li>
 <li>Métodos de instancia - acepta mensajes de objetos</li>
-
 </ul></li>
 <li>Herencia simple versus múltiple</li>
 <li>Una desventaja de la herencia para la reutilización:
-<ul>
+<ul class="org-ul">
 <li>Crea interdependencias entre las clases que complican el
 mantenimiento</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline33">
-<div class="slide-header"></div>
-<h2 id="orgheadline33">Ligadura Dinámica</h2>
-<ul>
+<div id="outline-container-orgc747052" class="outline-2">
+<h2 id="orgc747052">Ligadura Dinámica</h2>
+<div class="outline-text-2" id="text-orgc747052">
+<ul class="org-ul">
 <li>Una <i>variable polimórfica</i> puede ser definida en una clase que sea
 capaz de referenciar (o apuntar) objetos de la clase y objetos de
 cualquiera de sus descendientes</li>
@@ -807,31 +881,25 @@ y dichos métodos se llaman a través de una variable polimórfica, el
 enlace al método correcto será dinámico</li>
 <li>Permite que el software se pueda extender más fácilmente durante el
 desarrollo y el mantenimiento</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline34">
-<div class="slide-header"></div>
-<h2 id="orgheadline34">Ligadura Dinámica</h2>
-<ul>
+<div id="outline-container-orga328588" class="outline-2">
+<h2 id="orga328588">Ligadura Dinámica</h2>
+<div class="outline-text-2" id="text-orga328588">
+<ul class="org-ul">
 <li>Un <i>método virtual</i> es aquel que no incluye una definición (sólo define un protocolo)</li>
 <li>Una <i>clase abstracta</i> es aquella que incluye al menos un método virtual</li>
 <li>Una clase abstracta no puede ser instanciada. (interface)</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline35">
-<div class="slide-header"></div>
-<h2 id="orgheadline35">Cuestiones de Diseño para lenguajes de POO</h2>
-<ul>
+<div id="outline-container-orgab8606f" class="outline-2">
+<h2 id="orgab8606f">Cuestiones de Diseño para lenguajes de POO</h2>
+<div class="outline-text-2" id="text-orgab8606f">
+<ul class="org-ul">
 <li>La Exclusividad de Objetos</li>
 <li>Subclases como subtipos</li>
 <li>Chequeo de Tipos y polimorfismo</li>
@@ -839,186 +907,148 @@ desarrollo y el mantenimiento</li>
 <li>Asignación de memoria de objetos y desalojo de memoria</li>
 <li>Ligadura dinámica y estática</li>
 <li>Clases anidadas</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline36">
-<div class="slide-header"></div>
-<h2 id="orgheadline36">La Exclusividad de Objetos</h2>
-<ul>
+<div id="outline-container-org0656992" class="outline-2">
+<h2 id="org0656992">La Exclusividad de Objetos</h2>
+<div class="outline-text-2" id="text-org0656992">
+<ul class="org-ul">
 <li>Todo es un objeto
-<ul>
+<ul class="org-ul">
 <li>Ventaja - elegancia y pureza</li>
 <li>Desventaja - operaciones lentas en objetos simples</li>
-
 </ul></li>
 <li>Agregar objetos a un sistema de tipos completo
-<ul>
+<ul class="org-ul">
 <li>Ventaja - operaciones rápidas en objetos simples</li>
 <li>Desventaja - resulta en un sistema de tipo confuso (dos tipos de entidades)</li>
-
 </ul></li>
 <li>Incluir un sistema de tipos del estilo imperativo para las primitivas, pero hacer todo lo demás objetos
-<ul>
+<ul class="org-ul">
 <li>Ventaja - operaciones rápidas en objetos simples y un sistema de tipos relativamente pequeño</li>
 <li>Desventaja - todavía una cierta confusión debido a los dos sistemas del tipo</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline37">
-<div class="slide-header"></div>
-<h2 id="orgheadline37">Son las sublclases subtipos?</h2>
-<ul>
+<div id="outline-container-orgda33096" class="outline-2">
+<h2 id="orgda33096">Son las sublclases subtipos?</h2>
+<div class="outline-text-2" id="text-orgda33096">
+<ul class="org-ul">
 <li>¿Existe una relación "is-a" entre un objeto de clase padre y un objeto de la subclase?
-<ul>
+<ul class="org-ul">
 <li>Si una clase derivada "is a" clase primaria, los objetos de la
 clase derivada deben comportarse de la misma forma que el objeto
 de clase padre</li>
-
 </ul></li>
 <li>Una clase derivada es un subtipo si tiene una relación <i>is-a</i> con su clase padre
-<ul>
+<ul class="org-ul">
 <li>la subclase sólo puede agregar variables y métodos y reemplazar
 los métodos heredados en formas "compatibles"</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline38">
-<div class="slide-header"></div>
-<h2 id="orgheadline38">Chequeo de tipos y Polimorfismo</h2>
-<ul>
+<div id="outline-container-orga61f481" class="outline-2">
+<h2 id="orga61f481">Chequeo de tipos y Polimorfismo</h2>
+<div class="outline-text-2" id="text-orga61f481">
+<ul class="org-ul">
 <li>El polimorfismo puede requerir la comprobación dinámica de los
 parámetros y el valor de retorno
-<ul>
+<ul class="org-ul">
 <li>La comprobación dinámica del tipo es costosa y retrasa la detección de errores</li>
-
 </ul></li>
 <li>Si la reescritura de metodos están restringidos a tener los mismos
 tipos de parámetro y tipo de retorno, la comprobación puede ser
 estática</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline39">
-<div class="slide-header"></div>
-<h2 id="orgheadline39">Herencia única y múltiple</h2>
-<ul>
+<div id="outline-container-orgb55f331" class="outline-2">
+<h2 id="orgb55f331">Herencia única y múltiple</h2>
+<div class="outline-text-2" id="text-orgb55f331">
+<ul class="org-ul">
 <li>La herencia múltiple permite que una nueva clase herede de dos o más
 clases</li>
 <li>Desventajas de la herencia múltiple:
-<ul>
+<ul class="org-ul">
 <li>complejidad de implementación del Lenguaje (en parte debido a colisiones de nombres)</li>
 <li>Ineficiencia potencial - la ligadura dinámica cuesta más con la herencia múltiple</li>
-
 </ul></li>
 <li>Ventaja:
-<ul>
+<ul class="org-ul">
 <li>A veces es extremadamente conveniente y valioso</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline40">
-<div class="slide-header"></div>
-<h2 id="orgheadline40">Asignación de memoria de objetos y desalojo de memoria</h2>
-<ul>
+<div id="outline-container-orgf65acd8" class="outline-2">
+<h2 id="orgf65acd8">Asignación de memoria de objetos y desalojo de memoria</h2>
+<div class="outline-text-2" id="text-orgf65acd8">
+<ul class="org-ul">
 <li>¿A dónde se alojan los objetos?
-<ul>
+<ul class="org-ul">
 <li>Si se comportan en línea con los TDA, se pueden asignar a cualquier lugar
-<ul>
+<ul class="org-ul">
 <li>Se asigna a la pila central</li>
 <li>en el <i>heap</i>  (a través de <i>new</i>)</li>
-
 </ul></li>
 <li>Si se utiliza sólo la memoria <i>heap</i>, las referencias pueden ser
 uniformes a través de un puntero o variable de referencia
-<ul>
+<ul class="org-ul">
 <li>Simplifica la asignación - la dereferencia puede ser implícita</li>
-
 </ul></li>
 <li>Si se utiliza sólo la pila central, hay un problema con respecto a los subtipos</li>
 <li>¿La desasignación es explícita o implícita?</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline41">
-<div class="slide-header"></div>
-<h2 id="orgheadline41">Ligadura dinámica y estática</h2>
-<ul>
+<div id="outline-container-org9f89821" class="outline-2">
+<h2 id="org9f89821">Ligadura dinámica y estática</h2>
+<div class="outline-text-2" id="text-org9f89821">
+<ul class="org-ul">
 <li>¿Debería ser dinámica toda la vinculación de mensajes a los métodos?
-<ul>
+<ul class="org-ul">
 <li>Si no, se pierde las ventajas de la vinculación dinámica</li>
 <li>Si todos lo son, es ineficiente</li>
-
 </ul></li>
 <li>Permitir que el usuario especifique.</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline42">
-<div class="slide-header"></div>
-<h2 id="orgheadline42">Clases anidadas</h2>
-<ul>
+<div id="outline-container-org2092a58" class="outline-2">
+<h2 id="org2092a58">Clases anidadas</h2>
+<div class="outline-text-2" id="text-org2092a58">
+<ul class="org-ul">
 <li>Si una nueva clase es necesitada por sólo una clase, no hay razón
 para definirla para que pueda ser vista por otras clases
-<ul>
+<ul class="org-ul">
 <li>¿Se puede anidar la nueva clase dentro de la clase que la usa?</li>
 <li>En algunos casos, la nueva clase está anidada dentro de un
 subprograma en lugar de directamente en otra clase</li>
-
 </ul></li>
 <li>Otras cuestiones:
-<ul>
+<ul class="org-ul">
 <li>Qué elementos de la clase deben ser visibles para la clase anidada
 y viceversa</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline43">
-<div class="slide-header"></div>
-<h2 id="orgheadline43">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
-<ul>
+<div id="outline-container-orgee60644" class="outline-2">
+<h2 id="orgee60644">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<div class="outline-text-2" id="text-orgee60644">
+<ul class="org-ul">
 <li>Smalltalk es un lenguaje OOP puro.</li>
 <li>Todo es un objeto.</li>
 <li>Todos los objetos tienen memoria local.</li>
@@ -1026,431 +1056,354 @@ y viceversa</li>
 <li>No tiene ninguna de las apariencias de los lenguajes imperativos.</li>
 <li>Todas las objeciones se asignan desde el <i>heap</i>.</li>
 <li>Toda desasignación es implícita.</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline44">
-<div class="slide-header"></div>
-<h2 id="orgheadline44">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
-<ul>
+<div id="outline-container-org89b503f" class="outline-2">
+<h2 id="org89b503f">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<div class="outline-text-2" id="text-org89b503f">
+<ul class="org-ul">
 <li>Chequeo de Tipos y polimorfismo
-<ul>
+<ul class="org-ul">
 <li>Toda la ligadura de mensajes a los métodos es dinámica
-<ul>
+<ul class="org-ul">
 <li>El proceso consiste en buscar el objeto al que se envía el
 mensaje para el método; Si no se encuentra, busca la superclase,
 etc., hasta la clase de sistema que no tiene superclase.</li>
-
 </ul></li>
 <li>El único tipo de comprobación en Smalltalk es dinámico y el único
 tipo de error se produce cuando un mensaje se envía a un objeto
 que no tiene ningún método de coincidencia</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline45">
-<div class="slide-header"></div>
-<h2 id="orgheadline45">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
-<ul>
+<div id="outline-container-org1f070fa" class="outline-2">
+<h2 id="org1f070fa">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<div class="outline-text-2" id="text-org1f070fa">
+<ul class="org-ul">
 <li>Herencia
-<ul>
+<ul class="org-ul">
 <li>Una subclase <b>Smalltalk</b> hereda todo, las variables de instancia,
 métodos de instancia y métodos de clase, de su superclase.</li>
 <li>Todas las subclases son subtipos (nada puede ocultarse)</li>
 <li>Sin herencia múltiple</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline46">
-<div class="slide-header"></div>
-<h2 id="orgheadline46">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
-<ul>
+<div id="outline-container-org33a8568" class="outline-2">
+<h2 id="org33a8568">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<div class="outline-text-2" id="text-org33a8568">
+<ul class="org-ul">
 <li>Evaluación de Smalltalk
-<ul>
+<ul class="org-ul">
 <li>La sintaxis del lenguaje es simple y regular</li>
 <li>Buen ejemplo del poder proporcionado por un lenguaje pequeño</li>
 <li>Lento en comparación con los lenguajes imperativos convencionales.</li>
 <li>La ligadura dinámica permite que los errores de tipo no se detecten hasta que se ejecute</li>
 <li>Mayor impacto: avance de la POO</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline47">
-<div class="slide-header"></div>
-<h2 id="orgheadline47">Soporte para orientación a objetos en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orgf2f5d8d" class="outline-2">
+<h2 id="orgf2f5d8d">Soporte para orientación a objetos en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgf2f5d8d">
+<ul class="org-ul">
 <li>Características generales:
-<ul>
+<ul class="org-ul">
 <li>Evolución de <b>SIMULA 67</b></li>
 <li>El lenguaje de POO más utilizado</li>
 <li>Sistema de tipos mixto</li>
 <li>Constructores y destructores</li>
 <li>Elaborado controles de acceso a elementos de las clases</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline48">
-<div class="slide-header"></div>
-<h2 id="orgheadline48">Soporte para orientación a objetos en <b>C++</b></h2>
-<ul>
+<div id="outline-container-org8a5b769" class="outline-2">
+<h2 id="org8a5b769">Soporte para orientación a objetos en <b>C++</b></h2>
+<div class="outline-text-2" id="text-org8a5b769">
+<ul class="org-ul">
 <li>Herencia
-<ul>
+<ul class="org-ul">
 <li>Una clase no necesita ser la subclase de ninguna clase</li>
 <li>El control de acceso para los miembros pueden ser:
-<ul>
+<ul class="org-ul">
 <li>Privado (visible sólo en la clase y las clases amigas) (no permite que las subclases sean subtipos)</li>
 <li>Público (visible en subclases y clientes)</li>
 <li>Protegido (visible en la clase y en las subclases, pero no en los clientes)</li>
-
 </ul></li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline49">
-<div class="slide-header"></div>
-<h2 id="orgheadline49">Soporte para orientación a objetos en <b>C++</b></h2>
-<ul>
+<div id="outline-container-org9e8ad14" class="outline-2">
+<h2 id="org9e8ad14">Soporte para orientación a objetos en <b>C++</b></h2>
+<div class="outline-text-2" id="text-org9e8ad14">
+<ul class="org-ul">
 <li>Además, el proceso de declarar una subclase puede ser con controles de
 acceso (privados o públicos), los cuales definen posibles cambios en
 el acceso por subclases
-<ul>
+<ul class="org-ul">
 <li>Derivación privada - los miembros públicos y protegidos heredados son privados en las subclases</li>
 <li>Derivación pública Los miembros públicos y protegidos son también
 públicos y protegidos en las subclases</li>
-
 </ul></li>
-
 </ul>
-
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline50">
-<div class="slide-header"></div>
-<h2 id="orgheadline50">Ejemplo de Herencia en <b>C++</b></h2>
-<div class="org-src-container">
-
-<pre  class="src src-c++"><span style="color: #00ffff;">class</span> <span style="color: #98fb98;">base_class</span> {
-  <span style="color: #00ffff;">private</span>:
-    <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">a</span>;
-    <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">x</span>;
-  <span style="color: #00ffff;">protected</span>:
-    <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">b</span>;
-    <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">y</span>;
-  <span style="color: #00ffff;">public</span>:
-    <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">c</span>;
-    <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">z</span>;
-};
-
-<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">subclass_1</span> : <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">base_class</span> { &#8230; };
-<span style="color: #ff4500;">//     </span><span style="color: #ff4500;">In this one, b and y are protected and</span>
-<span style="color: #ff4500;">//     </span><span style="color: #ff4500;">c and z are public</span>
-
-<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">subclass_2</span> : <span style="color: #00ffff;">private</span> <span style="color: #98fb98;">base_class</span> { &#8230; };
-<span style="color: #ff4500;">//    </span><span style="color: #ff4500;">In this one, b, y, c, and z are private,</span>
-<span style="color: #ff4500;">//    </span><span style="color: #ff4500;">and no derived class has access to any</span>
-<span style="color: #ff4500;">//    </span><span style="color: #ff4500;">member of base_class</span>
-</pre>
+</div>
 </div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline51">
-<div class="slide-header"></div>
-<h2 id="orgheadline51">Reexportación en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orgfa4b210" class="outline-2">
+<h2 id="orgfa4b210">Ejemplo de Herencia en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgfa4b210">
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">base_class</span> {
+  <span style="color: #40e0d0; font-weight: bold;">private</span>:
+    <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">a</span>;
+    <span style="color: #9ac0cd;">float</span> <span style="color: #bebebe; font-weight: bold;">x</span>;
+  <span style="color: #40e0d0; font-weight: bold;">protected</span>:
+    <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">b</span>;
+    <span style="color: #9ac0cd;">float</span> <span style="color: #bebebe; font-weight: bold;">y</span>;
+  <span style="color: #40e0d0; font-weight: bold;">public</span>:
+    <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">c</span>;
+    <span style="color: #9ac0cd;">float</span> <span style="color: #bebebe; font-weight: bold;">z</span>;
+};
+
+<span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">subclass_1</span> : <span style="color: #40e0d0; font-weight: bold;">public</span> <span style="color: #9ac0cd;">base_class</span> { &#8230; };
+<span style="color: #ee82ee;">//     </span><span style="color: #ee82ee;">In this one, b and y are protected and</span>
+<span style="color: #ee82ee;">//     </span><span style="color: #ee82ee;">c and z are public</span>
+
+<span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">subclass_2</span> : <span style="color: #40e0d0; font-weight: bold;">private</span> <span style="color: #9ac0cd;">base_class</span> { &#8230; };
+<span style="color: #ee82ee;">//    </span><span style="color: #ee82ee;">In this one, b, y, c, and z are private,</span>
+<span style="color: #ee82ee;">//    </span><span style="color: #ee82ee;">and no derived class has access to any</span>
+<span style="color: #ee82ee;">//    </span><span style="color: #ee82ee;">member of base_class</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaebb4a2" class="outline-2">
+<h2 id="orgaebb4a2">Reexportación en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgaebb4a2">
+<ul class="org-ul">
 <li>Un miembro que no es accesible en una subclase (debido a la
 derivación privada) se puede declarar visible allí usando el
 operador de resolución de alcance (::), por ejemplo,</li>
-
 </ul>
 
 <div class="org-src-container">
-
-<pre  class="src src-c++"><span style="color: #00ffff;">class</span> <span style="color: #98fb98;">subclass_3</span> : <span style="color: #00ffff;">private</span> <span style="color: #98fb98;">base_class</span> {
-        <span style="color: #7fffd4;">base_class</span> :: c;
+<pre class="src src-c++"><span style="color: #40e0d0; font-weight: bold;">class</span> <span style="color: #9ac0cd;">subclass_3</span> : <span style="color: #40e0d0; font-weight: bold;">private</span> <span style="color: #9ac0cd;">base_class</span> {
+        <span style="color: #ff6347; font-weight: bold;">base_class</span> :: c;
               &#8230;
 }
 </pre>
 </div>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline52">
-<div class="slide-header"></div>
-<h2 id="orgheadline52">Reexportación</h2>
-<ul>
+<div id="outline-container-orge057b08" class="outline-2">
+<h2 id="orge057b08">Reexportación</h2>
+<div class="outline-text-2" id="text-orge057b08">
+<ul class="org-ul">
 <li>Una motivación para usar la derivación privada:
-<ul>
+<ul class="org-ul">
 <li>Una clase proporciona miembros que deben ser visibles, por lo que
 se definen como miembros públicos; Una clase derivada agrega
 algunos nuevos miembros, pero no quiere que sus clientes vean a
 los miembros de la clase padre, aunque tuvieron que ser públicos
 en la definición de clase principal.</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline53">
-<div class="slide-header"></div>
-<h2 id="orgheadline53">Soporte de POO en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orgf672630" class="outline-2">
+<h2 id="orgf672630">Soporte de POO en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgf672630">
+<ul class="org-ul">
 <li>Se admite la herencia múltiple
-<ul>
+<ul class="org-ul">
 <li>Si hay dos miembros heredados con el mismo nombre, ambos se pueden
 hacer referencia utilizando el operador de resolución de alcance.</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline54">
-<div class="slide-header"></div>
-<h2 id="orgheadline54">Soporte de POO en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orgf3dbebe" class="outline-2">
+<h2 id="orgf3dbebe">Soporte de POO en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgf3dbebe">
+<ul class="org-ul">
 <li>Ligadura dinámica
-<ul>
+<ul class="org-ul">
 <li>Un método puede ser definido como virtual, lo que significa que
 pueden ser llamados a través de variables polimórficas y enlazados
 dinámicamente a los mensajes</li>
 <li>Una función virtual pura no tiene ninguna definición en absoluto</li>
 <li>Una clase que tiene al menos una función virtual pura es una <i>clase abstracta</i></li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline55">
-<div class="slide-header"></div>
-<h2 id="orgheadline55">Soporte de POO en <b>C++</b></h2>
-<ul>
+<div id="outline-container-orge4cd0aa" class="outline-2">
+<h2 id="orge4cd0aa">Soporte de POO en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orge4cd0aa">
+<ul class="org-ul">
 <li>Evaluación
-<ul>
+<ul class="org-ul">
 <li><b>C++</b> proporciona amplios controles de acceso (a diferencia de <b>Smalltalk</b>)</li>
 <li><b>C++</b> proporciona herencia múltiple</li>
 <li>En <b>C++</b>, el programador debe decidir en tiempo de diseño qué
 métodos se enlazarán estáticamente y cuales deben enlazarse
 dinámicamente
-<ul>
+<ul class="org-ul">
 <li>¡La ligadura estática es más rápida!</li>
-
 </ul></li>
 <li>El chequeo de tipo de <b>Smalltalk</b> es dinámicp (flexible, pero lento)</li>
 <li>Debido a la interpretación y vinculación dinámica, Smalltalk es ~ 10 veces más lento que <b>C++</b></li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline56">
-<div class="slide-header"></div>
-<h2 id="orgheadline56">Soporte de POO en <b>Java</b></h2>
-<ul>
+<div id="outline-container-orgb1467fc" class="outline-2">
+<h2 id="orgb1467fc">Soporte de POO en <b>Java</b></h2>
+<div class="outline-text-2" id="text-orgb1467fc">
+<ul class="org-ul">
 <li>Debido a su estrecha relación con <b>C++</b>, nos enfocamos en las diferencias de ese lenguaje</li>
 <li>Características generales
-<ul>
+<ul class="org-ul">
 <li>Todos los datos son objetos excepto los tipos primitivos</li>
 <li>Todos los tipos primitivos tienen clases de contenedor que almacenan un valor de dato</li>
 <li>Todos los objetos son heap-dinámicos, se referencian a través de variables de referencia, y la mayoría se asignan con <code>new</code></li>
 <li>El método <code>finalize</code> se llama implícitamente cuando el recolector
 de basura está a punto de recuperar el almacenamiento ocupado por
 el objeto</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline57">
-<div class="slide-header"></div>
-<h2 id="orgheadline57">Soporte de POO en <b>Java</b></h2>
-<ul>
+<div id="outline-container-org259b503" class="outline-2">
+<h2 id="org259b503">Soporte de POO en <b>Java</b></h2>
+<div class="outline-text-2" id="text-org259b503">
+<ul class="org-ul">
 <li>Herencia
-<ul>
+<ul class="org-ul">
 <li>Solo herencia simple es admitida, pero hay una categoría de clase
 abstracta que proporciona algunos de los beneficios de la herencia
 múltiple (<code>interface</code>)</li>
 <li>Una <code>interface</code> puede incluir sólo declaraciones de método y
 constantes nombradas, por ejemplo,</li>
-
 </ul></li>
-
 </ul>
 <div class="org-src-container">
-
-<pre  class="src src-c++"><span style="color: #00ffff;">public</span> interface Comparable {
-                     <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">int</span> comparedTo (<span style="color: #98fb98;">Object</span> <span style="color: #eedd82;">b</span>);
+<pre class="src src-c++"><span style="color: #40e0d0; font-weight: bold;">public</span> interface Comparable {
+                     <span style="color: #40e0d0; font-weight: bold;">public</span> <span style="color: #9ac0cd;">int</span> comparedTo (<span style="color: #9ac0cd;">Object</span> <span style="color: #bebebe; font-weight: bold;">b</span>);
         }
 </pre>
 </div>
-<ul>
+<ul class="org-ul">
 <li>Los métodos pueden ser <code>final</code> (no se pueden sobreescribir)</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline58">
-<div class="slide-header"></div>
-<h2 id="orgheadline58">Soporte de POO en <b>Java</b></h2>
-<ul>
+<div id="outline-container-org0437f93" class="outline-2">
+<h2 id="org0437f93">Soporte de POO en <b>Java</b></h2>
+<div class="outline-text-2" id="text-org0437f93">
+<ul class="org-ul">
 <li>Ligadura dinámica</li>
 <li>En Java, todos los mensajes se enlazan dinámicamente a los métodos,
 a menos que el método sea <code>final</code> (es decir, no se puede
 sobreescribir, por lo que el enlazado dinámico no sirve para nada)</li>
 <li>La ligadura estática también se utiliza si los métodos son estáticos
 o privados, los cuales no permiten sobreescribir</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline59">
-<div class="slide-header"></div>
-<h2 id="orgheadline59">Soporte de POO en <b>Java</b></h2>
-<ul>
+<div id="outline-container-org4a0d4a3" class="outline-2">
+<h2 id="org4a0d4a3">Soporte de POO en <b>Java</b></h2>
+<div class="outline-text-2" id="text-org4a0d4a3">
+<ul class="org-ul">
 <li>Evaluación
-<ul>
+<ul class="org-ul">
 <li>Las decisiones de diseño para admitir POO son similares a <b>C++</b></li>
 <li>No hay soporte para la programación procedural</li>
 <li>No hay clases sin clase padre</li>
 <li>El enlace dinámico se utiliza como forma "normal" de enlazar los
 métodos con sus definiciones</li>
 <li>Utiliza <code>interface</code> para proporcionar una forma simple de soporte para herencia múltiple</li>
-
 </ul></li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline60">
-<div class="slide-header"></div>
-<h2 id="orgheadline60">Soporte de POO en <b>Ciao Prolog</b></h2>
-<ul>
+<div id="outline-container-org2571250" class="outline-2">
+<h2 id="org2571250">Soporte de POO en <b>Ciao Prolog</b></h2>
+<div class="outline-text-2" id="text-org2571250">
+<ul class="org-ul">
 <li><b>O'Ciao</b> es un conjunto de bibliotecas que permite la programación
 orientada a objetos en Ciao Prolog.</li>
 <li>Amplía el sistema de módulos Ciao Prolog introduciendo Dos nuevos conceptos:
-<ul>
+<ul class="org-ul">
 <li>Herencia.</li>
 <li>Instanciación.</li>
-
 </ul></li>
 <li>El polimorfismo no se menciona aquí ya que los sistemas PROLOG
 tradicionales son polimórficos por naturaleza.</li>
-
 </ul>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline61">
-<div class="slide-header"></div>
-<h2 id="orgheadline61">Ejemplo POO <b>Ciao Prolog</b></h2>
+<div id="outline-container-orgd9758ea" class="outline-2">
+<h2 id="orgd9758ea">Ejemplo POO <b>Ciao Prolog</b></h2>
+<div class="outline-text-2" id="text-orgd9758ea">
 <div class="org-src-container">
+<pre class="src src-prolog">:- class(stack,<span style="color: #40e0d0; font-weight: bold;">[]</span>,<span style="color: #40e0d0; font-weight: bold;">[]</span>).
+:- <span style="color: #ffc0cb; font-size: 110%; font-weight: bold;">dynamic</span> <span style="color: #1e90ff; font-weight: bold;">storage/1</span>.
+<span style="color: #ee82ee;">% Interface declaration: the following predicates will</span>
+<span style="color: #ee82ee;">% be available at run-time.</span>
+:- <span style="color: #ffc0cb; font-size: 110%; font-weight: bold;">export</span>(<span style="color: #1e90ff; font-weight: bold;">push/1</span>).
+:- <span style="color: #ffc0cb; font-size: 110%; font-weight: bold;">export</span>(<span style="color: #1e90ff; font-weight: bold;">pop/1</span>).
+:- <span style="color: #ffc0cb; font-size: 110%; font-weight: bold;">export</span>(<span style="color: #1e90ff; font-weight: bold;">top/1</span>).
+:- <span style="color: #ffc0cb; font-size: 110%; font-weight: bold;">export</span>(<span style="color: #1e90ff; font-weight: bold;">is_empty/0</span>).
+<span style="color: #ee82ee;">% Methods</span>
+<span style="color: #1e90ff; font-weight: bold;">push</span>(<span style="color: #bebebe; font-weight: bold;">Item</span>) :-
+        nonvar(<span style="color: #bebebe; font-weight: bold;">Item</span>),
+        asserta_fact(storage(<span style="color: #bebebe; font-weight: bold;">Item</span>)).
 
-<pre  class="src src-prolog">:- class(stack,<span style="color: #00ffff;">[]</span>,<span style="color: #00ffff;">[]</span>).
-:- <span style="color: #b0c4de;">dynamic</span> <span style="color: #87cefa;">storage/1</span>.
-<span style="color: #ff4500;">% Interface declaration: the following predicates will</span>
-<span style="color: #ff4500;">% be available at run-time.</span>
-:- <span style="color: #b0c4de;">export</span>(<span style="color: #87cefa;">push/1</span>).
-:- <span style="color: #b0c4de;">export</span>(<span style="color: #87cefa;">pop/1</span>).
-:- <span style="color: #b0c4de;">export</span>(<span style="color: #87cefa;">top/1</span>).
-:- <span style="color: #b0c4de;">export</span>(<span style="color: #87cefa;">is_empty/0</span>).
-<span style="color: #ff4500;">% Methods</span>
-<span style="color: #87cefa;">push</span>(<span style="color: #eedd82;">Item</span>) :-
-        nonvar(<span style="color: #eedd82;">Item</span>),
-        asserta_fact(storage(<span style="color: #eedd82;">Item</span>)).
+<span style="color: #1e90ff; font-weight: bold;">pop</span>(<span style="color: #bebebe; font-weight: bold;">Item</span>) :-
+        var(<span style="color: #bebebe; font-weight: bold;">Item</span>),
+        retract_fact(storage(<span style="color: #bebebe; font-weight: bold;">Item</span>)).
 
-<span style="color: #87cefa;">pop</span>(<span style="color: #eedd82;">Item</span>) :-
-        var(<span style="color: #eedd82;">Item</span>),
-        retract_fact(storage(<span style="color: #eedd82;">Item</span>)).
+<span style="color: #1e90ff; font-weight: bold;">top</span>(<span style="color: #bebebe; font-weight: bold;">Top</span>) :-
+        storage(<span style="color: #bebebe; font-weight: bold;">Top</span>), <span style="color: #40e0d0; font-weight: bold;">!</span>.
 
-<span style="color: #87cefa;">top</span>(<span style="color: #eedd82;">Top</span>) :-
-        storage(<span style="color: #eedd82;">Top</span>), <span style="color: #00ffff;">!</span>.
-
-<span style="color: #87cefa;">is_empty</span> :-
-        storage(<span style="color: #eedd82;">_</span>), <span style="color: #00ffff;">!</span>, fail.
+<span style="color: #1e90ff; font-weight: bold;">is_empty</span> :-
+        storage(<span style="color: #bebebe; font-weight: bold;">_</span>), <span style="color: #40e0d0; font-weight: bold;">!</span>, fail.
 is_empty.
 </pre>
 </div>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline62">
-<div class="slide-header"></div>
-<h2 id="orgheadline62">Ejemplo POO <b>Ciao Prolog</b></h2>
+<div id="outline-container-orgf8e5e50" class="outline-2">
+<h2 id="orgf8e5e50">Ejemplo POO <b>Ciao Prolog</b></h2>
+<div class="outline-text-2" id="text-orgf8e5e50">
 <div class="org-src-container">
-
-<pre  class="src src-prolog">?- use_package(objects).
+<pre class="src src-prolog">?- use_package(objects).
 
 yes
 ?- use_class(library(class/examples/stack)).
@@ -1458,87 +1411,57 @@ yes
 yes
 ?-
 
-?- <span style="color: #eedd82;">St1</span> new stack,<span style="color: #eedd82;">St2</span> new stack.
+?- <span style="color: #bebebe; font-weight: bold;">St1</span> new stack,<span style="color: #bebebe; font-weight: bold;">St2</span> new stack.
 
-<span style="color: #eedd82;">St1</span> = stack(<span style="color: #ffa07a;">'9254074093385163'</span>),
-<span style="color: #eedd82;">St2</span> = stack(<span style="color: #ffa07a;">'9254074091'</span>) ? ,
+<span style="color: #bebebe; font-weight: bold;">St1</span> = stack(<span style="color: #ff0000;">'9254074093385163'</span>),
+<span style="color: #bebebe; font-weight: bold;">St2</span> = stack(<span style="color: #ff0000;">'9254074091'</span>) ? ,
 
 
-1 ?- <span style="color: #eedd82;">St1</span>:push(8),<span style="color: #eedd82;">St2</span>:push(9).
+1 ?- <span style="color: #bebebe; font-weight: bold;">St1</span>:push(8),<span style="color: #bebebe; font-weight: bold;">St2</span>:push(9).
 
-<span style="color: #eedd82;">St1</span> = stack(<span style="color: #ffa07a;">'9254074093385163'</span>),
-<span style="color: #eedd82;">St2</span> = stack(<span style="color: #ffa07a;">'9254074091'</span>) ?
+<span style="color: #bebebe; font-weight: bold;">St1</span> = stack(<span style="color: #ff0000;">'9254074093385163'</span>),
+<span style="color: #bebebe; font-weight: bold;">St2</span> = stack(<span style="color: #ff0000;">'9254074091'</span>) ?
 
 yes
-1 ?- <span style="color: #eedd82;">St1</span>:top(<span style="color: #eedd82;">I</span>),<span style="color: #eedd82;">St2</span>:top(<span style="color: #eedd82;">K</span>).
+1 ?- <span style="color: #bebebe; font-weight: bold;">St1</span>:top(<span style="color: #bebebe; font-weight: bold;">I</span>),<span style="color: #bebebe; font-weight: bold;">St2</span>:top(<span style="color: #bebebe; font-weight: bold;">K</span>).
 
-<span style="color: #eedd82;">I</span> = 8,
-<span style="color: #eedd82;">K</span> = 9,
-<span style="color: #eedd82;">St1</span> = stack(<span style="color: #ffa07a;">'9254074093385163'</span>),
-<span style="color: #eedd82;">St2</span> = stack(<span style="color: #ffa07a;">'9254074091'</span>) ?
+<span style="color: #bebebe; font-weight: bold;">I</span> = 8,
+<span style="color: #bebebe; font-weight: bold;">K</span> = 9,
+<span style="color: #bebebe; font-weight: bold;">St1</span> = stack(<span style="color: #ff0000;">'9254074093385163'</span>),
+<span style="color: #bebebe; font-weight: bold;">St2</span> = stack(<span style="color: #ff0000;">'9254074091'</span>) ?
 
 yes
 1 ?-
 </pre>
 </div>
+</div>
+</div>
 
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline63">
-<div class="slide-header"></div>
-<h2 id="orgheadline63">Herencia en <b>Ciao Prolog</b></h2>
+<div id="outline-container-org22cc10a" class="outline-2">
+<h2 id="org22cc10a">Herencia en <b>Ciao Prolog</b></h2>
+<div class="outline-text-2" id="text-org22cc10a">
 <div class="org-src-container">
+<pre class="src src-prolog">:- class(specific).
 
-<pre  class="src src-prolog">:- class(specific).
-
-<span style="color: #ff4500;">% Establish an inheritance relationship with class "generic".</span>
+<span style="color: #ee82ee;">% Establish an inheritance relationship with class "generic".</span>
 :- inherit_class(library(class/examples/generic)).
 
-     <span style="color: #ff4500;">% Override inherited </span><span style="color: #87cefa;">datum/1</span><span style="color: #ff4500;">.</span>
-     <span style="color: #ff4500;">% </span><span style="color: #87cefa;">datum/1</span><span style="color: #ff4500;"> is said to be overriden because there are both an</span>
-     <span style="color: #ff4500;">% inherited definition (from class "generic") and a local one,</span>
-     <span style="color: #ff4500;">% which overrides the one inherited.</span>
-     :- data <span style="color: #87cefa;">datum/1</span>.
-     :- inheritable <span style="color: #87cefa;">datum/1</span>.
+     <span style="color: #ee82ee;">% Override inherited </span><span style="color: #1e90ff; font-weight: bold;">datum/1</span><span style="color: #ee82ee;">.</span>
+     <span style="color: #ee82ee;">% </span><span style="color: #1e90ff; font-weight: bold;">datum/1</span><span style="color: #ee82ee;"> is said to be overriden because there are both an</span>
+     <span style="color: #ee82ee;">% inherited definition (from class "generic") and a local one,</span>
+     <span style="color: #ee82ee;">% which overrides the one inherited.</span>
+     :- data <span style="color: #1e90ff; font-weight: bold;">datum/1</span>.
+     :- inheritable <span style="color: #1e90ff; font-weight: bold;">datum/1</span>.
 </pre>
 </div>
-<div class="slide-footer"></div>
-</section>
-</section>
 </div>
 </div>
-<script src="../reveal.js-master/lib/js/head.min.js"></script>
-<script src="../reveal.js-master/js/reveal.js"></script>
-
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: true,
-rollingLinks: false,
-keyboard: true,
-overview: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
-]
-,});
-</script>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2016-11-14 lun 00:00</p>
+<p class="author">Author: Tipo de Datos Abstractos y POO</p>
+<p class="date">Created: 2017-09-05 mar 11:04</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
 </body>
 </html>

@@ -1,0 +1,478 @@
+#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
+#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
+#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
+#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
+#+OPTIONS: reveal_title_slide:auto reveal_width:-1
+#+REVEAL_MARGIN: -1
+#+REVEAL_MIN_SCALE: -1
+#+REVEAL_MAX_SCALE: -1
+#+REVEAL_ROOT: ../reveal.js-master
+#+REVEAL_TRANS: cube
+#+REVEAL_SPEED: default
+#+REVEAL_THEME: solarized
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_EXTRA_JS:
+#+REVEAL_HLEVEL: 2
+#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
+#+REVEAL_TITLE_SLIDE_BACKGROUND:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_PREAMBLE:
+#+REVEAL_HEAD_PREAMBLE:
+#+REVEAL_POSTAMBLE:
+#+REVEAL_MULTIPLEX_ID:
+#+REVEAL_MULTIPLEX_SECRET:
+#+REVEAL_MULTIPLEX_URL:
+#+REVEAL_MULTIPLEX_SOCKETIO_URL:
+#+REVEAL_SLIDE_HEADER:
+#+REVEAL_SLIDE_FOOTER:
+#+REVEAL_PLUGINS:
+#+REVEAL_DEFAULT_FRAG_STYLE:
+#+REVEAL_INIT_SCRIPT:
+
+#+TITLE: Conceptos Avanzados en Lenguajes de Programación
+#+DATE:  <2017-11-14 mar>
+#+AUTHOR: Lenguajes de scripting
+#+EMAIL: Claudio Vaucheret / cv@fi.uncoma.edu.ar 
+
+* Scripting
+
+** ¿Qué es un lenguaje de scripting?
+- Los lenguajes de scripting modernos tienen dos conjuntos principales
+  de ancestros
+  - Interpretes de comando o "shells" de la computacion tradicional
+    "batch" y "terminal" (linea de comando)
+    - JCL (IBM) , MS-DOS ,  sh, csh, (Unix)
+  - varias herramientas para procesamiento de texto y generación de reportes
+    - RPG de IBM, *sed* y *awk* de Unix
+- De estos han evolucionado
+  - Rexx, "Restructured Extended Executor" de IBM (1979)
+  - Perl, originalmente desarrollado por Larry Wall a fines de los 80,
+    es el lenguaje de scripting de propósito general mas ampliamente usado.
+  - Otros lenguajes de scripting de propósito general son Tcl, Python,
+    Ruby, VBScript y AppleScript
+
+** ¿Qué es un lenguaje de scripting?
+- Características Comunes
+  - Uso interactivo y en lote
+  - Economía de expresión
+  - Falta de declaraciones; reglas simples de alcance.
+  - Tipeo dinámico flexible
+  - Fácil acceso a otros programas
+  - Sofisticado /pattern matching/ y manipulación de /string/
+  - Tipos de datos de alto nivel
+
+** Dominio de Problemas
+- Algunos lenguajes de uso general (Scheme y Visual Basic en particular) son ampliamente utilizados para el scripting
+- Por el contrario, algunos lenguajes de scripting, incluyendo Perl,
+  Python y Ruby, son diseñados por sus creadores para uso general, con
+  funciones destinadas a soportar "programación en grande".
+  - módulos, compilación separada, reflexión, entornos de desarrollo de programas
+- En su mayor parte, sin embargo, los lenguajes de scripting tienden a
+  ver su uso principal en dominios de problemas bien definidos
+
+** Dominio de Problemas
+- Lenguajes de Shell
+  - Tienen características diseñadas para uso interactivo
+  - Proporcionan una gran cantidad de mecanismos para manipular
+    nombres de archivos, argumentos y comandos, y para unir otros
+    programas
+    - La mayoría de estas características son retenidas por lenguajes de scripting más generales
+  - Consideremos algunas de ellas:
+    - Nombres de archivo y expansión de variables
+    - Tests, consultas y condiciones
+    - Pipes y redirección
+    - Quoting y Expansión
+    - Funciones
+    - La Convención #!
+
+** Lenguajes de Shell
+- Nombres de archivo y expansión de variables
+  #+BEGIN_SRC shell
+for fig in *.eps
+do 
+    ps2pdf $fig
+done
+#+END_SRC
+- Tests, consultas y condiciones
+  #+BEGIN_SRC shell
+for fig in *.eps
+do
+    target=${fig%.eps}.pdf
+    if [ $fig -nt $target ]
+    then 
+    ps2pdf $fig
+    fi
+done
+#+END_SRC
+
+** Pipes y redirección.
+    -  Para contar la cantidad de figuras
+  #+BEGIN_SRC shell
+for fig in *; do echo ${fig%.*}; done | sort -u | wc -l
+#+END_SRC
+- Para crear una lista de figuras
+
+  #+BEGIN_SRC shell
+for fig in *; do echo ${fig%.*}; done | sort -u > all_figs
+#+END_SRC
+
+- Para imprimir la lista de figuras todas en una linea separadas por
+  espacio
+
+  #+BEGIN_SRC shell
+tr '\n' ' ' < all_figs
+#+END_SRC
+
+** Quoting y Expansión
+- comillas simples inhiben la expansión y las dobles tratan el
+  contenido como una palabra simple:
+  #+BEGIN_SRC shell
+  foo=bar
+  single='$foo'
+  double="$foo"
+  echo= $single $double
+  #+END_SRC
+imprimirá "$foo bar"
+- lista de comandos encerrados entre paréntesis son pasados a un subshell
+  para evaluación
+  #+BEGIN_SRC shell
+for fig in $(cat my_figs); do ps2pdf ${fig}.eps, done
+#+END_SRC
+
+** Funciones y encabezamiento #!
+- definir funciones y usarlas como predefinidas
+  #+BEGIN_SRC shell
+function ll () {
+ls -l "$@"
+}
+#+END_SRC
+- se pueden ejecutar comandos shell desde un archivo script
+  - usando el comando "punto"
+  #+BEGIN_SRC shell
+   . my_script
+#+END_SRC
+- o como un programa ejecutable con el encabezado
+  #+BEGIN_SRC shell
+     #!/bin/bash
+#+END_SRC
+
+** Procesamiento de Texto y Generación de Reportes
+- sed
+
+ [[file:sed.png]]
+
+script en *sed* para extraer encabezados de un archivo html. 
+
+** Procesamiento de Texto y Generación de Reportes
+- Awk
+
+ [[file:awk.png]]
+
+script en *awk* para extraer encabezados de un archivo html.
+
+** Perl
+- Perl fue desarrollado originalmente por Larry Wall en 1987, mientras
+trabajaba en la NSA 
+- La versión original era un intento de combinar sed, awk y sh
+- Era una herramienta exclusiva de Unix, destinada principalmente al
+  procesamiento de texto (el nombre significa "practical extraction
+  and report lenguage")
+  - a través de los años Perl se ha convertido en un lenguaje grande y complejo,
+- Perl es casi seguro el lenguaje de scripting más popular y ampliamente utilizado
+- También es lo suficientemente rápido para un uso generalizado, e incluye
+  - mecanismos de compilación separada, modularización y biblioteca dinámica apropiadas para proyectos a gran escala
+- Se ha portado a casi todos los sistemas operativos conocidos.
+
+** Perl 
+- Script en *Perl* para extraer encabezados de un archivo html. 
+
+[[file:perl.png]]
+
+** Lenguajes y scripting de propósito general
+- Perl
+- Tcl
+  - Tcl se desarrolló a fines de la década de 1980 en UC, Berkeley (Prof. John Ousterhout)
+  - En los años anteriores, su grupo había desarrollado un conjunto de
+    herramientas de automatización de diseño VLSI, cada una de las
+    cuales tenía su propio lenguaje de comando.
+  - La motivación inicial para Tcl ("Tool command language"") era el
+    deseo de un lenguaje de extensión que pudiera integrarse en todas
+    las herramientas, proporcionándoles una sintaxis de comando
+    uniforme y reduciendo la complejidad del desarrollo y el
+    mantenimiento.
+- Tcl evolucionó rápidamente más allá de su énfasis en la extensión de comandos para abarcar aplicaciones de "pegado" también
+  - Ousterhout se unió a Sun Microsystems en 1994, donde durante tres
+    años dirigió un equipo de múltiples personas dedicado al
+    desarrollo de Tcl
+- En comparación con Perl, Tcl es algo más verborrágico
+  - Hace menos uso de la puntuación y tiene menos casos especiales
+
+** Perl
+- Script en *Perl* para forzar la salida de procesos errantes.
+
+ [[file:perlprocess.png]]
+
+** Tcl
+- Script en *TCL* para forzar la salida de procesos errantes.
+
+[[file:tclprocess.png]]
+
+** Lenguajes de pegado y scripting de propósito general
+- Rexx generalmente se considera el primero de los
+  lenguajes de scripting de propósito general, anterior a Perl y Tcl
+  en casi una década.
+- Perl y Tcl son aproximadamente contemporáneos: ambos se desarrollaron inicialmente a fines de la década de 1980
+  - Perl fue diseñado originalmente para aplicaciones de procesamiento de texto y pegado
+  - Tcl era originalmente un lenguaje de extensión, pero pronto se convirtió en aplicaciones de pegado
+- Python fue desarrollado originalmente por Guido van Rossum en CWI en Amsterdam, Países Bajos, a principios de la década de 1990
+  - Continuó su trabajo en el CNRI en Reston, Virginia, a partir de 1995
+  - En 2000, el equipo de Python se mudó a BeOpen.com y a Creaciones digitales
+  - Las versiones recientes del lenguaje son propiedad del software Python
+    - Todos los lanzamientos son de código abierto.
+- Rubí
+  - A medida que la popularidad del scripting creció en la década de
+    1990, los usuarios se sintieron motivados para desarrollar idiomas
+    adicionales, proporcionar funciones adicionales, atender las
+    necesidades de dominios de aplicaciones específicos o respaldar un
+    estilo de programación
+
+** Python
+- Script en *TCL* para forzar la salida de procesos errantes.
+
+[[file:pythonprocc.png]] 
+
+** Lenguajes de extensión
+- La mayoría de las aplicaciones aceptan alguna clase de /comandos/
+  - estos comandos se ingresan textualmente o se activan mediante
+    eventos de la interfaz de usuario, como clics del mouse,
+    selecciones de menú y pulsaciones de teclas
+  - Los comandos en un programa de dibujo grafico pueden guardar o
+    cargar un dibujo; seleccionar, insertar, eliminar o modificar sus
+    partes; elejir un estilo de línea, peso o color; acercar o girar la
+    pantalla; o modificar las preferencias del usuario.
+- Un lenguaje de extensión sirve para aumentar la utilidad de una
+  aplicación permitiendo que el usuario cree nuevos comandos,
+  generalmente usando los comandos existentes como primitivos.
+- Los lenguajes de extensión se ven cada vez más como una característica esencial de herramientas sofisticadas
+  - El conjunto de gráficos de Adobe (Illustrator, Photoshop,
+    InDesign, etc.) se puede ampliar usando JavaScript, Visual Basic o
+    AppleScript.
+  - AOLserver, un servidor web de fuente abierta de America On-Line,
+    se puede generar mediante Tcl. Disney e Industrial Light and Magic
+    usan Python para extender sus herramientas internas.
+
+** Lenguajes de extensión
+- Para admitir extensión, una herramienta debe:
+  - incorporar o comunicarse con un intérprete para un lenguaje de scripting.
+  - proporcionar ganchos que permiten que los scripts invoquen los comandos existentes de la herramienta
+  - Permitir al usuario vincular los comandos recién definidos a los eventos de la interfaz de usuario
+- Con cuidado, estos mecanismos pueden hacerse independientes de cualquier lenguaje de scripting en particular
+- Uno de los mecanismos de extensión existentes más antiguos es el del editor de texto emacs
+  - Se ha creado una enorme cantidad de paquetes de extensión para
+    emacs; muchos de ellos están instalados por defecto en la
+    distribución estándar.
+  - El lenguaje de extensión para emacs es un dialecto de Lisp llamado Emacs Lisp.
+
+** Emacs Lisp
+
+- Una función de Emacs Lisp para numerar las lineas en una región
+  seleccionada del texto.
+
+[[file:lisp.png]] 
+
+** Scripting en la WWW
+- Scripts CGI
+  - El mecanismo original para las secuencias de comandos web del lado
+    del servidor es la /Common Gate Interface/ (CGI)
+  - Una secuencia de comandos CGI es un programa ejecutable que reside
+    en un directorio especial conocido por el programa servidor de web
+  - Cuando un cliente solicita el URI correspondiente a dicho
+    programa, el servidor ejecuta el programa y envía su salida de
+    vuelta al cliente
+    - esta salida debe ser algo que el navegador comprenda: típicamente HTML.
+  - Los scripts CGI se pueden escribir en cualquier idioma disponible
+    - Perl es particularmente popular:
+      - sus mecanismos de manejo de cadenas y "pegado" son adecuados
+        para generar HTML, ya estaba ampliamente disponible durante
+        los primeros años de la web
+
+** Scripting en la WWW
+    - un simple CGI script en Perl.
+   #+BEGIN_SRC perl
+   #!/usr/bin/perl
+  
+   print "Content-type: text/html\n\n";
+
+   $host = 'hostname'; chop $host;
+   print "<HTML>\n<HEAD>\n<TITLE>Status of ", $host,
+         "</TITLE>\n</HEAD>\n<BODY>\n";
+   print "<H1>", $host, "</H1>\n";
+   print "<PRE>\n", 'uptime', "\n", 'who';
+   print "</PRE>\n</BODY>\n</HTML>\n";
+
+  #+END_SRC
+
+
+** Scripting en la WWW
+- Scripts embebidos del lado del servidor
+  - Aunque ampliamente utilizados, los scripts CGI tienen varias desventajas:
+    - El servidor web debe iniciar cada secuencia de comandos como un programa separado, con una sobrecarga potencialmente significativa
+      - Sin embargo, el script CGI compilado en código nativo puede ser muy rápido una vez ejecutado
+    - Los scripts generalmente deben ser instalados en un directorio de confianza por los administradores de sistemas
+      - no pueden residir en ubicaciones arbitrarias como lo hacen las páginas comunes
+    - El nombre del script aparece en el URI, generalmente con el
+      nombre del directorio de confianza, por lo que las páginas
+      estáticas y dinámicas se ven diferentes para los usuarios
+      finales
+    - Cada script debe generar no solo contenido dinámico, sino también las etiquetas HTML que se necesitan para formatearlo y mostrarlo
+      - Esta "repetición" adicional hace que los scripts sean más difíciles de escribir
+  - La mayoría de los servidores web ahora proporcionan un mecanismo
+    de "carga de módulos" que permite a intérpretes para uno o más
+    lenguajes de scripting
+
+** Scripting en la WWW
+    - un simple CGI script en PHP embebido en una página web.
+   #+BEGIN_SRC php
+<HTML>
+<HEAD>
+<TITLE>Status of <?php echo $host = chop('hostname') ?></TITLE>
+</HEAD>
+<BODY>
+<H1><?php echo $host ?></H1>
+<PRE>
+<?php echo 'uptime', "\n", 'who' ?>
+</PRE>
+</BODY>
+</HTML>
+  #+END_SRC
+
+** Scripting en la WWW
+
+- Scripts del lado del cliente
+  - Los scripts embebidos del lado del servidor son generalmente más
+    rápidos que los scripts CGI, al menos cuando predomina el costo de
+    inicio
+    - la comunicación a través de Internet es aún demasiado lenta para las páginas interactivas
+  - Debido a que se ejecutan en el sitio del diseñador web, los
+    scripts CGI y, en menor medida, los scripts incrustables del lado
+    del servidor se pueden escribir en muchos idiomas diferentes.
+    - Todo lo que el cliente ve es HTML estándar.
+  - Los scripts del lado del cliente, por el contrario, requieren un intérprete en la máquina del cliente
+    - Existe un poderoso incentivo para la convergencia en los
+      lenguajes de scripting del lado del cliente: la mayoría de los
+      diseñadores quieren que sus páginas sean visibles para una
+      audiencia lo más amplia posible.
+
+** Scripting en la WWW
+- Scripts del lado del cliente
+  - Si bien Visual Basic se usa ampliamente en organizaciones
+    específicas, donde se sabe que todos los clientes de interés
+    ejecutan Internet Explorer, las páginas destinadas al público en
+    general casi siempre usan JavaScript para funciones interactivas.
+- Applets de Java
+  - Un applet es un programa diseñado para ejecutarse dentro de otro programa
+  - El término se utiliza con mayor frecuencia para los programas de
+    Java que muestran su resultado en (una parte de) una página web
+  - Para admitir la ejecución de applets, la mayoría de los
+    navegadores modernos contienen una máquina virtual Java
+
+** Scripting en la WWW
+- una pagina web interactiva JavaScript 
+
+ [[file:javascript.png]]
+
+** Evolución
+
+- Veamos nuevamente las Características Comunes:
+  - Uso interactivo y en lote
+  - Economía de expresión
+  - Falta de declaraciones; reglas simples de alcance.
+  - Tipeo dinámico flexible
+  - Fácil acceso a otros programas
+  - Sofisticado /pattern matching/ y manipulación de /string/
+  - Tipos de datos de alto nivel
+
+** Comparación
+- La mayoría de los lenguajes de scripting (Scheme es la excepción mas
+  notoria) no requieren que las variables sean declaradas
+- Perl y JavaScript, permiten declaraciones opcionales, una especie de
+  documentación verificada por el compilador
+- Perl se puede ejecutar en un modo (usa 'vars' estrictos) que requiere declaraciones
+  - Con o sin declaraciones, la mayoría de los lenguajes de scripting usan tipeo dinámico
+- El intérprete puede realizar una verificación de tipo en tiempo de
+  ejecución o usar coerción cuando sea apropiado
+- Tcl es inusual en que todos los valores (incluído listas) se
+  representan internamente como cadenas
+
+** Comparación
+- Las convenciones de anidación y alcance varían bastante
+  - Scheme, Python, JavaScript proporcionan la combinación clásica de subrutinas anidadas y alcance estático (léxico)
+  - Tcl permite que las subrutinas aniden, pero utiliza un alcance dinámico
+  - Las subrutinas (métodos) con nombre no anidan en PHP o Ruby
+    - Perl y Ruby se unen a Scheme, Python, JavaScript, al
+      proporcionar subrutinas locales anónimas de primera clase
+  - Los bloques anidados tienen un alcance estático en Perl
+    - En Ruby son parte del alcance nombrado en el que aparecen
+  - Scheme, Perl, Python proporcionan variables capturadas en clausura
+  - PHP y los principales lenguajes de pegado (Perl, Tcl, Python, Ruby) tienen un espacio de nombres sofisticado
+    - mecanismos para ocultar información y la importación selectiva
+      de nombres de módulos separados
+
+** Comparación
+- Manipulación de Patrones y Cadenas
+  - Las expresiones regulares están presentes en muchos lenguajes de
+    scripting y las herramientas relacionadas emplean versiones
+    extendidas de la notación
+  - Existen expresiones regulares extendidas en sed, awk, Perl, Tcl, Python y Ruby
+  - grep,  es la herramienta de pattern matching de Unix.
+- Dos grupos principales.
+  - El primer grupo incluye awk, egrep (el más utilizado de varias
+    versiones diferentes de grep), las rutinas regex de la biblioteca
+    estándar C y versiones anteriores de Tcl
+    - Estos implementan RE como se define en el estándar POSIX
+  - Los idiomas del segundo grupo siguen el ejemplo de Perl, que
+    proporciona un gran conjunto de extensiones, a veces denominadas
+    RE avanzado.
+
+** Comparación
+- Tipos de datos
+  - Como hemos visto, los lenguajes de scripting generalmente no
+    requieren (o incluso permiten) la declaración de tipos para
+    variables
+  - La mayoría realiza extensas comprobaciones en tiempo de ejecución
+    para asegurarse de que los valores nunca se usen de forma
+    inapropiada.
+  - Algunos lenguajes (por ejemplo, Scheme, Python y Ruby) son
+    relativamente estrictos sobre esta comprobación
+    - Cuando el programador que quiere convertir de un tipo a otro
+      debe decirlo explícitamente
+  - Perl (y también Rexx y Tcl) asume la posición de que los
+    programadores deben verificar los errores que les preocupan
+    - en ausencia de tales controles, el programa debería hacer algo
+      razonable
+
+** Comparación
+- Orientación a objetos
+  - Perl 5 tiene características que permiten programar en un estilo orientado a objetos.
+  - PHP y JavaScript tienen características más más convencionales y orientadas a objetos
+    - ambos permiten al programador utilizar un estilo imperativo más tradicional
+  - Python y Ruby están explícita y uniformemente orientados a objetos
+  - Perl usa un modelo /por valor/ para las variables; los objetos siempre se acceden a través de punteros
+  - En PHP y JavaScript, una variable puede contener un valor de un tipo primitivo o una referencia a un objeto de tipo compuesto.
+    - Sin embargo, a diferencia de Perl, estos lenguajes no permiten
+      hablar de la referencia en sí, solo el objeto al que se refiere
+
+** Comparación
+- Orientación del objeto
+  - Python y Ruby usan un modelo de referencia uniforme
+  - Las clases son en sí mismas objetos en Python y Ruby, como lo son en Smalltalk
+  - Son tipos en PHP, tanto como lo son en C ++, Java o C #
+  - Las clases en Perl son simplemente una forma alternativa de mirar paquetes (espacios de nombres)
+  - JavaScript, notablemente, tiene objetos pero no clases
+    - su herencia se basa en un concepto conocido como /prototipos/
+  - Tanto PHP como JavaScript están más explícitamente orientados a
+    objetos que Perl.
+    

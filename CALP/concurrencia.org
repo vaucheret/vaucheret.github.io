@@ -2,7 +2,7 @@
 #+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
 #+OPTIONS: reveal_progress:t reveal_rolling_links:nil
 #+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
-#+OPTIONS: reveal_title_slide:t reveal_width:-1
+#+OPTIONS: reveal_title_slide:auto reveal_width:-1
 #+REVEAL_MARGIN: -1
 #+REVEAL_MIN_SCALE: -1
 #+REVEAL_MAX_SCALE: -1
@@ -99,7 +99,7 @@
 ** Sincronización de Tareas
 - Un mecanismo que controla el orden en que las tareas se ejecutan
 - Dos tipos de sincronización
-  - sincronización de cooperaciónm
+  - sincronización de cooperación
   - sincronización de competencia
 
 ** Clases de sincronización 
@@ -291,7 +291,7 @@ end consumer;
 
 ** Sincronización de Competición
 - Los datos compartidos son residentes en el monitor (en lugar de en las unidades de cliente)
-- Todo acceso recide en el monitor
+- Todo acceso reside en el monitor
   - el monitor garantiza la sincronización al permitir un solo acceso a la vez
   - Las llamadas a procedimientos del monitor se ponen en cola de
     forma implícita si el monitor está ocupado en el momento de la
