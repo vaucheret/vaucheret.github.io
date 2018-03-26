@@ -4,9 +4,14 @@
 <meta charset="utf-8"/>
 <title>Lenguajes Declarativos</title>
 <meta name="author" content="(Semanticas)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
 <link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+
 <link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
-<link rel="stylesheet" href=""/>
+
+
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -22,25 +27,24 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition="">
-<h1>Lenguajes Declarativos</h1><h2>Semanticas</h2><h2><a href="mailto:<2017-03-15 mié>"><2017-03-15 mié></a></h2><h2>Claudio Vaucheret</h2>
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Semanticas</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2018-03-26 lun 10:02</p>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgheadline10">Semanticas</a>
+<li><a href="#/slide-org2a68a6a">Semanticas</a>
 <ul>
-<li><a href="#/slide-orgheadline1">Arbol SLD</a></li>
-<li><a href="#/slide-orgheadline2">Arbol SLD</a></li>
-<li><a href="#/slide-orgheadline3">Ejemplo</a></li>
-<li><a href="#/slide-orgheadline4">Ejemplo</a></li>
-<li><a href="#/slide-orgheadline5">Arbol SLD</a></li>
-<li><a href="#/slide-orgheadline6">Semántica de Modelos Mínimos</a></li>
-<li><a href="#/slide-orgheadline7">Ejemplo</a></li>
-<li><a href="#/slide-orgheadline8">Semántica de Punto Fijo</a></li>
-<li><a href="#/slide-orgheadline9">Ejemplo</a></li>
+<li><a href="#/slide-org0950183">Arbol SLD</a></li>
+<li><a href="#/slide-org6178b1f">Arbol SLD</a></li>
+<li><a href="#/slide-org5428918">Ejemplo</a></li>
+<li><a href="#/slide-org96af11e">Ejemplo</a></li>
+<li><a href="#/slide-org7011208">Arbol SLD</a></li>
+<li><a href="#/slide-orgc9d3572">Semántica de Modelos Mínimos</a></li>
+<li><a href="#/slide-orgdf198cc">Ejemplo</a></li>
+<li><a href="#/slide-org5464fea">Semántica de Punto Fijo</a></li>
+<li><a href="#/slide-org450609b">Ejemplo</a></li>
 </ul>
 </li>
 </ul>
@@ -49,17 +53,17 @@
 </section>
 
 <section>
-<section id="slide-orgheadline10">
+<section id="slide-org2a68a6a">
 <div class="slide-header"></div>
-<h2 id="orgheadline10">Semanticas</h2>
-<div class="outline-text-2" id="text-orgheadline10">
+<h2 id="org2a68a6a">Semanticas</h2>
+<div class="outline-text-2" id="text-org2a68a6a">
 </div><div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline1">
+<section id="slide-org0950183">
 <div class="slide-header"></div>
-<h3 id="orgheadline1">Arbol SLD</h3>
+<h3 id="org0950183">Arbol SLD</h3>
 <p>
 Un árbol (de búsqueda) \(SLD\)  \(\tau_\varphi\) para \(\Pi \cup \{{\cal
    G}\}\) (usando la regla de computación \(\varphi\)) es un conjunto de
@@ -84,9 +88,9 @@ variables renombradas si hace falta) t.q. \(\theta = mgu({\cal
 </section>
 </section>
 <section>
-<section id="slide-orgheadline2">
+<section id="slide-org6178b1f">
 <div class="slide-header"></div>
-<h3 id="orgheadline2">Arbol SLD</h3>
+<h3 id="org6178b1f">Arbol SLD</h3>
 <ul>
 <li>Cada nodo del árbol es una cláusula meta. \({\cal G}_{i}\) es el <i>nodo
 padre</i> de \({\cal G}_{ij}\) y \({\cal G}_{ij}\) es <i>nodo hijo</i> de \({\cal G}_{i}\).</li>
@@ -103,9 +107,9 @@ padre</i> de \({\cal G}_{ij}\) y \({\cal G}_{ij}\) es <i>nodo hijo</i> de \({\ca
 </section>
 </section>
 <section>
-<section id="slide-orgheadline3">
+<section id="slide-org5428918">
 <div class="slide-header"></div>
-<h3 id="orgheadline3">Ejemplo</h3>
+<h3 id="org5428918">Ejemplo</h3>
 <p>
 Sea el programa definido
 </p>
@@ -124,9 +128,9 @@ y la meta definida \({\cal G} \equiv\leftarrow p(X,b)\).
 </section>
 </section>
 <section>
-<section id="slide-orgheadline4">
+<section id="slide-org96af11e">
 <div class="slide-header"></div>
-<h3 id="orgheadline4">Ejemplo</h3>
+<h3 id="org96af11e">Ejemplo</h3>
 <p>
 Un árbol de búsqueda \(SLD\) para \(\Pi \cup \{{\cal G}\}\) usando una
 regla de computación que selecciona el átomo más a la izquierda dentro
@@ -136,8 +140,8 @@ de la meta considerada.
 
 
 <figure>
-<p><img src="sld1.png" alt="sld1.png">
-</p>
+<img src="sld1.png" alt="sld1.png">
+
 </figure>
 
 
@@ -145,9 +149,9 @@ de la meta considerada.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline5">
+<section id="slide-org7011208">
 <div class="slide-header"></div>
-<h3 id="orgheadline5">Arbol SLD</h3>
+<h3 id="org7011208">Arbol SLD</h3>
 <ul>
 <li>Un <b>procedimiento de prueba por refutación</b> \(SLD\) queda
 completamente especificado fijando:
@@ -167,9 +171,9 @@ completamente especificado fijando:
 </section>
 </section>
 <section>
-<section id="slide-orgheadline6">
+<section id="slide-orgc9d3572">
 <div class="slide-header"></div>
-<h3 id="orgheadline6">Semántica de Modelos Mínimos</h3>
+<h3 id="orgc9d3572">Semántica de Modelos Mínimos</h3>
 <p>
 Sea \(I\) un conjunto índices y conjunto no vacío de modelos de Herbrand
 de un programa \(\Pi\), \(\{{\cal M}_i \mid (i \in I) \wedge ({\cal M}_i\) 
@@ -187,9 +191,9 @@ L}(\Pi) \wedge \Pi \models {\cal A}\}\)
 </section>
 </section>
 <section>
-<section id="slide-orgheadline7">
+<section id="slide-orgdf198cc">
 <div class="slide-header"></div>
-<h3 id="orgheadline7">Ejemplo</h3>
+<h3 id="orgdf198cc">Ejemplo</h3>
 <p>
 \(\Pi = \{{\cal C}_1 : q(X) \leftarrow p(X), {\cal C}_2 : p(a)
 \leftarrow , {\cal C}_3 : q(b) \leftarrow \}\).
@@ -208,7 +212,7 @@ L}(\Pi) \wedge \Pi \models {\cal A}\}\)
 \({\cal I}_{15} = \{p(b),q(a),q(b)\}\),
 \({\cal I}_{16} = \{p(a),p(b),q(a),q(b)\}\).</li>
 <li>Las únicas H-interpretación modelos de \(\Pi\) son: \({\cal I}_{14}\)
-   e \({\cal I}_{16}\).</li>
+e \({\cal I}_{16}\).</li>
 
 </ol>
 
@@ -224,9 +228,9 @@ La interpretación modelo mínimo de Herbrand es:
 </section>
 </section>
 <section>
-<section id="slide-orgheadline8">
+<section id="slide-org5464fea">
 <div class="slide-header"></div>
-<h3 id="orgheadline8">Semántica de Punto Fijo</h3>
+<h3 id="org5464fea">Semántica de Punto Fijo</h3>
 <p>
 Sea \(\Pi\) un programa definido. El operador de consecuencias lógicas
 inmediatas \(T_{\Pi}\) es una aplicación \(T_{\Pi} : \wp({\cal B}_{\cal
@@ -257,9 +261,9 @@ de \(\Pi\).
 </section>
 </section>
 <section>
-<section id="slide-orgheadline9">
+<section id="slide-org450609b">
 <div class="slide-header"></div>
-<h3 id="orgheadline9">Ejemplo</h3>
+<h3 id="org450609b">Ejemplo</h3>
 <p>
 \(\Pi = \{{\cal C}_1 : q(X) \leftarrow p(X), {\cal C}_2 : p(a)
 \leftarrow , {\cal C}_3 : q(b) \leftarrow \}\).
@@ -299,7 +303,7 @@ controls: true,
 progress: true,
 history: false,
 center: true,
-slideNumber: true,
+slideNumber: 't',
 rollingLinks: false,
 keyboard: true,
 overview: true,
@@ -315,7 +319,11 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
-]
+ { src: '../reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 ,});
 </script>
 </body>
