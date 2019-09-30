@@ -1,1 +1,1 @@
-<a href="primeraclase.html">primera clase</a>
+<a href="sed.png">primera clase</a>
