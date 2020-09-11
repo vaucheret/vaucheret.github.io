@@ -145,4 +145,141 @@
   - El requerimiento mínimo es que sea *seguro* o *correcto*
   - Definiciones "seguras" diferentes llevan a clase de análisis diferentes
 
+
+* Ejemplo: La regla de los signos (cont.)
+
+#+ATTR_REVEAL: :frag (roll-in)
+- De nuevo $D = Z$ (enteros)
+- y el operador de /suma/ $+ : Z^2 \to Z$
+- No podemos usar: $D'_\alpha = \{[-],[0],[+]\}$ porque no sabríamos
+  como representar el resultado de $[+] +_\alpha [-]$ (i.e. la suma
+  abstracta no sería cerrada)
+- Un nuevo elemento "$\top$" (supremum) que es la aproximación para todo entero
+- Nuevo *dominio abstracto*: $D''_\alpha = \{[-],[0],[+],\top\}$
+- suma abstracta $+_\alpha : {D''_\alpha}^2 \to D''_\alpha$
+  definido por: 
+               | $+_\alpha$ | $[-]$  | $[0]$  | $[+]$  | $\top$ |
+               |------------+--------+--------+--------+--------|
+               | $[-]$      | $[-]$  | $[-]$  | $\top$ | $\top$ |
+               | $[0]$      | $[-]$  | $[0]$  | $[+]$  | $\top$ |
+               | $[+]$      | $\top$ | $[+]$  | $[+]$  | $\top$ |
+               | $\top$     | $\top$ | $\top$ | $\top$ | $\top$ |
+               |------------+--------+--------+--------+--------|
+- Esto nos permite ahora razonar que $z=x^2 + y^2$ nunca es negativo
+
+* Observaciones Importantes
+
+#+ATTR_REVEAL: :frag (roll-in)
+- Además de la imprecisión debido a la "tosquedad" o lo "básico" de
+  $D_\alpha$, las versiones abstractas de las operaciones
+  (que dependen de  $D_\alpha$) pueden introducir mas imprecisión
+- Así, la elección del /dominio abstracto/ y la definición de las
+  /operaciones abstractas/ son cruciales.
+
  
+* Propiedades de la Interpretación Abstracta
+#+ATTR_REVEAL: :frag (roll-in)
+- Requeridas:
+  - Exactitud - aproximaciones correctas: a causa de que las
+    propiedades mas "interesantes" son indecidibles el análisis
+    necesariamente tiene que ser aproximado. Queremos asegurarnos de
+    que el análisis es "conservador" y se equivoca en el "lado seguro"
+  - Terminación - la compilación definitivamente debe terminar 
+- Deseable - "en la práctica"
+  - Eficiencia: en la práctica, el tiempo de análisis finito no es
+    suficiente: finito y pequeño
+  - Precisión - de la información recopilada: depende de la idoneidad
+    de el dominio abstracto y el nivel de detalle al que el
+    procedimiento de interpretación imita la semántica del lenguaje
+  - Utilidad: determina qué información vale la pena recopilar
+
+* Aproximaciones Correctas 
+#+ATTR_REVEAL: :frag (roll-in)
+- Idea básica en aproximación: para alguna propiedad $p$ queremos mostrar
+         $$\forall x, x \in S \Rightarrow p(x)$$ 
+   Alternativa: construir un conjunto $S_a \supseteq S$ y demostrar
+        $$\forall x, x \in S_a \Rightarrow p(x)$$ 
+   entonces, $S_a$ es una aproximación segura de $S$
+- Aproximación de funciones: para alguna propiedad $p$ queremos mostrar 
+             $$\forall x, x \in S \Rightarrow p(F(x))$$ 
+-  Una función
+         $$G: S \rightarrow S$$ es una aproximación segura de $F$ si
+         $$\forall x, x \in S, p(G(x)) \Rightarrow p(F(x))$$ 
+
+* Aproximación del significado de un programa
+
+#+ATTR_REVEAL: :frag (roll-in)
+- El significado de un programa $P$ es un mapeo $F_P$ de entrada a
+  salida, cuyos valores de  entrada y salida $\in$ a un dominio
+  "estándar" $D$: $$F_P: D \rightarrow D$$
+- "Levantemos" este significado para asignar conjuntos de entradas a
+  conjuntos de salidas $$F^*_P: \wp(D) \rightarrow \wp(D)$$ donde $\wp(S)$
+  denota el conjunto potencia de S, y $$F_P^*(S) = \{F_P(x) \arrowvert x \in  S\}$$
+- Una función $$G: \wp(D) \rightarrow \wp(D)$$ es una aproximación segura de
+  $F_P^*$ si  $$\forall S, S \in \wp(D), G(S) \supseteq F_P^*(S)$$
+- Las propiedades se pueden demostrar usando $G$ en lugar de $F_P^*$
+
+* Aproximación del significado de un programa (cont.)
+
+#+ATTR_REVEAL: :frag (roll-in)
+- Para alguna propiedad $p$ queremos mostrar que para algunas
+  entradas - $S, p(F_P^*(S))$
+- mostramos que para algunas entradas $S_a, p(G(S_a))$
+- Dado que $G(S_a) \supseteq F_P^*(S_a)$ para algunas entradas $S_a, p(F_P^*(S_a))$
+        (Nota: abuso de notación - $F_P^*$ no funciona con valores abstractos $S_a$)
+- Siempre que $F_P^*$ sea monótono: $$S_a \supseteq S \Rightarrow F_P^*(S_a) \supseteq F_P^*(S)$$
+- Y como $S_a \supseteq S$, entonces: para algunas entradas $S, p(F_P^*(S))$
+
+
+* Dominio abstracto y función de concretización
+
+#+ATTR_REVEAL: :frag (roll-in)
+- El dominio $\wp(D)$ se puede representar mediante un dominio
+  "abstracto" $D_\alpha$ de representaciones finitas de (posiblemente) objetos infinitos en $\wp(D)$
+- La representación de $\wp(D)$ por $D_\alpha$ se expresa mediante una
+  función (monótona) llamada función de concretización: $$\gamma :
+  D_\alpha → \wp(D)$$ tal que $\gamma(\lambda) = d$ si $d$ es el
+  elemento más grande (bajo $\supseteq$) de $\wp(D)$ que $\lambda$
+  describe [$(\wp(D), \supseteq)$ es obviamente una retículo completo]
+
+   p.ej. en el ejemplo de los "signos", con $D_\alpha =
+  \{[-],[0],[+],\top \}$, $\gamma$ viene dado por \[
+  \begin{align}
+     \gamma([-]) &= \{x \in Z \arrowvert x < 0  \} \\
+     \gamma([0]) &= \{0\} \\
+     \gamma([+]) &= \{x \in Z \arrowvert x > 0\} \\
+     \gamma(\top) &= Z \\
+     \end{align} \]
+- $\gamma(?) = \emptyset \rightarrow$ definimos $\bot \arrowvert \gamma(\bot) = \emptyset$
+
+* Función de abstracción
+
+ También podemos definir (no estrictamente necesario) una función de
+  abstracción (monótona) $$\alpha : \wp(D) \rightarrow D_\alpha$$
+  $\alpha(d) = \lambda$ si $\lambda$ es el elemento "mínimo" de
+  $D_\alpha$ que describe $d$ [bajo un orden adecuado definido en los
+  elementos de $D_\alpha$] 
+
+   p.ej. en el ejemplo de los "signos", \[
+  \begin{align}
+       \alpha(\{1, 2, 3\}) &= [+] (no \top) \\
+       \alpha(\{- 1, −2, −3\}) &= [-] (no \top) \\
+       \alpha(\{0\}) &= [0] \\
+       \alpha(\{- 1, 0, 1\}) &= \top \\
+     \end{align} \]
+     [[file:alphagamma2.png]]
+
+
+* Significado abstracto y seguridad
+- Ahora podemos definir una función de significado abstracto como
+  $$F_\alpha : D_\alpha \rightarrow D_\alpha$$ que es segura si
+  $$\forall \lambda, \lambda \in D_\alpha, \gamma(F_\alpha(\lambda))
+  \supseteq F^*_P(\gamma(\lambda))$$
+             [[file:absmean2.png]]
+-  Entonces podemos probar una propiedad de la salida de una clase
+  dada de entradas representadas por $\gamma$ probando que todos los
+  elementos de $\gamma(F_\alpha(\lambda))$ tienen tal propiedad 
+- P.ej. en nuestro ejemplo, una propiedad como "si este programa toma
+  un número positivo producirá un número negativo como salida" puede
+  demostrarse
+
