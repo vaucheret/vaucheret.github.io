@@ -172,6 +172,9 @@ class stack {
   - Todos los tipos definidos por el usuario son clases
   - Todos los objetos se asignan en la memoria /Heap/ y se accede a través de variables de referencia
   - Las entidades individuales de las clases tienen modificadores de control de acceso (privados o públicos), en lugar de cláusulas
+
+#+REVEAL: split
+
   - *Java* tiene un segundo mecanismo de alcance, el alcance del
     paquete, que se puede utilizar en lugar de la clase /amiga/
     - Todas las entidades de todas las clases de un paquete que no
@@ -278,6 +281,9 @@ template <class type>
 - Los predicados visibles en un módulo son los predicados definidos en
   ese módulo mas los predicados importados de otros módulos.
 - Solamente Los predicados exportados por un módulo pueden importarse desde otros módulos.
+
+#+REVEAL: split
+
 - la definición de operadores son locales al módulo
 - Predicados multifiles (definidos con ~multifile/1~)  pueden ser
   definidos por Cláusulas distribuidas en varios módulos, y todos los módulos que
@@ -426,6 +432,9 @@ definen el predicado como multifile puede utilizar ese predicado.
   - Si se utiliza sólo la memoria /heap/, las referencias pueden ser
     uniformes a través de un puntero o variable de referencia
     - Simplifica la asignación - la dereferencia puede ser implícita
+
+#+REVEAL: split
+
   - Si se utiliza sólo la pila central, hay un problema con respecto a los subtipos
   - ¿La desasignación es explícita o implícita?
 
@@ -578,6 +587,9 @@ class subclass_3 : private base_class {
   - Todos los datos son objetos excepto los tipos primitivos
   - Todos los tipos primitivos tienen clases de contenedor que almacenan un valor de dato
   - Todos los objetos son heap-dinámicos, se referencian a través de variables de referencia, y la mayoría se asignan con ~new~
+
+#+REVEAL: split
+
   - El método ~finalize~ se llama implícitamente cuando el recolector
     de basura está a punto de recuperar el almacenamiento ocupado por
     el objeto
