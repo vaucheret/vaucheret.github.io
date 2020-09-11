@@ -101,3 +101,48 @@
 
 * Ejemplo: La regla de los signos
 
+#+ATTR_REVEAL: :frag (roll-in)
+- Consideremos el dominio $D = Z$ (enteros)
+- y el operador de multiplicación: $* : Z^2 \to Z$
+- Definimos un *dominio abstracto*: $D_\alpha = \{[-],[+]\}$
+- y la multiplicación abstracta $*_\alpha : {D_\alpha}^2 \to D_\alpha$
+  definido por: 
+               | $*_\alpha$ | $[-]$ | $[+]$ |
+               |------------+-------+-------|
+               | $[-]$      | $[+]$ | $[-]$ |
+               | $[+]$      | $[-]$ | $[+]$ |
+               |------------+-------+-------|
+- Esto nos permite razonar, por ejemplo, que $y=x^2=x*x$ nunca es negativo
+- Algunas observaciones:
+  - si tenemos $z = x * y$ entonces:
+    si $x,y \in Z$ se aproxima con $x_\alpha, y_\alpha \in
+    D_\alpha$ entonces $z \in Z$ se aproxima con $z_\alpha = x_\alpha * y_\alpha$
+  - Es importante formalizar esta noción de aproximación para poder
+    probar que un análisis es correcto
+  - La computación aproximada es generalmente menos precisa pero mas rápida.
+
+ 
+
+
+* Ejemplo: La regla de los signos (cont.)
+
+#+ATTR_REVEAL: :frag (roll-in)
+- De nuevo $D = Z$ (enteros)
+- y  $* : Z^2 \to Z$
+- Definimos un /mas refinado/ *dominio abstracto*: $D'_\alpha = \{[-],[0],[+]\}$
+- y la multiplicación abstracta $*_\alpha : {D'_\alpha}^2 \to D'_\alpha$
+  definido por: 
+               | $*_\alpha$ | $[-]$ | $[0]$ | $[+]$ |
+               |------------+-------+-------+-------|
+               | $[-]$      | $[+]$ | $[0]$ | $[-]$ |
+               | $[0]$      | $[0]$ | $[0]$ | $[0]$ |
+               | $[+]$      | $[-]$ | $[0]$ | $[+]$ |
+               |------------+-------+-------+-------|
+- Esto nos permite razonar, que $z=y*(0*x)$ es cero
+- Algunas observaciones:
+  - Hay un grado de libertad en definir operadores abstractos y
+    dominios diferentes
+  - El requerimiento mínimo es que sea *seguro* o *correcto*
+  - Definiciones "seguras" diferentes llevan a clase de análisis diferentes
+
+ 

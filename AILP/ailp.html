@@ -27,25 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2018-03-19 lun 00:00</h2><p class="date">Created: 2020-09-11 vie 09:42</p>
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2018-03-19 lun 00:00</h2><p class="date">Created: 2020-09-11 vie 11:20</p>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org5460ff7">Introducción</a></li>
-<li><a href="#/slide-org4527c57">Analisis de Programas</a></li>
-<li><a href="#/slide-orgca7257e">¿Qué es la Interpretación Abstracta?</a></li>
-<li><a href="#/slide-org5178842">Ejemplo: La regla de los signos</a></li>
+<li><a href="#/slide-org36b5d25">Introducción</a></li>
+<li><a href="#/slide-orgc1cc78b">Analisis de Programas</a></li>
+<li><a href="#/slide-orgaabd69f">¿Qué es la Interpretación Abstracta?</a></li>
+<li><a href="#/slide-org8387caa">Ejemplo: La regla de los signos</a></li>
+<li><a href="#/slide-org2c7e6f7">Ejemplo: La regla de los signos (cont.)</a></li>
 </ul>
 </div>
 </nav>
 </section>
 
-<section id="slide-org5460ff7" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org36b5d25" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org5460ff7">Introducción</h2>
+<h2 id="org36b5d25">Introducción</h2>
 <ul>
 <li class="fragment roll-in">analisis / sintesis de programas (Ciencias de la Computación)</li>
 
@@ -78,9 +79,9 @@ Dado Un programa \(P\), generar un programa \(P'\) que sea:
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org4527c57" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgc1cc78b" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org4527c57">Analisis de Programas</h2>
+<h2 id="orgc1cc78b">Analisis de Programas</h2>
 <ul>
 <li class="fragment roll-in">Frecuente en compiladores aunque raramente tratados en modo formal:
 <ul>
@@ -100,9 +101,9 @@ Transformación de Programas</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgca7257e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgaabd69f" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgca7257e">¿Qué es la Interpretación Abstracta?</h2>
+<h2 id="orgaabd69f">¿Qué es la Interpretación Abstracta?</h2>
 <ul>
 <li class="fragment roll-in"><p>
 Considere detectar que una rama no ocurre: 
@@ -135,9 +136,132 @@ aproximado en lugar del dominio concreto.</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org5178842" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org8387caa" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org5178842">Ejemplo: La regla de los signos</h2>
+<h2 id="org8387caa">Ejemplo: La regla de los signos</h2>
+<ul>
+<li class="fragment roll-in">Consideremos el dominio \(D = Z\) (enteros)</li>
+<li class="fragment roll-in">y el operador de multiplicación: \(* : Z^2 \to Z\)</li>
+<li class="fragment roll-in">Definimos un <b>dominio abstracto</b>: \(D_\alpha = \{[-],[+]\}\)</li>
+<li class="fragment roll-in"><p>
+y la multiplicación abstracta \(*_\alpha : {D_\alpha}^2 \to D_\alpha\)
+definido por: 
+</p>
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(*_\alpha\)</th>
+<th scope="col" class="org-left">\([-]\)</th>
+<th scope="col" class="org-left">\([+]\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\([-]\)</td>
+<td class="org-left">\([+]\)</td>
+<td class="org-left">\([-]\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\([+]\)</td>
+<td class="org-left">\([-]\)</td>
+<td class="org-left">\([+]\)</td>
+</tr>
+</tbody>
+</table></li>
+<li class="fragment roll-in">Esto nos permite razonar, por ejemplo, que \(y=x^2=x*x\) nunca es negativo</li>
+<li class="fragment roll-in">Algunas observaciones:
+<ul>
+<li>si tenemos \(z = x * y\) entonces:
+si \(x,y \in Z\) se aproxima con \(x_\alpha, y_\alpha \in
+    D_\alpha\) entonces \(z \in Z\) se aproxima con \(z_\alpha = x_\alpha * y_\alpha\)</li>
+<li>Es importante formalizar esta noción de aproximación para poder
+probar que un análisis es correcto</li>
+<li>La computación aproximada es generalmente menos precisa pero mas rápida.</li>
+
+</ul></li>
+
+</ul>
+
+
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-org2c7e6f7" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<div class="slide-header"></div>
+<h2 id="org2c7e6f7">Ejemplo: La regla de los signos (cont.)</h2>
+<ul>
+<li class="fragment roll-in">De nuevo \(D = Z\) (enteros)</li>
+<li class="fragment roll-in">y  \(* : Z^2 \to Z\)</li>
+<li class="fragment roll-in">Definimos un <i>mas refinado</i> <b>dominio abstracto</b>: \(D'_\alpha = \{[-],[0],[+]\}\)</li>
+<li class="fragment roll-in"><p>
+y la multiplicación abstracta \(*_\alpha : {D'_\alpha}^2 \to D'_\alpha\)
+definido por: 
+</p>
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(*_\alpha\)</th>
+<th scope="col" class="org-left">\([-]\)</th>
+<th scope="col" class="org-left">\([0]\)</th>
+<th scope="col" class="org-left">\([+]\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\([-]\)</td>
+<td class="org-left">\([+]\)</td>
+<td class="org-left">\([0]\)</td>
+<td class="org-left">\([-]\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\([0]\)</td>
+<td class="org-left">\([0]\)</td>
+<td class="org-left">\([0]\)</td>
+<td class="org-left">\([0]\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\([+]\)</td>
+<td class="org-left">\([-]\)</td>
+<td class="org-left">\([0]\)</td>
+<td class="org-left">\([+]\)</td>
+</tr>
+</tbody>
+</table></li>
+<li class="fragment roll-in">Esto nos permite razonar, que \(z=y*(0*x)\) es cero</li>
+<li class="fragment roll-in">Algunas observaciones:
+<ul>
+<li>Hay un grado de libertad en definir operadores abstractos y
+dominios diferentes</li>
+<li>El requerimiento mínimo es que sea <b>seguro</b> o <b>correcto</b></li>
+<li>Definiciones "seguras" diferentes llevan a clase de análisis diferentes</li>
+
+</ul></li>
+
+</ul>
 <div class="slide-footer"></div>
 </section>
 </section>
