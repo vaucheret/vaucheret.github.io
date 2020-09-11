@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Interpretación Abstracta de Programas Logicos</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///home/claudio/tmp/src/reveal.js-master/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///home/claudio/tmp/src/reveal.js-master/css/theme/league.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///home/claudio/tmp/src/reveal.js-master/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2018-03-19 lun 00:00</h2><p class="date">Created: 2020-09-11 vie 08:22</p>
+</section>
+<section id="table-of-contents">
+<nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgc020159">Introducción</a></li>
+<li><a href="#/slide-orgc24ac54">Analisis de Programas</a></li>
+<li><a href="#/slide-org16b7324">¿Qué es la Interpretación Abstracta?</a></li>
+</ul>
+</div>
+</nav>
+</section>
+
+<section id="slide-orgc020159" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<div class="slide-header"></div>
+<h2 id="orgc020159">Introducción</h2>
+<ul>
+<li class="fragment roll-in">analisis / sintesis de programas (Ciencias de la Computación)</li>
+
+<li class="fragment roll-in">Probar que un programa \(P\) tiene tal propiedad (analisis de programas)</li>
+
+<li class="fragment roll-in">Alternativamente: Derivar propiedades que tiene el programa \(P\)</li>
+
+<li class="fragment roll-in"><p>
+Dado Un programa \(P\), generar un programa \(P'\) que sea:
+</p>
+
+<ul>
+<li>en algún sentido equivalente a P</li>
+
+<li>funcione mejor que \(P\) con respecto a algún criterio</li>
+
+</ul>
+<p>
+(analisis / sintesis de programas)
+</p></li>
+
+<li class="fragment roll-in">Aproximación Estandard:
+<ul>
+<li>identificar que ocurre algún invariante y</li>
+<li>especializar el programa para el caso particular</li>
+
+</ul></li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgc24ac54" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<div class="slide-header"></div>
+<h2 id="orgc24ac54">Analisis de Programas</h2>
+<ul>
+<li class="fragment roll-in">Frecuente en compiladores aunque raramente tratados en modo formal:
+<ul>
+<li>"optimización de código"</li>
+<li>"eliminación de codigo muerto"</li>
+<li>"movimiento de código"</li>
+<li>&#x2026;</li>
+
+</ul></li>
+<li class="fragment roll-in">Interpretación Abstracta provee un marco formal para desarrollar
+herramientas de análisis de programas</li>
+<li class="fragment roll-in">Fase de Análisis + fase de sintesis ≡ Interpretación Abstracta +
+Transformación de Programas</li>
+
+</ul>
+
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-org16b7324" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<div class="slide-header"></div>
+<h2 id="org16b7324">¿Qué es la Interpretación Abstracta?</h2>
+<ul>
+<li class="fragment roll-in"><p>
+Considere detectar que una rama no ocurre: 
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-C"><span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>,<span style="color: #eedd82;">y</span>,<span style="color: #eedd82;">z</span>; <span style="color: #7fffd4;">y</span>:=read(file); <span style="color: #7fffd4;">X</span> := y * y;
+<span style="color: #00ffff;">if</span> x &gt;= 0 then z := 1 <span style="color: #00ffff;">else</span> z:= 0
+</pre>
+</div>
+<ul>
+<li>Analisis Exhaustivo en el dominio estandard: no termina</li>
+<li>Razonamiento humano de los programas - Usa abstracciones o
+aproximaciones: signos, ordenes de magnitud, par/impar, &#x2026;</li>
+<li>Idea Básica: usar representaciones <i>aproximadas</i> (generalmente
+finitas) de los objetos computacionales para hacer tratable el
+problema del analisis del flujo del programa</li>
+
+</ul></li>
+<li class="fragment roll-in">Analisis Abstracto es la formalización de esta idea:
+<ul>
+<li>define una semantica no estandard que puede aproximar el
+<i>significado</i> o <i>funcionamiento</i> del programa en un modo finito</li>
+<li>las expresiones son computadas en un dominio (abstracto)
+aproximado en lugar del dominio concreto.</li>
+
+</ul></li>
+
+</ul>
+<div class="slide-footer"></div>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///home/claudio/tmp/src/reveal.js-master/lib/js/head.min.js"></script>
+<script src="file:///home/claudio/tmp/src/reveal.js-master/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///home/claudio/tmp/src/reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:///home/claudio/tmp/src/reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/claudio/tmp/src/reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/claudio/tmp/src/reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:///home/claudio/tmp/src/reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+,});
+</script>
+</body>
+</html>

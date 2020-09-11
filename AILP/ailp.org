@@ -1,0 +1,103 @@
+#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
+#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
+#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
+#+OPTIONS: reveal_single_file:nil reveal_slide_number:"c" num:nil
+#+OPTIONS: reveal_title_slide:auto reveal_width:-1
+#+REVEAL_MARGIN: -1
+#+REVEAL_MIN_SCALE: -1
+#+REVEAL_MAX_SCALE: -1
+#+REVEAL_ROOT: file:///home/claudio/tmp/src/reveal.js-master
+#+REVEAL_TRANS: default
+#+REVEAL_SPEED: default
+#+REVEAL_THEME: league
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_EXTRA_JS:
+#+REVEAL_HLEVEL: 
+#+REVEAL_TITLE_SLIDE_BACKGROUND:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_POSITION:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_POSITION:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_DEFAULT_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_PREAMBLE:
+#+REVEAL_HEAD_PREAMBLE:
+#+REVEAL_POSTAMBLE:
+#+REVEAL_MULTIPLEX_ID:
+#+REVEAL_MULTIPLEX_SECRET:
+#+REVEAL_MULTIPLEX_URL:
+#+REVEAL_MULTIPLEX_SOCKETIO_URL:
+#+REVEAL_SLIDE_HEADER:
+#+REVEAL_SLIDE_FOOTER:
+#+REVEAL_PLUGINS:
+#+REVEAL_DEFAULT_FRAG_STYLE:
+#+REVEAL_INIT_SCRIPT:
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+
+#+TITLE: Interpretación Abstracta de Programas Logicos
+#+DATE: <2018-03-19 lun>
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+# #+REVEAL: split
+
+* Introducción
+
+#+ATTR_REVEAL: :frag (roll-in)
+ * analisis / sintesis de programas (Ciencias de la Computación)
+
+ * Probar que un programa $P$ tiene tal propiedad (analisis de programas)
+
+ * Alternativamente: Derivar propiedades que tiene el programa $P$
+
+ * Dado Un programa $P$, generar un programa $P'$ que sea:
+
+   - en algún sentido equivalente a P
+
+   - funcione mejor que $P$ con respecto a algún criterio
+   (analisis / sintesis de programas)
+
+ * Aproximación Estandard:
+   - identificar que ocurre algún invariante y
+   - especializar el programa para el caso particular
+
+* Analisis de Programas
+
+#+ATTR_REVEAL: :frag (roll-in)
+ * Frecuente en compiladores aunque raramente tratados en modo formal:
+   * "optimización de código"
+   * "eliminación de codigo muerto"
+   * "movimiento de código"
+   * ...
+ * Interpretación Abstracta provee un marco formal para desarrollar
+   herramientas de análisis de programas
+ * Fase de Análisis + fase de sintesis ≡ Interpretación Abstracta +
+   Transformación de Programas
+
+
+* ¿Qué es la Interpretación Abstracta?
+
+#+ATTR_REVEAL: :frag (roll-in)
+ - Considere detectar que una rama no ocurre: 
+   #+BEGIN_SRC C 
+   int x,y,z; y:=read(file); x:= y * y;
+   if x >= 0 then z := 1 else z:= 0
+   #+END_SRC
+   - Analisis Exhaustivo en el dominio estandard: no termina
+   - Razonamiento humano de los programas - Usa abstracciones o
+     aproximaciones: signos, ordenes de magnitud, par/impar, ...
+   - Idea Básica: usar representaciones /aproximadas/ (generalmente
+     finitas) de los objetos computacionales para hacer tratable el
+     problema del analisis del flujo del programa
+ - Analisis Abstracto es la formalización de esta idea:
+   - define una semantica no estandard que puede aproximar el
+     /significado/ o /funcionamiento/ del programa en un modo finito
+   - las expresiones son computadas en un dominio (abstracto)
+     aproximado en lugar del dominio concreto.
+
+* Ejemplo: La regla de los signos
+
