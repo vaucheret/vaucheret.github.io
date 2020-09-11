@@ -7,9 +7,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="file:///home/claudio/tmp/src/reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
 
-<link rel="stylesheet" href="file:///home/claudio/tmp/src/reveal.js-master/css/theme/league.css" id="theme"/>
+<link rel="stylesheet" href="../reveal.js-master/css/theme/league.css" id="theme"/>
 
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -18,7 +18,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'file:///home/claudio/tmp/src/reveal.js-master/css/print/pdf.css';
+        link.href = '../reveal.js-master/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -27,24 +27,25 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2018-03-19 lun 00:00</h2><p class="date">Created: 2020-09-11 vie 08:23</p>
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2018-03-19 lun 00:00</h2><p class="date">Created: 2020-09-11 vie 09:42</p>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orge6a7458">Introducción</a></li>
-<li><a href="#/slide-org00459b3">Analisis de Programas</a></li>
-<li><a href="#/slide-org83569e2">¿Qué es la Interpretación Abstracta?</a></li>
+<li><a href="#/slide-org5460ff7">Introducción</a></li>
+<li><a href="#/slide-org4527c57">Analisis de Programas</a></li>
+<li><a href="#/slide-orgca7257e">¿Qué es la Interpretación Abstracta?</a></li>
+<li><a href="#/slide-org5178842">Ejemplo: La regla de los signos</a></li>
 </ul>
 </div>
 </nav>
 </section>
 
-<section id="slide-orge6a7458" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org5460ff7" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orge6a7458">Introducción</h2>
+<h2 id="org5460ff7">Introducción</h2>
 <ul>
 <li class="fragment roll-in">analisis / sintesis de programas (Ciencias de la Computación)</li>
 
@@ -77,9 +78,9 @@ Dado Un programa \(P\), generar un programa \(P'\) que sea:
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org00459b3" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org4527c57" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org00459b3">Analisis de Programas</h2>
+<h2 id="org4527c57">Analisis de Programas</h2>
 <ul>
 <li class="fragment roll-in">Frecuente en compiladores aunque raramente tratados en modo formal:
 <ul>
@@ -99,9 +100,9 @@ Transformación de Programas</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org83569e2" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgca7257e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org83569e2">¿Qué es la Interpretación Abstracta?</h2>
+<h2 id="orgca7257e">¿Qué es la Interpretación Abstracta?</h2>
 <ul>
 <li class="fragment roll-in"><p>
 Considere detectar que una rama no ocurre: 
@@ -131,13 +132,19 @@ aproximado en lugar del dominio concreto.</li>
 </ul></li>
 
 </ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-org5178842" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<div class="slide-header"></div>
+<h2 id="org5178842">Ejemplo: La regla de los signos</h2>
 <div class="slide-footer"></div>
 </section>
 </section>
 </div>
 </div>
-<script src="file:///home/claudio/tmp/src/reveal.js-master/lib/js/head.min.js"></script>
-<script src="file:///home/claudio/tmp/src/reveal.js-master/js/reveal.js"></script>
+<script src="../reveal.js-master/lib/js/head.min.js"></script>
+<script src="../reveal.js-master/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -164,11 +171,11 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'file:///home/claudio/tmp/src/reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: 'file:///home/claudio/tmp/src/reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:///home/claudio/tmp/src/reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:///home/claudio/tmp/src/reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'file:///home/claudio/tmp/src/reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: '../reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 ,});
 </script>
 </body>

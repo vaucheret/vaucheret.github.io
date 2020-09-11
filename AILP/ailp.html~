@@ -27,24 +27,24 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2018-03-19 lun 00:00</h2><p class="date">Created: 2020-09-11 vie 08:22</p>
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2018-03-19 lun 00:00</h2><p class="date">Created: 2020-09-11 vie 08:23</p>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgc020159">Introducción</a></li>
-<li><a href="#/slide-orgc24ac54">Analisis de Programas</a></li>
-<li><a href="#/slide-org16b7324">¿Qué es la Interpretación Abstracta?</a></li>
+<li><a href="#/slide-orge6a7458">Introducción</a></li>
+<li><a href="#/slide-org00459b3">Analisis de Programas</a></li>
+<li><a href="#/slide-org83569e2">¿Qué es la Interpretación Abstracta?</a></li>
 </ul>
 </div>
 </nav>
 </section>
 
-<section id="slide-orgc020159" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orge6a7458" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgc020159">Introducción</h2>
+<h2 id="orge6a7458">Introducción</h2>
 <ul>
 <li class="fragment roll-in">analisis / sintesis de programas (Ciencias de la Computación)</li>
 
@@ -77,9 +77,9 @@ Dado Un programa \(P\), generar un programa \(P'\) que sea:
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgc24ac54" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org00459b3" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgc24ac54">Analisis de Programas</h2>
+<h2 id="org00459b3">Analisis de Programas</h2>
 <ul>
 <li class="fragment roll-in">Frecuente en compiladores aunque raramente tratados en modo formal:
 <ul>
@@ -99,16 +99,16 @@ Transformación de Programas</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org16b7324" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org83569e2" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org16b7324">¿Qué es la Interpretación Abstracta?</h2>
+<h2 id="org83569e2">¿Qué es la Interpretación Abstracta?</h2>
 <ul>
 <li class="fragment roll-in"><p>
 Considere detectar que una rama no ocurre: 
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>,<span style="color: #eedd82;">y</span>,<span style="color: #eedd82;">z</span>; <span style="color: #7fffd4;">y</span>:=read(file); <span style="color: #7fffd4;">X</span> := y * y;
+<pre  class="src src-C"><span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>,<span style="color: #eedd82;">y</span>,<span style="color: #eedd82;">z</span>; <span style="color: #7fffd4;">y</span>:=read(file); <span style="color: #7fffd4;">x</span>:= y * y;
 <span style="color: #00ffff;">if</span> x &gt;= 0 then z := 1 <span style="color: #00ffff;">else</span> z:= 0
 </pre>
 </div>
