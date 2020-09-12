@@ -283,3 +283,123 @@
   un número positivo producirá un número negativo como salida" puede
   demostrarse
 
+
+
+* Demostrar propiedades en abstracto
+#+ATTR_REVEAL: :frag (roll-in)
+- Generando $F_\alpha$:
+  - $F_P$ obtenido del programa y la semántica predefinida de
+    operadores $(x + z) ∗ 3$, $F_P = (x + z) ∗ 3$
+  - Análisis automático: $F_\alpha$ debería obtenerse del programa y
+    la semántica de operadores abstractos (propiedades compositivas)
+    $\{odd, even, +_\alpha, ∗_\alpha\} \Rightarrow F_\alpha = (x +_\alpha z) ∗_\alpha odd$
+- "Si este programa toma un número positivo, producirá un número
+    negativo como salida"
+#+ATTR_REVEAL: :frag (roll-in)
+ - $P = (y := x ∗ −3)$, entrada $x$, salida $y$
+ - $F_P = x ∗ −3$
+ - $F_\alpha = x ∗_\alpha [-]$
+ - $F_\alpha([+]) = [+] ∗_\alpha [-] = [-]$
+
+* Semánticas Colectoras
+#+ATTR_REVEAL: :frag (roll-in)
+- La semántica de "entrada-salida" es a menudo demasiado tosca para un
+  análisis útil: información sobre el "Estado" en los puntos de
+  programa generalmente requieren $\to$ "semánticas extendidas"
+- Los puntos del programa se pueden alcanzar muchas veces, desde
+  diferentes puntos y en diferentes "Estados" $\to$ "semanticas
+  colectoras" 
+     $$\{x> 3\} y := x ∗ −3 \{y < −9 \} \mbox{ o } \{x < −3\} y := x ∗ −3 \{y > 9 \}$$ 
+     $$\{x = [+]\} y := x ∗ −3 \{y = [-]\} \mbox{ o } \{x = [-]\} y := x ∗ −3 \{y = [+]\}$$
+- El análisis a menudo calcula una colección de estados abstractos
+  para un punto de programa.  $$\{x = \{[+], [-]\}\} y := x ∗ −3 \{y = \{[-], [+]\}\}$$
+- A menudo, es más eficiente "resumir" estados en uno que ofrezca la
+  mejor descripción $\to$  estructura de retículo en un dominio abstracto $$\{x = \sqcup \{[+], [-]\}\} y := x ∗ −3 \{y = \sqcup \{[-], [+]\}\}$$
+
+* Estructura de Retículo
+#+ATTR_REVEAL: :frag (roll-in)
+- El ordenamiento en $\wp(D), \subseteq$, induce un ordenamiento en
+  $D_\alpha, \leq_\alpha$ ("se aproxima mejor") Por ejemplo, podemos
+  elegir $\alpha(\{1, 2, 3\}) = [+] \mbox{ o } \alpha(\{1, 2, 3\}) =
+  \top$, pero $\gamma([+]) = \{x \in Z \arrowvert x > 0\} \mbox{ y }
+  \gamma(\top) = Z$, y dado que $\{x \in Z \arrowvert x > 0\}
+  \subseteq Z$ tenemos  $[+] \leq_\alpha \top$, es decir, $[+]$ se
+  aproxima mejor que $\top$, es mas preciso.
+- Generalmente se requiere que $(D_\alpha, \leq_\alpha)$ sea una retículo completo
+- Por lo tanto, para todo $S \subseteq D_\alpha$ existe un único
+  mínimo límite superior $\sqcup S \in D_\alpha$, es decir, tal que
+  - $\forall \lambda_S \in S, \lambda_S \leq_\alpha \sqcup S$
+  - $(\forall \lambda_S \in S, \lambda_S \leq_\alpha \lambda) \Rightarrow \sqcup S \leq_\alpha \lambda$
+- Intuición: dado un conjunto de aproximaciones del "estado actual" en
+  un punto dado en un programa, para asegurarse de que sea la mejor
+  descripción "general" para el punto:
+  - $\sqcup S$ se aproxima a /todos/ los elementos de $S$
+  - $\sqcup S$ es la mejor aproximación en $D_\alpha$
+
+* Ejemplo: aritmética entera de signos
+#+ATTR_REVEAL: :frag (roll-in)
+- Consideramos $D_\alpha = \{[-], [0], [+],\top\}$
+#+ATTR_REVEAL: :frag (roll-in)
+  - Agregamos $\bot$ (infimum) para que $\alpha(\emptyset)$ exista y
+    para tener una retículo completo: $D_\alpha = \{\bot, [-], [0],
+    [+], \top\}$
+  - (Intuición: representa un punto del programa que nunca será alcanzado)
+  - La función de concretización debe ampliarse con $$\gamma(\bot) =
+    \emptyset$$
+  - El reticulo es:
+     [[file:reticulo2.png]]
+  - $\sqcup\{[+],[-]\} = \sqcup\{[-],[+]\} = \top$
+
+* Ejemplo: aritmética entera de signos (cont.)
+- Para hacer $t$ mas significativo, consideramos $D_\alpha = \{\bot,[-],[0^-],[0],[0^+],[+],\top\}$ 
+| $\gamma(\bot)$  | $=$ | $\emptyset$                        | $\gamma(\top)$  | $=$ | $Z$                                |                       |
+| $\gamma([-])$   | $=$ | $\{x \in Z \arrowvert x < 0 \}$    | $\gamma([+])$   | $=$ | $\{x \in Z \arrowvert x > 0 \}$    | $\gamma([0]) = \{0\}$ |
+| $\gamma([0^-])$ | $=$ | $\{x \in Z \arrowvert x \leq 0 \}$ | $\gamma([0^+])$ | $=$ | $\{x \in Z \arrowvert x \geq 0 \}$ |                       |
+- El reticulo es: [[file:reticext2.png]]
+- $\sqcup\{[-],[0]\} = [0^-]$ representa con precisión un punto del programa donde una variable puede ser negativa o cero
+
+
+* El enfoque de la inserción de Galois
+- A continuación, nos referiremos a $\wp(D)$ simplemente como $D$
+- Las semánticas (colectoras) de los programas a menudo son dadas por
+  $lfp(F)$ (el mínimo $S$ tal que $S = F(S)$, Siendo $F$ la función
+  semántica dependiente del programa en $D$)
+- Por lo tanto, necesitamos relacionar este punto fijo con (el de) la
+  función semántica aproximada $F_\alpha$ (que se aproxima a $F$ y
+  opera sobre los elementos de un dominio abstracto $D_\alpha$)
+- Suponga: $D$ y $D_\alpha$ son retículos completos; $\gamma :
+  D_\alpha \rightarrow D$ y $\alpha : D \rightarrow D_\alpha$ son
+  funciones monotónicas. La estructura $(D_\alpha, \gamma, D, \alpha)$
+  se denomina /inserción de Galois/ si:
+  - $\forall \lambda \in D_\alpha . \lambda = \alpha(\gamma(\lambda))$
+  - $\forall d \in D . d \subseteq \gamma(\alpha(d))$
+- La /Aproximación segura/, definida ahora en términos de una
+  inserción de Galois: Sea una inserción de Galois $(D_\alpha,
+  \gamma,D, \alpha), \lambda \in D_\alpha$ aproxima en forma segura a
+  $d \in D$  ssi $d \subseteq \gamma(\lambda)$
+- Teorema fundamental [Cousot]: Dada una inserción de Galois
+  $(D_\alpha, \gamma, D, \alpha)$ y dos  funciones (monótonas) $F: D
+  \rightarrow D$ y $F_\alpha: D_\alpha \rightarrow D_\alpha$ entonces
+  si $F_\alpha$ se aproxima a $F$, $lfp(F_\alpha)$ se aproxima a $lfp(F)$
+
+* Terminación: condiciones en $F_\alpha$ y $D_\alpha$
+#+ATTR_REVEAL: :frag (roll-in)
+- La pregunta es si $lfp(F_\alpha)$ es finitamente computable
+- El operador abstracto $F_\alpha$ opera sobre los elementos de un
+  dominio abstracto $D_\alpha$, que hemos requerido que sea un
+  retículo completo, y $F_\alpha$ es monótona, por lo tanto
+  $$lfp(F_\alpha) = F_\alpha \uparrow n$$ para algún $n$ que nos
+  gustaría sea finito (es decir, nos gustaría que la secuencia de Kleene fuera finita)
+- Recordando las características de los puntos fijos en retículos, la
+  secuencia de Kleene será finito en casos que incluyen:
+  - $D_\alpha$ es finito
+  - $D_\alpha$ es cadena ascendente finita
+
+ 
+* Estructura de Retículos
+
+| finito                | cadena finita ascendente |
+| [[file:finito2.png]]      | [[file:chain2.png]]          |
+| finito en profundidad |                          |
+| [[file:finitedepht2.png]] |                          |
+
