@@ -614,6 +614,192 @@ $T^\alpha_P \uparrow 1 = T^\alpha_P(\{p/1, q/1\}) = \{p/1, q/1\} = T^\alpha_P \u
    "Usa la sustitución de exito actual e itera hasta que el punto fijo
   es alcanzado"
 
+* Aserciones
+- estado de las aserciones
+  - ~check~  (default) -- Es la semántica intentada, para ser
+    chequeada, es la especificación del programa, ingresada por el usuario.
+  - ~trust~ -- semántica real, ingresada por el usuario y creída por
+    el compilador (es una guía).
+  - ~true~ o ~false~ -- semántica real, salida del compilador.
+  - ~checked~ -- validación: es un ~check~ que ha sido probado. (igual
+    a ~true~).
+- ejemplo
+   #+BEGIN_SRC prolog
+   :- trust pred is(X,Y) => (num(X),numexpr(Y)).
+
+   :- check pred p/2 : list(int) * var => list(int) * int.
+   :- modedef +X : nonvar(X).
+   :- check pred sortints(+L,-SL) :: list(int) * list(int) + sorted(SL)
+                                  # "@var{SL} has same elements as @var{L}.".
+   #+END_SRC
+
+
+* Propiedades del estado de éxito
+#+ATTR_REVEAL: :frag (roll-in)
+- Propiedades del estado de *éxito*.  Son similiares en naturaleza a
+  las /poscondiciones/ usadas en verificación de programas
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+ #+BEGIN_SRC prolog
+   :- success Goal => Postcond.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+    debe ser interpretada como "para toda llamada de la forma ~Goal~ que
+   tiene éxito, al momento del éxito ~Postcond~ debería ser verdadero".
+
+- Restricción de las aserciones a un subconjunto de las llamadas
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog 
+   :- success Goal : Precond => Postcond.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+   debe ser interpretada como "para toda llamada de la forma ~Goal~
+  para la cual ~Predcond~ ocurre, si la llamada 
+   tiene éxito, al momento del éxito ~Postcond~ debería ser verdadero".
+
+* Propiedades en la llamada y computación
+#+ATTR_REVEAL: :frag (roll-in)
+- Propiedades en el estado de llamada de un predicado que pueden
+  aparecer en tiempo de ejecución. 
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog 
+   :- calls Goal : Cond.
+   #+END_SRC
+   #+REVEAL_HTML: </div>
+    se debe interpretar "toda llamada de la forma ~Goal~ debería
+  satisfacer ~Cond~".
+- Propiedades de la computación
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog
+   :- comp Goal : Precond  + Comp_prop.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+    se debe interpretar "para toda llamada de la forma ~Goal~ para la
+  cual ~Precond~ ocurre, ~Comp_prop~ debería ocurrir también para la
+  computación de ~Goal~".
+
+* Composición de Aserciones 
+Para facilitar la escritura una aserción compuesta de un predicado
+puede ser usado como azúcar sintáctico para las aserciones básicas. La
+aserción compuesta siguiente
+
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog
+   :- pred Pred : Precond => Postcond + Comp-prop.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+   corresponde a la siguiente aserción de éxito:
+
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog
+   :- success Pred : Precond => Postcond.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+   si la aserción ~pred~ tiene un campo ~=>~ (y un campo
+   ~:~). También corresponde a una aserción de computación de la forma:
+
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog
+   :- comp Pred : Precond + Comp_prop.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+   si la aserción ~pred~ tiene los campos ~+~ y ~:~ 
+
+* Ejemplo de aserciones compuestas
+- Consideremos el programa clasico quicksort ~qsort~ . Podemos usar la
+siguiente aserción para requerir que la salida del procedimiento
+~qsort~ sea una lista.
+
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog
+   :- success qsort(A,B) => list(B).
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+- alternativamente podemos requerir que ~qsort~ es llamado con una
+  lista en su primer argumento y tiene exito, entocnes el segundo
+  argumento también sera una lista.
+
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog
+   :- success qsort(A,B) : list(A) => list(B).
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+La diferencia reside en que se espera que ~B~ sea una lista en los casos en que ~A~ sea una lista. 
+
+* Ejemplo de aserciones compuestas (cont.)
+- Además podemos requerir que en todas las llamadas al predicado
+  ~qsort~ el primer argumento debe ser una lista:
+
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog
+   :- calls qsort(A,B) : list(A).
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+- El procedimiento ~qsort~ debe ordenar cualquier lista. Asi,
+  requeriremos que todas las llamadas con una lista en el primer
+  argumento y una variable en el segundo no fallen:
+
+   #+REVEAL_HTML: <div style="font-size: 150%;">
+   #+BEGIN_SRC prolog
+   :- comp qsort(A,B) : (list(A) , var(B)) + does_not_fail.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+* Ejemplo de aserciones compuestas (cont.)
+
+En lugar de todas estas aserciones se puede usar la compuesta:
+
+   #+REVEAL_HTML: <div style="font-size: 130%;">
+   #+BEGIN_SRC prolog
+   :- pred qsort(A,B) : (list(A) , var(B)) => list(B) + does_not_fail.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+que es equivalente a: 
+
+   #+REVEAL_HTML: <div style="font-size: 130%;">
+   #+BEGIN_SRC prolog
+   :- calls qsort(A,B) : (list(A), var(B)).
+   :- success qsort(A,B) : (list(A), var(B)) => list(B).
+   :- comp qsort(A,B) : (list(A) , var(B)) + does_not_fail.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+* Ejemplo de aserciones compuestas (cont.)
+
+si queremos llamar a ~qsort~ con algo diferente a una variable en el
+segundo argumento se debe agregar:
+
+   #+REVEAL_HTML: <div style="font-size: 130%;">
+   #+BEGIN_SRC prolog
+   :- pred qsort(A,B) : (list(A) , var(B)) => list(B) + does_not_fail.
+   :- pred qsort(A,B) : list(A) => list(B).
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+que es equivalente a: 
+
+   #+REVEAL_HTML: <div style="font-size: 130%;">
+   #+BEGIN_SRC prolog
+   :- calls qsort(A,B) : ((list(A), var(B)) ; list(A)).
+   :- success qsort(A,B) : ((list(A), var(B)) ; list(A)). => list(B).
+   :- comp qsort(A,B) : (list(A) , var(B)) + does_not_fail.
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+
+
 * Ciaopp
 
 [[file:arquitectura.png]]
+
+
+# #+ATTR_REVEAL: :frag (highlight-current-blue)
+
+
+
