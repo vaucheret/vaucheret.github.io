@@ -792,6 +792,89 @@ que es equivalente a:
    #+END_SRC 
    #+REVEAL_HTML: </div>
 
+* Tipos Regulares
+
+Tipos Regulares son propiedades cuyas definiciones son  /"programas
+regulares"/. Ejemplos:
+
+   #+REVEAL_HTML: <div style="font-size: 130%;">
+   #+BEGIN_SRC prolog
+   :- regtype tree(X) # "X is a tree.".
+
+   tree(nil).
+   tree(t(_,L,R)):- 
+        tree(L),
+        tree(R).
+
+   :- regtype intlist(X) # "X is a list of integers"
+
+   intlist([]).
+   intlist([X|R]) :- int(X), intlist(R).
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
+
+* Lenguaje de aserciones
+ - ejemplo de ~pred/1~ 
+    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+BEGIN_SRC prolog
+    :- pred length(L,N) : list * var => list * integer 
+    # "Computes the length of L.".
+    :- pred length(L,N) : var * integer => list * integer  
+    # "Outputs L of length N.".
+    :- pred length(L,N) : list * integer => list * integer
+    #+END_SRC 
+    #+REVEAL_HTML: </div>
+ - ejemplo de ~pred/2~
+    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+BEGIN_SRC prolog
+   :- check pred length(L,N) : list * var => list * integer.
+    #+END_SRC 
+    #+REVEAL_HTML: </div>
+
+ - ejemplo de ~comp/1~
+    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+BEGIN_SRC prolog
+   :- comp append(Xs,Ys,Zs) : var * var * var + not_fail.
+    #+END_SRC 
+    #+REVEAL_HTML: </div>
+
+ - ~test~ es similar a ~success~ pero especifica un caso de test como
+   parte de la especificación del predicado
+    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+BEGIN_SRC prolog
+    :- test length(L,N) : ( L = [1,2,5,2] ) => ( N = 4 ).
+    # "Checks that L is of length N.".
+    #+END_SRC 
+    #+REVEAL_HTML: </div>
+
+* Lenguaje de aserciones (cont.)
+
+- definición de nuevos modos
+
+    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+BEGIN_SRC prolog
+    :- modedef +A : nonvar(A) # "A is bound upon predicate entry.".
+
+    :- pred p(+A,B) : integer(A) =>  ground(B).
+    #+END_SRC 
+    #+REVEAL_HTML: </div>
+    es equivalente a:
+    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+BEGIN_SRC prolog
+    :- pred p(A,B) : (nonvar(A),integer(A)) =>  ground(B)
+                             # "A is bound upon predicate entry.".
+    #+END_SRC 
+    #+REVEAL_HTML: </div>
+
+- documentación 
+  
+   #+REVEAL_HTML: <div style="font-size: 130%;">
+   #+BEGIN_SRC prolog
+   :- doc(Pred,Comment). 
+
+   :- doc(p(A,B),"A is bound upon predicate entry.").
+   #+END_SRC 
+   #+REVEAL_HTML: </div>
 
 
 * Ciaopp
