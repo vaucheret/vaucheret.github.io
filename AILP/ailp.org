@@ -12,7 +12,7 @@
 #+REVEAL_THEME: league
 #+REVEAL_EXTRA_CSS:
 #+REVEAL_EXTRA_JS:
-#+REVEAL_HLEVEL: 
+#+REVEAL_HLEVEL: 1
 #+REVEAL_TITLE_SLIDE_BACKGROUND:
 #+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
 #+REVEAL_TITLE_SLIDE_BACKGROUND_POSITION:
@@ -82,10 +82,13 @@
 
 #+ATTR_REVEAL: :frag (roll-in)
  - Considere detectar que una rama no ocurre: 
+   #+REVEAL_HTML: <div style="font-size: 150%;">
    #+BEGIN_SRC C 
    int x,y,z; y:=read(file); x:= y * y;
    if x >= 0 then z := 1 else z:= 0
+
    #+END_SRC
+   #+REVEAL_HTML: </div>
    - Analisis Exhaustivo en el dominio estandard: no termina
    - Razonamiento humano de los programas - Usa abstracciones o
      aproximaciones: signos, ordenes de magnitud, par/impar, ...
@@ -111,14 +114,17 @@
                | $[-]$      | $[+]$ | $[-]$ |
                | $[+]$      | $[-]$ | $[+]$ |
                |------------+-------+-------|
-- Esto nos permite razonar, por ejemplo, que $y=x^2=x*x$ nunca es negativo
-- Algunas observaciones:
+- Esto nos permite razonar, por ejemplo, que $y=x^2=x*x$ nunca es
+  negativo
+
+**  Algunas observaciones:
   - si tenemos $z = x * y$ entonces:
-    si $x,y \in Z$ se aproxima con $x_\alpha, y_\alpha \in
-    D_\alpha$ entonces $z \in Z$ se aproxima con $z_\alpha = x_\alpha * y_\alpha$
+    si $x,y \in Z$ son aproximados con $x_\alpha, y_\alpha \in
+    D_\alpha$ entonces $z \in Z$ es aproximado con $z_\alpha = x_\alpha * y_\alpha$
   - Es importante formalizar esta noción de aproximación para poder
     probar que un análisis es correcto
   - La computación aproximada es generalmente menos precisa pero mas rápida.
+
 
  
 
@@ -127,7 +133,7 @@
 
 #+ATTR_REVEAL: :frag (roll-in)
 - De nuevo $D = Z$ (enteros)
-- y  $* : Z^2 \to Z$
+- y el operador $* : Z^2 \to Z$
 - Definimos un /mas refinado/ *dominio abstracto*: $D'_\alpha = \{[-],[0],[+]\}$
 - y la multiplicación abstracta $*_\alpha : {D'_\alpha}^2 \to D'_\alpha$
   definido por: 
@@ -138,11 +144,12 @@
                | $[+]$      | $[-]$ | $[0]$ | $[+]$ |
                |------------+-------+-------+-------|
 - Esto nos permite razonar, que $z=y*(0*x)$ es cero
-- Algunas observaciones:
+** Algunas observaciones:
   - Hay un grado de libertad en definir operadores abstractos y
     dominios diferentes
   - El requerimiento mínimo es que sea *seguro* o *correcto*
   - Definiciones "seguras" diferentes llevan a clase de análisis diferentes
+
 
 
 * Ejemplo: La regla de los signos (cont.)
@@ -155,7 +162,9 @@
   abstracta no sería cerrada)
 - Un nuevo elemento "$\top$" (supremum) que es la aproximación para todo entero
 - Nuevo *dominio abstracto*: $D''_\alpha = \{[-],[0],[+],\top\}$
-- suma abstracta $+_\alpha : {D''_\alpha}^2 \to D''_\alpha$
+
+** suma abstracta
+- $+_\alpha : {D''_\alpha}^2 \to D''_\alpha$
   definido por: 
                | $+_\alpha$ | $[-]$  | $[0]$  | $[+]$  | $\top$ |
                |------------+--------+--------+--------+--------|
@@ -165,6 +174,7 @@
                | $\top$     | $\top$ | $\top$ | $\top$ | $\top$ |
                |------------+--------+--------+--------+--------|
 - Esto nos permite ahora razonar que $z=x^2 + y^2$ nunca es negativo
+
 
 * Observaciones Importantes
 
@@ -211,8 +221,8 @@
 - El significado de un programa $P$ es un mapeo $F_P$ de entrada a
   salida, cuyos valores de  entrada y salida $\in$ a un dominio
   "estándar" $D$: $$F_P: D \rightarrow D$$
-- "Levantemos" este significado para asignar conjuntos de entradas a
-  conjuntos de salidas $$F^*_P: \wp(D) \rightarrow \wp(D)$$ donde $\wp(S)$
+- "Elevemos" este significado para asignar /conjuntos/ de entradas a
+  /conjuntos/ de salidas $$F^*_P: \wp(D) \rightarrow \wp(D)$$ donde $\wp(S)$
   denota el conjunto potencia de S, y $$F_P^*(S) = \{F_P(x) \arrowvert x \in  S\}$$
 - Una función $$G: \wp(D) \rightarrow \wp(D)$$ es una aproximación segura de
   $F_P^*$ si  $$\forall S, S \in \wp(D), G(S) \supseteq F_P^*(S)$$
@@ -221,13 +231,13 @@
 * Aproximación del significado de un programa (cont.)
 
 #+ATTR_REVEAL: :frag (roll-in)
-- Para alguna propiedad $p$ queremos mostrar que para algunas
+- Para alguna propiedad $p$ queremos mostrar que para las
   entradas - $S, p(F_P^*(S))$
-- mostramos que para algunas entradas $S_a, p(G(S_a))$
-- Dado que $G(S_a) \supseteq F_P^*(S_a)$ para algunas entradas $S_a, p(F_P^*(S_a))$
+- mostramos que para las entradas $S_a, p(G(S_a))$
+- Dado que $G(S_a) \supseteq F_P^*(S_a)$ para las entradas $S_a, p(F_P^*(S_a))$
         (Nota: abuso de notación - $F_P^*$ no funciona con valores abstractos $S_a$)
 - Siempre que $F_P^*$ sea monótono: $$S_a \supseteq S \Rightarrow F_P^*(S_a) \supseteq F_P^*(S)$$
-- Y como $S_a \supseteq S$, entonces: para algunas entradas $S, p(F_P^*(S))$
+- Y como $S_a \supseteq S$, entonces: para las entradas $S, p(F_P^*(S))$
 
 
 * Dominio abstracto y función de concretización
@@ -241,7 +251,9 @@
   elemento más grande (bajo $\supseteq$) de $\wp(D)$ que $\lambda$
   describe [$(\wp(D), \supseteq)$ es obviamente una retículo completo]
 
-   p.ej. en el ejemplo de los "signos", con $D_\alpha =
+** Ejemplo
+#+ATTR_REVEAL: :frag (roll-in)
+-   En el ejemplo de los "signos", con $D_\alpha =
   \{[-],[0],[+],\top \}$, $\gamma$ viene dado por \[
   \begin{align}
      \gamma([-]) &= \{x \in Z \arrowvert x < 0  \} \\
@@ -250,6 +262,7 @@
      \gamma(\top) &= Z \\
      \end{align} \]
 - $\gamma(?) = \emptyset \rightarrow$ definimos $\bot \arrowvert \gamma(\bot) = \emptyset$
+
 
 * Función de abstracción
 
@@ -276,11 +289,10 @@
   \supseteq F^*_P(\gamma(\lambda))$$
              [[file:absmean2.png]]
 -  Entonces podemos probar una propiedad de la salida de una clase
-  dada de entradas representadas por $\gamma$ probando que todos los
+  dada de entradas, probando que todos los
   elementos de $\gamma(F_\alpha(\lambda))$ tienen tal propiedad 
-- P.ej. en nuestro ejemplo, una propiedad como "si este programa toma
-  un número positivo producirá un número negativo como salida" puede
-  demostrarse
+- P.ej. puede demostrarse, una propiedad como "si este programa toma
+  un número positivo producirá un número negativo como salida"
 
 
 
@@ -350,7 +362,8 @@
   - $\sqcup\{[+],[-]\} = \sqcup\{[-],[+]\} = \top$
 
 * Ejemplo: aritmética entera de signos (cont.)
-- Para hacer $t$ mas significativo, consideramos $D_\alpha = \{\bot,[-],[0^-],[0],[0^+],[+],\top\}$ 
+- Para hacer $t$ mas significativo, consideramos $D_\alpha =
+  \{\bot,[-],[0^-],[0],[0^+],[+],\top\}$
 | $\gamma(\bot)$  | $=$ | $\emptyset$                        | $\gamma(\top)$  | $=$ | $Z$                                |                       |
 | $\gamma([-])$   | $=$ | $\{x \in Z \arrowvert x < 0 \}$    | $\gamma([+])$   | $=$ | $\{x \in Z \arrowvert x > 0 \}$    | $\gamma([0]) = \{0\}$ |
 | $\gamma([0^-])$ | $=$ | $\{x \in Z \arrowvert x \leq 0 \}$ | $\gamma([0^+])$ | $=$ | $\{x \in Z \arrowvert x \geq 0 \}$ |                       |
@@ -372,14 +385,17 @@
   se denomina /inserción de Galois/ si:
   - $\forall \lambda \in D_\alpha . \lambda = \alpha(\gamma(\lambda))$
   - $\forall d \in D . d \subseteq \gamma(\alpha(d))$
-- La /Aproximación segura/, definida ahora en términos de una
+** La /Aproximación segura/
+- definida ahora en términos de una
   inserción de Galois: Sea una inserción de Galois $(D_\alpha,
   \gamma,D, \alpha), \lambda \in D_\alpha$ aproxima en forma segura a
   $d \in D$  ssi $d \subseteq \gamma(\lambda)$
 - Teorema fundamental [Cousot]: Dada una inserción de Galois
   $(D_\alpha, \gamma, D, \alpha)$ y dos  funciones (monótonas) $F: D
   \rightarrow D$ y $F_\alpha: D_\alpha \rightarrow D_\alpha$ entonces
-  si $F_\alpha$ se aproxima a $F$, $lfp(F_\alpha)$ se aproxima a $lfp(F)$
+  si $F_\alpha$ es una aproximación de $F$, $lfp(F_\alpha)$ es una
+  aproximación de $lfp(F)$
+
 
 * Terminación: condiciones en $F_\alpha$ y $D_\alpha$
 #+ATTR_REVEAL: :frag (roll-in)
@@ -455,14 +471,13 @@
 * Semántica de punto fijo: Ejemplo
 
 $P = \{ p(f(X)) \leftarrow p(X). \\
-        p(a). \\
-        q(a). \\
-        q(b). \}$
+        p(a). q(a). q(b). \}$
 
 \begin{align}
 U &= \{ a,b,f(a),f(b),f(f(a)),f(f(b)),\ldots \} \\
 
-B &= \{ p(a),p(b),q(a),q(b),p(f(a)),p(f(b)),p(f(f(a))),p(f(f(b))),q(f(a))\ldots  \} \\
+B &= \{ p(a),p(b),q(a),q(b),p(f(a)),p(f(b)),p(f(f(a))), \\ 
+     p(f(f(b))), q(f(a))\ldots  \} \\
 
 I &= \mbox{ todos los subconjuntos de } B \\
 
@@ -485,10 +500,14 @@ T_P \uparrow \omega &= H \\
 * Interpretación abstracta "Bottom up"
 - Encuentra una aproximación de $H$ al aproximar $lfp(T_P)$
 - Aplicamos interpretación abstracta:
-  - Dominio: $I^\alpha$, tal que elementos de $I^\alpha$ aproxima elementos de $I = \wp(B)$.
+  - Dominio: $I^\alpha$, tal que elementos de $I^\alpha$ son
+    aproximaciones de elementos de $I = \wp(B)$.
   - Función de concretización: $\gamma: I^\alpha \rightarrow I$
   - Función de abstracción: $\alpha: I \rightarrow I^\alpha$
-  - Operador Abstracto: versión abstracta del operador $T_P$  $T^\alpha_P : I^\alpha \rightarrow I^\alpha$
+  - Operador Abstracto: versión abstracta del operador $T_P$
+    $T^\alpha_P : I^\alpha \rightarrow I^\alpha$
+** Interpretación abstracta "Bottom up" (cont.)
+- Aplicamos interpretación abstracta:
   - Exactitud:
     - $(I^\alpha, \gamma, I, \alpha)$ debe ser una inserción de
       Galois, es decir, $I^\alpha$ retículo completo y debería
@@ -501,7 +520,8 @@ T_P \uparrow \omega &= H \\
 - Entonces, $H^\alpha = lfp(T^\alpha_P) = T^\alpha_P \uparrow n$ se
   obtendrá en un número finito de pasos $n$ y $H^\alpha$ se aproximará a $H$.
 
-* Interpretación abstracta "Bottom up" (cont.)
+
+** Interpretación abstracta "Bottom up" (cont.)
 
 [[file:bottomup2.png]]
 
@@ -520,7 +540,7 @@ T_P \uparrow \omega &= H \\
   - $\alpha(M) = \{p \in S | \exists a \in M, pred(a) = p \}$
 - $(S^*, \gamma, I, \alpha)$ es una inserción de Galois.
 
-* Ejemplo: simple inferencia de "tipos" (cont.)
+** Ejemplo: simple inferencia de "tipos" (cont.)
 - Versión abstracta de $T_P$ (después de alguna simplificación): $$T_P
   \alpha: S^* \rightarrow S^*$$ 
 
@@ -534,7 +554,7 @@ $T^\alpha_P(D) = \{p \in S | \exists C \in P,
   finito de pasos $n$ y $H^\alpha = T^\alpha_P \uparrow n$ se aproxima a $H$.
 
 
-* Ejemplo: simple inferencia de "tipos" (cont.)
+** Ejemplo: simple inferencia de "tipos" (cont.)
 
 - Ejemplo:
 
@@ -589,7 +609,7 @@ $T^\alpha_P \uparrow 1 = T^\alpha_P(\{p/1, q/1\}) = \{p/1, q/1\} = T^\alpha_P \u
   devuelve descripciones abstractas de la sustituciones en puntos relevantes del programa.
 - Las variables complican las cosas:
   - corrección (debido al aliasing),
-  - terminación (fusión de información relacionada con diferentes cambios de nombre de una variable)
+  - terminación (fusión de información relacionada con aliasing)
 - Las variables lógicas son, de hecho, punteros (que se comportan
   bien): 
   X = tree(N,L,R),L = nill, Y = N, Y = 3, ...
@@ -624,6 +644,7 @@ $T^\alpha_P \uparrow 1 = T^\alpha_P(\{p/1, q/1\}) = \{p/1, q/1\} = T^\alpha_P \u
   - ~checked~ -- validación: es un ~check~ que ha sido probado. (igual
     a ~true~).
 - ejemplo
+   #+REVEAL_HTML: <div style="font-size: 130%;">
    #+BEGIN_SRC prolog
    :- trust pred is(X,Y) => (num(X),numexpr(Y)).
 
@@ -632,12 +653,12 @@ $T^\alpha_P \uparrow 1 = T^\alpha_P(\{p/1, q/1\}) = \{p/1, q/1\} = T^\alpha_P \u
    :- check pred sortints(+L,-SL) :: list(int) * list(int) + sorted(SL)
                                   # "@var{SL} has same elements as @var{L}.".
    #+END_SRC
-
+   #+REVEAL_HTML: </div>
 
 * Propiedades del estado de éxito
 #+ATTR_REVEAL: :frag (roll-in)
 - Propiedades del estado de *éxito*.  Son similiares en naturaleza a
-  las /poscondiciones/ usadas en verificación de programas
+  las /postcondiciones/ usadas en verificación de programas
    #+REVEAL_HTML: <div style="font-size: 150%;">
  #+BEGIN_SRC prolog
    :- success Goal => Postcond.
@@ -684,7 +705,7 @@ aserción compuesta siguiente
 
    #+REVEAL_HTML: <div style="font-size: 150%;">
    #+BEGIN_SRC prolog
-   :- pred Pred : Precond => Postcond + Comp-prop.
+   :- pred Pred : Precond => Postcond + Comp_prop.
    #+END_SRC 
    #+REVEAL_HTML: </div>
 
