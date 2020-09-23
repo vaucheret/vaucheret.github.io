@@ -843,6 +843,7 @@ regulares"/. Ejemplos:
     :- pred length(L,N) : var * integer => list * integer  
     # "Outputs L of length N.".
     :- pred length(L,N) : list * integer => list * integer
+    # "Checks that L is of length N.".
     #+END_SRC 
     #+REVEAL_HTML: </div>
  - ejemplo de ~pred/2~
@@ -864,7 +865,6 @@ regulares"/. Ejemplos:
     #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
     :- test length(L,N) : ( L = [1,2,5,2] ) => ( N = 4 ).
-    # "Checks that L is of length N.".
     #+END_SRC 
     #+REVEAL_HTML: </div>
 
