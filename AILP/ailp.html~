@@ -27,109 +27,110 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><p class="date">Created: 2020-09-26 sáb 11:26</p>
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition=""><h1 class="title">Interpretación Abstracta de Programas Logicos</h1><h2 class="author">Claudio Vaucheret</h2><p class="date">Created: 2020-09-26 sáb 11:27</p>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org45efa48">Introducción</a></li>
-<li><a href="#/slide-org0dd93f6">Analisis de Programas</a></li>
-<li><a href="#/slide-org20f8001">¿Qué es la Interpretación Abstracta?</a></li>
-<li><a href="#/slide-org66abd00">Ejemplo: La regla de los signos</a>
+<li><a href="#/slide-org2d904ae">Introducción</a></li>
+<li><a href="#/slide-orga89b1ce">Analisis de Programas</a></li>
+<li><a href="#/slide-orgb7eaff4">¿Qué es la Interpretación Abstracta?</a></li>
+<li><a href="#/slide-org6631340">Ejemplo: La regla de los signos</a>
 <ul>
-<li><a href="#/slide-org8df4a2d">Algunas observaciones:</a></li>
+<li><a href="#/slide-org174a47e">Algunas observaciones:</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org3976199">Ejemplo: La regla de los signos (cont.)</a>
+<li><a href="#/slide-org49e5fec">Ejemplo: La regla de los signos (cont.)</a>
 <ul>
-<li><a href="#/slide-org2cf5e97">Algunas observaciones:</a></li>
+<li><a href="#/slide-orgc4477db">Algunas observaciones:</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org1717611">Ejemplo: La regla de los signos (cont.)</a>
+<li><a href="#/slide-orgbb21a26">Ejemplo: La regla de los signos (cont.)</a>
 <ul>
-<li><a href="#/slide-orgaad2bd3">suma abstracta</a></li>
+<li><a href="#/slide-orgf81ade8">suma abstracta</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orge2ac9c4">Observaciones Importantes</a></li>
-<li><a href="#/slide-orga7593d0">Propiedades de la Interpretación Abstracta</a></li>
-<li><a href="#/slide-org02358bf">Aproximaciones Correctas</a></li>
-<li><a href="#/slide-orgc0a3c78">Aproximación del significado de un programa</a></li>
-<li><a href="#/slide-org0fe2da8">Aproximación del significado de un programa (cont.)</a></li>
-<li><a href="#/slide-orga203e67">Dominio abstracto y función de concretización</a>
+<li><a href="#/slide-org825d56a">Observaciones Importantes</a></li>
+<li><a href="#/slide-org0e47423">Propiedades de la Interpretación Abstracta</a></li>
+<li><a href="#/slide-org5fb6252">Aproximaciones Correctas</a></li>
+<li><a href="#/slide-org9857445">Aproximación del significado de un programa</a></li>
+<li><a href="#/slide-orgcb84481">Aproximación del significado de un programa (cont.)</a></li>
+<li><a href="#/slide-org2da161b">Dominio abstracto y función de concretización</a>
 <ul>
-<li><a href="#/slide-org6a0202e">Ejemplo</a></li>
+<li><a href="#/slide-orga99e3e6">Ejemplo</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org7e472f4">Función de abstracción</a></li>
-<li><a href="#/slide-orgf3741aa">Significado abstracto y seguridad</a></li>
-<li><a href="#/slide-orgbbabb1a">Demostrar propiedades en abstracto</a></li>
-<li><a href="#/slide-orgbe33eef">Semánticas Colectoras</a></li>
-<li><a href="#/slide-org75f1a53">Estructura de Retículo</a></li>
-<li><a href="#/slide-org70d26d8">Ejemplo: aritmética entera de signos</a></li>
-<li><a href="#/slide-orge08335e">Ejemplo: aritmética entera de signos (cont.)</a></li>
-<li><a href="#/slide-orgda614b4">El enfoque de la inserción de Galois</a>
+<li><a href="#/slide-org5774e03">Función de abstracción</a></li>
+<li><a href="#/slide-orga7d8b09">Significado abstracto y seguridad</a></li>
+<li><a href="#/slide-org730c9ae">Demostrar propiedades en abstracto</a></li>
+<li><a href="#/slide-orga79f3c9">Semánticas Colectoras</a></li>
+<li><a href="#/slide-orgae4e432">Estructura de Retículo</a></li>
+<li><a href="#/slide-orgb478de1">Ejemplo: aritmética entera de signos</a></li>
+<li><a href="#/slide-orgb5cba03">Ejemplo: aritmética entera de signos (cont.)</a></li>
+<li><a href="#/slide-org42c96c2">El enfoque de la inserción de Galois</a>
 <ul>
-<li><a href="#/slide-org133772a">La <i>Aproximación segura</i></a></li>
+<li><a href="#/slide-org7a4c081">La <i>Aproximación segura</i></a></li>
 </ul>
 </li>
-<li><a href="#/slide-org3d98a5e">Terminación: condiciones en \(F_\alpha\) y \(D_\alpha\)</a></li>
-<li><a href="#/slide-orgd800770">Estructura de Retículos</a></li>
-<li><a href="#/slide-orga4d729c">Terminación: Discusión</a></li>
-<li><a href="#/slide-orge3d12b8">Análisis de programas lógicos</a></li>
-<li><a href="#/slide-org9decb38">Caso de Estudio: Semántica de punto fijo</a></li>
-<li><a href="#/slide-org6ab6c26">Semántica de punto fijo: Ejemplo</a></li>
-<li><a href="#/slide-org463647f">Interpretación abstracta "Bottom up"</a>
+<li><a href="#/slide-org2e8c226">Terminación: condiciones en \(F_\alpha\) y \(D_\alpha\)</a></li>
+<li><a href="#/slide-org0e056f3">Estructura de Retículos</a></li>
+<li><a href="#/slide-orgfe6652f">Terminación: Discusión</a></li>
+<li><a href="#/slide-org9ef0d40">Análisis de programas lógicos</a></li>
+<li><a href="#/slide-org7578323">Caso de Estudio: Semántica de punto fijo</a></li>
+<li><a href="#/slide-org8d92a80">Semántica de punto fijo: Ejemplo</a></li>
+<li><a href="#/slide-org7a18575">Interpretación abstracta "Bottom up"</a>
 <ul>
-<li><a href="#/slide-org65eb2f3">Interpretación abstracta "Bottom up" (cont.)</a></li>
-<li><a href="#/slide-orgff62818">Interpretación abstracta "Bottom up" (cont.)</a></li>
+<li><a href="#/slide-org67e8cba">Interpretación abstracta "Bottom up" (cont.)</a></li>
+<li><a href="#/slide-org2cb280b">Interpretación abstracta "Bottom up" (cont.)</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orge6afa97">Ejemplo: simple inferencia de "tipos"</a>
+<li><a href="#/slide-org6a3f1ac">Ejemplo: simple inferencia de "tipos"</a>
 <ul>
-<li><a href="#/slide-orgabdc985">Ejemplo: simple inferencia de "tipos" (cont.)</a></li>
-<li><a href="#/slide-org4709319">Ejemplo: simple inferencia de "tipos" (cont.)</a></li>
+<li><a href="#/slide-org10a2838">Ejemplo: simple inferencia de "tipos" (cont.)</a></li>
+<li><a href="#/slide-org3983dde">Ejemplo: simple inferencia de "tipos" (cont.)</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org9052e7f">Análisis <b>bottom up</b> basado en \(T_P\): Discusión</a></li>
-<li><a href="#/slide-orgebbbf4a">Análisis <b>Top down</b> (resumido)</a></li>
-<li><a href="#/slide-org7da7885">Arbol AND-OR abstracto</a></li>
-<li><a href="#/slide-orgb64d165">Optimización de Punto Fijo</a></li>
-<li><a href="#/slide-org8a22b19">Ciaopp</a></li>
-<li><a href="#/slide-org52f67dc">Aserciones</a></li>
-<li><a href="#/slide-orgf0f576a">Propiedades del estado de éxito</a></li>
-<li><a href="#/slide-org4b5e2f1">Propiedades en la llamada y computación</a></li>
-<li><a href="#/slide-orgce2f211">Composición de Aserciones</a></li>
-<li><a href="#/slide-org6d779cf">Ejemplo de aserciones compuestas</a></li>
-<li><a href="#/slide-org8405af6">Ejemplo de aserciones compuestas (cont.)</a></li>
-<li><a href="#/slide-orge36d9fc">Ejemplo de aserciones compuestas (cont.)</a></li>
-<li><a href="#/slide-org5e60322">Ejemplo de aserciones compuestas (cont.)</a></li>
-<li><a href="#/slide-orgfc02940">Tipos Regulares</a></li>
-<li><a href="#/slide-org7a893ed">Lenguaje de aserciones</a></li>
-<li><a href="#/slide-org4f985fc">Lenguaje de aserciones (cont.)</a></li>
-<li><a href="#/slide-org3910d05">Ciaopp</a></li>
-<li><a href="#/slide-orgf66d84b">Analisis</a>
+<li><a href="#/slide-org38077b4">Análisis <b>bottom up</b> basado en \(T_P\): Discusión</a></li>
+<li><a href="#/slide-org329c336">Análisis <b>Top down</b> (resumido)</a></li>
+<li><a href="#/slide-org05de887">Arbol AND-OR abstracto</a></li>
+<li><a href="#/slide-orgbef481e">Optimización de Punto Fijo</a></li>
+<li><a href="#/slide-org58577f2">Ciaopp</a></li>
+<li><a href="#/slide-org5e63c5b">Aserciones</a></li>
+<li><a href="#/slide-orgcf053c0">Propiedades del estado de éxito</a></li>
+<li><a href="#/slide-orgbc09def">Propiedades en la llamada y computación</a></li>
+<li><a href="#/slide-org6e55df4">Composición de Aserciones</a></li>
+<li><a href="#/slide-org59773be">Ejemplo de aserciones compuestas</a></li>
+<li><a href="#/slide-org7f63e53">Ejemplo de aserciones compuestas (cont.)</a></li>
+<li><a href="#/slide-orgf78aad9">Ejemplo de aserciones compuestas (cont.)</a></li>
+<li><a href="#/slide-org8728352">Ejemplo de aserciones compuestas (cont.)</a></li>
+<li><a href="#/slide-org64e5ff2">Tipos Regulares</a></li>
+<li><a href="#/slide-orgf25b64c">Lenguaje de aserciones</a></li>
+<li><a href="#/slide-org7fa772e">Lenguaje de aserciones (cont.)</a></li>
+<li><a href="#/slide-orgf9a19a8">Ciaopp</a></li>
+<li><a href="#/slide-org4942d6a">Analisis</a>
 <ul>
-<li><a href="#/slide-orgcda2c11">Analisis</a></li>
-<li><a href="#/slide-orgb94fc0c">Analisis</a></li>
-<li><a href="#/slide-orgd27d797">Analisis</a></li>
-<li><a href="#/slide-org6eeb2ab">Analisis</a></li>
-<li><a href="#/slide-orgca58986">Analisis</a></li>
+<li><a href="#/slide-org9f02074">Analisis</a></li>
+<li><a href="#/slide-org374936b">Analisis</a></li>
+<li><a href="#/slide-org66cba10">Analisis</a></li>
+<li><a href="#/slide-org2ee0b3f">Analisis</a></li>
+<li><a href="#/slide-org22ec88f">Analisis</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org068d92f">Debugging</a>
+<li><a href="#/slide-org141b65e">Debugging</a>
 <ul>
-<li><a href="#/slide-orgf3db3ae">Debugging</a></li>
-<li><a href="#/slide-orgb4b6254">Debugging</a></li>
-<li><a href="#/slide-org55f24f6">Debugging</a></li>
-<li><a href="#/slide-org5f6a479">Debugging</a></li>
+<li><a href="#/slide-orga5dd251">Debugging</a></li>
+<li><a href="#/slide-orgb155791">Debugging</a></li>
+<li><a href="#/slide-orgc2dfad4">Debugging</a></li>
+<li><a href="#/slide-org911cb5f">Debugging</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org631d51c">Optimización</a>
+<li><a href="#/slide-org6c6b203">Optimización</a>
 <ul>
-<li><a href="#/slide-org9744863">Optimización</a></li>
-<li><a href="#/slide-orga9cc322">Optimización</a></li>
+<li><a href="#/slide-orgae36547">Optimización</a></li>
+<li><a href="#/slide-orgce29190">Optimización</a></li>
+<li><a href="#/slide-orgc9c9eda">Optimizacion</a></li>
 </ul>
 </li>
 </ul>
@@ -138,9 +139,9 @@
 </section>
 
 <section>
-<section id="slide-org45efa48" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org2d904ae" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org45efa48">Introducción</h2>
+<h2 id="org2d904ae">Introducción</h2>
 <ul>
 <li class="fragment roll-in">analisis / sintesis de programas (Ciencias de la Computación)</li>
 
@@ -175,9 +176,9 @@ Dado Un programa \(P\), generar un programa \(P'\) que sea:
 </section>
 </section>
 <section>
-<section id="slide-org0dd93f6" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orga89b1ce" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org0dd93f6">Analisis de Programas</h2>
+<h2 id="orga89b1ce">Analisis de Programas</h2>
 <ul>
 <li class="fragment roll-in">Frecuente en compiladores aunque raramente tratados en modo formal:
 <ul>
@@ -199,9 +200,9 @@ Transformación de Programas</li>
 </section>
 </section>
 <section>
-<section id="slide-org20f8001" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgb7eaff4" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org20f8001">¿Qué es la Interpretación Abstracta?</h2>
+<h2 id="orgb7eaff4">¿Qué es la Interpretación Abstracta?</h2>
 <ul>
 <li class="fragment roll-in"><p>
 Considere detectar que una rama no ocurre: 
@@ -239,9 +240,9 @@ aproximado en lugar del dominio concreto.</li>
 </section>
 </section>
 <section>
-<section id="slide-org66abd00" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org6631340" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org66abd00">Ejemplo: La regla de los signos</h2>
+<h2 id="org6631340">Ejemplo: La regla de los signos</h2>
 <ul>
 <li class="fragment roll-in">Consideremos el dominio \(D = Z\) (enteros)</li>
 <li class="fragment roll-in">y el operador de multiplicación: \(* : Z^2 \to Z\)</li>
@@ -288,9 +289,9 @@ negativo</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org8df4a2d" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org174a47e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org8df4a2d">Algunas observaciones:</h3>
+<h3 id="org174a47e">Algunas observaciones:</h3>
 <ul>
 <li>si tenemos \(z = x * y\) entonces:
 si \(x,y \in Z\) son aproximados con \(x_\alpha, y_\alpha \in
@@ -309,9 +310,9 @@ probar que un análisis es correcto</li>
 </section>
 </section>
 <section>
-<section id="slide-org3976199" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org49e5fec" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org3976199">Ejemplo: La regla de los signos (cont.)</h2>
+<h2 id="org49e5fec">Ejemplo: La regla de los signos (cont.)</h2>
 <ul>
 <li class="fragment roll-in">De nuevo \(D = Z\) (enteros)</li>
 <li class="fragment roll-in">y el operador \(* : Z^2 \to Z\)</li>
@@ -368,9 +369,9 @@ definido por:
 </ul>
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org2cf5e97" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgc4477db" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org2cf5e97">Algunas observaciones:</h3>
+<h3 id="orgc4477db">Algunas observaciones:</h3>
 <ul>
 <li>Hay un grado de libertad en definir operadores abstractos y
 dominios diferentes</li>
@@ -385,9 +386,9 @@ dominios diferentes</li>
 </section>
 </section>
 <section>
-<section id="slide-org1717611" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgbb21a26" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org1717611">Ejemplo: La regla de los signos (cont.)</h2>
+<h2 id="orgbb21a26">Ejemplo: La regla de los signos (cont.)</h2>
 <ul>
 <li class="fragment roll-in">De nuevo \(D = Z\) (enteros)</li>
 <li class="fragment roll-in">y el operador de <i>suma</i> \(+ : Z^2 \to Z\)</li>
@@ -401,9 +402,9 @@ abstracta no sería cerrada)</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgaad2bd3" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgf81ade8" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgaad2bd3">suma abstracta</h3>
+<h3 id="orgf81ade8">suma abstracta</h3>
 <ul>
 <li><p>
 \(+_\alpha : {D''_\alpha}^2 \to D''_\alpha\)
@@ -475,9 +476,9 @@ definido por:
 </section>
 </section>
 <section>
-<section id="slide-orge2ac9c4" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org825d56a" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orge2ac9c4">Observaciones Importantes</h2>
+<h2 id="org825d56a">Observaciones Importantes</h2>
 <ul>
 <li class="fragment roll-in">Además de la imprecisión debido a la "tosquedad" o lo "básico" de
 \(D_\alpha\), las versiones abstractas de las operaciones
@@ -492,9 +493,9 @@ definido por:
 </section>
 </section>
 <section>
-<section id="slide-orga7593d0" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org0e47423" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orga7593d0">Propiedades de la Interpretación Abstracta</h2>
+<h2 id="org0e47423">Propiedades de la Interpretación Abstracta</h2>
 <ul>
 <li class="fragment roll-in">Requeridas:
 <ul>
@@ -522,9 +523,9 @@ procedimiento de interpretación imita la semántica del lenguaje</li>
 </section>
 </section>
 <section>
-<section id="slide-org02358bf" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org5fb6252" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org02358bf">Aproximaciones Correctas</h2>
+<h2 id="org5fb6252">Aproximaciones Correctas</h2>
 <ul>
 <li class="fragment roll-in">Idea básica en aproximación: para alguna propiedad \(p\) queremos mostrar
       \[\forall x, x \in S \Rightarrow p(x)\] 
@@ -543,9 +544,9 @@ entonces, \(S_a\) es una aproximación segura de \(S\)</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc0a3c78" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org9857445" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgc0a3c78">Aproximación del significado de un programa</h2>
+<h2 id="org9857445">Aproximación del significado de un programa</h2>
 <ul>
 <li class="fragment roll-in">El significado de un programa \(P\) es un mapeo \(F_P\) de entrada a
 salida, cuyos valores de  entrada y salida \(\in\) a un dominio
@@ -563,9 +564,9 @@ denota el conjunto potencia de S, y \[F_P^*(S) = \{F_P(x) \arrowvert x \in  S\}\
 </section>
 </section>
 <section>
-<section id="slide-org0fe2da8" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgcb84481" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org0fe2da8">Aproximación del significado de un programa (cont.)</h2>
+<h2 id="orgcb84481">Aproximación del significado de un programa (cont.)</h2>
 <ul>
 <li class="fragment roll-in">Para alguna propiedad \(p\) queremos mostrar que para las
 entradas - \(S, p(F_P^*(S))\)</li>
@@ -582,9 +583,9 @@ entradas - \(S, p(F_P^*(S))\)</li>
 </section>
 </section>
 <section>
-<section id="slide-orga203e67" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org2da161b" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orga203e67">Dominio abstracto y función de concretización</h2>
+<h2 id="org2da161b">Dominio abstracto y función de concretización</h2>
 <ul>
 <li class="fragment roll-in">El dominio \(\wp(D)\) se puede representar mediante un dominio
 "abstracto" \(D_\alpha\) de representaciones finitas de (posiblemente) objetos infinitos en \(\wp(D)\)</li>
@@ -598,9 +599,9 @@ describe [\((\wp(D), \supseteq)\) es obviamente una retículo completo]</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org6a0202e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orga99e3e6" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org6a0202e">Ejemplo</h3>
+<h3 id="orga99e3e6">Ejemplo</h3>
 <ul>
 <li class="fragment roll-in">En el ejemplo de los "signos", con \(D_\alpha =
   \{[-],[0],[+],\top \}\), \(\gamma\) viene dado por \[
@@ -619,9 +620,9 @@ describe [\((\wp(D), \supseteq)\) es obviamente una retículo completo]</li>
 </section>
 </section>
 <section>
-<section id="slide-org7e472f4" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org5774e03" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org7e472f4">Función de abstracción</h2>
+<h2 id="org5774e03">Función de abstracción</h2>
 <p>
 También podemos definir (no estrictamente necesario) una función de
  abstracción (monótona) \[\alpha : \wp(D) \rightarrow D_\alpha\]
@@ -646,9 +647,9 @@ p.ej. en el ejemplo de los "signos", \[
 </section>
 </section>
 <section>
-<section id="slide-orgf3741aa" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orga7d8b09" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgf3741aa">Significado abstracto y seguridad</h2>
+<h2 id="orga7d8b09">Significado abstracto y seguridad</h2>
 <ul>
 <li>Ahora podemos definir una función de significado abstracto como
 \[F_\alpha : D_\alpha \rightarrow D_\alpha\] que es segura si
@@ -669,9 +670,9 @@ un número positivo producirá un número negativo como salida"</li>
 </section>
 </section>
 <section>
-<section id="slide-orgbbabb1a" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org730c9ae" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgbbabb1a">Demostrar propiedades en abstracto</h2>
+<h2 id="org730c9ae">Demostrar propiedades en abstracto</h2>
 <ul>
 <li class="fragment roll-in">Generando \(F_\alpha\):
 <ul>
@@ -698,9 +699,9 @@ negativo como salida"</li>
 </section>
 </section>
 <section>
-<section id="slide-orgbe33eef" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orga79f3c9" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgbe33eef">Semánticas Colectoras</h2>
+<h2 id="orga79f3c9">Semánticas Colectoras</h2>
 <ul>
 <li class="fragment roll-in">La semántica de "entrada-salida" es a menudo demasiado tosca para un
 análisis útil: información sobre el "Estado" en los puntos de
@@ -721,9 +722,9 @@ mejor descripción \(\to\)  estructura de retículo en un dominio abstracto \[\{
 </section>
 </section>
 <section>
-<section id="slide-org75f1a53" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgae4e432" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org75f1a53">Estructura de Retículo</h2>
+<h2 id="orgae4e432">Estructura de Retículo</h2>
 <ul>
 <li class="fragment roll-in">El ordenamiento en \(\wp(D), \subseteq\), induce un ordenamiento en
 \(D_\alpha, \leq_\alpha\) ("se aproxima mejor") Por ejemplo, podemos
@@ -755,9 +756,9 @@ descripción "general" para el punto:
 </section>
 </section>
 <section>
-<section id="slide-org70d26d8" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgb478de1" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org70d26d8">Ejemplo: aritmética entera de signos</h2>
+<h2 id="orgb478de1">Ejemplo: aritmética entera de signos</h2>
 <ul>
 <li class="fragment roll-in">Consideramos \(D_\alpha = \{[-], [0], [+],\top\}\)</li>
 
@@ -779,9 +780,9 @@ para tener una retículo completo: \(D_\alpha = \{\bot, [-], [0],
 </section>
 </section>
 <section>
-<section id="slide-orge08335e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgb5cba03" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orge08335e">Ejemplo: aritmética entera de signos (cont.)</h2>
+<h2 id="orgb5cba03">Ejemplo: aritmética entera de signos (cont.)</h2>
 <ul>
 <li>Para hacer \(t\) mas significativo, consideramos \(D_\alpha =
   \{\bot,[-],[0^-],[0],[0^+],[+],\top\}\)</li>
@@ -848,9 +849,9 @@ para tener una retículo completo: \(D_\alpha = \{\bot, [-], [0],
 </section>
 </section>
 <section>
-<section id="slide-orgda614b4" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org42c96c2" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgda614b4">El enfoque de la inserción de Galois</h2>
+<h2 id="org42c96c2">El enfoque de la inserción de Galois</h2>
 <ul>
 <li>A continuación, nos referiremos a \(\wp(D)\) simplemente como \(D\)</li>
 <li>Las semánticas (colectoras) de los programas a menudo son dadas por
@@ -872,9 +873,9 @@ se denomina <i>inserción de Galois</i> si:
 </ul>
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org133772a" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org7a4c081" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org133772a">La <i>Aproximación segura</i></h3>
+<h3 id="org7a4c081">La <i>Aproximación segura</i></h3>
 <ul>
 <li>definida ahora en términos de una
 inserción de Galois: Sea una inserción de Galois \((D_\alpha,
@@ -893,9 +894,9 @@ aproximación de \(lfp(F)\)</li>
 </section>
 </section>
 <section>
-<section id="slide-org3d98a5e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org2e8c226" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org3d98a5e">Terminación: condiciones en \(F_\alpha\) y \(D_\alpha\)</h2>
+<h2 id="org2e8c226">Terminación: condiciones en \(F_\alpha\) y \(D_\alpha\)</h2>
 <ul>
 <li class="fragment roll-in">La pregunta es si \(lfp(F_\alpha)\) es finitamente computable</li>
 <li class="fragment roll-in">El operador abstracto \(F_\alpha\) opera sobre los elementos de un
@@ -918,9 +919,9 @@ secuencia de Kleene será finito en casos que incluyen:
 </section>
 </section>
 <section>
-<section id="slide-orgd800770" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org0e056f3" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgd800770">Estructura de Retículos</h2>
+<h2 id="org0e056f3">Estructura de Retículos</h2>
 <table>
 
 
@@ -957,9 +958,9 @@ secuencia de Kleene será finito en casos que incluyen:
 </section>
 </section>
 <section>
-<section id="slide-orga4d729c" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgfe6652f" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orga4d729c">Terminación: Discusión</h2>
+<h2 id="orgfe6652f">Terminación: Discusión</h2>
 <ul>
 <li class="fragment roll-in">Demostrar la monotonicidad de \(F_\alpha\) puede ser más difícil que
 mostrar que \(D_\alpha\) cumple con las condiciones de finitud</li>
@@ -976,9 +977,9 @@ dinámica, etc. (Ver: widening y narrowing)</li>
 </section>
 </section>
 <section>
-<section id="slide-orge3d12b8" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org9ef0d40" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orge3d12b8">Análisis de programas lógicos</h2>
+<h2 id="org9ef0d40">Análisis de programas lógicos</h2>
 <ul>
 <li class="fragment roll-in">¿Qué semántica?
 <ul>
@@ -1011,9 +1012,9 @@ transformación de programas)</li>
 </section>
 </section>
 <section>
-<section id="slide-org9decb38" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org7578323" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org9decb38">Caso de Estudio: Semántica de punto fijo</h2>
+<h2 id="org7578323">Caso de Estudio: Semántica de punto fijo</h2>
 <ul>
 <li class="fragment roll-in">Dado el lenguaje de primer orden \(L\) asociado con un programa \(P\)
 dado, el universo de Herbrand (\(U\)) es el conjunto de todos los
@@ -1039,9 +1040,9 @@ elemento inferior del retículo (la interpretación vacía, \(\emptyset\)).</li>
 </section>
 </section>
 <section>
-<section id="slide-org6ab6c26" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org8d92a80" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org6ab6c26">Semántica de punto fijo: Ejemplo</h2>
+<h2 id="org8d92a80">Semántica de punto fijo: Ejemplo</h2>
 <p>
 \(P = \{ p(f(X)) \leftarrow p(X). \\
         p(a). q(a). q(b). \}\)
@@ -1081,9 +1082,9 @@ T_P \uparrow \omega &= H \\
 </section>
 </section>
 <section>
-<section id="slide-org463647f" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org7a18575" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org463647f">Interpretación abstracta "Bottom up"</h2>
+<h2 id="org7a18575">Interpretación abstracta "Bottom up"</h2>
 <ul>
 <li>Encuentra una aproximación de \(H\) al aproximar \(lfp(T_P)\)</li>
 <li>Aplicamos interpretación abstracta:
@@ -1100,9 +1101,9 @@ aproximaciones de elementos de \(I = \wp(B)\).</li>
 </ul>
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org65eb2f3" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org67e8cba" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org65eb2f3">Interpretación abstracta "Bottom up" (cont.)</h3>
+<h3 id="org67e8cba">Interpretación abstracta "Bottom up" (cont.)</h3>
 <ul>
 <li>Aplicamos interpretación abstracta:
 <ul>
@@ -1131,9 +1132,9 @@ obtendrá en un número finito de pasos \(n\) y \(H^\alpha\) se aproximará a \(
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgff62818" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org2cb280b" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgff62818">Interpretación abstracta "Bottom up" (cont.)</h3>
+<h3 id="org2cb280b">Interpretación abstracta "Bottom up" (cont.)</h3>
 
 <figure>
 <img src="bottomup2.png" alt="bottomup2.png">
@@ -1145,9 +1146,9 @@ obtendrá en un número finito de pasos \(n\) y \(H^\alpha\) se aproximará a \(
 </section>
 </section>
 <section>
-<section id="slide-orge6afa97" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org6a3f1ac" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orge6afa97">Ejemplo: simple inferencia de "tipos"</h2>
+<h2 id="org6a3f1ac">Ejemplo: simple inferencia de "tipos"</h2>
 <ul>
 <li>Problema de "inferencia de tipo" mínimal [Sondergaard]: Aproximación
 de qué predicados están en \(H\)</li>
@@ -1172,9 +1173,9 @@ de qué predicados están en \(H\)</li>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgabdc985" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org10a2838" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgabdc985">Ejemplo: simple inferencia de "tipos" (cont.)</h3>
+<h3 id="org10a2838">Ejemplo: simple inferencia de "tipos" (cont.)</h3>
 <ul>
 <li>Versión abstracta de \(T_P\) (después de alguna simplificación): \[T_P
   \alpha: S^* \rightarrow S^*\]</li>
@@ -1198,9 +1199,9 @@ finito de pasos \(n\) y \(H^\alpha = T^\alpha_P \uparrow n\) se aproxima a \(H\)
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org4709319" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org3983dde" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org4709319">Ejemplo: simple inferencia de "tipos" (cont.)</h3>
+<h3 id="org3983dde">Ejemplo: simple inferencia de "tipos" (cont.)</h3>
 <ul>
 <li>Ejemplo:</li>
 
@@ -1251,9 +1252,9 @@ finito de pasos \(n\) y \(H^\alpha = T^\alpha_P \uparrow n\) se aproxima a \(H\)
 </section>
 </section>
 <section>
-<section id="slide-org9052e7f" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org38077b4" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org9052e7f">Análisis <b>bottom up</b> basado en \(T_P\): Discusión</h2>
+<h2 id="org38077b4">Análisis <b>bottom up</b> basado en \(T_P\): Discusión</h2>
 <ul>
 <li>Ventajas:
 <ul>
@@ -1280,9 +1281,9 @@ de una consulta)</li>
 </section>
 </section>
 <section>
-<section id="slide-orgebbbf4a" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org329c336" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgebbbf4a">Análisis <b>Top down</b> (resumido)</h2>
+<h2 id="org329c336">Análisis <b>Top down</b> (resumido)</h2>
 <ul>
 <li class="fragment roll-in">Definir una semántica concreta extendida (recolectora), derivada de
 la resolución SLD, haciendo observable la información relevante.</li>
@@ -1309,9 +1310,9 @@ X = tree(N,L,R),L = nill, Y = N, Y = 3, &#x2026;</li>
 </section>
 </section>
 <section>
-<section id="slide-org7da7885" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org05de887" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org7da7885">Arbol AND-OR abstracto</h2>
+<h2 id="org05de887">Arbol AND-OR abstracto</h2>
 <ul>
 <li>Exploración del árbol <code>?- p.   h:- p1, ... pn.</code>
 <img src="arbolandor2.png" alt="arbolandor2.png"></li>
@@ -1331,9 +1332,9 @@ X = tree(N,L,R),L = nill, Y = N, Y = 3, &#x2026;</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb64d165" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgbef481e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgb64d165">Optimización de Punto Fijo</h2>
+<h2 id="orgbef481e">Optimización de Punto Fijo</h2>
 <ul>
 <li>Punto fijo es requerido solo en los predicados recursivos:</li>
 
@@ -1355,9 +1356,9 @@ es alcanzado"</li>
 </section>
 </section>
 <section>
-<section id="slide-org8a22b19" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org58577f2" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org8a22b19">Ciaopp</h2>
+<h2 id="org58577f2">Ciaopp</h2>
 <ul>
 <li>Entrada 
 <ul>
@@ -1386,9 +1387,9 @@ es alcanzado"</li>
 </section>
 </section>
 <section>
-<section id="slide-org52f67dc" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org5e63c5b" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org52f67dc">Aserciones</h2>
+<h2 id="org5e63c5b">Aserciones</h2>
 <ul>
 <li>estado de las aserciones
 <ul>
@@ -1423,9 +1424,9 @@ ejemplo
 </section>
 </section>
 <section>
-<section id="slide-orgf0f576a" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgcf053c0" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgf0f576a">Propiedades del estado de éxito</h2>
+<h2 id="orgcf053c0">Propiedades del estado de éxito</h2>
 <ul>
 <li class="fragment roll-in"><p>
 Propiedades del estado de <b>éxito</b>.  Son similiares en naturaleza a
@@ -1465,9 +1466,9 @@ para la cual <code>Predcond</code> ocurre, si la llamada
 </section>
 </section>
 <section>
-<section id="slide-org4b5e2f1" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgbc09def" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org4b5e2f1">Propiedades en la llamada y computación</h2>
+<h2 id="orgbc09def">Propiedades en la llamada y computación</h2>
 <ul>
 <li class="fragment roll-in"><p>
 Propiedades en el estado de llamada de un predicado que pueden
@@ -1506,9 +1507,9 @@ computación de <code>Goal</code>".
 </section>
 </section>
 <section>
-<section id="slide-orgce2f211" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org6e55df4" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgce2f211">Composición de Aserciones</h2>
+<h2 id="org6e55df4">Composición de Aserciones</h2>
 <p>
 Para facilitar la escritura una aserción compuesta de un predicado
 puede ser usado como azúcar sintáctico para las aserciones básicas. La
@@ -1556,9 +1557,9 @@ si la aserción <code>pred</code> tiene los campos <code>+</code> y <code>:</cod
 </section>
 </section>
 <section>
-<section id="slide-org6d779cf" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org59773be" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org6d779cf">Ejemplo de aserciones compuestas</h2>
+<h2 id="org59773be">Ejemplo de aserciones compuestas</h2>
 <ul>
 <li>Consideremos el programa clasico quicksort <code>qsort</code> . Podemos usar la</li>
 
@@ -1601,9 +1602,9 @@ La diferencia reside en que se espera que <code>B</code> sea una lista en los ca
 </section>
 </section>
 <section>
-<section id="slide-org8405af6" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org7f63e53" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org8405af6">Ejemplo de aserciones compuestas (cont.)</h2>
+<h2 id="org7f63e53">Ejemplo de aserciones compuestas (cont.)</h2>
 <ul>
 <li><p>
 Además podemos requerir que en todas las llamadas al predicado
@@ -1638,9 +1639,9 @@ argumento y una variable en el segundo no fallen:
 </section>
 </section>
 <section>
-<section id="slide-orge36d9fc" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgf78aad9" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orge36d9fc">Ejemplo de aserciones compuestas (cont.)</h2>
+<h2 id="orgf78aad9">Ejemplo de aserciones compuestas (cont.)</h2>
 <p>
 En lugar de todas estas aserciones se puede usar la compuesta:
 </p>
@@ -1671,9 +1672,9 @@ que es equivalente a:
 </section>
 </section>
 <section>
-<section id="slide-org5e60322" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org8728352" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org5e60322">Ejemplo de aserciones compuestas (cont.)</h2>
+<h2 id="org8728352">Ejemplo de aserciones compuestas (cont.)</h2>
 <p>
 si queremos llamar a <code>qsort</code> con algo diferente a una variable en el
 segundo argumento se debe agregar:
@@ -1706,9 +1707,9 @@ que es equivalente a:
 </section>
 </section>
 <section>
-<section id="slide-orgfc02940" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org64e5ff2" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgfc02940">Tipos Regulares</h2>
+<h2 id="org64e5ff2">Tipos Regulares</h2>
 <p>
 Tipos Regulares son propiedades cuyas definiciones son  <i>"programas
 regulares"</i>. Ejemplos:
@@ -1736,9 +1737,9 @@ regulares"</i>. Ejemplos:
 </section>
 </section>
 <section>
-<section id="slide-org7a893ed" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgf25b64c" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org7a893ed">Lenguaje de aserciones</h2>
+<h2 id="orgf25b64c">Lenguaje de aserciones</h2>
 <ul>
 <li><p>
 ejemplo de <code>pred/1</code> 
@@ -1795,9 +1796,9 @@ parte de la especificación del predicado
 </section>
 </section>
 <section>
-<section id="slide-org4f985fc" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org7fa772e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org4f985fc">Lenguaje de aserciones (cont.)</h2>
+<h2 id="org7fa772e">Lenguaje de aserciones (cont.)</h2>
 <ul>
 <li><p>
 definición de nuevos modos
@@ -1845,9 +1846,9 @@ documentación
 </section>
 </section>
 <section>
-<section id="slide-org3910d05" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgf9a19a8" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org3910d05">Ciaopp</h2>
+<h2 id="orgf9a19a8">Ciaopp</h2>
 
 <figure>
 <img src="arquitectura.png" alt="arquitectura.png">
@@ -1866,9 +1867,9 @@ documentación
 </section>
 </section>
 <section>
-<section id="slide-orgf66d84b" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org4942d6a" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="orgf66d84b">Analisis</h2>
+<h2 id="org4942d6a">Analisis</h2>
 <ul>
 <li><p>
 Entrada
@@ -1907,9 +1908,9 @@ Salida
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgcda2c11" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org9f02074" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgcda2c11">Analisis</h3>
+<h3 id="org9f02074">Analisis</h3>
 <ul>
 <li><p>
 Entrada
@@ -1943,9 +1944,9 @@ Entrada
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgb94fc0c" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org374936b" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgb94fc0c">Analisis</h3>
+<h3 id="org374936b">Analisis</h3>
 <ul>
 <li><p>
 dominio shfr sin el ~:- entry &#x2026; ~ 
@@ -1972,9 +1973,9 @@ dominio shfr sin el ~:- entry &#x2026; ~
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgd27d797" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org66cba10" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgd27d797">Analisis</h3>
+<h3 id="org66cba10">Analisis</h3>
 <ul>
 <li><p>
 dominio shfr con el <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code> 
@@ -2001,9 +2002,9 @@ dominio shfr con el <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org6eeb2ab" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org2ee0b3f" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org6eeb2ab">Analisis</h3>
+<h3 id="org2ee0b3f">Analisis</h3>
 <ul>
 <li><p>
 dominio eterms sin  <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code> 
@@ -2031,9 +2032,9 @@ dominio eterms sin  <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgca58986" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org22ec88f" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgca58986">Analisis</h3>
+<h3 id="org22ec88f">Analisis</h3>
 <ul>
 <li><p>
 dominio eterms con  <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code> 
@@ -2062,9 +2063,9 @@ dominio eterms con  <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code>
 </section>
 </section>
 <section>
-<section id="slide-org068d92f" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org141b65e" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org068d92f">Debugging</h2>
+<h2 id="org141b65e">Debugging</h2>
 <ul>
 <li><p>
 Entrada
@@ -2099,9 +2100,9 @@ Entrada
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgf3db3ae" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orga5dd251" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgf3db3ae">Debugging</h3>
+<h3 id="orga5dd251">Debugging</h3>
 <ul>
 <li><p>
 Salida
@@ -2121,9 +2122,9 @@ Salida
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orgb4b6254" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgb155791" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orgb4b6254">Debugging</h3>
+<h3 id="orgb155791">Debugging</h3>
 <ul>
 <li><p>
 Entrada
@@ -2158,9 +2159,9 @@ Entrada
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org55f24f6" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgc2dfad4" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org55f24f6">Debugging</h3>
+<h3 id="orgc2dfad4">Debugging</h3>
 <ul>
 <li><p>
 Salida
@@ -2186,9 +2187,9 @@ literal 1 does not succeed<span style="color: #00ffff;">!</span>
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org5f6a479" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org911cb5f" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org5f6a479">Debugging</h3>
+<h3 id="org911cb5f">Debugging</h3>
 <ul>
 <li><p>
 Chequear Aserciones
@@ -2236,9 +2237,9 @@ Chequear Aserciones
 </section>
 </section>
 <section>
-<section id="slide-org631d51c" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-org6c6b203" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h2 id="org631d51c">Optimización</h2>
+<h2 id="org6c6b203">Optimización</h2>
 <ul>
 <li><p>
 Entrada
@@ -2276,14 +2277,14 @@ Salida
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-org9744863" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgae36547" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="org9744863">Optimización</h3>
+<h3 id="orgae36547">Optimización</h3>
 <ul>
 <li><p>
 Entrada
 </p>
-<div style="font-size: 130%;">
+<div style="font-size: 110%;">
 <div class="org-src-container">
 
 <pre  class="src src-prolog">:- <span style="color: #b0c4de;">module</span>(append,<span style="color: #00ffff;">[</span><span style="color: #87cefa;">appe/3</span><span style="color: #00ffff;">]</span>,<span style="color: #00ffff;">[</span>assertions<span style="color: #00ffff;">]</span> ) .
@@ -2302,7 +2303,7 @@ Entrada
 <li><p>
 Salida 
 </p>
-<div style="font-size: 130%;">
+<div style="font-size: 110%;">
 <div class="org-src-container">
 
 <pre  class="src src-prolog">:- <span style="color: #b0c4de;">module</span>(<span style="color: #eedd82;">_1</span>,<span style="color: #00ffff;">[</span><span style="color: #87cefa;">appe/3</span><span style="color: #00ffff;">]</span>,<span style="color: #00ffff;">[</span>assertions<span style="color: #00ffff;">]</span>).
@@ -2324,9 +2325,9 @@ Salida
 
 <div class="slide-footer"></div>
 </section>
-<section id="slide-orga9cc322" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<section id="slide-orgce29190" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
 <div class="slide-header"></div>
-<h3 id="orga9cc322">Optimización</h3>
+<h3 id="orgce29190">Optimización</h3>
 <ul>
 <li><p>
 Entrada
@@ -2355,6 +2356,13 @@ Entrada
 </div>
 </div></li>
 
+</ul>
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgc9c9eda" data-background="" data-background-size="" data-background-position="" data-background-repeat="" data-background-transition="">
+<div class="slide-header"></div>
+<h3 id="orgc9c9eda">Optimizacion</h3>
+<ul>
 <li><p>
 Salida 
 </p>

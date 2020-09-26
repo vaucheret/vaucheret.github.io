@@ -1268,3 +1268,48 @@ exp_ac_1(_1,A,A).
     #+END_SRC 
     #+REVEAL_HTML: </div>
 
+* Certificación
+- Entrada
+    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+BEGIN_SRC prolog
+:- module(multiply,_,[assertions]).
+
+:- entry mmultiply(X,Y,Z): (var(Z),list(X,list(num)),list(Y,list(num))).
+:- entry mmultiply(X,Y,Z) : (var(Z),ground(X),ground(Y)). 
+
+
+mmultiply([],_,[]).
+mmultiply([VO|Rest],V1,[Result|Others]):-
+    mmultiply(Rest,V1,Others),
+    multiply(V1,VO,Result).
+
+multiply([],_,[]).
+multiply([VO|Rest],VI,[Result|Others]):-
+    multiply(Rest,VI,Others),
+    vmul(VO,VI,Result).
+
+vmul([],[],0).
+vmul([H1|T1],[H2|T2],Result):-
+    vmul(T1,T2,Newresult),
+    Product is H1*H2,
+    Result is Product+Newresult.
+    #+END_SRC 
+    #+REVEAL_HTML: </div>
+
+** Certificación
+- Certificado
+    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+BEGIN_SRC prolog
+:- true pred A is B+C : (mshare([[A]]),var(A),ground([B,C]))
+                          => (ground([A,B,C])).
+:- true pred A is B*C : (mshare([[A]]),var(A),ground([B,C]))
+                         => (ground([A,B,C])).
+
+:- true pred A is B+C : (term(A),num(B),num(C))
+                         => (num(A),num(B),num(C)).
+                         
+:- true pred A is B*C : (term(A),num(B),num(C))
+                         => (num(A),num(B),num(C)).
+    #+END_SRC 
+    #+REVEAL_HTML: </div>
+
