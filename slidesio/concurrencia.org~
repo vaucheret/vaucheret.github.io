@@ -1,0 +1,742 @@
+#+SUBTITLE: Conceptos Avanzados en Lenguajes de Programación
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+OPTIONS: author:t c:nil creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:t email:nil f:t inline:t num:nil p:nil pri:nil stat:t
+#+OPTIONS: tags:t tasks:t tex:t timestamp:t toc:nil todo:t |:t
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+#+GOOGLE_PLUS: 
+#+COMPANY: Facultad de Informática
+#+WWW: 
+#+GITHUB: 
+#+TWITTER: 
+
+#+FAVICON: images/org-icon.png
+#+ICON: images/emacs-icon.png
+#+HASHTAG: Conceptos Avanzados de Lenguajes de Programación
+#+TITLE: Concurrencia
+#+DATE: <2018-10-23 mar>
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL:  cv@fi.uncoma.edu.ar 
+
+
+* Introducción
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Introducción
+  :PROPERTIES:
+   :ARTICLE:  larger
+  :END:
+  #+ATTR_HTML: :class build 
+- La concurrencia puede ocurrir en cuatro niveles:
+  #+ATTR_HTML: :class build 
+  - instrucciónes de maquina
+  - el de sentencias de lenguajes de alto nivel
+  - unidad
+  - programa
+- En lenguajes de programación nos interesan a nivel sentencias del
+  lenguaje y unidades de programa.
+
+** Arquitecturas de Multiprocesador
+  #+ATTR_HTML: :class build 
+- Finales de los años 1950 - un procesador de propósito general y uno
+  o más procesadores de propósito especial para las operaciones de
+  entrada y salida
+- Principios de 1960 varios procesadores completos, para la
+  concurrencia a nivel de programa
+- A mediados de 1960 - múltiples procesadores parciales, que se
+  utilizan para la concurrencia a nivel de instrucción
+- Maquinas de Simple instrucción y Múltiples Datos (SIMD)
+- Maquinas de Multiple instrucciones y Múltiples Datos (MIMD)
+  - procesadores independientes que se pueden sincronizar (a nivel de
+    concurrencia de unidad)
+
+** Categorías de Concurrencia
+  #+ATTR_HTML: :class build 
+- Un /hilo de control/ en un programa es la secuencia de los puntos
+  del programa alcanzados por el flujo de la ejecución del programa
+- Categorías de concurrencia:
+  #+ATTR_HTML: :class build 
+  - /concurrencia física/ - procesadores independientes múltiples (múltiples hilos de control)
+  - /concurrencia lógica/ - La apariencia de concurrencia física es
+    presentada por un procesador de tiempo compartido (software puede
+    ser diseñado como si hubieran múltiples hilos de control)
+- Corrutinas (cuasi-concurrencia) tienen un único hilo de ejecución.
+
+** Motivación para el estudio de la concurrencia
+  :PROPERTIES:
+   :ARTICLE:  larger
+  :END:
+
+- Implica una forma diferente de diseño de software que puede ser muy
+  útil, muchas situaciones del mundo real contienen concurrencia
+
+
+- Computadoras con multiprocesadores de concurrencia física son
+  ampliamente utilizados.
+** Ventajas del modelo concurrente
+La programación concurrente se puede utilizar para:
+#+ATTR_HTML: :class build
+- *mejorar el rendimiento:* permite explotar la potencia de
+  los ordenadores multicore
+- *diseñar sistemas escalables:* un programa concurrente es una
+  colección de pequeños procesos independientes, que facilitan la
+  escalabilidad incrementando el número de procesos y/o CPUs
+- *además tolerantes a fallos:* la clave es la independencia
+  de procesos y la redundancia hardware.  Un error en un proceso no
+  tiene porqué colgar otros procesos y además permite detectar errores
+  en remoto.
+- escribir programas claros para controlar aplicaciones del mundo real.
+
+* Introducción a la concurrencia a nivel de Subprograma 
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Introducción a la concurrencia a nivel de Subprograma 
+
+- Una tarea o proceso es una unidad de programa que puede estar en
+  ejecución concurrente con otras unidades de programa
+
+
+- Tareas difieren de subprogramas comunes, en que:
+  - Una tarea puede iniciarse de forma implícita
+  - Cuando una unidad de programa inicia la ejecución de una tarea, no
+    necesariamente suspende su ejecución.
+  - Cuando se ha completado la ejecución de una tarea, el control
+    puede no volver al llamador
+  - Tareas por lo general trabajan en conjunto.
+
+** Dos categorías generales de tareas
+  :PROPERTIES:
+   :ARTICLE:  larger
+  :END:
+
+- *tareas pesadas* ejecutan en su propio espacio de direcciones y
+  tienen sus propias pilas de tiempo de ejecución.
+
+- *tareas livianas* todas se ejecutan en el mismo espacio de
+  direcciones y usan la misma pila de tiempo de ejecución.
+
+
+- Una tarea es /disjunta/ si no se comunica ni afecta a la ejecución
+  de cualquier otra tarea en el programa de ningún modo.
+
+** Sincronización de Tareas
+  :PROPERTIES:
+   :ARTICLE:  larger
+  :END:
+
+Un mecanismo que controla el orden en que las tareas se ejecutan
+
+
+Dos tipos de sincronización
+#+ATTR_HTML: :class build
+     - sincronización de cooperación
+     - sincronización de competencia
+
+** Clases de sincronización 
+  :PROPERTIES:
+   :ARTICLE:  larger
+  :END:
+
+- *Cooperación:* La tarea /A/ debe esperar a que la tarea /B/ termine
+  alguna actividad específica antes de poder continuar su
+  ejecución, por ejemplo, el problema del productor-consumidor
+- *Competencia:* dos o más tareas deben utilizar algún recurso que no
+  se pueden utilizar simultáneamente, por ejemplo, un contador
+  compartido.
+  - La competencia se suele realizar mediante el acceso mutuamente excluyente.
+
+** Necesidad de Sincronización de Competición
+#+BEGIN_CENTER
+#+ATTR_HTML:  :width 900px
+[[file:competsincr.png]]
+#+END_CENTER
+** Planificador
+  :PROPERTIES:
+   :ARTICLE:  larger
+  :END:
+
+- Proporcionar sincronización requiere un mecanismo para retrasar la
+  ejecución de tareas
+
+
+- el control de ejecución de tareas se mantiene mediante un programa
+  llamado /planificador/ (scheduler), que asigna la ejecución de
+  tareas a los procesadores disponibles.
+
+** Estados de Ejecución de las Tareas
+- *Nueva* - creada, pero aún no se ha inicializada
+
+
+- *Ejecutable* o *lista* - lista para funcionar, pero no se está ejecutando actualmente (sin procesador disponible)
+
+
+- *Ejecutando*
+
+
+- *Bloqueada* - ha estado funcionando, pero ahora no puede continuar (por lo general a la espera de que se produzca algún evento)
+
+
+- *Muerta* - no más activa en ningún sentido.
+
+** Estados de Ejecución de las Tareas
+  :PROPERTIES:
+  :ARTICLE:  smaller
+  :END:
+#+BEGIN_CENTER
+#+ATTR_HTML:  :width 400px
+[[file:estadostareas.png]]
+#+END_CENTER   
+
+
+** Liveness y Deadlock
+- /Liveness/ es una característica que una unidad de programa puede o
+  puede  no tener
+
+
+- En código secuencial, significa que la unidad finalmente completará su ejecución.
+
+
+- En un entorno concurrente, una tarea puede perder fácilmente su /liveness/
+
+
+- Si todas las tareas en un entorno concurrente pierden su /liveness/,
+  se denomina /deadlock/
+
+** Métodos de proveer sincronización
+  :PROPERTIES:
+  :ARTICLE:  larger
+  :END:
+
+- Semáforos
+
+
+- Monitores
+
+
+- Pasaje de Mensajes
+
+* Los semáforos
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Los semáforos
+  #+ATTR_HTML: :class build
+- Dijkstra - 1965
+- Un semáforo es una estructura de datos que consta de un contador y una cola para almacenar descriptores de tareas.
+- Los semáforos se pueden utilizar para implementar guardas en el
+  código que accede a estructuras de datos compartidos
+- Los semáforos tienen sólo dos operaciones, esperar y liberar (originalmente llamado P y V por Dijkstra)
+- Los semáforos se pueden utilizar para proporcionar tanto
+  sincronización de competencia y de cooperación.
+
+** Sincronización de Cooperación con semáforos
+
+- Ejemplo: Un buffer compartido
+
+
+- El buffer se implementa como un Tipo de Dato Abstracto con las
+  operaciones /DEPOSIT/ y /FETCH/ como las únicas formas de acceder al
+  buffer.
+
+
+- Se usan dos semáforos de cooperación: /emptyspots/ y /fullspots/
+
+
+- Los contadores de semáforos se utilizan para almacenar el número de
+  espacios vacíos y espacios cargados en el buffer.
+
+** Sincronización de Cooperación con semáforos
+
+- /DEPOSIT/ debe comprobar primero /emptyspots/ para ver si hay espacio en el buffer
+
+
+- Si hay espacio, el contador de /emptyspots/ disminuye y el valor es insertado
+
+
+- Si no hay espacio, la tarea se almacena en la cola de /emptyspots/
+
+
+- Cuando /DEPOSIT/ termina,  debe incrementar el contador de /fullspots/
+
+** Sincronización de Cooperación con semáforos
+- /FETCH/ debe comprobar /fullspots/ para ver si hay un valor.
+  - Si hay un spot completo, el contador de /fullspots/ se decrementa y se elimina el valor.
+  - Si no hay valores en el buffer, la tarea debe ser colocado en la cola de /fullspots/.
+  - cuando /FETCH/ termina, incrementa el contador de /emptyspots/.
+- Las operaciones de /FETCH/ y /DEPOSIT/ en los semáforos se llevan a
+  cabo a través de dos operaciones del semáforo llamadas /wait/ y
+  /release/.
+
+** Semáforos: operación /wait/
+
+#+BEGIN_SRC pascal
+wait(aSemaphore)
+if aSemaphore’s counter > 0 then 
+   decrement aSemaphore’s counter
+else 
+   put the caller in aSemaphore’s queue
+   attempt to transfer control to a ready task 
+     -- if the task ready queue is empty, 
+     -- deadlock occurs 
+end
+#+END_SRC
+
+** Semáforos: Operación /Release/
+
+#+BEGIN_SRC pascal
+release(aSemaphore)
+if aSemaphore’s queue is empty then
+   increment aSemaphore’s counter
+else
+   put the calling task in the task ready queue
+   transfer control to a task from aSemaphore’s queue
+end
+#+END_SRC
+
+** Codigo Productor/Consumidor
+
+#+BEGIN_SRC ada
+semaphore fullspots, emptyspots;
+fullstops.count = 0;
+emptyspots.count = BUFLEN;
+task producer;
+	loop
+	-- produce VALUE –-
+	wait (emptyspots); {wait for space}
+	DEPOSIT(VALUE);
+	release(fullspots); {increase filled}
+	end loop;
+end producer;
+#+END_SRC
+
+** Código Productor/Consumidor
+#+BEGIN_SRC ada
+task consumer;
+	loop
+	wait (fullspots);{wait till not empty}}
+	FETCH(VALUE);
+	release(emptyspots); {increase empty}
+	-- consume VALUE –-
+	end loop;
+end consumer;
+#+END_SRC
+
+** Sincronización de Competición con Semáforos
+- Un tercer semáforo, llamado /access/, se utiliza para controlar el
+  acceso (sincronización de competencia)
+  - El contador de /acces/ sólo tendrá los valores 0 y 1
+  - Tal semáforo se llama un /semáforo binario/
+- Tener en cuenta que /wait/ y /release/ debe ser atómicos.
+
+** Código Productor/Consumidor
+#+BEGIN_SRC ada
+semaphore access, fullspots, emptyspots;
+access.count = 0;
+fullstops.count = 0;
+emptyspots.count = BUFLEN;
+task producer;
+	loop
+	-- produce VALUE –-
+	wait(emptyspots); {wait for space}
+	wait(access);     {wait for access)
+	DEPOSIT(VALUE);
+	release(access); {relinquish access}
+	release(fullspots); {increase filled}
+	end loop;
+end producer;
+#+END_SRC
+
+** Código Productor/Consumidor
+#+BEGIN_SRC ada
+task consumer;
+	loop
+	wait(fullspots);{wait till not empty}
+	wait(access);   {wait for access}
+	FETCH(VALUE);
+	release(access); {relinquish access}
+	release(emptyspots); {increase empty}
+	-- consume VALUE –-
+	end loop;
+end consumer;
+#+END_SRC
+
+** Evaluación de Semáforos
+- El mal uso de los semáforos puede provocar fallos en la
+  sincronización de la cooperación, por ejemplo, el buffer tendrá
+  overflow si el /wait/ de /fullspots/ falla.
+- El mal uso de los semáforos puede provocar fallos en la
+  sincronización de la competencia, por ejemplo, el programa entrara
+  en /Deadlock/ si el /release/ de /access/ falla.
+
+* monitores
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** monitores
+- *Pascal* concurrente, *Modula*, *Mesa*, *Ada*, *Java*, *C#*
+
+
+- La idea: encapsular los datos compartidos y sus operaciones para restringir el acceso
+
+
+- Un monitor es un tipo abstracto de datos para los datos compartidos
+
+** Sincronización de Competición
+- Los datos compartidos son residentes en el monitor (en lugar de en las unidades de cliente)
+- Todo acceso reside en el monitor
+  - el monitor garantiza la sincronización al permitir un solo acceso a la vez
+  - Las llamadas a procedimientos del monitor se ponen en cola de
+    forma implícita si el monitor está ocupado en el momento de la
+    llamada.
+
+** Sincronización de Cooperación
+  :PROPERTIES:
+  :ARTICLE:  smaller
+  :END:
+- Cooperación entre procesos es todavía una tarea de programación
+  - El programador debe garantizar que un buffer compartido no
+    experimenta overflow o underflow
+#+BEGIN_CENTER
+#+ATTR_HTML:  :width 550px
+[[file:monitor.png]]
+#+END_CENTER
+** Evaluación de Monitores
+
+- Es un mejor modo de proporcionar la sincronización de la competencia que los semáforos.
+
+
+- Los semáforos se pueden utilizar para implementar monitores
+
+
+- Los monitores pueden ser utilizados para implementar semáforos
+
+
+- Soporte para la sincronización de cooperación es muy similar al de
+  los semáforos, por lo que tiene los mismos problemas
+
+* Pasaje de mensajes
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Pasaje de mensajes
+- El paso de mensajes es un modelo general para la concurrencia
+  - Puede modelar tanto los semáforos como los monitores
+  - No es sólo para la sincronización de la competencia
+- Idea central: la comunicación de tareas es como ver a un médico, la
+  mayoría de las veces te espera o lo esperas, pero cuando tu y él
+  esten listo, te reunirás o tendras un /rendezvous/
+
+** Pasaje de mensajes /Rendezvous/
+- Un mecanismo para permitir que una tarea indique cuándo está
+  dispuesta a aceptar mensajes
+- Las tareas necesitan una manera de recordar quién está esperando que
+  su mensaje sea aceptado y alguna forma "justa" de elegir el
+  siguiente mensaje
+- Cuando el mensaje de una tarea remitente es aceptado por una
+  tarea receptora, la transmisión de mensaje real se denomina /rendezvous/
+
+** Soporte de *Ada* para concurrencia
+- El modelo de mensajes de Ada 83
+  - Las tareas de Ada tienen parte de especificación y cuerpo como los
+    paquetes; La especificación tiene la interfaz, que es la
+    colección de puntos de entrada:
+
+#+BEGIN_SRC ada
+task Task_Example is
+	entry ENTRY_1 (Item : in Integer);
+end Task_Example;
+#+END_SRC
+
+** Cuerpo de la Tarea
+- El cuerpo de la tarea describe la acción que tiene lugar cuando se
+  produce un /rendezvous/
+- Una tarea que envía un mensaje se suspende mientras espera que el
+  mensaje sea aceptado y durante el /rendezvous/
+- Los puntos de entrada en la especificación se describen con
+  cláusulas de /accept/ en el cuerpo:
+
+#+BEGIN_SRC ada
+accept entry_name (formal parameters) do
+    ...
+end entry_name
+#+END_SRC
+
+** Ejemplo de Cuerpo de Tarea
+#+BEGIN_SRC ada
+task body TASK_EXAMPLE is
+     begin
+     loop
+     accept ENTRY_1 (ITEM: in FLOAT) do
+     ...
+     end ENTRY_1;
+     end loop;
+   end TASK_EXAMPLE;
+#+END_SRC
+
+** Semántica del pasaje de mensajes de *Ada*
+- La tarea se ejecuta hasta la parte superior de la cláusula /accept/ y
+  espera un mensaje
+- Durante la ejecución de la cláusula /accept/, el remitente suspende
+  su ejecución
+- Los parámetors del /accept/ pueden transmitir información en una o
+  ambas direcciones
+- Cada cláusula /accept/ tiene una cola asociada para almacenar
+  mensajes en espera.
+
+** Líneas de tiempo del /Rendevous/
+#+BEGIN_CENTER
+#+ATTR_HTML:  :width 600px
+[[file:rendevous.png]]
+#+END_CENTER
+** Servidor y actor
+- Una tarea que tiene cláusulas /accept/, pero ningún otro código
+  se llama una tarea servidor
+- Una tarea sin cláusulas /accept/ se denomina tarea actor
+  - Una tarea de actor puede enviar mensajes a otras tareas
+  - Nota: Un remitente debe conocer el nombre de entrada del receptor, pero no viceversa (asimétrico)
+
+** Representación Gráfica del /Rendezvous/
+
+[[file:rendevous2.png]] 
+
+** Ejemplo de tarea /Actor/
+
+#+BEGIN_SRC ada
+task WATER_MONITOR; -- specification
+task body WATER_MONITOR is -- body
+begin
+  loop
+  if WATER_LEVEL > MAX_LEVEL
+    then SOUND_ALARM;
+  end if;
+  delay 1.0; -- No further execution
+            -- for at least 1 second
+  end loop;
+end WATER_MONITOR;
+#+END_SRC
+
+** Múltiples puntos de entrada
+- Las tareas pueden tener más de un punto de entrada
+  - La especificación de la tarea tiene una cláusula de entrada para
+    cada una.
+  - El cuerpo de la tarea tiene una cláusula de /accept/ para cada
+    cláusula de entrada, colocada en una cláusula de /select/, que
+    está en un bucle.
+
+** Una tarea con múltiples entradas
+
+#+BEGIN_SRC ada
+task body TASK_EXAMPLE is
+      loop
+        select 
+          accept ENTRY_1 (formal params) do
+          ...
+          end ENTRY_1;
+          ...
+        or
+          accept ENTRY_2 (formal params) do
+          ...
+          end ENTRY_2;
+          ...
+        end select;
+      end loop;
+    end TASK_EXAMPLE;
+#+END_SRC
+
+** Semántica de tareas con multiples clausulas select
+- Si exactamente una cola de entrada no esta vacía, elija un mensaje de ella
+- Si más de una cola de entrada no esta vacía, elije una, de forma no determinística, para aceptar un mensaje
+- Si todos están vacíos, espera
+- La construcción se llama a menudo una /espera selectiva/
+- Cláusula /accept/ extendida - código que sigue a la cláusula, pero antes de la siguiente cláusula
+  - Ejecutado simultáneamente con la tarea remitente
+
+** Sincronización de Cooperación con Pasaje de Mensajes
+- Provisto por cláusulas /accept/ con guardas:
+#+BEGIN_SRC ada
+when not FULL(BUFFER) =>
+    accept DEPOSIT(NEW_VALUE) do
+#+END_SRC
+- Una cláusula /accept/ con una cláusula /when/ es abierta o cerrada
+  - Una cláusula cuya guarda es verdadera se llama /abierta/
+  - una cláusula cuya guarda es falsa se llama /cerrada/
+  - una cláusula sin guarda es siempre abierta.
+
+** Semántica del /select/ con cláusulas /accept/ con guardas
+- /select/ primero verifica las guardas de todas las cláusulas
+- Si exactamente una está abierta, se comprueba la cola de mensajes
+- Si más de uno está abierto, no deterministicamente se elige una cola
+  entre ellas para comprobar los mensajes.
+- Si todos están cerrados, es un error de tiempo de ejecución
+- Una cláusula /select/ puede incluir una cláusula /else/ para evitar el error
+  - Cuando se completa la cláusula /else/, el bucle se repite
+
+** Ejemplo de Tarea con clausulas /accept/ con guardas
+
+#+BEGIN_SRC ada
+task GAS_STATION_ATTENDANT is
+  	entry SERVICE_ISLAND (CAR : CAR_TYPE);
+  	entry GARAGE (CAR : CAR_TYPE);
+	end GAS_STATION_ATTENDANT;
+#+END_SRC
+
+** Ejemplo de Tarea con clausulas /accept/ con guardas
+  :PROPERTIES:
+  :ARTICLE:  smaller
+  :END:
+#+BEGIN_SRC ada 
+task body GAS_STATION_ATTENDANT is
+  begin
+    loop
+      select
+        when GAS_AVAILABLE =>
+	   	   accept SERVICE_ISLAND (CAR : CAR_TYPE) do
+	         FILL_WITH_GAS (CAR);
+	       end SERVICE_ISLAND;
+      or
+	     when GARAGE_AVAILABLE =>
+	       accept GARAGE (CAR : CAR_TYPE) do
+	         FIX (CAR);
+	       end GARAGE;
+      else
+	     SLEEP;
+      end select;
+    end loop;
+  end GAS_STATION_ATTENDANT;
+#+END_SRC
+
+** Sincronización de Competición con Pasaje de Mensajes
+- Modela el acceso mutuamente exclusivo a los datos compartidos
+- Ejemplo: un búfer compartido
+- Encapsula el búfer y sus operaciones en una tarea
+- La sincronización de la competencia está implícita en la semántica de las cláusulas /accept/
+  - Sólo una cláusula /accept/ en una tarea puede estar activa en un momento dado.
+
+** Concurrencia en Ada 95
+- Ada 95 incluye las características de Ada 83 para la concurrencia, además
+  de dos nuevas características:
+  - Objetos protegidos: una forma más eficiente de implementar datos
+    compartidos para permitir el acceso a una estructura de datos
+    compartida que se puede hacer sin /rendezvous/
+  - Comunicación asincrónica
+
+** Objetos Protegidos de Ada 95
+- Un objeto protegido es similar a un tipo de dato abstracto
+- El acceso a un objeto protegido es a través de mensajes pasados a
+  las entradas, como con una tarea, o a través de subprogramas protegidos
+- Un procedimiento protegido proporciona acceso de lectura y escritura mutuamente exclusivo a objetos protegidos
+- Una función protegida proporciona acceso concurrente de sólo lectura
+  a objetos protegidos.
+
+** Evaluación de *Ada*
+- El modelo de concurrencia de pasaje de mensajes es potente y general.
+- Los objetos protegidos son una mejor manera de proporcionar datos compartidos sincronizados
+- En ausencia de procesadores distribuidos, la elección entre
+  monitores y tareas con el paso de mensajes es algo una cuestión de
+  gusto
+- Para sistemas distribuidos, el paso de mensajes es un mejor modelo para la concurrencia.
+
+
+
+
+* Ejemplo Erlang
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+** Ideas esenciales de la concurrencia en Erlang
+  :PROPERTIES:
+  :ARTICLE:  smaller
+  :END:
+ - Erlang es un lenguaje funcional, etc, etc... orientado a la concurrencia.
+
+
+ - La /unidad básica de concurrencia/ en Erlang es el /proceso/:
+   máquina virtual (ligera) que se puede comunicar con otros procesos exclusivamente a través de mensajes.
+
+
+ - Un proceso es similar a un objeto en POO: se puede tener un módulo con miles de procesos ejecutando el código de ese módulo. Comparando con POO: 
+
+               modulo ≈ clase   
+
+               proceso ≈ instancia
+
+
+ - Erlang trabaja con procesos ligeros: no son procesos del SO, sino
+   de la máquina virtual de Erlang. El modelo de concurrencia de
+   Erlang no depende del SO! y un programa se comportará de modo
+   similar en distintos SO. 
+** Simulando Semáforos
+#+BEGIN_SRC erlang
+-module(semaphore).
+-export([make/1,p/1,v/1]).
+
+make(Permits) ->
+    spawn(fun() ->
+		  loop(Permits) end).
+
+p(Sem) -> 
+    Ref = make_ref(),
+    Sem!{acquire, self(), Ref},
+    receive
+	{acquired, Ref}-> ok
+    end.
+
+v(Sem) ->
+    Sem!release.
+#+END_SRC
+
+
+** Simulando Semáforos
+#+BEGIN_SRC erlang
+
+
+loop(Permits) ->
+    receive
+	{acquire, Pid, Ref} when Permits>0  ->
+	    Pid!{acquired, Ref},
+	    loop(Permits-1);
+	release ->
+	    loop(Permits+1)
+    end.
+
+#+END_SRC
+
+** Usando los Semáforos
+#+BEGIN_SRC erlang
+-module(semuser).
+-export([run/0]).
+-import(semaphore,[p/1,v/1]).
+run() ->
+    Mutex = semaphore:make(1),
+    spawn(fun () -> loop(["Hi","Ho"], Mutex) end),
+    spawn(fun () -> loop(["Chee","Tah"], Mutex) end).
+
+loop([],_) -> ok;
+loop([H|T], Mutex) ->
+    timer:sleep(500),
+    p(Mutex),
+      io:format("My string is ~p.~n", [H]),
+      timer:sleep(500),
+    v(Mutex),
+    loop(T, Mutex).
+#+END_SRC
+

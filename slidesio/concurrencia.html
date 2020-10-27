@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<!-- 2020-10-27 mar 12:56 -->
+<meta  charset="utf-8" />
+<meta  htto-equiv="X-UA-Compatible" content="chrome=1" />
+<meta  name="generator" content="Org-mode with org-ioslide" />
+<meta  name="author" content="Claudio Vaucheret" />
+
+
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--This one seems to work all the time, but really small on ipad-->
+<!--<meta name="viewport" content="initial-scale=0.4">-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" media="all" href="theme/css/default.css" />
+<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css" />
+<link rel="stylesheet" media="all" href="theme/css/small-icon.css" />
+<base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+<script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+
+   <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+<script src="js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local" type="text/javascript"></script>
+</head>
+<body style="opacity: 0">
+<slides class="layout-widescreen">
+<slide class="title-slide segue nobackground">
+       <aside class="gdbar"><img src="images/emacs-icon.png"></aside>
+       <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+       <hgroup class="auto-fadein">
+         <h1 data-config-title><!-- populated from slide_config.json --></h1>
+         <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+         <p data-config-presenter><!-- populated from slide_config.json --></p>
+       </hgroup>
+    </slide>
+  
+
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/emacs-icon.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-orge4690df" class="outline-2">
+<h2 id="orge4690df">Introducción</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgefe1417" class="outline-3">
+<h3 id="orgefe1417">Introducción</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="larger" id="text-">
+<ul class="build">
+<li>La concurrencia puede ocurrir en cuatro niveles:
+<ul class="build">
+<li>instrucciónes de maquina</li>
+<li>el de sentencias de lenguajes de alto nivel</li>
+<li>unidades de programa</li>
+<li>programas</li>
+</ul></li>
+<li>En lenguajes de programación nos interesan a nivel sentencias del
+lenguaje y unidades de programa.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgb7576bc" class="outline-3">
+<h3 id="orgb7576bc">Arquitecturas de Multiprocesador</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul class="build">
+<li>Finales de los años 1950 - un procesador de propósito general y uno
+o más procesadores de propósito especial para las operaciones de
+entrada y salida</li>
+<li>Principios de 1960 varios procesadores completos, para la
+concurrencia a nivel de programas</li>
+<li>A mediados de 1960 - múltiples procesadores parciales, que se
+utilizan para la concurrencia a nivel de instrucción</li>
+<li>Maquinas de Simple instrucción y Múltiples Datos (SIMD)</li>
+<li>Maquinas de Multiple instrucciones y Múltiples Datos (MIMD)
+<ul>
+<li>procesadores independientes que se pueden sincronizar (a nivel de
+concurrencia de unidad)</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgd9a5429" class="outline-3">
+<h3 id="orgd9a5429">Categorías de Concurrencia</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul class="build">
+<li>Un <i>hilo de control</i> en un programa es la secuencia de los puntos
+del programa alcanzados por el flujo de la ejecución del programa</li>
+<li>Categorías de concurrencia:
+<ul class="build">
+<li><i>concurrencia física</i> - procesadores independientes múltiples (múltiples hilos de control)</li>
+<li><i>concurrencia lógica</i> - La apariencia de concurrencia física es
+presentada por un procesador de tiempo compartido (software puede
+ser diseñado como si hubieran múltiples hilos de control)</li>
+</ul></li>
+<li>Corrutinas (cuasi-concurrencia) tienen un único hilo de ejecución.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org67271c7" class="outline-3">
+<h3 id="org67271c7">Motivación para el estudio de la concurrencia</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="larger" id="text-">
+<ul>
+<li>Implica una forma diferente de diseño de software que puede ser muy
+útil, muchas situaciones del mundo real contienen concurrencia</li>
+</ul>
+
+
+<ul>
+<li>Computadoras con multiprocesadores de concurrencia física son
+ampliamente utilizados.</li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgb2b539c" class="outline-3">
+<h3 id="orgb2b539c">Ventajas del modelo concurrente</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<p>
+La programación concurrente se puede utilizar para:
+</p>
+<ul class="build">
+<li><b>mejorar el rendimiento:</b> permite explotar la potencia de
+los ordenadores multicore</li>
+<li><b>diseñar sistemas escalables:</b> un programa concurrente es una
+colección de pequeños procesos independientes, que facilitan la
+escalabilidad incrementando el número de procesos y/o CPUs</li>
+<li><b>además tolerantes a fallos:</b> la clave es la independencia
+de procesos y la redundancia hardware.  Un error en un proceso no
+tiene porqué colgar otros procesos y además permite detectar errores
+en remoto.</li>
+<li>escribir programas claros para controlar aplicaciones del mundo real.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/emacs-icon.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-orgfa46bf1" class="outline-2">
+<h2 id="orgfa46bf1">Introducción a la concurrencia a nivel de Subprograma</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org49a555b" class="outline-3">
+<h3 id="org49a555b">Introducción a la concurrencia a nivel de Subprograma</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Una tarea o proceso es una unidad de programa que puede estar en
+ejecución concurrente con otras unidades de programa</li>
+</ul>
+
+
+<ul>
+<li>Tareas difieren de subprogramas comunes, en que:
+<ul>
+<li>Una tarea puede iniciarse de forma implícita</li>
+<li>Cuando una unidad de programa inicia la ejecución de una tarea, no
+necesariamente suspende su ejecución.</li>
+<li>Cuando se ha completado la ejecución de una tarea, el control
+puede no volver al llamador</li>
+<li>Tareas por lo general trabajan en conjunto.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9232ee1" class="outline-3">
+<h3 id="org9232ee1">Dos categorías generales de tareas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="larger" id="text-">
+<ul>
+<li><b>tareas pesadas</b> ejecutan en su propio espacio de direcciones y
+tienen sus propias pilas de tiempo de ejecución.</li>
+
+<li><b>tareas livianas</b> todas se ejecutan en el mismo espacio de
+direcciones y usan la misma pila de tiempo de ejecución.</li>
+</ul>
+
+
+<ul>
+<li>Una tarea es <i>disjunta</i> si no se comunica ni afecta a la ejecución
+de cualquier otra tarea en el programa de ningún modo.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org68c368f" class="outline-3">
+<h3 id="org68c368f">Sincronización de Tareas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="larger" id="text-">
+<p>
+Un mecanismo que controla el orden en que las tareas se ejecutan
+</p>
+
+
+<p>
+Dos tipos de sincronización
+</p>
+<ul class="build">
+<li>sincronización de cooperación</li>
+<li>sincronización de competencia</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org0986db7" class="outline-3">
+<h3 id="org0986db7">Clases de sincronización</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="larger" id="text-">
+<ul>
+<li><b>Cooperación:</b> La tarea <i>A</i> debe esperar a que la tarea <i>B</i> termine
+alguna actividad específica antes de poder continuar su
+ejecución, por ejemplo, el problema del productor-consumidor</li>
+<li><b>Competencia:</b> dos o más tareas deben utilizar algún recurso que no
+se pueden utilizar simultáneamente, por ejemplo, un contador
+compartido.
+<ul>
+<li>La competencia se suele realizar mediante el acceso mutuamente excluyente.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org3da121a" class="outline-3">
+<h3 id="org3da121a">Necesidad de Sincronización de Competición</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<article class="flexbox vcenter">
+
+<div class="figure">
+<p><img src="competsincr.png" alt="competsincr.png" width="900px" />
+</p>
+</div>
+</article>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org61138df" class="outline-3">
+<h3 id="org61138df">Planificador</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="larger" id="text-">
+<ul>
+<li>Proporcionar sincronización requiere un mecanismo para retrasar la
+ejecución de tareas</li>
+</ul>
+
+
+<ul>
+<li>el control de ejecución de tareas se mantiene mediante un programa
+llamado <i>planificador</i> (scheduler), que asigna la ejecución de
+tareas a los procesadores disponibles.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgb7349ce" class="outline-3">
+<h3 id="orgb7349ce">Estados de Ejecución de las Tareas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><b>Nueva</b> - creada, pero aún no se ha inicializada</li>
+</ul>
+
+
+<ul>
+<li><b>Ejecutable</b> o <b>lista</b> - lista para funcionar, pero no se está ejecutando actualmente (sin procesador disponible)</li>
+</ul>
+
+
+<ul>
+<li><b>Ejecutando</b></li>
+</ul>
+
+
+<ul>
+<li><b>Bloqueada</b> - ha estado funcionando, pero ahora no puede continuar (por lo general a la espera de que se produzca algún evento)</li>
+</ul>
+
+
+<ul>
+<li><b>Muerta</b> - no más activa en ningún sentido.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org8035fd2" class="outline-3">
+<h3 id="org8035fd2">Estados de Ejecución de las Tareas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="smaller" id="text-">
+<article class="flexbox vcenter">
+
+<div class="figure">
+<p><img src="estadostareas.png" alt="estadostareas.png" width="400px" />
+</p>
+</div>
+</article>
+
+
+</article>
+
+</slide>
+
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgeaae787" class="outline-3">
+<h3 id="orgeaae787">Liveness y Deadlock</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><i>Liveness</i> es una característica que una unidad de programa puede o
+puede  no tener</li>
+</ul>
+
+
+<ul>
+<li>En código secuencial, significa que la unidad finalmente completará su ejecución.</li>
+</ul>
+
+
+<ul>
+<li>En un entorno concurrente, una tarea puede perder fácilmente su <i>liveness</i></li>
+</ul>
+
+
+<ul>
+<li>Si todas las tareas en un entorno concurrente pierden su <i>liveness</i>,
+se denomina <i>deadlock</i></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgdef8f23" class="outline-3">
+<h3 id="orgdef8f23">Métodos de proveer sincronización</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="larger" id="text-">
+<ul>
+<li>Semáforos</li>
+</ul>
+
+
+<ul>
+<li>Monitores</li>
+</ul>
+
+
+<ul>
+<li>Pasaje de Mensajes</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/emacs-icon.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-orge3919e0" class="outline-2">
+<h2 id="orge3919e0">Los semáforos</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org7c97fcf" class="outline-3">
+<h3 id="org7c97fcf">Los semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul class="build">
+<li>Dijkstra - 1965</li>
+<li>Un semáforo es una estructura de datos que consta de un contador y una cola para almacenar descriptores de tareas.</li>
+<li>Los semáforos se pueden utilizar para implementar guardas en el
+código que accede a estructuras de datos compartidos</li>
+<li>Los semáforos tienen sólo dos operaciones, esperar y liberar (originalmente llamado P y V por Dijkstra)</li>
+<li>Los semáforos se pueden utilizar para proporcionar tanto
+sincronización de competencia y de cooperación.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgdc1eeb1" class="outline-3">
+<h3 id="orgdc1eeb1">Sincronización de Cooperación con semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Ejemplo: Un buffer compartido</li>
+</ul>
+
+
+<ul>
+<li>El buffer se implementa como un Tipo de Dato Abstracto con las
+operaciones <i>DEPOSIT</i> y <i>FETCH</i> como las únicas formas de acceder al
+buffer.</li>
+</ul>
+
+
+<ul>
+<li>Se usan dos semáforos de cooperación: <i>emptyspots</i> y <i>fullspots</i></li>
+</ul>
+
+
+<ul>
+<li>Los contadores de semáforos se utilizan para almacenar el número de
+espacios vacíos y espacios cargados en el buffer.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org431fa97" class="outline-3">
+<h3 id="org431fa97">Sincronización de Cooperación con semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><i>DEPOSIT</i> debe comprobar primero <i>emptyspots</i> para ver si hay espacio en el buffer</li>
+</ul>
+
+
+<ul>
+<li>Si hay espacio, el contador de <i>emptyspots</i> disminuye y el valor es insertado</li>
+</ul>
+
+
+<ul>
+<li>Si no hay espacio, la tarea se almacena en la cola de <i>emptyspots</i></li>
+</ul>
+
+
+<ul>
+<li>Cuando <i>DEPOSIT</i> termina,  debe incrementar el contador de <i>fullspots</i></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgda2fa7f" class="outline-3">
+<h3 id="orgda2fa7f">Sincronización de Cooperación con semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><i>FETCH</i> debe comprobar <i>fullspots</i> para ver si hay un valor.
+<ul>
+<li>Si hay un spot completo, el contador de <i>fullspots</i> se decrementa y se elimina el valor.</li>
+<li>Si no hay valores en el buffer, la tarea debe ser colocado en la cola de <i>fullspots</i>.</li>
+<li>cuando <i>FETCH</i> termina, incrementa el contador de <i>emptyspots</i>.</li>
+</ul></li>
+<li>Las operaciones de <i>FETCH</i> y <i>DEPOSIT</i> en los semáforos se llevan a
+cabo a través de dos operaciones del semáforo llamadas <i>wait</i> y
+<i>release</i>.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgf946ec6" class="outline-3">
+<h3 id="orgf946ec6">Semáforos: operación <i>wait</i></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="pascal">
+wait(aSemaphore)
+if aSemaphore’s counter &gt; 0 then 
+   decrement aSemaphore’s counter
+else 
+   put the caller in aSemaphore’s queue
+   attempt to transfer control to a ready task 
+     -- if the task ready queue is empty, 
+     -- deadlock occurs 
+end</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org6078909" class="outline-3">
+<h3 id="org6078909">Semáforos: Operación <i>Release</i></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="pascal">
+release(aSemaphore)
+if aSemaphore’s queue is empty then
+   increment aSemaphore’s counter
+else
+   put the calling task in the task ready queue
+   transfer control to a task from aSemaphore’s queue
+end</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgb6f5625" class="outline-3">
+<h3 id="orgb6f5625">Codigo Productor/Consumidor</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+semaphore fullspots, emptyspots;
+fullstops.count = 0;
+emptyspots.count = BUFLEN;
+task producer;
+	loop
+	-- produce VALUE –-
+	wait (emptyspots); {wait for space}
+	DEPOSIT(VALUE);
+	release(fullspots); {increase filled}
+	end loop;
+end producer;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org10d133b" class="outline-3">
+<h3 id="org10d133b">Código Productor/Consumidor</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+task consumer;
+	loop
+	wait (fullspots);{wait till not empty}}
+	FETCH(VALUE);
+	release(emptyspots); {increase empty}
+	-- consume VALUE –-
+	end loop;
+end consumer;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgd51565e" class="outline-3">
+<h3 id="orgd51565e">Sincronización de Competición con Semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Un tercer semáforo, llamado <i>access</i>, se utiliza para controlar el
+acceso (sincronización de competencia)
+<ul>
+<li>El contador de <i>acces</i> sólo tendrá los valores 0 y 1</li>
+<li>Tal semáforo se llama un <i>semáforo binario</i></li>
+</ul></li>
+<li>Tener en cuenta que <i>wait</i> y <i>release</i> debe ser atómicos.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orga0c53a9" class="outline-3">
+<h3 id="orga0c53a9">Código Productor/Consumidor</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+semaphore access, fullspots, emptyspots;
+access.count = 0;
+fullstops.count = 0;
+emptyspots.count = BUFLEN;
+task producer;
+	loop
+	-- produce VALUE –-
+	wait(emptyspots); {wait for space}
+	wait(access);     {wait for access)
+	DEPOSIT(VALUE);
+	release(access); {relinquish access}
+	release(fullspots); {increase filled}
+	end loop;
+end producer;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9f623f0" class="outline-3">
+<h3 id="org9f623f0">Código Productor/Consumidor</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+task consumer;
+	loop
+	wait(fullspots);{wait till not empty}
+	wait(access);   {wait for access}
+	FETCH(VALUE);
+	release(access); {relinquish access}
+	release(emptyspots); {increase empty}
+	-- consume VALUE –-
+	end loop;
+end consumer;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgf5a83af" class="outline-3">
+<h3 id="orgf5a83af">Evaluación de Semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El mal uso de los semáforos puede provocar fallos en la
+sincronización de la cooperación, por ejemplo, el buffer tendrá
+overflow si el <i>wait</i> de <i>fullspots</i> falla.</li>
+<li>El mal uso de los semáforos puede provocar fallos en la
+sincronización de la competencia, por ejemplo, el programa entrara
+en <i>Deadlock</i> si el <i>release</i> de <i>access</i> falla.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/emacs-icon.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org6dab49b" class="outline-2">
+<h2 id="org6dab49b">monitores</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgfbd3a58" class="outline-3">
+<h3 id="orgfbd3a58">monitores</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><b>Pascal</b> concurrente, <b>Modula</b>, <b>Mesa</b>, <b>Ada</b>, <b>Java</b>, <b>C#</b></li>
+</ul>
+
+
+<ul>
+<li>La idea: encapsular los datos compartidos y sus operaciones para restringir el acceso</li>
+</ul>
+
+
+<ul>
+<li>Un monitor es un tipo abstracto de datos para los datos compartidos</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgdae49f4" class="outline-3">
+<h3 id="orgdae49f4">Sincronización de Competición</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Los datos compartidos son residentes en el monitor (en lugar de en las unidades de cliente)</li>
+<li>Todo acceso reside en el monitor
+<ul>
+<li>el monitor garantiza la sincronización al permitir un solo acceso a la vez</li>
+<li>Las llamadas a procedimientos del monitor se ponen en cola de
+forma implícita si el monitor está ocupado en el momento de la
+llamada.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org5aac2db" class="outline-3">
+<h3 id="org5aac2db">Sincronización de Cooperación</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="smaller" id="text-">
+<ul>
+<li>Cooperación entre procesos es todavía una tarea de programación
+<ul>
+<li>El programador debe garantizar que un buffer compartido no
+experimenta overflow o underflow</li>
+</ul></li>
+</ul>
+<article class="flexbox vcenter">
+
+<div class="figure">
+<p><img src="monitor.png" alt="monitor.png" width="550px" />
+</p>
+</div>
+</article>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orge984dc0" class="outline-3">
+<h3 id="orge984dc0">Evaluación de Monitores</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Es un mejor modo de proporcionar la sincronización de la competencia que los semáforos.</li>
+</ul>
+
+
+<ul>
+<li>Los semáforos se pueden utilizar para implementar monitores</li>
+</ul>
+
+
+<ul>
+<li>Los monitores pueden ser utilizados para implementar semáforos</li>
+</ul>
+
+
+<ul>
+<li>Soporte para la sincronización de cooperación es muy similar al de
+los semáforos, por lo que tiene los mismos problemas</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/emacs-icon.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-orge2aa863" class="outline-2">
+<h2 id="orge2aa863">Pasaje de mensajes</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgd506487" class="outline-3">
+<h3 id="orgd506487">Pasaje de mensajes</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El paso de mensajes es un modelo general para la concurrencia
+<ul>
+<li>Puede modelar tanto los semáforos como los monitores</li>
+<li>No es sólo para la sincronización de la competencia</li>
+</ul></li>
+<li>Idea central: la comunicación de tareas es como ver a un médico, la
+mayoría de las veces te espera o lo esperas, pero cuando tu y él
+esten listo, te reunirás o tendras un <i>rendezvous</i></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9446a8e" class="outline-3">
+<h3 id="org9446a8e">Pasaje de mensajes <i>Rendezvous</i></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Un mecanismo para permitir que una tarea indique cuándo está
+dispuesta a aceptar mensajes</li>
+<li>Las tareas necesitan una manera de recordar quién está esperando que
+su mensaje sea aceptado y alguna forma "justa" de elegir el
+siguiente mensaje</li>
+<li>Cuando el mensaje de una tarea remitente es aceptado por una
+tarea receptora, la transmisión de mensaje real se denomina <i>rendezvous</i></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org38424c8" class="outline-3">
+<h3 id="org38424c8">Soporte de <b>Ada</b> para concurrencia</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El modelo de mensajes de Ada 83
+<ul>
+<li>Las tareas de Ada tienen parte de especificación y cuerpo como los
+paquetes; La especificación tiene la interfaz, que es la
+colección de puntos de entrada:</li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+task Task_Example is
+	entry ENTRY_1 (Item : in Integer);
+end Task_Example;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgcf86e24" class="outline-3">
+<h3 id="orgcf86e24">Cuerpo de la Tarea</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El cuerpo de la tarea describe la acción que tiene lugar cuando se
+produce un <i>rendezvous</i></li>
+<li>Una tarea que envía un mensaje se suspende mientras espera que el
+mensaje sea aceptado y durante el <i>rendezvous</i></li>
+<li>Los puntos de entrada en la especificación se describen con
+cláusulas de <i>accept</i> en el cuerpo:</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+accept entry_name (formal parameters) do
+    ...
+end entry_name</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org3c12f7b" class="outline-3">
+<h3 id="org3c12f7b">Ejemplo de Cuerpo de Tarea</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+task body TASK_EXAMPLE is
+     begin
+     loop
+     accept ENTRY_1 (ITEM: in FLOAT) do
+     ...
+     end ENTRY_1;
+     end loop;
+   end TASK_EXAMPLE;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orge79bcf1" class="outline-3">
+<h3 id="orge79bcf1">Semántica del pasaje de mensajes de <b>Ada</b></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>La tarea se ejecuta hasta la parte superior de la cláusula <i>accept</i> y
+espera un mensaje</li>
+<li>Durante la ejecución de la cláusula <i>accept</i>, el remitente suspende
+su ejecución</li>
+<li>Los parámetors del <i>accept</i> pueden transmitir información en una o
+ambas direcciones</li>
+<li>Cada cláusula <i>accept</i> tiene una cola asociada para almacenar
+mensajes en espera.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orga7437d1" class="outline-3">
+<h3 id="orga7437d1">Líneas de tiempo del <i>Rendevous</i></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<article class="flexbox vcenter">
+
+<div class="figure">
+<p><img src="rendevous.png" alt="rendevous.png" width="600px" />
+</p>
+</div>
+</article>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org750bbe3" class="outline-3">
+<h3 id="org750bbe3">Servidor y actor</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Una tarea que tiene cláusulas <i>accept</i>, pero ningún otro código
+se llama una tarea servidor</li>
+<li>Una tarea sin cláusulas <i>accept</i> se denomina tarea actor
+<ul>
+<li>Una tarea de actor puede enviar mensajes a otras tareas</li>
+<li>Nota: Un remitente debe conocer el nombre de entrada del receptor, pero no viceversa (asimétrico)</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org1124c68" class="outline-3">
+<h3 id="org1124c68">Representación Gráfica del <i>Rendezvous</i></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+<div class="figure">
+<p><img src="rendevous2.png" alt="rendevous2.png" /> 
+</p>
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgcb76e63" class="outline-3">
+<h3 id="orgcb76e63">Ejemplo de tarea <i>Actor</i></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+task WATER_MONITOR; -- specification
+task body WATER_MONITOR is -- body
+begin
+  loop
+  if WATER_LEVEL &gt; MAX_LEVEL
+    then SOUND_ALARM;
+  end if;
+  delay 1.0; -- No further execution
+	    -- for at least 1 second
+  end loop;
+end WATER_MONITOR;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org0a40ca8" class="outline-3">
+<h3 id="org0a40ca8">Múltiples puntos de entrada</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Las tareas pueden tener más de un punto de entrada
+<ul>
+<li>La especificación de la tarea tiene una cláusula de entrada para
+cada una.</li>
+<li>El cuerpo de la tarea tiene una cláusula de <i>accept</i> para cada
+cláusula de entrada, colocada en una cláusula de <i>select</i>, que
+está en un bucle.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org89d8fcf" class="outline-3">
+<h3 id="org89d8fcf">Una tarea con múltiples entradas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+task body TASK_EXAMPLE is
+      loop
+	select 
+	  accept ENTRY_1 (formal params) do
+	  ...
+	  end ENTRY_1;
+	  ...
+	or
+	  accept ENTRY_2 (formal params) do
+	  ...
+	  end ENTRY_2;
+	  ...
+	end select;
+      end loop;
+    end TASK_EXAMPLE;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org2e967a3" class="outline-3">
+<h3 id="org2e967a3">Semántica de tareas con multiples clausulas select</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Si exactamente una cola de entrada no esta vacía, elija un mensaje de ella</li>
+<li>Si más de una cola de entrada no esta vacía, elije una, de forma no determinística, para aceptar un mensaje</li>
+<li>Si todos están vacíos, espera</li>
+<li>La construcción se llama a menudo una <i>espera selectiva</i></li>
+<li>Cláusula <i>accept</i> extendida - código que sigue a la cláusula, pero antes de la siguiente cláusula
+<ul>
+<li>Ejecutado simultáneamente con la tarea remitente</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org7c2e709" class="outline-3">
+<h3 id="org7c2e709">Sincronización de Cooperación con Pasaje de Mensajes</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Provisto por cláusulas <i>accept</i> con guardas:</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+when not FULL(BUFFER) =&gt;
+    accept DEPOSIT(NEW_VALUE) do</pre>
+
+</div>
+<ul>
+<li>Una cláusula <i>accept</i> con una cláusula <i>when</i> es abierta o cerrada
+<ul>
+<li>Una cláusula cuya guarda es verdadera se llama <i>abierta</i></li>
+<li>una cláusula cuya guarda es falsa se llama <i>cerrada</i></li>
+<li>una cláusula sin guarda es siempre abierta.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org5f42334" class="outline-3">
+<h3 id="org5f42334">Semántica del <i>select</i> con cláusulas <i>accept</i> con guardas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><i>select</i> primero verifica las guardas de todas las cláusulas</li>
+<li>Si exactamente una está abierta, se comprueba la cola de mensajes</li>
+<li>Si más de uno está abierto, no deterministicamente se elige una cola
+entre ellas para comprobar los mensajes.</li>
+<li>Si todos están cerrados, es un error de tiempo de ejecución</li>
+<li>Una cláusula <i>select</i> puede incluir una cláusula <i>else</i> para evitar el error
+<ul>
+<li>Cuando se completa la cláusula <i>else</i>, el bucle se repite</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org91aafad" class="outline-3">
+<h3 id="org91aafad">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+task GAS_STATION_ATTENDANT is
+	entry SERVICE_ISLAND (CAR : CAR_TYPE);
+	entry GARAGE (CAR : CAR_TYPE);
+	end GAS_STATION_ATTENDANT;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org7505c39" class="outline-3">
+<h3 id="org7505c39">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="smaller" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+task body GAS_STATION_ATTENDANT is
+  begin
+    loop
+      select
+	when GAS_AVAILABLE =&gt;
+		   accept SERVICE_ISLAND (CAR : CAR_TYPE) do
+		 FILL_WITH_GAS (CAR);
+	       end SERVICE_ISLAND;
+      or
+	     when GARAGE_AVAILABLE =&gt;
+	       accept GARAGE (CAR : CAR_TYPE) do
+		 FIX (CAR);
+	       end GARAGE;
+      else
+	     SLEEP;
+      end select;
+    end loop;
+  end GAS_STATION_ATTENDANT;</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org0e8b2ac" class="outline-3">
+<h3 id="org0e8b2ac">Sincronización de Competición con Pasaje de Mensajes</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Modela el acceso mutuamente exclusivo a los datos compartidos</li>
+<li>Ejemplo: un búfer compartido</li>
+<li>Encapsula el búfer y sus operaciones en una tarea</li>
+<li>La sincronización de la competencia está implícita en la semántica de las cláusulas <i>accept</i>
+<ul>
+<li>Sólo una cláusula <i>accept</i> en una tarea puede estar activa en un momento dado.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org59bb498" class="outline-3">
+<h3 id="org59bb498">Concurrencia en Ada 95</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Ada 95 incluye las características de Ada 83 para la concurrencia, además
+de dos nuevas características:
+<ul>
+<li>Objetos protegidos: una forma más eficiente de implementar datos
+compartidos para permitir el acceso a una estructura de datos
+compartida que se puede hacer sin <i>rendezvous</i></li>
+<li>Comunicación asincrónica</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org5d743e2" class="outline-3">
+<h3 id="org5d743e2">Objetos Protegidos de Ada 95</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Un objeto protegido es similar a un tipo de dato abstracto</li>
+<li>El acceso a un objeto protegido es a través de mensajes pasados a
+las entradas, como con una tarea, o a través de subprogramas protegidos</li>
+<li>Un procedimiento protegido proporciona acceso de lectura y escritura mutuamente exclusivo a objetos protegidos</li>
+<li>Una función protegida proporciona acceso concurrente de sólo lectura
+a objetos protegidos.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgb2542c5" class="outline-3">
+<h3 id="orgb2542c5">Evaluación de <b>Ada</b></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El modelo de concurrencia de pasaje de mensajes es potente y general.</li>
+<li>Los objetos protegidos son una mejor manera de proporcionar datos compartidos sincronizados</li>
+<li>En ausencia de procesadores distribuidos, la elección entre
+monitores y tareas con el paso de mensajes es algo una cuestión de
+gusto</li>
+<li>Para sistemas distribuidos, el paso de mensajes es un mejor modelo para la concurrencia.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+
+
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/emacs-icon.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org22247fd" class="outline-2">
+<h2 id="org22247fd">Ejemplo Erlang</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgc69da3a" class="outline-3">
+<h3 id="orgc69da3a">Ideas esenciales de la concurrencia en Erlang</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="smaller" id="text-">
+<ul>
+<li>Erlang es un lenguaje funcional, etc, etc&#x2026; orientado a la concurrencia.</li>
+</ul>
+
+
+<ul>
+<li>La <i>unidad básica de concurrencia</i> en Erlang es el <i>proceso</i>:
+máquina virtual (ligera) que se puede comunicar con otros procesos exclusivamente a través de mensajes.</li>
+</ul>
+
+
+<ul>
+<li><p>
+Un proceso es similar a un objeto en POO: se puede tener un módulo con miles de procesos ejecutando el código de ese módulo. Comparando con POO: 
+</p>
+
+<p>
+modulo ≈ clase   
+</p>
+
+<p>
+proceso ≈ instancia
+</p></li>
+</ul>
+
+
+<ul>
+<li>Erlang trabaja con procesos ligeros: no son procesos del SO, sino
+de la máquina virtual de Erlang. El modelo de concurrencia de
+Erlang no depende del SO! y un programa se comportará de modo
+similar en distintos SO.</li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org39f4c77" class="outline-3">
+<h3 id="org39f4c77">Simulando Semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="erlang">
+-module(semaphore).
+-export([make/1,p/1,v/1]).
+
+make(Permits) -&gt;
+    spawn(fun() -&gt;
+		  loop(Permits) end).
+
+p(Sem) -&gt; 
+    Ref = make_ref(),
+    Sem!{acquire, self(), Ref},
+    receive
+	{acquired, Ref}-&gt; ok
+    end.
+
+v(Sem) -&gt;
+    Sem!release.</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgcc3f65b" class="outline-3">
+<h3 id="orgcc3f65b">Simulando Semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="erlang">
+
+
+loop(Permits) -&gt;
+    receive
+	{acquire, Pid, Ref} when Permits&gt;0  -&gt;
+	    Pid!{acquired, Ref},
+	    loop(Permits-1);
+	release -&gt;
+	    loop(Permits+1)
+    end.
+</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgcafa4b9" class="outline-3">
+<h3 id="orgcafa4b9">Usando los Semáforos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="erlang">
+-module(semuser).
+-export([run/0]).
+-import(semaphore,[p/1,v/1]).
+run() -&gt;
+    Mutex = semaphore:make(1),
+    spawn(fun () -&gt; loop(["Hi","Ho"], Mutex) end),
+    spawn(fun () -&gt; loop(["Chee","Tah"], Mutex) end).
+
+loop([],_) -&gt; ok;
+loop([H|T], Mutex) -&gt;
+    timer:sleep(500),
+    p(Mutex),
+      io:format("My string is ~p.~n", [H]),
+      timer:sleep(500),
+    v(Mutex),
+    loop(T, Mutex).</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide class="backdrop"></slide>
+</slides> 
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body> 
+
+</html>
