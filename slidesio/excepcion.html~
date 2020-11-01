@@ -2,7 +2,7 @@
 <html>
 <head>
 <title></title>
-<!-- 2020-10-31 sáb 22:05 -->
+<!-- 2020-10-31 sáb 22:53 -->
 <meta  charset="utf-8" />
 <meta  htto-equiv="X-UA-Compatible" content="chrome=1" />
 <meta  name="generator" content="Org-mode with org-ioslide" />
@@ -27,7 +27,7 @@
 <body style="opacity: 0">
 <slides class="layout-widescreen">
 <slide class="title-slide segue nobackground">
-       <aside class="gdbar"><img src="images/emacs-icon.png"></aside>
+       <aside class="gdbar"><img src="images/fai.png"></aside>
        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
        <hgroup class="auto-fadein">
          <h1 data-config-title><!-- populated from slide_config.json --></h1>
@@ -36,79 +36,999 @@
        </hgroup>
     </slide>
   
-<slide id="sec-"  >
-<hgroup class="">
-       <h2 class=" "><div id="outline-container-orga8090a7" class="outline-2">
-<h2 id="orga8090a7">Introducción a Manejo de Excepciones</h2>
-<div class="outline-text-2" id="text-orga8090a7">
-</div>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/fai.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-orgd5b7d32" class="outline-2">
+<h2 id="orgd5b7d32">Introducción a Manejo de Excepciones</h2>
 </div>
 </h2>
        <h3></h3>
        </hgroup>
-<div class="outline-text-2" id="text-orga8090a7">
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org55ee873" class="outline-3">
+<h3 id="org55ee873">Introducción a Manejo de Excepciones</h3>
 </div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>En un lenguaje sin manejo de excepciones
+<ul>
+<li>Cuando una excepción ocurre, el control retorna al sistema
+operativo, donde un mensaje es mostrado y el programa termina</li>
+</ul></li>
+<li>En un lenguaje con manejo de excepciones
+<ul>
+<li>Los programas están autorizados para atrapar algunas excepciones, 
+proporcionando de este modo la posibilidad de solucionar el
+problema y continuar la ejecución.</li>
+</ul></li>
+</ul>
+
+
+</article>
 
 </slide>
 
 </slide>
 <slide id="sec-"  >
 <hgroup class="">
-       <h2 class=" "><div id="outline-container-org75d650e" class="outline-2">
-<h2 id="org75d650e">Manejo de Excepciones en <b>Ada</b></h2>
-<div class="outline-text-2" id="text-org75d650e">
-</div>
+       <h2 class=" "><div id="outline-container-org0eac9df" class="outline-3">
+<h3 id="org0eac9df">Conceptos Básicos</h3>
 </div>
 </h2>
        <h3></h3>
        </hgroup>
-<div class="outline-text-2" id="text-org75d650e">
+<article class="" id="text-">
+<ul>
+<li>Muchos lenguajes permiten atrapar errores de entrada y salida
+(incluyendo EOF)</li>
+<li>Una <i>excepción</i> es un evento inusual, ya sea erróneo o no,
+detectable por hardware o software, que puede requerir procesamiento especial.</li>
+<li>El procesamiento especial que puede ser requerido después de
+detectar una excepción se llama <i>manejo de excepciones</i>.</li>
+<li>La unidad de código que realiza esta tarea se llama <i>Controlador de
+excepción</i>.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgc8eca30" class="outline-3">
+<h3 id="orgc8eca30">Alternativas al Manejo de Excepciones</h3>
 </div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Una excepción se genera cuando se produce el evento asociado</li>
+<li>En un lenguaje que no tenga capacidades de manejo de excepciones
+todavía se puede definir, detectar, plantear y gestionar las
+excepciones (las definidas por el usuario, y detectadas por el software)</li>
+<li>Alternativas
+<ul>
+<li>Enviar un parámetro auxiliar o usar un valor de retorno para
+indicar el estado del subprograma</li>
+<li>Pasar un parametro etiqueta  a todos los subprogramas</li>
+<li>Pasar un subprograma que maneja excepciones a todos los subprogramas.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org6ac092e" class="outline-3">
+<h3 id="org6ac092e">Ventajas de Manejo de Excepciones provisto por el lenguaje.</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El código de detección de errores es tedioso de escribir y desordena
+el programa oscureciendo su lógica.</li>
+<li>propagación de excepción permite un alto nivel de reutilización de
+código de control de excepciones.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org829c391" class="outline-3">
+<h3 id="org829c391">Cuestiones de Diseño</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>¿Cómo y donde los manejadores de excepciones son especificados y
+cual es su alcance?</li>
+<li>¿Como una ocurrencia de excepción se liga a un manejador de excepción?</li>
+<li>¿De dónde continuar la ejecución, en todo caso, después de que un
+controlador de excepciones completa su ejecución?</li>
+<li>¿Cómo se especifican las excepciones definidas por el usuario?</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org1ad5ca8" class="outline-3">
+<h3 id="org1ad5ca8">Cuestiones de Diseño</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>¿Debería haber un manejador de excepciones para los programas que no
+proveen el suyo propio?</li>
+<li>¿Pueden las excepciones predefinidas ser explícitamente generadas?</li>
+<li>¿Los errores detectables por hardware deben ser tratados como
+excepciones que pueden ser manejados?</li>
+<li>¿Hay excepciones predefinidas?</li>
+<li>¿Pueden las excepciones ser deshabilitadas? ¿Como?</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org6cb3e2f" class="outline-3">
+<h3 id="org6cb3e2f">Flujo de control del Controlador de Exepciones</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+<div class="figure">
+<p><img src="resumeexpeption.png" alt="resumeexpeption.png" />
+</p>
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/fai.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org9d7cdba" class="outline-2">
+<h2 id="org9d7cdba">Manejo de Excepciones en <b>Ada</b></h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgeca9086" class="outline-3">
+<h3 id="orgeca9086">Manejo de Excepciones en <b>Ada</b></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Un controlador de excepciones en Ada puede ocurrir ya sea en el
+cuerpo de un subprograma, el cuerpo de un paquete, en una tarea o en
+un bloque.</li>
+<li>Debido a que los controladores de excepciones suelen ser locales
+para el código en el que la excepción puede ser despertada, no
+tienen parámetros.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org5d5fa1e" class="outline-3">
+<h3 id="org5d5fa1e">Controlador de Excepciones en <b>Ada</b></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Controlador</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+when exception_choice{|exception_choice} =&gt; statement_sequence</pre>
+
+</div>
+<ul>
+<li>exception-choice</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+exception_name | others</pre>
+
+</div>
+<ul>
+<li>Los manejadores son colocados al final del bloque o unidad en la que
+ocurren.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org0988fb2" class="outline-3">
+<h3 id="org0988fb2">Vinculando Excepciones a Controladores</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Si el bloque o unidad en la que se produce una excepción no tiene
+un controlador para esa excepción, la excepción se propaga a otro
+lugar para ser manejado.
+<ul>
+<li><i>Procedimientos</i>:  Se propagan al procedimiento llamador.</li>
+<li><i>Bloques</i>: Se propagan al ámbito en el que aparece.</li>
+<li><i>Cuerpo de un Package</i>: Se propagan a la parte de declaración de
+la unidad que declaró el paquete (si se trata de una unidad de
+librería, el programa termina)</li>
+<li><i>Task</i>: sin propagación; si tiene un controlador, lo ejecuta; en
+todo caso lo marca "completado"</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org0514013" class="outline-3">
+<h3 id="org0514013">Vinculando Excepciones a Controladores</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El bloque o unidad que genera una excepción, pero no lo maneja,
+siempre se termina (también cualquier bloque o unidad a la que se
+propaga y que no lo maneja).</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org5691c54" class="outline-3">
+<h3 id="org5691c54">Otras decisiones de diseño</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Excepciones definidas por el usuario</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+ecxeption_name_list : exception;</pre>
+
+</div>
+<ul>
+<li>Despertando Excepciones</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+raise [exception_name]</pre>
+
+</div>
+<p>
+(exception-name no es requerido si esta en un manejador, en este
+caso propaga la misma excepción)  
+</p>
+<ul>
+<li>Las excepciones pueden ser deshabilitadas con:</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="ada">
+pragma SUPRESS(exception_list)</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9ce06a0" class="outline-3">
+<h3 id="org9ce06a0">Excepciones Predefinidas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><b>CONSTRAINT-ERROR</b> restricciones de indices, restricciones de rango, etc</li>
+<li><b>NUMERIC-ERROR</b> operaciones numéricas que no pueden retornar un
+valor correcto (overflow, división por cero etc.)</li>
+<li><b>PROGRAM-ERROR</b> llamada a un subprograma cuyo cuerpo no ha sido elaborado.</li>
+<li><b>STORAGE-ERROR</b> se termina la memoria heap.</li>
+<li><b>TASKING-ERROR</b> un error asociado con <i>tasks</i>.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org96601a0" class="outline-3">
+<h3 id="org96601a0">Evaluación</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>El diseño de <b>Ada</b> para el manejo de excepciones encarnó el estado del
+arte en el diseño de lenguajes en 1980.</li>
+<li>Un avance significativo sobre <b>PL/I</b></li>
+<li>Ada fue el único lenguaje ampliamente utilizado con manejo de
+excepciones hasta que éste fue agregado a <b>C++</b></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/fai.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org1117711" class="outline-2">
+<h2 id="org1117711">Manejo de Excepciones en <b>C++</b></h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9cea4df" class="outline-3">
+<h3 id="org9cea4df">Manejo de Excepciones en <b>C++</b></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Agregado a <b>C++</b> en 1990</li>
+<li>Diseño basado en el de <b>CLU</b>, <b>Ada</b>, y <b>ML</b></li>
+</ul>
+
+
+</article>
 
 </slide>
 </slide>
 <slide id="sec-"  >
 <hgroup class="">
-       <h2 class=" "><div id="outline-container-org7ad8cc5" class="outline-2">
-<h2 id="org7ad8cc5">Manejo de Excepciones en <b>C++</b></h2>
-<div class="outline-text-2" id="text-org7ad8cc5">
-</div>
+       <h2 class=" "><div id="outline-container-org3b378cd" class="outline-3">
+<h3 id="org3b378cd">Controladores de Excepción en <b>C++</b></h3>
 </div>
 </h2>
        <h3></h3>
        </hgroup>
-<div class="outline-text-2" id="text-org7ad8cc5">
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="C++">
+try {
+-- codigo en el que se espera surga una excepción
+}
+catch (formal parameter) {
+-- codigo del controlador
+}
+...
+catch (formal parameter) {
+-- codigo del controlador
+}</pre>
+
 </div>
+
+
+</article>
 
 </slide>
 </slide>
 <slide id="sec-"  >
 <hgroup class="">
-       <h2 class=" "><div id="outline-container-orgb31c939" class="outline-2">
-<h2 id="orgb31c939">Manejo de Excepciones en <b>Java</b></h2>
-<div class="outline-text-2" id="text-orgb31c939">
-</div>
+       <h2 class=" "><div id="outline-container-orgcde8992" class="outline-3">
+<h3 id="orgcde8992">La función <code>catch</code></h3>
 </div>
 </h2>
        <h3></h3>
        </hgroup>
-<div class="outline-text-2" id="text-orgb31c939">
-</div>
+<article class="" id="text-">
+<ul>
+<li><code>catch</code> es el nombre de todos los controladores &#x2013; Es un nombre
+sobrecargado, por lo tanto los parámetros deben ser únicos.</li>
+<li>El parámetro formal no necesita ser una variable
+<ul>
+<li>Puede ser simplemente un nombre para distinguir el controlador de
+los otros</li>
+</ul></li>
+<li>El parámetro formal puede ser usado para transferir información al
+controlador</li>
+<li>El parámetro formal puede ser (\(\ldots\)), en cuyo caso maneja todas
+las excepciones que no han sido manejadas.</li>
+</ul>
+
+
+</article>
 
 </slide>
 </slide>
 <slide id="sec-"  >
 <hgroup class="">
-       <h2 class=" "><div id="outline-container-orgafa43bd" class="outline-2">
-<h2 id="orgafa43bd">Introducción a Manejo de Eventos</h2>
-<div class="outline-text-2" id="text-orgafa43bd">
-</div>
+       <h2 class=" "><div id="outline-container-org52bd389" class="outline-3">
+<h3 id="org52bd389">Lanzar Excepciones</h3>
 </div>
 </h2>
        <h3></h3>
        </hgroup>
-<div class="outline-text-2" id="text-orgafa43bd">
+<article class="" id="text-">
+<ul>
+<li>Las excepciones son lanzadas explícitamente por la sentencia <code>trow [expression];</code></li>
+<li>Un <code>trow</code> sin operandos sólo puede aparecer en un controlador;
+cuando aparece, simplemente relanza la excepción, que a
+continuación se maneja en otro lado.</li>
+<li>El tipo de la expresión desambigua  cual manejador corresponde.</li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgfb8f451" class="outline-3">
+<h3 id="orgfb8f451">Excepciones no manejadas</h3>
 </div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Una excepción no controlada se propaga a la función que llamó a
+la función que la propaga.</li>
+<li>Esta propagación continúa eventualmente a la función principal</li>
+<li>Si no se encuentra ningún controlador, el programa se termina.</li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgc75015b" class="outline-3">
+<h3 id="orgc75015b">Excepciones no manejadas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Después de un controlador completa su ejecución, el control fluye a
+la sentencia siguiente del último controlador en la secuencia de los
+controladores de los cuales es un elemento.</li>
+<li>Otras opciones de diseño
+<ul>
+<li>Todas las excepciones son definidas por el usuario.</li>
+<li>Las excepciones ni se especifican ni se declaran.</li>
+<li>Las funciones pueden listar las excepciones que pueden despertar.</li>
+<li>Sin una especificación, una función puede despertar cualquier
+excepción.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgad32e3c" class="outline-3">
+<h3 id="orgad32e3c">Evaluación</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Las excepciones no tienen nombre y las excepciones detectables
+por software  o hardware y del sistema no puede ser manejadas.</li>
+<li>Vincular excepciones a los manejadores a través del tipo del
+parámetro no mejora la legibilidad.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/fai.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org301f9ce" class="outline-2">
+<h2 id="org301f9ce">Manejo de Excepciones en <b>Java</b></h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org19eb350" class="outline-3">
+<h3 id="org19eb350">Manejo de Excepciones en <b>Java</b></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Basado en la de <b>C++</b>, pero más en línea con la filosofía de programación orientada a objetos.</li>
+<li>Todas las excepciones son objetos de clases que son descendientes de la clase <code>Throwable</code></li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org076dfb9" class="outline-3">
+<h3 id="org076dfb9">Clases de Excepciones</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>La librería de Java incluye dos subclases de <code>Throwable</code>: 
+<ul>
+<li><code>Error</code>
+<ul>
+<li>Lanzada por el intérprete de Java para eventos tales como
+<i>overflow</i> del <i>heap</i>.</li>
+<li>Nunca manejados por programas de usuario</li>
+</ul></li>
+<li><code>Excepción</code>
+<ul>
+<li>excepciones definidas por el usuario son generalmente subclases de esta</li>
+<li>Tiene dos subclases predefinidas, <code>IOException</code> y
+<code>RuntimeException</code> (por ejemplo,
+<code>ArrayIndexOutOfBoundsException</code> y <code>NullPointerException</code></li>
+</ul></li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org0e729e5" class="outline-3">
+<h3 id="org0e729e5">Controlador de excepciones en <b>Java</b></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Igual que los de <b>C++</b>, excepto que todas las capturas requieren un
+parámetro con nombre y todos los parámetros deben ser descendientes
+de <code>Throwable</code></li>
+<li>Sintaxis de la cláusula try es exactamente la de <b>C++</b></li>
+<li>Las excepciones son lanzadas con un <code>throw</code>, al igual que en <b>C++</b>,
+pero con frecuencia incluye el operador <code>new</code> para crear el objeto,
+como en: <code>throw new MiExcepción ();</code></li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgdf6b936" class="outline-3">
+<h3 id="orgdf6b936">Vinculando Excepciones a Manejadores</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Asociar una excepción a un controlador es más simple en <b>Java</b> que en <b>C++</b>
+<ul>
+<li>Una excepción se liga al  primer controlador con un parámetro de la misma clase que el objeto lanzado o en un ancestro de ella.</li>
+</ul></li>
+<li>Una excepción puede ser manejada y relanza mediante la inclusión de un <code>throw</code> en el controlador (un controlador también podría lanzar una excepción diferente)</li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org80997e9" class="outline-3">
+<h3 id="org80997e9">Vinculando Excepciones a Manejadores</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Si no se encuentra ningún controlador en el constructor del <code>try</code>,
+la búsqueda continúa en el <code>try</code> más cercano que lo contenga, etc.</li>
+<li>Si no se encuentra ningún controlador en el método, la excepción se propaga a quien haya llamado al método</li>
+<li>Si no se encuentra un controlador (en todo el camino hasta el <code>main</code>), el programa termina.</li>
+<li>Para asegurar que todas las excepciones sean capturadas, un
+controlador que captura todas las excepciones, puede ser incluido en cualquier construcción <code>try</code>
+<ul>
+<li>Sólo tiene que utilizar un parámetro <code>Exception class</code></li>
+<li>Por supuesto, tiene que estar en el último <code>try</code>.</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgbbc9453" class="outline-3">
+<h3 id="orgbbc9453">Excepciones chequadas y no chequeadas</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>La cláusula throw de Java es bastante diferente de la cláusula throw de <b>C++</b></li>
+<li>Excepciones de la clases <code>error</code>  y <code>RuntimeException</code> y todos sus
+descendientes se llaman excepciones no chequeadas</li>
+<li>Todas las demás excepciones se llaman excepciones chequeadas</li>
+<li>Las excepciones chequeadas que pueden ser lanzadas por un método podrán ser:
+<ul>
+<li>Enumerados en la cláusula <code>throw</code> , o</li>
+<li>Manejado en el método</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgd4716e1" class="outline-3">
+<h3 id="orgd4716e1">Otras Decisiones de Diseño</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Un método no puede declarar más excepciones en su cláusula <code>throws</code>
+que las que el método sobrescribe</li>
+<li>Un método que llama a otro método que enumera una excepción chequeada en su cláusula <code>throws</code> tiene tres alternativas para hacer frente a esa excepción:
+<ul>
+<li>Capturar y manejar la excepción</li>
+<li>Detectar la excepción y lanzar una excepción que aparece en su propia cláusula <code>throws</code></li>
+<li>Declararla en su cláusula <code>throws</code> y no manejarla</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org981a23b" class="outline-3">
+<h3 id="org981a23b">La Cláusula <code>finally</code></h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Puede aparecer al final de una construcción <code>try</code></li>
+
+<li>Forma:</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="C">
+finally {
+...
+}</pre>
+
+</div>
+
+<ul>
+<li>Propósito: Especificar el código que se va a ejecutar, independientemente de lo que suceda en la construcción <code>try</code></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org8f777b8" class="outline-3">
+<h3 id="org8f777b8">Ejemplo</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Una construción <code>try</code>  con una cláusula <code>finally</code> pueda ser usada
+fuera del manejo de excepción:</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="C">
+try {
+		for (index = 0; index &lt; 100; index++) {
+			…
+			if (…) {
+				return;
+			}  //** end of if
+	}  //** end of try clause
+	finally {
+		…
+	}  //** end of try construct</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9c97f65" class="outline-3">
+<h3 id="org9c97f65">Aserciones</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Sentencias en el programa que declaran una expresión booleana en relación con el estado actual de la computación.</li>
+<li>Cuando se evalua verdadera no pasa nada.</li>
+<li>Cuando se evalua falsa una excepción es lanzada <code>AssertionError</code></li>
+<li>Se puede desactivar durante el tiempo de ejecución sin modificar el programa o recompilarlo</li>
+<li>Dos formas
+<ul>
+<li>assert: condition;</li>
+<li>assert: condición: expresión;</li>
+</ul></li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/fai.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org728fe43" class="outline-2">
+<h2 id="org728fe43">Introducción a Manejo de Eventos</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9960665" class="outline-3">
+<h3 id="org9960665">Introducción a Manejo de Eventos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Un <i>evento</i> es creado por una acción externa tal como una interacción con el usuario a través de una interfaz gráfica de usuario.</li>
+<li>El <i>controlador de eventos</i> es un segmento de código que se llama en respuesta a un evento.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org0b44a05" class="outline-3">
+<h3 id="org0b44a05">Componentes Swing GUI de Java</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><i>Text box</i> es un objeto de la clase <code>JTextField</code></li>
+<li><i>radio button</i> es un objeto de la clase <code>JRadioButton</code></li>
+<li>el <i>display</i> del applet es un marco, una estructura multicapa.</li>
+<li>un panel de contenido es una capa, en donde los applets ponen su salida</li>
+<li>Los componentes de la GUI se pueden colocar en un marco.</li>
+<li>objetos controladores de distribución se utilizan para controlar la ubicación de los componentes.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgb4fd609" class="outline-3">
+<h3 id="orgb4fd609">El Modelo de Eventos de Java</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>interacciones del usuario con componentes GUI crean eventos que
+pueden ser capturadas por los controladores de eventos, llamados
+<i>detectores de eventos</i></li>
+<li>Un generador de eventos le dice a un detector de un evento mediante el envío de un mensaje</li>
+<li>Una interfaz se utiliza para hacer que los métodos de gestión de eventos se ajusten a un protocolo estándar</li>
+<li>Una clase que implementa un detector debe implementar una interfaz para el detector.</li>
+</ul>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgf1ecde4" class="outline-3">
+<h3 id="orgf1ecde4">Clases de Eventos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li>Clases de Eventos Semántios
+<ul>
+<li><code>ActionEvent</code></li>
+<li><code>ItemEventp</code></li>
+<li><code>TextEvent</code></li>
+</ul></li>
+<li>Clases de eventos de bajo nivel</li>
+<li><code>ComponentEvent</code></li>
+<li><code>KeyEvent</code></li>
+<li><code>MouseEvent</code></li>
+<li><code>MouseMotionEvent</code></li>
+<li><code>FocusEvent</code></li>
+</ul>
+
+
+</article>
+
+</slide>
 
 </slide>
 <slide class="backdrop"></slide>
