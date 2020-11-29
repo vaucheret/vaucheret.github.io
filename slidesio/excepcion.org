@@ -70,7 +70,7 @@
 - ¿Cómo y donde los manejadores de excepciones son especificados y
   cual es su alcance?
 - ¿Como una ocurrencia de excepción se liga a un manejador de excepción?
-- ¿De dónde continuar la ejecución, en todo caso, después de que un
+- ¿Dónde debe continuar la ejecución, en todo caso, después de que un
   controlador de excepciones completa su ejecución?
 - ¿Cómo se especifican las excepciones definidas por el usuario?
 
@@ -135,6 +135,9 @@ exception_name | others
   propaga y que no lo maneja).
 
 ** Otras decisiones de diseño
+  :PROPERTIES:
+  :ARTICLE:  smaller
+  :END:
 - Excepciones definidas por el usuario
 #+BEGIN_SRC ada
 ecxeption_name_list : exception;
@@ -197,8 +200,8 @@ catch (formal parameter) {
 - El parámetro formal puede ser ($\ldots$), en cuyo caso maneja todas
   las excepciones que no han sido manejadas.
 ** Lanzar Excepciones
-- Las excepciones son lanzadas explícitamente por la sentencia ~trow [expression];~
-- Un ~trow~ sin operandos sólo puede aparecer en un controlador;
+- Las excepciones son lanzadas explícitamente por la sentencia ~throw [expression];~
+- Un ~throw~ sin operandos sólo puede aparecer en un controlador;
   cuando aparece, simplemente relanza la excepción, que a
   continuación se maneja en otro lado.
 - El tipo de la expresión desambigua  cual manejador corresponde.
