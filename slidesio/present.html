@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<!-- 2020-11-30 lun 03:17 -->
+<meta  charset="utf-8" />
+<meta  htto-equiv="X-UA-Compatible" content="chrome=1" />
+<meta  name="generator" content="Org-mode with org-ioslide" />
+<meta  name="author" content="Eric Schulte" />
+
+
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--This one seems to work all the time, but really small on ipad-->
+<!--<meta name="viewport" content="initial-scale=0.4">-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" media="all" href="theme/css/default.css" />
+<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css" />
+<link rel="stylesheet" media="all" href="theme/css/small-icon.css" />
+<base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+<script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+
+   <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+<script src="js/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML,local/local" type="text/javascript"></script>
+</head>
+<body style="opacity: 0">
+<slides class="layout-widescreen">
+<slide class="title-slide segue nobackground">
+       <aside class="gdbar"><img src="images/emacs-icon.png"></aside>
+       <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+       <hgroup class="auto-fadein">
+         <h1 data-config-title><!-- populated from slide_config.json --></h1>
+         <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+         <p data-config-presenter><!-- populated from slide_config.json --></p>
+       </hgroup>
+    </slide>
+  
+
+<slide id="sec-1"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9831827" class="outline-2">
+<h2 id="org9831827"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> One &#x2013; intro&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hello">hello</span>&#xa0;<span class="world">world</span></span></h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-1">
+<p>
+Simple presentations run by Emacs
+</p>
+<ul>
+<li>run in Emacs</li>
+<li>uses Org-mode markup</li>
+<li>looks pretty good</li>
+</ul>
+
+
+</article>
+
+</slide>
+<slide id="sec-1-1"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgeda51e3" class="outline-3">
+<h3 id="orgeda51e3"><span class="section-number-3">1.1</span> with subheadings</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-1-1">
+<p>
+and some other stuff
+</p>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-2"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgf325ad0" class="outline-2">
+<h2 id="orgf325ad0"><span class="section-number-2">2</span> <span class="done DONE">DONE</span> Two &#x2013; source code</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-2">
+<p>
+Call <code>epresent-run</code> to present an Org-mode buffer.
+</p>
+
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="emacs-lisp">
+;;;###autoload
+(defun epresent-run ()
+  (interactive)
+  (unless (eq major-mode 'org-mode)
+    (error "EPresent can only be used from Org Mode"))
+  (setq epresent--org-buffer (current-buffer))
+  (epresent--get-frame)
+  (epresent-mode)
+  (epresent-top))</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-3"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org157ec62" class="outline-2">
+<h2 id="org157ec62"><span class="section-number-2">3</span> Three &#x2013; LaTeX images</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-3">
+<p>
+Kinetic Energy:
+</p>
+
+\begin{equation*}
+  e = \frac{1}{2}mv^2
+\end{equation*}
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-4"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgc632dbe" class="outline-2">
+<h2 id="orgc632dbe"><span class="section-number-2">4</span> Four &#x2013; tables</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-4">
+<p>
+Squares
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+
+<tr>
+<td class="right">2</td>
+<td class="right">4</td>
+</tr>
+
+<tr>
+<td class="right">3</td>
+<td class="right">9</td>
+</tr>
+
+<tr>
+<td class="right">4</td>
+<td class="right">16</td>
+</tr>
+
+<tr>
+<td class="right">5</td>
+<td class="right">25</td>
+</tr>
+
+<tr>
+<td class="right">9</td>
+<td class="right">81</td>
+</tr>
+</tbody>
+</table>
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-5"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org7414793" class="outline-2">
+<h2 id="org7414793"><span class="section-number-2">5</span> Five &#x2013; images</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-5">
+<p>
+in-line image display
+<img src="org-mode-unicorn.png" alt="org-mode-unicorn.png" />
+</p>
+
+
+</article>
+
+</slide>
+</slide>
+<slide id="sec-6"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgdb48e47" class="outline-2">
+<h2 id="orgdb48e47"><span class="section-number-2">6</span> Six &#x2013; executing source code</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-6">
+<ol>
+<li><p>
+Press <code>c</code> to move to the next code block.
+</p>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="sh">
+date</pre>
+
+</div></li>
+
+<li><p>
+Press <code>C</code> to move to the previous code block.
+</p>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="sh">
+uname -a</pre>
+
+</div></li>
+
+<li><p>
+When a code block is executed with <code>C-c C-c</code>, the page is refreshed
+to show the results.
+</p>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="sh">
+echo "in $(pwd)"</pre>
+
+</div></li>
+</ol>
+
+
+</article>
+
+</slide>
+<slide class="backdrop"></slide>
+</slides> 
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body> 
+
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Conceptos Avanzados en Lenguajes de Programación</title>
+<meta name="author" content="(Administración de Almacenamient)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="../reveal.js/dist/theme/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="./local.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<meta name="description" content="Org-Reveal Introduction.">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Administración de Almacenamient</h2><h2 class="date">2016-08-29 lun 00:00</h2><p class="date">Created: 2020-12-08 mar 17:05</p>
+</section>
+
+
+
+<section>
+<section id="slide-orga35d0a8">
+<h2 id="orga35d0a8"><span class="section-number-2">1</span> Introducción</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org58c0031">
+<h3 id="org58c0031"><span class="section-number-3">1.1</span> Tiempo de Vida del Objeto y Ligadura</h3>
+<ul>
+<li>Creación del objeto</li>
+<li>Creación de las ligaduras</li>
+<li>Referencias a variables, subrutinas, tipos, todos los cuales usan
+las ligaduras</li>
+<li>Desactivación y reactivación de ligaduras que pueden estar
+temporariamente en desuso</li>
+<li>Destrucción de ligaduras</li>
+<li>Destrucción de los objetos</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org68d4e54">
+<h3 id="org68d4e54"><span class="section-number-3">1.2</span> Tiempos de vida distintos</h3>
+<ul>
+<li>Referencias colgadas
+<ul>
+<li>La ligadura sobrevive al objeto</li>
+
+</ul></li>
+<li>Almacenamiento sin referencias (basura)
+<ul>
+<li>El objeto sobrevive a su ligadura</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org380061c">
+<h3 id="org380061c"><span class="section-number-3">1.3</span> Mecanismos de alojamiento</h3>
+<ul>
+<li>Estático
+<ul>
+<li>A los objetos se les da una dirección absoluta que es retenida a
+través de la ejecución del programa</li>
+
+</ul></li>
+<li>Basado en Pila
+<ul>
+<li>Los objetos son alojados y desalojados en un orden LIFO</li>
+
+</ul></li>
+<li><i>Heap</i>
+<ul>
+<li>Los objetos pueden ser ser alojados y desalojados en momentos
+arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6ac558f">
+<h3 id="org6ac558f"><span class="section-number-3">1.4</span> Alojamiento Estático</h3>
+<ul>
+<li>Código</li>
+<li>Variables Globales</li>
+<li>variables <i>static</i> u <i>own</i></li>
+<li>constantes explícitas</li>
+<li>tablas de soporte en tiempo de ejecución</li>
+
+</ul>
+
+</section>
+<section id="slide-org3fc46bb">
+<h4 id="org3fc46bb"><span class="section-number-4">1.4.1</span> Subrutinas</h4>
+
+<div id="org80562fd" class="figure">
+<p><img src="aljamestaticosub.png" alt="aljamestaticosub.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfc8f81f">
+<h3 id="orgfc8f81f"><span class="section-number-3">1.5</span> Alojamiento basado en Pila</h3>
+<ul>
+<li>Pila central para:
+<ul>
+<li>parámetros</li>
+<li>variables locales</li>
+<li>datos temporales</li>
+
+</ul></li>
+<li>Porqué una Pila?
+<ul>
+<li>aloja espacio para rutinas recursivas (no necesario en FORTRAN sin recursión)</li>
+<li>reuso del espacio (En todos los lenguajes)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orga0049c8">
+<h4 id="orga0049c8"><span class="section-number-4">1.5.1</span> Subrutinas</h4>
+
+<div id="org77466d7" class="figure">
+<p><img src="alojpilasubr.png" alt="alojpilasubr.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org7f1522c">
+<h4 id="org7f1522c"><span class="section-number-4">1.5.2</span> Alojamiento basado en Pila</h4>
+<ul>
+<li>Contenido de un Registro de Activación
+<ul>
+<li>Argumentos y Resultado</li>
+<li>variables locales</li>
+<li>Datos temporales</li>
+<li>Datos de mantenimiento (registros guardados, número de lineas
+estático, links etc)</li>
+
+</ul></li>
+<li>A las variables locales y Argumentos se les asigna un desplazamiento
+FIJO (a partir del puntero de pila o puntero de registro de
+activación) en tiempo de compilación.</li>
+
+</ul>
+
+</section>
+<section id="slide-org283c408">
+<h4 id="org283c408"><span class="section-number-4">1.5.3</span> Alojamiento basado en Pila</h4>
+<ul>
+<li>El mantenimiento de la Pila es responsabilidad de la <i>secuencia de
+llamado</i> del llamador, y de el <i>prologo</i> y el <i>epilogo</i> de la
+subrutina llamada.
+<ul>
+<li>se ahorra espacio colocando todo lo posible en el <i>prologo</i> y en
+el <i>epilogo</i></li>
+<li>se puede ahorrar tiempo
+<ul>
+<li>colocando material en el llamador  o</li>
+<li>combinado lo que es conocido en ambos lugares (optimización interprocedural)</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org94d478b">
+<h3 id="org94d478b"><span class="section-number-3">1.6</span> Alojamiento basado en <i>Heap</i></h3>
+<ul>
+<li>Alojamiento Dinámico</li>
+
+</ul>
+
+
+<div id="org68fb545" class="figure">
+<p><img src="alojdinheap.png" alt="alojdinheap.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5ca439e">
+<h4 id="org5ca439e"><span class="section-number-4">1.6.1</span> Alojamiento basado en <i>Heap</i></h4>
+<ul>
+<li>Muchas posibles estrategias</li>
+<li>compromiso entre espacio y tiempo</li>
+<li>Fragmentación
+<ul>
+<li>interna (se aloja un bloque que es mas grande que el requerido
+para el objeto)</li>
+<li>externa (cuando los bloques asignados para los objetos de datos
+estan distribuidos en todo el heap de tal modo que el espacio
+restante esta compuesto de muchos bloques muy pequeños. Hay
+suficiente espacio pero ninguna pieza suficientemente grande para
+alojar un nuevo requerimiento.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org91d05fe">
+<h4 id="org91d05fe"><span class="section-number-4">1.6.2</span> Alojamiento basado en <i>Heap</i></h4>
+<ul>
+<li>Lista ligado de bloques libres</li>
+<li>Algoritmos de asignación
+<ul>
+<li><i>First fit</i> selecciona el primer bloque de la lista que es
+suficientemente grande para satisfacer el requerimiento.</li>
+<li><i>Best fit</i> busca la lista entera para encontrar el bloque mas
+chico suficientemente grande para alojar el objeto</li>
+
+</ul></li>
+<li>Varias listas libres separadas por tamaño. La división puede ser
+estática o dinámica
+<ul>
+<li><i>Buddy System</i> 
+<ul>
+<li>potencia de 2. si un bloque de \(2^k\) se necesita y ninguno es
+diponible se divide uno de \(2^{k+1}\)</li>
+
+</ul></li>
+<li><i>Fibonacci heap</i>
+<ul>
+<li>numeros de fibonacci para los tamaños estandars</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+<section id="slide-org84ae954">
+<h4 id="org84ae954"><span class="section-number-4">1.6.3</span> Alojamiento basado en <i>Heap</i></h4>
+<ul>
+<li>El problema de referencias sueltas (dangling) son debidas a
+<ul>
+<li>desalojo explícito de objetos del <i>heap</i>
+<ul>
+<li>solo en lenguajes con desalojo explícito</li>
+
+</ul></li>
+<li>desalojo implícito de objetos elaborados</li>
+
+</ul></li>
+<li>Dos mecanismos de implementación para manejar referencias sueltas:
+<ul>
+<li>Lápidas (<i>Tombestones</i>)</li>
+<li>Llaves y cerrojos (<i>Locks and Keys</i>)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org32697bc">
+<h4 id="org32697bc"><span class="section-number-4">1.6.4</span> Alojamiento basado en <i>Heap</i></h4>
+<ul>
+<li><i>Tombstones</i></li>
+
+</ul>
+
+
+<div id="orgebfa347" class="figure">
+<p><img src="tombstones.png" alt="tombstones.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4060bfa">
+<h4 id="org4060bfa"><span class="section-number-4">1.6.5</span> Alojamiento basado en <i>Heap</i></h4>
+<ul>
+<li><i>Locks and Keys</i></li>
+
+</ul>
+
+
+<div id="org13ae1c6" class="figure">
+<p><img src="lockskeys.png" alt="lockskeys.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgec83102">
+<h4 id="orgec83102"><span class="section-number-4">1.6.6</span> Recolección de Basura</h4>
+<ul>
+<li><i>garbage collection</i>
+<ul>
+<li>esencial en lenguajes funcionales y lógicos</li>
+<li>se volvió popular en lenguajes imperativos</li>
+
+</ul></li>
+<li>Contador de referencias</li>
+
+</ul>
+
+
+<div id="org039b236" class="figure">
+<p><img src="contadref.png" alt="contadref.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgfc78fe4">
+<h4 id="orgfc78fe4"><span class="section-number-4">1.6.7</span> Trazado de la colección</h4>
+<ul>
+<li>marcado y barrido (<i>mark and Sweep</i>
+<ol>
+<li>El recolector camina a través del <i>heap</i> marcando todo bloque como
+"usable" tentativamente</li>
+<li>Comenzando de punteros de afuera del <i>heap</i>, recursivamente
+explora todos las estructuras de datos ligadas, marcando cada
+bloque nuevo descubierto como "usado"</li>
+<li>El recolector recorre de nuevo el <i>heap</i>, moviendo todo bloque
+aún marcado como "usable" a la lista de bloques libres.</li>
+
+</ol></li>
+
+</ul>
+
+</section>
+<section id="slide-org135a3fa">
+<h4 id="org135a3fa"><span class="section-number-4">1.6.8</span> Recolección de Basura</h4>
+<ul>
+<li>Reversión de puntero</li>
+
+</ul>
+
+
+<div id="org3cf539e" class="figure">
+<p><img src="reversepoint.png" alt="reversepoint.png" /> 
+</p>
+</div>
+
+</section>
+<section id="slide-org2d81ebd">
+<h4 id="org2d81ebd"><span class="section-number-4">1.6.9</span> Recolección de Basura</h4>
+<ul>
+<li>Otras alternativas
+<ul>
+<li>Parar y Copiar</li>
+<li>Recolección Generacional</li>
+<li>Recolección Conservadora</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<p> Created by yjwen. </p>
+<script src="../reveal.js/dist/reveal.js"></script>
+<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+<script src="../reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown,RevealNotes],
+width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+});
+</script>
+</body>
+</html>
