@@ -7,9 +7,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -18,79 +18,30 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../reveal.js-master/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2018-03-19 lun 00:00</h2><p class="date">Created: 2018-03-19 lun 14:07</p>
-</section>
-<section id="table-of-contents">
-<nav id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#/slide-org03983ad">Lenguajes Declarativos</a>
-<ul>
-<li><a href="#/slide-org8fbe18a">Características</a></li>
-<li><a href="#/slide-org6d04675">Lenguajes</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org039acb4">Prolog</a>
-<ul>
-<li><a href="#/slide-org5bf6e09">Programación en Lógica</a></li>
-<li><a href="#/slide-org258b40e">Ejemplo fibonacci</a>
-<ul>
-<li><a href="#/slide-org19210f8">sucesion de fibonacci</a></li>
-<li><a href="#/slide-orgd13d432">Conejos</a></li>
-<li><a href="#/slide-orga161d4d">programa</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org386772a">Sintaxis</a>
-<ul>
-<li><a href="#/slide-orgc03a937">Atomos</a></li>
-<li><a href="#/slide-org57bfecf">Números</a></li>
-<li><a href="#/slide-orgfcd1d23">Variables</a></li>
-<li><a href="#/slide-org4b97c49">Términos Complejos</a></li>
-</ul>
-</li>
-<li><a href="#/slide-orga1a26a1">Listas</a></li>
-<li><a href="#/slide-org6a0d6aa">Ejemplo Autómata Finito</a>
-<ul>
-<li><a href="#/slide-org2e3e12a">Código</a></li>
-<li><a href="#/slide-org748c926">Código</a></li>
-<li><a href="#/slide-org58b95ba">Código</a></li>
-<li><a href="#/slide-orgc19384a">Arbol SLD</a></li>
-<li><a href="#/slide-orgec89267">Arbol SLD</a></li>
-<li><a href="#/slide-org95fc6b9">Arbol SLD</a></li>
-<li><a href="#/slide-orge49053d">Arbol SLD</a></li>
-<li><a href="#/slide-orgba8c2bc">Arbol SLD</a></li>
-<li><a href="#/slide-org05907eb">\(Tp^n\)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
+<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2016-01-11 lun 00:00</h2><p class="date">Created: 2021-03-16 mar 13:36</p>
 </section>
 
+
+
 <section>
-<section id="slide-org03983ad">
-<div class="slide-header"></div>
-<h2 id="org03983ad">Lenguajes Declarativos</h2>
-<div class="outline-text-2" id="text-org03983ad">
-</div><div class="slide-footer"></div>
+<section id="slide-org0b637c3">
+<h2 id="org0b637c3">Lenguajes Declarativos</h2>
+<div class="outline-text-2" id="text-org0b637c3">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org8fbe18a">
-<div class="slide-header"></div>
-<h3 id="org8fbe18a">Características</h3>
+<section id="slide-orgbfdc3fb">
+<h3 id="orgbfdc3fb">Características</h3>
 <ul>
 <li class="fragment roll-in">Programa es Lógica + Control (Kowalski)</li>
 
@@ -106,44 +57,53 @@
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org6d04675">
-<div class="slide-header"></div>
-<h3 id="org6d04675">Lenguajes</h3>
+<section id="slide-org2875a0d">
+<h3 id="org2875a0d">Lenguajes</h3>
 <ul>
-<li>Prolog
+<li class="fragment roll-in">Relacional (Prolog)
 <ul>
-<li>Ciao Prolog  <a href="http://ciao-lang.org/">http://ciao-lang.org/</a></li>
+<li>Ciao Prolog  <a href="http://ciao-lang.org">http://ciao-lang.org</a></li>
 <li>Swi Prolog   <a href="http://www.swi-prolog.org/">http://www.swi-prolog.org/</a></li>
 
 </ul></li>
-<li>Scheme and Lisp <a href="http://racket-lang.org/">http://racket-lang.org/</a></li>
+<li class="fragment roll-in">Funcional
+<ul>
+<li>scheme (lisp) <a href="https://racket-lang.org/">https://racket-lang.org/</a></li>
+<li>erlang (concurrency)
+<ul>
+<li><a href="https://www.erlang.org/">https://www.erlang.org/</a></li>
+<li><a href="https://adoptingerlang.org/">https://adoptingerlang.org/</a></li>
+
+</ul></li>
+
+</ul></li>
+<li class="fragment roll-in">Typed declarative languages
+<ul>
 <li>Haskell
 <a href="https://www.haskell.org/">https://www.haskell.org/</a></li>
 <li>Mercury
-<a href="https://mercurylang.org/">https://mercurylang.org/</a></li>
+<a href="https://mercurylang.org">https://mercurylang.org</a></li>
+
+</ul></li>
 
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org039acb4">
-<div class="slide-header"></div>
-<h2 id="org039acb4">Prolog</h2>
-<div class="outline-text-2" id="text-org039acb4">
-</div><div class="slide-footer"></div>
+<section id="slide-org779fcd1">
+<h2 id="org779fcd1">Prolog</h2>
+<div class="outline-text-2" id="text-org779fcd1">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org5bf6e09">
-<div class="slide-header"></div>
-<h3 id="org5bf6e09">Programación en Lógica</h3>
+<section id="slide-org6377316">
+<h3 id="org6377316">Programación en Lógica</h3>
 <ul>
 <li class="fragment roll-in">Cláusulas de Horn</li>
 <li class="fragment roll-in">Resolución SLD (basado en resolución de Robinson)</li>
@@ -151,19 +111,18 @@
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org258b40e">
-<div class="slide-header"></div>
-<h3 id="org258b40e">Ejemplo fibonacci</h3>
-<div class="outline-text-3" id="text-org258b40e">
-</div><div class="slide-footer"></div>
+<section id="slide-orgdf10af1">
+<h3 id="orgdf10af1">Ejemplo fibonacci</h3>
+<div class="outline-text-3" id="text-orgdf10af1">
+</div>
 </section>
-<section id="slide-org19210f8">
-<div class="slide-header"></div>
-<h4 id="org19210f8">sucesion de fibonacci</h4>
+</section>
+<section>
+<section id="slide-orge2053f7">
+<h4 id="orge2053f7">sucesion de fibonacci</h4>
 <p>
 En matemáticas, la sucesión de Fibonacci (a veces llamada erróneamente
 serie de Fibonacci) es la siguiente sucesión infinita de números
@@ -180,6 +139,9 @@ La sucesión comienza con los números 1 y 1 y a partir de estos,
 recurrencia que la define.
 </p>
 
+</section>
+<section id="slide-orge2053f7-split">
+
 <p>
 A los elementos de esta sucesión se les llama números de
 Fibonacci. Esta sucesión fue descrita en Europa por Leonardo de Pisa,
@@ -192,11 +154,11 @@ girasoles, en las inflorescencias del brécol romanesco y en la
 configuración de las piñas de las coníferas.
 </p>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgd13d432">
-<div class="slide-header"></div>
-<h4 id="orgd13d432">Conejos</h4>
+</section>
+<section>
+<section id="slide-org9d95c4f">
+<h4 id="org9d95c4f">Conejos</h4>
 <p>
 una forma de exponer la sucesión de fibonacci es presentando el
 crecimiento de una población de conejos con las siguientes reglas:
@@ -209,27 +171,27 @@ conejo joven.</li>
 
 </ul>
 
-<table>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-right">
+<col  class="org-right" />
 
-<col  class="org-right">
+<col  class="org-right" />
 
-<col  class="org-right">
+<col  class="org-right" />
 
-<col  class="org-right">
+<col  class="org-right" />
 
-<col  class="org-right">
+<col  class="org-right" />
 
-<col  class="org-right">
+<col  class="org-right" />
 
-<col  class="org-right">
+<col  class="org-right" />
 
-<col  class="org-right">
+<col  class="org-right" />
 </colgroup>
 <thead>
 <tr>
@@ -287,34 +249,32 @@ conejo joven.</li>
 
 
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orga161d4d">
-<div class="slide-header"></div>
-<h4 id="orga161d4d">programa</h4>
+</section>
+<section>
+<section id="slide-orgf45884f">
+<h4 id="orgf45884f">programa</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog">:- <span style="color: #da70d6;">module</span>(fibonacci,<span style="color: #a020f0;">[</span><span style="color: #0000ff;">f/2</span><span style="color: #a020f0;">]</span>).
+<pre  class="src src-prolog"><code trim>:- <span style="color: #b0c4de;">module</span>(fibonacci,<span style="color: #00ffff;">[</span><span style="color: #87cefa;">f/2</span><span style="color: #00ffff;">]</span>).
 
 :- use_package(fsyntax).
 :- fun_eval arith(true).
 :- fun_eval defined(true).
 
 
-<span style="color: #0000ff;">f</span>(0) := 1.
-<span style="color: #0000ff;">f</span>(1) := 1.
-<span style="color: #0000ff;">f</span>(<span style="color: #b8860b;">N</span>) :=  f(<span style="color: #b8860b;">N</span> - 1) + f(<span style="color: #b8860b;">N</span> - 2) :- <span style="color: #b8860b;">N</span> &gt;= 2.
-</pre>
+<span style="color: #87cefa;">f</span>(0) := 1.
+<span style="color: #87cefa;">f</span>(1) := 1.
+<span style="color: #87cefa;">f</span>(<span style="color: #eedd82;">N</span>) :=  f(<span style="color: #eedd82;">N</span> - 1) + f(<span style="color: #eedd82;">N</span> - 2) :- <span style="color: #eedd82;">N</span> &gt;= 2.
+</code></pre>
 </div>
 
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org386772a">
-<div class="slide-header"></div>
-<h3 id="org386772a">Sintaxis</h3>
+<section id="slide-org172d1cc">
+<h3 id="org172d1cc">Sintaxis</h3>
 <p>
 Términos:
 </p>
@@ -331,77 +291,81 @@ los caracteres válidos son:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #b8860b;">A</span> , <span style="color: #b8860b;">B</span>  ...  <span style="color: #b8860b;">Z</span>
-a , b  ...  <span style="color: #0000ff;">z</span>
+<pre  class="src src-prolog"><code trim><span style="color: #eedd82;">A</span> , <span style="color: #eedd82;">B</span>  ...  <span style="color: #eedd82;">Z</span>
+a , b  ...  <span style="color: #87cefa;">z</span>
 + , - , * , / , &lt; , &gt; , = , : , . , &amp; , ~
-</pre>
+</code></pre>
 </div>
 
 
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgc03a937">
-<div class="slide-header"></div>
-<h4 id="orgc03a937">Atomos</h4>
+</section>
+<section>
+<section id="slide-org7b5df83">
+<h4 id="org7b5df83">Atomos</h4>
 <p>
 Un átomo es:
 </p>
-<ol>
-<li>Una cadena de caracteres de letras mayúsculas, minusculas, digitos
-y guión bajo, que comience con una letra minúscula.</li>
-
-</ol>
-<p>
+<ul>
+<li><p>
+Una cadena de caracteres de letras mayúsculas, minusculas, digitos
+y guión bajo, que comience con una letra minúscula.
 ejemplos:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog">casa trabajo alberto eLLio x21
-</pre>
-</div>
-<ol>
+<pre  class="src src-prolog"><code trim>casa trabajo alberto eLLio x21
+</code></pre>
+</div></li>
 <li><p>
 Una secuencia arbitraria de caracteres encerrado en comillas
- simples.
+simples.
 ejemplos:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #bc8f8f;">'Alberto'</span> <span style="color: #bc8f8f;">'Dolar21'</span> <span style="color: #bc8f8f;">'EL Paso'</span> <span style="color: #bc8f8f;">'&amp;^%si'</span>
-</pre>
+<pre  class="src src-prolog"><code trim><span style="color: #ffa07a;">'Alberto'</span> <span style="color: #ffa07a;">'Dolar21'</span> <span style="color: #ffa07a;">'EL Paso'</span> <span style="color: #ffa07a;">'&amp;^%si'</span>
+</code></pre>
 </div></li>
-<li>una cadena de solo caracteres especiales.</li>
 
-</ol>
+</ul>
+
+</section>
+<section id="slide-org7b5df83-split">
+
+<ul>
+<li><p>
+una cadena de solo caracteres especiales. 
+ejemplos
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim>@= ===&gt; :- 
+</code></pre>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3418303">
+<h4 id="org3418303">Números</h4>
 <p>
 ejemplos
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog">@= ===&gt; :- 
-</pre>
+<pre  class="src src-prolog"><code trim>-8 -1 34 23.98 10001 1697.877443  
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org57bfecf">
-<div class="slide-header"></div>
-<h4 id="org57bfecf">Números</h4>
-<p>
-ejemplos
-</p>
-<div class="org-src-container">
-
-<pre  class="src src-prolog">-8 -1 34 23.98 10001 1697.877443  
-</pre>
-</div>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgfcd1d23">
-<div class="slide-header"></div>
-<h4 id="orgfcd1d23">Variables</h4>
+<section>
+<section id="slide-org960eb07">
+<h4 id="org960eb07">Variables</h4>
 <p>
 Una variable es una cadena de caracteres de letras mayúsculas,
 minúsculas, digitos, guión bajo, que comience con una letra mayúscula
@@ -410,15 +374,15 @@ ejemplos:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #b8860b;">X</span> <span style="color: #b8860b;">Y</span> <span style="color: #b8860b;">Variable</span> <span style="color: #b8860b;">_etiqueta</span> <span style="color: #b8860b;">X_526</span> <span style="color: #b8860b;">List</span> <span style="color: #b8860b;">HEAD</span>
-</pre>
+<pre  class="src src-prolog"><code trim><span style="color: #eedd82;">X</span> <span style="color: #eedd82;">Y</span> <span style="color: #eedd82;">Variable</span> <span style="color: #eedd82;">_etiqueta</span> <span style="color: #eedd82;">X_526</span> <span style="color: #eedd82;">List</span> <span style="color: #eedd82;">HEAD</span>
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org4b97c49">
-<div class="slide-header"></div>
-<h4 id="org4b97c49">Términos Complejos</h4>
+</section>
+<section>
+<section id="slide-org9c42b3f">
+<h4 id="org9c42b3f">Términos Complejos</h4>
 <p>
 Un término se compone de un functor seguido de cero a N argumentos entre paréntesis y separados
 por comas. Cada argumento es un término.
@@ -430,26 +394,24 @@ ejemplos:
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">fecha</span>(12,octubre,2016)
-<span style="color: #0000ff;">animal_peligroso</span>(<span style="color: #bc8f8f;">'Leon'</span>)
-<span style="color: #0000ff;">arbol</span>(23,arbol(12,nil,nil),nil)
-</pre>
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">fecha</span>(12,octubre,2016)
+<span style="color: #87cefa;">animal_peligroso</span>(<span style="color: #ffa07a;">'Leon'</span>)
+<span style="color: #87cefa;">arbol</span>(23,arbol(12,nil,nil),nil)
+</code></pre>
 </div>
 
 
-<figure>
-<img src="compoundterms.png" alt="compoundterms.png">
+<div id="org0474947" class="figure">
+<p><img src="compoundterms.png" alt="compoundterms.png" />
+</p>
+</div>
 
-</figure>
 
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orga1a26a1">
-<div class="slide-header"></div>
-<h3 id="orga1a26a1">Listas</h3>
+<section id="slide-org08e7d3d">
+<h3 id="org08e7d3d">Listas</h3>
 <ul>
 <li class="fragment roll-in">.(1,.(2,.(3,.(4,[]))))   dos argumentos Cabeza y Cola ./2</li>
 <li class="fragment roll-in">[1|[2|[3|[4|[]]]]]    notacion alternativa [|]</li>
@@ -459,18 +421,16 @@ ejemplos:
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org6a0d6aa">
-<div class="slide-header"></div>
-<h3 id="org6a0d6aa">Ejemplo Autómata Finito</h3>
+<section id="slide-org1bf6f8b">
+<h3 id="org1bf6f8b">Ejemplo Autómata Finito</h3>
 
-<figure>
-<img src="automata.png" alt="automata.png">
-
-</figure>
+<div id="org2d7f126" class="figure">
+<p><img src="automata.png" alt="automata.png" />
+</p>
+</div>
 
 <ul>
 <li><p>
@@ -492,180 +452,184 @@ aabb, aa, bb, ababa
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org2e3e12a">
-<div class="slide-header"></div>
-<h4 id="org2e3e12a">Código</h4>
+</section>
+<section>
+<section id="slide-orgf581cc5">
+<h4 id="orgf581cc5">Código</h4>
 <p>
 El código en prolog que representa el autómata es
 </p>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">final</span>(s3).
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">final</span>(s3).
 
-<span style="color: #0000ff;">trans</span>(s1,a,s1).
-<span style="color: #0000ff;">trans</span>(s1,a,s2).
-<span style="color: #0000ff;">trans</span>(s1,b,s1).
-<span style="color: #0000ff;">trans</span>(s2,b,s3).
-<span style="color: #0000ff;">trans</span>(s3,b,s4).
+<span style="color: #87cefa;">trans</span>(s1,a,s1).
+<span style="color: #87cefa;">trans</span>(s1,a,s2).
+<span style="color: #87cefa;">trans</span>(s1,b,s1).
+<span style="color: #87cefa;">trans</span>(s2,b,s3).
+<span style="color: #87cefa;">trans</span>(s3,b,s4).
 
-<span style="color: #0000ff;">silent</span>(s2,s4).
-<span style="color: #0000ff;">silent</span>(s3,s1).
+<span style="color: #87cefa;">silent</span>(s2,s4).
+<span style="color: #87cefa;">silent</span>(s3,s1).
 
-</pre>
+</code></pre>
 </div>
 
-<figure>
-<img src="automata.png" alt="automata.png">
+<div id="orgf0e60e7" class="figure">
+<p><img src="automata.png" alt="automata.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org748c926">
-<div class="slide-header"></div>
-<h4 id="org748c926">Código</h4>
+</section>
+<section>
+<section id="slide-org55a508a">
+<h4 id="org55a508a">Código</h4>
 <p>
 el código que representa el reconocedor de las cadenas es
 </p>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">accepts_</span>(<span style="color: #b8860b;">State</span>,<span style="color: #a020f0;">[]</span>):-
-        final(<span style="color: #b8860b;">State</span>).
+<pre  class="src src-prolog"><code trim>
+<span style="color: #87cefa;">accepts_</span>(<span style="color: #eedd82;">State</span>,<span style="color: #00ffff;">[]</span>):-
+        final(<span style="color: #eedd82;">State</span>).
 
-<span style="color: #0000ff;">accepts_</span>(<span style="color: #b8860b;">State</span>,<span style="color: #a020f0;">[</span><span style="color: #b8860b;">X</span><span style="color: #a020f0;">|</span><span style="color: #b8860b;">Rest</span><span style="color: #a020f0;">]</span>):-
-        trans(<span style="color: #b8860b;">State</span>,<span style="color: #b8860b;">X</span>,<span style="color: #b8860b;">State1</span>),
-        accepts_(<span style="color: #b8860b;">State1</span>,<span style="color: #b8860b;">Rest</span>).
+<span style="color: #87cefa;">accepts_</span>(<span style="color: #eedd82;">State</span>,<span style="color: #00ffff;">[</span><span style="color: #eedd82;">X</span><span style="color: #00ffff;">|</span><span style="color: #eedd82;">Rest</span><span style="color: #00ffff;">]</span>):-
+        trans(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">X</span>,<span style="color: #eedd82;">State1</span>),
+        accepts_(<span style="color: #eedd82;">State1</span>,<span style="color: #eedd82;">Rest</span>).
 
-<span style="color: #0000ff;">accepts_</span>(<span style="color: #b8860b;">State</span>,<span style="color: #b8860b;">String</span>):-
-        silent(<span style="color: #b8860b;">State</span>,<span style="color: #b8860b;">State1</span>),
-        accepts_(<span style="color: #b8860b;">State1</span>,<span style="color: #b8860b;">String</span>).
+<span style="color: #87cefa;">accepts_</span>(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">String</span>):-
+        silent(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">State1</span>),
+        accepts_(<span style="color: #eedd82;">State1</span>,<span style="color: #eedd82;">String</span>).
 
-</pre>
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org58b95ba">
-<div class="slide-header"></div>
-<h4 id="org58b95ba">Código</h4>
+</section>
+<section>
+<section id="slide-org01952bd">
+<h4 id="org01952bd">Código</h4>
 <p>
 el código principal es 
 </p>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog">:- <span style="color: #da70d6;">module</span>(automata,<span style="color: #a020f0;">[</span><span style="color: #0000ff;">main/1</span><span style="color: #a020f0;">]</span>,<span style="color: #b8860b;">_</span>).
-:- <span style="color: #da70d6;">use_module</span>(library(iso_char)).
+<pre  class="src src-prolog"><code trim>
+:- <span style="color: #b0c4de;">module</span>(automata,<span style="color: #00ffff;">[</span><span style="color: #87cefa;">main/1</span><span style="color: #00ffff;">]</span>,<span style="color: #eedd82;">_</span>).
+:- use_module(library(iso_char)).
 
-<span style="color: #0000ff;">main</span>(<span style="color: #a020f0;">[</span><span style="color: #b8860b;">State</span>,<span style="color: #b8860b;">Chain</span><span style="color: #a020f0;">]</span>):-
-        ( accepts(<span style="color: #b8860b;">State</span>,<span style="color: #b8860b;">Chain</span>) <span style="color: #a020f0;">-&gt;</span> display(<span style="color: #bc8f8f;">'aceptada '</span>),nl
-        <span style="color: #a020f0;">;</span>
-            display(<span style="color: #bc8f8f;">'rechazada '</span>),nl
+<span style="color: #87cefa;">main</span>(<span style="color: #00ffff;">[</span><span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">Chain</span><span style="color: #00ffff;">]</span>):-
+        ( accepts(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">Chain</span>) <span style="color: #00ffff;">-&gt;</span> display(<span style="color: #ffa07a;">'aceptada '</span>),nl
+        <span style="color: #00ffff;">;</span>
+            display(<span style="color: #ffa07a;">'rechazada '</span>),nl
         ).
-<span style="color: #0000ff;">main</span>(<span style="color: #b8860b;">_</span>):- display(<span style="color: #bc8f8f;">'especificar estado y cadena '</span>),nl.
+<span style="color: #87cefa;">main</span>(<span style="color: #eedd82;">_</span>):- display(<span style="color: #ffa07a;">'especificar estado y cadena '</span>),nl.
 
-<span style="color: #0000ff;">accepts</span>(<span style="color: #b8860b;">State</span>,<span style="color: #b8860b;">String</span>):-
-        atom_chars(<span style="color: #b8860b;">String</span>, <span style="color: #b8860b;">Chars</span>),
-        accepts_(<span style="color: #b8860b;">State</span>,<span style="color: #b8860b;">Chars</span>).
+<span style="color: #87cefa;">accepts</span>(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">String</span>):-
+        atom_chars(<span style="color: #eedd82;">String</span>, <span style="color: #eedd82;">Chars</span>),
+        accepts_(<span style="color: #eedd82;">State</span>,<span style="color: #eedd82;">Chars</span>).
 
-</pre>
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgc19384a">
-<div class="slide-header"></div>
-<h4 id="orgc19384a">Arbol SLD</h4>
+</section>
+<section>
+<section id="slide-org357cd4d">
+<h4 id="org357cd4d">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">accept</span>(s1,<span style="color: #a020f0;">[</span>a,a,b<span style="color: #a020f0;">]</span>).
-</pre>
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">accept</span>(s1,<span style="color: #00ffff;">[</span>a,a,b<span style="color: #00ffff;">]</span>).
+</code></pre>
 </div>
 
-<figure>
-<img src="acceptaab.png" alt="acceptaab.png">
+<div id="orgac25cda" class="figure">
+<p><img src="acceptaab.png" alt="acceptaab.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgec89267">
-<div class="slide-header"></div>
-<h4 id="orgec89267">Arbol SLD</h4>
+</section>
+<section>
+<section id="slide-org84fb8f7">
+<h4 id="org84fb8f7">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">accept</span>(s1,<span style="color: #a020f0;">[</span>a,b<span style="color: #a020f0;">]</span>).
-</pre>
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">accept</span>(s1,<span style="color: #00ffff;">[</span>a,b<span style="color: #00ffff;">]</span>).
+</code></pre>
 </div>
 
-<figure>
-<img src="accepts1ab.png" alt="accepts1ab.png">
+<div id="orgc20ac39" class="figure">
+<p><img src="accepts1ab.png" alt="accepts1ab.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org95fc6b9">
-<div class="slide-header"></div>
-<h4 id="org95fc6b9">Arbol SLD</h4>
+</section>
+<section>
+<section id="slide-org4ac45a7">
+<h4 id="org4ac45a7">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">accept</span>(s1,<span style="color: #a020f0;">[</span>b<span style="color: #a020f0;">]</span>).
-</pre>
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">accept</span>(s1,<span style="color: #00ffff;">[</span>b<span style="color: #00ffff;">]</span>).
+</code></pre>
 </div>
 
-<figure>
-<img src="accepts1b.png" alt="accepts1b.png">
+<div id="orgc34ceb0" class="figure">
+<p><img src="accepts1b.png" alt="accepts1b.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orge49053d">
-<div class="slide-header"></div>
-<h4 id="orge49053d">Arbol SLD</h4>
+</section>
+<section>
+<section id="slide-orge79a984">
+<h4 id="orge79a984">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">accept</span>(s2,<span style="color: #a020f0;">[</span>b<span style="color: #a020f0;">]</span>).
-</pre>
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">accept</span>(s2,<span style="color: #00ffff;">[</span>b<span style="color: #00ffff;">]</span>).
+</code></pre>
 </div>
 
-<figure>
-<img src="accepts2b.png" alt="accepts2b.png">
+<div id="orgbb54f3a" class="figure">
+<p><img src="accepts2b.png" alt="accepts2b.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgba8c2bc">
-<div class="slide-header"></div>
-<h4 id="orgba8c2bc">Arbol SLD</h4>
+</section>
+<section>
+<section id="slide-orgafa8b86">
+<h4 id="orgafa8b86">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #0000ff;">accept</span>(s4,<span style="color: #a020f0;">[</span>b<span style="color: #a020f0;">]</span>).
-</pre>
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">accept</span>(s4,<span style="color: #00ffff;">[</span>b<span style="color: #00ffff;">]</span>).
+</code></pre>
 </div>
 
-<figure>
-<img src="accepts4b.png" alt="accepts4b.png">
+<div id="org4e1a8fa" class="figure">
+<p><img src="accepts4b.png" alt="accepts4b.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org05907eb">
-<div class="slide-header"></div>
-<h4 id="org05907eb">\(Tp^n\)</h4>
+</section>
+<section>
+<section id="slide-org8e8f6ea">
+<h4 id="org8e8f6ea">\(Tp^n\)</h4>
+<div style="font-size: 70%;">
+
 <p>
-\(U = \{ a,b,s1,s2,s3,s4,[],[a],[b] ,[s1],\ldots,[a,a],[a,b],\ldots\}\)
+\(U = \{ a,b,s1,s2,s3,s4,[],[a],[b],[s1],\ldots,[a,a],[a,b],\ldots\}\)
 </p>
 
 <p>
-\(Bp = \{final(a),final(b),\ldots, trans(a,a,a) , trans(a,b,a) , \ldots\) 
+\(Bp = \{final(a),final(b),\ldots, trans(a,a,a) , trans(a,b,a) , \ldots\)
 </p>
 
 <p>
@@ -677,11 +641,13 @@ el código principal es
 </p>
 
 <p>
-\(trans(s2,b,s3),trans(s3,b,s4),silent(s2,s4),silent(s3,s1)\}\)
+\(trans(s2,b,s3),trans(s3,b,s4),silent(s2,s4),silent(s3,s1)\}\) 
 </p>
 
 </section>
-<section >
+<section id="slide-org8e8f6ea-split">
+
+<div style="font-size: 70%;">
 
 <p>
 \(Tp^1(\{\}) = Tp(\{\}) \cup \{accepts(s3,[])\}\)
@@ -714,31 +680,17 @@ el código principal es
 <p>
 \(accepts(s1,[b,a,a,b]),accepts(s1,[a,b,a,b]),accepts(s1,[b,b,a,b])\}\)
 </p>
-<div class="slide-footer"></div>
 </section>
 </section>
 </div>
 </div>
-<script src="../reveal.js-master/lib/js/head.min.js"></script>
-<script src="../reveal.js-master/js/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 't',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
+transition:'cube',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server
@@ -747,12 +699,12 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: '../reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: '../reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '../reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-,});
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
 </script>
 </body>
 </html>
