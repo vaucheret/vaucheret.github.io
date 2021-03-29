@@ -1,46 +1,24 @@
-#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
-#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
-#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
-#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
-#+OPTIONS: reveal_title_slide:auto reveal_width:-1
-#+REVEAL_MARGIN: -1
-#+REVEAL_MIN_SCALE: -1
-#+REVEAL_MAX_SCALE: -1
-#+REVEAL_ROOT: ../reveal.js-master
-#+REVEAL_TRANS: cube
-#+REVEAL_SPEED: default
-#+REVEAL_THEME: solarized
-#+REVEAL_EXTRA_CSS:
-#+REVEAL_EXTRA_JS:
-#+REVEAL_HLEVEL: 2
-#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
-#+REVEAL_TITLE_SLIDE_BACKGROUND:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_PREAMBLE:
-#+REVEAL_HEAD_PREAMBLE:
-#+REVEAL_POSTAMBLE:
-#+REVEAL_MULTIPLEX_ID:
-#+REVEAL_MULTIPLEX_SECRET:
-#+REVEAL_MULTIPLEX_URL:
-#+REVEAL_MULTIPLEX_SOCKETIO_URL:
-#+REVEAL_SLIDE_HEADER:
-#+REVEAL_SLIDE_FOOTER:
-#+REVEAL_PLUGINS:
-#+REVEAL_DEFAULT_FRAG_STYLE:
-#+REVEAL_INIT_SCRIPT:
 
 #+TITLE: Lenguajes Declarativos 
 #+DATE:  Claudio Vaucheret
 #+AUTHOR: Semanticas 
-#+EMAIL: <2018-03-26 lun>
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
 
 * Semanticas
 
 ** Arbol SLD
- 
+
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+   
    Un árbol (de búsqueda) $SLD$  $\tau_\varphi$ para $\Pi \cup \{{\cal
    G}\}$ (usando la regla de computación $\varphi$) es un conjunto de
    nodos que cumplen: 
@@ -69,6 +47,7 @@
 
 ** Ejemplo 
 
+   
  Sea el programa definido
 
 $\Pi = \{ {\cal C}_1 : p(X,Z) \leftarrow q(X,Y) \wedge p(Y,Z) \\
@@ -79,6 +58,8 @@ y la meta definida ${\cal G} \equiv\leftarrow p(X,b)$.
 
 ** Ejemplo
 
+#+REVEAL_HTML: <div style="font-size: 50%;">
+   
 Un árbol de búsqueda $SLD$ para $\Pi \cup \{{\cal G}\}$ usando una
 regla de computación que selecciona el átomo más a la izquierda dentro
 de la meta considerada.
@@ -111,6 +92,8 @@ L}(\Pi) \wedge \Pi \models {\cal A}\}$
 
 ** Ejemplo
 
+#+REVEAL_HTML: <div style="font-size: 70%;">
+   
 $\Pi = \{{\cal C}_1 : q(X) \leftarrow p(X), {\cal C}_2 : p(a)
 \leftarrow , {\cal C}_3 : q(b) \leftarrow \}$.
 
@@ -134,6 +117,8 @@ ${\cal M}(\Pi) = {\cal I}_{14} \cap {\cal I}_{16} = \{p(a),q(a),q(b)\}$
 
 ** Semántica de Punto Fijo
 
+#+REVEAL_HTML: <div style="font-size: 70%;">
+   
 Sea $\Pi$ un programa definido. El operador de consecuencias lógicas
 inmediatas $T_{\Pi}$ es una aplicación $T_{\Pi} : \wp({\cal B}_{\cal
 L}(\Pi)) \longrightarrow \wp({\cal B}_{\cal
@@ -154,6 +139,8 @@ de $\Pi$.
 
 ** Ejemplo
 
+#+REVEAL_HTML: <div style="font-size: 70%;">
+   
  $\Pi = \{{\cal C}_1 : q(X) \leftarrow p(X), {\cal C}_2 : p(a)
 \leftarrow , {\cal C}_3 : q(b) \leftarrow \}$.
 
