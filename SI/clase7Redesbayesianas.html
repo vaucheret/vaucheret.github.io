@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Sistemas Inteligentes</title>
+<meta name="author" content="(Redes Bayesianas)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Sistemas Inteligentes</h1><h2 class="author">Redes Bayesianas</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2021-04-03 sáb 19:44</p>
+</section>
+
+<section>
+<section id="slide-orgb73aece">
+<h2 id="orgb73aece">Suposición de Independencia</h2>
+<div class="outline-text-2" id="text-orgb73aece">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org0aa2b0e">
+<h3 id="org0aa2b0e">Motivación</h3>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in">Si contemplamos un dominio descripto con \(n\) variables Booleanas y
+utilizamos el enfoque de <font color="red">probabilidades conjuntas</font>,
+se requerirá una tabla de tamaño \(O(2^n)\) (exactamente \(2^n − 1\)
+¿porqué?). En problemas reales, hay que considerar cientos o miles
+de variables random.</li>
+<li class="fragment roll-in"><p>
+<font color="blue">Problema</font>
+</p>
+
+<p>
+Cantidad Excesiva de Información a
+mantener con la base de conocimiento. Intratabilidad con
+<font color="red">Complejidad Exponencial</font> del cálculo de
+probabilidades conjuntas
+</p></li>
+<li class="fragment roll-in"><p>
+<font color="blue">Solución: *Independencia*</font>
+</p>
+
+<p>
+Detectar proposiciones cuya creencia no
+afecta la creencia de otra proposición
+</p></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org847c11e">
+<h3 id="org847c11e">Solución a las Probabilidades Conjuntas</h3>
+<ul>
+<li><p>
+<font color="blue">Independencia</font>
+</p>
+
+<p>
+Detectar proposiciones cuya creencia no afecta la creencia de otra proposición
+</p></li>
+
+<li><p>
+<font color="blue">Independencia Total es muy rara</font>
+</p>
+
+<p>
+Independencia Condicional
+</p></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org3e43fe1">
+<h3 id="org3e43fe1">Ejemplo</h3>
+<div style="font-size: 100%;">
+<ul>
+<li class="fragment roll-in">El hecho de que una persona tenga una enfermedad en el pulmón no
+tiene relación con el color de los ojos de la persona.</li>
+
+<li class="fragment roll-in">El hecho de que una persona tenga caries no tiene relación con el
+clima.</li>
+
+<li class="fragment roll-in">Ası́, <i>no es necesario</i> mantener en la base de
+conocimiento información condicional sobre estas proposiciones que
+parecen ser irrelevantes entre sı́.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgfe6a73d">
+<h3 id="orgfe6a73d">Independencia Condicional cuando hay independencia Total</h3>
+<div style="font-size: 70%;">
+
+<ul>
+<li>Si \(h\) y \(e\) son independientes. \[P(h|e) = P(h)\] y</li>
+
+</ul>
+
+<p>
+\[P(h, e) = P(h ∧ e) = P(h|e) × P(e) = P(h) × P(e)\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org145fe01">
+<h3 id="org145fe01">Independencia Condicional</h3>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in">Una forma de conocimiento cualitativo puede ser expresada como
+\[P(h|e) = P(h|f ∧ e)\] Esto significa que \(f\) es irrelevante para
+la probabilidad de \(h\) dado \(e\).</li>
+
+<li class="fragment roll-in"><font color="blue">$$P(carie = true|dolordemuela = true ∧ clima = lluvioso) =$$</font>
+<font color="blue">$$P(carie = true|dolordemuela = true)$$</font>
+La información sobre el clima es irrelevante en el dominio de las caries.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org35f77f8">
+<h3 id="org35f77f8">Independencia Condicional cuando hay independencia Total</h3>
+<div style="font-size: 70%;">
+
+
+<ul>
+<li>Regla del Producto \[P(h ∧ e) = P(h|e)P(e) = P(e|h)P(h)\]</li>
+
+<li>Si \(h\) y \(e\) son independientes. \[P(h|e) = P(h)\] y \[P(h, e) = P(h ∧ e) = P(h|e) × P(e) = P(h) × P(e)\]</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga779d51">
+<h3 id="orga779d51">Propiedades de la Probabilidad Condicional</h3>
+<div style="font-size: 70%;">
+
+<ul>
+<li><font color="blue">Regla de la Cadena:sucesivas aplicaciones de la Regla del Producto</font></li>
+
+</ul>
+
+<div style="font-size: 70%;">
+
+<div>
+\begin{align}
+    P(f_1 ∧ f_2 ∧ \ldots ∧ f_n ) &= P(f_n |f_1 ∧ f_2 ∧ \ldots ∧ f_{n−1} ) × P(f_1 ∧ f_2 ∧ \ldots ∧ f_{n−1} ) \\
+&= P(f_1 )× \\
+& \hspace{0.7cm}  P(f_2 |f_1 )× \\
+& \hspace{0.7cm} P(f_3 |f_1 ∧ f_2 )× \\
+& \hspace{0.7cm} \vdots\\
+& \hspace{0.7cm} P(f_n |f_1 ∧ f_2 ∧ \ldots ∧ f_{n−1} ) \\
+ P(f 1 ∧ f 2 ∧ . . . ∧ f n ) &= \Pi^n_{i=1} P(f_i |f_1 ∧ f_2 ∧ \ldots ∧ f_{i−1} ) \\
+\end{align}   
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org3d523fd">
+<h3 id="org3d523fd">Independencia Condicional</h3>
+<div style="font-size: 75%;">
+
+<ul>
+<li><p>
+<font color="blue">Definición</font>
+</p>
+
+<p>
+Una variable \(X\) se dice que es
+<font color="red">independiente</font> de la variable aleatoria \(Y\) dada la
+variable aleatoria \(Z\) , si para todos los valores de esa variable,
+ie para todo \(a_i\) , \(b_j\) y \(c_k\) se cumple: \[P(X = a_i | Y = b_j
+  ∧ Z = c_k ) = P(X = a_i | Z = c_k)\] Esto es, el valor de \(Y\) no
+afecta el conocimiento del agente del valor de \(X\) dado el valor de
+\(Z\).
+</p></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfad96ba">
+<h3 id="orgfad96ba">Caracterización alternativa de Independencia Condicional</h3>
+<div style="font-size: 55%;">
+
+<ul>
+<li><p>
+<font color="blue">Theorem</font>
+</p>
+
+<p>
+Si la variable aleatoria \(X\) es independiente de la variable \(Y\)
+dada la variable aleatoria \(Z\), entonces para todo \(a_i\) , \(b_j\)
+, \(c_k\) , \[P(X = a_i ∧ Y = b_j | Z = c_k ) = P(X = a_i | Z = c_k )×
+  P(Y = b_j | Z = c_k)\]
+</p></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4da0421">
+<h3 id="org4da0421">Motivación</h3>
+<ul>
+<li>Estructura de datos que representa la dependencia entre variables.</li>
+<li>Da una especificación concisa de la distribución de la probabilidad.</li>
+
+</ul>
+
+<p>
+<b>Una <font color="blue">Red Bayesiana</font> es un grafo dirigido acı́clico en  el que cada nodo es etiquetado con la información cuantitativa  probabilı́stica</b>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgee0b9f6">
+<h3 id="orgee0b9f6">Red de Creencias o Bayesiana</h3>
+<div style="font-size: 70%;">
+
+
+<div id="org34aeee9" class="figure">
+<p><img src="weathercavity1.png" alt="weathercavity1.png" />   
+</p>
+</div>
+
+<ul>
+<li class="fragment roll-in"><font color="green">Weather</font> es independiente de todas las otras variables.</li>
+<li class="fragment roll-in"><font color="green">Cavity</font> influencia en forma causal a
+<font color="green">Toothache</font> y caries <font color="red">son causa directa</font> de dolor y huecos.</li>
+<li class="fragment roll-in"><font color="green">Toothache</font> y <font color="green">Catch</font> <font color="red">son condicionalmente independientes</font> dado <font color="green">Cavity</font> \[P(Catch|Toothache, Cavity ) =
+  P(Catch|Cavity )\]</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8d0a0ed">
+<h3 id="org8d0a0ed">Red de Creencias o Bayesiana (Russell y Norvig)</h3>
+<div style="font-size: 60%;">
+
+
+<div id="orge2f4026" class="figure">
+<p><img src="redcrebay.png" alt="redcrebay.png" />
+</p>
+</div>
+
+<p>
+Nótese que solo se representa una columna en el caso de variables bivaluadas.
+En el caso del tiempo podrı́amos haber representado solo 3 valores.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org822335d">
+<h3 id="org822335d">Influencia Local</h3>
+<ul>
+<li><font color="blue">La redes de creencias explotan la propiedad de localidad</font></li>
+
+</ul>
+
+<p>
+Dada una variable aleatoria \(V\) puede existir solo un conjunto
+limitado de variables con la propiedad de afectar directamente los
+valores que esta variable puede tomar y los valores tomados por
+cualquier otra variable no afecta a los valores tomados por \(V\).
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org090a8c1">
+<h3 id="org090a8c1">Intuición</h3>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in">La topologı́a de la red especifica la relación de independencia condicional que ocurre en el dominio.</li>
+<li class="fragment roll-in">El significado intuitivo de un arco \((X,Y)\) en una red construida
+correctamente es que \(X\) tiene influencia directa sobre \(Y\).</li>
+<li class="fragment roll-in">En cada red de creencias está implı́cita la suposición de que cada
+variable aleatoria es independiente de aquellas variables aleatorias
+que no son sus descendientes, dados sus padres (evidencia).</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org5c00fcd">
+<h3 id="org5c00fcd">Intuición</h3>
+<div style="font-size: 50%;">
+<ul>
+<li class="fragment roll-in">Si \(X\) es una variable aleatoria con padres en el grafo
+\(Y_1,\ldots,Y_n\), toda variable aleatoria que no es descendiente de
+\(X\) es independiente de \(X\) dados \(Y_1,\ldots,Y_n\) \[P(X = a_i | Y_1
+  = v_1 ∧ \ldots ∧ Y_n = v_n ∧ R) = P(X = a_i | Y_1 = v_1 ∧ \ldots ∧
+  Y_n = v_n)\] si \(R\) no involucra un descendiente de \(X\), donde X es
+considerado un descendiente de sı́ mismo. \(R\) puede involucrar
+ancestros de \(X\) y otros nodos.</li>
+<li class="fragment roll-in">La suposición de independencia establece que toda la influencia de
+los no descendientes es capturada en los valores de los nodos
+padres.</li>
+<li class="fragment roll-in">Modelar con las redes bayesianas requiere la suposición de la
+propiedad de Markov: "No existe ninguna dependencia directa en el
+sistema que se está modelando que no esté explı́citamente
+representada vı́a arcos."</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org0a8b6b9">
+<h3 id="org0a8b6b9">Teorema de Bayes</h3>
+<div style="font-size: 70%;">
+
+<p>
+Si \(P(e|k) \neq 0\) entonces
+</p>
+
+<p>
+\[P(h|e ∧ k) = \frac{P(e|h ∧ k) × P (h|k)}{P(e|k)}\]
+</p>
+
+<p>
+Si asumimos el conocimiento \(k\) como implı́cito y teniendo que \(P(e) \neq 0\)
+entonces
+</p>
+
+<p>
+\[P(h|e) = \frac{P(e|h) × P (h)}{P(e)}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org947623e">
+<h3 id="org947623e">Importancia del Teorema de Bayes</h3>
+<div style="font-size: 70%;">
+
+<ul>
+<li>Útil para dar probabilidades de diagnósticos a partir de la
+probabilidad causal \[P(Causa|Efecto) = \frac{P(Efecto|Causa) × P(Causa)}{P(Efecto)}\]</li>
+<li>Ejemplo de Alarma: 
+Supongamos que tenemos información sobre la
+confiabilidad del funcionamiento de una alarma y queremos saber que
+tan probable es que haya fuego si suena la alarma. \[P(fuego|alarma)
+  = \frac{P(alarma|fuego) × P (fuego)}{P(alarma)}\]</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga76a448">
+<h3 id="orga76a448">Ejemplo de Pearl, 1990 (Ver Russell-Norvig)</h3>
+<div style="font-size: 70%;">
+<ul>
+<li>Tenemos una alarma antirrobo instalada en una casa:
+<ul>
+<li>La alarma salta normalmente con la presencia de ladrones.</li>
+<li>Pero también cuando ocurren pequeños temblores de tierra</li>
+
+</ul></li>
+<li>Tenemos dos vecinos en la casa, Juan y Marı́a, que han prometido llamar a la policı́a si oyen la alarma:
+<ul>
+<li>Juan y Marı́a podrı́an no llamar aunque la alarma sonara: por tener música muy alta en su casa, por ejemplo.</li>
+<li>Incluso podrı́an llamar aunque no hubiera sonado: por confundirla con un teléfono, o con la misma música, por ejemplo.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org7be497e">
+<h3 id="org7be497e">Construyendo una red de creencias</h3>
+<div style="font-size: 70%;">
+
+<p>
+Para representar una red de creencias necesitamos considerar:
+</p>
+
+<ol>
+<li class="fragment roll-in">¿Cuáles son las variables relevantes del problema?</li>
+<li class="fragment roll-in">¿Cuáles son las relaciones entre ellas? Esto deberı́a ser expresado
+en términos de influencia local.</li>
+<li class="fragment roll-in">¿Qué valores deben tomar estas variables? Esto involucra considerar
+el nivel de detalle en el cual deseamos razonar.</li>
+<li class="fragment roll-in">¿De qué manera el valor de una variable depende de las variables
+que la influencian localmente(sus padres)? Esto se expresa en
+términos de las tablas de probabilidad condicional.</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-org4293bb2">
+<h3 id="org4293bb2">Ejemplo de Pearl, 1990 (Ver Russell-Norvig)</h3>
+<div style="font-size: 70%;">
+
+<p>
+¿Cuáles son los nodos-variables de la Red a representar y cuál su dominio?
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Nombre del Nodo</th>
+<th scope="col" class="org-left">Tipo</th>
+<th scope="col" class="org-left">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Robo</td>
+<td class="org-left">Booleano</td>
+<td class="org-left">{T,F}</td>
+</tr>
+
+<tr>
+<td class="org-left">Terremoto</td>
+<td class="org-left">Booleano</td>
+<td class="org-left">{T,F}</td>
+</tr>
+
+<tr>
+<td class="org-left">Alarma</td>
+<td class="org-left">Booleano</td>
+<td class="org-left">{T,F}</td>
+</tr>
+
+<tr>
+<td class="org-left">JuanLlama</td>
+<td class="org-left">Binario</td>
+<td class="org-left">{Si,No}</td>
+</tr>
+
+<tr>
+<td class="org-left">Marı́aLlama</td>
+<td class="org-left">Binario</td>
+<td class="org-left">{Si,No}</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Armemos una topologı́a como una red causal: Esto es de las causas a los
+efectos.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd2a6226">
+<h3 id="orgd2a6226">Topologı́a de la Red: Influencia local entre las variables</h3>
+<div style="font-size: 50%;">
+
+
+<div id="org6c180d2" class="figure">
+<p><img src="topred.png" alt="topred.png" />
+</p>
+</div>
+
+<p>
+Nótese que al asumir la propiedad de Markov no hay modo de que un robo
+influya sobre el hecho de que Juan llame excepto si tenemos en cuenta si suena
+la alarma.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge12c8f6">
+<h3 id="orge12c8f6">Algoritmo de Construcción de una Red Bayesiana</h3>
+<div style="font-size: 70%;">
+
+<p>
+Supongamos un conjunto de variables aleatorias VARIABLES que
+representan un dominio de conocimiento (con incertidumbre) y que las
+ordenamos en forma causal (causa-efecto).
+</p>
+
+
+<div id="org735ca48" class="figure">
+<p><img src="funcionred.png" alt="funcionred.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga29f15d">
+<h3 id="orga29f15d">Red Bayesiana: Especificación de las Tablas de Probabilidades Condicionales</h3>
+
+<div id="org47dd215" class="figure">
+<p><img src="redtablas.png" alt="redtablas.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org34db5d2">
+<h3 id="org34db5d2">Red Bayesiana de la Alarma</h3>
+<p>
+Las Probabilidades para \(Alarma = False\) son:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Robo</th>
+<th scope="col" class="org-left">Terrem</th>
+<th scope="col" class="org-left">\(P(A=False \vert R, T)\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">0,05</td>
+</tr>
+
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">0,06</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">0,610</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">0,999</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org4a91c74">
+<h3 id="org4a91c74">Observaciones sobre la Red Bayesiana de la Alarma</h3>
+<div style="font-size: 70%;">
+<p>
+La topologı́a de la red nos expresa que:
+</p>
+
+<ul>
+<li>Robo y Terremoto son causas directas para Alarma</li>
+<li>También, Robo y Terremoto son causas para Juanllama y para
+Marı́allama, pero esa influencia sólo se produce a través de Alarma:
+ni Juan ni Marı́a detectan directamente el robo ni los pequeños
+temblores de tierra</li>
+<li>En la red no se hace referencia directa, por ejemplo, a las causas
+por las cuales Marı́a podrı́a no oı́r la alarma: éstas están implı́citas
+en la tabla de probabilidades \(P(Marı́allama—Alarma)\).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga3ec6f3">
+<h3 id="orga3ec6f3">Redes Bayesianas</h3>
+<div style="font-size: 50%;">
+
+<p>
+Representan una Distribución de Probabilidades Conjunta y Completa
+</p>
+
+<ul>
+<li><p>
+Consideremos una red bayesiana con \(n\) variables aleatorias y un orden entre esas
+variables:
+</p>
+
+<p>
+\(X_1,\ldots,X_n\)
+</p></li>
+<li>En lo que sigue, supondremos que:
+<ul>
+<li><p>
+\(padres(X_i) ⊆ {X_{i−1},\ldots,X_1}\) para esto, basta que el orden escogido
+</p>
+
+<p>
+sea consistente con el orden parcial que induce el grafo
+</p></li>
+<li>\(P(X_i|X{i−1},\ldots,X_1) = P(X_i|padres(X_i))\) Es decir,
+cada variable es condicionalmente independiente de sus anteriores,
+dados sus
+padres en la red).</li>
+
+</ul></li>
+<li><p>
+Estas condiciones expresan formalmente nuestra intuición al representar
+nuestro mundo mediante la red bayesiana correspondiente.
+En el ejemplo de la alarma, la red expresa que
+creemos que
+</p>
+
+<p>
+\(P(Mariallama|Juanllama,Alarma,Terremoto,Robo) =\)
+\(P(Mariallama|Alarma)\)
+</p></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org526fba6">
+<h3 id="org526fba6">Razonando con las Redes de Creencia</h3>
+<p>
+La tarea básica de un sistema de inferencia probabilı́stico es:
+</p>
+
+<ul>
+<li>Inferencia o Actualización de las Creencias
+Computar la distribución de probabilidad a posteriori para un
+conjunto de variables de consulta, dada nueva información sobre
+las variables de evidencia.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org211e68f">
+<h3 id="org211e68f">Tipos de Razonamientos</h3>
+
+<div id="orgf171724" class="figure">
+<p><img src="tiposraz.png" alt="tiposraz.png" />
+</p>
+</div>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org88ba5fb">
+<h3 id="org88ba5fb">Inferencia</h3>
+<div style="font-size: 50%;">
+
+<p>
+Recordemos la Regla de la Cadena:
+</p>
+
+<div>
+\begin{align}
+    P(X_1 ∧ X_2 ∧ \ldots ∧ X_n ) &=  P(X_1 )× \\
+& \hspace{0.7cm}  P(X_2|X_1 )× \\
+& \hspace{0.7cm} P(X_3 |X_1 ∧ X_2 )× \\
+& \hspace{0.7cm} \vdots\\
+& \hspace{0.7cm} P(X_n |X_1 ∧ X_2 ∧ \ldots ∧ X_{n−1} ) \\
+  &= \Pi^n_{i=1} P(X_i |X_1 ∧ X_2 ∧ \ldots ∧ X_{i−1} ) \\
+\end{align}   
+
+</div>
+
+<p>
+Como en las redes bayesianas el valor de un nodo particular está
+condicionado solamente sobre el valor de los nodos padres, entonces
+</p>
+
+<p>
+\[P(X_1 ∧ X_2 ∧ \ldots ∧ X_n ) = \Pi^n_{i=1} P(X_i |Padres(X_i))\]
+</p>
+
+<p>
+siendo que \(Padres(X_i) ⊆ \{X_1 ∧ X_2 ∧ \ldots ∧ X_n\}\)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0d2cd03">
+<h3 id="org0d2cd03">Inferencia: Ejemplo Alarma</h3>
+<div style="font-size: 70%;">
+<p>
+La probabilidad de que la alarma suene, Juan y Marı́a llamen a la
+policı́a, pero no haya ocurrido nada es (usamos iniciales, por
+simplificar)
+</p>
+
+<div>
+\begin{align}
+& P(j=Si ∧ m=Si ∧ a=T ∧ r=F ∧ t=F ) \\
+& =P(j=Si | a=T)×P(m=Si | a=T)× \\ 
+& \hspace{0.8cm} P(a=T | r=F,t=F)×P(r=F)×P(t=F) \\
+& = 0, 90 × 0, 70 × 0, 001 × 0, 999 × 0, 998 \\
+& = 0, 00062 
+\end{align}   
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org8f3f1da">
+<h3 id="org8f3f1da">Redes Bayesianas</h3>
+<div style="font-size: 60%;">
+<p>
+Dominios localmente estructurados:
+</p>
+
+<ul>
+<li class="fragment roll-in">Las relaciones de independencia que existen entre las variables de un dominio hacen que las redes bayesianas sean una representación mucho más compacta y eficiente de una Distribución de Probabilidad completa y conjunta(DCC), que la tabla con todas las posibles combinaciones de valores.</li>
+<li class="fragment roll-in">Además, para un experto en un dominio de conocimiento suele ser más natural dar probabilidades condicionales que directamente las probabilidades de la DCC.</li>
+<li class="fragment roll-in">Con \(n\) variables, si cada variable está directamente influenciada por \(k\) variables a lo sumo, entonces una red bayesiana necesitarı́a \(n2^k\) números, frente a los \(2^n\) números de la DCC.</li>
+<li class="fragment roll-in">Hay veces que una variable influye directamente sobre otra, pero esta dependencia es muy tenue. En ese caso, puede compensar no considerar esa dependencia, perdiendo algo de precisión en la representación, pero ganado manejabilidad.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc6abe4c">
+<h3 id="orgc6abe4c">Inferencia por Casos</h3>
+<div style="font-size: 50%;">
+<p>
+Supongamos que tenemos una variable Booleana Y que es el único padre
+de X. Si E no contiene ningún descendiente de X, entonces
+</p>
+
+<div>
+\begin{align}
+ P(X|E) &= P (X|Y ∧ E) × P(Y |E) + P(X|¬Y ∧ E) × P(¬Y |E) \\
+ &= P(X|Y) × P(Y|E) + P (X|¬Y) × P(¬Y|E) \\
+ &= P(X|Y ) × P(Y|E) + P(X|¬Y) × (1 − P (Y|E))
+\end{align}
+
+</div>
+
+<p>
+Recordemos que la Red de Creencias especifica los valores de \(P(X|Y)\) y \(P(X|¬Y)\).
+</p>
+
+<p>
+Extendemos a múltiples padres \(Y_1,\ldots, Y_n\) de \(X\), cada \(Y_i\) con dominio
+\(D_i\). Si \(E\) no involucra a ninguno de los descendientes de \(X\), luego:
+</p>
+
+<div>
+\begin{align}
+P(X|E) &= \sum_{d ∈ D} P(X|Y = d ∧ E) × P(Y = d|E) \\
+       &= \sum_{d ∈ D} P(X|Y = d) × P(Y = d|E) \\
+\end{align}
+
+</div>
+
+<p>
+Recordemos que las probabilidades \(P(X|Y= d)\) están especificadas en la
+red de creencias.  
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga901942">
+<h3 id="orga901942">Inferencia</h3>
+<div style="font-size: 70%;">
+<p>
+Supongamos que \(E\) es una conjunción de \(E_1 ∧ E_2\) , donde \(E_1\)
+involucra solamente descendientes de \(A\) y \(E_2\) no contiene
+descendientes de \(A\). La Regla de Bayes puede ser utilizada para
+calcular \(P(A|E)\): \[P(A|E_1 ∧ E_2 ) = \frac{P(E_1|A ∧ E_2) × P(A|E_2)}{P(E_1|E_2)}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org548c57a">
+<h3 id="org548c57a">Inferencia: Ejemplo</h3>
+<div style="font-size: 50%;">
+<p>
+Calculemos algunas probabilidades
+</p>
+<div>
+\begin{align} 
+P(A = T) &=      P(A = T|R =T ∧ T= T) × P(R=T)×P(T=T) + \\
+& \hspace{0.8cm} P(A = T|R =T ∧ T= F) × P(R=T)×P(T=F) + \\
+& \hspace{0.8cm} P(A = T|R =F ∧ T= T) × P(R=F)×P(T=T) + \\
+& \hspace{0.8cm} P(A = T|R =F ∧ T= F) × P(R=F)×P(T=F)  \\ \\
+
+                &= 0,950 × 0,001 × 0,002 + \\
+& \hspace{0.8cm}   0,94 × 0,001 × 0,998 + \\
+& \hspace{0.8cm} 0,290 × 0,999 × 0,002 + \\
+& \hspace{0.8cm} 0,001 × 0,999 × 0,998 \\ \\
+
+&= 0,0000019 + 0,00093812 + 0,00057942 + 0,000997002 \\
+&= 0,002516442 \\
+\end{align} 
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgae52a20">
+<h3 id="orgae52a20">Inferencia: Ejemplo</h3>
+<div style="font-size: 70%;">
+<p>
+Nótese que como \(Robo\) y \(Terremoto\) son independientes, entonces
+</p>
+
+<p>
+\[P(Robo=T|Terr = T) = P(Robo=T) = 0,001\]
+\[P(Terr=T|Robo = T) = P(Terr=T) = 0,002\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaf7a099">
+<h3 id="orgaf7a099">Inferencia: Ejemplo</h3>
+<div style="font-size: 50%;">
+<div>
+  \begin{align} 
+  P(J=Si|M = Si) &= P(J = Si|A = T) × P(A=T|M =Si)+ \\
+  & \hspace{0.8cm} P(J= Si|A = F) × (1 − P(A=T|M= Si)) \\
+  &= 0,90 × 0,1500901175 + 0,05 × (1 − 0,1500901175) \\
+  &= 0,1775765999
+\end{align}
+
+</div>
+
+<div>
+\begin{align} 
+P(A=T|M=Si) &= \frac{P(M=Si|A=T)×P(A=T)}{P(M= Si)} \\
+ &= \frac{0,70×0,002516442}{0,011736345} \\
+ &= 0, 1500901175
+\end{align} 
+
+</div>
+
+<div>
+\begin{align} 
+P(M=Si) &= P(M=Si|A =T) × P(A=T) + \\
+ & \hspace{0.8cm}  P(M=Si|A=F ) × P(A=F) \\
+&= 0,70 × 0,002516442 + 0,01 × (1 − 0,002516442) \\
+&= 0,011736345
+\end{align}
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org53bed7e">
+<h3 id="org53bed7e">Aplicaciones de Redes Bayesianas</h3>
+<div style="font-size: 65%;">
+<ul>
+<li>Diagnóstico de problemas de impresora:Printer Troubleshooting Using
+Bayesian Networks. Claus Skaanning- Finn V. Jensen - Uffe
+Kjærulff. Proceedings of the 13th international conference on
+Industrial and engineering applications of artificial intelligence
+and expert systems: Intelligent problem solving: methodologies and
+approaches Pages 367-379,2000.</li>
+<li>Microsoft: Diagnóstico para detectar problemas en impresoras,
+fotocopiadoras,
+autos,etc. <a href="https://www.microsoft.com/en-us/research/publication/troubleshooting-under-uncertainty/">https://www.microsoft.com/en-us/research/publication/troubleshooting-under-uncertainty/</a></li>
+<li>Medicina: Bayesian Network-Based Model for the Diagnosis of
+Deterioration of Semantic Content Compatible with Alzheimer?s
+Disease. José Marı́a Guerrero Triviño- Rafael Martı́nez-Tomás
+Herminia- Peraita Adrados. Foundations on Natural and Artificial
+Computation, 2011. <a href="https://link.springer.com/chapter/10.1007/978-3-642-21344-1_44">https://link.springer.com/chapter/10.1007/978-3-642-21344-1_44</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org5ce8e29">
+<h3 id="org5ce8e29">Aplicaciones de Redes Bayesianas</h3>
+<div style="font-size: 65%;">
+<ul>
+<li>A Bayesian network for IT governance performance prediction. Mårten
+Simonsson- Robert Lagerström - Pontus Johnson. Proceedings of the
+10th international conference on Electronic
+commerce, 2008. <a href="https://dl.acm.org/citation.cfm?id=1409542">https://dl.acm.org/citation.cfm?id=1409542</a></li>
+<li>NASA: Developing Large-Scale Bayesian Networks by Composition: Fault
+Diagnosis of Electrical Power Systems in Aircraft and
+Spacecraft. Ole J. Mengshoel - Scott Poll - Tolga
+Kurtoglu. <a href="https://ntrs.nasa.gov/search.jsp?N=0&amp;Ntk=All&amp;Ntt=bayesian%20network&amp;Ntx=mode%20matchallpartial&amp;Nm=123">https://ntrs.nasa.gov/search.jsp?N=0&amp;Ntk=All&amp;Ntt=bayesian%20network&amp;Ntx=mode%20matchallpartial&amp;Nm=123</a>|
+Collection|NASA%20STI||17|Collection|NACA</li>
+<li>Embedded Bayesian networks for face recognition. Ara V. Nefian, IEEE
+International Conference on Multimedia and
+Expo, 2002. <a href="http://www.anefian.com/research/face_reco.htm">http://www.anefian.com/research/face_reco.htm</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

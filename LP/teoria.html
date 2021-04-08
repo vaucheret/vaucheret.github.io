@@ -27,20 +27,41 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Semanticas</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2021-03-29 lun 12:58</p>
+<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Semanticas</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2021-04-03 sáb 00:50</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orga230d22">Semanticas</a>
+<ul>
+<li><a href="#/slide-orgfda66be">Arbol SLD</a></li>
+<li><a href="#/slide-orgcb6e535">Arbol SLD</a></li>
+<li><a href="#/slide-org034c0c4">Ejemplo</a></li>
+<li><a href="#/slide-orgcc2497e">Ejemplo</a></li>
+<li><a href="#/slide-org4b67dd3">Arbol SLD</a></li>
+<li><a href="#/slide-org38c2f6d">Semántica de Modelos Mínimos</a></li>
+<li><a href="#/slide-org9d7ad4c">Ejemplo</a></li>
+<li><a href="#/slide-org3460ae8">Semántica de Punto Fijo</a></li>
+<li><a href="#/slide-orga4fda39">Ejemplo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </section>
 
 
 <section>
-<section id="slide-org5a33998">
-<h2 id="org5a33998">Semanticas</h2>
-<div class="outline-text-2" id="text-org5a33998">
+<section id="slide-orga230d22">
+<h2 id="orga230d22">Semanticas</h2>
+<div class="outline-text-2" id="text-orga230d22">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orga47b820">
-<h3 id="orga47b820">Arbol SLD</h3>
+<section id="slide-orgfda66be">
+<h3 id="orgfda66be">Arbol SLD</h3>
 <div style="font-size: 70%;">
 
 <p>
@@ -66,8 +87,8 @@ variables renombradas si hace falta) t.q. \(\theta = mgu({\cal
 </section>
 </section>
 <section>
-<section id="slide-org875fd9f">
-<h3 id="org875fd9f">Arbol SLD</h3>
+<section id="slide-orgcb6e535">
+<h3 id="orgcb6e535">Arbol SLD</h3>
 <ul>
 <li>Cada nodo del árbol es una cláusula meta. \({\cal G}_{i}\) es el <i>nodo
 padre</i> de \({\cal G}_{ij}\) y \({\cal G}_{ij}\) es <i>nodo hijo</i> de \({\cal G}_{i}\).</li>
@@ -83,8 +104,8 @@ padre</i> de \({\cal G}_{ij}\) y \({\cal G}_{ij}\) es <i>nodo hijo</i> de \({\ca
 </section>
 </section>
 <section>
-<section id="slide-orgbe1d4a5">
-<h3 id="orgbe1d4a5">Ejemplo</h3>
+<section id="slide-org034c0c4">
+<h3 id="org034c0c4">Ejemplo</h3>
 <p>
 Sea el programa definido
 </p>
@@ -102,8 +123,8 @@ y la meta definida \({\cal G} \equiv\leftarrow p(X,b)\).
 </section>
 </section>
 <section>
-<section id="slide-org2b326cd">
-<h3 id="org2b326cd">Ejemplo</h3>
+<section id="slide-orgcc2497e">
+<h3 id="orgcc2497e">Ejemplo</h3>
 <div style="font-size: 50%;">
 
 <p>
@@ -114,7 +135,7 @@ de la meta considerada.
 
 
 
-<div id="org28c7411" class="figure">
+<div id="orgf2c8ca7" class="figure">
 <p><img src="sld1.png" alt="sld1.png" />
 </p>
 </div>
@@ -123,8 +144,8 @@ de la meta considerada.
 </section>
 </section>
 <section>
-<section id="slide-orge761a85">
-<h3 id="orge761a85">Arbol SLD</h3>
+<section id="slide-org4b67dd3">
+<h3 id="org4b67dd3">Arbol SLD</h3>
 <ul>
 <li>Un <b>procedimiento de prueba por refutación</b> \(SLD\) queda
 completamente especificado fijando:
@@ -143,8 +164,8 @@ completamente especificado fijando:
 </section>
 </section>
 <section>
-<section id="slide-org4320647">
-<h3 id="org4320647">Semántica de Modelos Mínimos</h3>
+<section id="slide-org38c2f6d">
+<h3 id="org38c2f6d">Semántica de Modelos Mínimos</h3>
 <p>
 Sea \(I\) un conjunto índices y conjunto no vacío de modelos de Herbrand
 de un programa \(\Pi\), \(\{{\cal M}_i \mid (i \in I) \wedge ({\cal M}_i\) 
@@ -161,8 +182,8 @@ L}(\Pi) \wedge \Pi \models {\cal A}\}\)
 </section>
 </section>
 <section>
-<section id="slide-org1aed20c">
-<h3 id="org1aed20c">Ejemplo</h3>
+<section id="slide-org9d7ad4c">
+<h3 id="org9d7ad4c">Ejemplo</h3>
 <div style="font-size: 70%;">
 
 <p>
@@ -198,8 +219,8 @@ La interpretación modelo mínimo de Herbrand es:
 </section>
 </section>
 <section>
-<section id="slide-org22f1f07">
-<h3 id="org22f1f07">Semántica de Punto Fijo</h3>
+<section id="slide-org3460ae8">
+<h3 id="org3460ae8">Semántica de Punto Fijo</h3>
 <div style="font-size: 70%;">
 
 <p>
@@ -231,8 +252,8 @@ de \(\Pi\).
 </section>
 </section>
 <section>
-<section id="slide-org21caaad">
-<h3 id="org21caaad">Ejemplo</h3>
+<section id="slide-orga4fda39">
+<h3 id="orga4fda39">Ejemplo</h3>
 <div style="font-size: 70%;">
 
 <p>
