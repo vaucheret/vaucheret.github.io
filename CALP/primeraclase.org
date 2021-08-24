@@ -1,41 +1,17 @@
-#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
-#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
-#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
-#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
-#+OPTIONS: reveal_title_slide:auto reveal_width:-1
-#+REVEAL_MARGIN: -1
-#+REVEAL_MIN_SCALE: -1
-#+REVEAL_MAX_SCALE: -1
-#+REVEAL_ROOT: ../reveal.js-master
-#+REVEAL_TRANS: cube
-#+REVEAL_SPEED: default
-#+REVEAL_THEME: solarized
-#+REVEAL_EXTRA_CSS:
-#+REVEAL_EXTRA_JS:
-#+REVEAL_HLEVEL: 2
-#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
-#+REVEAL_TITLE_SLIDE_BACKGROUND:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_PREAMBLE:
-#+REVEAL_HEAD_PREAMBLE:
-#+REVEAL_POSTAMBLE:
-#+REVEAL_MULTIPLEX_ID:
-#+REVEAL_MULTIPLEX_SECRET:
-#+REVEAL_MULTIPLEX_URL:
-#+REVEAL_MULTIPLEX_SOCKETIO_URL:
-#+REVEAL_SLIDE_HEADER:
-#+REVEAL_SLIDE_FOOTER:
-#+REVEAL_PLUGINS:
-#+REVEAL_DEFAULT_FRAG_STYLE:
-#+REVEAL_INIT_SCRIPT:
 
-#+TITLE: Conceptos Avanzados en Lenguajes de Programación
+#+TITLE: C.A.L.P.
 #+DATE:  <2017-08-14 lun>
 #+AUTHOR: Claudio Vaucheret / Marcelo Amaolo
 #+EMAIL: cv@fi.uncoma.edu.ar / marcelo.amaolo@fi.uncoma.edu.ar
+
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+
 
 * Introducción
 
@@ -47,6 +23,7 @@
   (implementación)
 
 ** Dominios de Programación
+   #+REVEAL_HTML: <div style="font-size: 65%;">   
 - Aplicaciones Científicas
   - Gran número de computación de punto flotante
   - Fortran
@@ -73,6 +50,7 @@
 - *Costo*: de uso, compilación, mantenimiento etc.
 
 *** Legibilidad
+     #+REVEAL_HTML: <div style="font-size: 60%;">   
 - Simplicidad
   - Un conjunto manejable de características y construcciones
   - Poca multiplicidad de características (medios de realizar la misma operación)
@@ -92,7 +70,7 @@
     significativas
 
 *** Escribilidad
-
+     #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Simplicidad y ortogonalidad
   - Pocas constucciones, numero pequeño de primitivas y pocas reglas
     para combinarlas.
@@ -104,7 +82,7 @@
   - Ejemplo: La inclusión de la sentencia *FOR* en  muchos lenguajes modernos
 
 *** Confiabilidad
-
+     #+REVEAL_HTML: <div style="font-size: 70%;">   
 - Chequeo de Tipos
   - verificación de errores de tipos
 - Manejo de Excepciones
@@ -118,6 +96,8 @@
     reducirá la confiabilidad
 
 *** Costo
+     #+REVEAL_HTML: <div style="font-size: 80%;">   
+    
 - Costo de ...
   + Entrenar programadores para usar un lenguaje
   + Escribir programas (cercano a aplicaciones particulares)
@@ -137,16 +117,17 @@
   + La completitud y precisión de la definición oficial del lenguaje
 
 ** Influencias en el diseño de los lenguajes
+        #+REVEAL_HTML: <div style="font-size: 90%;">   
  - Arquitectura de Computadoras
    + Lenguajes son desarrollados alrededor de la arquitectura de
      computadora prevaleciente, conocida como arquitectura de /von Neumann/
  - Metodologías de Programación
-   + Nuevas metodologías de desarrollo de software (e.g. desarrollode
+   + Nuevas metodologías de desarrollo de software (e.g. desarrollo de
      software orientado a objetos) llevan a nuevos paradigmas y por
      extensión a nuevos lenguajes de programación
 
 *** Influencia de la Arquitectura de Computadoras
-
+     #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Arquitectura de Computadora bien conocida: Von Neumann
 - Lenguajes Imperativos mas dominantes debido a la arquitectura
   dominante
@@ -162,6 +143,7 @@
 [[file:vonneumann.png]] 
 
 *** Influencia de las Metodogías de Programación
+         #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Décadas de los 50 y 60: Simples aplicaciones; preocupación principal
   la eficiencia
 - Finales de los 60: Eficiencia de programación toma importancia:
@@ -174,6 +156,7 @@
   - Abstracción de Datos + Herencia + Polimorfismo
 
 *** Categoría de Lenguajes
+             #+REVEAL_HTML: <div style="font-size: 65%;">   
 - Imperativa
   + Variables, sentencias de asignación e iteración
   + Ejemplos: C, Pascal
@@ -192,6 +175,7 @@
   + Ejemplos: XHTML, XML
 
 *** Compromisos en el diseño de Lenguajes
+             #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Confiabilidad vs. Costo de ejecución
   + Ejemplo: Java exige que todas las referencias a elementos de los
     arreglos sean chequeadas si la indexación es correcta, pero esto
@@ -213,10 +197,11 @@
   + Un compromiso entre compilación y interpretación pura
 
 *** Capas de Implementación de Lenguajes
-
+#+ATTR_HTML: :width 70% :height auto
 [[file:interfacecapas.png]]
 
 *** Compilación
+                 #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Traduce programas de alto nivel (lenguaje fuente) en codigo máquina
 - Traducción lenta, ejecución rápida
 - El proceso de compilación tiene varias faces:
@@ -274,6 +259,7 @@ end repeat
 [[file:procesointerppuro.png]]
 
 *** Sistemas de Implementación Híbrida
+                 #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Un compromiso entre compilador y intérprete puro
 - El programa en lenguaje de alto nivel es traducido a un lenguaje
   intermedio que permite facil interpretación
@@ -287,7 +273,7 @@ end repeat
     (juntos son llamados la máquina virtual de java)
 
 *** Proceso de Implementación Híbrida
-
+    #+ATTR_HTML: :width 23% :height auto
 [[file:procesohibrido.png]] 
 
 *** Sistemas de Implementación /Just in Time/
@@ -305,7 +291,8 @@ end repeat
 - Un ejemplo conocido: El preprocesador de C
   + expands #include, #define, y macros similares
 
-*** Entornos de Programación 
+*** Entornos de Programación
+                  #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Una colección de herramientas usadas en el desarrollo de software
 - UNIX
   + un tradicional sistema operativo y colección de herramientas
@@ -395,7 +382,8 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 
 ** IBM 704 y Fortran
 
-*** Fortan 
+*** Fortan
+        #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Fortran 0: 1954 - no implementado
 - Fortran 1 1957
   - Diseñado para la nueva IBM 704, que tenía registros y aritmética
@@ -440,7 +428,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 - Desarrollado durante 1960-1962
   - Declaración explicita de tipos
   - Sentencia de selección lógica
-  - Nombres de programas podian se pasados como parámetros
+  - Nombres de programas podian ser pasados como parámetros
   - ANSI standard en 1966
 
 *** Fortran 77
@@ -521,6 +509,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
   + Traducible a lenguaje máquina
 
 *** ALGOL 58
+                     #+REVEAL_HTML: <div style="font-size: 80%;">   
 - El concepto de tipos fue formalizado
 - Los nombre podrían tener cualquier longitud
 - Los arreglos podrían tener cualquier número de subíndices
@@ -580,6 +569,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
   + Verbos eran las primeras palabras en toda sentencia
 
 *** COBOL proceso de diseño
+                 #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Primera reunión de diseño (Pentagon) - Mayo de 1959
 - Metas de Diseño
   + Debe lucir como simple Ingles
@@ -630,7 +620,8 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
     - COBOL
     - grupo de usuarios GUIDE
 
-*** Antecedentes PL/I 
+*** Antecedentes PL/I
+                     #+REVEAL_HTML: <div style="font-size: 80%;">   
 - En 1965
   - usuarios científicos comenzaron a necesitar Entrada/Salida mas
     elaborada, como tenía COBOL; y usuarios empresariales comenzaron a
@@ -743,6 +734,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 - Muchas areas de aplicación
 
 *** PERL
+                     #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Relacionado a ALGOL solo a través de C
 - Un lenguaje de /scripting/
   - un /script/ es un archivo que contiene instrucciones para ser ejecutadas
@@ -768,6 +760,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 ** Historia del mas grande esfuerzo de diseño
 
 *** Ada
+          #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Enorme esfuerzo de Diseño, involucrando cientos de personas, mucho
   dinero y alrededor de 8 años
   - requerimientos de Strawman (Abril de 1975)
@@ -778,6 +771,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 - Nombrado Ada por Augusta Ada Byron conocida por ser la primera programadora
 
 *** Evaluación de Ada
+              #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Contribuciones
   - /Packages/ soporte para abstraccion de datos
   - Manejo de excepciones - muy elaborado
@@ -819,6 +813,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 - estandar ANSI aprovado en Noviembre de 1997
 
 *** Lenguajes OOP relacionados
+                     #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Eiffel (diseñado por Bertrand Meyer 1992)
   - No directamente derivado de otros lenguajes
   - mas pequeño y simple que C++, pero aún con la mayoría de su potencia
@@ -829,6 +824,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
   - mas elegante y seguro que C++
 
 *** Un lenguaje imperativo orientado a Objetos: Java
+                     #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Desarrollado en Sun a principios de los 90
   - C y C++ no era satisfactorio para dispositivos electrónicos embebidos
 - Basado en C++
@@ -850,6 +846,7 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 ** Lenguajes de /Scripting/ para la WWW
 
 *** /Scripting/
+                  #+REVEAL_HTML: <div style="font-size: 80%;">   
 - JavaScript
   + Una aventura en conjunto de Netscape y Sun Microsystem
   + Usada en programación WEB (del lado del cliente) para crear
