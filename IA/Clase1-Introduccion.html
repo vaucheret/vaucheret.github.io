@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Introducción</h2><p class="date">Created: 2021-08-26 jue 14:40</p>
+</section>
+
+
+<section>
+<section id="slide-org8b0584c">
+<h2 id="org8b0584c">¿Que es IA?</h2>
+<div class="outline-text-2" id="text-org8b0584c">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org554d513">
+<h3 id="org554d513">¿Qué es Inteligencia?</h3>
+<p>
+´
+<font color="green">¿Que atributos le pedimos a un ente para sea inteligente?</font>
+<font color="red">Escucho</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org4d9d067">
+<h3 id="org4d9d067">¿Qué es Inteligencia?</h3>
+<p>
+Diccionario de la Real Academia Española:
+</p>
+
+<ul>
+<li>Habilidad, destreza y experiencia.</li>
+<li>Capacidad de entender o comprender.</li>
+<li>Conocimiento, comprensión, acto de entender.</li>
+<li>Capacidad de resolver problemas.</li>
+
+</ul>
+
+<p>
+Las definiciones tienen que ver con las ideas de <font color="red">aprender</font> y de
+<font color="red">resolver problemas</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org83b410b">
+<h3 id="org83b410b">Definiciones de IA</h3>
+<p>
+Sistemas que:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left"><font color="green">Humano</font></th>
+<th scope="col" class="org-left"><font color="violet">Racional</font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><font color="orange">Procesos mentales de razonamiento</font></td>
+<td class="org-left"><font color="orange">piensan</font> <font color="green">como humanos</font></td>
+<td class="org-left"><font color="orange">piensan</font> <font color="violet">racionalmente</font></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><font color="blue">Conducta</font></td>
+<td class="org-left"><font color="blue">actúan</font> <font color="green">como humanos</font></td>
+<td class="org-left"><font color="blue">actúan</font> <font color="violet">racionalmente</font></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org548270a">
+<h3 id="org548270a">Definiciones de IA</h3>
+<p>
+Sistemas que:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Humano</th>
+<th scope="col" class="org-left">Racional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Procesos mentales de razonamiento</td>
+<td class="org-left"><font color="orange">piensan</font> <font color="green">como humanos</font></td>
+<td class="org-left">piensan racionalmente</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Conducta</td>
+<td class="org-left">actúan como humanos</td>
+<td class="org-left">actúan racionalmente</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org01f5a74">
+<h4 id="org01f5a74">Pensando humanamente: Enfoque del modelamiento cognitivo</h4>
+<div style="font-size: 80%;">
+<p class="fragment">
+Requiere teorías científicas de las actividades internas del cerebro
+</p>
+<ul class="fragment">
+<li>¿Cómo pensamos los humanos?</li>
+<li>¿Cuál es la naturaleza de nuestra inteligencia y cómo funciona?</li>
+
+</ul>
+
+<p class="fragment">
+Para analizar si una máquina piensa como un humano, tenemos que determinar cómo piensan los 
+humanos: 
+</p>
+<ul class="fragment">
+<li>Introspección</li>
+<li>Experimentos Psicológicos</li>
+<li>Imágenes del cerebro</li>
+
+</ul>
+
+</section>
+<section id="slide-org18df96b">
+<h4 id="org18df96b">Pensando humanamente: Enfoque del modelamiento cognitivo</h4>
+<p>
+<font color="pink">Ciencias Cognitivas</font>
+</p>
+
+<p>
+Brinda modelos de Inteligencia Artificial y técnicas experimentales de la Psicología para 
+construir y testear teorías de la mente humana.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org6a33532">
+<h3 id="org6a33532">Definiciones de IA</h3>
+<p>
+Sistemas que:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Humano</th>
+<th scope="col" class="org-left">Racional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Procesos mentales de razonamiento</td>
+<td class="org-left">piensan como humanos</td>
+<td class="org-left"><font color="orange">piensan</font> <font color="violet">racionalmente</font></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Conducta</td>
+<td class="org-left">actúan como humanos</td>
+<td class="org-left">actúan racionalmente</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org0f2c168">
+<h4 id="org0f2c168">Pensando racionalmente: Leyes del Pensamiento</h4>
+<p class="fragment">
+Silogismos de Aristóteles 
+</p>
+<p class="fragment">
+¿Cuáles son los procesos correctos de argumentación y pensamiento?
+</p>
+
+<p class="fragment">
+Varias escuelas Griegas desarrollaron varias formas de <font color="red">lógica</font>:
+<font color="red">notación</font> y <font color="red">reglas de derivación</font> para los pensamientos.
+Mecanización.
+</p>
+
+
+</section>
+<section id="slide-orgc97f4dc">
+<h4 id="orgc97f4dc">Pensando racionalmente: Leyes del Pensamiento</h4>
+<p>
+Lógicos del siglo XIX desarrollaron <font color="red">notacióon precisa</font> de sentencias y  de las <font color="red">relaciones</font> entre ellas.
+</p>
+
+<p>
+Problema
+</p>
+
+<p>
+No todo el comportamiento inteligente es producido por
+    deliberación lógica.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org865f5ea">
+<h3 id="org865f5ea">Definiciones de IA</h3>
+<p>
+Sistemas que:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Humano</th>
+<th scope="col" class="org-left">Racional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Procesos mentales de razonamiento</td>
+<td class="org-left">piensan como humanos</td>
+<td class="org-left">piensan racionalmente</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Conducta</td>
+<td class="org-left"><font color="blue">actúan</font> <font color="green">como humanos</font></td>
+<td class="org-left">actúan racionalmente</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org95dfebf">
+<h4 id="org95dfebf">Actuando humanamente: El test de Turing</h4>
+<div style="font-size: 90%;">
+<p>
+<font color="green">El modelo es el hombre; el objetivo es construir un sistema que pase por humano</font>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Matemático inglés. Marcó el comienzo de la <font color="red">Teoría de la Computación</font>. También fue pionero de la <font color="red">Inteligencia Artificial</font></td>
+<td class="org-left">Juego de Imitación  <img src="turing.png" alt="turing.png" /> Alan Turing (1912-1954)</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+<section id="slide-orgfadec43">
+<h4 id="orgfadec43">Actuando humanamente: El test de Turing en el cine</h4>
+<div style="font-size: 80%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><img src="exmachina.jpeg" alt="exmachina.jpeg" /></th>
+<th scope="col" class="org-left"><img src="codigoenigma.jpg" alt="codigoenigma.jpg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><img src="dicaprio.jpeg" alt="dicaprio.jpeg" /></td>
+<td class="org-left"><img src="codigoenigma2.jpg" alt="codigoenigma2.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgf6387b5">
+<h4 id="orgf6387b5">Actuando humanamente: El test de Turing</h4>
+
+<div id="orgb041231" class="figure">
+<p><img src="turingfrase.jpeg" alt="turingfrase.jpeg" />
+</p>
+</div>
+
+<p>
+En 1950, A. Turing publicó  "Computing machinery and intelligence"
+</p>
+
+</section>
+<section id="slide-org715553a">
+<h4 id="org715553a">Actuando humanamente: El test de Turing</h4>
+<p>
+``Can machines think?'' \(\longrightarrow\) ``Can machines behave
+  intelligently?''
+</p>
+
+<p>
+Propone un Test Operacional para el funcionamiento inteligente: <font color="red">El Juego de la Imitación</font>
+</p>
+
+<p>
+Capacidades necesarias: 
+</p>
+
+<ul>
+<li>procesamiento del lenguaje natural</li>
+<li>representación del conocimiento</li>
+<li>razonamiento</li>
+<li>aprendizaje</li>
+
+</ul>
+
+</section>
+<section id="slide-org0e30c7c">
+<h4 id="org0e30c7c">Actuando humanamente: El test de Turing</h4>
+<p>
+<font color="red">El Juego de la Imitación</font>
+</p>
+<ul>
+<li>El Test consiste en un <font color="green">juez</font> realizando preguntas a dos <font color="green">participantes</font> (X e Y) que no puede ver: un hombre y una mujer.</li>
+
+<li>El juez debe averiguar, por medio de preguntas, quién es el hombre y quién la mujer. Los participantes pueden mentir o tratar de engañar al juez.</li>
+
+</ul>
+
+</section>
+<section id="slide-org34e6a7c">
+<h4 id="org34e6a7c">Actuando humanamente: El test de Turing</h4>
+
+<div id="org2549167" class="figure">
+<p><img src="JuegoImitacion.JPG" alt="JuegoImitacion.JPG" />
+</p>
+</div>
+
+</section>
+<section id="slide-org7da59e5">
+<h4 id="org7da59e5">Actuando humanamente: El test de Turing</h4>
+
+<div id="orgcfd9546" class="figure">
+<p><img src="TestTuring1.png" alt="TestTuring1.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2ba1723">
+<h4 id="org2ba1723">Actuando humanamente: El test de Turing</h4>
+
+<div id="orge0f9c84" class="figure">
+<p><img src="tt.png" alt="tt.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org17c4b6d">
+<h4 id="org17c4b6d">Actuando humanamente: El test de Turing</h4>
+<p>
+En 1950, A. Turing publicó   "Computing machinery and intelligence"
+</p>
+
+
+<p>
+En su trabajo:
+</p>
+
+<ul>
+<li>Anticipó los argumentos contra AI en los siguientes  50 años</li>
+<li>Sugirió los principales componentes de AI: Conocimiento,
+razonamiento, entendimiento del lenguaje, aprendizaje</li>
+
+</ul>
+
+</section>
+<section id="slide-orgcd19f52">
+<h4 id="orgcd19f52">El test de Turing: Objeciones</h4>
+<div style="font-size: 90%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">El pensamiento es una función del <font color="fucsia">alma inmortal del ser humano</font>. Dios ha dado un alma a cada ser humano,  pero no a los animales o a las máquinas. Luego, ningún animal o máquina puede pensar.</td>
+<td class="org-left">Objeción Teológica  <img src="chistegenoma.jpg" alt="chistegenoma.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Religiones que consideran que los animales tienen alma y otras que las mujeres no la tienen.
+No restringe la omnipotencia de Dios.
+</p>
+
+</section>
+<section id="slide-org4c72f10">
+<h4 id="org4c72f10">El test de Turing: Objeciones</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Las <font color="red">consecuencias</font> del hecho de que las máquinas pensaran podrían ser <font color="orange">espantosas</font>. Esperamos y creemos que no puedan hacerlo.</td>
+<td class="org-left">Objeción del Avestruz <img src="avestruz.png" alt="avestruz.png" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org3db1f84">
+<h4 id="org3db1f84">El test de Turing: Objeciones</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Existen varios <font color="orange">resultados</font> de la lógica matemática que podrían ser utilizados para mostrar que existen <font color="orange">limitaciones</font> en el poder de las máquinas de <font color="orange">estados discretos</font>.  Luego, existen preguntas que las máquinas no podrán responder.</td>
+<td class="org-left">Objeción Matemática  <img src="Mafalda.png" alt="Mafalda.png" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgb3686e2">
+<h4 id="orgb3686e2">El test de Turing: Objeciones</h4>
+<div style="font-size: 80%;">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Hasta que una máquina <font color="orange">no sepa escribir</font> un soneto o componer un concierto con <font color="orange">base</font> en los pensamientos y las emociones que <font color="orange">siente</font>, y no a consecuencia de la caída venturosa de símbolos, no podremos estar de acuerdo en que la máquina pueda ser igual que un cerebro, es decir, que no solamente sepa escribirlos, sino también que sepa que los ha escrito.</td>
+<td class="org-left">Obejción de la Conciencia  <img src="Composicion-inteligencia-artificial-sony.jpg" alt="Composicion-inteligencia-artificial-sony.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+La única forma de estar seguro que una persona piensa es siendo esa persona y sentir lo que ella siente.
+</p>
+
+
+</section>
+<section id="slide-orga72543a">
+<h4 id="orga72543a">El test de Turing: Objeciones</h4>
+<p>
+Mas Objeciónes &#x2026;
+</p>
+
+<p>
+Leer el paper completo &#x2026;
+</p>
+
+</section>
+<section id="slide-org83976bb">
+<h4 id="org83976bb">El test de Turing: Estado del Arte</h4>
+<p>
+Premio Loebner
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="GoldPrize1.png" alt="GoldPrize1.png" /></td>
+<td class="org-left"><img src="GoldPrize2.png" alt="GoldPrize2.png" /></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<a href="http://www.loebner.net/Prizef/loebner-prize.html">http://www.loebner.net/Prizef/loebner-prize.html</a>
+</p>
+
+</section>
+<section id="slide-org5bd5e13">
+<h4 id="org5bd5e13">El test de Turing: Estado del Arte</h4>
+<div style="font-size: 90%;">
+<p>
+Los premios para cada año son:
+</p>
+
+<ul>
+<li>Medalla de bronce. En 2016 el primer premio ascendió a $4.000, el segundo a $1.500, el tercero a $1.000 y el cuarto a $500.</li>
+
+<li>Medalla de plata, y $25.000 para el primer programa que los jueces no puedan distinguir de un ser humano verdadero en un Test de Turing sólo con texto, y que pueda convencer a los jueces de que la otra entidad (el humano) que también está hablando es, a su vez, una computadora. Este premio se otorgará una sola vez, y aún no ha sido concedido.</li>
+
+</ul>
+
+</section>
+<section id="slide-org5bd5e13-split">
+
+<ul>
+<li>Medalla de oro y $100.000 para el primer programa que los jueces no puedan distinguir de un ser humano verdadero en un Test de Turing, que incluya descifrar y la comprensión del texto, con entradas visual y auditiva. Este premio se otorgará una sola vez, y aún no ha sido concedido.</li>
+
+</ul>
+
+<p>
+El Premio Loebner se disolverá una vez que el premio de 100.000 dólares, con la medalla de oro, sea adjudicado.
+</p>
+
+</section>
+<section id="slide-orgc137d09">
+<h4 id="orgc137d09">El test de Turing: Estado del Arte</h4>
+<ul>
+<li><b>2012:</b> Mohan Embar</li>
+<li><b>2013:</b>  Stephen Worswick</li>
+<li><b>2014:</b> 1º Rose  1 - 2º Izar 2.25 - 3º Uberbot 3.25 Mitsuku - Rank 3.5 ($500)</li>
+<li><b>2015:</b> Mitsuku 83.33% - Lisa 	80.00% - Izar 	76.67% - Rose 	75.00% Y quedó: 1º Rose  1.5 - 2º Mitsuku 2.0 - 3º Izar 3.25 - 3º Lisa - 3.25</li>
+<li><b>2016:</b> Mitsuku 90 - Tutor 78.33333 - Rose 77.5 - Arckon 77.5</li>
+
+</ul>
+
+</section>
+<section id="slide-org17e8f2e">
+<h4 id="org17e8f2e">El test de Turing: Aplicaciones</h4>
+<p>
+<b>CAPTHCHA</b>
+</p>
+
+
+<div id="orgd3a8450" class="figure">
+<p><img src="Testturing.png" alt="Testturing.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org3032aa1">
+<h4 id="org3032aa1">El test de Turing: Aplicaciones</h4>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b>CAPTHCHA</b>  <img src="captcha.png" alt="captcha.png" /></td>
+<td class="org-left">Acrónimo de <font color="red">Completely Automated Public Turing test to tell Computers and Humans Apart</font> - Prueba de Turing pública y automática para diferenciar máquinas y humanos.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org8d08e43">
+<h4 id="org8d08e43">El test de Turing: Aplicaciones</h4>
+<p>
+<b>CAPTHCHA</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="captcha1.png" alt="captcha1.png" /></td>
+<td class="org-left"><img src="captcha2.png" alt="captcha2.png" /></td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org25a3edc">
+<h3 id="org25a3edc">Definiciones de IA</h3>
+<p>
+Sistemas que:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Humano</th>
+<th scope="col" class="org-left">Racional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Procesos mentales de razonamiento</td>
+<td class="org-left">piensan como humanos</td>
+<td class="org-left">piensan racionalmente</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Conducta</td>
+<td class="org-left">actúan como humanos</td>
+<td class="org-left"><font color="blue">actúan</font> <font color="violet">racionalmente</font></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-org16de000">
+<h4 id="org16de000">Actuando racionalmente</h4>
+<p>
+Comportamiento Racional
+</p>
+
+<p>
+Realizar la acción correcta.
+</p>
+
+<p class="fragment">
+<b>Acción correcta</b> aquello que se espera maximice la meta a alcanzar, dada la información disponible.
+</p>
+
+
+</section>
+<section id="slide-orgc8116c1">
+<h4 id="orgc8116c1">Actuando racionalmente</h4>
+<p>
+Comportamiento Racional
+</p>
+
+<p>
+Realizar la acción correcta.
+</p>
+
+
+<div id="orgf82487d" class="figure">
+<p><img src="accioncorrecta1.png" alt="accioncorrecta1.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4c21160">
+<h4 id="org4c21160">Actuando racionalmente</h4>
+<p>
+Comportamiento Racional
+</p>
+
+<p>
+Realizar la acción correcta.
+</p>
+
+
+<div id="orgef6820a" class="figure">
+<p><img src="accioncorrecta2.png" alt="accioncorrecta2.png" />
+</p>
+</div>
+
+
+
+</section>
+<section id="slide-org62103c3">
+<h4 id="org62103c3">Agentes</h4>
+
+<div id="orgcf039ec" class="figure">
+<p><img src="agente.jpg" alt="agente.jpg" />
+</p>
+</div>
+
+<p class="fragment">
+¿Ejemplos?
+</p>
+
+</section>
+<section id="slide-org6270c53">
+<h4 id="org6270c53">Agentes racionales</h4>
+<p>
+Un <font color="red">agente</font> es una entidad que percibe y actúa.
+</p>
+
+<p>
+Abstractamente, un agente es una función desde historias de percepciones a acciones:
+</p>
+
+<p>
+<font color="red">$$f: {\cal P}^* \to {\cal A}$$</font>
+</p>
+
+<p>
+Para toda clase de ambientes y tareas, buscamos el agente con la mejor perfomance.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org1a3ef2e">
+<h3 id="org1a3ef2e">Disciplinas que contribuyen con la IA</h3>
+<ul>
+<li><b>Filosofía</b>:  Lógica, métodos de razonamiento, mente como sistema físico, fundamentos del aprendizaje, lenguaje, racionalidad.</li>
+
+<li><b>Matemáticas</b>:  Representación formal y prueba, algoritmos, computación, decidibilidad, tratabilidad, probabilidad.</li>
+
+<li><b>Psicología</b>:  Adaptación, fenómenos de percepción y control, técnicas experimentales.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc4ff4c8">
+<h3 id="orgc4ff4c8">Disciplinas que contribuyen con la IA</h3>
+<ul>
+<li><b>Neurociencia</b>:  Procesamiento de la información en el cerebro. Redes Neuronales.</li>
+
+<li><b>Economía</b>:  Teoría formal de decisiones racionales.</li>
+
+<li><b>Linguística</b>: Representación del conocimiento, gramáticas.</li>
+
+<li><b>Ingeniería de las Computadoras</b>: Construcción de computadoras eficientes.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org837183c">
+<h3 id="org837183c">Referencia Bibliográfica</h3>
+<ul>
+<li><font color="blue">S. Russell y P.Norvig</font> <i>Artificial Intelligence: A Modern Approach (Third Edition)</i> <font color="blue">Capítulo 1 2009</font></li>
+<li><font color="blue">Alan Turing</font> <i>Computing Machinery and Intelligence</i> <font color="blue">Mind 59</font></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
