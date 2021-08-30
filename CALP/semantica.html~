@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Conceptos Avanzados en Lenguajes de Programación</title>
+<title>C. A. L. P.</title>
 <meta name="author" content="(Semanticas)"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -18,102 +18,32 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../reveal.js-master/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Semanticas</h2><h2 class="date">2018-08-14 mar 00:00</h2><p class="date">Created: 2020-09-06 dom 16:40</p>
-</section>
-<section id="table-of-contents">
-<nav id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#/slide-org0a4e000">Introducción</a>
-<ul>
-<li><a href="#/slide-orgb99e84d">Introducción</a></li>
-<li><a href="#/slide-org3297e47">Definición Formal de Lenguajes</a></li>
-<li><a href="#/slide-org4c19ae3">Métodos Formales de Describir la Sintaxis</a></li>
-<li><a href="#/slide-org1e0a139">BNF y Gramáticas Libres de Contexto</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org8d63165">Semántica Estática</a>
-<ul>
-<li><a href="#/slide-org8663da5">Gramáticas con atributos</a></li>
-<li><a href="#/slide-orgd1dd30f">Gramáticas con atributos: Definición</a></li>
-<li><a href="#/slide-orgd5895a5">Gramáticas con atributos: Definición</a></li>
-<li><a href="#/slide-org93789d0">Gramáticas con atributos: Un Ejemplo</a></li>
-<li><a href="#/slide-org38331b5">Gramáticas con atributos: Un Ejemplo</a></li>
-<li><a href="#/slide-orga971d69">Gramáticas con atributos</a></li>
-<li><a href="#/slide-org161db06">Gramáticas con atributos</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org6530dce">Semántica Dinámica</a>
-<ul>
-<li><a href="#/slide-orga07e68c">Métodos Desarrollados</a></li>
-<li><a href="#/slide-org1006fe7">Semántica Operacional</a>
-<ul>
-<li><a href="#/slide-org1c6dce3">Semántica Operacional</a></li>
-<li><a href="#/slide-orgd12dcdb">Semántica Operacional</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org9f354fb">Semántica Denotacional</a>
-<ul>
-<li><a href="#/slide-org18d2d7f">Semántica Denotacional</a></li>
-<li><a href="#/slide-org57d55bb">Semántica Denotacional vs Semántica Operacional</a></li>
-<li><a href="#/slide-org654c74f">Números Decimales</a></li>
-<li><a href="#/slide-orgcd535fe">Expresiones</a></li>
-<li><a href="#/slide-org7e07731">asignación</a></li>
-<li><a href="#/slide-orgd67cabd">Ciclo 'while'</a></li>
-<li><a href="#/slide-orge557d22">Ciclo</a></li>
-<li><a href="#/slide-orgc2d46d4">Evaluación</a></li>
-</ul>
-</li>
-<li><a href="#/slide-orgb4ea93e">Semántica Axiomática</a>
-<ul>
-<li><a href="#/slide-orgdb159ab">Semántica Axiomática</a></li>
-<li><a href="#/slide-org6a1c604">Semántica Axiomática</a></li>
-<li><a href="#/slide-org613ff71">Semántica Axiomática</a></li>
-<li><a href="#/slide-org5dc6f1a">Proceso de prueba de programa</a></li>
-<li><a href="#/slide-org2fbf651">Axiomas</a></li>
-<li><a href="#/slide-org9e87df6">Axiomas</a></li>
-<li><a href="#/slide-orgf0461cf">Axiomas</a></li>
-<li><a href="#/slide-org6ee3d0f">Axiomas</a></li>
-<li><a href="#/slide-orga8d4b33">Axiomas</a></li>
-<li><a href="#/slide-org3623726">Axiomas</a></li>
-<li><a href="#/slide-org96d4e00">Ejemplo</a></li>
-<li><a href="#/slide-orgd4cd8f1">Axiomas</a></li>
-<li><a href="#/slide-org831edfa">Axiomas</a></li>
-<li><a href="#/slide-org9e8b3b5">Ejemplo</a></li>
-<li><a href="#/slide-orgd48c56e">Ejemplo</a></li>
-<li><a href="#/slide-orgb33d0e4">Invariante</a></li>
-<li><a href="#/slide-org0eee04e">Evaluación</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
+<section id="sec-title-slide"><h1 class="title">C. A. L. P.</h1><h2 class="author">Semanticas</h2><h2 class="date">2018-08-14 mar 00:00</h2><p class="date">Created: 2021-08-29 dom 18:29</p>
 </section>
 
+
+
 <section>
-<section id="slide-org0a4e000">
-<div class="slide-header"></div>
-<h2 id="org0a4e000">Introducción</h2>
-<div class="outline-text-2" id="text-org0a4e000">
-</div><div class="slide-footer"></div>
+<section id="slide-orgaba0529">
+<h2 id="orgaba0529">Introducción</h2>
+<div class="outline-text-2" id="text-orgaba0529">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-orgb99e84d">
-<div class="slide-header"></div>
-<h3 id="orgb99e84d">Introducción</h3>
+<section id="slide-orgb1e2a5d">
+<h3 id="orgb1e2a5d">Introducción</h3>
+<div style="font-size: 90%;">
+
 <ul>
 <li><b>Sintaxis</b>: La forma y estructura de las expresiones, sentencias y
 unidades del programa.</li>
@@ -133,13 +63,12 @@ unidades del programa.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org3297e47">
-<div class="slide-header"></div>
-<h3 id="org3297e47">Definición Formal de Lenguajes</h3>
+<section id="slide-org908cbc6">
+<h3 id="org908cbc6">Definición Formal de Lenguajes</h3>
+<div style="font-size: 90%;">
 <ul>
 <li><b>Reconocedores</b>
 <ul>
@@ -157,13 +86,11 @@ correcta comparándola con la estructura del generador.</li>
 </ul></li>
 
 </ul>
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org4c19ae3">
-<div class="slide-header"></div>
-<h3 id="org4c19ae3">Métodos Formales de Describir la Sintaxis</h3>
+<section id="slide-org1e255f9">
+<h3 id="org1e255f9">Métodos Formales de Describir la Sintaxis</h3>
 <ul>
 <li>Forma Backus-Naur y gramáticas libres de contexto
 <ul>
@@ -180,13 +107,12 @@ de Programación.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org1e0a139">
-<div class="slide-header"></div>
-<h3 id="org1e0a139">BNF y Gramáticas Libres de Contexto</h3>
+<section id="slide-orgf30b3ed">
+<h3 id="orgf30b3ed">BNF y Gramáticas Libres de Contexto</h3>
+<div style="font-size: 90%;">
 <ul>
 <li>Gramáticas libres de Contexto
 <ul>
@@ -205,21 +131,18 @@ lenguajes naturales</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org8d63165">
-<div class="slide-header"></div>
-<h2 id="org8d63165">Semántica Estática</h2>
-<div class="outline-text-2" id="text-org8d63165">
-</div><div class="slide-footer"></div>
+<section id="slide-org6c7794a">
+<h2 id="org6c7794a">Semántica Estática</h2>
+<div class="outline-text-2" id="text-org6c7794a">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org8663da5">
-<div class="slide-header"></div>
-<h3 id="org8663da5">Gramáticas con atributos</h3>
+<section id="slide-org357c0bb">
+<h3 id="org357c0bb">Gramáticas con atributos</h3>
 <ul>
 <li>Las Gramáticas Libres de Contexto (GLC) no pueden describir toda la sintaxis de
 los lenguajes de programación.</li>
@@ -233,13 +156,12 @@ los lenguajes de programación.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgd1dd30f">
-<div class="slide-header"></div>
-<h3 id="orgd1dd30f">Gramáticas con atributos: Definición</h3>
+<section id="slide-org1568638">
+<h3 id="org1568638">Gramáticas con atributos: Definición</h3>
+<div style="font-size: 90%;">
 <ul>
 <li>Una Gramática con atributos es una gramática libre de contexto \(G =
   (S,N,T,P)\) con los siguientes agregados:
@@ -255,13 +177,12 @@ chequear la consistencia de los atributos</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgd5895a5">
-<div class="slide-header"></div>
-<h3 id="orgd5895a5">Gramáticas con atributos: Definición</h3>
+<section id="slide-org3cc4b3f">
+<h3 id="org3cc4b3f">Gramáticas con atributos: Definición</h3>
+<div style="font-size: 90%;">
 <ul>
 <li>Sea \(X_0 \to X_1 ... X_n\) una regla de la gramática libre de contexto</li>
 <li>Funciones de la forma \(S(X_0) = f(A(X_1), ... , A(X_n))\) definen
@@ -272,13 +193,12 @@ chequear la consistencia de los atributos</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org93789d0">
-<div class="slide-header"></div>
-<h3 id="org93789d0">Gramáticas con atributos: Un Ejemplo</h3>
+<section id="slide-org2eb3e21">
+<h3 id="org2eb3e21">Gramáticas con atributos: Un Ejemplo</h3>
+<div style="font-size: 65%;">
 <ul>
 <li>Sintaxis
 <ul>
@@ -294,18 +214,17 @@ chequear la consistencia de los atributos</li>
 </ul>
 
 
-<figure>
-<img src="attribgram1.png" alt="attribgram1.png">
+<div id="org404a289" class="figure">
+<p><img src="attribgram1.png" alt="attribgram1.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org38331b5">
-<div class="slide-header"></div>
-<h3 id="org38331b5">Gramáticas con atributos: Un Ejemplo</h3>
+<section id="slide-orgaa644f9">
+<h3 id="orgaa644f9">Gramáticas con atributos: Un Ejemplo</h3>
+<div style="font-size: 70%;">
 <ol>
 <li>Regla sintáctica: &lt;assign&gt; &rarr; &lt;var&gt; = &lt;expr&gt;
 <ul>
@@ -342,13 +261,12 @@ then int else real end if
 
 </ol>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orga971d69">
-<div class="slide-header"></div>
-<h3 id="orga971d69">Gramáticas con atributos</h3>
+<section id="slide-orgc23beee">
+<h3 id="orgc23beee">Gramáticas con atributos</h3>
+<div style="font-size: 65%;">
 <ul>
 <li>¿Cómo se computan los valores de atributos?
 <ul>
@@ -364,18 +282,17 @@ necesita una combinación de ambos órdenes.</li>
 </ul>
 
 
-<figure>
-<img src="attribgram2.png" alt="attribgram2.png">
+<div id="org16f1ceb" class="figure">
+<p><img src="attribgram2.png" alt="attribgram2.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org161db06">
-<div class="slide-header"></div>
-<h3 id="org161db06">Gramáticas con atributos</h3>
+<section id="slide-org37c1c5f">
+<h3 id="org37c1c5f">Gramáticas con atributos</h3>
+<div style="font-size: 65%;">
 <ol>
 <li>&lt;var&gt;.tipo-real &larr; look-up(A) (Regla 4)</li>
 <li>&lt;expr&gt;.tipo-esperado &larr; &lt;var&gt;.tipo-real (Regla 1)</li>
@@ -391,26 +308,24 @@ necesita una combinación de ambos órdenes.</li>
 </ol>
 
 
-<figure>
-<img src="attribgram3.png" alt="attribgram3.png">
+<div id="org67fb47e" class="figure">
+<p><img src="attribgram3.png" alt="attribgram3.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org6530dce">
-<div class="slide-header"></div>
-<h2 id="org6530dce">Semántica Dinámica</h2>
-<div class="outline-text-2" id="text-org6530dce">
-</div><div class="slide-footer"></div>
+<section id="slide-orgb663d8c">
+<h2 id="orgb663d8c">Semántica Dinámica</h2>
+<div class="outline-text-2" id="text-orgb663d8c">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-orga07e68c">
-<div class="slide-header"></div>
-<h3 id="orga07e68c">Métodos Desarrollados</h3>
+<section id="slide-orgdb6ed84">
+<h3 id="orgdb6ed84">Métodos Desarrollados</h3>
+<div style="font-size: 90%;">
 <ul>
 <li>Semántica Operacional
 <ul>
@@ -435,19 +350,17 @@ sentencias.</li>
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org1006fe7">
-<div class="slide-header"></div>
-<h3 id="org1006fe7">Semántica Operacional</h3>
-<div class="outline-text-3" id="text-org1006fe7">
-</div><div class="slide-footer"></div>
+<section id="slide-orga7dae1a">
+<h3 id="orga7dae1a">Semántica Operacional</h3>
+<div class="outline-text-3" id="text-orga7dae1a">
+</div>
 </section>
-<section id="slide-org1c6dce3">
-<div class="slide-header"></div>
-<h4 id="org1c6dce3">Semántica Operacional</h4>
+<section id="slide-orga7400be">
+<h4 id="orga7400be">Semántica Operacional</h4>
+<div style="font-size: 90%;">
 <ul>
 <li>Describe el significado de un programa ejecutando sus sentencias
 sobre una máquina, simulada o real. Los cambios en el estado de la
@@ -456,8 +369,13 @@ máquina (registros, memoria, etc) define el significado de la sentencia.</li>
 nivel se necesita una máquina virtual
 <ul>
 <li>Un intérprete de hardware puro podría ser muy costoso.</li>
-<li>Un intérprete de software puro también tiene problemas
-(dependiente de la máquina )</li>
+<li><p>
+Un intérprete de software puro también tiene problemas
+(dependiente de la máquina )
+</p>
+</section>
+<section id="slide-org9d5b38a-split">
+<div style="font-size: 90%;"></li>
 
 </ul></li>
 <li>Una mejor alternativa: Una simulación completa de la computadora
@@ -470,11 +388,9 @@ una computadora idealizada</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgd12dcdb">
-<div class="slide-header"></div>
-<h4 id="orgd12dcdb">Semántica Operacional</h4>
+<section id="slide-orge32b2a7">
+<h4 id="orge32b2a7">Semántica Operacional</h4>
 <ul>
 <li>Simulador de Prolog en Prolog</li>
 
@@ -482,16 +398,16 @@ una computadora idealizada</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><span style="color: #87cefa;">mi</span>(true).
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">mi</span>(true).
 <span style="color: #87cefa;">mi</span>((<span style="color: #eedd82;">A</span>,<span style="color: #eedd82;">B</span>)) :-
         mi(<span style="color: #eedd82;">A</span>),
         mi(<span style="color: #eedd82;">B</span>).
-<span style="color: #87cefa;">mi1</span>(<span style="color: #eedd82;">Goal</span>) :-
+<span style="color: #87cefa;">mi</span>(<span style="color: #eedd82;">Goal</span>) :-
         <span style="color: #eedd82;">Goal</span> \= true,
         <span style="color: #eedd82;">Goal</span> \= (<span style="color: #eedd82;">_</span>,<span style="color: #eedd82;">_</span>),
         clause(<span style="color: #eedd82;">Goal</span>, <span style="color: #eedd82;">Body</span>),
         mi(<span style="color: #eedd82;">Body</span>).
-</pre>
+</code></pre>
 </div>
 
 <ul>
@@ -504,19 +420,17 @@ una computadora idealizada</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org9f354fb">
-<div class="slide-header"></div>
-<h3 id="org9f354fb">Semántica Denotacional</h3>
-<div class="outline-text-3" id="text-org9f354fb">
-</div><div class="slide-footer"></div>
+<section id="slide-orgaa703e6">
+<h3 id="orgaa703e6">Semántica Denotacional</h3>
+<div class="outline-text-3" id="text-orgaa703e6">
+</div>
 </section>
-<section id="slide-org18d2d7f">
-<div class="slide-header"></div>
-<h4 id="org18d2d7f">Semántica Denotacional</h4>
+<section id="slide-org3a5f363">
+<h4 id="org3a5f363">Semántica Denotacional</h4>
+<div style="font-size: 85%;">
 <ul>
 <li>Basado en la teoría de funciones recursivas</li>
 <li>El método de descripción semántica mas abstracto</li>
@@ -533,11 +447,10 @@ por los valores de las variables del programa</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org57d55bb">
-<div class="slide-header"></div>
-<h4 id="org57d55bb">Semántica Denotacional vs Semántica Operacional</h4>
+<section id="slide-org46c63bf">
+<h4 id="org46c63bf">Semántica Denotacional vs Semántica Operacional</h4>
+<div style="font-size: 85%;">
 <ul>
 <li>En la semántica operacional los cambios de estado son definidos por
 algoritmos codificados</li>
@@ -550,11 +463,10 @@ un estado retorna el valor actual de esa variable \({VARMAP}(i_j, s) = v_j\)</li
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org654c74f">
-<div class="slide-header"></div>
-<h4 id="org654c74f">Números Decimales</h4>
+<section id="slide-orgc321e12">
+<h4 id="orgc321e12">Números Decimales</h4>
+<div style="font-size: 85%;">
 <ul>
 <li>&lt;dec-num&gt; &rarr; 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |</li>
 <li>M<sub>dec</sub> ('0') = 0,  M<sub>dec</sub> ('1') = 1, &#x2026; , M<sub>dec</sub> ('9') = 9</li>
@@ -565,16 +477,20 @@ un estado retorna el valor actual de esa variable \({VARMAP}(i_j, s) = v_j\)</li
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgcd535fe">
-<div class="slide-header"></div>
-<h4 id="orgcd535fe">Expresiones</h4>
+<section id="slide-org6e6eea5">
+<h4 id="org6e6eea5">Expresiones</h4>
+<div style="font-size: 90%;">
 <ul>
 <li>relaciona expresiones a Z &cup; { error }</li>
-<li>suponiendo que las expresiones son números decimales, variables, o
+<li><p>
+suponiendo que las expresiones son números decimales, variables, o
 expresiones binarias teniendo un operador aritmético y dos
-operandos, cada uno de los cuales puede ser una expresión.</li>
+operandos, cada uno de los cuales puede ser una expresión.
+</p>
+</section>
+<section id="slide-org07861a3-split">
+<div style="font-size: 70%;"></li>
 <li>M<sub>e</sub> ( &lt; expr &gt;, s) = case &lt; expr &gt; of 
 <ul>
 <li>&lt; dec-num &gt; &rarr; M<sub>dec</sub> ( &lt; dec-num &gt; , s)</li>
@@ -604,11 +520,10 @@ right-expr &gt;, s)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org7e07731">
-<div class="slide-header"></div>
-<h4 id="org7e07731">asignación</h4>
+<section id="slide-orgf035fee">
+<h4 id="orgf035fee">asignación</h4>
+<div style="font-size: 85%;">
 <ul>
 <li>M<sub>a</sub> ( X := E, s) = 
 <ul>
@@ -635,11 +550,10 @@ right-expr &gt;, s)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgd67cabd">
-<div class="slide-header"></div>
-<h4 id="orgd67cabd">Ciclo 'while'</h4>
+<section id="slide-org979aba2">
+<h4 id="org979aba2">Ciclo 'while'</h4>
+<div style="font-size: 85%;">
 <ul>
 <li>M<sub>l</sub>(while B do L, s) =
 <ul>
@@ -664,11 +578,10 @@ right-expr &gt;, s)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orge557d22">
-<div class="slide-header"></div>
-<h4 id="orge557d22">Ciclo</h4>
+<section id="slide-orgd852521">
+<h4 id="orgd852521">Ciclo</h4>
+<div style="font-size: 90%;">
 <ul>
 <li>El significado del ciclo es el valor de las variables del programa
 después de que las sentencias del ciclo han sido ejecutadas el
@@ -680,11 +593,10 @@ con rigor matemático</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgc2d46d4">
-<div class="slide-header"></div>
-<h4 id="orgc2d46d4">Evaluación</h4>
+<section id="slide-org07762b7">
+<h4 id="org07762b7">Evaluación</h4>
+<div style="font-size: 90%;">
 <ul>
 <li>Puede ser usado para probar la corrección de programas</li>
 <li>Provee un modo riguroso de pensar los programas</li>
@@ -696,19 +608,16 @@ con rigor matemático</li>
 
 
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgb4ea93e">
-<div class="slide-header"></div>
-<h3 id="orgb4ea93e">Semántica Axiomática</h3>
-<div class="outline-text-3" id="text-orgb4ea93e">
-</div><div class="slide-footer"></div>
+<section id="slide-org653f457">
+<h3 id="org653f457">Semántica Axiomática</h3>
+<div class="outline-text-3" id="text-org653f457">
+</div>
 </section>
-<section id="slide-orgdb159ab">
-<div class="slide-header"></div>
-<h4 id="orgdb159ab">Semántica Axiomática</h4>
+<section id="slide-org6030642">
+<h4 id="org6030642">Semántica Axiomática</h4>
 <ul>
 <li>Basado en Lógica Formal (cálculo de predicados)</li>
 <li>Propósito original: Verificación formal de programas</li>
@@ -719,11 +628,9 @@ expresiones a otras expresiones)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org6a1c604">
-<div class="slide-header"></div>
-<h4 id="org6a1c604">Semántica Axiomática</h4>
+<section id="slide-org58cc947">
+<h4 id="org58cc947">Semántica Axiomática</h4>
 <ul>
 <li>Una aserción antes de una sentencia (una <i>precondición</i> establece
 las relaciones y restricciones entre variables que son verdaderas en
@@ -734,11 +641,9 @@ que garantiza la postcondición</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org613ff71">
-<div class="slide-header"></div>
-<h4 id="org613ff71">Semántica Axiomática</h4>
+<section id="slide-org422b8dc">
+<h4 id="org422b8dc">Semántica Axiomática</h4>
 <ul>
 <li>La Forma es {P} sentencia {Q}</li>
 <li>Un ejemplo
@@ -751,11 +656,9 @@ que garantiza la postcondición</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org5dc6f1a">
-<div class="slide-header"></div>
-<h4 id="org5dc6f1a">Proceso de prueba de programa</h4>
+<section id="slide-org99212b8">
+<h4 id="org99212b8">Proceso de prueba de programa</h4>
 <ul>
 <li>La postcondición para el programa entero es el resultado deseado
 <ul>
@@ -768,11 +671,9 @@ el programa es correcto.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org2fbf651">
-<div class="slide-header"></div>
-<h4 id="org2fbf651">Axiomas</h4>
+<section id="slide-org44ad4c1">
+<h4 id="org44ad4c1">Axiomas</h4>
 <ul>
 <li>Un axioma para la asignación
 <ul>
@@ -790,11 +691,9 @@ La regla de la Consecuencia
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org9e87df6">
-<div class="slide-header"></div>
-<h4 id="org9e87df6">Axiomas</h4>
+<section id="slide-org3daed0c">
+<h4 id="org3daed0c">Axiomas</h4>
 <ul>
 <li class="fragment roll-in">\( x = 2 * y - 3 \{x > 25 \}  \)</li>
 <li class="fragment roll-in">\( 2 * y - 3 > 25  \)</li>
@@ -805,21 +704,18 @@ La regla de la Consecuencia
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgf0461cf">
-<div class="slide-header"></div>
-<h4 id="orgf0461cf">Axiomas</h4>
+<section id="slide-org5b17fb3">
+<h4 id="org5b17fb3">Axiomas</h4>
+<div style="font-size: 60%;">
 <p>
 \[ \frac{ \{x > 3\} \ x = x - 3 \ \{x > 0\}, (x > 5) \Rightarrow (x >
   3), (x > 0) \Rightarrow (X > 0)}{\{x > 5\} \ x = x - 3 \ \{x > 0\}} \]
 </p>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org6ee3d0f">
-<div class="slide-header"></div>
-<h4 id="org6ee3d0f">Axiomas</h4>
+<section id="slide-org4c6d79a">
+<h4 id="org4c6d79a">Axiomas</h4>
 <ul>
 <li>Una regla de inferencia para secuencias
 <ul>
@@ -834,11 +730,9 @@ La regla de la Consecuencia
 \[ \frac{ \{P1\} \ S1 \ \{P2\}, \{P2\} \ S2 \ \{P3\}}{\{P1\} \ S1;S2 \ \{P3\}} \]
 </p>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orga8d4b33">
-<div class="slide-header"></div>
-<h4 id="orga8d4b33">Axiomas</h4>
+<section id="slide-org4ae0e21">
+<h4 id="org4ae0e21">Axiomas</h4>
 <ul>
 <li>\( y = 3 * x + 1  \);</li>
 
@@ -861,11 +755,10 @@ para la primera asignación puede ser computada
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org3623726">
-<div class="slide-header"></div>
-<h4 id="org3623726">Axiomas</h4>
+<section id="slide-orgfd681d1">
+<h4 id="orgfd681d1">Axiomas</h4>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 regla de inferencia para sentencias de selección  <i>if</i>
@@ -882,11 +775,10 @@ regla de inferencia para sentencias de selección  <i>if</i>
 \{Q\}}{\{P\} \ if \ B \ then \ S1 \ else \ S2 \ \{Q\}}\]
 </p>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org96d4e00">
-<div class="slide-header"></div>
-<h4 id="org96d4e00">Ejemplo</h4>
+<section id="slide-org4d3d5ce">
+<h4 id="org4d3d5ce">Ejemplo</h4>
+<div style="font-size: 80%;">
 <ul>
 <li><b>if</b> \( x > 0 \) <b>then</b> \( y = y - 1 \) <b>else</b> \(  y =  y + 1  \)</li>
 
@@ -903,11 +795,9 @@ del total de la sentencia</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgd4cd8f1">
-<div class="slide-header"></div>
-<h4 id="orgd4cd8f1">Axiomas</h4>
+<section id="slide-org1496946">
+<h4 id="org1496946">Axiomas</h4>
 <ul>
 <li><p>
 Una regla de inferencia para un ciclo <i>while</i>
@@ -928,11 +818,9 @@ and (not B)\}} \]
 donde <i>I</i> es el <i>invariante</i> (la hipótesis inductiva)
 </p>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org831edfa">
-<div class="slide-header"></div>
-<h4 id="org831edfa">Axiomas</h4>
+<section id="slide-org593f8ff">
+<h4 id="org593f8ff">Axiomas</h4>
 <ul>
 <li>Características del <i>invariante</i>: <i>I</i> debe satisfacer las siguientes
 condiciones:
@@ -950,11 +838,10 @@ del cuerpo del ciclo  iterativo</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org9e8b3b5">
-<div class="slide-header"></div>
-<h4 id="org9e8b3b5">Ejemplo</h4>
+<section id="slide-org00f2dc9">
+<h4 id="org00f2dc9">Ejemplo</h4>
+<div style="font-size: 60%;">
 <ul>
 <li><b>while</b> \( y <> x \) <b>do</b> \( y = y + 1 \) <b>end</b> \( \{ y = x \} \)</li>
 
@@ -970,11 +857,10 @@ obtenemos  \( \{y <= x \}\), que puede ser el invariante del ciclo.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgd48c56e">
-<div class="slide-header"></div>
-<h4 id="orgd48c56e">Ejemplo</h4>
+<section id="slide-orgd839545">
+<h4 id="orgd839545">Ejemplo</h4>
+<div style="font-size: 70%;">
 <ul>
 <li>\( P \Rightarrow I \) \( \{y <= x \} \Rightarrow \{y <= x \} \)</li>
 <li>\( \{I\} \ B \ \{I\}  \)  \( \{y <= x \} \ \{y <> x \}  \ \{y <= x\}  \)</li>
@@ -991,11 +877,9 @@ equivalente a \( \{y < x \}\) el cual es implicado por \( \{y < x
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-orgb33d0e4">
-<div class="slide-header"></div>
-<h4 id="orgb33d0e4">Invariante</h4>
+<section id="slide-orgbeda3b3">
+<h4 id="orgbeda3b3">Invariante</h4>
 <ul>
 <li>El invariante es la versión mas debil de la postcondición del ciclo,
 y es también una precondición.</li>
@@ -1006,11 +890,9 @@ la postcondición</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-org0eee04e">
-<div class="slide-header"></div>
-<h4 id="org0eee04e">Evaluación</h4>
+<section id="slide-org857c7bf">
+<h4 id="org857c7bf">Evaluación</h4>
 <ul>
 <li>Desarrollar axiomas y reglas de inferencia para todas las
 sentencias en un lenguaje es dificultoso</li>
@@ -1019,31 +901,17 @@ excelente marco para razonar los programas, pero no es útil para los
 usuarios del lenguaje y desarrolladores de compiladores</li>
 
 </ul>
-<div class="slide-footer"></div>
 </section>
 </section>
 </div>
 </div>
-<script src="../reveal.js-master/lib/js/head.min.js"></script>
-<script src="../reveal.js-master/js/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 't',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
+transition:'cube',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server
@@ -1052,12 +920,12 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: '../reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: '../reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '../reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-,});
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
 </script>
 </body>
 </html>

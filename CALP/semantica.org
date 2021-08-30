@@ -1,46 +1,57 @@
-#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
-#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
-#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
-#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
-#+OPTIONS: reveal_title_slide:auto reveal_width:-1
-#+REVEAL_MARGIN: -1
-#+REVEAL_MIN_SCALE: -1
-#+REVEAL_MAX_SCALE: -1
-#+REVEAL_ROOT: ../reveal.js-master
-#+REVEAL_TRANS: cube
-#+REVEAL_SPEED: default
-#+REVEAL_THEME: solarized
-#+REVEAL_EXTRA_CSS:
-#+REVEAL_EXTRA_JS:
-#+REVEAL_HLEVEL: 2
-#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
-#+REVEAL_TITLE_SLIDE_BACKGROUND:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_PREAMBLE:
-#+REVEAL_HEAD_PREAMBLE:
-#+REVEAL_POSTAMBLE:
-#+REVEAL_MULTIPLEX_ID:
-#+REVEAL_MULTIPLEX_SECRET:
-#+REVEAL_MULTIPLEX_URL:
-#+REVEAL_MULTIPLEX_SOCKETIO_URL:
-#+REVEAL_SLIDE_HEADER:
-#+REVEAL_SLIDE_FOOTER:
-#+REVEAL_PLUGINS:
-#+REVEAL_DEFAULT_FRAG_STYLE:
-#+REVEAL_INIT_SCRIPT:
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
 
-#+TITLE: Conceptos Avanzados en Lenguajes de Programación
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+
+# #+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
+# #+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
+# #+OPTIONS: reveal_progress:t reveal_rolling_links:nil
+# #+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
+# #+OPTIONS: reveal_title_slide:auto reveal_width:-1
+# #+REVEAL_MARGIN: -1
+# #+REVEAL_MIN_SCALE: -1
+# #+REVEAL_MAX_SCALE: -1
+# #+REVEAL_ROOT: ../reveal.js-master
+# #+REVEAL_TRANS: cube
+# #+REVEAL_SPEED: default
+# #+REVEAL_THEME: solarized
+# #+REVEAL_EXTRA_CSS:
+# #+REVEAL_EXTRA_JS:
+# #+REVEAL_HLEVEL: 2
+# #+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
+# #+REVEAL_TITLE_SLIDE_BACKGROUND:
+# #+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+# #+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+# #+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+# #+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+# #+REVEAL_PREAMBLE:
+# #+REVEAL_HEAD_PREAMBLE:
+# #+REVEAL_POSTAMBLE:
+# #+REVEAL_MULTIPLEX_ID:
+# #+REVEAL_MULTIPLEX_SECRET:
+# #+REVEAL_MULTIPLEX_URL:
+# #+REVEAL_MULTIPLEX_SOCKETIO_URL:
+# #+REVEAL_SLIDE_HEADER:
+# #+REVEAL_SLIDE_FOOTER:
+# #+REVEAL_PLUGINS:
+# #+REVEAL_DEFAULT_FRAG_STYLE:
+# #+REVEAL_INIT_SCRIPT:
+
+#+TITLE: C. A. L. P.
 #+DATE:  <2018-08-14 mar>
 #+AUTHOR: Semanticas 
 #+EMAIL: Claudio Vaucheret / cv@fi.uncoma.edu.ar 
 
+
+
 * Introducción
 
 ** Introducción
-
+#+REVEAL_HTML: <div style="font-size: 90%;">   
+   
 - *Sintaxis*: La forma y estructura de las expresiones, sentencias y
   unidades del programa.
 - *Semántica*: El significado de las expresiones, sentencias, y
@@ -52,6 +63,7 @@
     * Programadores
 
 ** Definición Formal de Lenguajes
+   #+REVEAL_HTML: <div style="font-size: 90%;">   
 - *Reconocedores*
   + Un dispositivo de reconocimiento que lee cadenas del lenguaje y
     decide si las cadenas de entrada pertenecen al Lenguaje.
@@ -68,7 +80,8 @@
   + Mejora la legibilidad de BNF
 - Gramáticas y Reconocedores
 
-** BNF y Gramáticas Libres de Contexto 
+** BNF y Gramáticas Libres de Contexto
+   #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Gramáticas libres de Contexto
   + Desarrollado por Noam Chomsky a mediados de 1950s
   + Generadores de Lenguajes, medio de  describir la la sintaxis de
@@ -89,6 +102,7 @@
   + Diseño de Compiladores (chequeo de semántica estática)
 
 ** Gramáticas con atributos: Definición
+   #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Una Gramática con atributos es una gramática libre de contexto $G =
   (S,N,T,P)$ con los siguientes agregados:
   + Por cada símbolo de gramática $x$ hay un conjunto $A(x)$ de
@@ -99,7 +113,7 @@
     chequear la consistencia de los atributos
 
 ** Gramáticas con atributos: Definición
-
+#+REVEAL_HTML: <div style="font-size: 90%;">   
 - Sea $X_0 \to X_1 ... X_n$ una regla de la gramática libre de contexto
 - Funciones de la forma $S(X_0) = f(A(X_1), ... , A(X_n))$ definen
   /atributos sintetizados/
@@ -108,6 +122,7 @@
 - Inicialmente hay /atributos intrínsecos/ en las hojas de los árboles sintácticos
 
 ** Gramáticas con atributos: Un Ejemplo
+   #+REVEAL_HTML: <div style="font-size: 65%;">   
 - Sintaxis
   - <assign> \to <var> = <expr>
   - <expr> \to <var> + <var> | <var>
@@ -119,6 +134,7 @@
 [[file:attribgram1.png]]
 
 ** Gramáticas con atributos: Un Ejemplo
+   #+REVEAL_HTML: <div style="font-size: 70%;">   
 1) Regla sintáctica: <assign> \to <var> = <expr>
    - Regla semántica: <expr>.tipo-esperado \leftarrow <var>.tipo-real
 2) Regla sintáctica: <expr> \to <var>[ 2] + <var>[ 3]
@@ -137,6 +153,7 @@
    - Regla semántica:  <var>.tipo-real \leftarrow lookup (<var>.string)
 
 ** Gramáticas con atributos
+      #+REVEAL_HTML: <div style="font-size: 65%;">   
 - ¿Cómo se computan los valores de atributos?
   + Si todos los atributos fueran heredados, el árbol podría ser
     completado en un orden /top-down/.
@@ -148,7 +165,7 @@
 [[file:attribgram2.png]]
 
 ** Gramáticas con atributos
-
+   #+REVEAL_HTML: <div style="font-size: 65%;">   
 1) <var>.tipo-real \leftarrow look-up(A) (Regla 4)
 2) <expr>.tipo-esperado \leftarrow <var>.tipo-real (Regla 1)
 3) 
@@ -163,6 +180,7 @@
 * Semántica Dinámica
 
 ** Métodos Desarrollados
+      #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Semántica Operacional
   - Operaciones en una máquina abstracta
 - Semántica Denotacional
@@ -177,6 +195,7 @@
 
 ** Semántica Operacional
 *** Semántica Operacional
+       #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Describe el significado de un programa ejecutando sus sentencias
   sobre una máquina, simulada o real. Los cambios en el estado de la
   máquina (registros, memoria, etc) define el significado de la sentencia.
@@ -185,6 +204,8 @@
   - Un intérprete de hardware puro podría ser muy costoso.
   - Un intérprete de software puro también tiene problemas
     (dependiente de la máquina )
+    #+REVEAL: split
+    #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Una mejor alternativa: Una simulación completa de la computadora
   - Construir un traductor del codigo fuente a un codigo maquina de
     una computadora idealizada
@@ -199,7 +220,7 @@ mi(true).
 mi((A,B)) :-
         mi(A),
         mi(B).
-mi1(Goal) :-
+mi(Goal) :-
         Goal \= true,
         Goal \= (_,_),
         clause(Goal, Body),
@@ -212,6 +233,7 @@ mi1(Goal) :-
 
 ** Semántica Denotacional
 *** Semántica Denotacional
+    #+REVEAL_HTML: <div style="font-size: 85%;">   
 - Basado en la teoría de funciones recursivas
 - El método de descripción semántica mas abstracto
 - Originalmente desarrollado por Scott y Strachey (1970)
@@ -223,6 +245,7 @@ mi1(Goal) :-
   por los valores de las variables del programa
 
 *** Semántica Denotacional vs Semántica Operacional
+        #+REVEAL_HTML: <div style="font-size: 85%;">   
 - En la semántica operacional los cambios de estado son definidos por
   algoritmos codificados
 - En la semántica denotacional los cambios de estado son definidos por
@@ -233,6 +256,7 @@ mi1(Goal) :-
   un estado retorna el valor actual de esa variable ${VARMAP}(i_j, s) = v_j$
 
 *** Números Decimales
+            #+REVEAL_HTML: <div style="font-size: 85%;">   
 - <dec-num> \to 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 - M_{dec} ('0') = 0,  M_{dec} ('1') = 1, ... , M_{dec} ('9') = 9
 - M_{dec} ( <dec-num> '0') = 10 * M_{dec} ( <dec-num> )
@@ -241,10 +265,13 @@ mi1(Goal) :-
 - M_{dec} ( <dec-num> '9') = 10 * M_{dec} ( <dec-num> ) + 9
 
 *** Expresiones
+                #+REVEAL_HTML: <div style="font-size: 90%;">   
 - relaciona expresiones a Z \cup { error }
 - suponiendo que las expresiones son números decimales, variables, o
   expresiones binarias teniendo un operador aritmético y dos
   operandos, cada uno de los cuales puede ser una expresión.
+    #+REVEAL: split
+    #+REVEAL_HTML: <div style="font-size: 70%;">   
 - M_e ( < expr >, s) = case < expr > of 
   - < dec-num > \to M_{dec} ( < dec-num > , s)
   - < var > \to if VARMAP(< var >, s) 
@@ -261,6 +288,7 @@ mi1(Goal) :-
 - ...
 
 *** asignación
+                #+REVEAL_HTML: <div style="font-size: 85%;">   
 - M_a ( X := E, s) = 
   - if M_e(E, s) = error
     - then error
@@ -270,6 +298,7 @@ mi1(Goal) :-
           -  = M_e(E, s) if i_j = x
 
 *** Ciclo 'while'
+                #+REVEAL_HTML: <div style="font-size: 85%;">   
 - M_l(while B do L, s) =
   - if M_b(B, s) = undef
     - then error
@@ -280,6 +309,7 @@ mi1(Goal) :-
         - else M_l(while B do L, M_{sl}(L, s))
 
 *** Ciclo
+                #+REVEAL_HTML: <div style="font-size: 90%;">   
 - El significado del ciclo es el valor de las variables del programa
   después de que las sentencias del ciclo han sido ejecutadas el
   número prescrito de veces, asumiendo que no ha habido errores
@@ -288,7 +318,8 @@ mi1(Goal) :-
 - La recursión comparada con la iteración es mas facil de describir
   con rigor matemático
 
-*** Evaluación 
+*** Evaluación
+                #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Puede ser usado para probar la corrección de programas
 - Provee un modo riguroso de pensar los programas
 - Puede ser una ayuda al diseño de lenguajes
@@ -347,8 +378,9 @@ mi1(Goal) :-
 - \( y > 13 - x  \)
 
 *** Axiomas
+                    #+REVEAL_HTML: <div style="font-size: 60%;">   
  \[ \frac{ \{x > 3\} \ x = x - 3 \ \{x > 0\}, (x > 5) \Rightarrow (x >
-  3), (x > 0) \Rightarrow (X > 0)}{\{x > 5\} \ x = x - 3 \ \{x > 0\}} \]
+  3), (x > 0) \Rightarrow (x > 0)}{\{x > 5\} \ x = x - 3 \ \{x > 0\}} \]
 
 *** Axiomas
 - Una regla de inferencia para secuencias
@@ -373,6 +405,7 @@ para la primera asignación puede ser computada
 - \( x < 2 \)
 
 *** Axiomas
+       #+REVEAL_HTML: <div style="font-size: 80%;">   
 - regla de inferencia para sentencias de selección  /if/
 
  {P} *if* B *then* S1 *else* S2 {Q}
@@ -381,6 +414,7 @@ para la primera asignación puede ser computada
 \{Q\}}{\{P\} \ if \ B \ then \ S1 \ else \ S2 \ \{Q\}}\]
 
 *** Ejemplo
+    #+REVEAL_HTML: <div style="font-size: 80%;">   
 - *if* \( x > 0 \) *then* \( y = y - 1 \) *else* \(  y =  y + 1  \)
 #+ATTR_REVEAL: :frag (roll-in)
 - con la postcondición \( \{ y > 0 \} \)
@@ -415,6 +449,7 @@ and (not B)\}} \]
   - El ciclo termina
 
 *** Ejemplo
+    #+REVEAL_HTML: <div style="font-size: 60%;">   
 - *while* \( y <> x \) *do* \( y = y + 1 \) *end* \( \{ y = x \} \) 
 #+ATTR_REVEAL: :frag (roll-in)
 - Para cero iteraciones la precondición mas débil es \( \{ y = x \} \)
@@ -426,6 +461,7 @@ and (not B)\}} \]
   obtenemos  \( \{y <= x \}\), que puede ser el invariante del ciclo.
 
 *** Ejemplo
+    #+REVEAL_HTML: <div style="font-size: 70%;">   
   - \( P \Rightarrow I \) \( \{y <= x \} \Rightarrow \{y <= x \} \) 
   - \( \{I\} \ B \ \{I\}  \)  \( \{y <= x \} \ \{y <> x \}  \ \{y <= x\}  \) 
   - \( \{I \ and \ B \} \ S \ \{I\}  \) \( \{y <= x \ and \ y <> x \}
