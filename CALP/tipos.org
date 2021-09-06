@@ -1,41 +1,21 @@
-#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
-#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
-#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
-#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
-#+OPTIONS: reveal_title_slide:auto reveal_width:-1
-#+REVEAL_MARGIN: -1
-#+REVEAL_MIN_SCALE: -1
-#+REVEAL_MAX_SCALE: -1
-#+REVEAL_ROOT: ../reveal.js-master
-#+REVEAL_TRANS: cube
-#+REVEAL_SPEED: default
-#+REVEAL_THEME: solarized
-#+REVEAL_EXTRA_CSS:
-#+REVEAL_EXTRA_JS:
-#+REVEAL_HLEVEL: 2
-#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
-#+REVEAL_TITLE_SLIDE_BACKGROUND:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_PREAMBLE:
-#+REVEAL_HEAD_PREAMBLE:
-#+REVEAL_POSTAMBLE:
-#+REVEAL_MULTIPLEX_ID:
-#+REVEAL_MULTIPLEX_SECRET:
-#+REVEAL_MULTIPLEX_URL:
-#+REVEAL_MULTIPLEX_SOCKETIO_URL:
-#+REVEAL_SLIDE_HEADER:
-#+REVEAL_SLIDE_FOOTER:
-#+REVEAL_PLUGINS:
-#+REVEAL_DEFAULT_FRAG_STYLE:
-#+REVEAL_INIT_SCRIPT:
-
 #+TITLE: Conceptos Avanzados en Lenguajes de Programación
-#+DATE:  <2018-08-27 Mon>
+#+DATE:  <2021-09-06 lun>
 #+AUTHOR: Tipos de Datos
 #+EMAIL: Claudio Vaucheret / cv@fi.uncoma.edu.ar 
+
+
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
+#+OPTIONS: toc:nil
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
+#+REVEAL_POSTAMBLE: <p> Created by yjwen. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+#+REVEAL_EXTRA_CSS: ./local.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+
+
+
 
 * Introducción
 
@@ -64,6 +44,9 @@
     de aplicar operaciones a los datos que no son apropiados
 - *Tipado Estático* significa que el compilador puede realizar todos
   los chequeos en tiempo de compilación.
+
+#+REVEAL: split:t  
+  
 - Ejemplos
   - Common Lisp is fuertemente tipado pero no *tipado estaticamente*
   - Ada es estáticamente tipado
@@ -167,7 +150,7 @@ c := a + b;
 ** Arreglos
 - Los Arreglos son el tipo compuesto mas importante en los lenguajes
   de alto nivel. Es una agrupación de elementos (usualmente) homogeneos
-   en la cual los elementos individuales son son
+   en la cual los elementos individuales son 
   identificados por su posición en la agrupación relativo a su primer
   elemento. 
 
@@ -199,6 +182,7 @@ c := a + b;
 - Java, ML, C#, especifican chequeo de rango
 
 *** Categoría de Arreglos
+#+REVEAL_HTML: <div style="font-size: 90%;">   
 #+ATTR_REVEAL: :frag (roll-in)
 - Estático: rango de subíndices son ligados estáticamente y el
   alojamiento de memoria es estático (antes del tiempo de ejecución)
@@ -276,7 +260,8 @@ c := a + b;
   - Por ejemplo, el operador + entre dos arreglos resulta en un
     arreglo con la suma de los pares de elementos de los dos arreglos.
 
-*** Arreglos 
+*** Arreglos
+ #+REVEAL_HTML: <div style="font-size: 85%;">   
 - Ejemplo ~A : array [L1..U1] of array [L2::U2] of array [L3..U3] of elem;~
   - $D1 = U1 - L1 + 1$
   - $D2 = U2 - L2 + 1$
@@ -285,8 +270,9 @@ c := a + b;
   - $S2 = D3 * S3$ 
   - $S1 = D2 * S2$ 
 
-\( A(i,j,k) = \) ~address of A~ \( + (i * S1) + (j * S2) + (k * S3)  -
-[(L1 * S1) + (L2 * S2) + (L3 * S3)] \)
+\( A(i,j,k) = \mbox{ address of A } + (i * S1) + (j * S2) + (k * S3) - \)
+
+\( [(L1 * S1) + (L2 * S2) + (L3 * S3)] \)
 
  
 *** Slices
@@ -304,6 +290,7 @@ c := a + b;
 [[file:descriptoresarray.png]]
 
 *** Arreglos Asociativos
+ #+REVEAL_HTML: <div style="font-size: 90%;">       
 - Un /arreglo asociativo/ es una colección no ordenada de elementos de
   datos que son indexados por un numero igual de valores llamados
   /claves/ (keys)
@@ -471,7 +458,7 @@ end record;
     - ~int (*a)[n]~ puntero a un arreglo de /n/ elementos de enteros
 
 *** Punteros y Tipos Recursivos
-- Los problemas con punteros /cogados/ se deben a:
+- Los problemas con punteros /colgados/ se deben a:
   - desalojo explícito de objetos del /heap/
     - solo en lenguajes que tienen explícito desalojo
   - desalojo implícito de objetos elaborados

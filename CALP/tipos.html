@@ -7,10 +7,11 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
+<link rel="stylesheet" href="./local.css"/>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -18,107 +19,32 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../reveal.js-master/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<meta name="description" content="Org-Reveal Introduction.">
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Tipos de Datos</h2><h2 class="date">2018-08-27 Mon 00:00</h2><p class="date">Created: 2020-09-22 Tue 16:34</p>
-</section>
-<section id="table-of-contents">
-<nav id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#/slide-org3e77cca">Introducción</a>
-<ul>
-<li><a href="#/slide-org3bdfddf">Tipos de Datos</a>
-<ul>
-<li><a href="#/slide-orgdf9f125">Tipos de Datos</a></li>
-<li><a href="#/slide-org4a9f080">Tipos de Datos</a></li>
-<li><a href="#/slide-org75ede10">Tipos de Datos</a></li>
-<li><a href="#/slide-org1e68cc7">Sistema de Tipos</a></li>
-<li><a href="#/slide-orga06883c">Chequeo de Tipos</a></li>
-<li><a href="#/slide-org7e19b93">Estructural vs. por Nombre</a></li>
-</ul>
-</li>
-<li><a href="#/slide-orgdb7c5a1">Chequeo de Tipos: Coerción</a>
-<ul>
-<li><a href="#/slide-org5e529a7">Chequeo de Tipos: Coerción</a></li>
-<li><a href="#/slide-orged3309e">Chequeo de Tipos: Coerción</a></li>
-<li><a href="#/slide-orgf711112">Chequeo de Tipos: Coerción</a></li>
-<li><a href="#/slide-org25d8e5f">Chequeo de Tipos: Coerción</a></li>
-</ul>
-</li>
-<li><a href="#/slide-orga767fa6">Arreglos</a>
-<ul>
-<li><a href="#/slide-org64b4005">Cuestiones de Diseño de Arreglos</a></li>
-<li><a href="#/slide-orgdbeb8d0">Accediendo a los elementos del Arreglo</a></li>
-<li><a href="#/slide-org90900c5">Tipos de los subíndices de los arreglos</a></li>
-<li><a href="#/slide-org1f26b54">Categoría de Arreglos</a></li>
-<li><a href="#/slide-orgb4de1ab">Categoría de Arreglos</a></li>
-<li><a href="#/slide-org202481e">(Stack) Dinámicos fijos</a></li>
-<li><a href="#/slide-org9d763c4">Arreglos</a></li>
-<li><a href="#/slide-orgc80687f">Arreglos</a></li>
-<li><a href="#/slide-orge046962">Arreglos</a></li>
-<li><a href="#/slide-org95f9933">Arreglos</a></li>
-<li><a href="#/slide-org01676b2">Inicialización de Arreglos</a></li>
-<li><a href="#/slide-org8d93bc5">Operaciones de Arreglos</a></li>
-<li><a href="#/slide-org5603791">Arreglos</a></li>
-<li><a href="#/slide-org1bc3ecb">Slices</a></li>
-<li><a href="#/slide-orge2fd4e4">Slices</a></li>
-<li><a href="#/slide-org0ce445e">Descriptores en Tiempo de Compilación</a></li>
-<li><a href="#/slide-org0a0d6ec">Arreglos Asociativos</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org4173917">Strings</a></li>
-<li><a href="#/slide-orgf9fdc4b">Tipo Registros</a>
-<ul>
-<li><a href="#/slide-orgc2b36c7">Tipo Registros</a></li>
-<li><a href="#/slide-orgde1e44d">Registros</a></li>
-<li><a href="#/slide-orgbf0e212">Operaciónes de Registros</a></li>
-<li><a href="#/slide-org16d1433">Comparación con Arreglos</a></li>
-<li><a href="#/slide-orgbc6c368">Implementación de Registros</a></li>
-<li><a href="#/slide-orga439807">Tipo Uniones</a></li>
-<li><a href="#/slide-orge6fba58">tipo Union de Ada</a></li>
-<li><a href="#/slide-orge4b189f">Evaluación de Uniones</a></li>
-</ul>
-</li>
-<li><a href="#/slide-orgae50da5">Punteros y Tipos Recursivos</a>
-<ul>
-<li><a href="#/slide-orgea01f09">Tipo Punteros</a></li>
-<li><a href="#/slide-org17933b1">Punteros y Tipos Recursivos</a></li>
-<li><a href="#/slide-org87d94e0">Punteros y Tipos Recursivos</a></li>
-<li><a href="#/slide-orgc38a523">Punteros y Tipos Recursivos</a></li>
-<li><a href="#/slide-orge4f5143">Punteros y Tipos Recursivos</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org45edb6b">Listas</a></li>
-<li><a href="#/slide-orgccfbf17">Archivos y Entrada/Salida</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
+<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Tipos de Datos</h2><h2 class="date">2021-09-06 lun 00:00</h2><p class="date">Created: 2021-09-06 lun 12:56</p>
 </section>
 
+
+
+
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h2 id="org3e77cca">Introducción</h2>
-<div class="outline-text-2" id="text-org3e77cca">
+<section id="slide-org4dd8478">
+<h2 id="org4dd8478"><span class="section-number-2">1</span> Introducción</h2>
+<div class="outline-text-2" id="text-1">
 </div>
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h3 id="org3bdfddf">Tipos de Datos</h3>
+<section id="slide-orga3c4deb">
+<h3 id="orga3c4deb"><span class="section-number-3">1.1</span> Tipos de Datos</h3>
 <ul>
 <li>Hemos desarrollado una noción intuitiva de tipo de dato; ¿Que hay
 detras de la intuición?
@@ -134,11 +60,9 @@ objetos de ese tipo (aproximación de abstracción)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgdf9f125">Tipos de Datos</h4>
+<section id="slide-orgbf73815">
+<h4 id="orgbf73815"><span class="section-number-4">1.1.1</span> Tipos de Datos</h4>
 <ul>
 <li>Utilidad
 <ul>
@@ -155,11 +79,9 @@ objetos de ese tipo (aproximación de abstracción)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org4a9f080">Tipos de Datos</h4>
+<section id="slide-orgc6c61e2">
+<h4 id="orgc6c61e2"><span class="section-number-4">1.1.2</span> Tipos de Datos</h4>
 <ul>
 <li><b>Fuertemente Tipado</b> se ha vuelto un término popular
 <ul>
@@ -170,6 +92,15 @@ de aplicar operaciones a los datos que no son apropiados</li>
 </ul></li>
 <li><b>Tipado Estático</b> significa que el compilador puede realizar todos
 los chequeos en tiempo de compilación.</li>
+
+</ul>
+
+</section>
+<section id="slide-orgc6c61e2-split">
+
+<h4><span class="section-number-4">1.1.2</span> Tipos de Datos</h4>
+
+<ul>
 <li>Ejemplos
 <ul>
 <li>Common Lisp is fuertemente tipado pero no <b>tipado estaticamente</b></li>
@@ -184,11 +115,9 @@ chequeadas dinámicamente.</li>
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org75ede10">Tipos de Datos</h4>
+<section id="slide-org463ff89">
+<h4 id="org463ff89"><span class="section-number-4">1.1.3</span> Tipos de Datos</h4>
 <ul>
 <li>Simples
 <ul>
@@ -215,11 +144,9 @@ chequeadas dinámicamente.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org1e68cc7">Sistema de Tipos</h4>
+<section id="slide-org5606979">
+<h4 id="org5606979"><span class="section-number-4">1.1.4</span> Sistema de Tipos</h4>
 <ul>
 <li>Un <b>Sistema de Tipos</b> tiene reglas para
 <ul>
@@ -233,11 +160,9 @@ tipo de los operandos?)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orga06883c">Chequeo de Tipos</h4>
+<section id="slide-orgbb2ba5b">
+<h4 id="orgbb2ba5b"><span class="section-number-4">1.1.5</span> Chequeo de Tipos</h4>
 <ul>
 <li>Dos Aproximaciones: <i>equivalencia estructural</i> y <i>equivalencia por nombre</i>
 <ul>
@@ -250,18 +175,16 @@ significado detrás de esas declaraciones</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org7e19b93">Estructural vs. por Nombre</h4>
+<section id="slide-org4f28c0b">
+<h4 id="org4f28c0b"><span class="section-number-4">1.1.6</span> Estructural vs. por Nombre</h4>
 <ul>
 <li>a veces es preferible estructural</li>
 
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><span style="color: #98fb98;">TYPE</span> stack_element = <span style="color: #98fb98;">INTEGER</span>; <span style="color: #ff4500;">(* </span><span style="color: #ff4500;">or whatever type the user prefers *)</span> 
+<pre  class="src src-pascal"><code trim><span style="color: #98fb98;">TYPE</span> stack_element = <span style="color: #98fb98;">INTEGER</span>; <span style="color: #ff4500;">(* </span><span style="color: #ff4500;">or whatever type the user prefers *)</span> 
 MODULE stack; 
 IMPORT stack_element; 
 EXPORT push, pop; 
@@ -270,7 +193,7 @@ EXPORT push, pop;
 ...
 <span style="color: #00ffff;">PROCEDURE</span> <span style="color: #87cefa;">pop</span>() : stack_element; 
 ...
-</pre>
+</code></pre>
 </div>
 <ul>
 <li>otras veces por nombre</li>
@@ -278,7 +201,7 @@ EXPORT push, pop;
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><span style="color: #98fb98;">TYPE</span> celsius_temp = <span style="color: #98fb98;">REAL</span>; 
+<pre  class="src src-pascal"><code trim><span style="color: #98fb98;">TYPE</span> celsius_temp = <span style="color: #98fb98;">REAL</span>; 
 fahrenheit_temp = <span style="color: #98fb98;">REAL</span>; 
 <span style="color: #98fb98;">VAR</span> c : celsius_temp; 
     f : fahrenheit_temp; 
@@ -286,23 +209,19 @@ fahrenheit_temp = <span style="color: #98fb98;">REAL</span>;
 <span style="color: #00ffff;">BEGIN</span> <span style="color: #ff4500;">(* </span><span style="color: #ff4500;">alias_types *)</span>
     c := 100.0;
     f := c;                 <span style="color: #ff4500;">(* </span><span style="color: #ff4500;">this should probably be an error *)</span>
-</pre>
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h3 id="orgdb7c5a1">Chequeo de Tipos: Coerción</h3>
-<div class="outline-text-3" id="text-orgdb7c5a1">
+<section id="slide-orgb62067e">
+<h3 id="orgb62067e"><span class="section-number-3">1.2</span> Chequeo de Tipos: Coerción</h3>
+<div class="outline-text-3" id="text-1-2">
 </div>
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org5e529a7">Chequeo de Tipos: Coerción</h4>
+<section id="slide-orga5c1b24">
+<h4 id="orga5c1b24"><span class="section-number-4">1.2.1</span> Chequeo de Tipos: Coerción</h4>
 <ul>
 <li>Coerción
 <ul>
@@ -315,22 +234,20 @@ diferente se espera, uno normalmente obtiene un error.</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><span style="color: #98fb98;">var</span> a : <span style="color: #98fb98;">integer</span>; b, c : <span style="color: #98fb98;">real</span>;
+<pre  class="src src-pascal"><code trim><span style="color: #98fb98;">var</span> a : <span style="color: #98fb98;">integer</span>; b, c : <span style="color: #98fb98;">real</span>;
 ...
 
 c := a + b;
-</pre>
+</code></pre>
 </div>
 <ul>
 <li>Muchos Lenguajes lo permiten.</li>
 <li>Puede ser basado solo en los tipos de los operandos (Fortran)</li>
 
 </ul>
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orged3309e">Chequeo de Tipos: Coerción</h4>
+<section id="slide-org7a3bdb9">
+<h4 id="org7a3bdb9"><span class="section-number-4">1.2.2</span> Chequeo de Tipos: Coerción</h4>
 <ul>
 <li>Coerción
 <ul>
@@ -347,11 +264,9 @@ lado izquierdo de la asignación.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgf711112">Chequeo de Tipos: Coerción</h4>
+<section id="slide-org7521a61">
+<h4 id="org7521a61"><span class="section-number-4">1.2.3</span> Chequeo de Tipos: Coerción</h4>
 <ul>
 <li>De hecho, las reglas de coerción son una relajación del chequeo de tipos
 <ul>
@@ -363,11 +278,9 @@ lado izquierdo de la asignación.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org25d8e5f">Chequeo de Tipos: Coerción</h4>
+<section id="slide-org00355a2">
+<h4 id="org00355a2"><span class="section-number-4">1.2.4</span> Chequeo de Tipos: Coerción</h4>
 <ul>
 <li>Es importante entender la diferencia entre:
 <ul>
@@ -380,27 +293,23 @@ lado izquierdo de la asignación.</li>
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h3 id="orga767fa6">Arreglos</h3>
+<section id="slide-orgddcf6bd">
+<h3 id="orgddcf6bd"><span class="section-number-3">1.3</span> Arreglos</h3>
 <ul>
 <li>Los Arreglos son el tipo compuesto mas importante en los lenguajes
 de alto nivel. Es una agrupación de elementos (usualmente) homogeneos
- en la cual los elementos individuales son son
+ en la cual los elementos individuales son 
 identificados por su posición en la agrupación relativo a su primer
 elemento.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org64b4005">Cuestiones de Diseño de Arreglos</h4>
+<section id="slide-org10d2d68">
+<h4 id="org10d2d68"><span class="section-number-4">1.3.1</span> Cuestiones de Diseño de Arreglos</h4>
 <ul>
 <li>¿Cuales tipos son legales para ser subíndices?</li>
 <li>¿Es chequeado que el subíndice cumpla el rango definido?</li>
@@ -412,11 +321,9 @@ elemento.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgdbeb8d0">Accediendo a los elementos del Arreglo</h4>
+<section id="slide-org9909686">
+<h4 id="org9909686"><span class="section-number-4">1.3.2</span> Accediendo a los elementos del Arreglo</h4>
 <ul>
 <li>Es una función desde subíndices a elementos 
 <code>array_name(index_value_list)</code> \(\to\) <code>an element</code></li>
@@ -434,11 +341,9 @@ referencia de arreglos y llamadas a función porque ambas mapean resultados</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org90900c5">Tipos de los subíndices de los arreglos</h4>
+<section id="slide-org67a40c4">
+<h4 id="org67a40c4"><span class="section-number-4">1.3.3</span> Tipos de los subíndices de los arreglos</h4>
 <ul>
 <li>FORTRAN, C: solo enteros (integer)</li>
 <li>PASCAL: cualquier tipo ordinal (integer, boolean, char, enumeration)</li>
@@ -449,11 +354,10 @@ referencia de arreglos y llamadas a función porque ambas mapean resultados</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org1f26b54">Categoría de Arreglos</h4>
+<section id="slide-org21a73b5">
+<h4 id="org21a73b5"><span class="section-number-4">1.3.4</span> Categoría de Arreglos</h4>
+<div style="font-size: 90%;">
 <ul>
 <li class="fragment roll-in">Estático: rango de subíndices son ligados estáticamente y el
 alojamiento de memoria es estático (antes del tiempo de ejecución)
@@ -481,11 +385,9 @@ durante la ejecución del programa)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgb4de1ab">Categoría de Arreglos</h4>
+<section id="slide-orga21a479">
+<h4 id="orga21a479"><span class="section-number-4">1.3.5</span> Categoría de Arreglos</h4>
 <ul>
 <li>Los arreglos de <b>C</b> y <b>C++</b> que incluyen el modificador <code>static</code> son <i>Estáticos</i></li>
 <li>Los arreglos de <b>C</b> y <b>C++</b> sin el modificador <code>static</code> son <i>(stack)dinámicos Fijos</i></li>
@@ -496,22 +398,18 @@ durante la ejecución del programa)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org202481e">(Stack) Dinámicos fijos</h4>
+<section id="slide-orgc15882d">
+<h4 id="orgc15882d"><span class="section-number-4">1.3.6</span> (Stack) Dinámicos fijos</h4>
 
-<figure>
-<img src="adaarreglo.png" alt="adaarreglo.png">
+<div id="orga72ddd9" class="figure">
+<p><img src="adaarreglo.png" alt="adaarreglo.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org9d763c4">Arreglos</h4>
+<section id="slide-org2e5a1ea">
+<h4 id="org2e5a1ea"><span class="section-number-4">1.3.7</span> Arreglos</h4>
 <ul>
 <li>Elementos Contiguos
 <ul>
@@ -527,22 +425,18 @@ durante la ejecución del programa)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgc80687f">Arreglos</h4>
+<section id="slide-orga0cc865">
+<h4 id="orga0cc865"><span class="section-number-4">1.3.8</span> Arreglos</h4>
 
-<figure>
-<img src="rowcolumnmajor.png" alt="rowcolumnmajor.png">
+<div id="org6c567c9" class="figure">
+<p><img src="rowcolumnmajor.png" alt="rowcolumnmajor.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orge046962">Arreglos</h4>
+<section id="slide-org0051c51">
+<h4 id="org0051c51"><span class="section-number-4">1.3.9</span> Arreglos</h4>
 <ul>
 <li><b>Dos estrategias para arreglos</b>
 <ul>
@@ -565,22 +459,18 @@ durante la ejecución del programa)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org95f9933">Arreglos</h4>
+<section id="slide-orga4f2df3">
+<h4 id="orga4f2df3"><span class="section-number-4">1.3.10</span> Arreglos</h4>
 
-<figure>
-<img src="arraypontrowc.png" alt="arraypontrowc.png">
+<div id="org1013dbb" class="figure">
+<p><img src="arraypontrowc.png" alt="arraypontrowc.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org01676b2">Inicialización de Arreglos</h4>
+<section id="slide-orga63fd40">
+<h4 id="orga63fd40"><span class="section-number-4">1.3.11</span> Inicialización de Arreglos</h4>
 <ul>
 <li>Algunos Lenguajes permiten inicialización en el tiempo de
 alojamiento.
@@ -610,11 +500,9 @@ alojamiento.
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org8d93bc5">Operaciones de Arreglos</h4>
+<section id="slide-orgeffb0a7">
+<h4 id="orgeffb0a7"><span class="section-number-4">1.3.12</span> Operaciones de Arreglos</h4>
 <ul>
 <li><b>APL</b> provee el mas poderoso conjunto de operadores para procesar
 vectores y matrices y operaciones unarias (por ejemplo revertir
@@ -630,11 +518,10 @@ arreglo con la suma de los pares de elementos de los dos arreglos.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org5603791">Arreglos</h4>
+<section id="slide-orgc04cebb">
+<h4 id="orgc04cebb"><span class="section-number-4">1.3.13</span> Arreglos</h4>
+<div style="font-size: 85%;">
 <ul>
 <li>Ejemplo <code>A : array [L1..U1] of array [L2::U2] of array [L3..U3] of elem;</code>
 <ul>
@@ -650,16 +537,17 @@ arreglo con la suma de los pares de elementos de los dos arreglos.</li>
 </ul>
 
 <p>
-\( A(i,j,k) = \) <code>address of A</code> \( + (i * S1) + (j * S2) + (k * S3)  -
-[(L1 * S1) + (L2 * S2) + (L3 * S3)] \)
+\( A(i,j,k) = \mbox{ address of A } + (i * S1) + (j * S2) + (k * S3) - \)
+</p>
+
+<p>
+\( [(L1 * S1) + (L2 * S2) + (L3 * S3)] \)
 </p>
 
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org1bc3ecb">Slices</h4>
+<section id="slide-orge01ff01">
+<h4 id="orge01ff01"><span class="section-number-4">1.3.14</span> Slices</h4>
 <ul>
 <li>Una <i>porción</i> (slice) de un arreglo es una subestructura de un
 arreglo; un mecanismo de referenciación.</li>
@@ -668,33 +556,28 @@ arreglos (APL, FORTRAN etc).</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orge2fd4e4">Slices</h4>
+<section id="slide-orgc894a20">
+<h4 id="orgc894a20"><span class="section-number-4">1.3.15</span> Slices</h4>
 
-<figure>
-<img src="slicesfort.png" alt="slicesfort.png">
+<div id="org252ff44" class="figure">
+<p><img src="slicesfort.png" alt="slicesfort.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org0ce445e">Descriptores en Tiempo de Compilación</h4>
+<section id="slide-org2b2a19c">
+<h4 id="org2b2a19c"><span class="section-number-4">1.3.16</span> Descriptores en Tiempo de Compilación</h4>
 
-<figure>
-<img src="descriptoresarray.png" alt="descriptoresarray.png">
+<div id="orgc593383" class="figure">
+<p><img src="descriptoresarray.png" alt="descriptoresarray.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org0a0d6ec">Arreglos Asociativos</h4>
+<section id="slide-org7a9f25a">
+<h4 id="org7a9f25a"><span class="section-number-4">1.3.17</span> Arreglos Asociativos</h4>
+<div style="font-size: 90%;">
 <ul>
 <li>Un <i>arreglo asociativo</i> es una colección no ordenada de elementos de
 datos que son indexados por un numero igual de valores llamados
@@ -728,13 +611,11 @@ paréntesis
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h3 id="org4173917">Strings</h3>
+<section id="slide-org12b7f19">
+<h3 id="org12b7f19"><span class="section-number-3">1.4</span> Strings</h3>
 <ul>
 <li><i>Strings</i> son en realidad arreglos de caracteres</li>
 <li>Son frecuentemente casos especiales, para darles flexibilidad (como
@@ -748,13 +629,11 @@ en general porque los <i>strings</i> son de una dimensión y no circulares.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h3 id="orgf9fdc4b">Tipo Registros</h3>
+<section id="slide-org4189bc1">
+<h3 id="org4189bc1"><span class="section-number-3">1.5</span> Tipo Registros</h3>
 <ul>
 <li>Un registro es un conjunto posiblemente heterogeneo de elementos de
 datos en el cual los elementos individuales son identificados por su nombre</li>
@@ -767,24 +646,22 @@ datos en el cual los elementos individuales son identificados por su nombre</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgc2b36c7">Tipo Registros</h4>
+<section id="slide-orgd07533f">
+<h4 id="orgd07533f"><span class="section-number-4">1.5.1</span> Tipo Registros</h4>
 <ul>
 <li>Cobol</li>
 
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-cobol">01 EMPLOYEE-RECORD.
+<pre  class="src src-cobol"><code trim>01 EMPLOYEE-RECORD.
    02 EMPLOYEE-NAME.
       05 FIRST    PICTURE IS x(20).
       05 MIDDLE   PICTURE IS x(10).
       05 LAST     PICTURE IS x(20).
    02 HOURLY-RATE PICTURE IS 99v99.
-</pre>
+</code></pre>
 </div>
 <ul>
 <li>Ada</li>
@@ -792,7 +669,7 @@ datos en el cual los elementos individuales son identificados por su nombre</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Employee_Name_Type</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">record</span>
+<pre  class="src src-ada"><code trim><span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Employee_Name_Type</span> <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">record</span>
    First : String (<span style="color: #7fffd4;">1..20</span>);
    Middle : String (<span style="color: #7fffd4;">1..10</span>);
    Last : String (<span style="color: #7fffd4;">1..20</span>);
@@ -802,14 +679,12 @@ datos en el cual los elementos individuales son identificados por su nombre</li>
    Hourly_Rate: Float;
 <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">record</span>;
 Employee_Record: Employee_Record_Type;
-</pre>
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgde1e44d">Registros</h4>
+<section id="slide-orgf17d1c5">
+<h4 id="orgf17d1c5"><span class="section-number-4">1.5.2</span> Registros</h4>
 <ul>
 <li>Referencia a los campos
 <ul>
@@ -824,11 +699,9 @@ siempre que la referencia sea no ambigua. Ej: <code>FIRST OF EMP-REC</code> en <
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgbf0e212">Operaciónes de Registros</h4>
+<section id="slide-org34869db">
+<h4 id="org34869db"><span class="section-number-4">1.5.3</span> Operaciónes de Registros</h4>
 <ul>
 <li>La asignación es muy común si los tipos son identicos</li>
 <li><b>Ada</b> permite comparación de registros</li>
@@ -842,11 +715,9 @@ el registro destino.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org16d1433">Comparación con Arreglos</h4>
+<section id="slide-org6f5f230">
+<h4 id="org6f5f230"><span class="section-number-4">1.5.4</span> Comparación con Arreglos</h4>
 <ul>
 <li>Tiene un diseño directo y seguro</li>
 <li>Son usados cuando el agrupamiento de datos es heterogeneo</li>
@@ -855,27 +726,23 @@ nombres de los campos es estático</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgbc6c368">Implementación de Registros</h4>
+<section id="slide-orgced23df">
+<h4 id="orgced23df"><span class="section-number-4">1.5.5</span> Implementación de Registros</h4>
 
-<figure>
-<img src="implementregistros.png" alt="implementregistros.png">
-
-</figure>
+<div id="org3883308" class="figure">
+<p><img src="implementregistros.png" alt="implementregistros.png" />
+</p>
+</div>
 
 <p>
 Un desplazamiento de dirección relativo al comienzo del registro es
 asociado con cada campo.
 </p>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orga439807">Tipo Uniones</h4>
+<section id="slide-org1dc6621">
+<h4 id="org1dc6621"><span class="section-number-4">1.5.6</span> Tipo Uniones</h4>
 <ul>
 <li>Una <i>Union</i> es un tipo a cuyas variables se les permite
 almacenar diferentes valores de tipo (estructura) en diferentes tiempos durantes
@@ -898,14 +765,12 @@ de tipo llamado <i>discriminante</i>
 </ul>
 
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orge6fba58">tipo Union de Ada</h4>
+<section id="slide-orgb031b1c">
+<h4 id="orgb031b1c"><span class="section-number-4">1.5.7</span> tipo Union de Ada</h4>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Shape</span> <span style="color: #00ffff;">is</span> (Circle, Triangle, Rectangle);
+<pre  class="src src-ada"><code trim><span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Shape</span> <span style="color: #00ffff;">is</span> (Circle, Triangle, Rectangle);
 <span style="color: #00ffff;">type</span> <span style="color: #98fb98;">Colors</span> <span style="color: #00ffff;">is</span> (Red, Green, Blue);
 <span style="color: #00ffff;">type</span> <span style="color: #87cefa;">Figure</span> (Form: Shape) <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">record</span>
   Filled: Boolean;
@@ -918,19 +783,17 @@ de tipo llamado <i>discriminante</i>
       <span style="color: #00ffff;">when</span> Rectangle =&gt; Side1,Side2: Integer;
   <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">case</span>;
 <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">record</span>;
-</pre>
+</code></pre>
 </div>
 
-<figure>
-<img src="adaunion.png" alt="adaunion.png">
+<div id="orgabcf092" class="figure">
+<p><img src="adaunion.png" alt="adaunion.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orge4b189f">Evaluación de Uniones</h4>
+<section id="slide-org011da31">
+<h4 id="org011da31"><span class="section-number-4">1.5.8</span> Evaluación de Uniones</h4>
 <ul>
 <li>también llamados registros variantes</li>
 <li>Es una construcción potencialmente insegura
@@ -948,20 +811,16 @@ de tipo llamado <i>discriminante</i>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h3 id="orgae50da5">Punteros y Tipos Recursivos</h3>
-<div class="outline-text-3" id="text-orgae50da5">
+<section id="slide-org3f2efac">
+<h3 id="org3f2efac"><span class="section-number-3">1.6</span> Punteros y Tipos Recursivos</h3>
+<div class="outline-text-3" id="text-1-6">
 </div>
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgea01f09">Tipo Punteros</h4>
+<section id="slide-org5f4566a">
+<h4 id="org5f4566a"><span class="section-number-4">1.6.1</span> Tipo Punteros</h4>
 <ul>
 <li>Los Punteros sirven para dos propósitos:
 <ul>
@@ -981,22 +840,18 @@ acceder a cosas en el <i>heap</i></li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org17933b1">Punteros y Tipos Recursivos</h4>
+<section id="slide-org223aeb5">
+<h4 id="org223aeb5"><span class="section-number-4">1.6.2</span> Punteros y Tipos Recursivos</h4>
 
-<figure>
-<img src="lisppunt.png" alt="lisppunt.png">
+<div id="orgd007cc3" class="figure">
+<p><img src="lisppunt.png" alt="lisppunt.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="org87d94e0">Punteros y Tipos Recursivos</h4>
+<section id="slide-orgd625ddc">
+<h4 id="orgd625ddc"><span class="section-number-4">1.6.3</span> Punteros y Tipos Recursivos</h4>
 <ul>
 <li><b>C</b> punteros y arreglos
 <ul>
@@ -1020,11 +875,9 @@ un tamaño para la primera dimensión</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orgc38a523">Punteros y Tipos Recursivos</h4>
+<section id="slide-org541232e">
+<h4 id="org541232e"><span class="section-number-4">1.6.4</span> Punteros y Tipos Recursivos</h4>
 <ul>
 <li>El compilador tiene que ser capaz de establecer el tamaño de las
 cosas apuntadas por los punteros
@@ -1048,13 +901,11 @@ y repite.
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h4 id="orge4f5143">Punteros y Tipos Recursivos</h4>
+<section id="slide-org7675cf2">
+<h4 id="org7675cf2"><span class="section-number-4">1.6.5</span> Punteros y Tipos Recursivos</h4>
 <ul>
-<li>Los problemas con punteros <i>cogados</i> se deben a:
+<li>Los problemas con punteros <i>colgados</i> se deben a:
 <ul>
 <li>desalojo explícito de objetos del <i>heap</i>
 <ul>
@@ -1073,13 +924,11 @@ y repite.
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h3 id="org45edb6b">Listas</h3>
+<section id="slide-org3de5535">
+<h3 id="org3de5535"><span class="section-number-3">1.7</span> Listas</h3>
 <ul>
 <li>Una <i>Lista</i> es definida recursivamente ya sea como una lista vacía o
 un par consistente de un objeto (que puede ser una lista o un átomo)
@@ -1097,13 +946,11 @@ extenderse a si mismo para construir una lista y ejecutarla</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-sec-">
-<div class="slide-header"></div>
-<h3 id="orgccfbf17">Archivos y Entrada/Salida</h3>
+<section id="slide-org14a5852">
+<h3 id="org14a5852"><span class="section-number-3">1.8</span> Archivos y Entrada/Salida</h3>
 <ul>
 <li>Entrada/Salida (E/S) facilita al programa a comunicarse con el mundo externo
 <ul>
@@ -1122,31 +969,18 @@ implementado por el sistema operativo.</li>
 </ul></li>
 
 </ul>
-<div class="slide-footer"></div>
 </section>
 </section>
 </div>
 </div>
-<script src="../reveal.js-master/lib/js/head.min.js"></script>
-<script src="../reveal.js-master/js/reveal.js"></script>
+<p> Created by yjwen. </p>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 't',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
+width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server
@@ -1155,12 +989,10 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: '../reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: '../reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '../reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-,});
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
 </script>
 </body>
 </html>

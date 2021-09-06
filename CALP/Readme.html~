@@ -7,9 +7,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="../reveal.js/dist/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="../reveal.js/dist/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
 <link rel="stylesheet" href="./local.css"/>
 
@@ -19,7 +19,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../reveal.js/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -29,169 +29,169 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Introduction to Org-Reveal</h1><h2 class="author">Yujie Wen</h2><p class="date">Created: 2020-12-08 mar 17:02</p>
+<section id="sec-title-slide"><h1 class="title">Introduction to Org-Reveal</h1><h2 class="author">Yujie Wen</h2><p class="date">Created: 2021-08-31 mar 20:04</p>
 </section>
 
 <section>
-<section id="slide-org37f0531">
-<h2 id="org37f0531"><span class="section-number-2">1</span> Table of Contents</h2>
+<section id="slide-orgc8d3255">
+<h2 id="orgc8d3255"><span class="section-number-2">1</span> Table of Contents</h2>
 <p>
 Title links are for viewing within org-mode buffer only. <b>Github
 viewers please use the <code>(gh)</code> links.</b>
 </p>
 
 <ul>
-<li><a href="#/slide-org37f0531">Table of Contents</a>(<a href="https://github.com/yjwen/org-reveal#table-of-contents">gh</a>)</li>
-<li><a href="#/slide-org2360be8">Reveal.js and Org-Reveal</a>(<a href="https://github.com/yjwen/org-reveal#revealjs-and-org-reveal">gh</a>)</li>
-<li><a href="#/slide-orgaf05d02">Requirements and Installation</a>(<a href="https://github.com/yjwen/org-reveal#requirements-and-installation">gh</a>)
+<li><a href="#/slide-orgc8d3255">Table of Contents</a>(<a href="https://github.com/yjwen/org-reveal#table-of-contents">gh</a>)</li>
+<li><a href="#/slide-org6ba5ee4">Reveal.js and Org-Reveal</a>(<a href="https://github.com/yjwen/org-reveal#revealjs-and-org-reveal">gh</a>)</li>
+<li><a href="#/slide-orgf48e9b4">Requirements and Installation</a>(<a href="https://github.com/yjwen/org-reveal#requirements-and-installation">gh</a>)
 <ul>
-<li><a href="#/slide-org9fd72d8">Install Reveal.js</a>(<a href="https://github.com/yjwen/org-reveal#install-revealjs">gh</a>)</li>
-<li><a href="#/slide-orgcd66d14">Install org-reveal from MELPA</a>(<a href="https://github.com/yjwen/org-reveal#install-org-reveal-from-melpa">gh</a>)</li>
-<li><a href="#/slide-org8c6bc4b">Install org-reveal from GitHub</a>(<a href="https://github.com/yjwen/org-reveal#install-org-reveal-from-github">gh</a>)</li>
+<li><a href="#/slide-orgc3e970a">Install Reveal.js</a>(<a href="https://github.com/yjwen/org-reveal#install-revealjs">gh</a>)</li>
+<li><a href="#/slide-orgee4b3ed">Install org-reveal from MELPA</a>(<a href="https://github.com/yjwen/org-reveal#install-org-reveal-from-melpa">gh</a>)</li>
+<li><a href="#/slide-org4f53112">Install org-reveal from GitHub</a>(<a href="https://github.com/yjwen/org-reveal#install-org-reveal-from-github">gh</a>)</li>
 
 </ul></li>
 
 </ul>
 </section>
-<section id="slide-org37f0531-split">
+<section id="slide-orgc8d3255-split">
 
 <h2><span class="section-number-2">1</span> Table of Contents</h2>
 <ul>
-<li><a href="#/slide-org68ba353">Configuration</a>(<a href="https://github.com/yjwen/org-reveal#configuration">gh</a>)
+<li><a href="#/slide-org0902470">Configuration</a>(<a href="https://github.com/yjwen/org-reveal#configuration">gh</a>)
 <ul>
-<li><a href="#/slide-orgbf2d0ab">Set the location of Reveal.js</a>(<a href="https://github.com/yjwen/org-reveal#set-the-location-of-revealjs">gh</a>)
+<li><a href="#/slide-org71acdc6">Set the location of Reveal.js</a>(<a href="https://github.com/yjwen/org-reveal#set-the-location-of-revealjs">gh</a>)
 <ul>
-<li><a href="#/slide-org93b1c95">Url form for file location</a>(<a href="https://github.com/yjwen/org-reveal#url-form-for-file-location">gh</a>)</li>
+<li><a href="#/slide-orgf769d60">Url form for file location</a>(<a href="https://github.com/yjwen/org-reveal#url-form-for-file-location">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-org640f23d">First Try</a>(<a href="https://github.com/yjwen/org-reveal#first-try">gh</a>)</li>
-<li><a href="#/slide-orgcd9a905">The HLevel</a>(<a href="https://github.com/yjwen/org-reveal#the-hlevel">gh</a>)
+<li><a href="#/slide-org7115491">First Try</a>(<a href="https://github.com/yjwen/org-reveal#first-try">gh</a>)</li>
+<li><a href="#/slide-orgc43ea31">The HLevel</a>(<a href="https://github.com/yjwen/org-reveal#the-hlevel">gh</a>)
 <ul>
-<li><a href="#/slide-org74df23b">HLevel's Effects on Slides Layout</a>(<a href="https://github.com/yjwen/org-reveal#hlevels-effects-on-slides-layout">gh</a>)</li>
-<li><a href="#/slide-org5bd5cef">Configure HLevel's Value</a>(<a href="https://github.com/yjwen/org-reveal#configure-hlevels-value">gh</a>)</li>
+<li><a href="#/slide-orgadc60de">HLevel's Effects on Slides Layout</a>(<a href="https://github.com/yjwen/org-reveal#hlevels-effects-on-slides-layout">gh</a>)</li>
+<li><a href="#/slide-org076e645">Configure HLevel's Value</a>(<a href="https://github.com/yjwen/org-reveal#configure-hlevels-value">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-org9df456d">Force Split</a>(<a href="https://github.com/yjwen/org-reveal#force-split">gh</a>)</li>
+<li><a href="#/slide-org51ce2cf">Force Split</a>(<a href="https://github.com/yjwen/org-reveal#force-split">gh</a>)</li>
 
 </ul></li>
 
 </ul>
 </section>
-<section id="slide-org37f0531-split">
+<section id="slide-orgc8d3255-split">
 
 <h2><span class="section-number-2">1</span> Table of Contents</h2>
 <ul>
-<li><a href="#/slide-org4bbdb35">Select Theme</a>(<a href="https://github.com/yjwen/org-reveal#select-theme">gh</a>)</li>
-<li><a href="#/slide-orgb84bd7f">Set The Title Slide</a>(<a href="https://github.com/yjwen/org-reveal#set-the-title-slide">gh</a>)
+<li><a href="#/slide-org85380e2">Select Theme</a>(<a href="https://github.com/yjwen/org-reveal#select-theme">gh</a>)</li>
+<li><a href="#/slide-orga825cd5">Set The Title Slide</a>(<a href="https://github.com/yjwen/org-reveal#set-the-title-slide">gh</a>)
 <ul>
-<li><a href="#/slide-org6b8d96f">Customize the Title Slide</a>(<a href="https://github.com/yjwen/org-reveal#customize-the-title-slide">gh</a>)</li>
+<li><a href="#/slide-org0404481">Customize the Title Slide</a>(<a href="https://github.com/yjwen/org-reveal#customize-the-title-slide">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-org9c3f8ab">Set Slide Background</a>(<a href="https://github.com/yjwen/org-reveal#set-slide-background">gh</a>)
+<li><a href="#/slide-org1dfc822">Set Slide Background</a>(<a href="https://github.com/yjwen/org-reveal#set-slide-background">gh</a>)
 <ul>
-<li><a href="#/slide-org059393f">Single Colored Background</a>(<a href="https://github.com/yjwen/org-reveal#single-colored-background">gh</a>)</li>
-<li><a href="#/slide-org4d881cb">Single Image Background</a>(<a href="https://github.com/yjwen/org-reveal#single-image-background">gh</a>)</li>
-<li><a href="#/slide-orgdfdbf82">Repeating Image Background</a>(<a href="https://github.com/yjwen/org-reveal#repeating-image-background">gh</a>)</li>
-<li><a href="#/slide-orgd04c8f6">Title Slide Background Image</a>(<a href="https://github.com/yjwen/org-reveal#title-slide-background-image">gh</a>)</li>
-<li><a href="#/slide-org9a1fe50">Table of Contents Slide Background Image</a>(<a href="https://github.com/yjwen/org-reveal#table-of-contents-slide-background-image">gh</a>)</li>
-<li><a href="#/slide-org544a712">Background for all slides</a>(<a href="https://github.com/yjwen/org-reveal#background-for-all-slides">gh</a>)</li>
+<li><a href="#/slide-org84919b6">Single Colored Background</a>(<a href="https://github.com/yjwen/org-reveal#single-colored-background">gh</a>)</li>
+<li><a href="#/slide-org76353bb">Single Image Background</a>(<a href="https://github.com/yjwen/org-reveal#single-image-background">gh</a>)</li>
+<li><a href="#/slide-org3e72092">Repeating Image Background</a>(<a href="https://github.com/yjwen/org-reveal#repeating-image-background">gh</a>)</li>
+<li><a href="#/slide-orge209e9f">Title Slide Background Image</a>(<a href="https://github.com/yjwen/org-reveal#title-slide-background-image">gh</a>)</li>
+<li><a href="#/slide-orge66d7d7">Table of Contents Slide Background Image</a>(<a href="https://github.com/yjwen/org-reveal#table-of-contents-slide-background-image">gh</a>)</li>
+<li><a href="#/slide-org1a55633">Background for all slides</a>(<a href="https://github.com/yjwen/org-reveal#background-for-all-slides">gh</a>)</li>
 
 </ul></li>
 
 </ul>
 </section>
-<section id="slide-org37f0531-split">
+<section id="slide-orgc8d3255-split">
 
 <h2><span class="section-number-2">1</span> Table of Contents</h2>
 <ul>
-<li><a href="#/slide-org76b1b3c">Slide Size</a>(<a href="https://github.com/yjwen/org-reveal#slide-size">gh</a>)</li>
-<li><a href="#/slide-org6332853">Slide Numbering</a>(<a href="https://github.com/yjwen/org-reveal#slide-numbering">gh</a>)</li>
-<li><a href="#/slide-org219fe38">Slide Header/Footer</a>(<a href="https://github.com/yjwen/org-reveal#slide-header/footer">gh</a>)</li>
-<li><a href="#/slide-org786c008">Fragmented Contents</a>(<a href="https://github.com/yjwen/org-reveal#fragmented-contents">gh</a>)
+<li><a href="#/slide-org31e93a9">Slide Size</a>(<a href="https://github.com/yjwen/org-reveal#slide-size">gh</a>)</li>
+<li><a href="#/slide-orga8f5b26">Slide Numbering</a>(<a href="https://github.com/yjwen/org-reveal#slide-numbering">gh</a>)</li>
+<li><a href="#/slide-org7b33d69">Slide Header/Footer</a>(<a href="https://github.com/yjwen/org-reveal#slide-header/footer">gh</a>)</li>
+<li><a href="#/slide-org8f2e39c">Fragmented Contents</a>(<a href="https://github.com/yjwen/org-reveal#fragmented-contents">gh</a>)
 <ul>
-<li><a href="#/slide-orgf7a664d">Fragment Styles</a>(<a href="https://github.com/yjwen/org-reveal#fragment-styles">gh</a>)</li>
-<li><a href="#/slide-org6d12546">Fragment Index</a>(<a href="https://github.com/yjwen/org-reveal#fragment-index">gh</a>)</li>
-<li><a href="#/slide-org85252ea">List Fragments</a>(<a href="https://github.com/yjwen/org-reveal#list-fragments">gh</a>)</li>
+<li><a href="#/slide-org82bd3ca">Fragment Styles</a>(<a href="https://github.com/yjwen/org-reveal#fragment-styles">gh</a>)</li>
+<li><a href="#/slide-orgea12508">Fragment Index</a>(<a href="https://github.com/yjwen/org-reveal#fragment-index">gh</a>)</li>
+<li><a href="#/slide-orgf77b413">List Fragments</a>(<a href="https://github.com/yjwen/org-reveal#list-fragments">gh</a>)</li>
 
 </ul></li>
 
 </ul>
 </section>
-<section id="slide-org37f0531-split">
+<section id="slide-orgc8d3255-split">
 
 <h2><span class="section-number-2">1</span> Table of Contents</h2>
 <ul>
-<li><a href="#/slide-orgd78911f">Initialization options</a>(<a href="https://github.com/yjwen/org-reveal#initialization-options">gh</a>)</li>
-<li><a href="#/slide-orgb4ec90c">Third-Party Plugins</a>(<a href="https://github.com/yjwen/org-reveal#third-party-plugins">gh</a>)
+<li><a href="#/slide-orgf0961da">Initialization options</a>(<a href="https://github.com/yjwen/org-reveal#initialization-options">gh</a>)</li>
+<li><a href="#/slide-org8ead653">Third-Party Plugins</a>(<a href="https://github.com/yjwen/org-reveal#third-party-plugins">gh</a>)
 <ul>
-<li><a href="#/slide-org51583db">By Defining Variable</a>(<a href="https://github.com/yjwen/org-reveal#by-defining-variable">gh</a>)</li>
-<li><a href="#/slide-orgca1d512">By Local Option Line</a>(<a href="https://github.com/yjwen/org-reveal#by-local-option-line">gh</a>)</li>
+<li><a href="#/slide-orgf3cb260">By Defining Variable</a>(<a href="https://github.com/yjwen/org-reveal#by-defining-variable">gh</a>)</li>
+<li><a href="#/slide-org5b80720">By Local Option Line</a>(<a href="https://github.com/yjwen/org-reveal#by-local-option-line">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-orgb17f644">Highlight Source Code</a>(<a href="https://github.com/yjwen/org-reveal#highlight-source-code">gh</a>)
+<li><a href="#/slide-orgd045621">Highlight Source Code</a>(<a href="https://github.com/yjwen/org-reveal#highlight-source-code">gh</a>)
 <ul>
-<li><a href="#/slide-org7791691">Using highlight.js</a>(<a href="https://github.com/yjwen/org-reveal#using-highlightjs">gh</a>)</li>
+<li><a href="#/slide-org8960a47">Using highlight.js</a>(<a href="https://github.com/yjwen/org-reveal#using-highlightjs">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-org1240fc0">Editable Source Code</a>(<a href="https://github.com/yjwen/org-reveal#editable-source-code">gh</a>)</li>
+<li><a href="#/slide-orgec67a75">Editable Source Code</a>(<a href="https://github.com/yjwen/org-reveal#editable-source-code">gh</a>)</li>
 <li><a href="#/slide-my-heading">MathJax</a>(<a href="https://github.com/yjwen/org-reveal#mathjax">gh</a>)</li>
 
 </ul>
 </section>
-<section id="slide-org37f0531-split">
+<section id="slide-orgc8d3255-split">
 
 <h2><span class="section-number-2">1</span> Table of Contents</h2>
 <ul>
-<li><a href="#/slide-orgb84cf88">Preamble and Postamble</a>(<a href="https://github.com/yjwen/org-reveal#preamble-and-postamble">gh</a>)
+<li><a href="#/slide-org86d1d46">Preamble and Postamble</a>(<a href="https://github.com/yjwen/org-reveal#preamble-and-postamble">gh</a>)
 <ul>
-<li><a href="#/slide-orga8f4565">Generating Pre/Postamble by Emacs-Lisp Functions</a>(<a href="https://github.com/yjwen/org-reveal#generating-pre/postamble-by-emacs-lisp-functions">gh</a>)</li>
+<li><a href="#/slide-org0121209">Generating Pre/Postamble by Emacs-Lisp Functions</a>(<a href="https://github.com/yjwen/org-reveal#generating-pre/postamble-by-emacs-lisp-functions">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-orgd64fc83">Raw HTML in Slides</a>(<a href="https://github.com/yjwen/org-reveal#raw-html-in-slides">gh</a>)</li>
-<li><a href="#/slide-org7e43fc7">Speaker Notes</a>(<a href="https://github.com/yjwen/org-reveal#speaker-notes">gh</a>)
+<li><a href="#/slide-orgc75d367">Raw HTML in Slides</a>(<a href="https://github.com/yjwen/org-reveal#raw-html-in-slides">gh</a>)</li>
+<li><a href="#/slide-org2146001">Speaker Notes</a>(<a href="https://github.com/yjwen/org-reveal#speaker-notes">gh</a>)
 <ul>
-<li><a href="#/slide-org5ab8679">Easy-Template for Speaker Notes</a>(<a href="https://github.com/yjwen/org-reveal#easy-template-for-speaker-notes">gh</a>)</li>
+<li><a href="#/slide-orgf643860">Easy-Template for Speaker Notes</a>(<a href="https://github.com/yjwen/org-reveal#easy-template-for-speaker-notes">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-org5f96354">Multiplexing</a>(<a href="https://github.com/yjwen/org-reveal#multiplexing">gh</a>)</li>
-<li><a href="#/slide-org9b170f5">Extra Stylesheets</a>(<a href="https://github.com/yjwen/org-reveal#extra-stylesheets">gh</a>)</li>
-<li><a href="#/slide-orgdeeb517">Select Built-In Scripts</a>(<a href="https://github.com/yjwen/org-reveal#select-built-in-scripts">gh</a>)</li>
-<li><a href="#/slide-org37f6e0a">Extra Dependent Script</a>(<a href="https://github.com/yjwen/org-reveal#extra-dependent-script">gh</a>)</li>
-<li><a href="#/slide-org9aedd30">Extra Slide Attribute</a>(<a href="https://github.com/yjwen/org-reveal#extra-slide-attribute">gh</a>)</li>
-<li><a href="#/slide-orgcfc7bfd">Export into Single File</a>(<a href="https://github.com/yjwen/org-reveal#export-into-single-file">gh</a>)</li>
-<li><a href="#/slide-orgd7e9f29">Export Current Subtree</a>(<a href="https://github.com/yjwen/org-reveal#export-current-subtree">gh</a>)</li>
+<li><a href="#/slide-orgb640f9d">Multiplexing</a>(<a href="https://github.com/yjwen/org-reveal#multiplexing">gh</a>)</li>
+<li><a href="#/slide-orge57c470">Extra Stylesheets</a>(<a href="https://github.com/yjwen/org-reveal#extra-stylesheets">gh</a>)</li>
+<li><a href="#/slide-org1187315">Select Built-In Scripts</a>(<a href="https://github.com/yjwen/org-reveal#select-built-in-scripts">gh</a>)</li>
+<li><a href="#/slide-orgcac935f">Extra Dependent Script</a>(<a href="https://github.com/yjwen/org-reveal#extra-dependent-script">gh</a>)</li>
+<li><a href="#/slide-orgfae3919">Extra Slide Attribute</a>(<a href="https://github.com/yjwen/org-reveal#extra-slide-attribute">gh</a>)</li>
+<li><a href="#/slide-orgec03bfd">Export into Single File</a>(<a href="https://github.com/yjwen/org-reveal#export-into-single-file">gh</a>)</li>
+<li><a href="#/slide-orgcae7360">Export Current Subtree</a>(<a href="https://github.com/yjwen/org-reveal#export-current-subtree">gh</a>)</li>
 
 </ul>
 </section>
-<section id="slide-org37f0531-split">
+<section id="slide-orgc8d3255-split">
 
 <h2><span class="section-number-2">1</span> Table of Contents</h2>
 <ul>
-<li><a href="#/slide-org46aeb4d">Tips</a>(<a href="https://github.com/yjwen/org-reveal#tips">gh</a>)
+<li><a href="#/slide-org918cf25">Tips</a>(<a href="https://github.com/yjwen/org-reveal#tips">gh</a>)
 <ul>
-<li><a href="#/slide-org83b59ed">Managing Table of Contents</a>(<a href="https://github.com/yjwen/org-reveal#managing-table-of-contents">gh</a>)</li>
-<li><a href="#/slide-org60671a2">Internal Links</a>(<a href="https://github.com/yjwen/org-reveal#internal-links">gh</a>)</li>
-<li><a href="#/slide-orgf08b23c">Custom JS</a>(<a href="https://github.com/yjwen/org-reveal#custom-js">gh</a>)</li>
-<li><a href="#/slide-org96d4ea2">Executable Source Blocks</a>(<a href="https://github.com/yjwen/org-reveal#executable-source-blocks">gh</a>)
+<li><a href="#/slide-org63d0ccc">Managing Table of Contents</a>(<a href="https://github.com/yjwen/org-reveal#managing-table-of-contents">gh</a>)</li>
+<li><a href="#/slide-orgb82fc39">Internal Links</a>(<a href="https://github.com/yjwen/org-reveal#internal-links">gh</a>)</li>
+<li><a href="#/slide-orgbcb1e20">Custom JS</a>(<a href="https://github.com/yjwen/org-reveal#custom-js">gh</a>)</li>
+<li><a href="#/slide-org436ae01">Executable Source Blocks</a>(<a href="https://github.com/yjwen/org-reveal#executable-source-blocks">gh</a>)
 <ul>
-<li><a href="#/slide-org651bb89">HTML Src Block</a>(<a href="https://github.com/yjwen/org-reveal#html-src-block">gh</a>)</li>
-<li><a href="#/slide-orgeed714b">Javascript Src Block</a>(<a href="https://github.com/yjwen/org-reveal#javascript-src-block">gh</a>)</li>
-<li><a href="#/slide-org31563be">Perl Src Block (not klipsified)</a>(<a href="https://github.com/yjwen/org-reveal#perl-src-block-(not-klipsified)">gh</a>)</li>
+<li><a href="#/slide-org6265036">HTML Src Block</a>(<a href="https://github.com/yjwen/org-reveal#html-src-block">gh</a>)</li>
+<li><a href="#/slide-orgc36b7b4">Javascript Src Block</a>(<a href="https://github.com/yjwen/org-reveal#javascript-src-block">gh</a>)</li>
+<li><a href="#/slide-org067a529">Perl Src Block (not klipsified)</a>(<a href="https://github.com/yjwen/org-reveal#perl-src-block-(not-klipsified)">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-org204d174">Properties for Sub-headings</a>(<a href="https://github.com/yjwen/org-reveal#properties-for-sub-headings">gh</a>)</li>
-<li><a href="#/slide-org4eacbfa">Customize iframe background slide</a>(<a href="https://github.com/yjwen/org-reveal#customize-iframe-background-slide">gh</a>)</li>
+<li><a href="#/slide-org69bfef1">Properties for Sub-headings</a>(<a href="https://github.com/yjwen/org-reveal#properties-for-sub-headings">gh</a>)</li>
+<li><a href="#/slide-org19578d1">Customize iframe background slide</a>(<a href="https://github.com/yjwen/org-reveal#customize-iframe-background-slide">gh</a>)</li>
 
 </ul></li>
-<li><a href="#/slide-orgfbf18f7">Thanks</a>(<a href="https://github.com/yjwen/org-reveal#thanks">gh</a>)</li>
+<li><a href="#/slide-org6939f5e">Thanks</a>(<a href="https://github.com/yjwen/org-reveal#thanks">gh</a>)</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org2360be8">
-<h2 id="org2360be8"><span class="section-number-2">2</span> Reveal.js and Org-Reveal</h2>
+<section id="slide-org6ba5ee4">
+<h2 id="org6ba5ee4"><span class="section-number-2">2</span> Reveal.js and Org-Reveal</h2>
 <ul>
 <li><b>Reveal.js</b> is a tool for creating good-looking HTML presentations,
 authored by <a href="http://hakim.se/">Hakim El Hattab</a>. <br />
@@ -206,8 +206,8 @@ effects from simple but powerful Org contents.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgaf05d02">
-<h2 id="orgaf05d02"><span class="section-number-2">3</span> Requirements and Installation</h2>
+<section id="slide-orgf48e9b4">
+<h2 id="orgf48e9b4"><span class="section-number-2">3</span> Requirements and Installation</h2>
 <ul>
 <li>Reveal.js.</li>
 <li>Org-mode.</li>
@@ -220,8 +220,8 @@ effects from simple but powerful Org contents.</li>
 </section>
 </section>
 <section>
-<section id="slide-org9fd72d8">
-<h3 id="org9fd72d8"><span class="section-number-3">3.1</span> Install Reveal.js</h3>
+<section id="slide-orgc3e970a">
+<h3 id="orgc3e970a"><span class="section-number-3">3.1</span> Install Reveal.js</h3>
 <p>
 Download Reveal.js packages from <a href="https://github.com/hakimel/reveal.js/">here</a>.
 </p>
@@ -238,8 +238,8 @@ see the section <a href="https://github.com/yjwen/org-reveal#set-the-location-of
 </section>
 </section>
 <section>
-<section id="slide-orgcd66d14">
-<h3 id="orgcd66d14"><span class="section-number-3">3.2</span> Install org-reveal from MELPA</h3>
+<section id="slide-orgee4b3ed">
+<h3 id="orgee4b3ed"><span class="section-number-3">3.2</span> Install org-reveal from MELPA</h3>
 <p>
 The easiest way to install org-reveal is to install package
 ox-reveal from MELPA.
@@ -258,8 +258,8 @@ out of date for MELPA's ox-reveal.
 </section>
 </section>
 <section>
-<section id="slide-org8c6bc4b">
-<h3 id="org8c6bc4b"><span class="section-number-3">3.3</span> Install org-reveal from GitHub</h3>
+<section id="slide-org4f53112">
+<h3 id="org4f53112"><span class="section-number-3">3.3</span> Install org-reveal from GitHub</h3>
 <p>
 You can also install the latest developing version of org-reveal directly
 from GitHub.
@@ -304,15 +304,15 @@ Follow the <a href="http://orgmode.org/worg/dev/org-build-system.html">online in
 </section>
 </section>
 <section>
-<section id="slide-org68ba353">
-<h2 id="org68ba353"><span class="section-number-2">4</span> Configuration</h2>
+<section id="slide-org0902470">
+<h2 id="org0902470"><span class="section-number-2">4</span> Configuration</h2>
 <div class="outline-text-2" id="text-4">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgbf2d0ab">
-<h3 id="orgbf2d0ab"><span class="section-number-3">4.1</span> Set the location of Reveal.js</h3>
+<section id="slide-org71acdc6">
+<h3 id="org71acdc6"><span class="section-number-3">4.1</span> Set the location of Reveal.js</h3>
 <p>
 Org-reveal must know where Reveal.js is on your computer before
 exporting Org contents. The location of Reveal.js is the path to
@@ -360,8 +360,8 @@ a CDN instead of downloading a local copy.
 
 
 </section>
-<section id="slide-org93b1c95">
-<h4 id="org93b1c95"><span class="section-number-4">4.1.1</span> Url form for file location</h4>
+<section id="slide-orgf769d60">
+<h4 id="orgf769d60"><span class="section-number-4">4.1.1</span> Url form for file location</h4>
 <p>
 For example if you cloned this repository to your home directory,
 this file in Mac OS X would be referred to as
@@ -376,8 +376,8 @@ detail on this standard please refer to
 </section>
 </section>
 <section>
-<section id="slide-org640f23d">
-<h3 id="org640f23d"><span class="section-number-3">4.2</span> First Try</h3>
+<section id="slide-org7115491">
+<h3 id="org7115491"><span class="section-number-3">4.2</span> First Try</h3>
 <p>
 To load Org-reveal, type "M-x load-library", then type
 "ox-reveal".
@@ -396,8 +396,8 @@ cool slides.
 </section>
 </section>
 <section>
-<section id="slide-orgcd9a905">
-<h3 id="orgcd9a905"><span class="section-number-3">4.3</span> The HLevel</h3>
+<section id="slide-orgc43ea31">
+<h3 id="orgc43ea31"><span class="section-number-3">4.3</span> The HLevel</h3>
 <p>
 Org-reveal maps each heading and its contents to one Reveal.js
 slide. Since Reveal.js arranges slides into a 2-dimensional matrix,
@@ -419,8 +419,8 @@ parent level 1 heading.
 </p>
 
 </section>
-<section id="slide-org74df23b">
-<h4 id="org74df23b"><span class="section-number-4">4.3.1</span> HLevel's Effects on Slides Layout</h4>
+<section id="slide-orgadc60de">
+<h4 id="orgadc60de"><span class="section-number-4">4.3.1</span> HLevel's Effects on Slides Layout</h4>
 <p>
 Assume we have a simple Org file as below:
 </p>
@@ -440,7 +440,7 @@ be mapped to vertical slides below the slides of heading H2.
 </p>
 
 
-<div id="orgfe6aacb" class="figure">
+<div id="org49448b9" class="figure">
 <p><img src="./images/hlevel.png" alt="hlevel.png" />
 </p>
 </div>
@@ -452,14 +452,14 @@ a vertical slide below it.
 </p>
 
 
-<div id="orgc027cb9" class="figure">
+<div id="orgaccf854" class="figure">
 <p><img src="./images/hlevel2.png" alt="hlevel2.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org5bd5cef">
-<h4 id="org5bd5cef"><span class="section-number-4">4.3.2</span> Configure HLevel's Value</h4>
+<section id="slide-org076e645">
+<h4 id="org076e645"><span class="section-number-4">4.3.2</span> Configure HLevel's Value</h4>
 <ul>
 <li>Change variable <code>org-reveal-hlevel</code>'s value to set HLevel globally.<br />
 For example, add the following statement to your <code>.emacs</code> file.</li>
@@ -484,8 +484,8 @@ For example, add the following statement to your <code>.emacs</code> file.</li>
 </section>
 </section>
 <section>
-<section id="slide-org9df456d">
-<h3 id="org9df456d"><span class="section-number-3">4.4</span> Force Split</h3>
+<section id="slide-org51ce2cf">
+<h3 id="org51ce2cf"><span class="section-number-3">4.4</span> Force Split</h3>
 <p>
 If one heading has too many things to fit into one slide, you can
 split the contents into multiple vertical slides manually, by inserting
@@ -498,7 +498,7 @@ split the contents into multiple vertical slides manually, by inserting
 </div>
 
 </section>
-<section id="slide-org9df456d-split">
+<section id="slide-org51ce2cf-split">
 
 <p>
 Now a new slide begins after <code>#+REVEAL</code> keyword.
@@ -512,8 +512,8 @@ To repeat the heading title on the split slide, please insert
 </section>
 </section>
 <section>
-<section id="slide-org4bbdb35">
-<h3 id="org4bbdb35"><span class="section-number-3">4.5</span> Select Theme</h3>
+<section id="slide-org85380e2">
+<h3 id="org85380e2"><span class="section-number-3">4.5</span> Select Theme</h3>
 <p>
 Theme is set globally throughout the whole file by setting option
 <code>REVEAL_THEME</code>.
@@ -522,7 +522,7 @@ Theme is set globally throughout the whole file by setting option
 <p>
 Slide transition style is set by initialization option <code>transition</code>
 and the transition speed is set by <code>transitionSpeed</code> . Please refer to
-section <a href="#/slide-orgd78911f">4.12</a> for details.
+section <a href="#/slide-orgf0961da">4.12</a> for details.
 </p>
 
 <p>
@@ -539,8 +539,8 @@ Available transitions are: default|cube|page|concave|zoom|linear|fade|none.
 </section>
 </section>
 <section>
-<section id="slide-orgb84bd7f">
-<h3 id="orgb84bd7f"><span class="section-number-3">4.6</span> Set The Title Slide</h3>
+<section id="slide-orga825cd5">
+<h3 id="orga825cd5"><span class="section-number-3">4.6</span> Set The Title Slide</h3>
 <p>
 By default, Org-reveal generates a title slide displaying the
 title, the author, the Email, the date and the time-stamp of the
@@ -559,8 +559,8 @@ To restore the default title slide, please set variable
 </p>
 
 </section>
-<section id="slide-org6b8d96f">
-<h4 id="org6b8d96f"><span class="section-number-4">4.6.1</span> Customize the Title Slide</h4>
+<section id="slide-org0404481">
+<h4 id="org0404481"><span class="section-number-4">4.6.1</span> Customize the Title Slide</h4>
 <p>
 There are 3 ways t ocustomize the title slide.
 </p>
@@ -621,16 +621,16 @@ information:
 </section>
 </section>
 <section>
-<section id="slide-org9c3f8ab">
-<h3 id="org9c3f8ab"><span class="section-number-3">4.7</span> Set Slide Background</h3>
+<section id="slide-org1dfc822">
+<h3 id="org1dfc822"><span class="section-number-3">4.7</span> Set Slide Background</h3>
 <p>
 Slide background can be set to a color, an image, a repeating image
 array or an iframe by setting heading properties.
 </p>
 
 </section>
-<section id="slide-org059393f" data-background="#543210">
-<h4 id="org059393f"><span class="section-number-4">4.7.1</span> Single Colored Background</h4>
+<section id="slide-org84919b6" data-background="#543210">
+<h4 id="org84919b6"><span class="section-number-4">4.7.1</span> Single Colored Background</h4>
 <p>
 Set property <code>reveal_background</code> to either an RGB color value, or any
 supported CSS color format.
@@ -646,8 +646,8 @@ supported CSS color format.
 </div>
 
 </section>
-<section id="slide-org4d881cb" data-background="./images/whale.jpg" data-background-transition="slide">
-<h4 id="org4d881cb"><span class="section-number-4">4.7.2</span> Single Image Background</h4>
+<section id="slide-org76353bb" data-background="./images/whale.jpg" data-background-transition="slide">
+<h4 id="org76353bb"><span class="section-number-4">4.7.2</span> Single Image Background</h4>
 <p>
 Set property <code>reveal_background</code> to an URL of background image.
 Set property <code>reveal_background_trans</code> to <code>slide</code> to make background image
@@ -664,8 +664,8 @@ sliding rather than fading.
 </div>
 
 </section>
-<section id="slide-orgdfdbf82" data-background="./images/whale.jpg" data-background-size="200px" data-background-repeat="repeat" data-background-opacity="0.2">
-<h4 id="orgdfdbf82"><span class="section-number-4">4.7.3</span> Repeating Image Background</h4>
+<section id="slide-org3e72092" data-background="./images/whale.jpg" data-background-size="200px" data-background-repeat="repeat" data-background-opacity="0.2">
+<h4 id="org3e72092"><span class="section-number-4">4.7.3</span> Repeating Image Background</h4>
 <p>
 Resize background image by setting property
 <code>reveal_background_size</code> to a number.
@@ -689,9 +689,9 @@ background opacity, which is a value of 0-1.
 </div>
 
 </section>
-<section id="slide-orgdb41862" data-background-iframe="https://hakim.se" data-background-interactive>
+<section id="slide-org7c826e0" data-background-iframe="https://hakim.se" data-background-interactive>
 <div style="background: rgb(0,0,0); opacity: 0.8; ">
-<h4 id="orgdb41862"><span class="section-number-4">4.7.4</span> Iframe background</h4>
+<h4 id="org7c826e0"><span class="section-number-4">4.7.4</span> Iframe background</h4>
 <p>
 When <code>iframe</code> is being used as slide background, the content of the slide will
 be put inside a dedicated division. The other background options can be used to
@@ -710,8 +710,8 @@ image as a normal slide.
 </div>
 
 </section>
-<section id="slide-orgd04c8f6">
-<h4 id="orgd04c8f6"><span class="section-number-4">4.7.5</span> Title Slide Background Image</h4>
+<section id="slide-orge209e9f">
+<h4 id="orge209e9f"><span class="section-number-4">4.7.5</span> Title Slide Background Image</h4>
 <p>
 To set the title slide's background image, please specify the
 following options:
@@ -725,8 +725,8 @@ following options:
 
 </ul>
 </section>
-<section id="slide-org9a1fe50">
-<h4 id="org9a1fe50"><span class="section-number-4">4.7.6</span> Table of Contents Slide Background Image</h4>
+<section id="slide-orge66d7d7">
+<h4 id="orge66d7d7"><span class="section-number-4">4.7.6</span> Table of Contents Slide Background Image</h4>
 <p>
 To set the (automatically generated) table of contents slide's background
 image, please specify the following options:
@@ -740,8 +740,8 @@ image, please specify the following options:
 
 </ul>
 </section>
-<section id="slide-org544a712">
-<h4 id="org544a712"><span class="section-number-4">4.7.7</span> Background for all slides</h4>
+<section id="slide-org1a55633">
+<h4 id="org1a55633"><span class="section-number-4">4.7.7</span> Background for all slides</h4>
 <p>
 You can also configure the background for all slides in the presentation with:
 </p>
@@ -763,8 +763,8 @@ parameter.
 </section>
 </section>
 <section>
-<section id="slide-org76b1b3c">
-<h3 id="org76b1b3c"><span class="section-number-3">4.8</span> Slide Size</h3>
+<section id="slide-org31e93a9">
+<h3 id="org31e93a9"><span class="section-number-3">4.8</span> Slide Size</h3>
 <p>
 Reveal.js scales slides to best fit the display resolution, but you can
 also specify the desired size by settings the option tags <code>reveal_width</code>
@@ -788,8 +788,8 @@ ratio.</dd>
 </section>
 </section>
 <section>
-<section id="slide-org6332853">
-<h3 id="org6332853"><span class="section-number-3">4.9</span> Slide Numbering</h3>
+<section id="slide-orga8f5b26">
+<h3 id="orga8f5b26"><span class="section-number-3">4.9</span> Slide Numbering</h3>
 <p>
 To enable slide numbers, please add the following Reveal.js initial option.
 </p>
@@ -836,8 +836,8 @@ Other possible choice for slide numbers are:
 </section>
 </section>
 <section>
-<section id="slide-org219fe38">
-<h3 id="org219fe38"><span class="section-number-3">4.10</span> Slide Header/Footer</h3>
+<section id="slide-org7b33d69">
+<h3 id="org7b33d69"><span class="section-number-3">4.10</span> Slide Header/Footer</h3>
 <p>
 Specify Slide header/footer globally by <code>#+REVEAL_SLIDE_HEADER:</code>
 and <code>#+REVEAL_SLIDE_FOOTER:</code>. The option content will be put into
@@ -852,8 +852,8 @@ slides. To show them also on the title and toc slide you can add
 </section>
 </section>
 <section>
-<section id="slide-org786c008">
-<h3 id="org786c008"><span class="section-number-3">4.11</span> Fragmented Contents</h3>
+<section id="slide-org8f2e39c">
+<h3 id="org8f2e39c"><span class="section-number-3">4.11</span> Fragmented Contents</h3>
 <p>
 Make contents fragmented (show up one-by-one) by setting option
 <code>ATTR_REVEAL</code> with property ":frag frag-style", as illustrated
@@ -875,8 +875,8 @@ Pictures, tables and many other HTML elements can be fragmented.
 </p>
 
 </section>
-<section id="slide-orgf7a664d">
-<h4 id="orgf7a664d"><span class="section-number-4">4.11.1</span> Fragment Styles</h4>
+<section id="slide-org82bd3ca">
+<h4 id="org82bd3ca"><span class="section-number-4">4.11.1</span> Fragment Styles</h4>
 <p>
 Available fragment styles are:
 </p>
@@ -899,8 +899,8 @@ global variable <code>org-reveal-default-frag-style</code>.
 </p>
 
 </section>
-<section id="slide-org6d12546">
-<h4 id="org6d12546"><span class="section-number-4">4.11.2</span> Fragment Index</h4>
+<section id="slide-orgea12508">
+<h4 id="orgea12508"><span class="section-number-4">4.11.2</span> Fragment Index</h4>
 <p>
 Fragment sequence can be changed by assigning adding <code>:frag_idx</code>
 property to each fragmented element.
@@ -919,8 +919,8 @@ This paragraph shows at first.
 </p>
 
 </section>
-<section id="slide-org85252ea">
-<h4 id="org85252ea"><span class="section-number-4">4.11.3</span> List Fragments</h4>
+<section id="slide-orgf77b413">
+<h4 id="orgf77b413"><span class="section-number-4">4.11.3</span> List Fragments</h4>
 <p>
 <code>#+ATTR_REVEAL: :frag frag-style</code> above a list defines fragment
 style for the list as a whole.
@@ -947,7 +947,7 @@ item.
 </p>
 
 </section>
-<section id="slide-org85252ea-split">
+<section id="slide-orgf77b413-split">
 
 <h4><span class="section-number-4">4.11.3</span> List Fragments</h4>
 <p>
@@ -974,7 +974,7 @@ An example:
 
 </ul>
 </section>
-<section id="slide-org85252ea-split">
+<section id="slide-orgf77b413-split">
 
 <h4><span class="section-number-4">4.11.3</span> List Fragments</h4>
 <p>
@@ -1000,8 +1000,8 @@ assigns each item of a list the <code>appear</code> fragment style.
 </section>
 </section>
 <section>
-<section id="slide-orgd78911f">
-<h3 id="orgd78911f"><span class="section-number-3">4.12</span> Initialization options</h3>
+<section id="slide-orgf0961da">
+<h3 id="orgf0961da"><span class="section-number-3">4.12</span> Initialization options</h3>
 <p>
 Use <code>#+REVEAL_INIT_OPTIONS</code> to give JS snippet for initialize
 reveal.js with different options. Check <a href="https://github.com/hakimel/reveal.js/#configuration">reveal.js document</a> for
@@ -1011,8 +1011,8 @@ example.
 </section>
 </section>
 <section>
-<section id="slide-orgb4ec90c">
-<h3 id="orgb4ec90c"><span class="section-number-3">4.13</span> Third-Party Plugins</h3>
+<section id="slide-org8ead653">
+<h3 id="org8ead653"><span class="section-number-3">4.13</span> Third-Party Plugins</h3>
 <p>
 Reveal.js is also extensible through third-party plugins. Org-reveal
 now includes a mechanism to load these as well, either for all org buffers
@@ -1020,8 +1020,8 @@ by defining variable, or for local org buffer by setting option line.
 </p>
 
 </section>
-<section id="slide-org51583db">
-<h4 id="org51583db"><span class="section-number-4">4.13.1</span> By Defining Variable</h4>
+<section id="slide-orgf3cb260">
+<h4 id="orgf3cb260"><span class="section-number-4">4.13.1</span> By Defining Variable</h4>
 <p>
 Store the names and loading instructions for each plugin in the
 customizable variable <code>org-reveal-external-plugins</code>. This variable is
@@ -1039,8 +1039,8 @@ the plugin to the dependencies parameter when Reveal is initialized.
 </p>
 
 </section>
-<section id="slide-orgca1d512">
-<h4 id="orgca1d512"><span class="section-number-4">4.13.2</span> By Local Option Line</h4>
+<section id="slide-org5b80720">
+<h4 id="org5b80720"><span class="section-number-4">4.13.2</span> By Local Option Line</h4>
 <p>
 Specify the plugin by option line <code>#+REVEAL_EXTERNAL_PLUGINS: string
 of code</code>. Similar to the global plugin definition, the string of code
@@ -1050,8 +1050,8 @@ can have one optional <code>%s</code> to be replaced by <code>reveal-root</code>
 </section>
 </section>
 <section>
-<section id="slide-orgb17f644">
-<h3 id="orgb17f644"><span class="section-number-3">4.14</span> Highlight Source Code</h3>
+<section id="slide-orgd045621">
+<h3 id="orgd045621"><span class="section-number-3">4.14</span> Highlight Source Code</h3>
 <p>
 There are two ways to highlight source code.
 </p>
@@ -1086,8 +1086,8 @@ to <code>nil</code> and export again.
 </p>
 
 </section>
-<section id="slide-org7791691">
-<h4 id="org7791691"><span class="section-number-4">4.14.1</span> Using highlight.js</h4>
+<section id="slide-org8960a47">
+<h4 id="org8960a47"><span class="section-number-4">4.14.1</span> Using highlight.js</h4>
 <p>
 You can also use <a href="https://highlightjs.org">highlight.js</a>, by adding <code>highlight</code> to the Reveal.js
 plugin list.
@@ -1129,8 +1129,8 @@ attributes</a> to the source code block . Below is an example.
 </section>
 </section>
 <section>
-<section id="slide-org1240fc0">
-<h3 id="org1240fc0"><span class="section-number-3">4.15</span> Editable Source Code</h3>
+<section id="slide-orgec67a75">
+<h3 id="orgec67a75"><span class="section-number-3">4.15</span> Editable Source Code</h3>
 <p>
 It is now possible to embed code blocks in a codemirror instance in order to edit code during a presentation.  At present, this capacity is turned on or off at time export using these defcustoms:
 </p>
@@ -1173,8 +1173,8 @@ equation found.
 </section>
 </section>
 <section>
-<section id="slide-orgb84cf88">
-<h3 id="orgb84cf88"><span class="section-number-3">4.17</span> Preamble and Postamble</h3>
+<section id="slide-org86d1d46">
+<h3 id="org86d1d46"><span class="section-number-3">4.17</span> Preamble and Postamble</h3>
 <p>
 You can define preamble and postamble contents which will not be
 shown as slides, but will be exported into the body part of the
@@ -1199,8 +1199,8 @@ variable <code>org-reveal-head-preamble</code> or option
 </p>
 
 </section>
-<section id="slide-orga8f4565">
-<h4 id="orga8f4565"><span class="section-number-4">4.17.1</span> Generating Pre/Postamble by Emacs-Lisp Functions</h4>
+<section id="slide-org0121209">
+<h4 id="org0121209"><span class="section-number-4">4.17.1</span> Generating Pre/Postamble by Emacs-Lisp Functions</h4>
 <p>
 If the contents of pre/postamble is the name of an evaluated
 Emacs-Lisp function, which must accept an argument of Org-mode
@@ -1216,8 +1216,8 @@ block and mark it to be evaluated when exporting the document.
 </section>
 </section>
 <section>
-<section id="slide-orgd64fc83">
-<h3 id="orgd64fc83"><span class="section-number-3">4.18</span> Raw HTML in Slides</h3>
+<section id="slide-orgc75d367">
+<h3 id="orgc75d367"><span class="section-number-3">4.18</span> Raw HTML in Slides</h3>
 <p>
 Besides the Org contents, you can embed raw HTML contents
 into slides by placing a <code>#+REVEAL_HTML</code> keyword.
@@ -1230,8 +1230,8 @@ The famous cat jump fail:
 </section>
 </section>
 <section>
-<section id="slide-org7e43fc7">
-<h3 id="org7e43fc7"><span class="section-number-3">4.19</span> Speaker Notes</h3>
+<section id="slide-org2146001">
+<h3 id="org2146001"><span class="section-number-3">4.19</span> Speaker Notes</h3>
 <p>
 Reveal.js supports speaker notes, which are displayed in a separate
 browser window. Pressing 's' on slide's windows will pop up a window
@@ -1260,7 +1260,7 @@ To skip exporting speaker notes, please set variable
 </p>
 
 </section>
-<section id="slide-org7e43fc7-split">
+<section id="slide-org2146001-split">
 <p>
 Speaker notes requires the <code>notes</code> plug-in. If you changed default
 plug-in setting by specifying <code>#+REVEAL_PLUGINS</code> or by setting
@@ -1269,7 +1269,7 @@ plug-in list to enable speaker notes.
 </p>
 
 </section>
-<section id="slide-org7e43fc7-split">
+<section id="slide-org2146001-split">
 
 <p>
 Due to a bug in Reveal.js, sometimes the speaker notes window
@@ -1279,8 +1279,8 @@ reopen it in the browser.
 </p>
 
 </section>
-<section id="slide-org5ab8679">
-<h4 id="org5ab8679"><span class="section-number-4">4.19.1</span> Easy-Template for Speaker Notes</h4>
+<section id="slide-orgf643860">
+<h4 id="orgf643860"><span class="section-number-4">4.19.1</span> Easy-Template for Speaker Notes</h4>
 <p>
 Org-reveal registers 'n' as the key for speaker notes easy-template.
 So you can press '&lt;' followed by 'n' and then press TAB, the <code>#+BEGIN_NOTES</code>
@@ -1295,8 +1295,8 @@ Customize <code>org-reveal-note-key-char</code> to change the default key
 </section>
 </section>
 <section>
-<section id="slide-org5f96354">
-<h3 id="org5f96354"><span class="section-number-3">4.20</span> Multiplexing</h3>
+<section id="slide-orgb640f9d">
+<h3 id="orgb640f9d"><span class="section-number-3">4.20</span> Multiplexing</h3>
 <p>
 Reveal.js supports a <a href="https://github.com/reveal/multiplex#multiplex-plugin">multiplexing plugin</a>, which allows your
 audience to view the slides of the presentation you are controlling
@@ -1347,8 +1347,8 @@ them to track your presentation on their own device.
 </section>
 </section>
 <section>
-<section id="slide-org9b170f5">
-<h3 id="org9b170f5"><span class="section-number-3">4.21</span> Extra Stylesheets</h3>
+<section id="slide-orge57c470">
+<h3 id="orge57c470"><span class="section-number-3">4.21</span> Extra Stylesheets</h3>
 <p>
 Set <code>REVEAL_EXTRA_CSS</code> to a stylesheet file path in order to load extra custom
 styles after loading a theme.
@@ -1363,8 +1363,8 @@ styles after loading a theme.
 </section>
 </section>
 <section>
-<section id="slide-orgdeeb517">
-<h3 id="orgdeeb517"><span class="section-number-3">4.22</span> Select Built-In Scripts</h3>
+<section id="slide-org1187315">
+<h3 id="org1187315"><span class="section-number-3">4.22</span> Select Built-In Scripts</h3>
 <p>
 Set option <code>REVEAL_PLUGINS</code> or variable <code>org-reveal-plugins</code> to a
 lisp list to select built-in scripts.
@@ -1391,8 +1391,8 @@ The following examples select <i>markdown</i> and <i>highlight</i> only.
 </section>
 </section>
 <section>
-<section id="slide-org37f6e0a">
-<h3 id="org37f6e0a"><span class="section-number-3">4.23</span> Extra Dependent Script</h3>
+<section id="slide-orgcac935f">
+<h3 id="orgcac935f"><span class="section-number-3">4.23</span> Extra Dependent Script</h3>
 <p>
 Set <code>REVEAL_EXTRA_JS</code> to the url of extra reveal.js dependent
 script if necessary.
@@ -1406,8 +1406,8 @@ script if necessary.
 </section>
 </section>
 <section>
-<section id="slide-org9aedd30">
-<h3 id="org9aedd30"><span class="section-number-3">4.24</span> Extra Slide Attribute</h3>
+<section id="slide-orgfae3919">
+<h3 id="orgfae3919"><span class="section-number-3">4.24</span> Extra Slide Attribute</h3>
 <p>
 Set property <code>reveal_extra_attr</code> to headings to add any necessary attributes
 to slides.
@@ -1416,8 +1416,8 @@ to slides.
 </section>
 </section>
 <section>
-<section id="slide-orgcfc7bfd">
-<h3 id="orgcfc7bfd"><span class="section-number-3">4.25</span> Export into Single File</h3>
+<section id="slide-orgec03bfd">
+<h3 id="orgec03bfd"><span class="section-number-3">4.25</span> Export into Single File</h3>
 <p>
 By setting option <code>reveal_single_file</code> to <code>t</code>, images and necessary
 Reveal.js scripts will be embedded into the exported HTML file, to make
@@ -1450,8 +1450,8 @@ highlight by Emacs is not effected.</b>
 </section>
 </section>
 <section>
-<section id="slide-orgd7e9f29">
-<h3 id="orgd7e9f29"><span class="section-number-3">4.26</span> Export Current Subtree</h3>
+<section id="slide-orgcae7360">
+<h3 id="orgcae7360"><span class="section-number-3">4.26</span> Export Current Subtree</h3>
 <p>
 Use menu entry " C-c C-e R S" to export only current subtree,
 without the title slide and the table of content, for a quick preview
@@ -1461,8 +1461,8 @@ of your current edition.
 </section>
 </section>
 <section>
-<section id="slide-org3b46f11">
-<h3 id="org3b46f11"><span class="section-number-3">4.27</span> Skip headings</h3>
+<section id="slide-org30c5088">
+<h3 id="org30c5088"><span class="section-number-3">4.27</span> Skip headings</h3>
 <p>
 Any heading with tag <code>:noexport:</code> will be discarded when exporting to
 all backends. If you want a heading being discard when exporting to
@@ -1471,15 +1471,15 @@ Reveal.js only, please use tag <code>:noexport_reveal:</code>.
 </section>
 </section>
 <section>
-<section id="slide-org46aeb4d">
-<h2 id="org46aeb4d"><span class="section-number-2">5</span> Tips</h2>
+<section id="slide-org918cf25">
+<h2 id="org918cf25"><span class="section-number-2">5</span> Tips</h2>
 <div class="outline-text-2" id="text-5">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org83b59ed">
-<h3 id="org83b59ed"><span class="section-number-3">5.1</span> Managing Table of Contents</h3>
+<section id="slide-org63d0ccc">
+<h3 id="org63d0ccc"><span class="section-number-3">5.1</span> Managing Table of Contents</h3>
 <p>
 It is well often the automatic "Table of Contents" is too large to fit
 into one slide. One workaround is to disable the automatic TOC and
@@ -1502,8 +1502,8 @@ To disable the automatic TOC, add <code>toc:nil</code> to <code>#+OPTIONS</code>
 </section>
 </section>
 <section>
-<section id="slide-org60671a2">
-<h3 id="org60671a2"><span class="section-number-3">5.2</span> Internal Links</h3>
+<section id="slide-orgb82fc39">
+<h3 id="orgb82fc39"><span class="section-number-3">5.2</span> Internal Links</h3>
 <p>
 Reveal.js supports only jump between slides, but not between
 elements on slides. Thus, we can only link to headlines in an Org
@@ -1516,7 +1516,7 @@ custom-id, as the examples below:
 </p>
 
 <ul>
-<li><a href="#/slide-org46aeb4d">5</a>.</li>
+<li><a href="#/slide-org918cf25">5</a>.</li>
 <li><a href="#/slide-my-heading">Heading</a> with a <code>CUSTOM_ID</code> property.</li>
 
 </ul>
@@ -1524,8 +1524,8 @@ custom-id, as the examples below:
 </section>
 </section>
 <section>
-<section id="slide-orgf08b23c">
-<h3 id="orgf08b23c"><span class="section-number-3">5.3</span> Custom JS</h3>
+<section id="slide-orgbcb1e20">
+<h3 id="orgbcb1e20"><span class="section-number-3">5.3</span> Custom JS</h3>
 <p>
 To pass custom JS code to <code>Reveal.initialize</code>, state the code by
 <code>#+REVEAL_INIT_SCRIPT</code> (multiple statements are concatenated) or by
@@ -1535,15 +1535,15 @@ custom variable <code>org-reveal-init-script</code>.
 </section>
 </section>
 <section>
-<section id="slide-org96d4ea2">
-<h3 id="org96d4ea2"><span class="section-number-3">5.4</span> Executable Source Blocks</h3>
+<section id="slide-org436ae01">
+<h3 id="org436ae01"><span class="section-number-3">5.4</span> Executable Source Blocks</h3>
 <p>
 To allow live execution of code in some languages, enable the klipse plugin by setting <code>org-reveal-klipsify-src</code> to non-nil.  Src blocks with the languages <code>js</code>, <code>clojure</code>, <code>html</code>, <code>python</code>, <code>ruby</code>, <code>scheme</code>, <code>php</code> will be executed with output shown in a console-like environment.  See the source code of <code>org-reveal-src-block</code> for more details.  
 </p>
 
 </section>
-<section id="slide-org651bb89">
-<h4 id="org651bb89"><span class="section-number-4">5.4.1</span> HTML Src Block</h4>
+<section id="slide-org6265036">
+<h4 id="org6265036"><span class="section-number-4">5.4.1</span> HTML Src Block</h4>
 <div class="org-src-container">
 
 <pre  class="src src-html"><code trim>&lt;<span style="color: #87cefa;">h1</span> <span style="color: #eedd82;">class</span>=<span style="color: #ffa07a;">"whatever"</span>&gt;<span style="font-weight: bold; text-decoration: underline;">hello, what's your name</span>&lt;/<span style="color: #87cefa;">h1</span>&gt;
@@ -1551,8 +1551,8 @@ To allow live execution of code in some languages, enable the klipse plugin by s
 </div>
 
 </section>
-<section id="slide-orgeed714b">
-<h4 id="orgeed714b"><span class="section-number-4">5.4.2</span> Javascript Src Block</h4>
+<section id="slide-orgc36b7b4">
+<h4 id="orgc36b7b4"><span class="section-number-4">5.4.2</span> Javascript Src Block</h4>
 <div class="org-src-container">
 
 <pre  class="src src-js"><code trim>console.log(<span style="color: #ffa07a;">"success"</span>);
@@ -1562,8 +1562,8 @@ x
 </div>
 
 </section>
-<section id="slide-org31563be">
-<h4 id="org31563be"><span class="section-number-4">5.4.3</span> Perl Src Block (not klipsified)</h4>
+<section id="slide-org067a529">
+<h4 id="org067a529"><span class="section-number-4">5.4.3</span> Perl Src Block (not klipsified)</h4>
 <div class="org-src-container">
 
 <pre  class="src src-perl"><code trim>I don<span style="color: #ffa07a;">'t know perl!</span>
@@ -1573,8 +1573,8 @@ x
 </section>
 </section>
 <section>
-<section id="slide-org204d174">
-<h3 id="org204d174"><span class="section-number-3">5.5</span> Properties for Sub-headings</h3>
+<section id="slide-org69bfef1">
+<h3 id="org69bfef1"><span class="section-number-3">5.5</span> Properties for Sub-headings</h3>
 <p>
 If you want to have multiple reveal presentations in a single Org-mode
 file, you might want to switch from file-based properties like:
@@ -1625,9 +1625,9 @@ This way, each org-reveal presentation can have its own settings. An example hea
 </section>
 </section>
 <section>
-<section id="slide-org4eacbfa" data-background-iframe="https://hakim.se" data-background-interactive>
+<section id="slide-org19578d1" data-background-iframe="https://hakim.se" data-background-interactive>
 <div style="background: rgb(0,0,0); position: absolute; opacity: 0.8; height: 200px; bottom: -700px; border-radius: 10px; padding: 20px;">
-<h3 id="org4eacbfa"><span class="section-number-3">5.6</span> Customize iframe background slide</h3>
+<h3 id="org19578d1"><span class="section-number-3">5.6</span> Customize iframe background slide</h3>
 <smaller>
 <div class="org-src-container">
 
@@ -1641,8 +1641,8 @@ This way, each org-reveal presentation can have its own settings. An example hea
 </section>
 </section>
 <section>
-<section id="slide-orgfbf18f7">
-<h2 id="orgfbf18f7"><span class="section-number-2">6</span> Thanks</h2>
+<section id="slide-org6939f5e">
+<h2 id="org6939f5e"><span class="section-number-2">6</span> Thanks</h2>
 <p>
 Courtesy to:
 </p>
@@ -1661,9 +1661,9 @@ and the precise MathJax
 </div>
 </div>
 <p> Created by yjwen. </p>
-<script src="../reveal.js/dist/reveal.js"></script>
-<script src="../reveal.js/plugin/markdown/markdown.js"></script>
-<script src="../reveal.js/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
 
 
 <script>
