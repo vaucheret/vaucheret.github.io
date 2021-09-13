@@ -7,10 +7,11 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
+<link rel="stylesheet" href="./local.css"/>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -18,91 +19,28 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../reveal.js-master/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
+<meta name="description" content="Org-Reveal Introduction.">
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Implementación de Subrutinas</h2><h2 class="date">2016-09-27 mar 00:00</h2><p class="date">Created: 2017-09-18 lun 15:26</p>
-</section>
-<section id="table-of-contents">
-<nav id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#/slide-org9266f9f">Semántica General de Llamada y Retorno</a>
-<ul>
-<li><a href="#/slide-org731f288">Semántica General de Llamada y Retorno</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org07bae07">Subprogramas Simples</a>
-<ul>
-<li><a href="#/slide-orgcb8726a">Subprogramas Simples: LLamada</a></li>
-<li><a href="#/slide-orgf7bbd18">Subprogramas Simples: Retorno</a></li>
-<li><a href="#/slide-org6021f27">Subprogramas Simples: Partes</a></li>
-<li><a href="#/slide-orgf6ee8c9">Código y Registros de Activación</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org1656565">Subprogramas con Variables locales en Pila Dinámica</a>
-<ul>
-<li><a href="#/slide-org505cb32">Subprogramas con Variables locales en Pila Dinámica</a></li>
-<li><a href="#/slide-orgc4018b3">Típico registro de activación para variables locales alojadas en pila dinamica</a></li>
-<li><a href="#/slide-org46360b2">Ejemplo de Función en <b>C</b></a></li>
-<li><a href="#/slide-org0ecc3fa">Ejemplo sin recursividad</a></li>
-<li><a href="#/slide-org2acc402">Ejemplo sin recursividad</a></li>
-<li><a href="#/slide-org73bb532">Cadena Dinámica y desplazamiento local</a></li>
-<li><a href="#/slide-org1d1f8f4">Un Ejemplo con Recursividad</a></li>
-<li><a href="#/slide-org21b0df5">Un Ejemplo con Recursividad</a></li>
-<li><a href="#/slide-org3f2451f">Un Ejemplo con Recursividad</a></li>
-<li><a href="#/slide-org09288e8">Un Ejemplo con Recursividad</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org06ac2ad">Subprogramas imbricados</a>
-<ul>
-<li><a href="#/slide-org8733156">Subprogramas imbricados</a></li>
-<li><a href="#/slide-orga8f7c9c">Localizar una Referencia no local</a></li>
-<li><a href="#/slide-org012e079">Alcance Estático</a></li>
-<li><a href="#/slide-org2b12e46">Ejemplo</a></li>
-<li><a href="#/slide-orgd6c4c73">Contenido de la Pila en pos 1</a></li>
-<li><a href="#/slide-orge882e18">Display</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org0c929bc">Bloques</a>
-<ul>
-<li><a href="#/slide-org6334d1d">Bloques</a></li>
-<li><a href="#/slide-org24f3438">Implementando bloques</a></li>
-<li><a href="#/slide-org37312b2">Ejemplo</a></li>
-<li><a href="#/slide-org6c126a2">Ejemplo</a></li>
-</ul>
-</li>
-<li><a href="#/slide-orgf220178">Implementando Alcance Dinámico</a>
-<ul>
-<li><a href="#/slide-org3370295">Implementando Alcance Dinámico</a></li>
-<li><a href="#/slide-org1027165">Ejemplo</a></li>
-<li><a href="#/slide-org62cc682">Ejemplo cadena dinámica</a></li>
-<li><a href="#/slide-org8d9fef9">Ejemplo con tabla central</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
+<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Implementación de Subrutinas</h2><h2 class="date">2016-09-27 mar 00:00</h2><p class="date">Created: 2021-09-13 lun 10:45</p>
 </section>
 
 <section>
-<section id="slide-org9266f9f">
-<div class="slide-header"></div>
-<h2 id="org9266f9f">Semántica General de Llamada y Retorno</h2>
-<div class="outline-text-2" id="text-org9266f9f">
-</div><div class="slide-footer"></div>
+<section id="slide-orgdcf90c2">
+<h2 id="orgdcf90c2">Semántica General de Llamada y Retorno</h2>
+<div class="outline-text-2" id="text-orgdcf90c2">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org731f288">
-<div class="slide-header"></div>
-<h3 id="org731f288">Semántica General de Llamada y Retorno</h3>
+<section id="slide-orge84c386">
+<h3 id="orge84c386">Semántica General de Llamada y Retorno</h3>
 <ul>
 <li>Semánticamente es como si el subprograma se insertara en
 el punto de su llamada (no es siempre asi)</li>
@@ -120,21 +58,18 @@ de subprogramas son llamadas en conjunto <i>articulación de subprogramas</i></l
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org07bae07">
-<div class="slide-header"></div>
-<h2 id="org07bae07">Subprogramas Simples</h2>
-<div class="outline-text-2" id="text-org07bae07">
-</div><div class="slide-footer"></div>
+<section id="slide-orgec995c2">
+<h2 id="orgec995c2">Subprogramas Simples</h2>
+<div class="outline-text-2" id="text-orgec995c2">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-orgcb8726a">
-<div class="slide-header"></div>
-<h3 id="orgcb8726a">Subprogramas Simples: LLamada</h3>
+<section id="slide-org0c015b5">
+<h3 id="org0c015b5">Subprogramas Simples: LLamada</h3>
 <ul>
 <li>Grabar el estado de ejecución del llamador</li>
 <li>llevar a cabo el proceso de pasaje de parámetros</li>
@@ -143,13 +78,11 @@ de subprogramas son llamadas en conjunto <i>articulación de subprogramas</i></l
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgf7bbd18">
-<div class="slide-header"></div>
-<h3 id="orgf7bbd18">Subprogramas Simples: Retorno</h3>
+<section id="slide-orgc686ea0">
+<h3 id="orgc686ea0">Subprogramas Simples: Retorno</h3>
 <ul>
 <li>Si se usó pasaje de parametros por valor-resultado, mover los
 valores actuales a esos parametors a sus correspondientes parametros reales</li>
@@ -160,13 +93,11 @@ pueda obtenerlo</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org6021f27">
-<div class="slide-header"></div>
-<h3 id="org6021f27">Subprogramas Simples: Partes</h3>
+<section id="slide-orgc388373">
+<h3 id="orgc388373">Subprogramas Simples: Partes</h3>
 <ul>
 <li>Dos partes separadas: El Código y los Datos (variables locales y
 datos que pueden cambiar)</li>
@@ -177,34 +108,29 @@ de un registro de activación.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgf6ee8c9">
-<div class="slide-header"></div>
-<h3 id="orgf6ee8c9">Código y Registros de Activación</h3>
+<section id="slide-org736e4dc">
+<h3 id="org736e4dc">Código y Registros de Activación</h3>
 
-<figure>
-<img src="simpleactreg.png" alt="simpleactreg.png"> 
+<div id="org0f70306" class="figure">
+<p><img src="simpleactreg.png" alt="simpleactreg.png" /> 
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org1656565">
-<div class="slide-header"></div>
-<h2 id="org1656565">Subprogramas con Variables locales en Pila Dinámica</h2>
-<div class="outline-text-2" id="text-org1656565">
-</div><div class="slide-footer"></div>
+<section id="slide-org34f0079">
+<h2 id="org34f0079">Subprogramas con Variables locales en Pila Dinámica</h2>
+<div class="outline-text-2" id="text-org34f0079">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org505cb32">
-<div class="slide-header"></div>
-<h3 id="org505cb32">Subprogramas con Variables locales en Pila Dinámica</h3>
+<section id="slide-org514b1df">
+<h3 id="org514b1df">Subprogramas con Variables locales en Pila Dinámica</h3>
 <ul>
 <li>Registros de activación mas complejos
 <ul>
@@ -218,99 +144,89 @@ simultáneas de un subprograma)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgc4018b3">
-<div class="slide-header"></div>
-<h3 id="orgc4018b3">Típico registro de activación para variables locales alojadas en pila dinamica</h3>
+<section id="slide-org7c1be19">
+<h3 id="org7c1be19">Típico registro de activación para variables locales alojadas en pila dinamica</h3>
 
-<figure>
-<img src="regactpila.png" alt="regactpila.png">
+<div id="org3a2cbde" class="figure">
+<p><img src="regactpila.png" alt="regactpila.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org46360b2">
-<div class="slide-header"></div>
-<h3 id="org46360b2">Ejemplo de Función en <b>C</b></h3>
+<section id="slide-orga377587">
+<h3 id="orga377587">Ejemplo de Función en <b>C</b></h3>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">sub</span>(<span style="color: #9ac0cd;">float</span> <span style="color: #bebebe; font-weight: bold;">total</span>, <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">part</span>) {
-  <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">list</span>[5];
-  <span style="color: #9ac0cd;">float</span> <span style="color: #bebebe; font-weight: bold;">sum</span>;
+<pre  class="src src-C"><code trim><span style="color: #98fb98;">void</span> <span style="color: #87cefa;">sub</span>(<span style="color: #98fb98;">float</span> <span style="color: #eedd82;">total</span>, <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">part</span>) {
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">list</span>[5];
+  <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">sum</span>;
    ...
 }
-</pre>
+</code></pre>
 </div>
 
 
-<figure>
-<img src="ejemregact.png" alt="ejemregact.png" width="250px">
+<div id="org2e7af7b" class="figure">
+<p><img src="ejemregact.png" alt="ejemregact.png" width="250px" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org0ecc3fa">
-<div class="slide-header"></div>
-<h3 id="org0ecc3fa">Ejemplo sin recursividad</h3>
+<section id="slide-org0e93476">
+<h3 id="org0e93476">Ejemplo sin recursividad</h3>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">fun1</span>(<span style="color: #9ac0cd;">float</span> <span style="color: #bebebe; font-weight: bold;">r</span>) {
-  <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">s</span>, <span style="color: #bebebe; font-weight: bold;">t</span>;
+<pre  class="src src-C"><code trim><span style="color: #98fb98;">void</span> <span style="color: #87cefa;">fun1</span>(<span style="color: #98fb98;">float</span> <span style="color: #eedd82;">r</span>) {
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">s</span>, <span style="color: #eedd82;">t</span>;
    ...  &lt;-------- 1
   fun2(s);
   ....
 }
-<span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">fun2</span>(<span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">x</span>) {
-  <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">y</span>;
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">fun2</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>) {
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">y</span>;
   ... &lt;---------- 2
   fun3(y)
   ... 
 }
-<span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">fun3</span>(<span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">q</span>) {
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">fun3</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">q</span>) {
 ...    &lt;--------- 3
 }
-<span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">main</span>() {
-<span style="color: #9ac0cd;">float</span> <span style="color: #bebebe; font-weight: bold;">p</span>;
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">main</span>() {
+<span style="color: #98fb98;">float</span> <span style="color: #eedd82;">p</span>;
 ...
 fun1(p);
 ...
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 main llama a B, B llama a A y A llama a C
 </p>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org2acc402">
-<div class="slide-header"></div>
-<h3 id="org2acc402">Ejemplo sin recursividad</h3>
+<section id="slide-orgbadbf8a">
+<h3 id="orgbadbf8a">Ejemplo sin recursividad</h3>
 
-<figure>
-<img src="ejemsinrec.png" alt="ejemsinrec.png">
+<div id="orgd5fd25e" class="figure">
+<p><img src="ejemsinrec.png" alt="ejemsinrec.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org73bb532">
-<div class="slide-header"></div>
-<h3 id="org73bb532">Cadena Dinámica y desplazamiento local</h3>
+<section id="slide-org5954b12">
+<h3 id="org5954b12">Cadena Dinámica y desplazamiento local</h3>
 <ul>
 <li>el conjunto  de ligaduras dinámicas y la Pila en un tiempo dada se
 llama <i>cadena dinámica</i> o <i>cadena de llamadas</i></li>
@@ -321,13 +237,11 @@ llama <i>desplazamiento local</i></li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org1d1f8f4">
-<div class="slide-header"></div>
-<h3 id="org1d1f8f4">Un Ejemplo con Recursividad</h3>
+<section id="slide-org18115ef">
+<h3 id="org18115ef">Un Ejemplo con Recursividad</h3>
 <ul>
 <li>El registro de activación del ejemplo previo soporta recursividad,
 e.g.</li>
@@ -336,76 +250,67 @@ e.g.</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="color: #9ac0cd;">int</span> <span style="color: #1e90ff; font-weight: bold;">factorial</span>(<span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">n</span>) {
+<pre  class="src src-C"><code trim><span style="color: #98fb98;">int</span> <span style="color: #87cefa;">factorial</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">n</span>) {
   &lt;-------  1
-  <span style="color: #40e0d0; font-weight: bold;">if</span> (n &lt;= 1)
-   <span style="color: #40e0d0; font-weight: bold;">return</span> 1;
-  <span style="color: #40e0d0; font-weight: bold;">else</span> <span style="color: #40e0d0; font-weight: bold;">return</span> (n * factorial(n - 1));
+  <span style="color: #00ffff;">if</span> (n &lt;= 1)
+   <span style="color: #00ffff;">return</span> 1;
+  <span style="color: #00ffff;">else</span> <span style="color: #00ffff;">return</span> (n * factorial(n - 1));
   &lt;-------- 2
 }
-<span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">main</span>() {
- <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">value</span>;
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">main</span>() {
+ <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">value</span>;
  value = factorial(3);
   &lt;--------- 3
 }
 
-</pre>
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org21b0df5">
-<div class="slide-header"></div>
-<h3 id="org21b0df5">Un Ejemplo con Recursividad</h3>
+<section id="slide-org5bb11e0">
+<h3 id="org5bb11e0">Un Ejemplo con Recursividad</h3>
 
-<figure>
-<img src="firstfactorial.png" alt="firstfactorial.png">
+<div id="org1ef4120" class="figure">
+<p><img src="firstfactorial.png" alt="firstfactorial.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org3f2451f">
-<div class="slide-header"></div>
-<h3 id="org3f2451f">Un Ejemplo con Recursividad</h3>
+<section id="slide-org16e0312">
+<h3 id="org16e0312">Un Ejemplo con Recursividad</h3>
 
-<figure>
-<img src="seconfactorial.png" alt="seconfactorial.png">
+<div id="org3a7b5a9" class="figure">
+<p><img src="seconfactorial.png" alt="seconfactorial.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org09288e8">
-<div class="slide-header"></div>
-<h3 id="org09288e8">Un Ejemplo con Recursividad</h3>
+<section id="slide-orgd1fa910">
+<h3 id="orgd1fa910">Un Ejemplo con Recursividad</h3>
 
-<figure>
-<img src="thirdfactorial.png" alt="thirdfactorial.png">
+<div id="org8bd4e64" class="figure">
+<p><img src="thirdfactorial.png" alt="thirdfactorial.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org06ac2ad">
-<div class="slide-header"></div>
-<h2 id="org06ac2ad">Subprogramas imbricados</h2>
-<div class="outline-text-2" id="text-org06ac2ad">
-</div><div class="slide-footer"></div>
+<section id="slide-orgf1929d0">
+<h2 id="orgf1929d0">Subprogramas imbricados</h2>
+<div class="outline-text-2" id="text-orgf1929d0">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org8733156">
-<div class="slide-header"></div>
-<h3 id="org8733156">Subprogramas imbricados</h3>
+<section id="slide-orgc0abc60">
+<h3 id="orgc0abc60">Subprogramas imbricados</h3>
 <ul>
 <li>Algunos lenguajes de alcance estático no basados en C (fortran 95,
 Ada, JavaScript) usan variables locales alojadas en Pila Dinámicas y
@@ -421,13 +326,11 @@ en alguna instancia de un registro de activación en la Pila</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orga8f7c9c">
-<div class="slide-header"></div>
-<h3 id="orga8f7c9c">Localizar una Referencia no local</h3>
+<section id="slide-org483a4aa">
+<h3 id="org483a4aa">Localizar una Referencia no local</h3>
 <ul>
 <li>Encontrar el desplazamiento es trivial</li>
 <li>Para encontrar la correcta instancia del registro de activación
@@ -441,13 +344,11 @@ referencia es hecha.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org012e079">
-<div class="slide-header"></div>
-<h3 id="org012e079">Alcance Estático</h3>
+<section id="slide-orgf05e8ad">
+<h3 id="orgf05e8ad">Alcance Estático</h3>
 <ul>
 <li>Una <i>cadena estática</i> es una cadena de <i>punteros estáticos</i> que
 conectan ciertas instancias de registros de activación</li>
@@ -459,65 +360,59 @@ la conecta con todos sus ancestros en la estructura estática.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org2b12e46">
-<div class="slide-header"></div>
-<h3 id="org2b12e46">Ejemplo</h3>
+<section id="slide-orgaa799e8">
+<h3 id="orgaa799e8">Ejemplo</h3>
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><span style="color: #40e0d0; font-weight: bold;">procedure</span> <span style="color: #1e90ff; font-weight: bold;">MAIN_2</span> is
-  X : <span style="color: #9ac0cd;">Integer</span>;
-  <span style="color: #40e0d0; font-weight: bold;">procedure</span> <span style="color: #1e90ff; font-weight: bold;">Bigsub</span> is
-    A, B, C : <span style="color: #9ac0cd;">Integer</span>;
-    <span style="color: #40e0d0; font-weight: bold;">procedure</span> <span style="color: #1e90ff; font-weight: bold;">Sub1</span> is
-      A, D : <span style="color: #9ac0cd;">Integer</span>;
-      <span style="color: #40e0d0; font-weight: bold;">begin</span> - - <span style="color: #40e0d0; font-weight: bold;">of</span> Sub1
+<pre  class="src src-pascal"><code trim><span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">MAIN_2</span> is
+  X : <span style="color: #98fb98;">Integer</span>;
+  <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">Bigsub</span> is
+    A, B, C : <span style="color: #98fb98;">Integer</span>;
+    <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">Sub1</span> is
+      A, D : <span style="color: #98fb98;">Integer</span>;
+      <span style="color: #00ffff;">begin</span> - - <span style="color: #00ffff;">of</span> Sub1
       A := B + C; &lt;---------- 1
-    <span style="color: #40e0d0; font-weight: bold;">end</span>; - - <span style="color: #40e0d0; font-weight: bold;">of</span> Sub1
-    <span style="color: #40e0d0; font-weight: bold;">procedure</span> <span style="color: #1e90ff; font-weight: bold;">Sub2</span>(X : <span style="color: #9ac0cd;">Integer</span>) is
-      B, E : <span style="color: #9ac0cd;">Integer</span>;
-      <span style="color: #40e0d0; font-weight: bold;">procedure</span> <span style="color: #1e90ff; font-weight: bold;">Sub3</span> is
-         C, E: <span style="color: #9ac0cd;">Integer</span>;
-         <span style="color: #40e0d0; font-weight: bold;">begin</span>  -- <span style="color: #40e0d0; font-weight: bold;">of</span> Sub3
+    <span style="color: #00ffff;">end</span>; - - <span style="color: #00ffff;">of</span> Sub1
+    <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">Sub2</span>(X : <span style="color: #98fb98;">Integer</span>) is
+      B, E : <span style="color: #98fb98;">Integer</span>;
+      <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">Sub3</span> is
+         C, E: <span style="color: #98fb98;">Integer</span>;
+         <span style="color: #00ffff;">begin</span>  -- <span style="color: #00ffff;">of</span> Sub3
          sub1;
          E := B + A; &lt;--------- 2
-      <span style="color: #40e0d0; font-weight: bold;">end</span>; -- <span style="color: #40e0d0; font-weight: bold;">of</span> Sub3
-      <span style="color: #40e0d0; font-weight: bold;">begin</span>   -- <span style="color: #40e0d0; font-weight: bold;">of</span> Sub2
+      <span style="color: #00ffff;">end</span>; -- <span style="color: #00ffff;">of</span> Sub3
+      <span style="color: #00ffff;">begin</span>   -- <span style="color: #00ffff;">of</span> Sub2
       sub3;
       A := D + E; &lt;-------------3 
-    <span style="color: #40e0d0; font-weight: bold;">end</span>  -- <span style="color: #40e0d0; font-weight: bold;">of</span> Sub2
-    <span style="color: #40e0d0; font-weight: bold;">begin</span> -- <span style="color: #40e0d0; font-weight: bold;">of</span> Bigsub
+    <span style="color: #00ffff;">end</span>  -- <span style="color: #00ffff;">of</span> Sub2
+    <span style="color: #00ffff;">begin</span> -- <span style="color: #00ffff;">of</span> Bigsub
     sub2(7);
-  <span style="color: #40e0d0; font-weight: bold;">end</span> -- <span style="color: #40e0d0; font-weight: bold;">of</span> Bigsub
-  <span style="color: #40e0d0; font-weight: bold;">begin</span> -- <span style="color: #40e0d0; font-weight: bold;">of</span> Main_2
+  <span style="color: #00ffff;">end</span> -- <span style="color: #00ffff;">of</span> Bigsub
+  <span style="color: #00ffff;">begin</span> -- <span style="color: #00ffff;">of</span> Main_2
   Bigsub;
-<span style="color: #40e0d0; font-weight: bold;">end</span> -- <span style="color: #40e0d0; font-weight: bold;">of</span> Main_2
-</pre>
+<span style="color: #00ffff;">end</span> -- <span style="color: #00ffff;">of</span> Main_2
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgd6c4c73">
-<div class="slide-header"></div>
-<h3 id="orgd6c4c73">Contenido de la Pila en pos 1</h3>
+<section id="slide-orgeaef9bf">
+<h3 id="orgeaef9bf">Contenido de la Pila en pos 1</h3>
 
-<figure>
-<img src="ejemploestatico.png" alt="ejemploestatico.png" width="350px">
+<div id="orga173c87" class="figure">
+<p><img src="ejemploestatico.png" alt="ejemploestatico.png" width="350px" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orge882e18">
-<div class="slide-header"></div>
-<h3 id="orge882e18">Display</h3>
+<section id="slide-orgfe428cb">
+<h3 id="orgfe428cb">Display</h3>
 <ul>
 <li>Una alternativa a las cadenas estáticas</li>
 <li>Los punteros estáticos son almacenados en un arreglo único llamado display</li>
@@ -525,21 +420,18 @@ la conecta con todos sus ancestros en la estructura estática.</li>
 direcciones de las instancias de los registros de activación accesibles</li>
 
 </ul>
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org0c929bc">
-<div class="slide-header"></div>
-<h2 id="org0c929bc">Bloques</h2>
-<div class="outline-text-2" id="text-org0c929bc">
-</div><div class="slide-footer"></div>
+<section id="slide-org1878ed8">
+<h2 id="org1878ed8">Bloques</h2>
+<div class="outline-text-2" id="text-org1878ed8">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org6334d1d">
-<div class="slide-header"></div>
-<h3 id="org6334d1d">Bloques</h3>
+<section id="slide-org34c6df8">
+<h3 id="org34c6df8">Bloques</h3>
 <ul>
 <li>Los bloques son alcances locales para variables especificados por el usuario</li>
 <li>Un ejemplo en C</li>
@@ -547,12 +439,12 @@ direcciones de las instancias de los registros de activación accesibles</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-c">{ <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">temp</span>; 
+<pre  class="src src-c"><code trim>{ <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">temp</span>; 
   temp = list[upper];
   list[upper] = list [lower];
   list[lower] = temp
 }
-</pre>
+</code></pre>
 </div>
 <ul>
 <li>El tiempo de vida de <i>temp</i> en el ejemplo comienza cuando el control
@@ -561,13 +453,11 @@ entra en el bloque</li>
 con otra variable del mismo nombre</li>
 
 </ul>
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org24f3438">
-<div class="slide-header"></div>
-<h3 id="org24f3438">Implementando bloques</h3>
+<section id="slide-orgbed27d7">
+<h3 id="orgbed27d7">Implementando bloques</h3>
 <ul>
 <li>Dos métodos
 <ol>
@@ -585,60 +475,53 @@ alojada después de las variables locales del registro de activación</li>
 </ol></li>
 
 </ul>
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org37312b2">
-<div class="slide-header"></div>
-<h3 id="org37312b2">Ejemplo</h3>
+<section id="slide-org90fcd43">
+<h3 id="org90fcd43">Ejemplo</h3>
 <div class="org-src-container">
 
-<pre  class="src src-c"><span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">main</span>() {
-   <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">x</span>, <span style="color: #bebebe; font-weight: bold;">y</span>, <span style="color: #bebebe; font-weight: bold;">z</span>;
-   <span style="color: #40e0d0; font-weight: bold;">while</span> ( ... ) {
-     <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">a</span>, <span style="color: #bebebe; font-weight: bold;">b</span>, <span style="color: #bebebe; font-weight: bold;">c</span>;
+<pre  class="src src-c"><code trim><span style="color: #98fb98;">void</span> <span style="color: #87cefa;">main</span>() {
+   <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>, <span style="color: #eedd82;">y</span>, <span style="color: #eedd82;">z</span>;
+   <span style="color: #00ffff;">while</span> ( ... ) {
+     <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">a</span>, <span style="color: #eedd82;">b</span>, <span style="color: #eedd82;">c</span>;
      ...
-     <span style="color: #40e0d0; font-weight: bold;">while</span> ( ... ) {
-       <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">d</span>, <span style="color: #bebebe; font-weight: bold;">c</span>;
+     <span style="color: #00ffff;">while</span> ( ... ) {
+       <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">d</span>, <span style="color: #eedd82;">c</span>;
        ...
      }
    }
-   <span style="color: #40e0d0; font-weight: bold;">while</span> ( ... ) {
-      <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">f</span>, <span style="color: #bebebe; font-weight: bold;">g</span>;
+   <span style="color: #00ffff;">while</span> ( ... ) {
+      <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">f</span>, <span style="color: #eedd82;">g</span>;
       ...
    }
 }
-</pre>
+</code></pre>
 </div>
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org6c126a2">
-<div class="slide-header"></div>
-<h3 id="org6c126a2">Ejemplo</h3>
+<section id="slide-org4ec8560">
+<h3 id="org4ec8560">Ejemplo</h3>
 
-<figure>
-<img src="bloque.png" alt="bloque.png">
+<div id="orge108e5e" class="figure">
+<p><img src="bloque.png" alt="bloque.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgf220178">
-<div class="slide-header"></div>
-<h2 id="orgf220178">Implementando Alcance Dinámico</h2>
-<div class="outline-text-2" id="text-orgf220178">
-</div><div class="slide-footer"></div>
+<section id="slide-org6bcba42">
+<h2 id="org6bcba42">Implementando Alcance Dinámico</h2>
+<div class="outline-text-2" id="text-org6bcba42">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org3370295">
-<div class="slide-header"></div>
-<h3 id="org3370295">Implementando Alcance Dinámico</h3>
+<section id="slide-orgf41f188">
+<h3 id="orgf41f188">Implementando Alcance Dinámico</h3>
 <ul>
 <li><i>Acceso Profundo</i>: Las referencias no locales son encontradas
 buscando las instancias de los registros de activación en la cadena dinámica</li>
@@ -651,90 +534,71 @@ buscando las instancias de los registros de activación en la cadena dinámica</
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org1027165">
-<div class="slide-header"></div>
-<h3 id="org1027165">Ejemplo</h3>
+<section id="slide-org93a73e4">
+<h3 id="org93a73e4">Ejemplo</h3>
 <div class="org-src-container">
 
-<pre  class="src src-c"><span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">sub3</span>() {
-  <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">x</span>, <span style="color: #bebebe; font-weight: bold;">z</span>;
+<pre  class="src src-c"><code trim><span style="color: #98fb98;">void</span> <span style="color: #87cefa;">sub3</span>() {
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>, <span style="color: #eedd82;">z</span>;
   x = u + v;
 }
 
-<span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">sub2</span>() {
-  <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">w</span>, <span style="color: #bebebe; font-weight: bold;">x</span>;
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">sub2</span>() {
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">w</span>, <span style="color: #eedd82;">x</span>;
   ... 
 }
 
-<span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">sub1</span>() {
-  <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">v</span>, <span style="color: #bebebe; font-weight: bold;">w</span>;
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">sub1</span>() {
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">v</span>, <span style="color: #eedd82;">w</span>;
   ... 
 }
 
-<span style="color: #9ac0cd;">void</span> <span style="color: #1e90ff; font-weight: bold;">main</span>() {
-  <span style="color: #9ac0cd;">int</span> <span style="color: #bebebe; font-weight: bold;">v</span>, <span style="color: #bebebe; font-weight: bold;">u</span>;
+<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">main</span>() {
+  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">v</span>, <span style="color: #eedd82;">u</span>;
   ... 
 }
-</pre>
+</code></pre>
 </div>
 <p>
 <i>main</i> llama a <i>sub1</i>, <i>sub1</i> llama a <i>sub1</i>, <i>sub1</i> llama a <i>sub2</i> y <i>sub2</i> llama a <i>sub3</i>
 </p>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org62cc682">
-<div class="slide-header"></div>
-<h3 id="org62cc682">Ejemplo cadena dinámica</h3>
+<section id="slide-org6cb2991">
+<h3 id="org6cb2991">Ejemplo cadena dinámica</h3>
 
-<figure>
-<img src="dinamicchain.png" alt="dinamicchain.png">
+<div id="org026328c" class="figure">
+<p><img src="dinamicchain.png" alt="dinamicchain.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org8d9fef9">
-<div class="slide-header"></div>
-<h3 id="org8d9fef9">Ejemplo con tabla central</h3>
+<section id="slide-org2e46ca9">
+<h3 id="org2e46ca9">Ejemplo con tabla central</h3>
 
-<figure>
-<img src="tablacentral.png" alt="tablacentral.png">
-
-</figure>
-<div class="slide-footer"></div>
+<div id="org9d51125" class="figure">
+<p><img src="tablacentral.png" alt="tablacentral.png" />
+</p>
+</div>
 </section>
 </section>
 </div>
 </div>
-<script src="../reveal.js-master/lib/js/head.min.js"></script>
-<script src="../reveal.js-master/js/reveal.js"></script>
+<p> Created by yjwen. </p>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 't',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
+width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server
@@ -743,12 +607,10 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: '../reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: '../reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '../reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-,});
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
 </script>
 </body>
 </html>
