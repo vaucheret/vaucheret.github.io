@@ -107,7 +107,7 @@ fun1(p);
 }
 #+END_SRC
 
-main llama a B, B llama a A y A llama a C
+main llama a fun1, fun1 llama a fun2 y fun2 llama a fun3
 
 ** Ejemplo sin recursividad
 
@@ -256,7 +256,7 @@ void main() {
      int a, b, c;
      ...
      while ( ... ) {
-       int d, c;
+       int d, e;
        ...
      }
    }
