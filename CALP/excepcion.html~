@@ -27,66 +27,66 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Manejo de Excepciónes y Eventos</h2><h2 class="date">2016-10-17 lun 00:00</h2><p class="date">Created: 2017-09-18 lun 13:13</p>
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Manejo de Excepciónes y Eventos</h2><h2 class="date">2016-10-17 lun 00:00</h2><p class="date">Created: 2017-09-18 lun 17:11</p>
 </section>
 <section id="table-of-contents">
 <nav id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org96643bc">Introducción a Manejo de Excepciones</a>
+<li><a href="#/slide-orgc060ba3">Introducción a Manejo de Excepciones</a>
 <ul>
-<li><a href="#/slide-org4237a80">Introducción a Manejo de Excepciones</a></li>
-<li><a href="#/slide-org2cfcd6f">Conceptos Básicos</a></li>
-<li><a href="#/slide-org6ae898c">Alternativas al Manejo de Excepciones</a></li>
-<li><a href="#/slide-orgb5656f4">Ventajas de Manejo de Excepciones provisto por el lenguaje.</a></li>
-<li><a href="#/slide-orgcfe48eb">Cuestiones de Diseño</a></li>
-<li><a href="#/slide-org7c721c6">Cuestiones de Diseño</a></li>
-<li><a href="#/slide-org699f07d">Flujo de control del Controlador de Exepciones</a></li>
+<li><a href="#/slide-org1c5ca84">Introducción a Manejo de Excepciones</a></li>
+<li><a href="#/slide-orgb158c62">Conceptos Básicos</a></li>
+<li><a href="#/slide-org978e005">Alternativas al Manejo de Excepciones</a></li>
+<li><a href="#/slide-org1fec870">Ventajas de Manejo de Excepciones provisto por el lenguaje.</a></li>
+<li><a href="#/slide-orgcefca0a">Cuestiones de Diseño</a></li>
+<li><a href="#/slide-orga2e5160">Cuestiones de Diseño</a></li>
+<li><a href="#/slide-org12e03b2">Flujo de control del Controlador de Exepciones</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org239ae88">Manejo de Excepciones en <b>Ada</b></a>
+<li><a href="#/slide-orgd370f22">Manejo de Excepciones en <b>Ada</b></a>
 <ul>
-<li><a href="#/slide-orgee38ecb">Manejo de Excepciones en <b>Ada</b></a></li>
-<li><a href="#/slide-org37611e1">Controlador de Excepciones en <b>Ada</b></a></li>
-<li><a href="#/slide-orge86cf42">Vinculando Excepciones a Controladores</a></li>
-<li><a href="#/slide-org3c8236d">Vinculando Excepciones a Controladores</a></li>
-<li><a href="#/slide-org70902c5">Otras decisiones de diseño</a></li>
-<li><a href="#/slide-org883121f">Excepciones Predefinidas</a></li>
-<li><a href="#/slide-orgfe8e322">Evaluación</a></li>
+<li><a href="#/slide-orgb4c3018">Manejo de Excepciones en <b>Ada</b></a></li>
+<li><a href="#/slide-org516100b">Controlador de Excepciones en <b>Ada</b></a></li>
+<li><a href="#/slide-orgd5f3f78">Vinculando Excepciones a Controladores</a></li>
+<li><a href="#/slide-org49120b6">Vinculando Excepciones a Controladores</a></li>
+<li><a href="#/slide-org0e06f48">Otras decisiones de diseño</a></li>
+<li><a href="#/slide-org3f09bbe">Excepciones Predefinidas</a></li>
+<li><a href="#/slide-org3f6abe1">Evaluación</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org88b8076">Manejo de Excepciones en <b>C++</b></a>
+<li><a href="#/slide-orgceda0d3">Manejo de Excepciones en <b>C++</b></a>
 <ul>
-<li><a href="#/slide-org4b8269a">Manejo de Excepciones en <b>C++</b></a></li>
-<li><a href="#/slide-org3947944">Controladores de Excepción en <b>C++</b></a></li>
-<li><a href="#/slide-org2fcfbd2">La función <code>catch</code></a></li>
-<li><a href="#/slide-orgc36832b">Lanzar Excepciones</a></li>
-<li><a href="#/slide-orgfa6a2e2">Excepciones no manejadas</a></li>
-<li><a href="#/slide-org87e5580">Excepciones no manejadas</a></li>
-<li><a href="#/slide-orga6fce99">Evaluación</a></li>
+<li><a href="#/slide-orga29ca62">Manejo de Excepciones en <b>C++</b></a></li>
+<li><a href="#/slide-org4094141">Controladores de Excepción en <b>C++</b></a></li>
+<li><a href="#/slide-org9dad248">La función <code>catch</code></a></li>
+<li><a href="#/slide-org5c36e5b">Lanzar Excepciones</a></li>
+<li><a href="#/slide-org53ade4e">Excepciones no manejadas</a></li>
+<li><a href="#/slide-org63cdc8f">Excepciones no manejadas</a></li>
+<li><a href="#/slide-org774067f">Evaluación</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgc3525c0">Manejo de Excepciones en <b>Java</b></a>
+<li><a href="#/slide-orgb7d26ec">Manejo de Excepciones en <b>Java</b></a>
 <ul>
-<li><a href="#/slide-org18dc760">Manejo de Excepciones en <b>Java</b></a></li>
-<li><a href="#/slide-org65ba32f">Clases de Excepciones</a></li>
-<li><a href="#/slide-org65c4dd8">Controlador de excepciones en <b>Java</b></a></li>
-<li><a href="#/slide-orge7e56bc">Vinculando Excepciones a Manejadores</a></li>
-<li><a href="#/slide-org1b5ec85">Vinculando Excepciones a Manejadores</a></li>
-<li><a href="#/slide-org6623cf3">Excepciones chequadas y no chequeadas</a></li>
-<li><a href="#/slide-org4a7772a">Otras Decisiones de Diseño</a></li>
-<li><a href="#/slide-orgfc0f2c3">La Cláusula <code>finally</code></a></li>
-<li><a href="#/slide-org94f3cd1">Ejemplo</a></li>
-<li><a href="#/slide-org2488172">Aserciones</a></li>
+<li><a href="#/slide-orgececd6d">Manejo de Excepciones en <b>Java</b></a></li>
+<li><a href="#/slide-orgdb8d89a">Clases de Excepciones</a></li>
+<li><a href="#/slide-org5667cb1">Controlador de excepciones en <b>Java</b></a></li>
+<li><a href="#/slide-org56bad58">Vinculando Excepciones a Manejadores</a></li>
+<li><a href="#/slide-orgfbbf08a">Vinculando Excepciones a Manejadores</a></li>
+<li><a href="#/slide-org28767fb">Excepciones chequadas y no chequeadas</a></li>
+<li><a href="#/slide-org533cb88">Otras Decisiones de Diseño</a></li>
+<li><a href="#/slide-org5816a4e">La Cláusula <code>finally</code></a></li>
+<li><a href="#/slide-org35f50ce">Ejemplo</a></li>
+<li><a href="#/slide-orge68102b">Aserciones</a></li>
 </ul>
 </li>
-<li><a href="#/slide-orgec1cad4">Introducción a Manejo de Eventos</a>
+<li><a href="#/slide-orgb19c44e">Introducción a Manejo de Eventos</a>
 <ul>
-<li><a href="#/slide-orge46cf95">Introducción a Manejo de Eventos</a></li>
-<li><a href="#/slide-org110e193">Componentes Swing GUI de Java</a></li>
-<li><a href="#/slide-orgc56cb65">El Modelo de Eventos de Java</a></li>
-<li><a href="#/slide-orgf5d248a">Clases de Eventos</a></li>
+<li><a href="#/slide-orgcbee36e">Introducción a Manejo de Eventos</a></li>
+<li><a href="#/slide-org37f309b">Componentes Swing GUI de Java</a></li>
+<li><a href="#/slide-org982de99">El Modelo de Eventos de Java</a></li>
+<li><a href="#/slide-orgbb0a55b">Clases de Eventos</a></li>
 </ul>
 </li>
 </ul>
@@ -95,17 +95,17 @@
 </section>
 
 <section>
-<section id="slide-org96643bc">
+<section id="slide-orgc060ba3">
 <div class="slide-header"></div>
-<h2 id="org96643bc">Introducción a Manejo de Excepciones</h2>
-<div class="outline-text-2" id="text-org96643bc">
+<h2 id="orgc060ba3">Introducción a Manejo de Excepciones</h2>
+<div class="outline-text-2" id="text-orgc060ba3">
 </div><div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org4237a80">
+<section id="slide-org1c5ca84">
 <div class="slide-header"></div>
-<h3 id="org4237a80">Introducción a Manejo de Excepciones</h3>
+<h3 id="org1c5ca84">Introducción a Manejo de Excepciones</h3>
 <ul>
 <li>En un lenguaje sin manejo de excepciones
 <ul>
@@ -127,9 +127,9 @@ problema y continuar la ejecución.</li>
 </section>
 </section>
 <section>
-<section id="slide-org2cfcd6f">
+<section id="slide-orgb158c62">
 <div class="slide-header"></div>
-<h3 id="org2cfcd6f">Conceptos Básicos</h3>
+<h3 id="orgb158c62">Conceptos Básicos</h3>
 <ul>
 <li>Muchos lenguajes permiten atrapar errores de entrada y salida
 (incluyendo EOF)</li>
@@ -146,9 +146,9 @@ excepción</i>.</li>
 </section>
 </section>
 <section>
-<section id="slide-org6ae898c">
+<section id="slide-org978e005">
 <div class="slide-header"></div>
-<h3 id="org6ae898c">Alternativas al Manejo de Excepciones</h3>
+<h3 id="org978e005">Alternativas al Manejo de Excepciones</h3>
 <ul>
 <li>Una excepción se genera cuando se produce el evento asociado</li>
 <li>En un lenguaje que no tenga capacidades de manejo de excepciones
@@ -169,9 +169,9 @@ indicar el estado del subprograma</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb5656f4">
+<section id="slide-org1fec870">
 <div class="slide-header"></div>
-<h3 id="orgb5656f4">Ventajas de Manejo de Excepciones provisto por el lenguaje.</h3>
+<h3 id="org1fec870">Ventajas de Manejo de Excepciones provisto por el lenguaje.</h3>
 <ul>
 <li>El código de detección de errores es tedioso de escribir y desordena
 el programa oscureciendo su lógica.</li>
@@ -184,9 +184,9 @@ código de control de excepciones.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgcfe48eb">
+<section id="slide-orgcefca0a">
 <div class="slide-header"></div>
-<h3 id="orgcfe48eb">Cuestiones de Diseño</h3>
+<h3 id="orgcefca0a">Cuestiones de Diseño</h3>
 <ul>
 <li>¿Cómo y donde los manejadores de excepciones son especificados y
 cual es su alcance?</li>
@@ -201,9 +201,9 @@ controlador de excepciones completa su ejecución?</li>
 </section>
 </section>
 <section>
-<section id="slide-org7c721c6">
+<section id="slide-orga2e5160">
 <div class="slide-header"></div>
-<h3 id="org7c721c6">Cuestiones de Diseño</h3>
+<h3 id="orga2e5160">Cuestiones de Diseño</h3>
 <ul>
 <li>¿Debería haber un manejador de excepciones para los programas que no
 proveen el suyo propio?</li>
@@ -219,9 +219,9 @@ excepciones que pueden ser manejados?</li>
 </section>
 </section>
 <section>
-<section id="slide-org699f07d">
+<section id="slide-org12e03b2">
 <div class="slide-header"></div>
-<h3 id="org699f07d">Flujo de control del Controlador de Exepciones</h3>
+<h3 id="org12e03b2">Flujo de control del Controlador de Exepciones</h3>
 
 <figure>
 <img src="resumeexpeption.png" alt="resumeexpeption.png">
@@ -232,17 +232,17 @@ excepciones que pueden ser manejados?</li>
 </section>
 </section>
 <section>
-<section id="slide-org239ae88">
+<section id="slide-orgd370f22">
 <div class="slide-header"></div>
-<h2 id="org239ae88">Manejo de Excepciones en <b>Ada</b></h2>
-<div class="outline-text-2" id="text-org239ae88">
+<h2 id="orgd370f22">Manejo de Excepciones en <b>Ada</b></h2>
+<div class="outline-text-2" id="text-orgd370f22">
 </div><div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgee38ecb">
+<section id="slide-orgb4c3018">
 <div class="slide-header"></div>
-<h3 id="orgee38ecb">Manejo de Excepciones en <b>Ada</b></h3>
+<h3 id="orgb4c3018">Manejo de Excepciones en <b>Ada</b></h3>
 <ul>
 <li>Un controlador de excepciones en Ada puede ocurrir ya sea en el
 cuerpo de un subprograma, el cuerpo de un paquete, en una tarea o en
@@ -257,9 +257,9 @@ tienen parámetros.</li>
 </section>
 </section>
 <section>
-<section id="slide-org37611e1">
+<section id="slide-org516100b">
 <div class="slide-header"></div>
-<h3 id="org37611e1">Controlador de Excepciones en <b>Ada</b></h3>
+<h3 id="org516100b">Controlador de Excepciones en <b>Ada</b></h3>
 <ul>
 <li>Controlador</li>
 
@@ -288,9 +288,9 @@ ocurren.</li>
 </section>
 </section>
 <section>
-<section id="slide-orge86cf42">
+<section id="slide-orgd5f3f78">
 <div class="slide-header"></div>
-<h3 id="orge86cf42">Vinculando Excepciones a Controladores</h3>
+<h3 id="orgd5f3f78">Vinculando Excepciones a Controladores</h3>
 <ul>
 <li>Si el bloque o unidad en la que se produce una excepción no tiene
 un controlador para esa excepción, la excepción se propaga a otro
@@ -312,9 +312,9 @@ todo caso lo marca "completado"</li>
 </section>
 </section>
 <section>
-<section id="slide-org3c8236d">
+<section id="slide-org49120b6">
 <div class="slide-header"></div>
-<h3 id="org3c8236d">Vinculando Excepciones a Controladores</h3>
+<h3 id="org49120b6">Vinculando Excepciones a Controladores</h3>
 <ul>
 <li>El bloque o unidad que genera una excepción, pero no lo maneja,
 siempre se termina (también cualquier bloque o unidad a la que se
@@ -326,9 +326,9 @@ propaga y que no lo maneja).</li>
 </section>
 </section>
 <section>
-<section id="slide-org70902c5">
+<section id="slide-org0e06f48">
 <div class="slide-header"></div>
-<h3 id="org70902c5">Otras decisiones de diseño</h3>
+<h3 id="org0e06f48">Otras decisiones de diseño</h3>
 <ul>
 <li>Excepciones definidas por el usuario</li>
 
@@ -365,9 +365,9 @@ caso propaga la misma excepción)
 </section>
 </section>
 <section>
-<section id="slide-org883121f">
+<section id="slide-org3f09bbe">
 <div class="slide-header"></div>
-<h3 id="org883121f">Excepciones Predefinidas</h3>
+<h3 id="org3f09bbe">Excepciones Predefinidas</h3>
 <ul>
 <li><b>CONSTRAINT-ERROR</b> restricciones de indices, restricciones de rango, etc</li>
 <li><b>NUMERIC-ERROR</b> operaciones numéricas que no pueden retornar un
@@ -382,9 +382,9 @@ valor correcto (overflow, división por cero etc.)</li>
 </section>
 </section>
 <section>
-<section id="slide-orgfe8e322">
+<section id="slide-org3f6abe1">
 <div class="slide-header"></div>
-<h3 id="orgfe8e322">Evaluación</h3>
+<h3 id="org3f6abe1">Evaluación</h3>
 <ul>
 <li>El diseño de <b>Ada</b> para el manejo de excepciones encarnó el estado del
 arte en el diseño de lenguajes en 1980.</li>
@@ -397,17 +397,17 @@ excepciones hasta que éste fue agregado a <b>C++</b></li>
 </section>
 </section>
 <section>
-<section id="slide-org88b8076">
+<section id="slide-orgceda0d3">
 <div class="slide-header"></div>
-<h2 id="org88b8076">Manejo de Excepciones en <b>C++</b></h2>
-<div class="outline-text-2" id="text-org88b8076">
+<h2 id="orgceda0d3">Manejo de Excepciones en <b>C++</b></h2>
+<div class="outline-text-2" id="text-orgceda0d3">
 </div><div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org4b8269a">
+<section id="slide-orga29ca62">
 <div class="slide-header"></div>
-<h3 id="org4b8269a">Manejo de Excepciones en <b>C++</b></h3>
+<h3 id="orga29ca62">Manejo de Excepciones en <b>C++</b></h3>
 <ul>
 <li>Agregado a <b>C++</b> en 1990</li>
 <li>Diseño basado en el de <b>CLU</b>, <b>Ada</b>, y <b>ML</b></li>
@@ -417,9 +417,9 @@ excepciones hasta que éste fue agregado a <b>C++</b></li>
 </section>
 </section>
 <section>
-<section id="slide-org3947944">
+<section id="slide-org4094141">
 <div class="slide-header"></div>
-<h3 id="org3947944">Controladores de Excepción en <b>C++</b></h3>
+<h3 id="org4094141">Controladores de Excepción en <b>C++</b></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span style="color: #40e0d0; font-weight: bold;">try</span> {
@@ -438,9 +438,9 @@ excepciones hasta que éste fue agregado a <b>C++</b></li>
 </section>
 </section>
 <section>
-<section id="slide-org2fcfbd2">
+<section id="slide-org9dad248">
 <div class="slide-header"></div>
-<h3 id="org2fcfbd2">La función <code>catch</code></h3>
+<h3 id="org9dad248">La función <code>catch</code></h3>
 <ul>
 <li><code>catch</code> es el nombre de todos los controladores &#x2013; Es un nombre
 sobrecargado, por lo tanto los parámetros deben ser únicos.</li>
@@ -460,9 +460,9 @@ las excepciones que no han sido manejadas.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc36832b">
+<section id="slide-org5c36e5b">
 <div class="slide-header"></div>
-<h3 id="orgc36832b">Lanzar Excepciones</h3>
+<h3 id="org5c36e5b">Lanzar Excepciones</h3>
 <ul>
 <li>Las excepciones son lanzadas explícitamente por la sentencia <code>trow [expression];</code></li>
 <li>Un <code>trow</code> sin operandos sólo puede aparecer en un controlador;
@@ -475,9 +475,9 @@ continuación se maneja en otro lado.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgfa6a2e2">
+<section id="slide-org53ade4e">
 <div class="slide-header"></div>
-<h3 id="orgfa6a2e2">Excepciones no manejadas</h3>
+<h3 id="org53ade4e">Excepciones no manejadas</h3>
 <ul>
 <li>Una excepción no controlada se propaga a la función que llamó a
 la función que la propaga.</li>
@@ -489,9 +489,9 @@ la función que la propaga.</li>
 </section>
 </section>
 <section>
-<section id="slide-org87e5580">
+<section id="slide-org63cdc8f">
 <div class="slide-header"></div>
-<h3 id="org87e5580">Excepciones no manejadas</h3>
+<h3 id="org63cdc8f">Excepciones no manejadas</h3>
 <ul>
 <li>Después de un controlador completa su ejecución, el control fluye a
 la sentencia siguiente del último controlador en la secuencia de los
@@ -511,9 +511,9 @@ excepción.</li>
 </section>
 </section>
 <section>
-<section id="slide-orga6fce99">
+<section id="slide-org774067f">
 <div class="slide-header"></div>
-<h3 id="orga6fce99">Evaluación</h3>
+<h3 id="org774067f">Evaluación</h3>
 <ul>
 <li>Las excepciones no tienen nombre y las excepciones detectables
 por software  o hardware y del sistema no puede ser manejadas.</li>
@@ -525,17 +525,17 @@ parámetro no mejora la legibilidad.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc3525c0">
+<section id="slide-orgb7d26ec">
 <div class="slide-header"></div>
-<h2 id="orgc3525c0">Manejo de Excepciones en <b>Java</b></h2>
-<div class="outline-text-2" id="text-orgc3525c0">
+<h2 id="orgb7d26ec">Manejo de Excepciones en <b>Java</b></h2>
+<div class="outline-text-2" id="text-orgb7d26ec">
 </div><div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org18dc760">
+<section id="slide-orgececd6d">
 <div class="slide-header"></div>
-<h3 id="org18dc760">Manejo de Excepciones en <b>Java</b></h3>
+<h3 id="orgececd6d">Manejo de Excepciones en <b>Java</b></h3>
 <ul>
 <li>Basado en la de <b>C++</b>, pero más en línea con la filosofía de programación orientada a objetos.</li>
 <li>Todas las excepciones son objetos de clases que son descendientes de la clase <code>Throwable</code></li>
@@ -545,9 +545,9 @@ parámetro no mejora la legibilidad.</li>
 </section>
 </section>
 <section>
-<section id="slide-org65ba32f">
+<section id="slide-orgdb8d89a">
 <div class="slide-header"></div>
-<h3 id="org65ba32f">Clases de Excepciones</h3>
+<h3 id="orgdb8d89a">Clases de Excepciones</h3>
 <ul>
 <li>La librería de Java incluye dos subclases de <code>Throwable</code>: 
 <ul>
@@ -574,9 +574,9 @@ parámetro no mejora la legibilidad.</li>
 </section>
 </section>
 <section>
-<section id="slide-org65c4dd8">
+<section id="slide-org5667cb1">
 <div class="slide-header"></div>
-<h3 id="org65c4dd8">Controlador de excepciones en <b>Java</b></h3>
+<h3 id="org5667cb1">Controlador de excepciones en <b>Java</b></h3>
 <ul>
 <li>Igual que los de <b>C++</b>, excepto que todas las capturas requieren un
 parámetro con nombre y todos los parámetros deben ser descendientes
@@ -591,9 +591,9 @@ como en: <code>throw new MiExcepción ();</code></li>
 </section>
 </section>
 <section>
-<section id="slide-orge7e56bc">
+<section id="slide-org56bad58">
 <div class="slide-header"></div>
-<h3 id="orge7e56bc">Vinculando Excepciones a Manejadores</h3>
+<h3 id="org56bad58">Vinculando Excepciones a Manejadores</h3>
 <ul>
 <li>Asociar una excepción a un controlador es más simple en <b>Java</b> que en <b>C++</b>
 <ul>
@@ -607,9 +607,9 @@ como en: <code>throw new MiExcepción ();</code></li>
 </section>
 </section>
 <section>
-<section id="slide-org1b5ec85">
+<section id="slide-orgfbbf08a">
 <div class="slide-header"></div>
-<h3 id="org1b5ec85">Vinculando Excepciones a Manejadores</h3>
+<h3 id="orgfbbf08a">Vinculando Excepciones a Manejadores</h3>
 <ul>
 <li>Si no se encuentra ningún controlador en el constructor del <code>try</code>,
 la búsqueda continúa en el <code>try</code> más cercano que lo contenga, etc.</li>
@@ -628,9 +628,9 @@ controlador que captura todas las excepciones, puede ser incluido en cualquier c
 </section>
 </section>
 <section>
-<section id="slide-org6623cf3">
+<section id="slide-org28767fb">
 <div class="slide-header"></div>
-<h3 id="org6623cf3">Excepciones chequadas y no chequeadas</h3>
+<h3 id="org28767fb">Excepciones chequadas y no chequeadas</h3>
 <ul>
 <li>La cláusula throw de Java es bastante diferente de la cláusula throw de <b>C++</b></li>
 <li>Excepciones de la clases <code>error</code>  y <code>RuntimeException</code> y todos sus
@@ -648,9 +648,9 @@ descendientes se llaman excepciones no chequeadas</li>
 </section>
 </section>
 <section>
-<section id="slide-org4a7772a">
+<section id="slide-org533cb88">
 <div class="slide-header"></div>
-<h3 id="org4a7772a">Otras Decisiones de Diseño</h3>
+<h3 id="org533cb88">Otras Decisiones de Diseño</h3>
 <ul>
 <li>Un método no puede declarar más excepciones en su cláusula <code>throws</code>
 que las que el método sobrescribe</li>
@@ -667,9 +667,9 @@ que las que el método sobrescribe</li>
 </section>
 </section>
 <section>
-<section id="slide-orgfc0f2c3">
+<section id="slide-org5816a4e">
 <div class="slide-header"></div>
-<h3 id="orgfc0f2c3">La Cláusula <code>finally</code></h3>
+<h3 id="org5816a4e">La Cláusula <code>finally</code></h3>
 <ul>
 <li>Puede aparecer al final de una construcción <code>try</code></li>
 
@@ -695,9 +695,9 @@ que las que el método sobrescribe</li>
 </section>
 </section>
 <section>
-<section id="slide-org94f3cd1">
+<section id="slide-org35f50ce">
 <div class="slide-header"></div>
-<h3 id="org94f3cd1">Ejemplo</h3>
+<h3 id="org35f50ce">Ejemplo</h3>
 <ul>
 <li>Una construción <code>try</code>  con una cláusula <code>finally</code> pueda ser usada
 fuera del manejo de excepción:</li>
@@ -723,9 +723,9 @@ fuera del manejo de excepción:</li>
 </section>
 </section>
 <section>
-<section id="slide-org2488172">
+<section id="slide-orge68102b">
 <div class="slide-header"></div>
-<h3 id="org2488172">Aserciones</h3>
+<h3 id="orge68102b">Aserciones</h3>
 <ul>
 <li>Sentencias en el programa que declaran una expresión booleana en relación con el estado actual de la computación.</li>
 <li>Cuando se evalua verdadera no pasa nada.</li>
@@ -743,17 +743,17 @@ fuera del manejo de excepción:</li>
 </section>
 </section>
 <section>
-<section id="slide-orgec1cad4">
+<section id="slide-orgb19c44e">
 <div class="slide-header"></div>
-<h2 id="orgec1cad4">Introducción a Manejo de Eventos</h2>
-<div class="outline-text-2" id="text-orgec1cad4">
+<h2 id="orgb19c44e">Introducción a Manejo de Eventos</h2>
+<div class="outline-text-2" id="text-orgb19c44e">
 </div><div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orge46cf95">
+<section id="slide-orgcbee36e">
 <div class="slide-header"></div>
-<h3 id="orge46cf95">Introducción a Manejo de Eventos</h3>
+<h3 id="orgcbee36e">Introducción a Manejo de Eventos</h3>
 <ul>
 <li>Un <i>evento</i> es creado por una acción externa tal como una interacción con el usuario a través de una interfaz gráfica de usuario.</li>
 <li>El <i>controlador de eventos</i> es un segmento de código que se llama en respuesta a un evento.</li>
@@ -764,9 +764,9 @@ fuera del manejo de excepción:</li>
 </section>
 </section>
 <section>
-<section id="slide-org110e193">
+<section id="slide-org37f309b">
 <div class="slide-header"></div>
-<h3 id="org110e193">Componentes Swing GUI de Java</h3>
+<h3 id="org37f309b">Componentes Swing GUI de Java</h3>
 <ul>
 <li><i>Text box</i> es un objeto de la clase <code>JTextField</code></li>
 <li><i>radio button</i> es un objeto de la clase <code>JRadioButton</code></li>
@@ -781,9 +781,9 @@ fuera del manejo de excepción:</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc56cb65">
+<section id="slide-org982de99">
 <div class="slide-header"></div>
-<h3 id="orgc56cb65">El Modelo de Eventos de Java</h3>
+<h3 id="org982de99">El Modelo de Eventos de Java</h3>
 <ul>
 <li>interacciones del usuario con componentes GUI crean eventos que
 pueden ser capturadas por los controladores de eventos, llamados
@@ -798,9 +798,9 @@ pueden ser capturadas por los controladores de eventos, llamados
 </section>
 </section>
 <section>
-<section id="slide-orgf5d248a">
+<section id="slide-orgbb0a55b">
 <div class="slide-header"></div>
-<h3 id="orgf5d248a">Clases de Eventos</h3>
+<h3 id="orgbb0a55b">Clases de Eventos</h3>
 <ul>
 <li>Clases de Eventos Semántios
 <ul>
