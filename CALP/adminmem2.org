@@ -1,5 +1,5 @@
-#+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
-#+OPTIONS: toc:nil
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'none'
+#+OPTIONS: toc:nil, num:nil
 #+REVEAL_THEME: moon
 #+REVEAL_HLEVEL: 2
 #+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
@@ -28,7 +28,10 @@
 - Destrucción de ligaduras
 - Destrucción de los objetos
 
+
+
 ** Tiempos de vida distintos
+   
 - Referencias colgadas
   - La ligadura sobrevive al objeto
 - Almacenamiento sin referencias (basura)
@@ -163,14 +166,103 @@
   3. El recolector recorre de nuevo el /heap/, moviendo todo bloque
      aún marcado como "usable" a la lista de bloques libres.
 
-*** Recolección de Basura
-- Reversión de puntero
 
-[[file:reversepoint.png]] 
+*** mark and sweep
 
-*** Recolección de Basura
-- Otras alternativas
-  - Parar y Copiar
-  - Recolección Generacional
-  - Recolección Conservadora
+    [[file:marksweep-0.png]]
+
+*** mark and sweep
+
+    [[file:marksweep-1.png]]
+
+*** mark and sweep
+
+    [[file:marksweep-2.png]]
+
+*** mark and sweep
+
+    [[file:marksweep-3.png]]
+
+*** mark and sweep
+
+    [[file:marksweep-4.png]]
+
+*** mark and sweep
+
+    [[file:marksweep-5.png]]
+
+*** mark and sweep
+
+    [[file:marksweep-6.png]]
+
+*** mark and sweep
+
+    [[file:marksweep-7.png]]
+
+
+*** Marcado tri-color
+
+   - Se crean tres conjuntos – blanco, negro and gris:
+
+     - El conjunto blanco, es el conjunto de objetos que son
+       candidatos para ser reciclados.
+     - El conjunto negro, es el conjunto de objetos que alcanzables
+       desde la raiz y no referencian a objetos del conjunto
+       blanco. Estos objetos no son cadidatos para recolectar.
+     - El conjunto gris contiene todos los objetos alcanzables desde
+       la raiz pero que aun tienen que verificarse por referencias al
+       conjunto "blanco".
+
+#+REVEAL: split
+   
+   - Inicialmente el conjunto negro esta vacío, El conjunto gris es el 
+     conjunto de objetos que son directamente referenciados desde la
+     raiz y el conjunto blanco incluye todos los demás objetos. El algoritmo procede asi:
+
+     1. Toma un objeto del conjunto gris y lo mueve al conjunto negro
+
+     2. Mueve cada objeto blanco referenciado por él al conjutno gris.
+
+     3. Repetir los pasos 1 y 2 hasta que el conjunto gris esté vacio.
+    
+*** Marcado tri-color
+
+    [[file:tricolor-0.png]]
+    
+
+*** Marcado tri-color
+
+    [[file:tricolor-1.png]]
+    
+
+*** Marcado tri-color
+
+    [[file:tricolor-2.png]]
+    
+
+*** Marcado tri-color
+
+    [[file:tricolor-3.png]]
+    
+
+*** Marcado tri-color
+
+    [[file:tricolor-4.png]]
+    
+
+*** Marcado tri-color
+
+    [[file:tricolor-5.png]]
+    
+
+*** Marcado tri-color
+
+    [[file:tricolor-6.png]]
+    
+
+# *** Recolección de Basura
+# - Otras alternativas
+#   - Parar y Copiar
+#   - Recolección Generacional
+#   - Recolección Conservadora
 

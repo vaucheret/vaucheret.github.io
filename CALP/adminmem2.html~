@@ -29,21 +29,21 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Administración de Almacenamient</h2><h2 class="date">2016-08-29 lun 00:00</h2><p class="date">Created: 2020-12-08 mar 17:05</p>
+<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Administración de Almacenamient</h2><h2 class="date">2016-08-29 lun 00:00</h2><p class="date">Created: 2021-11-08 lun 11:55</p>
 </section>
 
 
 
 <section>
-<section id="slide-orga35d0a8">
-<h2 id="orga35d0a8"><span class="section-number-2">1</span> Introducción</h2>
-<div class="outline-text-2" id="text-1">
+<section id="slide-org74f6117">
+<h2 id="org74f6117">Introducción</h2>
+<div class="outline-text-2" id="text-org74f6117">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org58c0031">
-<h3 id="org58c0031"><span class="section-number-3">1.1</span> Tiempo de Vida del Objeto y Ligadura</h3>
+<section id="slide-org050ce7e">
+<h3 id="org050ce7e">Tiempo de Vida del Objeto y Ligadura</h3>
 <ul>
 <li>Creación del objeto</li>
 <li>Creación de las ligaduras</li>
@@ -56,11 +56,13 @@ temporariamente en desuso</li>
 
 </ul>
 
+
+
 </section>
 </section>
 <section>
-<section id="slide-org68d4e54">
-<h3 id="org68d4e54"><span class="section-number-3">1.2</span> Tiempos de vida distintos</h3>
+<section id="slide-org108776e">
+<h3 id="org108776e">Tiempos de vida distintos</h3>
 <ul>
 <li>Referencias colgadas
 <ul>
@@ -79,8 +81,8 @@ temporariamente en desuso</li>
 </section>
 </section>
 <section>
-<section id="slide-org380061c">
-<h3 id="org380061c"><span class="section-number-3">1.3</span> Mecanismos de alojamiento</h3>
+<section id="slide-orgc92e1d3">
+<h3 id="orgc92e1d3">Mecanismos de alojamiento</h3>
 <ul>
 <li>Estático
 <ul>
@@ -105,8 +107,8 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </section>
 </section>
 <section>
-<section id="slide-org6ac558f">
-<h3 id="org6ac558f"><span class="section-number-3">1.4</span> Alojamiento Estático</h3>
+<section id="slide-org47d289f">
+<h3 id="org47d289f">Alojamiento Estático</h3>
 <ul>
 <li>Código</li>
 <li>Variables Globales</li>
@@ -117,10 +119,10 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </ul>
 
 </section>
-<section id="slide-org3fc46bb">
-<h4 id="org3fc46bb"><span class="section-number-4">1.4.1</span> Subrutinas</h4>
+<section id="slide-orgbe0b94a">
+<h4 id="orgbe0b94a">Subrutinas</h4>
 
-<div id="org80562fd" class="figure">
+<div id="org9ee2c66" class="figure">
 <p><img src="aljamestaticosub.png" alt="aljamestaticosub.png" />
 </p>
 </div>
@@ -128,8 +130,8 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgfc8f81f">
-<h3 id="orgfc8f81f"><span class="section-number-3">1.5</span> Alojamiento basado en Pila</h3>
+<section id="slide-org3e9217d">
+<h3 id="org3e9217d">Alojamiento basado en Pila</h3>
 <ul>
 <li>Pila central para:
 <ul>
@@ -148,17 +150,17 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </ul>
 
 </section>
-<section id="slide-orga0049c8">
-<h4 id="orga0049c8"><span class="section-number-4">1.5.1</span> Subrutinas</h4>
+<section id="slide-orgbe01fce">
+<h4 id="orgbe01fce">Subrutinas</h4>
 
-<div id="org77466d7" class="figure">
+<div id="orgda07a3c" class="figure">
 <p><img src="alojpilasubr.png" alt="alojpilasubr.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org7f1522c">
-<h4 id="org7f1522c"><span class="section-number-4">1.5.2</span> Alojamiento basado en Pila</h4>
+<section id="slide-org0f1cf49">
+<h4 id="org0f1cf49">Alojamiento basado en Pila</h4>
 <ul>
 <li>Contenido de un Registro de Activación
 <ul>
@@ -176,8 +178,8 @@ activación) en tiempo de compilación.</li>
 </ul>
 
 </section>
-<section id="slide-org283c408">
-<h4 id="org283c408"><span class="section-number-4">1.5.3</span> Alojamiento basado en Pila</h4>
+<section id="slide-orga136562">
+<h4 id="orga136562">Alojamiento basado en Pila</h4>
 <ul>
 <li>El mantenimiento de la Pila es responsabilidad de la <i>secuencia de
 llamado</i> del llamador, y de el <i>prologo</i> y el <i>epilogo</i> de la
@@ -199,22 +201,22 @@ el <i>epilogo</i></li>
 </section>
 </section>
 <section>
-<section id="slide-org94d478b">
-<h3 id="org94d478b"><span class="section-number-3">1.6</span> Alojamiento basado en <i>Heap</i></h3>
+<section id="slide-orgad64ec6">
+<h3 id="orgad64ec6">Alojamiento basado en <i>Heap</i></h3>
 <ul>
 <li>Alojamiento Dinámico</li>
 
 </ul>
 
 
-<div id="org68fb545" class="figure">
+<div id="org72a6db3" class="figure">
 <p><img src="alojdinheap.png" alt="alojdinheap.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org5ca439e">
-<h4 id="org5ca439e"><span class="section-number-4">1.6.1</span> Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-org7a877b8">
+<h4 id="org7a877b8">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>Muchas posibles estrategias</li>
 <li>compromiso entre espacio y tiempo</li>
@@ -233,8 +235,8 @@ alojar un nuevo requerimiento.</li>
 </ul>
 
 </section>
-<section id="slide-org91d05fe">
-<h4 id="org91d05fe"><span class="section-number-4">1.6.2</span> Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-orgeca0548">
+<h4 id="orgeca0548">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>Lista ligado de bloques libres</li>
 <li>Algoritmos de asignación
@@ -266,8 +268,8 @@ diponible se divide uno de \(2^{k+1}\)</li>
 
 
 </section>
-<section id="slide-org84ae954">
-<h4 id="org84ae954"><span class="section-number-4">1.6.3</span> Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-orgfb5587a">
+<h4 id="orgfb5587a">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>El problema de referencias sueltas (dangling) son debidas a
 <ul>
@@ -289,36 +291,36 @@ diponible se divide uno de \(2^{k+1}\)</li>
 </ul>
 
 </section>
-<section id="slide-org32697bc">
-<h4 id="org32697bc"><span class="section-number-4">1.6.4</span> Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-org53eeeab">
+<h4 id="org53eeeab">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li><i>Tombstones</i></li>
 
 </ul>
 
 
-<div id="orgebfa347" class="figure">
+<div id="org32c769b" class="figure">
 <p><img src="tombstones.png" alt="tombstones.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org4060bfa">
-<h4 id="org4060bfa"><span class="section-number-4">1.6.5</span> Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-org0d296c5">
+<h4 id="org0d296c5">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li><i>Locks and Keys</i></li>
 
 </ul>
 
 
-<div id="org13ae1c6" class="figure">
+<div id="org4b4be0c" class="figure">
 <p><img src="lockskeys.png" alt="lockskeys.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgec83102">
-<h4 id="orgec83102"><span class="section-number-4">1.6.6</span> Recolección de Basura</h4>
+<section id="slide-org67535d9">
+<h4 id="org67535d9">Recolección de Basura</h4>
 <ul>
 <li><i>garbage collection</i>
 <ul>
@@ -331,14 +333,14 @@ diponible se divide uno de \(2^{k+1}\)</li>
 </ul>
 
 
-<div id="org039b236" class="figure">
+<div id="orgb83879c" class="figure">
 <p><img src="contadref.png" alt="contadref.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgfc78fe4">
-<h4 id="orgfc78fe4"><span class="section-number-4">1.6.7</span> Trazado de la colección</h4>
+<section id="slide-org30d1516">
+<h4 id="org30d1516">Trazado de la colección</h4>
 <ul>
 <li>marcado y barrido (<i>mark and Sweep</i>
 <ol>
@@ -354,23 +356,192 @@ aún marcado como "usable" a la lista de bloques libres.</li>
 
 </ul>
 
+
 </section>
-<section id="slide-org135a3fa">
-<h4 id="org135a3fa"><span class="section-number-4">1.6.8</span> Recolección de Basura</h4>
-<ul>
-<li>Reversión de puntero</li>
+<section id="slide-orgaee3e95">
+<h4 id="orgaee3e95">mark and sweep</h4>
 
-</ul>
-
-
-<div id="org3cf539e" class="figure">
-<p><img src="reversepoint.png" alt="reversepoint.png" /> 
+<div id="org54a613a" class="figure">
+<p><img src="marksweep-0.png" alt="marksweep-0.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org2d81ebd">
-<h4 id="org2d81ebd"><span class="section-number-4">1.6.9</span> Recolección de Basura</h4>
+<section id="slide-orgb1c8b69">
+<h4 id="orgb1c8b69">mark and sweep</h4>
+
+<div id="orgec09633" class="figure">
+<p><img src="marksweep-1.png" alt="marksweep-1.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org9d03207">
+<h4 id="org9d03207">mark and sweep</h4>
+
+<div id="org13ecf68" class="figure">
+<p><img src="marksweep-2.png" alt="marksweep-2.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgacca0f0">
+<h4 id="orgacca0f0">mark and sweep</h4>
+
+<div id="orgaf98bde" class="figure">
+<p><img src="marksweep-3.png" alt="marksweep-3.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org0e354aa">
+<h4 id="org0e354aa">mark and sweep</h4>
+
+<div id="org46204d2" class="figure">
+<p><img src="marksweep-4.png" alt="marksweep-4.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgfa8d155">
+<h4 id="orgfa8d155">mark and sweep</h4>
+
+<div id="org504ba1c" class="figure">
+<p><img src="marksweep-5.png" alt="marksweep-5.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2002ef7">
+<h4 id="org2002ef7">mark and sweep</h4>
+
+<div id="org068fde1" class="figure">
+<p><img src="marksweep-6.png" alt="marksweep-6.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org922effe">
+<h4 id="org922effe">mark and sweep</h4>
+
+<div id="orgcd8544e" class="figure">
+<p><img src="marksweep-7.png" alt="marksweep-7.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org10e64b8">
+<h4 id="org10e64b8">Marcado tri-color</h4>
+<ul>
+<li>Se crean tres conjuntos – blanco, negro and gris:
+
+<ul>
+<li>El conjunto blanco, es el conjunto de objetos que son
+candidatos para ser reciclados.</li>
+<li>El conjunto negro, es el conjunto de objetos que alcanzables
+desde la raiz y no referencian a objetos del conjunto
+blanco. Estos objetos no son cadidatos para recolectar.</li>
+<li>El conjunto gris contiene todos los objetos alcanzables desde
+la raiz pero que aun tienen que verificarse por referencias al
+conjunto "blanco".</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org10e64b8-split">
+
+<ul>
+<li>Inicialmente el conjunto negro esta vacío, El conjunto gris es el 
+conjunto de objetos que son directamente referenciados desde la
+raiz y el conjunto blanco incluye todos los demás objetos. El algoritmo procede asi:
+
+<ol>
+<li>Toma un objeto del conjunto gris y lo mueve al conjunto negro</li>
+
+<li>Mueve cada objeto blanco referenciado por él al conjutno gris.</li>
+
+<li>Repetir los pasos 1 y 2 hasta que el conjunto gris esté vacio.</li>
+
+</ol></li>
+
+</ul>
+
+</section>
+<section id="slide-org055078f">
+<h4 id="org055078f">Marcado tri-color</h4>
+
+<div id="org57cd494" class="figure">
+<p><img src="tricolor-0.png" alt="tricolor-0.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org3ee9dfa">
+<h4 id="org3ee9dfa">Marcado tri-color</h4>
+
+<div id="org9566948" class="figure">
+<p><img src="tricolor-1.png" alt="tricolor-1.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-orgea812a8">
+<h4 id="orgea812a8">Marcado tri-color</h4>
+
+<div id="orga2a5946" class="figure">
+<p><img src="tricolor-2.png" alt="tricolor-2.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org9c511a9">
+<h4 id="org9c511a9">Marcado tri-color</h4>
+
+<div id="org447d232" class="figure">
+<p><img src="tricolor-3.png" alt="tricolor-3.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org02cbffa">
+<h4 id="org02cbffa">Marcado tri-color</h4>
+
+<div id="orgece75a1" class="figure">
+<p><img src="tricolor-4.png" alt="tricolor-4.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org3030f81">
+<h4 id="org3030f81">Marcado tri-color</h4>
+
+<div id="org53689d4" class="figure">
+<p><img src="tricolor-5.png" alt="tricolor-5.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-orga2e70db">
+<h4 id="orga2e70db">Marcado tri-color</h4>
+
+<div id="org1b1622e" class="figure">
+<p><img src="tricolor-6.png" alt="tricolor-6.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-orgbfcf03f">
+<h4 id="orgbfcf03f">Recolección de Basura</h4>
 <ul>
 <li>Otras alternativas
 <ul>
@@ -396,7 +567,7 @@ aún marcado como "usable" a la lista de bloques libres.</li>
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
 plugins: [RevealMarkdown,RevealNotes],
-width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube',
+width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'none',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server
