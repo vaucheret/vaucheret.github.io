@@ -26,20 +26,20 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C.A.L.P.</h1><h2 class="author">Claudio Vaucheret / Marcelo Amaolo</h2><h2 class="date">2017-08-14 lun 00:00</h2><p class="date">Created: 2021-08-19 jue 23:38</p>
+<section id="sec-title-slide"><h1 class="title">C.A.L.P.</h1><h2 class="author">Claudio Vaucheret / Marcelo Amaolo</h2><h2 class="date">2017-08-14 lun 00:00</h2><p class="date">Created: 2022-08-15 lun 15:54</p>
 </section>
 
 
 <section>
-<section id="slide-org371b1e2">
-<h2 id="org371b1e2">Introducción</h2>
-<div class="outline-text-2" id="text-org371b1e2">
+<section id="slide-org17ac1e3">
+<h2 id="org17ac1e3">Introducción</h2>
+<div class="outline-text-2" id="text-org17ac1e3">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgc419a8f">
-<h3 id="orgc419a8f">Razones para estudiar Conceptos de Lenguajes de Programación</h3>
+<section id="slide-org3e95476">
+<h3 id="org3e95476">Razones para estudiar Conceptos de Lenguajes de Programación</h3>
 <ul>
 <li>Incrementa la habilidad para expresar ideas</li>
 <li>Mejora la capacidad de elegir el lenguaje apropiado</li>
@@ -52,8 +52,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org3213068">
-<h3 id="org3213068">Dominios de Programación</h3>
+<section id="slide-org8f56abb">
+<h3 id="org8f56abb">Dominios de Programación</h3>
 <div style="font-size: 65%;">
 <ul>
 <li>Aplicaciones Científicas
@@ -92,8 +92,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org813cc17">
-<h3 id="org813cc17">Criterios de Evaluación de Lenguajes</h3>
+<section id="slide-orga0ab0ca">
+<h3 id="orga0ab0ca">Criterios de Evaluación de Lenguajes</h3>
 <ul>
 <li><b>Legibilidad</b>: la facilidad con la cual los programas pueden ser
 leídos y entendidos.</li>
@@ -106,8 +106,8 @@ sus especificaciones.</li>
 </ul>
 
 </section>
-<section id="slide-org7baa829">
-<h4 id="org7baa829">Legibilidad</h4>
+<section id="slide-org5724556">
+<h4 id="org5724556">Legibilidad</h4>
 <div style="font-size: 60%;">
 <ul>
 <li>Simplicidad
@@ -146,8 +146,8 @@ significativas</li>
 </ul>
 
 </section>
-<section id="slide-org8fea094">
-<h4 id="org8fea094">Escribilidad</h4>
+<section id="slide-org2aebe7a">
+<h4 id="org2aebe7a">Escribilidad</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Simplicidad y ortogonalidad
@@ -172,8 +172,8 @@ operaciones de modo que los detalles puedan ser ignorados</li>
 </ul>
 
 </section>
-<section id="slide-orga143620">
-<h4 id="orga143620">Confiabilidad</h4>
+<section id="slide-orged59bd6">
+<h4 id="orged59bd6">Confiabilidad</h4>
 <div style="font-size: 70%;">
 <ul>
 <li>Chequeo de Tipos
@@ -203,8 +203,8 @@ reducirá la confiabilidad</li>
 </ul>
 
 </section>
-<section id="slide-org1fba577">
-<h4 id="org1fba577">Costo</h4>
+<section id="slide-orgf998c33">
+<h4 id="orgf998c33">Costo</h4>
 <div style="font-size: 80%;">
 
 <ul>
@@ -223,8 +223,8 @@ reducirá la confiabilidad</li>
 </ul>
 
 </section>
-<section id="slide-orgaaed479">
-<h4 id="orgaaed479">Otros</h4>
+<section id="slide-org48383fb">
+<h4 id="org48383fb">Otros</h4>
 <ul>
 <li>Portabildad
 <ul>
@@ -248,8 +248,8 @@ implementación a otra</li>
 </section>
 </section>
 <section>
-<section id="slide-orgf881770">
-<h3 id="orgf881770">Influencias en el diseño de los lenguajes</h3>
+<section id="slide-orgbe87189">
+<h3 id="orgbe87189">Influencias en el diseño de los lenguajes</h3>
 <div style="font-size: 90%;">
 <ul>
 <li>Arquitectura de Computadoras
@@ -269,8 +269,8 @@ extensión a nuevos lenguajes de programación</li>
 </ul>
 
 </section>
-<section id="slide-org6d64294">
-<h4 id="org6d64294">Influencia de la Arquitectura de Computadoras</h4>
+<section id="slide-org3efb4b4">
+<h4 id="org3efb4b4">Influencia de la Arquitectura de Computadoras</h4>
 <div style="font-size: 90%;">
 <ul>
 <li>Arquitectura de Computadora bien conocida: Von Neumann</li>
@@ -292,17 +292,17 @@ dominante
 </ul>
 
 </section>
-<section id="slide-orgc67e13b">
-<h4 id="orgc67e13b">Arquitectura de Von Neumann</h4>
+<section id="slide-org709271b">
+<h4 id="org709271b">Arquitectura de Von Neumann</h4>
 
-<div id="org1bd4632" class="figure">
+<div id="org4462369" class="figure">
 <p><img src="vonneumann.png" alt="vonneumann.png" /> 
 </p>
 </div>
 
 </section>
-<section id="slide-orgbbd6375">
-<h4 id="orgbbd6375">Influencia de las Metodogías de Programación</h4>
+<section id="slide-orgf396b24">
+<h4 id="orgf396b24">Influencia de las Metodogías de Programación</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Décadas de los 50 y 60: Simples aplicaciones; preocupación principal
@@ -328,8 +328,8 @@ legibilidad, mejores estructuras de control
 </ul>
 
 </section>
-<section id="slide-org46e9662">
-<h4 id="org46e9662">Categoría de Lenguajes</h4>
+<section id="slide-orge291b08">
+<h4 id="orge291b08">Categoría de Lenguajes</h4>
 <div style="font-size: 65%;">
 <ul>
 <li>Imperativa
@@ -367,8 +367,8 @@ información mostrada en documentos web</li>
 </ul>
 
 </section>
-<section id="slide-org9a965f2">
-<h4 id="org9a965f2">Compromisos en el diseño de Lenguajes</h4>
+<section id="slide-orgd91378c">
+<h4 id="orgd91378c">Compromisos en el diseño de Lenguajes</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Confiabilidad vs. Costo de ejecución
@@ -397,8 +397,8 @@ un uso poco confiable.</li>
 </section>
 </section>
 <section>
-<section id="slide-org657de01">
-<h3 id="org657de01">Métodos de Implementación</h3>
+<section id="slide-orge2b1c0d">
+<h3 id="orge2b1c0d">Métodos de Implementación</h3>
 <ul>
 <li>Compilación
 <ul>
@@ -419,17 +419,17 @@ un uso poco confiable.</li>
 </ul>
 
 </section>
-<section id="slide-org44d9cd3">
-<h4 id="org44d9cd3">Capas de Implementación de Lenguajes</h4>
+<section id="slide-orgfa02661">
+<h4 id="orgfa02661">Capas de Implementación de Lenguajes</h4>
 
-<div id="orgf7652ca" class="figure">
+<div id="orgddf7db5" class="figure">
 <p><img src="interfacecapas.png" alt="interfacecapas.png" width="70%" height="auto" />
 </p>
 </div>
 
 </section>
-<section id="slide-org7159e4d">
-<h4 id="org7159e4d">Compilación</h4>
+<section id="slide-orgf14e6fb">
+<h4 id="orgf14e6fb">Compilación</h4>
 <div style="font-size: 90%;">
 <ul>
 <li>Traduce programas de alto nivel (lenguaje fuente) en codigo máquina</li>
@@ -448,17 +448,17 @@ sintácticos <i>parse trees</i></li>
 </ul>
 
 </section>
-<section id="slide-org0708950">
-<h4 id="org0708950">El proceso de compilación</h4>
+<section id="slide-org4719b36">
+<h4 id="org4719b36">El proceso de compilación</h4>
 
-<div id="org4f3efdc" class="figure">
+<div id="org3fa5a82" class="figure">
 <p><img src="procesocomp.png" alt="procesocomp.png" /> 
 </p>
 </div>
 
 </section>
-<section id="slide-orge32bbaf">
-<h4 id="orge32bbaf">Terminología Adicional de Compilación</h4>
+<section id="slide-org07ca749">
+<h4 id="org07ca749">Terminología Adicional de Compilación</h4>
 <ul>
 <li>Módulo de carga (imagen ejecutable) : El código del usuario y del
 sistema juntos</li>
@@ -468,8 +468,8 @@ programas del sistema y enlazarlo al programa del usuario</li>
 </ul>
 
 </section>
-<section id="slide-orgf4a57e1">
-<h4 id="orgf4a57e1">Ejecución del Código Máquina</h4>
+<section id="slide-org40aa4e6">
+<h4 id="org40aa4e6">Ejecución del Código Máquina</h4>
 <ul>
 <li>ciclo de traer y ejecutar (sobre una arquitectura Von Neumann)</li>
 
@@ -487,8 +487,8 @@ programas del sistema y enlazarlo al programa del usuario</li>
 </div>
 
 </section>
-<section id="slide-orgc8425ee">
-<h4 id="orgc8425ee"><i>Cuello de botella</i> de Von Neumann</h4>
+<section id="slide-org21707ed">
+<h4 id="org21707ed"><i>Cuello de botella</i> de Von Neumann</h4>
 <ul>
 <li>La velocidad de conección entre la memoria de la computadora y su
 procesador determina la velocidad de la computadora</li>
@@ -500,8 +500,8 @@ Neumann es el principal factor en la velocidad de las computadoras</li>
 </ul>
 
 </section>
-<section id="slide-org45f93d0">
-<h4 id="org45f93d0">Interpretación Pura</h4>
+<section id="slide-org52837f0">
+<h4 id="org52837f0">Interpretación Pura</h4>
 <ul>
 <li>Sin traducción</li>
 <li>Facil implementación de programas. Errores de tiempo de ejecución
@@ -514,17 +514,17 @@ pueden ser facilmente reconocidos</li>
 </ul>
 
 </section>
-<section id="slide-org1fdec2e">
-<h4 id="org1fdec2e">Proceso de Interpretación Pura</h4>
+<section id="slide-orgdd69b09">
+<h4 id="orgdd69b09">Proceso de Interpretación Pura</h4>
 
-<div id="org0283412" class="figure">
+<div id="orgb596855" class="figure">
 <p><img src="procesointerppuro.png" alt="procesointerppuro.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgf1148e4">
-<h4 id="orgf1148e4">Sistemas de Implementación Híbrida</h4>
+<section id="slide-org341c443">
+<h4 id="org341c443">Sistemas de Implementación Híbrida</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Un compromiso entre compilador y intérprete puro</li>
@@ -545,17 +545,17 @@ tenía un interprete de <i>byte code</i> y un sistema de <i>run time</i>
 </ul>
 
 </section>
-<section id="slide-org66ca137">
-<h4 id="org66ca137">Proceso de Implementación Híbrida</h4>
+<section id="slide-orgea73e6c">
+<h4 id="orgea73e6c">Proceso de Implementación Híbrida</h4>
 
-<div id="orgd6d15d0" class="figure">
+<div id="org8340e52" class="figure">
 <p><img src="procesohibrido.png" alt="procesohibrido.png" width="23%" height="auto" /> 
 </p>
 </div>
 
 </section>
-<section id="slide-orgd722857">
-<h4 id="orgd722857">Sistemas de Implementación <i>Just in Time</i></h4>
+<section id="slide-org16648f6">
+<h4 id="org16648f6">Sistemas de Implementación <i>Just in Time</i></h4>
 <ul>
 <li>Inicialmente Los programas se traducen a un lenguaje intermedio</li>
 <li>Luego el lenguaje intermedio se compila a código máquina</li>
@@ -566,8 +566,8 @@ tenía un interprete de <i>byte code</i> y un sistema de <i>run time</i>
 </ul>
 
 </section>
-<section id="slide-org86ce024">
-<h4 id="org86ce024">Preprocesadores</h4>
+<section id="slide-org347ca5c">
+<h4 id="org347ca5c">Preprocesadores</h4>
 <ul>
 <li>Macros de preprocesamiento (instrucciones) son comunmente usadas
 para especificar que código de otros archivos sean incluidos</li>
@@ -582,8 +582,8 @@ programa se compile para expandir las macros incluídas</li>
 </ul>
 
 </section>
-<section id="slide-org13d73b5">
-<h4 id="org13d73b5">Entornos de Programación</h4>
+<section id="slide-org56d9c87">
+<h4 id="org56d9c87">Entornos de Programación</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Una colección de herramientas usadas en el desarrollo de software</li>
@@ -612,8 +612,8 @@ sobre UNIX</li>
 </section>
 </section>
 <section>
-<section id="slide-org19d441b">
-<h2 id="org19d441b">Evolución de los</h2>
+<section id="slide-org6f9ca32">
+<h2 id="org6f9ca32">Evolución de los</h2>
 <p>
 Lenguajes de Programación
 </p>
@@ -621,10 +621,10 @@ Lenguajes de Programación
 </section>
 </section>
 <section>
-<section id="slide-org90435bf">
-<h3 id="org90435bf">Lenguajes de Programación</h3>
+<section id="slide-org4cc7ada">
+<h3 id="org4cc7ada">Lenguajes de Programación</h3>
 
-<div id="org966f890" class="figure">
+<div id="org332ef05" class="figure">
 <p><img src="evolleng.png" alt="evolleng.png" />
 </p>
 </div>
@@ -632,19 +632,19 @@ Lenguajes de Programación
 </section>
 </section>
 <section>
-<section id="slide-org1456cfe">
-<h3 id="org1456cfe">Evolución de los primeros lenguajes</h3>
+<section id="slide-org51465bc">
+<h3 id="org51465bc">Evolución de los primeros lenguajes</h3>
 
 </section>
 </section>
 <section>
-<section id="slide-orge81272c">
-<h3 id="orge81272c">Konrad Zuze's language de la computadora Z4.</h3>
-<div class="outline-text-3" id="text-orge81272c">
+<section id="slide-org80b3559">
+<h3 id="org80b3559">Konrad Zuze's language de la computadora Z4.</h3>
+<div class="outline-text-3" id="text-org80b3559">
 </div>
 </section>
-<section id="slide-org78377a5">
-<h4 id="org78377a5">Zuse's Plankalkül</h4>
+<section id="slide-org6d16224">
+<h4 id="org6d16224">Zuse's Plankalkül</h4>
 <ul>
 <li>Desarrollado en 1945</li>
 <li>Nunca implementado</li>
@@ -668,13 +668,13 @@ S | 1.n      1.n
 </section>
 </section>
 <section>
-<section id="slide-orgf687b79">
-<h3 id="orgf687b79">Codigo Máquina: pseudocodigos ¿?</h3>
-<div class="outline-text-3" id="text-orgf687b79">
+<section id="slide-orgf50824e">
+<h3 id="orgf50824e">Codigo Máquina: pseudocodigos ¿?</h3>
+<div class="outline-text-3" id="text-orgf50824e">
 </div>
 </section>
-<section id="slide-orga1af027">
-<h4 id="orga1af027">Escribir en lenguaje máquina</h4>
+<section id="slide-orgc809fce">
+<h4 id="orgc809fce">Escribir en lenguaje máquina</h4>
 <ul>
 <li>poco legibles y modificables</li>
 <li>sin indices ni punto flotante</li>
@@ -683,8 +683,8 @@ S | 1.n      1.n
 </ul>
 
 </section>
-<section id="slide-org4168e17">
-<h4 id="org4168e17">Shorte Code Mauchly (1949)</h4>
+<section id="slide-org57e39da">
+<h4 id="org57e39da">Shorte Code Mauchly (1949)</h4>
 <ul>
 <li>computadora BINAC</li>
 <li>Expresiones eran codificadas de izquierda a derecha</li>
@@ -712,8 +712,8 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 </div>
 
 </section>
-<section id="slide-org18e3fce">
-<h4 id="org18e3fce">Speedcoding</h4>
+<section id="slide-orga803412">
+<h4 id="orga803412">Speedcoding</h4>
 <ul>
 <li>Desarrollado por John Backus en 1954 para IBM 701</li>
 <li>Pseudo operaciones para funciones aritméticas y matemáticas
@@ -728,8 +728,8 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 </ul>
 
 </section>
-<section id="slide-org295f0d6">
-<h4 id="org295f0d6">Otros sistemas relacionados</h4>
+<section id="slide-org21087d9">
+<h4 id="org21087d9">Otros sistemas relacionados</h4>
 <ul>
 <li>Sistema de "compilación" UNIVAC
 <ul>
@@ -750,13 +750,13 @@ La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:
 </section>
 </section>
 <section>
-<section id="slide-orgf737619">
-<h3 id="orgf737619">IBM 704 y Fortran</h3>
-<div class="outline-text-3" id="text-orgf737619">
+<section id="slide-org572f9a9">
+<h3 id="org572f9a9">IBM 704 y Fortran</h3>
+<div class="outline-text-3" id="text-org572f9a9">
 </div>
 </section>
-<section id="slide-orgc9d9b7e">
-<h4 id="orgc9d9b7e">Fortan</h4>
+<section id="slide-orge6ff637">
+<h4 id="orge6ff637">Fortan</h4>
 <div style="font-size: 90%;">
 <ul>
 <li>Fortran 0: 1954 - no implementado</li>
@@ -778,8 +778,8 @@ de punto flotante</li>
 </ul>
 
 </section>
-<section id="slide-org264782f">
-<h4 id="org264782f">Proceso de Diseño</h4>
+<section id="slide-orgdd2cf95">
+<h4 id="orgdd2cf95">Proceso de Diseño</h4>
 <ul>
 <li>El impacto del entorno en el diseño de Fortran
 <ul>
@@ -793,8 +793,8 @@ entrada/salida (de uso comercial)</li>
 </ul>
 
 </section>
-<section id="slide-org78132ee">
-<h4 id="org78132ee">Fortran I</h4>
+<section id="slide-org03020fe">
+<h4 id="org03020fe">Fortran I</h4>
 <ul>
 <li>Primera versión implementada de Fortrand
 <ul>
@@ -810,8 +810,8 @@ entrada/salida (de uso comercial)</li>
 </ul>
 
 </section>
-<section id="slide-orgab98c68">
-<h4 id="orgab98c68">Fortran I</h4>
+<section id="slide-org19fa586">
+<h4 id="org19fa586">Fortran I</h4>
 <ul>
 <li>Primera versión implementada
 <ul>
@@ -827,8 +827,8 @@ principalmente debido a la pobre confiabilidad de la IBM 704</li>
 </ul>
 
 </section>
-<section id="slide-org30051a1">
-<h4 id="org30051a1">Fortran II</h4>
+<section id="slide-org2f20154">
+<h4 id="org2f20154">Fortran II</h4>
 <ul>
 <li>Distribuido en 1958
 <ul>
@@ -840,8 +840,8 @@ principalmente debido a la pobre confiabilidad de la IBM 704</li>
 </ul>
 
 </section>
-<section id="slide-org6532658">
-<h4 id="org6532658">Fortran IV</h4>
+<section id="slide-orgdd7d9a1">
+<h4 id="orgdd7d9a1">Fortran IV</h4>
 <ul>
 <li>Desarrollado durante 1960-1962
 <ul>
@@ -855,8 +855,8 @@ principalmente debido a la pobre confiabilidad de la IBM 704</li>
 </ul>
 
 </section>
-<section id="slide-org7722053">
-<h4 id="org7722053">Fortran 77</h4>
+<section id="slide-org86eb412">
+<h4 id="org86eb412">Fortran 77</h4>
 <ul>
 <li>Se volvió el nuevo estandard en 1978
 <ul>
@@ -869,8 +869,8 @@ principalmente debido a la pobre confiabilidad de la IBM 704</li>
 </ul>
 
 </section>
-<section id="slide-org4848750">
-<h4 id="org4848750">Fortran 90</h4>
+<section id="slide-org4a9f773">
+<h4 id="org4a9f773">Fortran 90</h4>
 <ul>
 <li>Con los mas significativos cámbios desde el Fortran 77
 <ul>
@@ -886,8 +886,8 @@ principalmente debido a la pobre confiabilidad de la IBM 704</li>
 </ul>
 
 </section>
-<section id="slide-org97f7cef">
-<h4 id="org97f7cef">Evaluación de Fortran</h4>
+<section id="slide-org66b4e93">
+<h4 id="org66b4e93">Evaluación de Fortran</h4>
 <ul>
 <li>Compiladores altamente optimizados (todas las versiones anteriores a 90)
 <ul>
@@ -905,13 +905,13 @@ fueron usadas</li>
 </section>
 </section>
 <section>
-<section id="slide-orgffcb527">
-<h3 id="orgffcb527">Programación Funcional: LISP</h3>
-<div class="outline-text-3" id="text-orgffcb527">
+<section id="slide-orgbc6d79c">
+<h3 id="orgbc6d79c">Programación Funcional: LISP</h3>
+<div class="outline-text-3" id="text-orgbc6d79c">
 </div>
 </section>
-<section id="slide-orgd803bf9">
-<h4 id="orgd803bf9">LISP</h4>
+<section id="slide-orgee912f4">
+<h4 id="orgee912f4">LISP</h4>
 <ul>
 <li><i>LISt Processing Language</i>
 <ul>
@@ -930,17 +930,17 @@ fueron usadas</li>
 </ul>
 
 </section>
-<section id="slide-org26690a2">
-<h4 id="org26690a2">Representación de Listas LISP</h4>
+<section id="slide-org2aab291">
+<h4 id="org2aab291">Representación de Listas LISP</h4>
 
-<div id="org83778c5" class="figure">
+<div id="org64c3d7a" class="figure">
 <p><img src="represlistas.png" alt="represlistas.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org62f6d78">
-<h4 id="org62f6d78">Evaluación de LISP</h4>
+<section id="slide-org7475b0b">
+<h4 id="org7475b0b">Evaluación de LISP</h4>
 <ul>
 <li>Pionero en programación funcional
 <ul>
@@ -955,8 +955,8 @@ fueron usadas</li>
 </ul>
 
 </section>
-<section id="slide-org34a975f">
-<h4 id="org34a975f">Scheme</h4>
+<section id="slide-orgc930909">
+<h4 id="orgc930909">Scheme</h4>
 <ul>
 <li>Desarrollado en el MIT a mediados de los 70</li>
 <li>Pequeño</li>
@@ -967,8 +967,8 @@ fueron usadas</li>
 </ul>
 
 </section>
-<section id="slide-orgda864bf">
-<h4 id="orgda864bf">COMMON LISP</h4>
+<section id="slide-org26fec8d">
+<h4 id="org26fec8d">COMMON LISP</h4>
 <ul>
 <li>Un esfuerzo por combinar características de varios dialectos de LISP
 en un solo lenguaje</li>
@@ -979,13 +979,13 @@ en un solo lenguaje</li>
 </section>
 </section>
 <section>
-<section id="slide-orga67f234">
-<h3 id="orga67f234">Primera sofisticación: ALGOL 60</h3>
-<div class="outline-text-3" id="text-orga67f234">
+<section id="slide-orgf6c9abd">
+<h3 id="orgf6c9abd">Primera sofisticación: ALGOL 60</h3>
+<div class="outline-text-3" id="text-orgf6c9abd">
 </div>
 </section>
-<section id="slide-orgcdbfc7c">
-<h4 id="orgcdbfc7c">Algol 60</h4>
+<section id="slide-orge0764b2">
+<h4 id="orge0764b2">Algol 60</h4>
 <ul>
 <li>Entorno de Desarrollo
 <ul>
@@ -1000,8 +1000,8 @@ en un solo lenguaje</li>
 </ul>
 
 </section>
-<section id="slide-org1075424">
-<h4 id="org1075424">Primitivo proceso de diseño</h4>
+<section id="slide-org81479ee">
+<h4 id="org81479ee">Primitivo proceso de diseño</h4>
 <ul>
 <li>Encuentro de ACM y GAMM para cuatro dias de diseño (27 de Mayo al 1
 de Junio de 1958)</li>
@@ -1016,8 +1016,8 @@ de Junio de 1958)</li>
 </ul>
 
 </section>
-<section id="slide-orgea20221">
-<h4 id="orgea20221">ALGOL 58</h4>
+<section id="slide-orga99e6b9">
+<h4 id="orga99e6b9">ALGOL 58</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>El concepto de tipos fue formalizado</li>
@@ -1034,8 +1034,8 @@ de Junio de 1958)</li>
 </ul>
 
 </section>
-<section id="slide-org8c5804e">
-<h4 id="org8c5804e">Implementación de ALGOL 58</h4>
+<section id="slide-org02c892f">
+<h4 id="org02c892f">Implementación de ALGOL 58</h4>
 <ul>
 <li>Sin intención de ser implementado, sin embargo variaciones de él si
 lo fueron (MAD, JOVIAL)</li>
@@ -1045,8 +1045,8 @@ mediados de 1959</li>
 </ul>
 
 </section>
-<section id="slide-org9240c5d">
-<h4 id="org9240c5d">ALGOL 60</h4>
+<section id="slide-org197ebc4">
+<h4 id="org197ebc4">ALGOL 60</h4>
 <ul>
 <li>Se modificó ALGOL 58 en una reunión de 6 dias en Paris</li>
 <li>Nuevas Características
@@ -1062,8 +1062,8 @@ mediados de 1959</li>
 </ul>
 
 </section>
-<section id="slide-orgb79511d">
-<h4 id="orgb79511d">Evaluación de ALGOL 60</h4>
+<section id="slide-org7836ff6">
+<h4 id="org7836ff6">Evaluación de ALGOL 60</h4>
 <ul>
 <li>Exitoso
 <ul>
@@ -1077,8 +1077,8 @@ mediados de 1959</li>
 </ul>
 
 </section>
-<section id="slide-org4a76683">
-<h4 id="org4a76683">Evaluación de ALGOL 60</h4>
+<section id="slide-org9a21252">
+<h4 id="org9a21252">Evaluación de ALGOL 60</h4>
 <ul>
 <li>Fracaso
 <ul>
@@ -1099,13 +1099,13 @@ mediados de 1959</li>
 </section>
 </section>
 <section>
-<section id="slide-org06f249e">
-<h3 id="org06f249e">Aplicaciones Comerciales: COBOL</h3>
-<div class="outline-text-3" id="text-org06f249e">
+<section id="slide-org60fe1d1">
+<h3 id="org60fe1d1">Aplicaciones Comerciales: COBOL</h3>
+<div class="outline-text-3" id="text-org60fe1d1">
 </div>
 </section>
-<section id="slide-org9d3653f">
-<h4 id="org9d3653f">COBOL Commercial Buisness Language</h4>
+<section id="slide-org19a8026">
+<h4 id="org19a8026">COBOL Commercial Buisness Language</h4>
 <ul>
 <li>Entorno de Desarrollo
 <ul>
@@ -1118,8 +1118,8 @@ mediados de 1959</li>
 </ul>
 
 </section>
-<section id="slide-orgdfdf128">
-<h4 id="orgdfdf128">COBOL Historia</h4>
+<section id="slide-orgeb4eb76">
+<h4 id="orgeb4eb76">COBOL Historia</h4>
 <ul>
 <li>Basado en FLOW-MATIC</li>
 <li>características de FLOW-MATIC:
@@ -1134,8 +1134,8 @@ mediados de 1959</li>
 </ul>
 
 </section>
-<section id="slide-orgd5cdaa4">
-<h4 id="orgd5cdaa4">COBOL proceso de diseño</h4>
+<section id="slide-orgbc9d029">
+<h4 id="orgbc9d029">COBOL proceso de diseño</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Primera reunión de diseño (Pentagon) - Mayo de 1959</li>
@@ -1154,8 +1154,8 @@ computadoras y divisiones del DoD</li>
 </ul>
 
 </section>
-<section id="slide-org9696776">
-<h4 id="org9696776">Evaluación de COBOL</h4>
+<section id="slide-org4b2ae2a">
+<h4 id="org4b2ae2a">Evaluación de COBOL</h4>
 <ul>
 <li>Contribuciones
 <ul>
@@ -1170,8 +1170,8 @@ computadoras y divisiones del DoD</li>
 </ul>
 
 </section>
-<section id="slide-org9e5e397">
-<h4 id="org9e5e397">Influencia del Departamento de Defensa</h4>
+<section id="slide-org1b9f941">
+<h4 id="org1b9f941">Influencia del Departamento de Defensa</h4>
 <ul>
 <li>Primer lenguaje requerido por DoD
 <ul>
@@ -1186,13 +1186,13 @@ computadoras y divisiones del DoD</li>
 </section>
 </section>
 <section>
-<section id="slide-orga1151a1">
-<h3 id="orga1151a1">Comienzo de tiempo compartido: BASIC</h3>
-<div class="outline-text-3" id="text-orga1151a1">
+<section id="slide-org832af68">
+<h3 id="org832af68">Comienzo de tiempo compartido: BASIC</h3>
+<div class="outline-text-3" id="text-org832af68">
 </div>
 </section>
-<section id="slide-org7d1d039">
-<h4 id="org7d1d039">BASIC</h4>
+<section id="slide-org08a1a0f">
+<h4 id="org08a1a0f">BASIC</h4>
 <ul>
 <li>Diseñado por Kemeny &amp; Kurtz en Dartmouth</li>
 <li>Metas de diseño
@@ -1211,13 +1211,13 @@ computadoras y divisiones del DoD</li>
 </section>
 </section>
 <section>
-<section id="slide-org7e9bce5">
-<h3 id="org7e9bce5">Todo para Todos: PL/I</h3>
-<div class="outline-text-3" id="text-org7e9bce5">
+<section id="slide-org44ff5c9">
+<h3 id="org44ff5c9">Todo para Todos: PL/I</h3>
+<div class="outline-text-3" id="text-org44ff5c9">
 </div>
 </section>
-<section id="slide-org7609b9e">
-<h4 id="org7609b9e">PL/I</h4>
+<section id="slide-org1cc6569">
+<h4 id="org1cc6569">PL/I</h4>
 <ul>
 <li>Diseñado por IBM y SHARE</li>
 <li>Situación de la computación en 1964 (desde el punto de vista de IBM)
@@ -1242,8 +1242,8 @@ computadoras y divisiones del DoD</li>
 </ul>
 
 </section>
-<section id="slide-orgcdf9d99">
-<h4 id="orgcdf9d99">Antecedentes PL/I</h4>
+<section id="slide-org43ad3f8">
+<h4 id="org43ad3f8">Antecedentes PL/I</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>En 1965
@@ -1265,8 +1265,8 @@ lenguajes y personal de soporte. Demasiado Costo.</li>
 </ul>
 
 </section>
-<section id="slide-orgd07a849">
-<h4 id="orgd07a849">Proceso de diseño</h4>
+<section id="slide-orga98c999">
+<h4 id="orga98c999">Proceso de diseño</h4>
 <ul>
 <li>Diseñado en 5 meses por un comité bipartito:
 <ul>
@@ -1284,8 +1284,8 @@ lenguajes y personal de soporte. Demasiado Costo.</li>
 </ul>
 
 </section>
-<section id="slide-org3fbaf04">
-<h4 id="org3fbaf04">Evaluación de PL/I</h4>
+<section id="slide-org8c871da">
+<h4 id="org8c871da">Evaluación de PL/I</h4>
 <ul>
 <li>contribuciones de PL/I
 <ul>
@@ -1303,13 +1303,13 @@ lenguajes y personal de soporte. Demasiado Costo.</li>
 </section>
 </section>
 <section>
-<section id="slide-org38e7a1e">
-<h3 id="org38e7a1e">Lenguajes Dinámicos</h3>
-<div class="outline-text-3" id="text-org38e7a1e">
+<section id="slide-org8368121">
+<h3 id="org8368121">Lenguajes Dinámicos</h3>
+<div class="outline-text-3" id="text-org8368121">
 </div>
 </section>
-<section id="slide-org3df1363">
-<h4 id="org3df1363">APL y SNOBOL</h4>
+<section id="slide-org814c143">
+<h4 id="org814c143">APL y SNOBOL</h4>
 <ul>
 <li>Caracterizados por tipos dinámicos y administración dinámica de memoria</li>
 <li>Las Variables son sin tipos
@@ -1322,8 +1322,8 @@ lenguajes y personal de soporte. Demasiado Costo.</li>
 </ul>
 
 </section>
-<section id="slide-org38e6484">
-<h4 id="org38e6484">APL: (<i>A Programming Language</i>)</h4>
+<section id="slide-org02e9cb1">
+<h4 id="org02e9cb1">APL: (<i>A Programming Language</i>)</h4>
 <ul>
 <li>Diseñado como un lenguaje de descripción de hardware en IBM por Ken
 Iverson alrededor de 1960
@@ -1338,8 +1338,8 @@ varias dimensiones)</li>
 </ul>
 
 </section>
-<section id="slide-org6fb7317">
-<h4 id="org6fb7317">SNOBOL</h4>
+<section id="slide-orgee5c83e">
+<h4 id="orgee5c83e">SNOBOL</h4>
 <ul>
 <li>Diseñado como un lenguaje de manipulación de cadena de caracteres en
 los laboratorios BELL por Farber, Griswold y Polensky</li>
@@ -1353,13 +1353,13 @@ para escribir editores)</li>
 </section>
 </section>
 <section>
-<section id="slide-org71f4de2">
-<h3 id="org71f4de2">El comienzo de la Abstracción de Datos</h3>
-<div class="outline-text-3" id="text-org71f4de2">
+<section id="slide-orgc22e4ba">
+<h3 id="orgc22e4ba">El comienzo de la Abstracción de Datos</h3>
+<div class="outline-text-3" id="text-orgc22e4ba">
 </div>
 </section>
-<section id="slide-orgd1fb497">
-<h4 id="orgd1fb497">Simula 67</h4>
+<section id="slide-org36d60c3">
+<h4 id="org36d60c3">Simula 67</h4>
 <ul>
 <li>Diseñado originalmente para sistemas de simulación en Noruega por
 Nygaard y Dahl</li>
@@ -1379,13 +1379,13 @@ la funcionalidad</li>
 </section>
 </section>
 <section>
-<section id="slide-orge9f54a1">
-<h3 id="orge9f54a1">Diseño Ortogonal</h3>
-<div class="outline-text-3" id="text-orge9f54a1">
+<section id="slide-orgc930351">
+<h3 id="orgc930351">Diseño Ortogonal</h3>
+<div class="outline-text-3" id="text-orgc930351">
 </div>
 </section>
-<section id="slide-orgcd80253">
-<h4 id="orgcd80253">ALGOL 68</h4>
+<section id="slide-org3c51bc9">
+<h4 id="org3c51bc9">ALGOL 68</h4>
 <ul>
 <li>Continúa el desarrollo de ALGOL 60 pero no es un superconjunto de
 ese lenguaje</li>
@@ -1400,8 +1400,8 @@ fue ampliamente usado)</li>
 </ul>
 
 </section>
-<section id="slide-orgd37efb1">
-<h4 id="orgd37efb1">Evaluación de ALGOL 68</h4>
+<section id="slide-orga5b648e">
+<h4 id="orga5b648e">Evaluación de ALGOL 68</h4>
 <ul>
 <li>Contribuciones
 <ul>
@@ -1421,8 +1421,8 @@ Pascal, C y Ada</li>
 </ul>
 
 </section>
-<section id="slide-org57be37f">
-<h4 id="org57be37f">Principales Descendientes de ALGOL</h4>
+<section id="slide-org5f722ee">
+<h4 id="org5f722ee">Principales Descendientes de ALGOL</h4>
 <ul>
 <li>El lenguaje ALGOL impactó en todos los lenguajes imperativos
 <ul>
@@ -1440,8 +1440,8 @@ Pascal, C y Ada</li>
 </ul>
 
 </section>
-<section id="slide-orgdfa6de9">
-<h4 id="orgdfa6de9">PASCAL - 1971</h4>
+<section id="slide-org3adec9c">
+<h4 id="org3adec9c">PASCAL - 1971</h4>
 <ul>
 <li>Desarrollado por Wirth (un miembro del comité de Algol 68)</li>
 <li>Diseñado para enseñar programación estructurada</li>
@@ -1456,8 +1456,8 @@ mas ampliamente usado para enseñar programación.</li>
 </ul>
 
 </section>
-<section id="slide-org54e5e55">
-<h4 id="org54e5e55">C - 1971</h4>
+<section id="slide-org978340a">
+<h4 id="org978340a">C - 1971</h4>
 <ul>
 <li>Diseñado para programar sistemas (en los laboratorios DELL por
 Dennis Richie)</li>
@@ -1469,8 +1469,8 @@ Dennis Richie)</li>
 </ul>
 
 </section>
-<section id="slide-orga51f00c">
-<h4 id="orga51f00c">PERL</h4>
+<section id="slide-orgdc0add1">
+<h4 id="orgdc0add1">PERL</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Relacionado a ALGOL solo a través de C</li>
@@ -1495,13 +1495,13 @@ caracter del nombre de la variable</li>
 </section>
 </section>
 <section>
-<section id="slide-org9140461">
-<h3 id="org9140461">Programación basado en la Lógica</h3>
-<div class="outline-text-3" id="text-org9140461">
+<section id="slide-org162a958">
+<h3 id="org162a958">Programación basado en la Lógica</h3>
+<div class="outline-text-3" id="text-org162a958">
 </div>
 </section>
-<section id="slide-orgdd4ef88">
-<h4 id="orgdd4ef88">Prolog</h4>
+<section id="slide-org3d9187f">
+<h4 id="org3d9187f">Prolog</h4>
 <ul>
 <li>Desarrollado por Comerauer y Roussel (Universidad de Aix-Marseille),
 con ayuda de Kowalski (Universidad de Edinburgh)</li>
@@ -1516,13 +1516,13 @@ usa procesos de inferir la verdad de consultas dadas</li>
 </section>
 </section>
 <section>
-<section id="slide-org385ed24">
-<h3 id="org385ed24">Historia del mas grande esfuerzo de diseño</h3>
-<div class="outline-text-3" id="text-org385ed24">
+<section id="slide-org0413f32">
+<h3 id="org0413f32">Historia del mas grande esfuerzo de diseño</h3>
+<div class="outline-text-3" id="text-org0413f32">
 </div>
 </section>
-<section id="slide-orgb2d5bb3">
-<h4 id="orgb2d5bb3">Ada</h4>
+<section id="slide-org2fe84fc">
+<h4 id="org2fe84fc">Ada</h4>
 <div style="font-size: 90%;">
 <ul>
 <li>Enorme esfuerzo de Diseño, involucrando cientos de personas, mucho
@@ -1540,8 +1540,8 @@ dinero y alrededor de 8 años
 </ul>
 
 </section>
-<section id="slide-org6e42940">
-<h4 id="org6e42940">Evaluación de Ada</h4>
+<section id="slide-org1d22ebe">
+<h4 id="org1d22ebe">Evaluación de Ada</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Contribuciones
@@ -1565,8 +1565,8 @@ completado</li>
 </ul>
 
 </section>
-<section id="slide-orgc9c957d">
-<h4 id="orgc9c957d">Ada 95</h4>
+<section id="slide-org433d337">
+<h4 id="org433d337">Ada 95</h4>
 <ul>
 <li>Ada 95 (comenzó en 1988)
 <ul>
@@ -1584,13 +1584,13 @@ también debido a la popularidad de C++</li>
 </section>
 </section>
 <section>
-<section id="slide-orgfde7c0f">
-<h3 id="orgfde7c0f">Programación Orientada a Objetos (OOP)</h3>
-<div class="outline-text-3" id="text-orgfde7c0f">
+<section id="slide-orgf56b09a">
+<h3 id="orgf56b09a">Programación Orientada a Objetos (OOP)</h3>
+<div class="outline-text-3" id="text-orgf56b09a">
 </div>
 </section>
-<section id="slide-org70f1196">
-<h4 id="org70f1196">Smalltalk</h4>
+<section id="slide-org64b34a5">
+<h4 id="org64b34a5">Smalltalk</h4>
 <ul>
 <li>Desarrollado en Xerox PARC, inicialmente pro Alan Kay, luego por
 Adele Goldberg</li>
@@ -1602,8 +1602,8 @@ Adele Goldberg</li>
 </ul>
 
 </section>
-<section id="slide-org7a30396">
-<h4 id="org7a30396">Combinando OOP y Programación Imperativa: C++</h4>
+<section id="slide-orge0ea4c7">
+<h4 id="orge0ea4c7">Combinando OOP y Programación Imperativa: C++</h4>
 <ul>
 <li>Desarrollado en Laboratorios BELL por Stroustrup en 1980</li>
 <li>Evolución desde C y SIMULA 67</li>
@@ -1616,8 +1616,8 @@ Adele Goldberg</li>
 </ul>
 
 </section>
-<section id="slide-org2d4bb7c">
-<h4 id="org2d4bb7c">Lenguajes OOP relacionados</h4>
+<section id="slide-org9ea33f1">
+<h4 id="org9ea33f1">Lenguajes OOP relacionados</h4>
 <div style="font-size: 80%;">
 <ul>
 <li>Eiffel (diseñado por Bertrand Meyer 1992)
@@ -1638,8 +1638,8 @@ de C++ eran ya programadores de C.</li>
 </ul>
 
 </section>
-<section id="slide-org25809c9">
-<h4 id="org25809c9">Un lenguaje imperativo orientado a Objetos: Java</h4>
+<section id="slide-orgef27efd">
+<h4 id="orgef27efd">Un lenguaje imperativo orientado a Objetos: Java</h4>
 <div style="font-size: 90%;">
 <ul>
 <li>Desarrollado en Sun a principios de los 90
@@ -1661,8 +1661,8 @@ coercitivas de C++)</li>
 </ul>
 
 </section>
-<section id="slide-orgaa46da0">
-<h4 id="orgaa46da0">Evaluación de Java</h4>
+<section id="slide-org3aa683d">
+<h4 id="org3aa683d">Evaluación de Java</h4>
 <ul>
 <li>Elimina características inseguras de C++</li>
 <li>Características de concurrencia</li>
@@ -1676,13 +1676,14 @@ coercitivas de C++)</li>
 </section>
 </section>
 <section>
-<section id="slide-org6f974ea">
-<h3 id="org6f974ea">Lenguajes de <i>Scripting</i> para la WWW</h3>
-<div class="outline-text-3" id="text-org6f974ea">
+<section id="slide-org0f6bc6d">
+<h3 id="org0f6bc6d">Lenguajes de <i>Scripting</i> para la WWW</h3>
+<div class="outline-text-3" id="text-org0f6bc6d">
 </div>
 </section>
-<section id="slide-org2a684e4">
-<h4 id="org2a684e4"><i>Scripting</i></h4>
+<section id="slide-org03e3660">
+<h4 id="org03e3660"><i>Scripting</i></h4>
+<div style="font-size: 80%;">
 <ul>
 <li>JavaScript
 <ul>
