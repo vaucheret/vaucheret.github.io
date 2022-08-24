@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Historia</h2><p class="date">Created: 2022-08-24 mié 11:18</p>
+</section>
+
+
+<section>
+<section id="slide-orgd03e643">
+<h2 id="orgd03e643">Historia  de la IA</h2>
+<div class="outline-text-2" id="text-orgd03e643">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org533bf6b">
+<h3 id="org533bf6b">Historia y evolución de la IA</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><font color="red">Aristóteles - 300AC.</font> <img src="imagen/aristoteles.jpg" alt="aristoteles.jpg" /></td>
+<td class="org-left">Silogismos. Manera estructurada un conjunto de reglas,   funcionamiento de la mente humana al seguirlas reproducen concluciones racionales.</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org6a548bd">
+<h3 id="org6a548bd">Historia y evolución de la IA</h3>
+<div style="font-size: 70%;">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><font color="red">Ramon Llull - 1315</font> <img src="imagen/llull.jpg" alt="llull.jpg" /></td>
+<td class="org-left">En el año 1.315 (que fue su fecha de publicación aunque comenzó a trabajar en esta obra sobre 1.275),</td>
+</tr>
+
+<tr>
+<td class="org-left"><img src="imagen/ArsMagna.jpg" alt="ArsMagna.jpg" /></td>
+<td class="org-left">Ramon Llull expresó en el Ars Magna la idea de que el razonamiento podía implementarse de manera artificial en un artefacto mecánico.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+<a href="https://hipertextual.com/2012/03/inteligencia-artificial-ramon-llull-ars-magna">https://hipertextual.com/2012/03/inteligencia-artificial-ramon-llull-ars-magna</a>
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8acc879">
+<h3 id="org8acc879">Historia y evolución de la IA</h3>
+<p>
+<font color="red">El Turco: ¿jugador "automático" de ajedrez? - 1770</font>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/Turco4.jpg" alt="Turco4.jpg" /></td>
+<td class="org-left"><img src="imagen/Turco2.jpg" alt="Turco2.jpg" /></td>
+</tr>
+
+<tr>
+<td class="org-left">El Turco</td>
+<td class="org-left">Reconstrucción de El Turco</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgf858792">
+<h3 id="orgf858792">Historia y evolución de la IA</h3>
+<p>
+<font color="red">R.U.R.(Rossum's Universal Robots) - 1921</font>
+</p>
+
+<ul>
+<li>Obra teatral de ciencia ficción en el Teatro Nacional de Praga1</li>
+<li>Primera aparición del término <font color="red">robot</font>.</li>
+<li>Ideada por el hermano del autor, Josef Capek (1887 - 1945) a partir de la palabra checa <font color="red">robota</font>, que significa "Trabajo forzado"</li>
+<li>Este término vendría a sustituir a <font color=red>automat</font>, que había empleado Josef en el relato corto de 1917 Opilec (El borracho).</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf858792-split">
+
+
+<div id="org1c04dd4" class="figure">
+<p><img src="imagen/RURobra.jpg" alt="RURobra.jpg" />
+</p>
+</div>
+
+<p>
+Un hombre, una mujer y tres robots.
+</p>
+
+<p>
+Karel Capeken (checo)
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgd53849c">
+<h3 id="orgd53849c">Historia y evolución de la IA</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><font color=red>Leyes de Asimov - 1942.</font>  <img src="imagen/asimov2.jpeg" alt="asimov2.jpeg" /></td>
+<td class="org-left">En la ciencia ficción las tres leyes de la robótica son un conjunto de normas escritas por Isaac Asimov, que la mayoría de los robots de sus novelas y cuentos están diseñados para cumplir.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-orgd53849c-split">
+
+<div style="font-size: 70%;">
+
+
+<div id="org118e53a" class="figure">
+<p><img src="imagen/asimov.jpg" alt="asimov.jpg" height="300" />    
+</p>
+</div>
+
+<ol>
+<li>Un robot no hará daño a un ser humano o, por inacción, permitir que un ser humano sufra daño.</li>
+<li>Un robot debe obedecer las órdenes dadas por los seres humanos, excepto si entrasen en conflicto con la Ley 1.</li>
+<li>Un robot debe proteger su propia existencia en la medida en que esta protección no entre en conflicto con la Ley 1 o 2.</li>
+
+</ol>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgcfd37d4">
+<h3 id="orgcfd37d4">Historia y evolución de la IA</h3>
+<p>
+<font color=red>Modelo de neuronas Artificiales - 1943.</font>
+</p>
+
+<p height="300">
+<img src="imagen/wp.jpeg" alt="wp.jpeg" height="300" />
+<img src="imagen/neuronas.png" alt="neuronas.png" />
+</p>
+
+</section>
+<section id="slide-orgcfd37d4-split">
+
+<p>
+Se considera como el primer trabajo de la IA a:
+<font color="green">A logical calculus of the ideas immanent in nervous activity</font> W.S.McCulloch - 
+W.Pitts (1943) Se basaba en tres puntos:
+</p>
+
+<ul>
+<li>La fisiología básica de las neuronas del cerebro</li>
+<li>Lógica proposicional de Russell y Whitehead</li>
+<li>La Teoría de Computación propuesta por Turing.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb2b1f12">
+<h3 id="orgb2b1f12">Historia y evolución de la IA</h3>
+<p>
+<font color=red>Modelo de neuronas Artificiales - 1943.</font>
+</p>
+
+<div style="font-size: 70%;">
+
+<p height="200">
+<img src="imagen/McCulloch.JPG" alt="McCulloch.JPG" height="200" />
+ Warren McCulloch (1898 - 1969)
+</p>
+
+
+<p height="200">
+<img src="imagen/Pitts.jpg" alt="Pitts.jpg" height="200" />
+ Walter Pitts (1923 - 1969)
+</p>
+
+</section>
+<section id="slide-orgb2b1f12-split">
+
+
+
+<p>
+McCulloch y Pitts propusieron un modelo de <font color=red>neuronas artificiales</font> y demostraron que cualquier <font color=red>función computable</font> podía serlo por alguna red de neuronas artificiales y que todo <font color=red>conectivo lógico</font> podia ser implementado por estructuras de red simples. <font color="green">Idea de aprendizaje</font>
+</p>
+
+<p class="fragment (roll-in)">
+Sugerían en su trabajo que estas redes podían <font color=red>aprender</font>. 
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdc979c6">
+<h3 id="orgdc979c6">Historia y evolución de la IA</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Donald Hebb  <img src="imagen/hebb.jpeg" alt="hebb.jpeg" /></td>
+<td class="org-left"><font color=red>D.Hebb - 1949.</font>  Hebb demostró que una regla de actualización, que se conoce como <font color=red>aprendizaje de Hebbian</font> y  que modificaba la fortaleza de la conexión, permitía que ocurriera el aprendizaje.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org3b69aa4">
+<h3 id="org3b69aa4">Historia y evolución de la IA</h3>
+<p>
+<font color=red>Marvin Minsky y Dean Edmonds - 1950.</font>
+</p>
+
+
+<div id="org26e905f" class="figure">
+<p><img src="imagen/minsky1.jpg" alt="minsky1.jpg" />
+</p>
+</div>
+
+</section>
+<section id="slide-org3b69aa4-split">
+
+<ul>
+<li>Construyeron la primera computadora basada en redes neuronales (SNARC).</li>
+<li>Más tarde Minsky en su tesis doctoral estudia la computación en redes neuronales. El jurado dudaba en si esta clase de trabajo podría considerarse matemática. John von Neumann que era miembro del mismo aseguró: <font color=red>Si hoy este trabajo no es matemática algún día lo será</font></li>
+<li>Minsky mostró con su investigación en Redes Neuronales algunas limitaciones.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4f20ab8">
+<h3 id="org4f20ab8">Historia y evolución de la IA</h3>
+<div style="font-size: 60%;">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><font color=red>Alan Turing 1950</font>   <img src="imagen/turing.jpeg" alt="turing.jpeg" /></td>
+<td class="org-left">Se analizaba la pregunta: <font color="orange">Can Machines Think?</font> Para responderla propone el Test de Turing ( test operacional). Se presentó una lista de 9 posibles objeciones a la posibilidad de que una máquina pensara Introduce la idea de aprendizaje, algoritmos genéticos y aprendizaje por refuerzo. A comienzos de los 50s, Claude Shannon y Alan Turing propusieron técnicas para realizar programas que jugaban ajedrez.</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgeecca0b">
+<h3 id="orgeecca0b">Historia y evolución de la IA</h3>
+<div style="font-size: 60%;">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/SAM.JPG" alt="SAM.JPG" /> Arthur Samuel</td>
+<td class="org-left"><font color=red>Juegos de damas - 1952</font> Escribió un programa que jugaba ajedrez y eventualmente aprendía  a jugar hasta lograr un nivel alto de competencia. Al igual que Turing, Samuel  tenía problemas en encontrar tiempos de cómputo. Trabajaba de noche.</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org4a3cf75">
+<h3 id="org4a3cf75">Historia y evolución de la IA</h3>
+<div style="font-size: 60%;">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/jmCarthy.jpg" alt="jmCarthy.jpg" /> John McCarthy (1927 - 2011)</td>
+<td class="org-left"><font color=red>Nace en Dartmouth College el término "Inteligencia Artificial"- 1956</font> McCarthy convenció a Minsky, Shannon y Rochester para realizar una reunión de los investigadores interesados en <font color="orange">Teoría de Autómatas</font>, <font color="orange">Redes Neuronales</font> y el <font color="orange">estudio de la inteligencia</font>. Se organizó un Workshop de dos meses en Dartmouth College durante el verano de 1956.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org3b96bc3">
+<h3 id="org3b96bc3">Historia y evolución de la IA</h3>
+<div style="font-size: 60%;">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/SimonNewell.jpg" alt="SimonNewell.jpg" /> Herbert Simon y Allen Newell</td>
+<td class="org-left"><font color=red>Programa que razonaba Logic Theorist- 1956</font> Simon afirmó: <i>Hemos inventado un programa de computadora que es capaz de pensar en forma no numérica, y por lo tanto hemos resuelto el venerable problema Mente-Cuerpo</i> Este programa fue capaz de <font color=red>probar</font> la mayoría de los teoremas en el Capítulo 2 del <font color=red>Principia Mathematica</font> de Russell y Whitehead, encontrando incluso una <font color=red>demostración más elegante</font> que la contenida allí. Russell se mostró encantado con el resultado.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<a href="https://history-computer.com/ModernComputer/Software/LogicTheorist.html">https://history-computer.com/ModernComputer/Software/LogicTheorist.html</a>
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgd08979a">
+<h3 id="orgd08979a">Mucho entusiasmo (1952-1969)</h3>
+<p>
+<b>Look, Ma, no hands!</b>
+</p>
+
+<p>
+Estos años estuvieron llenos de <font color="blue">éxitos</font> sobre situaciones limitadas 
+</p>
+
+<p>
+En esos tiempos existía concenso externo al área con la objeción <font color="blue">Una máquina jamás podrá hacer X</font> para un gran listado de X, que Turing se ocupó de enumerar en su trabajo.
+</p>
+
+<p>
+Los investigadores en IA respondían demostrando que X era posible para una X tras otra.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org854d3ff">
+<h3 id="org854d3ff">Mucho entusiasmo (1952-1969)</h3>
+<p>
+<b>General Problem Solver (GPS)</b>
+Este programa fue diseñado por Simon, Shaw y Newell para imitar los <font color="blue">protocolos humanos de resolución de problemas</font> 
+Probablemente, este fue el primer programa que clasifica en la aproximación a IA de <font color="blue">pensar humanamente</font>.
+</p>
+
+<p class="fragment (roll-in)">
+<b>Geometry Theorem Prover</b>
+Rochester y sus colegas de IBM producen uno de los primeros programas de IA, en 1959.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org0d6c479">
+<h3 id="org0d6c479">Mucho entusiasmo (1952-1969)</h3>
+<p>
+<b><font color="green">John McCarthy (1958)</font></b>
+</p>
+
+<div style="font-size: 80%;">
+
+<ul>
+<li>En el MIT AI Lab Memo No. 1 definió el lenguaje LISP basado en el Cálculo Lambda.</li>
+<li>Motivado por la falta de tiempo de cómputo, inventó el <i>Tiempo Compartido</i> (time sharing).</li>
+<li>Publicó el artículo <i>Programs with Common Sense</i>: describía <i>Advice Taker</i>, un programa hipotético que puede considerarse como el primer sistema completo de IA. Las características centrales de la <i>Representación de Conocimiento y Razonamiento</i> ya estaban incluídas en <i>Advice Taker</i>: representación formal del mundo y manipulación por medio de procesos deductivos.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org4f2601e">
+<h3 id="org4f2601e">Mucho entusiasmo (1952-1969)</h3>
+<p>
+<b><font color="green">Marvin Minsky(1958)</font></b>
+</p>
+
+<div style="font-size: 90%;">
+<p>
+En el MIT trabajó junto a McCarthy. Pero McCarthy tomaría un enfoque basado en lógica para la representación del conocimiento y el razonamiento, a diferencia del enfoque tomado por Minsky.
+</p>
+
+
+<p>
+<b><font color="green">J.A. Robinson (1965)</font></b>
+</p>
+
+
+<p>
+Desarrolla el método de resolución, un algoritmo completo para la demostración de teoremas de la Lógica de Primer Orden. Este descubrimiento acelera los resultados de McCarthy, que en 1963 se muda a Standford.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org79169c8">
+<h3 id="org79169c8">Mucho entusiasmo (1952-1969)</h3>
+<div style="font-size: 100%;">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/shakey.jpg" alt="shakey.jpg" /></td>
+<td class="org-left">Shakey (1968) Standford Research Institute. El SRI desarrolló el primer <font color=red>proyecto robótico</font></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orge7a3de4">
+<h3 id="orge7a3de4">Mucho entusiasmo (1952-1969)</h3>
+<p>
+<b><font color="green">Marvin Minsky</font></b>
+</p>
+
+<div style="font-size: 80%;">
+<p>
+Supervisaba trabajos sobre problemas acotados, los que aparentemente requerían inteligencia para ser resueltos. Estos dominios limitados se conocieron como <font color="blue">micro-mundos</font>.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/mundobloques.jpg" alt="mundobloques.jpg" /> Mundo de Bloques</td>
+<td class="org-left">Existieron diferentes programas para diferentes micro-mundos, pero el micro-mundo más conocido es el <font color=red>mundo de bloques</font>.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc733339">
+<h3 id="orgc733339">Mucho entusiasmo (1952-1969)</h3>
+<p>
+<b><font color="green">Redes Neuronales</font></b>
+</p>
+
+<ul>
+<li>Winograd y Cowan (1963) mostraron que una gran cantidad de elementos juntos podían representar un único concepto, con la correspondiente mejora en la robustez y el paralelismo.</li>
+<li>En 1962, el método de Hebb de aprendizaje fue mejorado por Widrow y  Hoff (redes adalines) y Rosenblatt (perceptrones).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaad5765">
+<h3 id="orgaad5765">Una dosis de realidad(1966-1973)</h3>
+<p>
+<font color="green">La euforia ... hace a los investigadores predecir los éxitos futuros</font>
+</p>
+
+<p>
+<b><font color="green">Herbert Simon</font></b>
+</p>
+
+<p>
+En 1958 predijo que en <font color="orange">10 años</font> una computadora sería campeón de ajedrez, y que una computadora demostraría un importante teorema matemático.
+</p>
+
+<p class="fragment (roll-in)">
+Sin embargo, esto ocurrió <font color="orange">40 años después</font> &#x2026;
+</p>
+
+<p class="fragment (roll-in)">
+Los avances sobre micro-mundos <font color=red>fallaban</font> al resolver problemas más dificultosos
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org768cf25">
+<h3 id="org768cf25">Una dosis de realidad(1966-1973)</h3>
+<p>
+<b><font color="green">Problema 1</font></b>
+</p>
+
+<div style="font-size: 60%;">
+
+<p>
+<font color="fucsia">La mayoría de los programas contenía poco o nada de conocimiento de su tema. El éxito se daba por la simple manipulación sintáctica</font>
+</p>
+
+<p>
+Traducción doble del inglés al ruso y nuevamente al inglés:
+</p>
+
+<p>
+<font color=red>The spirit is willing but the flesh is weak</font>
+</p>
+
+<p>
+se convirtió luego de pasar al ruso y volver a ser
+traducida por la máquina en:
+</p>
+
+<p>
+<font color=red>The vodka is good but the meat is rotten</font>
+</p>
+
+<p class="fragment (roll-in)">
+En 1966 el gobierno canceló el financiamiento a estos proyectos.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgefa0c2d">
+<h3 id="orgefa0c2d">Una dosis de realidad(1966-1973)</h3>
+<p>
+<b><font color="green">Problema 2</font></b>
+</p>
+
+<div style="font-size: 60%;">
+
+<p>
+<font color="blue">Intratabilidad de los problemas que la IA intentaba resolver</font>
+</p>
+
+<p>
+La mayoría de los  programas de IA resolvían problemas probando diferentes caminos hasta encontrar una solución (explosión combinatoria). 
+</p>
+
+<p class="fragment (roll-in)">
+Esto funcionaba para micro-mundos y los investigadores creían en la hipótesis que con máquinas más potentes y con más memoria, se los podía extender para solucionar  problemas del mundo real.
+</p>
+
+<p class="fragment (roll-in)">
+Este optimismo desapareció con el desarrollo de la Teoría de la Complejidad Computacional :(
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org23d2061">
+<h3 id="org23d2061">Una dosis de realidad(1966-1973)</h3>
+<p>
+<b><font color="green">Problema 3</font></b>
+</p>
+
+<div style="font-size: 60%;">
+
+<p>
+<font color="blue">Limitaciones en las estructuras básicas utilizadas para generar comportamiento inteligente</font>
+</p>
+
+<p>
+Minsky y Papert (1969) publicaron <font color=red>Perceptrons</font> donde demostraron que si bien los perceptrones eran capaces de aprender cualquier cosa que pudieran representar, en realidad podían <font color=red>representar muy poco</font>
+</p>
+
+<p class="fragment (roll-in)">
+Aunque estos resultados no se aplicaban a las redes más complejas multi-capa, el <font color=red>financiamiento</font> para la investigación en redes neuronales se <font color=red>canceló</font>
+</p>
+
+<p class="fragment (roll-in)">
+Irónicamente, en 1969 Bryson y Ho desarrollaron un nuevo algoritmo de <font color=red>apredizaje por back-propagation</font> para redes multicapas, que dió lugar al <font color=red>resurgimiento</font> de las redes neuronales en los 80s
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org080cfec">
+<h3 id="org080cfec">Sistemas Basados en Conocimiento (1969-1979)</h3>
+<p>
+<b><font color="green">Métodos Débiles</font></b>
+</p>
+
+<div style="font-size: 80%;">
+
+<p>
+En la primera década de investigación en IA, la  resolución de problemas se basaban en métodos de búsqueda de
+propósito general, con utilización de <font color="#CC66FF">poca información del dominio</font>.
+</p>
+
+<p class="fragment (roll-in)">
+El cambio se dirige al uso de más <font color=red>conocimiento específico de un dominio</font> que permita  razonamiento más poderosos y el manejo  más sencillo  de casos típicos  en áreas más circunscriptas. 
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0f3151b">
+<h3 id="org0f3151b">Sistemas Basados en Conocimiento (1969-1979)</h3>
+<p>
+<b><font color="green">DENDRAL (1969)</font></b>
+</p>
+
+<div style="font-size: 80%;">
+
+<p>
+Primer Sistema Basado en Conocimiento, desarrollado en Standford por E.Feigenbaum. Infería estructura molecular de un compuesto
+a partir de información provista por un espectrómetro de masa y la fórmula química. Su calidad de experto provenía del gran número de
+reglas de propósito general que utilizaba. Los sistemas posteriores utilizaron un enfoque en el que se  <font color="#CC66FF">separaba el conocimiento</font> en forma de reglas del componente de <font color="#CC66FF">razonamiento</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org8c70acf">
+<h3 id="org8c70acf">Sistemas Basados en Conocimiento (1969-1979)</h3>
+<p>
+<b><font color="green">MYCIN (1969)</font></b>
+</p>
+
+<div style="font-size: 80%;">
+
+<p>
+Desarrollado por E.Feigenbaum, B.Buchanan y E.Shortliffe. Tenía la capacidad de diagnosticar enfermedades infecciosas en la sangre.
+ Una diferencia con DENDRAL fue que no poseía un modelo teórico que sustentara las reglas que utilizaba.Las reglas provenían de entrevistas con expertos del
+área. Otra diferencia importante, fue que MYCIN incorporó un cálculo de incertidumbre llamado  <font color="#CC66FF">factor de certeza</font>, que  reflejaba la propia incertidumbre del
+conocimiento médico al diagnosticar.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd34b971">
+<h3 id="orgd34b971">Sistemas Basados en Conocimiento (1969-1979)</h3>
+<p>
+<b><font color="green">SHRDLU</font></b>
+</p>
+
+<div style="font-size: 80%;">
+
+<p>
+Desarrollado por T.Winograd en el
+área de entendimiento de lenguaje natural que utilizaba
+gran cantidad de conocimiento en el dominio del mundo
+de bloques.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgce006a2">
+<h3 id="orgce006a2">Otros avances</h3>
+<p>
+Se desarrollaron diferentes <font color=red>lenguajes de representación de conocimiento y razonamiento</font>
+</p>
+
+<ul>
+<li><code>Prolog</code> se vuelve popular en Europa.</li>
+<li>Minsky en 1975, introduce la idea de <font color=red>frames</font>.</li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org95311b4">
+<h3 id="org95311b4">IA se vuelve una industria(1980-presente)</h3>
+<p>
+<b><font color="green">Sistema Experto R1 (1982)</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Desarrollado por D.McDermott para DEC con el propósito de ayudar a configurar
+los pedidos de nuevos sistemas de cómputo. En 1986, DEC reportó haber ahorrado u$a 40M por
+año. Para 1988, DEC tenía ya 40 sistemas en funcionamiento.
+</p>
+
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">Proyecto Quinta Generación (Japón-1981)</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+  Se construirían máquinas cuyo lenguaje máquina sería
+Prolog con el objetivo de acelerar la capacidad de
+inferencia de los sistemas.  Este proyecto no tuvo éxito pero impulsó el desarrollo de la IA en USA, Europa y otros paises del mundo.
+</p>
+
+
+
+<p class="fragment (roll-in)">
+(1988&#x2013;93)    La industria de los sistemas expertos decae: "Invierno de IA"
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org993c654">
+<h3 id="org993c654">Vuelven las Redes Neuronales(1986-presente)</h3>
+<ul>
+<li>A mediados de los años 80, al menos cuatro grupos diferentes reinventaron el algoritmo de back-propagation desarrollado en 1969 por Bryson y Ho.</li>
+
+</ul>
+
+
+<ul>
+<li>El algoritmo fue aplicado a diferentes problemas de aprendizaje en Ciencias de la Computación y Psicología.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org24f21bf">
+<h3 id="org24f21bf">Vuelven las Redes Neuronales(1986-presente)</h3>
+<p>
+<b><font color="green">Compiten los modelos:</font></b>  
+</p>
+<div style="font-size: 90%;">
+<ul>
+<li>Conexionismo:  presenta los fenómenos de la mente y del comportamiento como procesos que emergen de redes formadas por unidades sencillas interconectadas. Hay muchas formas de conexionismo, pero las formas más comunes son los modelos de redes neuronales.</li>
+
+<li>Simbólico</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga38b37e">
+<h3 id="orga38b37e">La IA adopta el Método Científico (1987-presente)</h3>
+<div style="font-size: 80%;">
+
+<ul>
+<li>A fines de los 80s se produce una revolución en el contenido y en la metodología de investigación de la IA.</li>
+<li>Algunos han visto este cambio como una victoria de los <font color=red>neats(pulcros)</font>, aquellos que piensan que las teorías en IA deben sustentarse en rigor formal, sobre los <font color=red>scruffy(desaliñados)</font>, aquellos que piensan que se deben construir prototipos y analizar aquellos que parecen funcionar.</li>
+<li>Ambas percepciones son necesarias y quizás al reenfocarse en aproximaciones más formales se demuestra una mayor madurez de la disciplina.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org55e076d">
+<h3 id="org55e076d">La IA adopta el Método Científico (1987-presente)</h3>
+<div style="font-size: 80%;">
+
+<ul>
+<li>Se comenzó a tratar de construir sobre la teoría existente en lugar de seguir creando nuevas teorías, a fin de:
+
+<ul>
+<li>fundamentar las afirmaciones  en teoremas rigurosos o evidencia experimental en vez que en la intuición; y</li>
+<li>de mostrar la relevancia  de las aplicaciones en el mundo real en vez de en mundos de <i>juguete</i>.</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org2f017e6">
+<h3 id="org2f017e6">La IA adopta el Método Científico (1987-presente)</h3>
+<div style="font-size: 80%;">
+
+<ul>
+<li>Algunos ejemplos son:
+
+<ul>
+<li>Reconocimiento Automático de Voz: utiliza modelos de Markov.</li>
+<li>Data Mining - Minería de Datos: consiste en la extracción no trivial de información que reside de manera implícita en los datos.</li>
+<li>Redes Bayesianas: formalismo que permite representación eficiente  y razonamiento riguroso de conocimiento incierto.</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga30e85a">
+<h3 id="orga30e85a">Agentes, agentes, en todas partes&#x2026; (1995-presente)</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/agente86.jpg" alt="agente86.jpg" /> Agente 86</td>
+<td class="org-left">El enfoque en el diseño de una entidad inteligente completa, <font color=red>el Agente</font> ha llevado a la necesidad de ensamblar diferentes resultados en una sola arquitectura.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org1150e4d">
+<h3 id="org1150e4d">AI a nivel humano(2004)</h3>
+<div style="font-size: 80%;">
+
+<ul>
+<li>IA a nivel humano otra vez en la agenda &#x2026;</li>
+
+<li>Varios investigadores como McCarthy, Minsky, Nilsson, Winston piensan que la IA debería poner  menos énfasis en crear versiones mejoradas de aplicaciones  que son buenas para una tarea específica como manejar autos o jugar ajedrez.</li>
+
+<li>En vez, piensan que la IA debería volver  a sus raices y esforzarse en, según palabras de Simon: <i>máquinas que piensen, que aprendan y que creen</i>.</li>
+
+<li>Esto se conoce como el esfuerzo de la IA a Nivel Humano.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgfa0cb51">
+<h3 id="orgfa0cb51">Disponibilidad de grandes volumenes de datos (2001-presente)</h3>
+<p>
+Desde el comienzo la Ciencias de la Computación puso énfasis en los <font color=red>algoritmos</font>.
+</p>
+
+<p>
+Actualmente, hay que preocuparse por los <font color=red>datos</font>.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org72e0f3c">
+<h2 id="org72e0f3c">Limitaciones de la IA</h2>
+<div class="outline-text-2" id="text-org72e0f3c">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7d78804">
+<h3 id="org7d78804">IA  Fuerte vs. Débil</h3>
+<p>
+<b><font color="green">IA Fuerte</font></b>
+ Una máquina que piense deberá tener  <font color="#CC66FF">conciencia</font> y  <font color="#CC66FF">mente real</font>.
+</p>
+
+<p>
+<b><font color="green">IA Débil</font></b>
+ Las máquinas podrían actuar  <font color="#CC66FF">como si</font> ellas fueran inteligentes.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge091578">
+<h3 id="orge091578">IA  Fuerte vs. Débil</h3>
+<p>
+<b><font color="green">Para pensar..</font></b>
+</p>
+
+<div style="font-size: 80%;">
+
+<ul>
+<li>Pasar el test de Turing significa que la máquina  <font color="#CC66FF">simula</font> pensar. ¿Vuela un avión? ¿Nada un submarino?</li>
+<li>Intención real de realizar algo.</li>
+<li>Estados mentales reales.</li>
+<li>Ser conciente de sus actos.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf62e275">
+<h3 id="orgf62e275">IA  Fuerte vs. Débil</h3>
+<p>
+<b><font color="green">Afirmaciones de John Searle</font></b>
+</p>
+
+<div style="font-size: 80%;">
+
+<ul>
+<li>Los programas de computadora son formales (sintácticos).</li>
+<li>Las mentes humanas tienen contenidos mentales (semántica).</li>
+<li>La sintaxis por sí misma no es consitutiva ni es suficiente para la semántica.</li>
+<li>Los cerebros hacen que tengamos mente.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3e0bf29">
+<h3 id="org3e0bf29">IA  Fuerte vs. Débil</h3>
+<p>
+<font color=red>El cuarto chino (J. Searle)</font>  Propuesto por Searle para demostrar que la idea de IA Fuerte es errónea.
+</p>
+
+
+<div id="org012b7c6" class="figure">
+<p><img src="imagen/cuartoChino.JPG" alt="cuartoChino.JPG" />
+</p>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8956989">
+<h3 id="org8956989">Inteligencia Artificial o Sintética</h3>
+<ul>
+<li><b><font color="green">Artificial</font></b>  Hecho por el hombre. Sugiere que es algo de calidad diferente a lo natural. 
+Por ejemplo, lago artificial, brazo artificial.</li>
+<li><b><font color="green">Sintético</font></b> <i>Producto</i> obtenido por procedimientos mecánicos,electrónicos o industriales y que imita otro <i>producto</i> natural. Por ejemplo, la perla de cultivo, césped sintético.</li>
+<li><b><font color="green">¿Computacional?</font></b></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org07d1152">
+<h3 id="org07d1152">Ética y Riesgos de desarrollar IA</h3>
+<p>
+<b><font color="green">Delegamos</font></b>
+</p>
+
+<div style="font-size: 80%;">
+<ul>
+<li>Las computadoras están haciendo mucho por nosotros sin nuestra intervención.</li>
+<li>Le estamos dando el <font color="#CC66FF">control</font> a las computadoras, aun en tareas críticas de seguridad. Ejemplos, fly-by-wire (vuelo por cable), donde se confía en el juicio del sistema más que en la experiencia del piloto.</li>
+<li><font color="#CC66FF">Lo siguiente en la agenda</font>: fly-by-wire cars, sistemas de frenado inteligente,  control de la navegación que mantiene distancia de un auto al de enfrente \(\ldots\)</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org64b980e">
+<h3 id="org64b980e">Ética y Riesgos de desarrollar IA</h3>
+<div style="font-size: 80%;">
+<p>
+Todos los profesionales  enfrentan consideradiones éticas de cómo deberían actuar en su trabajo, qué proyectos deberían 
+ser desarrollados  y cuáles no.  
+</p>
+
+<div style="font-size: 120%;">
+<ul>
+<li><b><font color="green">Algunos nuevos problemas que plantea la IA:</font></b></li>
+
+</ul>
+<div style="font-size: 80%;">
+<ul>
+<li>Las personas podrían perder sus trabajos por la automatización.</li>
+<li>Los sistemas de IA podrían ser usados con fines indeseables.</li>
+<li>El éxito de la IA podría significar el fin de la raza humana.</li>
+<li>Continúan&#x2026;.</li>
+
+</ul>
+
+<div style="font-size: 120%;">
+<p class="fragment (roll-in)">
+Leer 26.3 de Russell-Norvig
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org1308d5c">
+<h2 id="org1308d5c">estado del arte  de la IA</h2>
+<div class="outline-text-2" id="text-org1308d5c">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org30a6bd3">
+<h3 id="org30a6bd3">Estado del Arte</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/domotica.jpg" alt="domotica.jpg" /></td>
+<td class="org-left"><font color=red>Domótica</font>  <img src="imagen/domotica1.jpg" alt="domotica1.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgc567f0e">
+<h3 id="orgc567f0e">Estado del Arte</h3>
+<p>
+<font color=red>Video Juegos</font>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/age-of-empires.jpg" alt="age-of-empires.jpg" /> Age of Empires</td>
+<td class="org-left"><img src="imagen/starcraft.png" alt="starcraft.png" /> Starcraft</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org917ca20">
+<h3 id="org917ca20">Estado del Arte</h3>
+<p>
+<font color=red>Análisis de Sentimientos - Opinion Mining</font>
+</p>
+
+
+<div id="orgeeb1ade" class="figure">
+<p><img src="imagen/opmining1.jpg" alt="opmining1.jpg" height="400" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga871fe9">
+<h3 id="orga871fe9">Estado del Arte</h3>
+<p>
+<font color=red>Sistemas Inteligentes de Transportes</font>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/Chile-ITS.JPG" alt="Chile-ITS.JPG" /></td>
+<td class="org-left"><img src="imagen/TarifaCongestionSingapur.JPG" alt="TarifaCongestionSingapur.JPG" /></td>
+</tr>
+
+<tr>
+<td class="org-left">Cobro electrónico de peajes</td>
+<td class="org-left">Tarifa de Congestión Automática</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org85855e7">
+<h3 id="org85855e7">Estado del Arte</h3>
+<p>
+<font color=red>Robótica</font>
+</p>
+
+
+<div id="org23b2133" class="figure">
+<p><img src="imagen/curiosity.jpg" alt="curiosity.jpg" height="300" />
+</p>
+</div>
+
+<p>
+Curiosity: Robot en Marte
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7f5e471">
+<h3 id="org7f5e471">Estado del Arte</h3>
+<p>
+<font color=red>Robótica</font>
+</p>
+
+
+<div id="org01abf1b" class="figure">
+<p><img src="imagen/robofutbol.jpg" alt="robofutbol.jpg" height="300" />
+</p>
+</div>
+
+<p>
+Fútbol de Robots
+</p>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org4696c3f">
+<h3 id="org4696c3f">Estado del Arte</h3>
+<p>
+<b><font color="green">¿Cuales cosas de las siguientes se pueden hacer en el presente?</font></b>
+</p>
+<div style="font-size: 80%;">
+
+<ul>
+<li class="fragment roll-in">Manejar con seguridad en un camino sinuoso de montaña <font color="green">&check;</font></li>
+<li class="fragment roll-in">Manejar con seguridad en una avenida transitada  <font color="red">&check;</font></li>
+<li class="fragment roll-in">Realizar la compra semanal por internet <font color="green">&check;</font></li>
+<li class="fragment roll-in">Realizar la compra semanal en un supermercado  <font color="red">&check;</font></li>
+<li class="fragment roll-in">Jugar al bridge regularmente bien  <font color="green">&check;</font></li>
+<li class="fragment roll-in">Descubrir y probar un teorema matemático nuevo <font color="green">&check;</font></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org869be22">
+<h3 id="org869be22">Estado del Arte(cont)</h3>
+<p>
+<b><font color="green">¿Cuales cosas de las siguientes se pueden hacer en el presente?</font></b>
+</p>
+<div style="font-size: 80%;">
+
+<ul>
+<li class="fragment roll-in">Escribir una historia cómica en forma intencional <font color="red">&check;</font></li>
+<li class="fragment roll-in">Dar un asesoramiento legal competente en un area especializada de la ley  <font color="green">&check;</font></li>
+<li class="fragment roll-in">Traducir del Ingles al Sueco en tiempo real <font color="green">&check;</font></li>
+<li class="fragment roll-in">Conversar exitosamente con otra persona por más de tres horas  <font color="red">&check;</font></li>
+<li class="fragment roll-in">Realiza un operación quirúrgica complicada  <font color="green">&check;</font></li>
+<li class="fragment roll-in">Diseñar y ejecutar un programa de investigación en biología molecular <font color="green">&check;</font></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgbc986eb">
+<h2 id="orgbc986eb">IA en la actualidad</h2>
+<div class="outline-text-2" id="text-orgbc986eb">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org257ed2f">
+<h3 id="org257ed2f">IA en la actualidad</h3>
+<p>
+<b><font color="green">Aprendizaje Automático</font></b>
+</p>
+<div style="font-size: 80%;">
+
+<ul>
+<li class="fragment roll-in">Razonamiento basado en casos</li>
+<li class="fragment roll-in">Análisis de datos</li>
+<li class="fragment roll-in">Tareas de Clasificación</li>
+<li class="fragment roll-in">Aprendizaje por refuerzo</li>
+<li class="fragment roll-in">Computación evolutiva</li>
+<li class="fragment roll-in">Redes Neuronales</li>
+<li class="fragment roll-in">Clustering</li>
+<li class="fragment roll-in">Minería de texto</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org180ab60">
+<h3 id="org180ab60">IA en la actualidad</h3>
+<p>
+<b><font color="green">Ingeniería del conocimiento y aplicaciones</font></b>
+</p>
+<div style="font-size: 80%;">
+
+<ul>
+<li class="fragment roll-in">Lógica</li>
+<li class="fragment roll-in">Sistemas de apoyo a la decisión</li>
+<li class="fragment roll-in">Interacción hombre-máquina inteligente</li>
+<li class="fragment roll-in">Gestión del conocimiento</li>
+<li class="fragment roll-in">Representación del conocimiento</li>
+<li class="fragment roll-in">Ontologías y Web semántica</li>
+<li class="fragment roll-in">Sistemas multi-agente e IA distribuida</li>
+<li class="fragment roll-in">Ontologías</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgf85b904">
+<h3 id="orgf85b904">IA en la actualidad</h3>
+<p>
+<b><font color="green">ROBÓTICA</font></b>
+</p>
+<div style="font-size: 90%;">
+
+<ul>
+<li class="fragment roll-in">Robótica y control</li>
+<li class="fragment roll-in">Percepción (visión, reconocimiento del habla)</li>
+<li class="fragment roll-in">Creatividad, juegos, inteligencia ambiental</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org82c086f">
+<h3 id="org82c086f">IA en la actualidad</h3>
+<p>
+<b><font color="green">Procesamiento del lenguaje natural</font></b>
+</p>
+<div style="font-size: 80%;">
+
+<ul>
+<li class="fragment roll-in">traductores</li>
+<li class="fragment roll-in">correctores ortográficos</li>
+<li class="fragment roll-in">Recuperación de Información</li>
+<li class="fragment roll-in">Reconocimiento y sintetizador del habla</li>
+<li class="fragment roll-in">Simplificación - Resumen de texto</li>
+<li class="fragment roll-in">Diálogo</li>
+<li class="fragment roll-in">Generación automática de texto</li>
+<li class="fragment roll-in">&#x2026;</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga2a6212">
+<h3 id="orga2a6212">IA en la actualidad</h3>
+<p>
+<b><font color="green">Razonamiento</font></b>
+</p>
+<div style="font-size: 80%;">
+
+<ul>
+<li class="fragment roll-in">Satisfacción de restricciones</li>
+<li class="fragment roll-in">Búsqueda heurística</li>
+<li class="fragment roll-in">Razonamiento basado en modelos</li>
+<li class="fragment roll-in">Razonamiento no monotónico</li>
+<li class="fragment roll-in">Planificación de tareas y scheduling</li>
+<li class="fragment roll-in">Razonamiento cualitativo</li>
+<li class="fragment roll-in">Razonamiento con incertidumbre</li>
+<li class="fragment roll-in">Razonamiento temporal y espacial</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8a05592">
+<h3 id="org8a05592">Referencia Bibliográfica</h3>
+<p>
+<img src="imagen/book.png" alt="book.png" /> S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 1 y 26
+  2009
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

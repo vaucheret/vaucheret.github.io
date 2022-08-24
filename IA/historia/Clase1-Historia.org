@@ -1,0 +1,696 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Historia
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+
+* Historia  de la IA
+
+** Historia y evolución de la IA
+
+
+ | {{{color(red,Aristóteles - 300AC.)}}} [[file:imagen/aristoteles.jpg]] |  Silogismos. Manera estructurada un conjunto de reglas,   funcionamiento de la mente humana al seguirlas reproducen concluciones racionales. |
+
+
+** Historia y evolución de la IA
+
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+
+ | {{{color(red,Ramon Llull - 1315)}}} [[file:imagen/llull.jpg]] | En el año 1.315 (que fue su fecha de publicación aunque comenzó a trabajar en esta obra sobre 1.275),                                 |
+ | [[file:imagen/ArsMagna.jpg]]                                  | Ramon Llull expresó en el Ars Magna la idea de que el razonamiento podía implementarse de manera artificial en un artefacto mecánico. |
+
+
+ [[https://hipertextual.com/2012/03/inteligencia-artificial-ramon-llull-ars-magna]]
+
+
+** Historia y evolución de la IA
+
+{{{color(red,El Turco: ¿jugador "automático" de ajedrez? - 1770)}}}
+
+| [[file:imagen/Turco4.jpg]] | [[file:imagen/Turco2.jpg]]     |
+| El Turco               | Reconstrucción de El Turco |
+
+
+** Historia y evolución de la IA
+
+
+
+{{{color(red,R.U.R.(Rossum's Universal Robots) - 1921)}}}
+
+- Obra teatral de ciencia ficción en el Teatro Nacional de Praga1
+- Primera aparición del término {{{color(red,robot)}}}.
+- Ideada por el hermano del autor, Josef Capek (1887 - 1945) a partir de la palabra checa {{{color(red,robota)}}}, que significa "Trabajo forzado" 
+- Este término vendría a sustituir a {{{alert(automat)}}}, que había empleado Josef en el relato corto de 1917 Opilec (El borracho).
+
+#+REVEAL: split
+
+[[file:imagen/RURobra.jpg]]
+
+Un hombre, una mujer y tres robots.
+
+Karel Capeken (checo)
+
+
+** Historia y evolución de la IA
+
+| {{{alert(Leyes de Asimov - 1942.)}}}  [[file:imagen/asimov2.jpeg]] | En la ciencia ficción las tres leyes de la robótica son un conjunto de normas escritas por Isaac Asimov, que la mayoría de los robots de sus novelas y cuentos están diseñados para cumplir. |
+
+#+REVEAL: split
+
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+
+ #+ATTR_HTML: :height 300
+ [[file:imagen/asimov.jpg]]    
+
+1.  Un robot no hará daño a un ser humano o, por inacción, permitir que un ser humano sufra daño.
+2.   Un robot debe obedecer las órdenes dadas por los seres humanos, excepto si entrasen en conflicto con la Ley 1.
+3.  Un robot debe proteger su propia existencia en la medida en que esta protección no entre en conflicto con la Ley 1 o 2.
+
+
+** Historia y evolución de la IA
+
+{{{alert(Modelo de neuronas Artificiales - 1943.)}}}
+
+ #+ATTR_HTML: :height 300
+[[file:imagen/wp.jpeg]]
+[[file:imagen/neuronas.png]]
+
+#+REVEAL: split
+
+Se considera como el primer trabajo de la IA a:
+{{{color(green,A logical calculus of the ideas immanent in nervous activity)}}} W.S.McCulloch - 
+W.Pitts (1943) Se basaba en tres puntos:
+
+- La fisiología básica de las neuronas del cerebro
+- Lógica proposicional de Russell y Whitehead
+- La Teoría de Computación propuesta por Turing.
+
+** Historia y evolución de la IA
+
+{{{alert(Modelo de neuronas Artificiales - 1943.)}}}
+
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+
+ #+ATTR_HTML:  :height 200
+[[file:imagen/McCulloch.JPG]]
+ Warren McCulloch (1898 - 1969)
+
+ 
+ #+ATTR_HTML:  :height 200
+[[file:imagen/Pitts.jpg]]
+ Walter Pitts (1923 - 1969)
+
+#+REVEAL: split
+
+
+
+ McCulloch y Pitts propusieron un modelo de {{{alert(neuronas artificiales)}}} y demostraron que cualquier {{{alert(función computable)}}} podía serlo por alguna red de neuronas artificiales y que todo {{{alert(conectivo lógico)}}} podia ser implementado por estructuras de red simples. {{{color(green,Idea de aprendizaje)}}}
+
+ #+ATTR_REVEAL: :frag (roll-in) 
+ Sugerían en su trabajo que estas redes podían {{{alert(aprender)}}}. 
+
+
+** Historia y evolución de la IA
+
+| Donald Hebb  [[file:imagen/hebb.jpeg]]           | {{{alert(D.Hebb  - 1949.)}}}  Hebb demostró que una regla de actualización, que se conoce como {{{alert(aprendizaje de Hebbian)}}} y  que modificaba la fortaleza de la conexión, permitía que ocurriera el aprendizaje. |
+
+** Historia y evolución de la IA
+
+{{{alert(Marvin Minsky y Dean Edmonds  - 1950.)}}}
+
+[[file:imagen/minsky1.jpg]]
+
+#+REVEAL: split
+
+- Construyeron la primera computadora basada en redes neuronales (SNARC).
+- Más tarde Minsky en su tesis doctoral estudia la computación en redes neuronales. El jurado dudaba en si esta clase de trabajo podría considerarse matemática. John von Neumann que era miembro del mismo aseguró: {{{alert(Si hoy este trabajo no es matemática algún día lo será)}}}
+- Minsky mostró con su investigación en Redes Neuronales algunas limitaciones. 
+
+** Historia y evolución de la IA
+
+#+REVEAL_HTML: <div style="font-size: 60%;">   
+
+| {{{alert(Alan Turing 1950)}}}   [[file:imagen/turing.jpeg]]                             | Se analizaba la pregunta: {{{color(orange,Can Machines Think?)}}} Para responderla propone el Test de Turing ( test operacional). Se presentó una lista de 9 posibles objeciones a la posibilidad de que una máquina pensara Introduce la idea de aprendizaje, algoritmos genéticos y aprendizaje por refuerzo. A comienzos de los 50s, Claude Shannon y Alan Turing propusieron técnicas para realizar programas que jugaban ajedrez. |
+
+
+** Historia y evolución de la IA
+
+#+REVEAL_HTML: <div style="font-size: 60%;">
+
+|   [[file:imagen/SAM.JPG]] Arthur Samuel                                                 | {{{alert(Juegos de damas - 1952)}}} Escribió un programa que jugaba ajedrez y eventualmente aprendía  a jugar hasta lograr un nivel alto de competencia. Al igual que Turing, Samuel  tenía problemas en encontrar tiempos de cómputo. Trabajaba de noche. |
+
+
+** Historia y evolución de la IA
+
+#+REVEAL_HTML: <div style="font-size: 60%;">
+
+| [[file:imagen/jmCarthy.jpg]] John McCarthy (1927 - 2011) | {{{alert(Nace en Dartmouth College el término  "Inteligencia Artificial"- 1956)}}} McCarthy convenció a Minsky, Shannon y Rochester para realizar una reunión de los investigadores interesados en {{{color(orange,Teoría de Autómatas)}}}, {{{color(orange,Redes Neuronales)}}} y el {{{color(orange,estudio de la inteligencia)}}}. Se organizó un Workshop de dos meses en Dartmouth College durante el verano de 1956.  |
+
+** Historia y evolución de la IA
+
+#+REVEAL_HTML: <div style="font-size: 60%;">
+
+| [[file:imagen/SimonNewell.jpg]] Herbert Simon y Allen Newell | {{{alert(Programa que razonaba Logic Theorist- 1956)}}} Simon afirmó: /Hemos inventado un programa de computadora que es capaz de pensar en forma no numérica, y por lo tanto hemos resuelto el venerable problema Mente-Cuerpo/ Este programa fue capaz de {{{alert(probar)}}} la mayoría de los teoremas en el Capítulo 2 del {{{alert(Principia Mathematica)}}} de Russell y Whitehead, encontrando incluso una {{{alert(demostración más elegante)}}} que la contenida allí. Russell se mostró encantado con el resultado.  |
+
+[[https://history-computer.com/ModernComputer/Software/LogicTheorist.html]]
+
+
+** Mucho entusiasmo (1952-1969)
+
+
+ *Look, Ma, no hands!*
+
+Estos años estuvieron llenos de {{{color(blue,éxitos)}}} sobre situaciones limitadas 
+
+En esos tiempos existía concenso externo al área con la objeción {{{color(blue,Una máquina jamás podrá hacer X)}}} para un gran listado de X, que Turing se ocupó de enumerar en su trabajo.
+
+Los investigadores en IA respondían demostrando que X era posible para una X tras otra.
+
+
+** Mucho entusiasmo (1952-1969)
+
+
+ *General Problem Solver (GPS)*
+ Este programa fue diseñado por Simon, Shaw y Newell para imitar los {{{color(blue,protocolos humanos de resolución de problemas)}}} 
+ Probablemente, este fue el primer programa que clasifica en la aproximación a IA de {{{color(blue,pensar humanamente)}}}.
+
+ #+ATTR_REVEAL: :frag (roll-in)
+ *Geometry Theorem Prover*
+ Rochester y sus colegas de IBM producen uno de los primeros programas de IA, en 1959.
+
+
+** Mucho entusiasmo (1952-1969)
+
+*{{{color(green,John McCarthy (1958))}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+- En el MIT AI Lab Memo No. 1 definió el lenguaje LISP basado en el Cálculo Lambda.
+- Motivado por la falta de tiempo de cómputo, inventó el /Tiempo Compartido/ (time sharing).
+- Publicó el artículo /Programs with Common Sense/: describía /Advice Taker/, un programa hipotético que puede considerarse como el primer sistema completo de IA. Las características centrales de la /Representación de Conocimiento y Razonamiento/ ya estaban incluídas en /Advice Taker/: representación formal del mundo y manipulación por medio de procesos deductivos. 
+
+
+** Mucho entusiasmo (1952-1969)
+
+*{{{color(green,Marvin Minsky(1958))}}}*
+
+#+REVEAL_HTML: <div style="font-size: 90%;">
+En el MIT trabajó junto a McCarthy. Pero McCarthy tomaría un enfoque basado en lógica para la representación del conocimiento y el razonamiento, a diferencia del enfoque tomado por Minsky.
+
+
+*{{{color(green,J.A. Robinson (1965))}}}*
+
+
+Desarrolla el método de resolución, un algoritmo completo para la demostración de teoremas de la Lógica de Primer Orden. Este descubrimiento acelera los resultados de McCarthy, que en 1963 se muda a Standford.
+
+** Mucho entusiasmo (1952-1969)
+
+#+REVEAL_HTML: <div style="font-size: 100%;">
+
+| [[file:imagen/shakey.jpg]]  |Shakey (1968) Standford Research Institute. El SRI desarrolló el primer {{{alert(proyecto robótico)}}} |
+
+** Mucho entusiasmo (1952-1969)
+
+*{{{color(green,Marvin Minsky)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Supervisaba trabajos sobre problemas acotados, los que aparentemente requerían inteligencia para ser resueltos. Estos dominios limitados se conocieron como {{{color(blue,micro-mundos)}}}.
+
+| [[file:imagen/mundobloques.jpg]] Mundo de Bloques | Existieron diferentes programas para diferentes micro-mundos, pero el micro-mundo más conocido es el {{{alert(mundo de bloques)}}}. |
+    
+** Mucho entusiasmo (1952-1969)
+
+*{{{color(green,Redes Neuronales)}}}*
+
+- Winograd y Cowan (1963) mostraron que una gran cantidad de elementos juntos podían representar un único concepto, con la correspondiente mejora en la robustez y el paralelismo.
+- En 1962, el método de Hebb de aprendizaje fue mejorado por Widrow y  Hoff (redes adalines) y Rosenblatt (perceptrones).
+
+** Una dosis de realidad(1966-1973)
+
+{{{color(green,La euforia ...   hace  a los investigadores predecir los éxitos futuros)}}}
+
+*{{{color(green,Herbert Simon)}}}*
+
+En 1958 predijo que en {{{color(orange,10 años)}}} una computadora sería campeón de ajedrez, y que una computadora demostraría un importante teorema matemático.
+
+ #+ATTR_REVEAL: :frag (roll-in)
+Sin embargo, esto ocurrió {{{color(orange,40 años después)}}} ...
+
+ #+ATTR_REVEAL: :frag (roll-in) 
+Los avances sobre micro-mundos {{{alert(fallaban)}}} al resolver problemas más dificultosos
+
+** Una dosis de realidad(1966-1973)
+
+*{{{color(green,Problema 1)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 60%;">
+
+{{{color(fucsia,La mayoría de los programas contenía poco o nada de conocimiento de su tema. El éxito se daba por la 
+simple manipulación sintáctica)}}}
+
+Traducción doble del inglés al ruso y nuevamente al inglés:
+ 
+{{{alert(The spirit is willing but the flesh is weak)}}}
+
+se convirtió luego de pasar al ruso y volver a ser
+traducida por la máquina en:
+
+{{{alert(The vodka is good but the meat is rotten)}}}
+
+ #+ATTR_REVEAL: :frag (roll-in) 
+ En 1966 el gobierno canceló el financiamiento a estos proyectos.
+
+** Una dosis de realidad(1966-1973)
+
+*{{{color(green,Problema 2)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 60%;">
+
+{{{color(blue,Intratabilidad de los problemas que la IA intentaba resolver)}}}
+
+La mayoría de los  programas de IA resolvían problemas probando diferentes caminos hasta encontrar una solución (explosión combinatoria). 
+
+#+ATTR_REVEAL: :frag (roll-in) 
+Esto funcionaba para micro-mundos y los investigadores creían en la hipótesis que con máquinas más potentes y con más memoria, se los podía extender para solucionar  problemas del mundo real.
+
+#+ATTR_REVEAL: :frag (roll-in) 
+Este optimismo desapareció con el desarrollo de la Teoría de la Complejidad Computacional :(
+
+
+
+** Una dosis de realidad(1966-1973)
+
+*{{{color(green,Problema 3)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 60%;">
+
+{{{color(blue,Limitaciones en las estructuras básicas utilizadas para generar comportamiento inteligente)}}}
+
+Minsky y Papert (1969) publicaron {{{alert(Perceptrons)}}} donde demostraron que si bien los perceptrones eran capaces de aprender cualquier cosa que pudieran representar, en realidad podían {{{alert(representar muy poco)}}}
+
+#+ATTR_REVEAL: :frag (roll-in) 
+Aunque estos resultados no se aplicaban a las redes más complejas multi-capa, el {{{alert(financiamiento)}}} para la investigación en redes neuronales se {{{alert(canceló)}}}
+
+#+ATTR_REVEAL: :frag (roll-in) 
+Irónicamente, en 1969 Bryson y Ho desarrollaron un nuevo algoritmo de {{{alert(apredizaje por back-propagation)}}} para redes multicapas, que dió lugar al {{{alert(resurgimiento)}}} de las redes neuronales en los 80s
+
+** Sistemas Basados en Conocimiento (1969-1979)
+
+*{{{color(green,Métodos Débiles)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+En la primera década de investigación en IA, la  resolución de problemas se basaban en métodos de búsqueda de
+propósito general, con utilización de {{{color(#CC66FF,poca información del dominio)}}}.
+
+#+ATTR_REVEAL: :frag (roll-in)
+El cambio se dirige al uso de más {{{alert(conocimiento  específico de un dominio)}}} que permita  razonamiento más poderosos y el manejo  más sencillo  de casos típicos  en áreas más circunscriptas. 
+
+** Sistemas Basados en Conocimiento (1969-1979)
+
+*{{{color(green,DENDRAL (1969))}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+Primer Sistema Basado en Conocimiento, desarrollado en Standford por E.Feigenbaum. Infería estructura molecular de un compuesto
+a partir de información provista por un espectrómetro de masa y la fórmula química. Su calidad de experto provenía del gran número de
+reglas de propósito general que utilizaba. Los sistemas posteriores utilizaron un enfoque en el que se  {{{color(#CC66FF,separaba el conocimiento)}}} en forma de reglas del componente de {{{color(#CC66FF,razonamiento)}}}.
+
+** Sistemas Basados en Conocimiento (1969-1979)
+
+*{{{color(green,MYCIN (1969))}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+Desarrollado por E.Feigenbaum, B.Buchanan y E.Shortliffe. Tenía la capacidad de diagnosticar enfermedades infecciosas en la sangre.
+ Una diferencia con DENDRAL fue que no poseía un modelo teórico que sustentara las reglas que utilizaba.Las reglas provenían de entrevistas con expertos del
+área. Otra diferencia importante, fue que MYCIN incorporó un cálculo de incertidumbre llamado  {{{color(#CC66FF,factor de certeza)}}}, que  reflejaba la propia incertidumbre del
+conocimiento médico al diagnosticar.
+
+** Sistemas Basados en Conocimiento (1969-1979)
+
+*{{{color(green,SHRDLU)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+Desarrollado por T.Winograd en el
+área de entendimiento de lenguaje natural que utilizaba
+gran cantidad de conocimiento en el dominio del mundo
+de bloques.
+
+** Otros avances
+
+Se desarrollaron diferentes {{{alert(lenguajes de representación de conocimiento y razonamiento)}}}
+
+ * ~Prolog~ se vuelve popular en Europa.
+ * Minsky en 1975, introduce la idea de {{{alert(frames)}}}.
+
+
+ 
+** IA se vuelve una industria(1980-presente)
+
+*{{{color(green,Sistema Experto R1 (1982))}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Desarrollado por D.McDermott para DEC con el propósito de ayudar a configurar
+los pedidos de nuevos sistemas de cómputo. En 1986, DEC reportó haber ahorrado u$a 40M por
+año. Para 1988, DEC tenía ya 40 sistemas en funcionamiento.
+
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,Proyecto Quinta Generación (Japón-1981))}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+  Se construirían máquinas cuyo lenguaje máquina sería
+Prolog con el objetivo de acelerar la capacidad de
+inferencia de los sistemas.  Este proyecto no tuvo éxito pero impulsó el desarrollo de la IA en USA, Europa y otros paises del mundo.
+
+
+
+#+ATTR_REVEAL: :frag (roll-in)
+(1988--93)    La industria de los sistemas expertos decae: "Invierno de IA"
+
+
+** Vuelven las Redes Neuronales(1986-presente)
+
+- A mediados de los años 80, al menos cuatro grupos diferentes reinventaron el algoritmo de back-propagation desarrollado en 1969 por Bryson y Ho.
+
+
+- El algoritmo fue aplicado a diferentes problemas de aprendizaje en Ciencias de la Computación y Psicología.
+
+** Vuelven las Redes Neuronales(1986-presente)
+
+*{{{color(green,Compiten los modelos:)}}}*  
+#+REVEAL_HTML: <div style="font-size: 90%;">
+- Conexionismo:  presenta los fenómenos de la mente y del comportamiento como procesos que emergen de redes formadas por unidades sencillas interconectadas. Hay muchas formas de conexionismo, pero las formas más comunes son los modelos de redes neuronales.
+
+- Simbólico
+
+** La IA adopta el Método Científico (1987-presente)
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+- A fines de los 80s se produce una revolución en el contenido y en la metodología de investigación de la IA.
+- Algunos han visto este cambio como una victoria de los {{{alert(neats(pulcros))}}}, aquellos que piensan que las teorías en IA deben sustentarse en rigor formal, sobre los {{{alert(scruffy(desaliñados))}}}, aquellos que piensan que se deben construir prototipos y analizar aquellos que parecen funcionar.
+- Ambas percepciones son necesarias y quizás al reenfocarse en aproximaciones más formales se demuestra una mayor madurez de la disciplina.
+
+** La IA adopta el Método Científico (1987-presente)
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+- Se comenzó a tratar de construir sobre la teoría existente en lugar de seguir creando nuevas teorías, a fin de:
+
+  - fundamentar las afirmaciones  en teoremas rigurosos o evidencia experimental en vez que en la intuición; y
+  - de mostrar la relevancia  de las aplicaciones en el mundo real en vez de en mundos de /juguete/.
+
+
+** La IA adopta el Método Científico (1987-presente)
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+- Algunos ejemplos son:
+
+  - Reconocimiento Automático de Voz: utiliza modelos de Markov.
+  - Data Mining - Minería de Datos: consiste en la extracción no trivial de información que reside de manera implícita en los datos.
+  - Redes Bayesianas: formalismo que permite representación eficiente  y razonamiento riguroso de conocimiento incierto.
+
+    
+** Agentes, agentes, en todas partes... (1995-presente)
+
+| [[file:imagen/agente86.jpg]] Agente 86 | El enfoque en el diseño de una entidad inteligente completa, {{{alert(el Agente)}}} ha llevado a la necesidad de ensamblar diferentes resultados en una sola arquitectura.  |
+
+** AI a nivel humano(2004)
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+- IA a nivel humano otra vez en la agenda ...
+
+- Varios investigadores como McCarthy, Minsky, Nilsson, Winston piensan que la IA debería poner  menos énfasis en crear versiones mejoradas de aplicaciones  que son buenas para una tarea específica como manejar autos o jugar ajedrez. 
+
+- En vez, piensan que la IA debería volver  a sus raices y esforzarse en, según palabras de Simon: /máquinas que piensen, que aprendan y que creen/.
+
+- Esto se conoce como el esfuerzo de la IA a Nivel Humano.
+ 
+
+** Disponibilidad de grandes volumenes de datos (2001-presente)
+
+Desde el comienzo la Ciencias de la Computación puso énfasis en los {{{alert(algoritmos)}}}.
+
+Actualmente, hay que preocuparse por los {{{alert(datos)}}}.
+
+
+* Limitaciones de la IA
+
+** IA  Fuerte vs. Débil
+
+*{{{color(green,IA Fuerte)}}}*
+ Una máquina que piense deberá tener  {{{color(#CC66FF,conciencia)}}} y  {{{color(#CC66FF,mente real)}}}.
+
+*{{{color(green,IA Débil)}}}*
+ Las máquinas podrían actuar  {{{color(#CC66FF,como si)}}} ellas fueran inteligentes.
+
+** IA  Fuerte vs. Débil
+
+*{{{color(green,Para pensar..)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+-  Pasar el test de Turing significa que la máquina  {{{color(#CC66FF,simula)}}} pensar. ¿Vuela un avión? ¿Nada un submarino?
+-  Intención real de realizar algo.
+-  Estados mentales reales.
+- Ser conciente de sus actos.
+
+** IA  Fuerte vs. Débil
+
+*{{{color(green,Afirmaciones de John Searle)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+- Los programas de computadora son formales (sintácticos).
+-  Las mentes humanas tienen contenidos mentales (semántica).
+-  La sintaxis por sí misma no es consitutiva ni es suficiente para la semántica.
+- Los cerebros hacen que tengamos mente.
+
+** IA  Fuerte vs. Débil
+ 
+
+ {{{alert(El cuarto chino (J. Searle))}}}  Propuesto por Searle para demostrar que la idea de IA Fuerte es errónea.
+
+ [[file:imagen/cuartoChino.JPG]]
+
+
+ 
+** Inteligencia Artificial o Sintética
+
+- *{{{color(green,Artificial)}}}*  Hecho por el hombre. Sugiere que es algo de calidad diferente a lo natural. 
+ Por ejemplo, lago artificial, brazo artificial.
+- *{{{color(green,Sintético)}}}* /Producto/ obtenido por procedimientos mecánicos,electrónicos o industriales y que imita otro /producto/ natural. Por ejemplo, la perla de cultivo, césped sintético.
+- *{{{color(green,¿Computacional?)}}}*
+
+** Ética y Riesgos de desarrollar IA
+
+*{{{color(green,Delegamos)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- Las computadoras están haciendo mucho por nosotros sin nuestra intervención.
+- Le estamos dando el {{{color(#CC66FF,control)}}} a las computadoras, aun en tareas críticas de seguridad. Ejemplos, fly-by-wire (vuelo por cable), donde se confía en el juicio del sistema más que en la experiencia del piloto.
+- {{{color(#CC66FF,Lo siguiente en la agenda)}}}: fly-by-wire cars, sistemas de frenado inteligente,  control de la navegación que mantiene distancia de un auto al de enfrente $\ldots$
+
+** Ética y Riesgos de desarrollar IA
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Todos los profesionales  enfrentan consideradiones éticas de cómo deberían actuar en su trabajo, qué proyectos deberían 
+ser desarrollados  y cuáles no.  
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+- *{{{color(green,Algunos nuevos problemas que plantea la IA:)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+    - Las personas podrían perder sus trabajos por la automatización.
+    - Los sistemas de IA podrían ser usados con fines indeseables.
+    - El éxito de la IA podría significar el fin de la raza humana.
+    - Continúan....
+
+#+REVEAL_HTML: <div style="font-size: 120%;">    
+#+ATTR_REVEAL: :frag (roll-in)    
+ Leer 26.3 de Russell-Norvig
+  
+* estado del arte  de la IA
+
+** Estado del Arte
+
+|  [[file:imagen/domotica.jpg]] | {{{alert(Domótica)}}}  [[file:imagen/domotica1.jpg]]    |
+
+
+** Estado del Arte
+
+{{{alert(Video Juegos)}}}
+
+| [[file:imagen/age-of-empires.jpg]] Age of Empires | [[file:imagen/starcraft.png]] Starcraft |
+
+
+** Estado del Arte
+
+{{{alert(Análisis de Sentimientos - Opinion Mining)}}}
+
+ #+ATTR_HTML:  :height 400
+[[file:imagen/opmining1.jpg]]
+
+
+** Estado del Arte
+
+{{{alert(Sistemas Inteligentes de Transportes)}}}
+
+| [[file:imagen/Chile-ITS.JPG]]   | [[file:imagen/TarifaCongestionSingapur.JPG]] |
+| Cobro electrónico de peajes | Tarifa de Congestión Automática          |
+
+ 
+** Estado del Arte
+
+{{{alert(Robótica)}}}
+
+ #+ATTR_HTML:  :height 300
+[[file:imagen/curiosity.jpg]]
+
+ Curiosity: Robot en Marte
+
+** Estado del Arte
+
+{{{alert(Robótica)}}}
+
+ #+ATTR_HTML:  :height 300
+[[file:imagen/robofutbol.jpg]]
+
+Fútbol de Robots
+
+
+
+ 
+** Estado del Arte
+
+*{{{color(green,¿Cuales cosas de las siguientes se pueden hacer en el presente?)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+- Manejar con seguridad en un camino sinuoso de montaña {{{color(green,&check;)}}} 
+- Manejar con seguridad en una avenida transitada  {{{color(red,&check;)}}}
+- Realizar la compra semanal por internet {{{color(green,&check;)}}}
+- Realizar la compra semanal en un supermercado  {{{color(red,&check;)}}}
+- Jugar al bridge regularmente bien  {{{color(green,&check;)}}}
+- Descubrir y probar un teorema matemático nuevo {{{color(green,&check;)}}}
+
+
+** Estado del Arte(cont)
+
+*{{{color(green,¿Cuales cosas de las siguientes se pueden hacer en el presente?)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+- Escribir una historia cómica en forma intencional {{{color(red,&check;)}}} 
+- Dar un asesoramiento legal competente en un area especializada de la ley  {{{color(green,&check;)}}}
+- Traducir del Ingles al Sueco en tiempo real {{{color(green,&check;)}}}
+- Conversar exitosamente con otra persona por más de tres horas  {{{color(red,&check;)}}}
+- Realiza un operación quirúrgica complicada  {{{color(green,&check;)}}}
+- Diseñar y ejecutar un programa de investigación en biología molecular {{{color(green,&check;)}}}
+
+
+*  IA en la actualidad
+
+** IA en la actualidad
+
+*{{{color(green,Aprendizaje Automático)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+-  Razonamiento basado en casos
+-  Análisis de datos
+-  Tareas de Clasificación
+-  Aprendizaje por refuerzo
+-  Computación evolutiva
+-  Redes Neuronales
+-  Clustering
+-  Minería de texto
+
+
+** IA en la actualidad
+
+*{{{color(green,Ingeniería del conocimiento y aplicaciones)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+-  Lógica
+-  Sistemas de apoyo a la decisión
+-  Interacción hombre-máquina inteligente
+-  Gestión del conocimiento
+-  Representación del conocimiento
+-  Ontologías y Web semántica
+-  Sistemas multi-agente e IA distribuida
+-  Ontologías
+
+
+** IA en la actualidad
+
+*{{{color(green,ROBÓTICA, PERCEPCIÓN)}}}*
+#+REVEAL_HTML: <div style="font-size: 90%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+-  Robótica y control
+-  Percepción (visión, reconocimiento del habla)
+-  Creatividad, juegos, inteligencia ambiental
+
+
+** IA en la actualidad
+
+*{{{color(green,Procesamiento del lenguaje natural)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+-  traductores
+-  correctores ortográficos
+-  Recuperación de Información
+-  Reconocimiento y sintetizador del habla
+-  Simplificación - Resumen de texto
+-  Diálogo
+-  Generación automática de texto
+-  ...
+
+
+** IA en la actualidad
+
+*{{{color(green,Razonamiento)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+-  Satisfacción de restricciones
+-  Búsqueda heurística
+-  Razonamiento basado en modelos
+-  Razonamiento no monotónico
+-  Planificación de tareas y scheduling
+-  Razonamiento cualitativo
+-  Razonamiento con incertidumbre
+-  Razonamiento temporal y espacial
+
+  
+** Referencia Bibliográfica
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+[[file:imagen/page.png]] El Turco:  http://es.wikipedia.org/wiki/El_Turco 1770
+
+[[file:imagen/book.png]] S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 1 y 26
+  2009
+
+[[file:imagen/book.png]]  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 1
+  1998
+  
+	
