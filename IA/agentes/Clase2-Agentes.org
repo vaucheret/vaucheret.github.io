@@ -1,0 +1,509 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Agentes
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+
+* Agente Racional
+
+** ¿Hacia dónde vamos según las definiciones de IA?
+
+- De las definiciones de Inteligencia Artificial, nos enfocaremos en  aquella que tiene que ver con el {{{alert(Comportamiento racional)}}}.
+
+- Nos concentraremos en:
+  - los {{{alert(principios generales)}}} de los *{{{color(#808000,Agentes Racionales)}}}* y
+  - sobre los {{{color(blue,componentes para construirlos)}}}.
+
+#+ATTR_REVEAL: :frag (roll-in)    
+{{{color(#CC66FF,Pero ¿qué es un agente racional?)}}}
+
+** Agente Racional
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Un {{{alert(agente racional)}}} es aquel que {{{color(blue,hace las acciones correctas)}}}
+
+| [[file:imagen/piercebrosnan007.jpg]] | [[file:imagen/caos.jpg]] | [[file:imagen/AgenteSmith.png]]  |
+
+
+** Agente Racional
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+-   ¿Qué significa hacer la acción correcta?
+
+-   Una acción correcta, es aquella que causa que el agente sea más 
+
+  {{{alert(Exitoso)}}}
+   #+ATTR_HTML:  :height 200
+   [[file:imagen/exitoso.jpg]] 
+
+- Una {{{color(blue,secuencia de acciones)}}} afectan al ambiente que pasa por una {{{color(blue,secuencia de estados)}}}
+- {{{alert(Medida de performance)}}} criterio objetivo que establece cuán exitoso es el comportamiento del agente.
+
+** Agente Racional
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+-  ¿Cómo definimos esa  {{{alert(medida de performance?)}}}
+
+#+ATTR_REVEAL: :frag (roll-in)
+- Evalúa cuán deseable es la secuencia de estados del ambiente generados por la secuencia de acciones del agente.
+
+#+ATTR_REVEAL: :frag (roll-in)  
+| [[file:imagen/robot-limpieza2.jpg]] |  Cantidad de veces que recolecto  basura en un lapso de  tiempo T.  Tres puntos por cada oficina limpia en cada paso del tiempo   |
+
+  
+  
+** Agente Racional
+
+*{{{color(green,Medidas de perfomance de)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+ -  Robot de fútbol
+ -  Clasificador de manzanas rojas y verdes
+ -  Juega a las damas
+ -  Video Game: juego de rol
+ -  Agente en moto de reparto
+ -  etc.
+
+** Agente Racional
+
+*{{{alert(Medida de Performance)}}}*
+
+*{{{color(green,Es mejor...)}}}*
+diseñar las medidas de performance de acuerdo a lo que uno realmente {{{color(#FF5733,quiere en el ambiente)}}} en vez de considerar la forma en que  uno piensa que {{{color(green,el agente se debería comportar)}}}.
+
+** Agente Racional
+
+*{{{alert(Racionalidad)}}}*
+
+*{{{color(green,en un momento dado depende de:)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 90%;">
+
+#+ATTR_REVEAL: :frag (roll-in)    
+- La medida de performance que define un criterio de éxito.
+-  El conocimiento a priori del ambiente
+-  Las acciones que el agente puede ejecutar
+-  La secuencia de percepciones  del agente hasta el momento.
+
+
+** Agente Racional
+
+*{{{color(green,Agente Racional)}}}*
+#+REVEAL_HTML: <div style="font-size: 90%;">
+- Para cada posible secuencia de percepciones, un {{{color(#FF5733,agente racional)}}} elige la acción
+  - que  {{{color(#CC66FF,maximiza)}}} el valor esperado de la medida de perfomance, 
+  - dada la evidencia provista por la {{{color(#CC66FF,secuencia de percepciones)}}} 
+  - y el conocimiento {{{color(#CC66FF,predefinido)}}} que el agente tiene.
+
+
+** Racionalidad $\not =$ Omnisciencia
+
+*{{{color(green,Agente Omnisciente)}}}*
+Es aquel que conoce el {{{color(blue,resultado real)}}} de sus acciones y puede actuar de acuerdo a ello.
+| [[file:imagen/9dejulio.jpg]] |  La omnisciencia es {{{alert(imposible)}}} en la realidad  Racionalidad $\not =$ clarividencia   |
+
+La definición que dimos de agente racional no requiere omnisciencia porque la elección racional depende de la secuencia de percepciones.
+
+** Racionalidad
+
+*{{{color(green,Exploración)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+- Reunir información antes de elegir la acción adecuada.
+Ejemplo del cruce en donde no miro para ambos lados.
+
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,Autonomía)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+- Toma decisiones en forma {{{alert(independiente)}}}. Sus decisiones y sus acciones están bajo {{{color(green,su propio control)}}}. Tiene sus propias /creencias/, /deseos/ e /intenciones/, es decir, no es sirviente  de otros. Tiene su propia agenda. Si un agente confía en el conocimiento a priori de su diseñador en vez de en sus percepciones entonces se dice que {{{alert(le falta autonomía)}}}.
+
+#+REVEAL: split
+
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,Aprendizaje)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+- A medida que el agente gana experiencia, debe modificar y  aumentar su conocimiento a priori. Un agente aprende cuando mejora la performance  de tareas futuras después de hacer observaciones sobre el mundo.
+
+** Estructura de un Agente
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+*{{{color(green,Agente = Arquitectura + Programa)}}}*
+-  "reales"
+-  "artificiales"
+-  software agents or "softbots"
+
+| [[file:imagen/jamesbond.jpg]]  | [[file:imagen/AgenteSmith.png]]  | [[file:imagen/intart01.jpg]]  |
+
+
+** Tipos de Agentes
+
+-  Agente reflexo simple
+-  Agente reflexo con estado interno
+-  Agente orientado a metas
+-  Agente orientado a la utilidad
+-  Agente que  aprende
+
+  
+** Agente Reactivo o Reflexo Simple
+
+- Agentes que simplemente {{{alert(reaccionan)}}} por un estímulo del ambiente.
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+ATTR_REVEAL: :frag (roll-in)    
+   - Seleccionan una acción en base a la percepción actual, ignorando el resto de la historia de percepciones (el pasado): $$Ag: P \longrightarrow A$$
+   - No mantienen ninguna representación explícita  interna del ambiente.
+   - Las  decisiones son implementadas en alguna forma de  mapeo directo entre {{{color(green,situación-acción)}}} o {{{color(green,condición-acción)}}}. 
+  
+** Agente Reflexo Simple
+
+[[file:imagen/reflex.jpg]]
+
+** Agente Reactivo o Reflexo Simple
+
+[[file:imagen/alarma.jpg]]
+
+** Agente Reactivo o Reflexo Simple
+#+REVEAL_HTML: <div style="font-size: 90%;">
+Comportamiento es dirigido por el principio de {{{alert(estímulo-respuesta)}}} característico de los reflejos de humanos, animales y plantas.
+
+*{{{color(green,Ventajas)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+   - Simplicidad. 
+   - Tratabilidad computacional.
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,Limitaciones)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+    - Sólo trabajan bien si la acción correcta puede determinarse en base a la percepción actual. (ambiente totalmente observable).
+    - Posibilidad de loops infinitos bajo ambientes parcialmente observables.
+    - Incapacidad de analizar la consecuencia futura de las acciones.
+    - Difíciles de escalar.
+
+      
+** Agente Reflexo con Estado Interno
+
+Esto es muy simple, y normalmente se necesita un estado interno para
+
+-   ver como cambia el ambiente independientemente del agente y 
+-   como afectan las acciones del agente al ambiente.
+
+** Agente Reflexo con Estado Interno
+
+[[file:imagen/state.jpg]]
+
+** Agente orientado a Metas
+
+-  El agente necesita {{{alert(información de sus metas)}}} para escoger qué acciones las pueden cumplir
+-  Pueden usarse técnicas de búsqueda y planificación.
+-  Esto lo puede hacer más flexible (ej., si está lloviendo ajustar la efectividad de los frenos).
+
+** Agente orientado a Metas
+
+[[file:imagen/goal.jpg]]
+
+** Agente orientado a la Utilidad
+
+-  Las metas por si solas no son suficientes para generar un comportamiento de buena calidad.
+-  Para esto necesitamos una medida de utilidad (función que mapea un estado o secuencia de estados con un número real).
+
+** Agente orientado a la Utilidad
+
+[[file:imagen/utility.jpg]]
+
+** Agentes que Aprenden
+
+La idea es que las percepciones no se usen sólo para {{{alert(actuar)}}}, sino también para {{{alert(mejorar)}}} su desempeño en el futuro.
+
+** Agentes que Aprenden
+
+[[file:imagen/lerning.jpg]]
+
+** Características Intrínsecas
+
+| Propiedad          | Rango de Valores                |
+|--------------------+---------------------------------|
+| Duración           | Transitorio a Larga Vida        |
+| Nivel de Cognición | Reactivo a Deliberativo         |
+| Construcción       | Declarativo a Procedural        |
+| Movilidad          | Estático a Itinerante           |
+| Adaptabilidad      | Fijo a Entrenable a Autodidacta |
+
+
+
+** Características Externas
+#+REVEAL_HTML: <div style="font-size: 80%;">
+| Propiedad        | Rango de Valores                                                                                                                              |
+|------------------+-----------------------------------------------------------------------------------------------------------------------------------------------|
+| Ubicación        | Local a Remota                                                                                                                                |
+| Autonomía Social | Independiente a Controlada                                                                                                                    |
+| Sociabilidad     | Autista, Dispuesto, Responsable, Miembro de un equipo                                                                                         |
+| Amigabilidad     | Cooperativo a Competitivo                                                                                                                     |
+| Interacciones    | Logística: directo o vía facilitadores Estilo: con agentes / con el mundo / ambos Nivel Semántico: comunicaciones declarativas o procedurales |
+
+** Inteligencia Artificial Distribuida
+
+- Muchos problemas:
+
+  - pueden o deben ser resueltos en forma distribuida, ya que la información está {{{color(blue,distribuida físicamente)}}}
+  - pueden ser resueltos en forma {{{color(green,concurrente)}}}
+  - que están débilmente acoplados pueden ser resueltos en forma {{{color(#CC66FF,cooperativa)}}} por diferentes agentes.
+
+Así aparece la idea de {{{alert(Inteligencia Artificial Distribuida)}}} y de {{{alert(Sistemas Multiagente)}}}
+
+** Inteligencia Artificial Distribuida-DAI
+
+*{{{color(green,DAI)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+DAI es el estudio, construcción y aplicación de sistemas multiagente, esto es, sistemas  en los cuales  varios agentes inteligentes interactúan persiguiendo algún conjunto de objetivos o ejecutando algún conjunto de tareas.
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Sistemas Multiagente)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Un Sistema Multiagente es uno que consiste de un número de agentes, que interactúan  entre ellos. En el caso más general, los agentes actúan  en favor de sus usuarios con diferentes metas y motivaciones.
+
+** Sistemas Multiagente - MAS
+
+*{{{color(green,Habilidades Sociales de los MAS)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+  -  /Coordinación/: orientada a la meta o a la tarea a realizar. Ej.: cuando dos agentes  requieren de  un recurso.
+  -  /Cooperación/: varios agentes tratan de combinar  sus esfuerzos para lograr un objetivo en grupo. Ningún agente puede en forma solitaria lograr el objetivo o bien  la cooperación hace obtener mejores resultados (por ejemplo, obtener resultados en forma más rápida).
+  -  /Competición/: varios agentes  tratan de obtener lo que solo algunos de ellos  pueden tener.
+  -  /Negociación/: varios agentes tratan de obtener su mayor  beneficio logrando un acuerdo. Típicamente involucra una oferta y contraoferta, con compromisos hechos por los participantes.
+
+    
+** Sistemas Multiagente
+
+*{{{color(green,Distinguimos los Problemas Micro y Macro)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ * /Diseño del Agente/  ¿Cómo construimos agentes que son capaces de acciones independientes y autónomas, con el objetivo de llevar a cabo en forma exitosa, tareas  que le delegamos?
+ * /Diseño de la Sociedad/  ¿Cómo construimos agentes que son capaces de interactuar (cooperando, coordinando, negociando) con otros agentes, con el objeto de llevar a cabo en forma exitosa, tareas que le delegamos, particularmente cuando los otros agentes no necesariamente comparten los mismos intereses/metas?
+
+** Agentes Inteligentes
+Resumiendo $\ldots$
+
+*{{{color(green,Un agente inteligente)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ *  Es capaz de acciones autónomas flexibles, es decir:
+     - *{{{alert(Reactividad:)}}}* son capaces de percibir su ambiente y responder a cambios que ocurren.
+     - *{{{alert(Pro-actividad:)}}}* son capaces de exhibir funcionamiento orientado a un objetivo, tomando la iniciativa
+     - *{{{alert(Habilidad social:)}}}*  son capaces de interactuar con otros agentes (o humanos)
+
+ Con el fin de satisfacer sus objetivos.
+
+ 
+ 
+** SMA vs. OO
+#+REVEAL_HTML: <div style="font-size: 70%;">
+| Objeto                                         | Agente                                          |
+|------------------------------------------------+-------------------------------------------------|
+| Ejecuta los métodos invocados                  | Autonomía de decisión                           |
+| Flujo de control del llamante                  | Flujo de control propio                         |
+| Encapsula estado y comportamiento              | Encapsula la activación del comportamiento      |
+| Estado: valor de variables                     | Estado mental: objetivos, creencias, $\ldots$   |
+| Comportamiento: salida a partir de una entrada | Comportamiento: cómo decidir lo que hacer       |
+| Mensajes invocan procedimiento                 | Interacciones: actos de habla (intencionalidad) |
+| Asociaciones entre objetos                     | Organización: relaciones sociales entre agentes |
+
+** SMA vs. Sistemas Expertos
+#+REVEAL_HTML: <div style="font-size: 90%;">
+| Sistemas Expertos                                    | Agentes                                                         |
+|------------------------------------------------------+-----------------------------------------------------------------|
+| Sistemas cerrados                                    | Interactúan con el entorno                                      |
+| Sistemas de decisión centralizados                   | Distribución de la toma de decisiones: Comportamiento emergente |
+| Interacción con el usuario bajo petición del usuario | Mayor grado de interacción con el usuario                       |
+|                                                      | Interacción con otros agentes                                                                |
+
+
+** Sobre la utilidad de los agentes
+
+La primera pregunta que habrá que plantearse cuando se va a realizar un sistema es: 
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+{{{alert(¿Hace falta utilizar agentes?)}}}
+
+{{{color(green,o bastaría con objetos componentes ...)}}}
+
+** Aplicaciones
+#+REVEAL_HTML: <div style="font-size: 80%;">
+-  Servicios de información en Internet
+		-   Recuperación y extracción de información 
+-  Comercio electrónico
+		-  Mercado de servicios electrónico
+		-   Negociación
+-  Equipos móviles y PCs en el hogar
+-  Redes públicas de telecomunicaciones
+		-  Provisión de servicios bajo demanda
+		-   Descentralización del control y gestión de redes
+-  Gestión de procesos (workflow)
+-  Simulación de sistemas dinámicos
+-  Juegos (bots)
+-  Robótica
+-  Etc.
+
+** Sobre la utilidad de los agentes
+#+REVEAL_HTML: <div style="font-size: 80%;">
+	-  En el diseño de sistemas distribuidos los agentes proporcionan:
+		-  Aspectos sociales
+		-  Lenguajes y protocolos de comunicación de agentes
+		-  Distribución de datos, control, conocimiento, recursos
+	-  En el análisis de un sistema los agentes tienen un mayor grado de abstraccion que los objetos o componentes:
+		-  Mayor autonomía y capacidad de decisión
+		-  Varios componentes heterogéneos que mantienen relaciones entre ellos y con escalas de tiempo diferentes
+		-  Modelado de sistemas naturales y sociales
+
+
+** Sobre la utilidad de los agentes
+#+REVEAL_HTML: <div style="font-size: 80%;">
+	-  Facilitan la evolución:
+		-  Adaptación a modificaciones y al entorno
+		-  	Escalabilidad: añadir agentes para soportar mayor carga de trabajo
+		-  	Añadir/quitar funcionalidad en tiempo de ejecución
+		-  	Desarrollo incremental
+		-  	Sistemas abiertos: capacidad de aceptar nuevos elementos
+	-  Pero no siempre son la solución ideal
+		-  Ausencia de control/visión global del sistema
+
+** Agentes
+
+*{{{color(green,¿Qué es un Agente Inteligente?)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- Son {{{alert(entidades)}}}:
+
+  - {{{color(#CC66FF,perciben)}}} el ambiente
+  - {{{color(#CC66FF,actúan)}}} en él
+  - {{{color(#CC66FF,razonan)}}}
+  - {{{color(#CC66FF,se comunican)}}} con otros agentes
+
+** Especificación del Ambiente de Tarea: PEAS
+
+    - {{{alert(P)}}}: Medida de Performance 
+    - {{{alert(E)}}}: Ambiente que el agente enfrenta.
+    - {{{alert(A)}}}: Actuadores que utiliza el agente para interactuar con el ambiente
+    - {{{alert(S)}}}: Sensores con los que percibe el agente
+
+** Ejemplo:Taxi Automático
+#+ATTR_REVEAL: :frag (roll-in)    
+    -  Medidas de Perfomance? Seguridad, destino, comodidad etc
+    -  Ambiente? Calles locales/autopistas, tráfico, peatones, clima, etc
+    -  Actuadores? Acelerador, display, volante, freno,  bocina, 
+    -  Sensores?  Video, velocímetro, sensores del motor, GPS, etc
+
+** Propiedades de los  Ambientes
+
+*{{{color(green,Completamente Observable vs. Parcialmente Observable)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Un ambiente es completamente observable si los sensores del agente detectan todos los aspectos relevantes para decidir que acción debe llevarse a cabo.  Ej Poker VS. Damas 
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Ejercicios)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ -  Juego de ajedrez
+ -  Juego de robot de tipo humanoide cuyos ojos son cámaras
+ -  Taxista
+ -  Internet
+
+   
+** Propiedades de los  Ambientes
+
+
+*{{{color(green,Determinístico vs. Estocástico)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Si el siguiente estado del ambiente está completamente determinado por el estado actual y la acción ejecutada por el agente, luego el ambiente es {{{alert(determinísitico)}}}. Si otros factores influyen en el próximo estado del ambiente, éste es estocástico.  
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Ejercicios)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ -  Un softbot que simula a una persona en un juego de computadora 
+ -  Juego de dados
+ -  Solitario
+
+** Propiedades de los  Ambientes
+
+*{{{color(green,Agente Único vs. Multi-agente)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+La resolución involucra un único agente o a un  sistema multiagentes(MAS). En un  MAS, debemos identificar qué identidades  deben ser vistas como agentes  o simples objetos. La clave está en si el comportamiento de la entidad B se describe mejor  como la maximización de una medida de performance cuyo valor depende del comportamiento de la entidad A.
+
+Los ambientes  multiagente puede ser:
+  -  Competitivos: ajedrez, taxi (competimos para estacionar :) 
+  -  Cooperativos: taxi (cooperamos para no chocar :).
+
+    
+** Propiedades de los  Ambientes
+*{{{color(green,Episódico vs. Secuencial)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+En un ambiente {{{alert(episódico)}}}, la experiencia del agente está dividida en episodios atómicos. En cada episodio, el agente percibe y ejecuta una acción simple y el siguiente episodio no depende de las acciones tomadas en episodios anteriores. Las tareas de clasificación pueden clasificarse como episódicos. Ej: Ruleta Vs Ajedrez
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Ejercicios)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+  -  juego de damas.
+  -  Brazo mecánico.
+  -  el detector de basura en las botellas de una cervecería
+ 
+** Propiedades de los  Ambientes
+
+*{{{color(green,Estático vs. Dinámico)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Si el ambiente puede cambiar mientras que el agente delibera, luego el ambiente es {{{alert(dinámico)}}}.  Ej. Civilization II VS. Age of Empires Si el ambiente no cambia con el pasaje del tiempo, pero la performance del agente cambia, luego decimos que el ambiente   es {{{alert(semidinámico)}}}. Los ambientes dinámicos tienen dos consecuencias importantes: Un agente debe percibir continuamente, porque aún si no ha ejecutado  ninguna acción entre los tiempos t0 y t1 , el agente no puede  asumir que el estado del ambiente sea el mismo en t0 que en t1; Otros procesos en el ambiente pueden interferir con las acciones del agente, incluyendo las acciones de otros agentes.
+
+#+REVEAL: split
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Ejercicios)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ -  Ajedrez 
+ -  Ajedrez con reloj
+ -  juego de robots
+ -  Internet
+
+   
+** Propiedades de los  Ambientes
+
+*{{{color(green,Discreto vs. Contínuo)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Esta distinción se aplica al {{{alert(estado)}}}  del ambiente, al modo en que se maneja el {{{alert(tiempo)}}} y  a las {{{alert(percepciones)}}} y {{{alert(acciones)}}} del agente.
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Ejercicios)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ -  juego de ajedrez
+ -  Internet
+ -  Calendrario y Celular.
+
+** Propiedades de los  Ambientes
+
+*{{{color(green,Conocido vs. No Conocido)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Se refiere más al estado de conocimiento del agente sobre las {{{alert(leyes o reglas del ambiente)}}}. Diferente de parcial - completamente observable. Ejemplo, el solitario es parcialmente observable pero conozco las reglas, por lo que es conocido.   
+
+** Ejemplos
+#+REVEAL_HTML: <div style="font-size: 80%;">
+|                | Solitario | Backgammon | Ajedrez con reloj | Taxi |
+|----------------+-----------+------------+-------------------+------|
+| Observable     | No        | Si         | Si                | No   |
+| Deterministico | No        | No         | Si                | No   |
+| Episódico      | No        | No         | No                | No   |
+| Estático       | Si        | Si         | Sem               | No   |
+| Discreto       | Si        | Si         | Ni:)              | No   |
+
+** Referencia Bibliográfica
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+[[file:imagen/book.png]] S. Russell  y P.Norvig
+  /Artificial Intelligence: A Modern Approach (Third Edition)./
+  Capítulo 2
+  /2009/
+
+[[file:imagen/book.png]]   M. Wooldridge
+  /An Itroduction to Multiagent Systems. Second Edition/
+  Capítulo 2 (hasta sección 2.4 inclusive) /2009/
+
+file:imagen/book.png   G. Weiss 
+  /Multiagent Systems: A modern approach to Distributed Artificial Intelligence. Second Edition/
+  Prólogo - Capítulo 1   /2000/
+	

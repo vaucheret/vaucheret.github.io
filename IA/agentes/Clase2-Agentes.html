@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Agentes</h2><p class="date">Created: 2022-08-24 mié 18:50</p>
+</section>
+
+
+<section>
+<section id="slide-org0b6bed2">
+<h2 id="org0b6bed2">Agente Racional</h2>
+<div class="outline-text-2" id="text-org0b6bed2">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2b0b8af">
+<h3 id="org2b0b8af">¿Hacia dónde vamos según las definiciones de IA?</h3>
+<ul>
+<li>De las definiciones de Inteligencia Artificial, nos enfocaremos en  aquella que tiene que ver con el <font color=red>Comportamiento racional</font>.</li>
+
+<li>Nos concentraremos en:
+<ul>
+<li>los <font color=red>principios generales</font> de los <b><font color="#808000">Agentes Racionales</font></b> y</li>
+<li>sobre los <font color="blue">componentes para construirlos</font>.</li>
+
+</ul></li>
+
+</ul>
+
+<p class="fragment (roll-in)">
+<font color="#CC66FF">Pero ¿qué es un agente racional?</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org46c19f8">
+<h3 id="org46c19f8">Agente Racional</h3>
+<div style="font-size: 70%;">
+<p>
+Un <font color=red>agente racional</font> es aquel que <font color="blue">hace las acciones correctas</font>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/piercebrosnan007.jpg" alt="piercebrosnan007.jpg" /></td>
+<td class="org-left"><img src="imagen/caos.jpg" alt="caos.jpg" /></td>
+<td class="org-left"><img src="imagen/AgenteSmith.png" alt="AgenteSmith.png" /></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org25c410e">
+<h3 id="org25c410e">Agente Racional</h3>
+<div style="font-size: 70%;">
+
+<ul>
+<li>¿Qué significa hacer la acción correcta?</li>
+
+<li><p>
+Una acción correcta, es aquella que causa que el agente sea más 
+</p>
+
+<p>
+<font color=red>Exitoso</font>
+</p>
+
+<div id="org37b66ef" class="figure">
+<p><img src="imagen/exitoso.jpg" alt="exitoso.jpg" height="200" /> 
+</p>
+</div></li>
+
+<li>Una <font color="blue">secuencia de acciones</font> afectan al ambiente que pasa por una <font color="blue">secuencia de estados</font></li>
+<li><font color=red>Medida de performance</font> criterio objetivo que establece cuán exitoso es el comportamiento del agente.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf76a301">
+<h3 id="orgf76a301">Agente Racional</h3>
+<div style="font-size: 70%;">
+
+<ul>
+<li>¿Cómo definimos esa  <font color=red>medida de performance?</font></li>
+
+</ul>
+
+<ul>
+<li class="fragment roll-in">Evalúa cuán deseable es la secuencia de estados del ambiente generados por la secuencia de acciones del agente.</li>
+
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" class="fragment (roll-in)">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/robot-limpieza2.jpg" alt="robot-limpieza2.jpg" /></td>
+<td class="org-left">Cantidad de veces que recolecto  basura en un lapso de  tiempo T.  Tres puntos por cada oficina limpia en cada paso del tiempo</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgedb1a14">
+<h3 id="orgedb1a14">Agente Racional</h3>
+<p>
+<b><font color="green">Medidas de perfomance de</font></b>
+</p>
+<div style="font-size: 80%;">
+
+<ul>
+<li class="fragment roll-in">Robot de fútbol</li>
+<li class="fragment roll-in">Clasificador de manzanas rojas y verdes</li>
+<li class="fragment roll-in">Juega a las damas</li>
+<li class="fragment roll-in">Video Game: juego de rol</li>
+<li class="fragment roll-in">Agente en moto de reparto</li>
+<li class="fragment roll-in">etc.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org68f4ec0">
+<h3 id="org68f4ec0">Agente Racional</h3>
+<p>
+<b><font color=red>Medida de Performance</font></b>
+</p>
+
+<p>
+<b><font color="green">Es mejor...</font></b>
+diseñar las medidas de performance de acuerdo a lo que uno realmente <font color="#FF5733">quiere en el ambiente</font> en vez de considerar la forma en que  uno piensa que <font color="green">el agente se debería comportar</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org3068538">
+<h3 id="org3068538">Agente Racional</h3>
+<p>
+<b><font color=red>Racionalidad</font></b>
+</p>
+
+<p>
+<b><font color="green">en un momento dado depende de:</font></b>
+</p>
+
+<div style="font-size: 90%;">
+
+<ul>
+<li class="fragment roll-in">La medida de performance que define un criterio de éxito.</li>
+<li class="fragment roll-in">El conocimiento a priori del ambiente</li>
+<li class="fragment roll-in">Las acciones que el agente puede ejecutar</li>
+<li class="fragment roll-in">La secuencia de percepciones  del agente hasta el momento.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org19ee47e">
+<h3 id="org19ee47e">Agente Racional</h3>
+<p>
+<b><font color="green">Agente Racional</font></b>
+</p>
+<div style="font-size: 90%;">
+<ul>
+<li>Para cada posible secuencia de percepciones, un <font color="#FF5733">agente racional</font> elige la acción
+<ul>
+<li>que  <font color="#CC66FF">maximiza</font> el valor esperado de la medida de perfomance,</li>
+<li>dada la evidencia provista por la <font color="#CC66FF">secuencia de percepciones</font></li>
+<li>y el conocimiento <font color="#CC66FF">predefinido</font> que el agente tiene.</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga3a186a">
+<h3 id="orga3a186a">Racionalidad \(\not =\) Omnisciencia</h3>
+<p>
+<b><font color="green">Agente Omnisciente</font></b>
+Es aquel que conoce el <font color="blue">resultado real</font> de sus acciones y puede actuar de acuerdo a ello.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/9dejulio.jpg" alt="9dejulio.jpg" /></td>
+<td class="org-left">La omnisciencia es <font color=red>imposible</font> en la realidad  Racionalidad \(\not =\) clarividencia</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+La definición que dimos de agente racional no requiere omnisciencia porque la elección racional depende de la secuencia de percepciones.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org732d627">
+<h3 id="org732d627">Racionalidad</h3>
+<p>
+<b><font color="green">Exploración</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Reunir información antes de elegir la acción adecuada.</li>
+
+</ul>
+<p>
+Ejemplo del cruce en donde no miro para ambos lados.
+</p>
+
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">Autonomía</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Toma decisiones en forma <font color=red>independiente</font>. Sus decisiones y sus acciones están bajo <font color="green">su propio control</font>. Tiene sus propias <i>creencias</i>, <i>deseos</i> e <i>intenciones</i>, es decir, no es sirviente  de otros. Tiene su propia agenda. Si un agente confía en el conocimiento a priori de su diseñador en vez de en sus percepciones entonces se dice que <font color=red>le falta autonomía</font>.</li>
+
+</ul>
+
+</section>
+<section id="slide-org732d627-split">
+
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">Aprendizaje</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>A medida que el agente gana experiencia, debe modificar y  aumentar su conocimiento a priori. Un agente aprende cuando mejora la performance  de tareas futuras después de hacer observaciones sobre el mundo.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6690643">
+<h3 id="org6690643">Estructura de un Agente</h3>
+<div style="font-size: 70%;">
+<p>
+<b><font color="green">Agente = Arquitectura + Programa</font></b>
+</p>
+<ul>
+<li>"reales"</li>
+<li>"artificiales"</li>
+<li>software agents or "softbots"</li>
+
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagen/jamesbond.jpg" alt="jamesbond.jpg" /></td>
+<td class="org-left"><img src="imagen/AgenteSmith.png" alt="AgenteSmith.png" /></td>
+<td class="org-left"><img src="imagen/intart01.jpg" alt="intart01.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org82c9f49">
+<h3 id="org82c9f49">Tipos de Agentes</h3>
+<ul>
+<li>Agente reflexo simple</li>
+<li>Agente reflexo con estado interno</li>
+<li>Agente orientado a metas</li>
+<li>Agente orientado a la utilidad</li>
+<li>Agente que  aprende</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8dbffd5">
+<h3 id="org8dbffd5">Agente Reactivo o Reflexo Simple</h3>
+<ul>
+<li>Agentes que simplemente <font color=red>reaccionan</font> por un estímulo del ambiente.</li>
+
+</ul>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">Seleccionan una acción en base a la percepción actual, ignorando el resto de la historia de percepciones (el pasado): \[Ag: P \longrightarrow A\]</li>
+<li class="fragment roll-in">No mantienen ninguna representación explícita  interna del ambiente.</li>
+<li class="fragment roll-in">Las  decisiones son implementadas en alguna forma de  mapeo directo entre <font color="green">situación-acción</font> o <font color="green">condición-acción</font>.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaab97ca">
+<h3 id="orgaab97ca">Agente Reflexo Simple</h3>
+
+<div id="orgadfbd07" class="figure">
+<p><img src="imagen/reflex.jpg" alt="reflex.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbcc3bb7">
+<h3 id="orgbcc3bb7">Agente Reactivo o Reflexo Simple</h3>
+
+<div id="org5926bd2" class="figure">
+<p><img src="imagen/alarma.jpg" alt="alarma.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb188121">
+<h3 id="orgb188121">Agente Reactivo o Reflexo Simple</h3>
+<div style="font-size: 90%;">
+<p>
+Comportamiento es dirigido por el principio de <font color=red>estímulo-respuesta</font> característico de los reflejos de humanos, animales y plantas.
+</p>
+
+<p>
+<b><font color="green">Ventajas</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Simplicidad.</li>
+<li>Tratabilidad computacional.</li>
+
+</ul>
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">Limitaciones</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Sólo trabajan bien si la acción correcta puede determinarse en base a la percepción actual. (ambiente totalmente observable).</li>
+<li>Posibilidad de loops infinitos bajo ambientes parcialmente observables.</li>
+<li>Incapacidad de analizar la consecuencia futura de las acciones.</li>
+<li>Difíciles de escalar.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8b84acf">
+<h3 id="org8b84acf">Agente Reflexo con Estado Interno</h3>
+<p>
+Esto es muy simple, y normalmente se necesita un estado interno para
+</p>
+
+<ul>
+<li>ver como cambia el ambiente independientemente del agente y</li>
+<li>como afectan las acciones del agente al ambiente.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf6da31a">
+<h3 id="orgf6da31a">Agente Reflexo con Estado Interno</h3>
+
+<div id="orgc99d859" class="figure">
+<p><img src="imagen/state.jpg" alt="state.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org78c6813">
+<h3 id="org78c6813">Agente orientado a Metas</h3>
+<ul>
+<li>El agente necesita <font color=red>información de sus metas</font> para escoger qué acciones las pueden cumplir</li>
+<li>Pueden usarse técnicas de búsqueda y planificación.</li>
+<li>Esto lo puede hacer más flexible (ej., si está lloviendo ajustar la efectividad de los frenos).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org600f2ef">
+<h3 id="org600f2ef">Agente orientado a Metas</h3>
+
+<div id="org78f3ef9" class="figure">
+<p><img src="imagen/goal.jpg" alt="goal.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf75dbf1">
+<h3 id="orgf75dbf1">Agente orientado a la Utilidad</h3>
+<ul>
+<li>Las metas por si solas no son suficientes para generar un comportamiento de buena calidad.</li>
+<li>Para esto necesitamos una medida de utilidad (función que mapea un estado o secuencia de estados con un número real).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1f418e3">
+<h3 id="org1f418e3">Agente orientado a la Utilidad</h3>
+
+<div id="orgdd86c54" class="figure">
+<p><img src="imagen/utility.jpg" alt="utility.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgddf31f3">
+<h3 id="orgddf31f3">Agentes que Aprenden</h3>
+<p>
+La idea es que las percepciones no se usen sólo para <font color=red>actuar</font>, sino también para <font color=red>mejorar</font> su desempeño en el futuro.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdb1eff1">
+<h3 id="orgdb1eff1">Agentes que Aprenden</h3>
+
+<div id="org829b636" class="figure">
+<p><img src="imagen/lerning.jpg" alt="lerning.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge907723">
+<h3 id="orge907723">Características Intrínsecas</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Propiedad</th>
+<th scope="col" class="org-left">Rango de Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Duración</td>
+<td class="org-left">Transitorio a Larga Vida</td>
+</tr>
+
+<tr>
+<td class="org-left">Nivel de Cognición</td>
+<td class="org-left">Reactivo a Deliberativo</td>
+</tr>
+
+<tr>
+<td class="org-left">Construcción</td>
+<td class="org-left">Declarativo a Procedural</td>
+</tr>
+
+<tr>
+<td class="org-left">Movilidad</td>
+<td class="org-left">Estático a Itinerante</td>
+</tr>
+
+<tr>
+<td class="org-left">Adaptabilidad</td>
+<td class="org-left">Fijo a Entrenable a Autodidacta</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org7144320">
+<h3 id="org7144320">Características Externas</h3>
+<div style="font-size: 80%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Propiedad</th>
+<th scope="col" class="org-left">Rango de Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Ubicación</td>
+<td class="org-left">Local a Remota</td>
+</tr>
+
+<tr>
+<td class="org-left">Autonomía Social</td>
+<td class="org-left">Independiente a Controlada</td>
+</tr>
+
+<tr>
+<td class="org-left">Sociabilidad</td>
+<td class="org-left">Autista, Dispuesto, Responsable, Miembro de un equipo</td>
+</tr>
+
+<tr>
+<td class="org-left">Amigabilidad</td>
+<td class="org-left">Cooperativo a Competitivo</td>
+</tr>
+
+<tr>
+<td class="org-left">Interacciones</td>
+<td class="org-left">Logística: directo o vía facilitadores Estilo: con agentes / con el mundo / ambos Nivel Semántico: comunicaciones declarativas o procedurales</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org58b8075">
+<h3 id="org58b8075">Inteligencia Artificial Distribuida</h3>
+<ul>
+<li>Muchos problemas:
+
+<ul>
+<li>pueden o deben ser resueltos en forma distribuida, ya que la información está <font color="blue">distribuida físicamente</font></li>
+<li>pueden ser resueltos en forma <font color="green">concurrente</font></li>
+<li>que están débilmente acoplados pueden ser resueltos en forma <font color="#CC66FF">cooperativa</font> por diferentes agentes.</li>
+
+</ul></li>
+
+</ul>
+
+<p>
+Así aparece la idea de <font color=red>Inteligencia Artificial Distribuida</font> y de <font color=red>Sistemas Multiagente</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc54414d">
+<h3 id="orgc54414d">Inteligencia Artificial Distribuida-DAI</h3>
+<p>
+<b><font color="green">DAI</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+DAI es el estudio, construcción y aplicación de sistemas multiagente, esto es, sistemas  en los cuales  varios agentes inteligentes interactúan persiguiendo algún conjunto de objetivos o ejecutando algún conjunto de tareas.
+</p>
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Sistemas Multiagente</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Un Sistema Multiagente es uno que consiste de un número de agentes, que interactúan  entre ellos. En el caso más general, los agentes actúan  en favor de sus usuarios con diferentes metas y motivaciones.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge4de3e3">
+<h3 id="orge4de3e3">Sistemas Multiagente - MAS</h3>
+<p>
+<b><font color="green">Habilidades Sociales de los MAS</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li><i>Coordinación</i>: orientada a la meta o a la tarea a realizar. Ej.: cuando dos agentes  requieren de  un recurso.</li>
+<li><i>Cooperación</i>: varios agentes tratan de combinar  sus esfuerzos para lograr un objetivo en grupo. Ningún agente puede en forma solitaria lograr el objetivo o bien  la cooperación hace obtener mejores resultados (por ejemplo, obtener resultados en forma más rápida).</li>
+<li><i>Competición</i>: varios agentes  tratan de obtener lo que solo algunos de ellos  pueden tener.</li>
+<li><i>Negociación</i>: varios agentes tratan de obtener su mayor  beneficio logrando un acuerdo. Típicamente involucra una oferta y contraoferta, con compromisos hechos por los participantes.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org9f62f41">
+<h3 id="org9f62f41">Sistemas Multiagente</h3>
+<p>
+<b><font color="green">Distinguimos los Problemas Micro y Macro</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li><i>Diseño del Agente</i>  ¿Cómo construimos agentes que son capaces de acciones independientes y autónomas, con el objetivo de llevar a cabo en forma exitosa, tareas  que le delegamos?</li>
+<li><i>Diseño de la Sociedad</i>  ¿Cómo construimos agentes que son capaces de interactuar (cooperando, coordinando, negociando) con otros agentes, con el objeto de llevar a cabo en forma exitosa, tareas que le delegamos, particularmente cuando los otros agentes no necesariamente comparten los mismos intereses/metas?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga62ab6f">
+<h3 id="orga62ab6f">Agentes Inteligentes</h3>
+<p>
+Resumiendo \(\ldots\)
+</p>
+
+<p>
+<b><font color="green">Un agente inteligente</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>Es capaz de acciones autónomas flexibles, es decir:
+<ul>
+<li><b><font color=red>Reactividad:</font></b> son capaces de percibir su ambiente y responder a cambios que ocurren.</li>
+<li><b><font color=red>Pro-actividad:</font></b> son capaces de exhibir funcionamiento orientado a un objetivo, tomando la iniciativa</li>
+<li><b><font color=red>Habilidad social:</font></b>  son capaces de interactuar con otros agentes (o humanos)</li>
+
+</ul></li>
+
+</ul>
+
+<p>
+Con el fin de satisfacer sus objetivos.
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgc9525e7">
+<h3 id="orgc9525e7">SMA vs. OO</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Objeto</th>
+<th scope="col" class="org-left">Agente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Ejecuta los métodos invocados</td>
+<td class="org-left">Autonomía de decisión</td>
+</tr>
+
+<tr>
+<td class="org-left">Flujo de control del llamante</td>
+<td class="org-left">Flujo de control propio</td>
+</tr>
+
+<tr>
+<td class="org-left">Encapsula estado y comportamiento</td>
+<td class="org-left">Encapsula la activación del comportamiento</td>
+</tr>
+
+<tr>
+<td class="org-left">Estado: valor de variables</td>
+<td class="org-left">Estado mental: objetivos, creencias, \(\ldots\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Comportamiento: salida a partir de una entrada</td>
+<td class="org-left">Comportamiento: cómo decidir lo que hacer</td>
+</tr>
+
+<tr>
+<td class="org-left">Mensajes invocan procedimiento</td>
+<td class="org-left">Interacciones: actos de habla (intencionalidad)</td>
+</tr>
+
+<tr>
+<td class="org-left">Asociaciones entre objetos</td>
+<td class="org-left">Organización: relaciones sociales entre agentes</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfa0c5df">
+<h3 id="orgfa0c5df">SMA vs. Sistemas Expertos</h3>
+<div style="font-size: 90%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Sistemas Expertos</th>
+<th scope="col" class="org-left">Agentes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Sistemas cerrados</td>
+<td class="org-left">Interactúan con el entorno</td>
+</tr>
+
+<tr>
+<td class="org-left">Sistemas de decisión centralizados</td>
+<td class="org-left">Distribución de la toma de decisiones: Comportamiento emergente</td>
+</tr>
+
+<tr>
+<td class="org-left">Interacción con el usuario bajo petición del usuario</td>
+<td class="org-left">Mayor grado de interacción con el usuario</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Interacción con otros agentes</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org70b4bc9">
+<h3 id="org70b4bc9">Sobre la utilidad de los agentes</h3>
+<p>
+La primera pregunta que habrá que plantearse cuando se va a realizar un sistema es: 
+</p>
+
+<div style="font-size: 120%;">
+<p>
+<font color=red>¿Hace falta utilizar agentes?</font>
+</p>
+
+<p>
+<font color="green">o bastaría con objetos componentes ...</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfc5cd3d">
+<h3 id="orgfc5cd3d">Aplicaciones</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>Servicios de información en Internet
+<ul>
+<li>Recuperación y extracción de información</li>
+
+</ul></li>
+<li>Comercio electrónico
+<ul>
+<li>Mercado de servicios electrónico</li>
+<li>Negociación</li>
+
+</ul></li>
+<li>Equipos móviles y PCs en el hogar</li>
+<li>Redes públicas de telecomunicaciones
+<ul>
+<li>Provisión de servicios bajo demanda</li>
+<li>Descentralización del control y gestión de redes</li>
+
+</ul></li>
+<li>Gestión de procesos (workflow)</li>
+<li>Simulación de sistemas dinámicos</li>
+<li>Juegos (bots)</li>
+<li>Robótica</li>
+<li>Etc.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org736747e">
+<h3 id="org736747e">Sobre la utilidad de los agentes</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>En el diseño de sistemas distribuidos los agentes proporcionan:
+<ul>
+<li>Aspectos sociales</li>
+<li>Lenguajes y protocolos de comunicación de agentes</li>
+<li>Distribución de datos, control, conocimiento, recursos</li>
+
+</ul></li>
+<li>En el análisis de un sistema los agentes tienen un mayor grado de abstraccion que los objetos o componentes:
+<ul>
+<li>Mayor autonomía y capacidad de decisión</li>
+<li>Varios componentes heterogéneos que mantienen relaciones entre ellos y con escalas de tiempo diferentes</li>
+<li>Modelado de sistemas naturales y sociales</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgca8f029">
+<h3 id="orgca8f029">Sobre la utilidad de los agentes</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>Facilitan la evolución:
+<ul>
+<li>Adaptación a modificaciones y al entorno</li>
+<li>Escalabilidad: añadir agentes para soportar mayor carga de trabajo</li>
+<li>Añadir/quitar funcionalidad en tiempo de ejecución</li>
+<li>Desarrollo incremental</li>
+<li>Sistemas abiertos: capacidad de aceptar nuevos elementos</li>
+
+</ul></li>
+<li>Pero no siempre son la solución ideal
+<ul>
+<li>Ausencia de control/visión global del sistema</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org011838f">
+<h3 id="org011838f">Agentes</h3>
+<p>
+<b><font color="green">¿Qué es un Agente Inteligente?</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>Son <font color=red>entidades</font>:
+
+<ul>
+<li><font color="#CC66FF">perciben</font> el ambiente</li>
+<li><font color="#CC66FF">actúan</font> en él</li>
+<li><font color="#CC66FF">razonan</font></li>
+<li><font color="#CC66FF">se comunican</font> con otros agentes</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orge07a81e">
+<h3 id="orge07a81e">Especificación del Ambiente de Tarea: PEAS</h3>
+<ul>
+<li><font color=red>P</font>: Medida de Performance</li>
+<li><font color=red>E</font>: Ambiente que el agente enfrenta.</li>
+<li><font color=red>A</font>: Actuadores que utiliza el agente para interactuar con el ambiente</li>
+<li><font color=red>S</font>: Sensores con los que percibe el agente</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org7021ed4">
+<h3 id="org7021ed4">Ejemplo:Taxi Automático</h3>
+<ul>
+<li class="fragment roll-in">Medidas de Perfomance? Seguridad, destino, comodidad etc</li>
+<li class="fragment roll-in">Ambiente? Calles locales/autopistas, tráfico, peatones, clima, etc</li>
+<li class="fragment roll-in">Actuadores? Acelerador, display, volante, freno,  bocina,</li>
+<li class="fragment roll-in">Sensores?  Video, velocímetro, sensores del motor, GPS, etc</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org823f7e8">
+<h3 id="org823f7e8">Propiedades de los  Ambientes</h3>
+<p>
+<b><font color="green">Completamente Observable vs. Parcialmente Observable</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Un ambiente es completamente observable si los sensores del agente detectan todos los aspectos relevantes para decidir que acción debe llevarse a cabo.  Ej Poker VS. Damas 
+</p>
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Ejercicios</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>Juego de ajedrez</li>
+<li>Juego de robot de tipo humanoide cuyos ojos son cámaras</li>
+<li>Taxista</li>
+<li>Internet</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgd3267f9">
+<h3 id="orgd3267f9">Propiedades de los  Ambientes</h3>
+<p>
+<b><font color="green">Determinístico vs. Estocástico</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Si el siguiente estado del ambiente está completamente determinado por el estado actual y la acción ejecutada por el agente, luego el ambiente es <font color=red>determinísitico</font>. Si otros factores influyen en el próximo estado del ambiente, éste es estocástico.  
+</p>
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Ejercicios</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>Un softbot que simula a una persona en un juego de computadora</li>
+<li>Juego de dados</li>
+<li>Solitario</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga253635">
+<h3 id="orga253635">Propiedades de los  Ambientes</h3>
+<p>
+<b><font color="green">Agente Único vs. Multi-agente</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+La resolución involucra un único agente o a un  sistema multiagentes(MAS). En un  MAS, debemos identificar qué identidades  deben ser vistas como agentes  o simples objetos. La clave está en si el comportamiento de la entidad B se describe mejor  como la maximización de una medida de performance cuyo valor depende del comportamiento de la entidad A.
+</p>
+
+<p>
+Los ambientes  multiagente puede ser:
+</p>
+<ul>
+<li>Competitivos: ajedrez, taxi (competimos para estacionar :)</li>
+<li>Cooperativos: taxi (cooperamos para no chocar :).</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgba88dcc">
+<h3 id="orgba88dcc">Propiedades de los  Ambientes</h3>
+<p>
+<b><font color="green">Episódico vs. Secuencial</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+En un ambiente <font color=red>episódico</font>, la experiencia del agente está dividida en episodios atómicos. En cada episodio, el agente percibe y ejecuta una acción simple y el siguiente episodio no depende de las acciones tomadas en episodios anteriores. Las tareas de clasificación pueden clasificarse como episódicos. Ej: Ruleta Vs Ajedrez
+</p>
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Ejercicios</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>juego de damas.</li>
+<li>Brazo mecánico.</li>
+<li>el detector de basura en las botellas de una cervecería</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org95c27ba">
+<h3 id="org95c27ba">Propiedades de los  Ambientes</h3>
+<p>
+<b><font color="green">Estático vs. Dinámico</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Si el ambiente puede cambiar mientras que el agente delibera, luego el ambiente es <font color=red>dinámico</font>.  Ej. Civilization II VS. Age of Empires Si el ambiente no cambia con el pasaje del tiempo, pero la performance del agente cambia, luego decimos que el ambiente   es <font color=red>semidinámico</font>. Los ambientes dinámicos tienen dos consecuencias importantes: Un agente debe percibir continuamente, porque aún si no ha ejecutado  ninguna acción entre los tiempos t0 y t1 , el agente no puede  asumir que el estado del ambiente sea el mismo en t0 que en t1; Otros procesos en el ambiente pueden interferir con las acciones del agente, incluyendo las acciones de otros agentes.
+</p>
+
+</section>
+<section id="slide-org95c27ba-split">
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Ejercicios</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>Ajedrez</li>
+<li>Ajedrez con reloj</li>
+<li>juego de robots</li>
+<li>Internet</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org5123a49">
+<h3 id="org5123a49">Propiedades de los  Ambientes</h3>
+<p>
+<b><font color="green">Discreto vs. Contínuo</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Esta distinción se aplica al <font color=red>estado</font>  del ambiente, al modo en que se maneja el <font color=red>tiempo</font> y  a las <font color=red>percepciones</font> y <font color=red>acciones</font> del agente.
+</p>
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Ejercicios</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>juego de ajedrez</li>
+<li>Internet</li>
+<li>Calendrario y Celular.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf4156df">
+<h3 id="orgf4156df">Propiedades de los  Ambientes</h3>
+<p>
+<b><font color="green">Conocido vs. No Conocido</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Se refiere más al estado de conocimiento del agente sobre las <font color=red>leyes o reglas del ambiente</font>. Diferente de parcial - completamente observable. Ejemplo, el solitario es parcialmente observable pero conozco las reglas, por lo que es conocido.   
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org89211ea">
+<h3 id="org89211ea">Ejemplos</h3>
+<div style="font-size: 80%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">Solitario</th>
+<th scope="col" class="org-left">Backgammon</th>
+<th scope="col" class="org-left">Ajedrez con reloj</th>
+<th scope="col" class="org-left">Taxi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Observable</td>
+<td class="org-left">No</td>
+<td class="org-left">Si</td>
+<td class="org-left">Si</td>
+<td class="org-left">No</td>
+</tr>
+
+<tr>
+<td class="org-left">Deterministico</td>
+<td class="org-left">No</td>
+<td class="org-left">No</td>
+<td class="org-left">Si</td>
+<td class="org-left">No</td>
+</tr>
+
+<tr>
+<td class="org-left">Episódico</td>
+<td class="org-left">No</td>
+<td class="org-left">No</td>
+<td class="org-left">No</td>
+<td class="org-left">No</td>
+</tr>
+
+<tr>
+<td class="org-left">Estático</td>
+<td class="org-left">Si</td>
+<td class="org-left">Si</td>
+<td class="org-left">Sem</td>
+<td class="org-left">No</td>
+</tr>
+
+<tr>
+<td class="org-left">Discreto</td>
+<td class="org-left">Si</td>
+<td class="org-left">Si</td>
+<td class="org-left">Ni:)</td>
+<td class="org-left">No</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org015c22e">
+<h3 id="org015c22e">Referencia Bibliográfica</h3>
+<div style="font-size: 70%;">
+
+<p>
+<img src="imagen/book.png" alt="book.png" /> S. Russell  y P.Norvig
+  <i>Artificial Intelligence: A Modern Approach (Third Edition).</i>
+  Capítulo 2
+  <i>2009</i>
+</p>
+
+<p>
+<img src="imagen/book.png" alt="book.png" />   M. Wooldridge
+  <i>An Itroduction to Multiagent Systems. Second Edition</i>
+  Capítulo 2 (hasta sección 2.4 inclusive) <i>2009</i>
+</p>
+
+<p>
+<img src="imagen/book.png" alt="book.png" />   G. Weiss 
+  <i>Multiagent Systems: A modern approach to Distributed Artificial Intelligence. Second Edition</i>
+  Prólogo - Capítulo 1   <i>2000</i>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
