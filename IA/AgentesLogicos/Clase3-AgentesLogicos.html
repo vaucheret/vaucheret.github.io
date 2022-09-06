@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Agentes Lógicos</h2><p class="date">Created: 2022-09-05 lun 23:13</p>
+</section>
+
+<section>
+<section id="slide-org5f1dee7">
+<h2 id="org5f1dee7">Agentes Basados en Conocimiento</h2>
+<div class="outline-text-2" id="text-org5f1dee7">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org409da21">
+<h3 id="org409da21">IA Simbólica</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Idea El <font color=red>comportamiento inteligente</font> puede ser generado en un sistema dándole al mismo: una <font color="blue">representación simbólica</font> de su ambiente y su comportamiento deseado y <font color="blue">manipulando</font>  esta representación.</td>
+<td class="org-left">IA Simbólica  <img src="imagenes/PatoDonald.jpg" alt="PatoDonald.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orga2f74da">
+<h3 id="orga2f74da">IA Simbólica</h3>
+
+<div id="org5422639" class="figure">
+<p><img src="imagenes/Razonamiento.JPG" alt="Razonamiento.JPG" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7a6e196">
+<h3 id="org7a6e196">Agentes basados en Conocimiento</h3>
+<p>
+<b><font color="green">Idea</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+La inteligencia de los humanos puede obtenerse por procesos de <font color="blue">razonamiento</font> que
+operan sobre <font color="red">representación del conocimiento</font>.
+</p>
+
+<p>
+En IA, este enfoque hacia la
+inteligencia corresponde a los <font color="blue">Agentes Basados en Conocimiento</font>.
+</p>
+
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">Características</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Pueden aceptar  nuevas tareas en forma de metas descriptas explícitamente.</li>
+<li>Pueden adquirir competencias rápidamente o aprender nuevo conocimiento del ambiente.</li>
+<li>Pueden adaptarse a cambios en el ambiente, actualizando el conocimiento relevante.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaf7c325">
+<h3 id="orgaf7c325">Agentes basados en Conocimiento</h3>
+<div style="font-size: 70%;">
+<p>
+El principal componente  de un agente basado en conocimiento es su <font color="blue">Base de Conocimientod (KB)</font>.
+</p>
+
+<p>
+Contiene <font color=red>toda la información relevante</font> del mundo que queremos representar.
+</p>
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">Base de Conocimiento</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Es un conjunto de <font color="blue">sentencias</font> que representan hechos sobre el mundo.</li>
+<li>Algunas veces decimos que las sentencias son <font color="blue">axiomas</font> cuando se obtienen sin ser inferidas desde otras sentencias.</li>
+
+</ul>
+<ul>
+<li>Las sentencias son expresadas en un <font color="blue">Lenguaje Formal de Representación de Conocimiento</font>.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4f11630">
+<h3 id="org4f11630">Agentes basados en Conocimiento</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Debe existir un modo de agregar nuevas sentencias a la KB y una forma de hacer consultas.</td>
+<td class="org-left"><b><font color="green">Inferencia</font></b>  <img src="imagenes/Inferencia.jpg" alt="Inferencia.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org86462a9">
+<h3 id="org86462a9">Frame de un Agente basado en Conocimiento</h3>
+<p>
+<b><font color="green">¿Qué ejecuta el agente?</font></b>
+</p>
+<ul>
+<li><i>Tell</i> actualiza la KB con las percepciones del mundo</li>
+<li><i>Ask</i> consulta a la KB qué acción  debería ejecutar.</li>
+<li>El agente le indica a través de <i>tell</i> a la KB qué acción fue elegida y el agente ejecuta la acción.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orge9071d2">
+<h3 id="orge9071d2">Frame de un Agente basado en Conocimiento</h3>
+<div style="font-size: 130%;">
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">agente</span>(<span style="color: #eedd82;">Percepcion</span>, <span style="color: #eedd82;">T</span>, <span style="color: #eedd82;">Accion</span>):-
+    transf_Percep(<span style="color: #eedd82;">P</span>, <span style="color: #eedd82;">T</span>, <span style="color: #eedd82;">S</span>),
+    tell(<span style="color: #eedd82;">S</span>),
+    const_cons(<span style="color: #eedd82;">T</span>,<span style="color: #eedd82;">QA</span>),
+    ask(<span style="color: #eedd82;">QA</span>, <span style="color: #eedd82;">A</span>),
+    transf_Acci&#243;n(<span style="color: #eedd82;">A</span>,<span style="color: #eedd82;">T</span>, <span style="color: #eedd82;">S</span>),
+    tell(<span style="color: #eedd82;">S</span>).
+</code></pre>
+</div>
+</div>
+
+</section>
+<section id="slide-orge9071d2-split">
+
+<p>
+<b><font color="green">Interfaz con sensores y efectores</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li><code>transf_Percep(Percepción, T, SentenciaP)</code>: contruye una sentencia con las percepciones del agente y el tiempo en que fue percibida.</li>
+<li><code>const_cons(T,QueryAcción)</code>: contruye una sentencia para consultar qué acciónd ebería ser hecha en un tiempo dado.</li>
+<li><code>transf_Acción(Acc,T, SentenciaA)</code>: contruye una sentencia que indica que la acción elegida fue ejecutada.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb5e03f2">
+<h3 id="orgb5e03f2">Agente basado en Conocimiento</h3>
+<p>
+<b><font color="green">Puede describirse a:</font></b>
+</p>
+
+<ul>
+<li><font color="blue">Nivel de Conocimiento:</font> especificamos  solamente lo que el agente conoce y cuál es su objetivo, para fijar su comportamiento.</li>
+<li><font color="blue">Nivel de Implementación:</font> Estructuras de datos utilizadas en la KB y los algoritmos que la implementan.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdd318b9">
+<h3 id="orgdd318b9">Representemos en un lenguaje que sepamos todos :)</h3>
+<p>
+Construyamos un agente basado en Datalog
+</p>
+
+<p>
+<b><font color="green">¿KB?</font></b>
+</p>
+
+<p>
+<b><font color="green">¿Máquina de Inferencia?</font></b>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc6355b4">
+<h3 id="orgc6355b4">Wumpus</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Wumpus___________________  <img src="imagenes/wumpus-world.jpg" alt="wumpus-world.jpg" /></td>
+<td class="org-left">Un agente que está en una cueva, debe <font color=red>encontrar el oro</font> y <font color=red>volver a la salida</font> lo más rápido posible (vivo, claro :)  El inconveniente es que hay <font color=red>pozos</font> y un horrible monstruo, el <font color=red>Wumpus</font>:(   El agente <font color=red>muere</font> miserablemente si entra en un cuadro que contiene  un pozo o si en el cuadro está el Wumpus vivo.</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgae7d5a2">
+<h3 id="orgae7d5a2">Wumpus</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Wumpus___________________  <img src="imagenes/wumpus-world.jpg" alt="wumpus-world.jpg" /></td>
+<td class="org-left">El agente dispone de una <font color=red>sola flecha</font> para matar al Wumpus. Si dispara y tiene la flecha,  la flecha se detiene en la pared o en el Wumpus (a quien mata). Si dispara sin flecha no hay efecto. En los cuadros adyacentes (alcanzables por el agente; esto es no se consideran adyacentes los cuadros en diagonal) a un pozo se percibe una brisa, en los adyacentes al Wumpus un hedor y en el cuadro que contiene el oro, brillo.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb1e89eb">
+<h3 id="orgb1e89eb">Wumpus PEAS</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Wumpus___________________  <img src="imagenes/wumpus-world.jpg" alt="wumpus-world.jpg" /></td>
+<td class="org-left"><font color=red>Medida de Performance</font>  Oro +1000, Muerte -1000  -1 por pasos, -10 por usar la flecha <font color=red>Ambiente</font> Es una matriz de \(4\times 4\). El agente siempre comienza en  el cuadrado etiquetado con \([1,1]\) orientado hacia la derecha. Los objetos son ubicados en forma aleatoria. Los cuadros adyacentes al Wumpus son olorosos. En cuadros adyacentes a un pozo se percibe una brisa y el cuadro que contiene el oro es brilloso.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfc624e8">
+<h3 id="orgfc624e8">Wumpus PEAS</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Wumpus___________________  <img src="imagenes/wumpus-world.jpg" alt="wumpus-world.jpg" /></td>
+<td class="org-left"><font color=red>Acciones</font> <font color=red>Forward</font>, <font color=red>TurnLeft</font> o <font color=red>TurnRight</font>  en 90\(º\). <font color=red>Shoot</font>: Disparar mata al Wumpus si lo está enfrentando y utiliza la única flecha que tiene el agente. Si no tiene flecha, la acción no tiene efecto. Si en la trayectoria no está el Wumpus, la flecha choca contra la pared. <font color=red>Climb</font>: sale de la cueva. Solo se puede ejecutar desde la posición [1,1].</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org39b2265">
+<h3 id="org39b2265">Wumpus PEAS</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Wumpus___________________  <img src="imagenes/wumpus-world.jpg" alt="wumpus-world.jpg" /></td>
+<td class="org-left"><font color=red>Sensores</font>  <b><font color="#808000">Hedor</font></b>: cuadros adyacentes (no en diagonal) al Wumpus. <b><font color="#808000">Brisa</font></b>: cuadros adyacentes  a un pozo. <b><font color="#808000">Brillo</font></b>: cuadro donde está el oro. <b><font color="#808000">Golpe</font></b>: si avanza hacia una pared.  <b><font color="#808000">Grito</font></b>: si mata al Wumpus. Se siente en cualquier lugar de la cueva.</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd73c531">
+<h3 id="orgd73c531">Máquinas de Inferencia para Lenguajes de la Lógica</h3>
+<p>
+<b><font color="green">Chequeo de Modelos</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Algoritmo SAT. Algunas mejoras: heurística de la cláusula unitaria y símbolos puros.
+</p>
+
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">Algoritmos de búsqueda local: WalkSAT</font></b>
+</p>
+<div style="font-size: 70%;">
+
+<p>
+Asigna en forma aleatoria valores de verdad a las variables proposicionales. Si esa asginación es
+modelo, termina. Sino elige en forma random una de las cláusulas de las cláusulas falsas. Cambia con
+probabilidad p el valor en el modelo encontrado de alguna de los símbolos proposicionales que hacen
+falsa a la cláusula y con probabilidad (1-p) cambia el símbolo de cláusula que maximiza el número de
+cláusulas satisfechas.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org95566e1">
+<h3 id="org95566e1">Wumpus: Model Checking</h3>
+
+<div id="org6e3b6ce" class="figure">
+<p><img src="imagenes/wumpus-entailment.png" alt="wumpus-entailment.png" height="350" />
+</p>
+</div>
+
+<div style="font-size: 60%;">
+<p>
+Observando que no hay nada en [1,1] y que hay brisa en [2,1] los modelos para determinar dónde hay un pozo son los rodeados por la línea gruesa. Nótese que en [1,2] no puede haber pozo ya que en [1,1] no hay brisa.
+</p>
+
+<p>
+\[\therefore KB \cup Observaciones\models [1,2] \mbox{ es seguro}\]
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org82f7278">
+<h2 id="org82f7278">Conocimiento No Definido</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orge025e6e">
+<h2 id="orge025e6e">Restricciones de Integridad</h2>
+<div class="outline-text-2" id="text-orge025e6e">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org1294a0b">
+<h3 id="org1294a0b">Restricción de Integridad: Aplicaciones</h3>
+<p>
+<b>Diagnóstico basado en consistencia</b>
+</p>
+<ul>
+<li class="fragment roll-in">Considere un sistema del que tenemos la descripción de <font color=red>cómo</font> debería funcionar.</li>
+<li class="fragment roll-in">Si el sistema no funciona de acuerdo a las especificaciones podemos probar no solamente que no funciona sino también podemos identificar los componentes que se rompieron.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgce73b98">
+<h3 id="orgce73b98">Diagnóstico basado en consistencia</h3>
+
+<div id="orge0ae5f1" class="figure">
+<p><img src="imagenes/circuito.jpg" alt="circuito.jpg" height="250" />
+</p>
+</div>
+
+<div style="font-size: 80%;">
+
+<p>
+\[false \leftarrow  on(a) \wedge on(b) \wedge off(e)\]
+</p>
+
+<p>
+Si está on(a) y on(b) y off(e), ¿qué podemos concluir?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb1440bb">
+<h3 id="orgb1440bb">Restricción de Integridad: Aplicaciones</h3>
+<ul>
+<li class="fragment roll-in">Restricciones que el diseñador de una base de datos conoce y que no deberían violarse jamás.</li>
+<li class="fragment roll-in">En la base de estudiantes de una universidad, no podría ocurrir que un alumno tuviera diferentes notas de aprobación del mismo curso</li>
+
+</ul>
+<p class="fragment (roll-in)">
+\(false \leftarrow  nota(Estudiante,Curso, Nota1) \wedge\)
+\(nota(Estudiante,Curso, Nota2) \wedge\)
+\(Nota1\neq Nota2\)
+</p>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge424f8b">
+<h3 id="orge424f8b">Restricciones de Integridad</h3>
+<ul>
+<li class="fragment roll-in">Nos ayuda a conservar la <font color=red>consistencia</font> en los datos.</li>
+<li class="fragment roll-in">No es posible que una luz esté prendida y apagada</li>
+<li class="fragment roll-in">false \(\leftarrow\) prendida(L) \(\wedge\) apagada(L)</li>
+<li class="fragment roll-in">¿Cuál es el valor de verdad de esta cláusula si la luz estuviera prendida y apagada?</li>
+<li class="fragment roll-in">Las restricciones de integridad permiten probar que una conjunción de átomos es falsa en <font color=red>todos los modelos</font>.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org829f007">
+<h3 id="org829f007">RI:Representación del Conocimiento</h3>
+<p>
+<b><font color="green">Restricción de Integridad</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Es una cláusula de la forma 
+</p>
+
+<p>
+\[false \leftarrow  a_1\wedge\ldots \wedge a_k.\]
+donde \(a_i\) son átomos y <i>false</i> es un átomo especial que es falso en todas las
+interpretaciones.
+</p>
+
+
+<div style="font-size: 120%;">
+<p>
+<b><font color="green">Claúsulas de Horn</font></b>
+</p>
+<div style="font-size: 80%;">
+
+<p>
+Es una cláusula de definida o una restricción de integridad.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org2fe347e">
+<h3 id="org2fe347e">Restricción de Integridad</h3>
+<p>
+<b><font color="green">Ejemplo: Introduce negación</font></b>
+</p>
+
+<p>
+Sea el conjunto de cláusulas T1:
+</p>
+
+<p>
+false \(\leftarrow\)  a \(\wedge\) b.
+</p>
+
+<p>
+a \(\leftarrow\) c.
+</p>
+
+<p>
+b \(\leftarrow\) c.
+</p>
+
+<ul>
+<li><p>
+¿Qué valor de verdad tiene c?<br />
+</p>
+
+<p>
+\(T1\models \neg c\) o equivalentemente <font color="#808000">c es falso</font> en todos los modelos de T1.
+</p></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0150d7e">
+<h3 id="org0150d7e">Restricción de Integridad</h3>
+<p>
+<b><font color="green">Ejemplo: Respuestas disyuntivas</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Sea el conjunto de cláusulas T2:
+</p>
+
+<p>
+false \(\leftarrow\) a \(\wedge\) b.
+</p>
+
+<p>
+a \(\leftarrow\) c.
+</p>
+
+<p>
+b \(\leftarrow\) d.
+</p>
+
+<p>
+b \(\leftarrow\) e.
+</p>
+
+<ul>
+<li><p>
+¿Qué podremos concluir?
+</p>
+
+<p>
+\(T2\models \neg c \vee \neg d\) y \(T2\models \neg c \vee \neg e\)
+</p></li>
+
+</ul>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org66bef74">
+<h2 id="org66bef74">Suposición de Conocimiento Completo</h2>
+<div class="outline-text-2" id="text-org66bef74">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgdb11c06">
+<h3 id="orgdb11c06">Suposición de Conocimiento Completo</h3>
+<p>
+<b><font color="green">Conocimiento Completo</font></b>
+</p>
+
+<ul>
+<li class="fragment roll-in">El conocimiento del agente sobre el mundo es <font color="blue">completo</font>.</li>
+<li class="fragment roll-in">¿Y entonces&#x2026;.?</li>
+<li class="fragment roll-in">Todas las cosas relevante sobre el  mundo, el agente lo conoce</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org525c89f">
+<h3 id="org525c89f">Conocimiento Completo</h3>
+<p>
+<b><font color="green">No Monotonicidad</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">Considere un listado de los horarios de colectivo de Nqn a Allen.</li>
+<li class="fragment roll-in">Si no hay colectivos en el listado que salgan entre las 13:00hs y las 15:00hs, concluimos que no podemos viajar a Allen en ese rango de horario.</li>
+<li class="fragment roll-in">Si luego agregan una línea que sale a las 14:45, entonces podemos concluir que podemos viajar en ese rango de horario (entre las 13 y las 15).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org93c1dc4">
+<h3 id="org93c1dc4">Conocimiento Completo</h3>
+<p>
+<b><font color="green">CWA: Closed World Assumption</font></b>
+</p>
+
+<p>
+Permite asumir a un agente  que un <font color="blue">hecho es falso</font> si <font color="blue">no puede inferir</font>  que es verdad.
+</p>
+
+<p>
+<b><font color="green">NAF: Negación por Falla</font></b>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org1f38049">
+<h3 id="org1f38049">Conocimiento Completo</h3>
+<div style="font-size: 80%;">
+<p>
+\(a \leftarrow B1\)
+</p>
+
+<p>
+\(a \leftarrow B2\)
+</p>
+
+<p>
+\(\vdots\)
+</p>
+
+<p>
+\(a \leftarrow BN\)
+</p>
+
+<p>
+\[a\leftarrow B1\vee \ldots  \vee BN.\]
+</p>
+
+<p>
+y la suposición de conocimiento completo nos permite concluir que
+</p>
+
+<p>
+\[a\rightarrow B1\vee \ldots  \vee BN.\]
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org2cde9dd">
+<h3 id="org2cde9dd">Conocimiento Completo</h3>
+<p>
+<b><font color="green">Completamiento de Clark</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+\[a\leftarrow B1\vee \ldots  \vee BN.\]
+\[a\rightarrow B1\vee \ldots  \vee BN.\]
+Luego 
+</p>
+
+<p>
+\[a\leftrightarrow B1\vee \ldots  \vee BN.\]
+</p>
+
+<p class="fragment (roll-in)">
+Esto se hace para todos los predicados. Si el predicado W no aparece en ninguna cabeza de cláusula,
+entonces el completamiento de Clark de W es\[W\leftrightarrow false\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org49f55df">
+<h3 id="org49f55df">CK: Razonamiento Bottom-up</h3>
+
+<div id="org5a18198" class="figure">
+<p><img src="imagenes/NAF-BU.jpg" alt="NAF-BU.jpg" height="400" /> 
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org21a12b5">
+<h3 id="org21a12b5">CK: Razonamiento Bottom-up</h3>
+<p>
+\(p \leftarrow q \wedge  \sim r\).
+</p>
+
+<p>
+\(p \leftarrow s\).
+</p>
+
+<p>
+\(q \leftarrow \sim s\).
+</p>
+
+<p>
+\(r \leftarrow \sim t\).
+</p>
+
+<p>
+\(s \leftarrow w\).
+</p>
+
+<p>
+\(t\).
+</p>
+
+<p>
+¿Qué devuelve C?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org497b2e0">
+<h3 id="org497b2e0">CK: Razonamiento Top-down</h3>
+<div style="font-size: 80%;">
+<p>
+Negación por falla.
+</p>
+
+<p>
+\(p \leftarrow q \wedge  \sim r\).
+</p>
+
+<p>
+\(p \leftarrow s\).
+</p>
+
+<p>
+\(q \leftarrow \sim s\).
+</p>
+
+<p>
+\(r \leftarrow \sim t\).
+</p>
+
+<p>
+\(s \leftarrow w\).
+</p>
+
+<p>
+\(t\).
+</p>
+
+<p class="fragment (roll-in)">
+¿Qué devuelve <i>?p</i>?
+</p>
+<p class="fragment (roll-in)">
+¿Qué devuelve <i>?w</i>?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgae50258">
+<h3 id="orgae50258">CK: Razonamiento Top-down</h3>
+<div style="font-size: 80%;">
+<p>
+Problemas con las variables libres:
+</p>
+
+<p>
+\(p(X) \leftarrow \sim q(X) \wedge\) r(X)$.
+</p>
+
+<p>
+\(q(a)\).
+</p>
+
+<p>
+\(q(b)\).
+</p>
+
+<p>
+\(r(d)\).
+</p>
+
+<p class="fragment (roll-in)">
+¿Tiene respuesta <i>?p(X)</i> ?
+</p>
+
+<p class="fragment (roll-in)">
+Solución: retrasar la NAF de las metas con variables libres hasta que se liguen.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org348b264">
+<h2 id="org348b264">Bibliografía</h2>
+<div class="outline-text-2" id="text-org348b264">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4332e2e">
+<h3 id="org4332e2e">Referencia Bibliográfica</h3>
+<div style="font-size: 80%;">
+
+<p>
+<img src="imagenes/book.png" alt="book.png" /> S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 7 (hasta la sección 7.7.1 inclusive)
+  2009
+</p>
+
+<p>
+<img src="imagenes/book.png" alt="book.png" />  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 7: Seccion 7.3 hasta Razonamiento (no lo incluye)
+  Seccion 7.4 completa
+  1998
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

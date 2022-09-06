@@ -1,0 +1,498 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Sist. de Representacion y Razonamiento
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+
+* Motivación
+
+** Intuición
+
+Supongamos que tenemos un agente que queremos que perciba y actúe en el ambiente /{{{alert(nuestra clase en este momento)}}}/
+
+
+Así querremos modelar la situación actual de la clase
+
+** Intuición
+#+REVEAL_HTML: <div style="font-size: 80%;">
+En su información que representamos:
+
+-  Es posible llegar a la conclusión de que si {{{alert(Sandra está en el aula\, sus manos también lo están?)}}}
+-  Si un alumno  junta su carpeta y sale del aula, puede concluir Ud. que el alumno y {{{alert(su carpeta)}}} no están en el aula.
+-  Si hay viento de 150km/hora y abrimos una ventana, puede concluir Ud. que la pila de papeles se volará?
+-  Otras situaciones que se les ocurran .... 
+
+  
+
+** ¿Por qué necesitamos Representar Conocimiento?
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+ATTR_REVEAL: :frag (roll-in)    
+-  Analizamos lo que los agentes {{{alert(saben)}}} o {{{alert(conocen)}}} del mundo que queremos modelar.
+-  Muchas veces decimos que los seres humanos {{{alert(actúan inteligentemente)}}} porque:
+
+ -  saben muchas cosas acerca de muchas cosas y
+ -  pueden aplicar este conocimiento a su ambiente para cumplir sus objetivos.
+ 
+-  {{{color(blue,Estudiamos que es lo que un agente necesita saber para actuar en forma racional.)}}}
+
+
+** Conocimiento y Comportamiento
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+El comportamiento racional, está condicionado al conocimiento a priori del agente.
+
+#+ATTR_REVEAL: :frag (roll-in)    
+{{{alert(¿Podríamos decir que mientras más sabemos más inteligentemente actuamos?)}}}
+
+#+ATTR_REVEAL: :frag (roll-in)    
+Muchas veces las decisiones tomadas están basadas en lo que sabemos.
+
+#+ATTR_REVEAL: :frag (roll-in)    
+En algunos casos, cuando decimos que alguien ha actuado {{{alert(tontamente)}}} no es tanto
+porque {{{alert(no sabía)}}} lo que estaba haciendo, sino porque fue {{{alert(incapaz de utilizar)}}} lo que {{{alert(ya sabía)}}} en lo que estaba haciendo.
+
+
+#+ATTR_REVEAL: :frag (roll-in)    
+{{{color(green,Ejemplo: queremos ver si el auto tiene nafta acercando un encendedor a la tapa de la  nafta.)}}}
+
+** ¿Qué es Conocimiento?
+
+Pregunta compleja que ha sido analizada desde los filósofos Griegos.
+
+*{{{color(green,Epistemología o Teoría del Conocimiento)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Del griego /episteme/, "conocimiento", y /logos/, "teoría" es la rama de la filosofía cuyo objeto de estudio es el conocimiento científico, su naturaleza y su alcance (limitaciones).
+
+La pEpistemología se dedica a estudiar:
+
+ -  ¿Qué es conocimiento?
+ -  ¿Cómo lo obtenemos?
+ -  ¿Qué sabemos que sabemos?
+
+** ¿Qué es Conocimiento?
+
+Cambiemos la pregunta: {{{alert(¿Cómo nos referimos a él?)}}}
+
+*{{{color(green,Sandra sabe que ....)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+Lo que sabemos es una {{{color(blue,proposición)}}}  que puede ser verdadera o falsa.
+
+El conocimiento  es una relación entre el {{{color(blue,conocedor)}}} y una proposición.
+
+Sandra sabe que sus alumnos aman la IA. {{{color(blue,Proposición VERDADERA :)}}}
+
+** ¿Qué es Conocimiento?
+
+Cambiemos la pregunta: {{{alert(¿Cómo nos referimos a él?)}}}
+
+*{{{color(green,Actitudes proposicionales )}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+Sandra  espera  que ....
+
+Sandra espera que sus alumnos amen la IA.
+
+La proposición es la misma pero la relación  que Sandra tiene hacia ella es diferente.
+
+** ¿Qué es Conocimiento?
+
+*{{{color(green,Noción de Creencia)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+Sandra  cree en p.
+
+Sandra sabe p.
+
+Usamos {{{color(blue,cree)}}} cuando no estamos totalmente convencidos.
+
+
+#+ATTR_REVEAL: :frag (roll-in)    
+{{{alert(El conocimiento nos dice que el mundo es de algún modo y no de otro.)}}}
+
+** ¿Qué es Representación?
+
+Símbolos que representan cosas en el mundo.
+ #+ATTR_HTML:  :height 400
+[[file:imagen/curva.jpg]]
+
+
+** ¿Qué es Representación?
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Ej. Símbolos que representan Hombre - Mujer en puertas de baños.
+ #+ATTR_HTML:  :height 340
+[[file:imagen/banopuertas.jpg]]
+
+#+ATTR_REVEAL: :frag (roll-in)    
+Usualmente los representantes son más concretos, inmediatos o accesibles que sus
+representados. 
+
+** ¿Qué es Representación?
+
+Símbolos que representan cosas en el mundo.
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+``Sandra'' $\longrightarrow$ Sandra\\
+
+``7'' $\longrightarrow$ siete\\
+
+``VII'' $\longrightarrow$ siete\\
+
+Mis alumnos aman la IA  $\longrightarrow$ Uds. aman la IA.\\
+
+
+My students love AI $\longrightarrow$ Uds. aman la IA.
+
+#+ATTR_REVEAL: :frag (roll-in)
+Nótese que pueden existir diferentes {{{alert(alfabetos)}}}, para representar lo mismo.
+
+#+ATTR_REVEAL: :frag (roll-in)
+7 + 5 = 14
+
+** ¿Qué es Representación?
+
+*{{{color(green,Representación del Conocimiento)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Es el estudio concerniente con el uso  formal de símbolos para representar  una colección de proposiones creidas por un agente.
+
+#+REVEAL_HTML: <div style="font-size:140%;">
+{{{alert(NO)}}} vamos a representar {{{alert(TODO)}}} el conocimiento del agente.
+
+El agente podría creer en un conjunto infinito de  proposiciones, pero solo representamos un conjunto finito.
+
+El {{{alert(razonamiento)}}} es el que achica la brecha entre lo representado y lo que el agente cree. 
+
+** ¿Qué conocimiento vamos a representar?
+
+*{{{color(green,Ontología)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+En filosofía, la ontología /onto/, del griego, genitivo del participio del verbo  ser, estar;
+y /logia/, (ciencia, estudio, teoría) es una parte de la metafísica que estudia lo que hay, es
+decir {{{color(blue,qué entidades existen y cuáles no)}}}, como así también las
+{{{color(blue,categorías)}}} de lo que existe y la manera en que se {{{color(blue,relacionan las entidades)}}}
+
+
+#+REVEAL_HTML: <div style="font-size:120%;">
+
+#+ATTR_REVEAL: :frag (roll-in)
+ En la Ciencias de la Computación, la {{{alert(ontología)}}} representa formalmente el conocimiento como un 
+ {{{color(blue,conjunto de conceptos en un dominio)}}} y las {{{color(blue,relaciones)}}} entre estos conceptos. 
+
+#+ATTR_REVEAL: :frag (roll-in)
+ Así determinamos, qué es lo que el agente {{{alert(puede percibir)}}} y por lo tanto, {{{alert(qué parte del mundo)}}} va a  
+ representar y razonar a partir de ellos para lograr sus objetivos. 
+
+ 
+** ¿Qué conocimiento vamos a representar?
+
+*{{{color(green,Ontología)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Determinamos, qué es lo que el agente {{{color(blue,puede percibir)}}} y por lo tanto, {{{color(blue,qué parte del mundo)}}} va a representar y razonar a partir de ellos para lograr sus objetivos. 
+
+
+** Razonamiento y Comportamiento
+
+Una vez que tenemos información representada de un ambiente necesitamos analizar cómo se {{{alert(afecta)}}} ese ambiente con el {{{alert(comportamiento)}}} de nuestro agente.
+
+** ¿Qué es Razonamiento?
+
+*{{{color(green,Razonamiento)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+Manipulación de símbolos que codifican proposiciones para producir representaciones de  nuevas proposiciones.
+
+ #+ATTR_HTML:  :height 340
+[[file:imagen/repres.jpg]]
+
+** Representación del Conocimiento y Razonamiento
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+ATTR_REVEAL: :frag (roll-in)    
+- La {{{alert(Representación del Conocimiento)}}} es el área de la IA que se encarga de estudiar cómo describir el conocimiento del mundo o de un estado del mundo  en forma  simbólica.
+- No solamente debe dar una descripción  del conocimiento, sino que también debe decidir {{{alert(qué conocimiento)}}} representar.
+- A través del {{{alert(Razonamiento)}}} obtendremos nuevo conocimiento en los que el agente creerá.
+
+
+
+** Hipótesis de Representación del Conocimiento (B. Smith)
+#+REVEAL_HTML: <div style="font-size: 60%;">
+Querremos construir sistemas que contengan representaciones simbólicas con dos propiedades importantes:
+
+- Nosotros, como observadores externos, podemos considerar que de manera natural representa en forma proposicional todo el conocimiento que el proceso exhibe.
+- Con independencia de esta atribución semántica externa, juega un papel formal en la obtención del comportamiento que manifiesta dicho conocimiento. Es decir, el comportamiento ha de estar causado por el conocimiento y ha de ser consistente con las proposiciones que representan el mismo.
+
+#+ATTR_REVEAL: :frag (roll-in)
+Llamaremos a tales sistemas  {{{alert(Sistemas Basados en Conocimiento)}}} y a la representación simbólica involucrada {{{alert(Bases de Conocimiento (KB))}}}.
+
+** Hipótesis de Representación del Conocimiento (B. Smith)
+
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+#+BEGIN_SRC prolog
+ printColor(nieve):- !, write("es blanca").
+ printColor(hierba):- !, write("es verde").
+ printColor(cielo):- !, write("es azul").
+ printColor(X):- write("no tengo idea").
+#+END_SRC
+#+REVEAL_HTML: </div>
+
+Otra alternativa:
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+#+BEGIN_SRC prolog
+ printColor(X):- color(X,Y),!,write("es"),write(Y).
+ printColor(X):- write("no tengo idea").
+ color(nieve, blanca). color(cielo, azul).
+ color(X,Y):- madeof(X,Z), color(Z,Y).
+ madeof(hierba, vegetacion).
+ color(vegetacion, verde).
+#+END_SRC
+#+REVEAL_HTML: </div>
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Ambos programas pueden ser explicados intencionalmente (qué intención tienen). Sin embargo, solo el segundo sigue la Hipótesis de Representación del Conocimiento y tiene su KB.
+
+* Componentes de un RRS
+
+** Sistema de Representación y Razonamiento
+
+Un Sistema de Representación y Razonamiento (RRS) consiste de:
+
+-  *{{{alert(Lenguaje Formal:)}}}* especifica las sentencias legales.
+-  *{{{alert(Semántica:)}}}* especifica el significado de los símbolos
+-  *{{{alert(Teoría de Razonamiento o Procedimiento de Prueba o Teoría de Prueba:)}}}* una especificación no determinista de cómo una respuesta puede ser producida
+
+
+** Sistema de Representación y Razonamiento
+
+Lenguaje Formal de Representación, ¿cuál conoce? ¿cuál elegimos?
+
+-  *{{{alert(Expresivo:)}}}* qué podemos expresar y qué no es posible.
+-  *{{{alert(Claridad:)}}}* qué conceptos son más sencillos de expresar en ese lenguaje.
+
+
+** Implementación de un RRS
+
+Una implementación de un RRS consiste de:
+#+REVEAL_HTML: <div style="font-size: 80%;">
+-  *{{{alert(Un Analizador del Lenguaje:)}}}* distingue las sentencias legales del lenguaje formal y produce  estructuras  de almacenamiento.
+-  *{{{alert(Un procedimiento de razonamiento:)}}}* implementación de una teoría de razonamiento $+$ una estrategia de búsqueda
+
+#+REVEAL_HTML: </div  >
+#+ATTR_REVEAL: :frag (roll-in)
+*Nota:* ¡La semántica {{{alert(no)}}} está reflejada en la implementación!
+
+
+
+** Usando un RRS
+#+ATTR_REVEAL: :frag (roll-in)
+1. Comenzar con un dominio de trabajo.
+2. Distinguir aquellos elementos relevantes (ontología).
+3. Elegir símbolos para nombrar objetos y   relaciones.
+4. Darle al sistema conocimiento del dominio.
+5. Realizar preguntas al sistema.
+
+
+
+
+
+** Rol de la semántica en un RRS
+
+ #+ATTR_HTML:  :height 500
+ [[file:imagen/role.JPG]]
+
+
+ 
+** Suposiciones de simplificación
+
+-  El conocimiento de un agente puede ser descripto en términos de /{{{alert(individuos)}}}/ y /{{{alert(relaciones)}}}/ entre individuos
+-  La base de conocimiento de un agente consiste de sentencias /{{{alert(definidas)}}}/ y /{{{alert(positivas)}}}/
+-  El ambiente es /{{{alert(estático)}}}/
+-  Hay solo un número finito de individuos relevantes en el dominio. A cada individuo se le puede dar un único nombre
+
+#+ATTR_REVEAL: :frag (roll-in)
+$\Rightarrow$ Datalog
+
+** Sintaxis de Datalog
+
+-  *{{{alert(Variables)}}}*  comienzan con letra mayúscula 
+-  *{{{alert(Constantes)}}}* comienzan con letra minúscula o es una secuencia  de números
+-  *{{{alert(Símbolos de Predicado)}}}* comienzan con letra minúscula 
+-  *{{{alert(Términos)}}}* es una variable o una constante
+-  *{{{alert(Átomo)}}}* es de la forma $p$ or $p(t_1,\ldots,t_n)$ donde $p$ es un símbolo de predicado y $t_i$ son términos
+
+** Sintaxis de Datalog
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+    Una {{{alert(cláusula definida)}}} es un símbolo atómico o  tiene la forma:
+
+$\underbrace{a}  \leftarrow  \underbrace{b_1 \wedge \ldots \wedge b_m}$ 
+
+cabeza    ----------              cuerpo                                    
+
+
+donde $a$ y $b_i$ son símbolos atómicos.
+
+
+Una {{{alert(Consulta)}}} es de la forma $? b_1 \wedge \ldots \wedge b_m$
+
+Una {{{alert(Base de conocimiento)}}} es un conjunto de cláusulas definidas.
+
+
+#+REVEAL_HTML: </div  >
+
+** Ejemplo de base de conocimiento
+
+#+BEGIN_SRC prolog
+  in(Alan, R) :-
+      teaches(Alan, Cs322),
+      in(Cs322, R).    
+#+END_SRC
+
+#+ATTR_REVEAL: :frag (roll-in)
+#+BEGIN_SRC prolog
+    grandfather(William, X) :-
+	father(William,Y),
+	father(Y,X).
+#+END_SRC
+
+** Semánticas, Intuición
+
+-   Una {{{alert(semántica)}}} especifica el significado de las sentencias en el lenguaje.
+-  Una {{{alert(interpretación)}}} especifica: 
+  - Los objetos (individuos) que están en el mundo
+  - La  correspondencia entre símbolos en la computadora y objetos  y relaciones en el mundo
+    - las constantes denotan individuos.
+    - los símbolos de predicado denotan relaciones.
+
+
+
+
+** Semánticas Formales
+
+- Una {{{alert(interpretación)}}} es una tupla $I = \langle D,  \phi, \pi \rangle$, donde 
+  - $D$, el {{{alert(dominio)}}}, es un conjunto no vacío, los elementos de $D$ son los {{{alert(individuos)}}}.
+  - $\phi$ es una función que asigna a cada constante un elemento de $D$. La constante $c$ denota el individuo $\phi(c)$.
+  - $\pi$ es una función que asigna a cada símbolo de predicado  $n$-ario una relación: una función desde $D^n$ a $\{true,false\}$
+
+    
+** Ejemplo de Interpretación
+
+[[file:imagen/interpret.jpg]]
+
+** Verdad en la Interpretación
+
+   Un átomo sin variables (ground) $p(t_1,\ldots,t_n)$ es 
+
+- {{{color(blue,verdadero en la interpretación)}}} $I$ si  $\pi(P)(\phi(t_1),\ldots,\phi(t_n)) = TRUE$ y 
+- {{{color(blue,falso en la interpretación)}}} $I$ si $\pi(P)(\phi(t_1),\ldots,\phi(t_n)) = FALSE$. 
+    
+    
+#+ATTR_REVEAL: :frag (roll-in)
+Una cláusula sin variables $h \leftarrow b_1 \wedge \ldots \wedge b_n$ es {{{color(blue,falsa en la interpretación )}}} $I$ si $h$ es falso en $I$ y cada $b_i$ es verdadero en $I$, y es {{{color(blue,verdadera en la interpretación )}}} $I$  en el caso contrario.
+
+
+
+** Ejemplo
+
+En la interpretación dada anteriormente:
+
+[[file:imagen/ejemploverdad.jpg]]
+
+** Modelos y consecuencias lógicas
+#+REVEAL_HTML: <div style="font-size: 80%;">
+-  Una {{{alert(base de conocimiento)}}}, $KB$, es {{{alert(verdadera)}}} en la interpretación $I$ si y solo si toda cláusula en $KB$ es verdadera en $I$.
+-  Un {{{alert(modelo)}}} de un conjunto de cláusulas es una interpretación en la cual todas las cláusulas son verdaderas.
+-  Si $KB$ es un conjunto de cláusulas y $g$ es una conjunción de átomos, $g$ es una {{{alert(consecuencia lógica)}}} de $KB$, denotado como $KB \models g$ si $g$ es verdadero en  todo modelo de $KB$
+-  Es decir, $KB \models g$ si no existe una interpretación en la  cual $KB$ es verdadera y $g$ falsa
+#+REVEAL_HTML: </div  >
+
+
+
+** Un Ejemplo Simple
+
+[[file:imagen/simpleejemp.jpg]]
+
+** Punto de vista del usuario
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+-  Elegir una tarea del dominio: {{{alert(interpretación pretendida)}}}
+-  Asociar constantes a individuos que se desea nombrar
+-  Por cada relación que se quiera representar, asociar un símbolo  de predicado en el lenguaje
+-  Dar al sistema las cláusulas que son verdaderas en la  interpretación pretendida: {{{alert(axiomatizar el dominio)}}}
+-  Realizar consultas de la interpretación pretendida
+-  Si $KB \models g$, entonces $g$ debe ser verdadero en la interpretación pretendida.
+#+REVEAL_HTML: </div  >
+
+** Punto de vista del sistema
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+-  El sistema no tiene acceso a la interpretación pretendida
+-  Todo lo que conoce es la base de conocimiento
+-  El sistema puede determinar si una fórmula es una   consecuencia lógica de $KB$
+-  Si $KB \models g$, entonces $g$ debe ser verdadero en la  interpretación pretendida.
+-  Si $KB \not\models g$, entonces hay un modelo de $KB$ en el  cual $g$ es falsa. Ésta podría ser la interpretación pretendida.
+#+REVEAL_HTML: </div  >
+
+** Procedimiento de Prueba
+
+-  Top-down: Árbol SLD
+-  Bottom -up: Cálculo del menor punto fijo de Tp
+
+** Procedimiento de Prueba
+
+  ¿Qué le vamos a pedir al procedimiento de prueba?
+
+       -  Sensatez
+       -  Completitud
+       -  Eficiencia
+
+	 
+** Más Allá del Conocimiento Definido
+
+*{{{color(green,Axioma de Igualdad)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+  El término $t_1$  {{{color(blue,iguala)}}} al término $t_2$, que lo notamos $t_1= t_2$, es verdadero en una interpretación $I$ si $t_1$  y $t_2$ denotan al mismo individuo en $I$. 
+#+REVEAL_HTML: </div  >
+
+*{{{color(green,Suposición de Nombres Unicos (UNA: Unique Name Assumption)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+    Términos fijos(ground) \underline{distintos} denotan diferentes individuos. Esto es, para cada par de términos fijos $t_1$ y $t_2$, asumimos que   $t_1\neq t_2$.
+#+REVEAL_HTML: </div  >
+
+* Bibliografía
+
+** Referencia Bibliográfica
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+[[file:imagen/book.png]] S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 2 
+  2009
+
+file:imagen/book.png]]  R. Brachman y H. Levesque
+  Knowledge Representation and Reasoning
+  Capítulo 1
+  2004
+
+  
+[[file:imagen/book.png]]  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 2, 3,y 7
+  1998
+
+
+

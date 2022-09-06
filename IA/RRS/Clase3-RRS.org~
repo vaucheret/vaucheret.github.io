@@ -1,0 +1,386 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Agentes Lógicos
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Agentes Basados en Conocimiento
+
+** IA Simbólica
+
+
+|  Idea El {{{alert(comportamiento inteligente)}}} puede ser generado en un sistema dándole al mismo: una {{{color(blue,representación simbólica)}}} de su ambiente y su comportamiento deseado y {{{color(blue,manipulando)}}}  esta representación. | IA Simbólica  [[file:imagenes/PatoDonald.jpg]] |
+
+** IA Simbólica
+
+[[file:imagenes/Razonamiento.JPG]]
+
+** Agentes basados en Conocimiento
+
+*{{{color(green,Idea)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+La inteligencia de los humanos puede obtenerse por procesos de {{{color(blue,razonamiento)}}} que
+operan sobre {{{color(red,representación del conocimiento)}}}.
+
+En IA, este enfoque hacia la
+inteligencia corresponde a los {{{color(blue,Agentes Basados en Conocimiento)}}}.
+
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,Características)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+- Pueden aceptar  nuevas tareas en forma de metas descriptas explícitamente.
+- Pueden adquirir competencias rápidamente o aprender nuevo conocimiento del ambiente.
+- Pueden adaptarse a cambios en el ambiente, actualizando el conocimiento relevante.
+
+** Agentes basados en Conocimiento
+#+REVEAL_HTML: <div style="font-size: 70%;">
+El principal componente  de un agente basado en conocimiento es su {{{color(blue,Base de Conocimientod (KB))}}}.
+
+Contiene {{{alert(toda la información relevante)}}} del mundo que queremos representar.
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,Base de Conocimiento)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ - Es un conjunto de {{{color(blue,sentencias)}}} que representan hechos sobre el mundo. 
+ - Algunas veces decimos que las sentencias son {{{color(blue,axiomas)}}} cuando se obtienen sin ser inferidas desde otras sentencias. 
+- Las sentencias son expresadas en un {{{color(blue,Lenguaje Formal de Representación de Conocimiento)}}}.
+
+** Agentes basados en Conocimiento
+
+| Debe existir un modo de agregar nuevas sentencias a la KB y una forma de hacer consultas. | *{{{color(green,Inferencia)}}}*  [[file:imagenes/Inferencia.jpg]]    |
+
+** Frame de un Agente basado en Conocimiento
+
+*{{{color(green,¿Qué ejecuta el agente?)}}}*
+- /Tell/ actualiza la KB con las percepciones del mundo 
+- /Ask/ consulta a la KB qué acción  debería ejecutar.  
+- El agente le indica a través de /tell/ a la KB qué acción fue elegida y el agente ejecuta la acción. 
+
+** Frame de un Agente basado en Conocimiento
+
+   #+REVEAL_HTML: <div style="font-size: 130%;">
+   #+BEGIN_SRC prolog
+     agente(Percepcion, T, Accion):-
+	 transf_Percep(P, T, S),
+	 tell(S),
+	 const_cons(T,QA),
+	 ask(QA, A),
+	 transf_Acción(A,T, S),
+	 tell(S).
+   #+END_SRC
+   #+REVEAL_HTML: </div>
+
+#+REVEAL: split
+
+*{{{color(green,Interfaz con sensores y efectores)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+-  ~transf_Percep(Percepción, T, SentenciaP)~: contruye una sentencia con las percepciones del agente y el tiempo en que fue percibida.
+-  ~const_cons(T,QueryAcción)~: contruye una sentencia para consultar qué acciónd ebería ser hecha en un tiempo dado.
+-  ~transf_Acción(Acc,T, SentenciaA)~: contruye una sentencia que indica que la acción elegida fue ejecutada.
+
+** Agente basado en Conocimiento
+
+*{{{color(green,Puede  describirse a:)}}}*
+
+- {{{color(blue,Nivel de Conocimiento:)}}} especificamos  solamente lo que el agente conoce y cuál es su objetivo, para fijar su comportamiento.
+- {{{color(blue,Nivel de Implementación:)}}} Estructuras de datos utilizadas en la KB y los algoritmos que la implementan.
+
+** Representemos en un lenguaje que sepamos todos :)
+
+Construyamos un agente basado en Datalog
+
+*{{{color(green,¿KB?)}}}*
+
+*{{{color(green,¿Máquina de Inferencia?)}}}*
+
+** Wumpus
+#+REVEAL_HTML: <div style="font-size: 70%;">
+| Wumpus___________________  [[file:imagenes/wumpus-world.jpg]]                    | Un agente que está en una cueva, debe {{{alert(encontrar el oro)}}} y {{{alert(volver a la salida)}}} lo más rápido posible (vivo, claro :)  El inconveniente es que hay {{{alert(pozos)}}} y un horrible monstruo, el {{{alert(Wumpus)}}}:(   El agente {{{alert(muere)}}} miserablemente si entra en un cuadro que contiene  un pozo o si en el cuadro está el Wumpus vivo.       |
+
+
+** Wumpus
+#+REVEAL_HTML: <div style="font-size: 70%;">
+| Wumpus___________________  [[file:imagenes/wumpus-world.jpg]]                    | El agente dispone de una {{{alert(sola flecha)}}} para matar al Wumpus. Si dispara y tiene la flecha,  la flecha se detiene en la pared o en el Wumpus (a quien mata). Si dispara sin flecha no hay efecto. En los cuadros adyacentes (alcanzables por el agente; esto es no se consideran adyacentes los cuadros en diagonal) a un pozo se percibe una brisa, en los adyacentes al Wumpus un hedor y en el cuadro que contiene el oro, brillo. |
+
+** Wumpus PEAS
+#+REVEAL_HTML: <div style="font-size: 70%;">
+| Wumpus___________________  [[file:imagenes/wumpus-world.jpg]]                    | {{{alert(Medida de Performance)}}}  Oro +1000, Muerte -1000  -1 por pasos, -10 por usar la flecha {{{alert(Ambiente)}}} Es una matriz de $4\times 4$. El agente siempre comienza en  el cuadrado etiquetado con $[1,1]$ orientado hacia la derecha. Los objetos son ubicados en forma aleatoria. Los cuadros adyacentes al Wumpus son olorosos. En cuadros adyacentes a un pozo se percibe una brisa y el cuadro que contiene el oro es brilloso.  |
+
+** Wumpus PEAS
+#+REVEAL_HTML: <div style="font-size: 70%;">
+| Wumpus___________________  [[file:imagenes/wumpus-world.jpg]]                    | {{{alert(Acciones)}}} {{{alert(Forward)}}}, {{{alert(TurnLeft)}}} o {{{alert(TurnRight)}}}  en 90$º$. {{{alert(Shoot)}}}: Disparar mata al Wumpus si lo está enfrentando y utiliza la única flecha que tiene el agente. Si no tiene flecha, la acción no tiene efecto. Si en la trayectoria no está el Wumpus, la flecha choca contra la pared. {{{alert(Climb)}}}: sale de la cueva. Solo se puede ejecutar desde la posición [1,1].            |
+
+** Wumpus PEAS
+#+REVEAL_HTML: <div style="font-size: 70%;">
+| Wumpus___________________  [[file:imagenes/wumpus-world.jpg]]                    | {{{alert(Sensores)}}}  *{{{color(#808000,Hedor)}}}*: cuadros adyacentes (no en diagonal) al Wumpus. *{{{color(#808000,Brisa)}}}*: cuadros adyacentes  a un pozo. *{{{color(#808000,Brillo)}}}*: cuadro donde está el oro. *{{{color(#808000,Golpe)}}}*: si avanza hacia una pared.  *{{{color(#808000,Grito)}}}*: si mata al Wumpus. Se siente en cualquier lugar de la cueva.                                             |
+
+** Máquinas de Inferencia para Lenguajes de la Lógica
+
+*{{{color(green,Chequeo de Modelos)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Algoritmo SAT. Algunas mejoras: heurística de la cláusula unitaria y símbolos puros.
+
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,Algoritmos de búsqueda local: WalkSAT)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+
+Asigna en forma aleatoria valores de verdad a las variables proposicionales. Si esa asginación es
+modelo, termina. Sino elige en forma random una de las cláusulas de las cláusulas falsas. Cambia con
+probabilidad p el valor en el modelo encontrado de alguna de los símbolos proposicionales que hacen
+falsa a la cláusula y con probabilidad (1-p) cambia el símbolo de cláusula que maximiza el número de
+cláusulas satisfechas.
+
+** Wumpus: Model Checking
+
+ #+ATTR_HTML:  :height 350
+ [[file:imagenes/wumpus-entailment.png]]
+
+#+REVEAL_HTML: <div style="font-size: 60%;">
+Observando que no hay nada en [1,1] y que hay brisa en [2,1] los modelos para determinar dónde hay un pozo son los rodeados por la línea gruesa. Nótese que en [1,2] no puede haber pozo ya que en [1,1] no hay brisa.
+
+$$\therefore KB \cup Observaciones\models [1,2] \mbox{ es seguro}$$
+
+
+* Conocimiento No Definido
+
+* Restricciones de Integridad
+
+** Restricción de Integridad: Aplicaciones
+
+*Diagnóstico basado en consistencia*
+#+ATTR_REVEAL: :frag (roll-in)    
+- Considere un sistema del que tenemos la descripción de {{{alert(cómo)}}} debería funcionar.
+- Si el sistema no funciona de acuerdo a las especificaciones podemos probar no solamente que no funciona sino también podemos identificar los componentes que se rompieron.
+
+** Diagnóstico basado en consistencia
+
+ #+ATTR_HTML:  :height 250
+ [[file:imagenes/circuito.jpg]]
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+\[false \leftarrow  on(a) \wedge on(b) \wedge off(e)\]
+
+Si está on(a) y on(b) y off(e), ¿qué podemos concluir?
+
+** Restricción de Integridad: Aplicaciones
+
+#+ATTR_REVEAL: :frag (roll-in)    
+- Restricciones que el diseñador de una base de datos conoce y que no deberían violarse jamás.
+- En la base de estudiantes de una universidad, no podría ocurrir que un alumno tuviera diferentes notas de aprobación del mismo curso
+#+ATTR_REVEAL: :frag (roll-in)      
+$false \leftarrow  nota(Estudiante,Curso, Nota1) \wedge$
+$nota(Estudiante,Curso, Nota2) \wedge$
+$Nota1\neq Nota2$
+
+
+
+  
+** Restricciones de Integridad
+#+ATTR_REVEAL: :frag (roll-in)      
+- Nos ayuda a conservar la {{{alert(consistencia)}}} en los datos.
+- No es posible que una luz esté prendida y apagada
+- false $\leftarrow$ prendida(L) $\wedge$ apagada(L)
+- ¿Cuál es el valor de verdad de esta cláusula si la luz estuviera prendida y apagada?
+- Las restricciones de integridad permiten probar que una conjunción de átomos es falsa en {{{alert(todos los modelos)}}}.
+
+
+** RI:Representación del Conocimiento
+*{{{color(green,Restricción de Integridad)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Es una cláusula de la forma 
+
+\[false \leftarrow  a_1\wedge\ldots \wedge a_k.\]
+donde $a_i$ son átomos y /false/ es un átomo especial que es falso en todas las
+interpretaciones.
+
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+*{{{color(green,Claúsulas de Horn)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+Es una cláusula de definida o una restricción de integridad.
+
+
+** Restricción de Integridad
+
+*{{{color(green,Ejemplo: Introduce negación)}}}*
+
+Sea el conjunto de cláusulas T1:
+
+false $\leftarrow$  a $\wedge$ b.
+ 
+a $\leftarrow$ c.
+
+b $\leftarrow$ c.
+
+- ¿Qué valor de verdad tiene c?\\
+
+ $T1\models \neg c$ o equivalentemente {{{color(#808000,c es falso)}}} en todos los modelos de T1.
+
+** Restricción de Integridad
+
+*{{{color(green,Ejemplo: Respuestas disyuntivas)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Sea el conjunto de cláusulas T2:
+
+false $\leftarrow$ a $\wedge$ b.
+
+a $\leftarrow$ c.
+
+b $\leftarrow$ d.
+
+b $\leftarrow$ e.
+
+- ¿Qué podremos concluir?
+
+  $T2\models \neg c \vee \neg d$ y $T2\models \neg c \vee \neg e$
+
+  
+
+
+* Suposición de Conocimiento Completo
+
+
+** Suposición de Conocimiento Completo
+
+*{{{color(green,Conocimiento Completo)}}}*
+
+#+ATTR_REVEAL: :frag (roll-in)      
+- El conocimiento del agente sobre el mundo es {{{color(blue,completo)}}}.
+- ¿Y entonces....?
+- Todas las cosas relevante sobre el  mundo, el agente lo conoce
+  
+** Conocimiento Completo
+
+*{{{color(green,No Monotonicidad)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- Considere un listado de los horarios de colectivo de Nqn a Allen.
+- Si no hay colectivos en el listado que salgan entre las 13:00hs y las 15:00hs, concluimos que no podemos viajar a Allen en ese rango de horario.
+- Si luego agregan una línea que sale a las 14:45, entonces podemos concluir que podemos viajar en ese rango de horario (entre las 13 y las 15).
+  
+** Conocimiento Completo
+*{{{color(green,CWA: Closed World Assumption)}}}*
+
+Permite asumir a un agente  que un {{{color(blue,hecho es falso)}}} si {{{color(blue,no puede inferir)}}}  que es verdad.
+
+*{{{color(green,NAF: Negación por Falla)}}}*
+
+** Conocimiento Completo
+#+REVEAL_HTML: <div style="font-size: 80%;">
+$a \leftarrow B1$
+
+$a \leftarrow B2$
+
+$\vdots$
+
+$a \leftarrow BN$
+
+\[a\leftarrow B1\vee \ldots  \vee BN.\]
+
+y la suposición de conocimiento completo nos permite concluir que
+
+\[a\rightarrow B1\vee \ldots  \vee BN.\]
+
+
+** Conocimiento Completo
+
+*{{{color(green,Completamiento de Clark)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+\[a\leftarrow B1\vee \ldots  \vee BN.\]
+\[a\rightarrow B1\vee \ldots  \vee BN.\]
+Luego 
+
+\[a\leftrightarrow B1\vee \ldots  \vee BN.\]
+
+#+ATTR_REVEAL: :frag (roll-in)
+Esto se hace para todos los predicados. Si el predicado W no aparece en ninguna cabeza de cláusula,
+entonces el completamiento de Clark de W es\[W\leftrightarrow false\]
+
+** CK: Razonamiento Bottom-up
+
+ #+ATTR_HTML:  :height 400
+[[file:imagenes/NAF-BU.jpg]] 
+
+** CK: Razonamiento Bottom-up
+
+$p \leftarrow q \wedge  \sim r$.
+
+$p \leftarrow s$.
+
+$q \leftarrow \sim s$.
+
+$r \leftarrow \sim t$.
+
+$s \leftarrow w$.
+
+$t$.
+
+¿Qué devuelve C?
+
+** CK: Razonamiento Top-down
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Negación por falla.
+
+$p \leftarrow q \wedge  \sim r$.
+
+$p \leftarrow s$.
+
+$q \leftarrow \sim s$.
+
+$r \leftarrow \sim t$.
+
+$s \leftarrow w$.
+
+$t$.
+
+#+ATTR_REVEAL: :frag (roll-in)
+¿Qué devuelve /?p/?
+#+ATTR_REVEAL: :frag (roll-in)
+¿Qué devuelve /?w/?
+
+** CK: Razonamiento Top-down
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Problemas con las variables libres:
+
+$p(X) \leftarrow \sim q(X) \wedge$ r(X)$.
+
+$q(a)$.
+
+$q(b)$.
+
+$r(d)$.
+
+#+ATTR_REVEAL: :frag (roll-in)
+¿Tiene respuesta /?p(X)/ ?
+
+#+ATTR_REVEAL: :frag (roll-in)
+Solución: retrasar la NAF de las metas con variables libres hasta que se liguen.
+
+* Bibliografía
+
+** Referencia Bibliográfica
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+[[file:imagenes/book.png]] S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 7 (hasta la sección 7.7.1 inclusive)
+  2009
+
+[[file:imagenes/book.png]]  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 7: Seccion 7.3 hasta Razonamiento (no lo incluye)
+  Seccion 7.4 completa
+  1998
+

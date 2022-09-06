@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Sist. de Representacion y Razonamiento</h2><p class="date">Created: 2022-09-06 mar 10:25</p>
+</section>
+
+
+<section>
+<section id="slide-orgda02285">
+<h2 id="orgda02285">Motivación</h2>
+<div class="outline-text-2" id="text-orgda02285">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2b69969">
+<h3 id="org2b69969">Intuición</h3>
+<p>
+Supongamos que tenemos un agente que queremos que perciba y actúe en el ambiente <i><font color=red>nuestra clase en este momento</font></i>
+</p>
+
+
+<p>
+Así querremos modelar la situación actual de la clase
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org487d64f">
+<h3 id="org487d64f">Intuición</h3>
+<div style="font-size: 80%;">
+<p>
+En su información que representamos:
+</p>
+
+<ul>
+<li>Es posible llegar a la conclusión de que si <font color=red>Sandra está en el aula, sus manos también lo están?</font></li>
+<li>Si un alumno  junta su carpeta y sale del aula, puede concluir Ud. que el alumno y <font color=red>su carpeta</font> no están en el aula.</li>
+<li>Si hay viento de 150km/hora y abrimos una ventana, puede concluir Ud. que la pila de papeles se volará?</li>
+<li>Otras situaciones que se les ocurran &#x2026;.</li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org6179547">
+<h3 id="org6179547">¿Por qué necesitamos Representar Conocimiento?</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">Analizamos lo que los agentes <font color=red>saben</font> o <font color=red>conocen</font> del mundo que queremos modelar.</li>
+<li class="fragment roll-in">Muchas veces decimos que los seres humanos <font color=red>actúan inteligentemente</font> porque:
+
+<ul>
+<li>saben muchas cosas acerca de muchas cosas y</li>
+<li>pueden aplicar este conocimiento a su ambiente para cumplir sus objetivos.</li>
+
+</ul></li>
+
+<li class="fragment roll-in"><font color="blue">Estudiamos que es lo que un agente necesita saber para actuar en forma racional.</font></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org4166953">
+<h3 id="org4166953">Conocimiento y Comportamiento</h3>
+<div style="font-size: 80%;">
+
+<p>
+El comportamiento racional, está condicionado al conocimiento a priori del agente.
+</p>
+
+<p class="fragment (roll-in)">
+<font color=red>¿Podríamos decir que mientras más sabemos más inteligentemente actuamos?</font>
+</p>
+
+<p class="fragment (roll-in)">
+Muchas veces las decisiones tomadas están basadas en lo que sabemos.
+</p>
+
+<p class="fragment (roll-in)">
+En algunos casos, cuando decimos que alguien ha actuado <font color=red>tontamente</font> no es tanto
+porque <font color=red>no sabía</font> lo que estaba haciendo, sino porque fue <font color=red>incapaz de utilizar</font> lo que <font color=red>ya sabía</font> en lo que estaba haciendo.
+</p>
+
+
+<p class="fragment (roll-in)">
+<font color="green">Ejemplo: queremos ver si el auto tiene nafta acercando un encendedor a la tapa de la nafta.</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc60d7a3">
+<h3 id="orgc60d7a3">¿Qué es Conocimiento?</h3>
+<p>
+Pregunta compleja que ha sido analizada desde los filósofos Griegos.
+</p>
+
+<p>
+<b><font color="green">Epistemología o Teoría del Conocimiento</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Del griego <i>episteme</i>, "conocimiento", y <i>logos</i>, "teoría" es la rama de la filosofía cuyo objeto de estudio es el conocimiento científico, su naturaleza y su alcance (limitaciones).
+</p>
+
+<p>
+La pEpistemología se dedica a estudiar:
+</p>
+
+<ul>
+<li>¿Qué es conocimiento?</li>
+<li>¿Cómo lo obtenemos?</li>
+<li>¿Qué sabemos que sabemos?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org298cfc9">
+<h3 id="org298cfc9">¿Qué es Conocimiento?</h3>
+<p>
+Cambiemos la pregunta: <font color=red>¿Cómo nos referimos a él?</font>
+</p>
+
+<p>
+<b><font color="green">Sandra sabe que ....</font></b>
+</p>
+<div style="font-size: 70%;">
+
+<p>
+Lo que sabemos es una <font color="blue">proposición</font>  que puede ser verdadera o falsa.
+</p>
+
+<p>
+El conocimiento  es una relación entre el <font color="blue">conocedor</font> y una proposición.
+</p>
+
+<p>
+Sandra sabe que sus alumnos aman la IA. <font color="blue">Proposición VERDADERA :</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbb3af1d">
+<h3 id="orgbb3af1d">¿Qué es Conocimiento?</h3>
+<p>
+Cambiemos la pregunta: <font color=red>¿Cómo nos referimos a él?</font>
+</p>
+
+<p>
+<b><font color="green">Actitudes proposicionales</font></b>
+</p>
+<div style="font-size: 70%;">
+
+<p>
+Sandra  espera  que &#x2026;.
+</p>
+
+<p>
+Sandra espera que sus alumnos amen la IA.
+</p>
+
+<p>
+La proposición es la misma pero la relación  que Sandra tiene hacia ella es diferente.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0b58e26">
+<h3 id="org0b58e26">¿Qué es Conocimiento?</h3>
+<p>
+<b><font color="green">Noción de Creencia</font></b>
+</p>
+<div style="font-size: 70%;">
+
+<p>
+Sandra  cree en p.
+</p>
+
+<p>
+Sandra sabe p.
+</p>
+
+<p>
+Usamos <font color="blue">cree</font> cuando no estamos totalmente convencidos.
+</p>
+
+
+<p class="fragment (roll-in)">
+<font color=red>El conocimiento nos dice que el mundo es de algún modo y no de otro.</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org40a6de3">
+<h3 id="org40a6de3">¿Qué es Representación?</h3>
+<p>
+Símbolos que representan cosas en el mundo.
+</p>
+
+<div id="org069eebc" class="figure">
+<p><img src="imagen/curva.jpg" alt="curva.jpg" height="400" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgf04e079">
+<h3 id="orgf04e079">¿Qué es Representación?</h3>
+<div style="font-size: 70%;">
+<p>
+Ej. Símbolos que representan Hombre - Mujer en puertas de baños.
+</p>
+
+<div id="org8b11743" class="figure">
+<p><img src="imagen/banopuertas.jpg" alt="banopuertas.jpg" height="340" />
+</p>
+</div>
+
+<p class="fragment (roll-in)">
+Usualmente los representantes son más concretos, inmediatos o accesibles que sus
+representados. 
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org9bd3c1d">
+<h3 id="org9bd3c1d">¿Qué es Representación?</h3>
+<p>
+Símbolos que representan cosas en el mundo.
+</p>
+<div style="font-size: 70%;">
+
+<p>
+``Sandra'' \(\longrightarrow\) Sandra<br />
+</p>
+
+<p>
+``7'' \(\longrightarrow\) siete<br />
+</p>
+
+<p>
+``VII'' \(\longrightarrow\) siete<br />
+</p>
+
+<p>
+Mis alumnos aman la IA  \(\longrightarrow\) Uds. aman la IA.<br />
+</p>
+
+
+<p>
+My students love AI \(\longrightarrow\) Uds. aman la IA.
+</p>
+
+<p class="fragment (roll-in)">
+Nótese que pueden existir diferentes <font color=red>alfabetos</font>, para representar lo mismo.
+</p>
+
+<p class="fragment (roll-in)">
+7 + 5 = 14
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7a47259">
+<h3 id="org7a47259">¿Qué es Representación?</h3>
+<p>
+<b><font color="green">Representación del Conocimiento</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Es el estudio concerniente con el uso  formal de símbolos para representar  una colección de proposiones creidas por un agente.
+</p>
+
+<div style="font-size:140%;">
+<p>
+<font color=red>NO</font> vamos a representar <font color=red>TODO</font> el conocimiento del agente.
+</p>
+
+<p>
+El agente podría creer en un conjunto infinito de  proposiciones, pero solo representamos un conjunto finito.
+</p>
+
+<p>
+El <font color=red>razonamiento</font> es el que achica la brecha entre lo representado y lo que el agente cree. 
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc9e3c60">
+<h3 id="orgc9e3c60">¿Qué conocimiento vamos a representar?</h3>
+<p>
+<b><font color="green">Ontología</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+En filosofía, la ontología <i>onto</i>, del griego, genitivo del participio del verbo  ser, estar;
+y <i>logia</i>, (ciencia, estudio, teoría) es una parte de la metafísica que estudia lo que hay, es
+decir <font color="blue">qué entidades existen y cuáles no</font>, como así también las
+<font color="blue">categorías</font> de lo que existe y la manera en que se <font color="blue">relacionan las entidades</font>
+</p>
+
+
+<div style="font-size:120%;">
+
+<p class="fragment (roll-in)">
+En la Ciencias de la Computación, la <font color=red>ontología</font> representa formalmente el conocimiento como un 
+<font color="blue">conjunto de conceptos en un dominio</font> y las <font color="blue">relaciones</font> entre estos conceptos. 
+</p>
+
+<p class="fragment (roll-in)">
+Así determinamos, qué es lo que el agente <font color=red>puede percibir</font> y por lo tanto, <font color=red>qué parte del mundo</font> va a  
+representar y razonar a partir de ellos para lograr sus objetivos. 
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org2d0b235">
+<h3 id="org2d0b235">¿Qué conocimiento vamos a representar?</h3>
+<p>
+<b><font color="green">Ontología</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Determinamos, qué es lo que el agente <font color="blue">puede percibir</font> y por lo tanto, <font color="blue">qué parte del mundo</font> va a representar y razonar a partir de ellos para lograr sus objetivos. 
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org9124b15">
+<h3 id="org9124b15">Razonamiento y Comportamiento</h3>
+<p>
+Una vez que tenemos información representada de un ambiente necesitamos analizar cómo se <font color=red>afecta</font> ese ambiente con el <font color=red>comportamiento</font> de nuestro agente.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org4bea505">
+<h3 id="org4bea505">¿Qué es Razonamiento?</h3>
+<p>
+<b><font color="green">Razonamiento</font></b>
+</p>
+<div style="font-size: 70%;">
+
+<p>
+Manipulación de símbolos que codifican proposiciones para producir representaciones de  nuevas proposiciones.
+</p>
+
+
+<div id="org0eab690" class="figure">
+<p><img src="imagen/repres.jpg" alt="repres.jpg" height="340" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd5454a3">
+<h3 id="orgd5454a3">Representación del Conocimiento y Razonamiento</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">La <font color=red>Representación del Conocimiento</font> es el área de la IA que se encarga de estudiar cómo describir el conocimiento del mundo o de un estado del mundo  en forma  simbólica.</li>
+<li class="fragment roll-in">No solamente debe dar una descripción  del conocimiento, sino que también debe decidir <font color=red>qué conocimiento</font> representar.</li>
+<li class="fragment roll-in">A través del <font color=red>Razonamiento</font> obtendremos nuevo conocimiento en los que el agente creerá.</li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgef52ac3">
+<h3 id="orgef52ac3">Hipótesis de Representación del Conocimiento (B. Smith)</h3>
+<div style="font-size: 60%;">
+<p>
+Querremos construir sistemas que contengan representaciones simbólicas con dos propiedades importantes:
+</p>
+
+<ul>
+<li>Nosotros, como observadores externos, podemos considerar que de manera natural representa en forma proposicional todo el conocimiento que el proceso exhibe.</li>
+<li>Con independencia de esta atribución semántica externa, juega un papel formal en la obtención del comportamiento que manifiesta dicho conocimiento. Es decir, el comportamiento ha de estar causado por el conocimiento y ha de ser consistente con las proposiciones que representan el mismo.</li>
+
+</ul>
+
+<p class="fragment (roll-in)">
+Llamaremos a tales sistemas  <font color=red>Sistemas Basados en Conocimiento</font> y a la representación simbólica involucrada <font color=red>Bases de Conocimiento (KB)</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org06a7ef3">
+<h3 id="org06a7ef3">Hipótesis de Representación del Conocimiento (B. Smith)</h3>
+<div style="font-size: 70%;">
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">printColor</span>(nieve):- <span style="color: #00ffff;">!</span>, write(<span style="color: #ffa07a;">"es blanca"</span>).
+<span style="color: #87cefa;">printColor</span>(hierba):- <span style="color: #00ffff;">!</span>, write(<span style="color: #ffa07a;">"es verde"</span>).
+<span style="color: #87cefa;">printColor</span>(cielo):- <span style="color: #00ffff;">!</span>, write(<span style="color: #ffa07a;">"es azul"</span>).
+<span style="color: #87cefa;">printColor</span>(<span style="color: #eedd82;">X</span>):- write(<span style="color: #ffa07a;">"no tengo idea"</span>).
+</code></pre>
+</div>
+</div>
+
+<p>
+Otra alternativa:
+</p>
+
+<div style="font-size: 70%;">
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">printColor</span>(<span style="color: #eedd82;">X</span>):- color(<span style="color: #eedd82;">X</span>,<span style="color: #eedd82;">Y</span>),<span style="color: #00ffff;">!</span>,write(<span style="color: #ffa07a;">"es"</span>),write(<span style="color: #eedd82;">Y</span>).
+<span style="color: #87cefa;">printColor</span>(<span style="color: #eedd82;">X</span>):- write(<span style="color: #ffa07a;">"no tengo idea"</span>).
+<span style="color: #87cefa;">color</span>(nieve, blanca). <span style="color: #87cefa;">color</span>(cielo, azul).
+<span style="color: #87cefa;">color</span>(<span style="color: #eedd82;">X</span>,<span style="color: #eedd82;">Y</span>):- madeof(<span style="color: #eedd82;">X</span>,<span style="color: #eedd82;">Z</span>), color(<span style="color: #eedd82;">Z</span>,<span style="color: #eedd82;">Y</span>).
+<span style="color: #87cefa;">madeof</span>(hierba, vegetacion).
+<span style="color: #87cefa;">color</span>(vegetacion, verde).
+</code></pre>
+</div>
+</div>
+
+<div style="font-size: 70%;">
+<p>
+Ambos programas pueden ser explicados intencionalmente (qué intención tienen). Sin embargo, solo el segundo sigue la Hipótesis de Representación del Conocimiento y tiene su KB.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org89dab2e">
+<h2 id="org89dab2e">Componentes de un RRS</h2>
+<div class="outline-text-2" id="text-org89dab2e">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4a01d46">
+<h3 id="org4a01d46">Sistema de Representación y Razonamiento</h3>
+<p>
+Un Sistema de Representación y Razonamiento (RRS) consiste de:
+</p>
+
+<ul>
+<li><b><font color=red>Lenguaje Formal:</font></b> especifica las sentencias legales.</li>
+<li><b><font color=red>Semántica:</font></b> especifica el significado de los símbolos</li>
+<li><b><font color=red>Teoría de Razonamiento o Procedimiento de Prueba o Teoría de Prueba:</font></b> una especificación no determinista de cómo una respuesta puede ser producida</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org901c49f">
+<h3 id="org901c49f">Sistema de Representación y Razonamiento</h3>
+<p>
+Lenguaje Formal de Representación, ¿cuál conoce? ¿cuál elegimos?
+</p>
+
+<ul>
+<li><b><font color=red>Expresivo:</font></b> qué podemos expresar y qué no es posible.</li>
+<li><b><font color=red>Claridad:</font></b> qué conceptos son más sencillos de expresar en ese lenguaje.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org308f5f5">
+<h3 id="org308f5f5">Implementación de un RRS</h3>
+<p>
+Una implementación de un RRS consiste de:
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li><b><font color=red>Un Analizador del Lenguaje:</font></b> distingue las sentencias legales del lenguaje formal y produce  estructuras  de almacenamiento.</li>
+<li><b><font color=red>Un procedimiento de razonamiento:</font></b> implementación de una teoría de razonamiento \(+\) una estrategia de búsqueda</li>
+
+</ul>
+
+</div  >
+<p class="fragment (roll-in)">
+<b>Nota:</b> ¡La semántica <font color=red>no</font> está reflejada en la implementación!
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org554a353">
+<h3 id="org554a353">Usando un RRS</h3>
+<ol>
+<li class="fragment roll-in">Comenzar con un dominio de trabajo.</li>
+<li class="fragment roll-in">Distinguir aquellos elementos relevantes (ontología).</li>
+<li class="fragment roll-in">Elegir símbolos para nombrar objetos y   relaciones.</li>
+<li class="fragment roll-in">Darle al sistema conocimiento del dominio.</li>
+<li class="fragment roll-in">Realizar preguntas al sistema.</li>
+
+</ol>
+
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org691d71b">
+<h3 id="org691d71b">Rol de la semántica en un RRS</h3>
+
+<div id="org3c6db75" class="figure">
+<p><img src="imagen/role.JPG" alt="role.JPG" height="500" />
+</p>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org09296ef">
+<h3 id="org09296ef">Suposiciones de simplificación</h3>
+<ul>
+<li>El conocimiento de un agente puede ser descripto en términos de <i><font color=red>individuos</font></i> y <i><font color=red>relaciones</font></i> entre individuos</li>
+<li>La base de conocimiento de un agente consiste de sentencias <i><font color=red>definidas</font></i> y <i><font color=red>positivas</font></i></li>
+<li>El ambiente es <i><font color=red>estático</font></i></li>
+<li>Hay solo un número finito de individuos relevantes en el dominio. A cada individuo se le puede dar un único nombre</li>
+
+</ul>
+
+<p class="fragment (roll-in)">
+\(\Rightarrow\) Datalog
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org5063a5f">
+<h3 id="org5063a5f">Sintaxis de Datalog</h3>
+<ul>
+<li><b><font color=red>Variables</font></b>  comienzan con letra mayúscula</li>
+<li><b><font color=red>Constantes</font></b> comienzan con letra minúscula o es una secuencia  de números</li>
+<li><b><font color=red>Símbolos de Predicado</font></b> comienzan con letra minúscula</li>
+<li><b><font color=red>Términos</font></b> es una variable o una constante</li>
+<li><b><font color=red>Átomo</font></b> es de la forma \(p\) or \(p(t_1,\ldots,t_n)\) donde \(p\) es un símbolo de predicado y \(t_i\) son términos</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf11a01d">
+<h3 id="orgf11a01d">Sintaxis de Datalog</h3>
+<div style="font-size: 80%;">
+
+<p>
+Una <font color=red>cláusula definida</font> es un símbolo atómico o  tiene la forma:
+</p>
+
+<p>
+\(\underbrace{a}  \leftarrow  \underbrace{b_1 \wedge \ldots \wedge b_m}\) 
+</p>
+
+<p>
+cabeza    -----&#x2013;&#x2014;              cuerpo                                    
+</p>
+
+
+<p>
+donde \(a\) y \(b_i\) son símbolos atómicos.
+</p>
+
+
+<p>
+Una <font color=red>Consulta</font> es de la forma \(? b_1 \wedge \ldots \wedge b_m\)
+</p>
+
+<p>
+Una <font color=red>Base de conocimiento</font> es un conjunto de cláusulas definidas.
+</p>
+
+
+</div  >
+
+</section>
+</section>
+<section>
+<section id="slide-org19c2589">
+<h3 id="org19c2589">Ejemplo de base de conocimiento</h3>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">in</span>(<span style="color: #eedd82;">Alan</span>, <span style="color: #eedd82;">R</span>) :-
+    teaches(<span style="color: #eedd82;">Alan</span>, <span style="color: #eedd82;">Cs322</span>),
+    in(<span style="color: #eedd82;">Cs322</span>, <span style="color: #eedd82;">R</span>).    
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="fragment (roll-in)"><code trim><span style="color: #87cefa;">grandfather</span>(<span style="color: #eedd82;">William</span>, <span style="color: #eedd82;">X</span>) :-
+    father(<span style="color: #eedd82;">William</span>,<span style="color: #eedd82;">Y</span>),
+    father(<span style="color: #eedd82;">Y</span>,<span style="color: #eedd82;">X</span>).
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org1353bbc">
+<h3 id="org1353bbc">Semánticas, Intuición</h3>
+<ul>
+<li>Una <font color=red>semántica</font> especifica el significado de las sentencias en el lenguaje.</li>
+<li>Una <font color=red>interpretación</font> especifica: 
+<ul>
+<li>Los objetos (individuos) que están en el mundo</li>
+<li>La  correspondencia entre símbolos en la computadora y objetos  y relaciones en el mundo
+<ul>
+<li>las constantes denotan individuos.</li>
+<li>los símbolos de predicado denotan relaciones.</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org9501c2c">
+<h3 id="org9501c2c">Semánticas Formales</h3>
+<ul>
+<li>Una <font color=red>interpretación</font> es una tupla \(I = \langle D,  \phi, \pi \rangle\), donde 
+<ul>
+<li>\(D\), el <font color=red>dominio</font>, es un conjunto no vacío, los elementos de \(D\) son los <font color=red>individuos</font>.</li>
+<li>\(\phi\) es una función que asigna a cada constante un elemento de \(D\). La constante \(c\) denota el individuo \(\phi(c)\).</li>
+<li>\(\pi\) es una función que asigna a cada símbolo de predicado  $n$-ario una relación: una función desde \(D^n\) a \(\{true,false\}\)</li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgbf63d21">
+<h3 id="orgbf63d21">Ejemplo de Interpretación</h3>
+
+<div id="org4a91720" class="figure">
+<p><img src="imagen/interpret.jpg" alt="interpret.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org89e83b7">
+<h3 id="org89e83b7">Verdad en la Interpretación</h3>
+<p>
+Un átomo sin variables (ground) \(p(t_1,\ldots,t_n)\) es 
+</p>
+
+<ul>
+<li><font color="blue">verdadero en la interpretación</font> \(I\) si  \(\pi(P)(\phi(t_1),\ldots,\phi(t_n)) = TRUE\) y</li>
+<li><font color="blue">falso en la interpretación</font> \(I\) si \(\pi(P)(\phi(t_1),\ldots,\phi(t_n)) = FALSE\).</li>
+
+</ul>
+
+
+<p class="fragment (roll-in)">
+Una cláusula sin variables \(h \leftarrow b_1 \wedge \ldots \wedge b_n\) es <font color="blue">falsa en la interpretación</font> \(I\) si \(h\) es falso en \(I\) y cada \(b_i\) es verdadero en \(I\), y es <font color="blue">verdadera en la interpretación</font> \(I\)  en el caso contrario.
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org22d08bb">
+<h3 id="org22d08bb">Ejemplo</h3>
+<p>
+En la interpretación dada anteriormente:
+</p>
+
+
+<div id="org4e0582e" class="figure">
+<p><img src="imagen/ejemploverdad.jpg" alt="ejemploverdad.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc54b2f3">
+<h3 id="orgc54b2f3">Modelos y consecuencias lógicas</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>Una <font color=red>base de conocimiento</font>, \(KB\), es <font color=red>verdadera</font> en la interpretación \(I\) si y solo si toda cláusula en \(KB\) es verdadera en \(I\).</li>
+<li>Un <font color=red>modelo</font> de un conjunto de cláusulas es una interpretación en la cual todas las cláusulas son verdaderas.</li>
+<li>Si \(KB\) es un conjunto de cláusulas y \(g\) es una conjunción de átomos, \(g\) es una <font color=red>consecuencia lógica</font> de \(KB\), denotado como \(KB \models g\) si \(g\) es verdadero en  todo modelo de \(KB\)</li>
+<li>Es decir, \(KB \models g\) si no existe una interpretación en la  cual \(KB\) es verdadera y \(g\) falsa</li>
+
+</ul>
+</div  >
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb3803b3">
+<h3 id="orgb3803b3">Un Ejemplo Simple</h3>
+
+<div id="orgad2be4e" class="figure">
+<p><img src="imagen/simpleejemp.jpg" alt="simpleejemp.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfead1c9">
+<h3 id="orgfead1c9">Punto de vista del usuario</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>Elegir una tarea del dominio: <font color=red>interpretación pretendida</font></li>
+<li>Asociar constantes a individuos que se desea nombrar</li>
+<li>Por cada relación que se quiera representar, asociar un símbolo  de predicado en el lenguaje</li>
+<li>Dar al sistema las cláusulas que son verdaderas en la  interpretación pretendida: <font color=red>axiomatizar el dominio</font></li>
+<li>Realizar consultas de la interpretación pretendida</li>
+<li>Si \(KB \models g\), entonces \(g\) debe ser verdadero en la interpretación pretendida.</li>
+
+</ul>
+</div  >
+
+</section>
+</section>
+<section>
+<section id="slide-org053ca58">
+<h3 id="org053ca58">Punto de vista del sistema</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>El sistema no tiene acceso a la interpretación pretendida</li>
+<li>Todo lo que conoce es la base de conocimiento</li>
+<li>El sistema puede determinar si una fórmula es una   consecuencia lógica de \(KB\)</li>
+<li>Si \(KB \models g\), entonces \(g\) debe ser verdadero en la  interpretación pretendida.</li>
+<li>Si \(KB \not\models g\), entonces hay un modelo de \(KB\) en el  cual \(g\) es falsa. Ésta podría ser la interpretación pretendida.</li>
+
+</ul>
+</div  >
+
+</section>
+</section>
+<section>
+<section id="slide-org2919eec">
+<h3 id="org2919eec">Procedimiento de Prueba</h3>
+<ul>
+<li>Top-down: Árbol SLD</li>
+<li>Bottom -up: Cálculo del menor punto fijo de Tp</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4ea6623">
+<h3 id="org4ea6623">Procedimiento de Prueba</h3>
+<p>
+¿Qué le vamos a pedir al procedimiento de prueba?
+</p>
+
+<ul>
+<li>Sensatez</li>
+<li>Completitud</li>
+<li>Eficiencia</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org51a4b42">
+<h3 id="org51a4b42">Más Allá del Conocimiento Definido</h3>
+<p>
+<b><font color="green">Axioma de Igualdad</font></b>
+</p>
+
+<div style="font-size: 70%;">
+<p>
+El término \(t_1\)  <font color="blue">iguala</font> al término \(t_2\), que lo notamos \(t_1= t_2\), es verdadero en una interpretación \(I\) si \(t_1\)  y \(t_2\) denotan al mismo individuo en \(I\). 
+</p>
+</div  >
+
+<p>
+<b><font color="green">Suposición de Nombres Unicos (UNA: Unique Name Assumption</font></b>
+</p>
+
+<div style="font-size: 70%;">
+<p>
+Términos fijos(ground) \underline{distintos} denotan diferentes individuos. Esto es, para cada par de términos fijos \(t_1\) y \(t_2\), asumimos que   \(t_1\neq t_2\).
+</p>
+</div  >
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
