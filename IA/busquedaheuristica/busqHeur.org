@@ -1,0 +1,496 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Búsqueda Heurística
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Motivación
+
+** Motivación
+*{{{color(green,Búsqueda Ciega)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ -  Realizan un recorrido {{{alert(exhaustivo)}}} del árbol de búsqueda.
+ -  Son {{{alert(independientes)}}} del problema que queremos resolver.
+ -  Aún en casos de espacios finitos, resultan de poco interés prácticos cuando el espacio resulta ser {{{alert(suficientemente  grande)}}}.
+#+REVEAL_HTML: </div>
+
+** ¡Qué se haga la luz!
+
+| [[file:imagenes/Idea.jpg]] | *{{{color(green,Epistemología o Teoría del Conocimiento)}}}* Usa  {{{color(#A569BD,conocimiento específico del problema)}}}        | 
+
+*{{{color(green,Consideraciones)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Algunas de las estrategias:
+- pueden hallar soluciones  {{{color(#FF5733,más eficientes)}}} que las estrategias ciegas;
+- pueden  {{{color(#FF5733,no hallar)}}} la mejor solución (máximo local).
+#+REVEAL_HTML: </div>
+
+** ¡Qué se haga la luz!
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- Se introduce una  {{{alert(función de evaluación)}}} $f(n)$ y se expande un nodo basado en la información que dé la función. 
+- Generalmente se expande el nodo con  {{{alert(menor valor de la función)}}}, porque la evaluación mide distancias a la meta.
+- Esta función da información acerca del nodo, como por ejemplo el costo de llegar desde la raíz a una meta pasando por ese nodo o {{{alert(una estimación de cuanto falta para llegar desde ese nodo a la meta más cercana)}}}.
+- {{{color(colorgreen,Función de evaluación perfecta:)}}} costo real de la raíz a la meta más cercana pasando por el nodo en el que el agente se encuentra :)
+#+REVEAL_HTML: </div>
+
+* Heurísticas
+
+** ¿Por qué la gallinita dijo EUREKA?
+
+
+*{{{color(green,Heurística)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+La función de evaluación se puede implementar con el  {{{color(#FF5733,costo estimado)}}}
+del camino menos costoso desde el nodo que estamos evaluando a una  meta.
+#+REVEAL_HTML: </div>
+
+| [[file:imagenes/eureka.jpg]]  Arquímides de Siracusa (287 a.C - 212 a.C.) | {{{alert(Heurística:)}}} Del griego /heuriskein/ |
+
+
+** Heurística
+
+#+ATTR_REVEAL: :frag (roll-in)
+*{{{color(green,Procedimiento)}}}*
+{{{color(#FF5733,Criterio)}}} que puede resolver un problema pero que no hay garantía de
+que siempre lo resuelva.
+
+#+ATTR_REVEAL: :frag (roll-in)
+*{{{color(green,Función)}}}*
+{{{color(#FF5733,Estimación del costo)}}} necesario para alcanzar la solución
+más cercana desde el estado actual.
+
+#+ATTR_REVEAL: :frag (roll-in)
+{{{color(#FF5733,Las heurísticas son formalizadas como reglas para elegir (buscar) las ramas en el espacio de estados que son más probables de llegar a una solución aceptable del problema)}}}
+
+** Heurísticas: Ejemplo
+#+REVEAL_HTML: <div style="font-size: 70%;">
+*{{{color(green,8-puzzle)}}}*
+
+ $h_1(n)$ = Número de tejas fuera de lugar
+
+ [[file:imagenes/8puzzle.jpg]]
+
+ ¿Cuál es el valor de la heurísitica para el estado inicial?
+
+ #+ATTR_REVEAL: :frag (roll-in)
+ $h_1(Start State)$ = 6
+#+REVEAL_HTML: </div>
+
+** Heurísticas: 8-puzzle
+#+REVEAL_HTML: <div style="font-size: 70%;">
+| [[file:imagenes/8puzzle.jpg]] | *{{{color(green,8-puzzle)}}}* $h_1(n)$ = Número de tejas fuera de lugar    |
+
+
+[[file:imagenes/puzzleDown.jpg]] [[file:imagenes/puzzleUp.jpg]] [[file:imagenes/puzzleLeft.jpg]] [[file:imagenes/puzzleRight.jpg]]
+
+
+¿Cuál es el valor de la heurísitica para cada estado?
+ #+ATTR_REVEAL: :frag (roll-in)
+ $h_1() = 6$ $h_1() = 7$ $h_1() = 7$ $h_1() = 5$
+#+REVEAL_HTML: </div>
+
+** Heurística
+#+ATTR_REVEAL: :frag (roll-in)
+   - *{{{color(green,Función)}}}*  {{{color(blue,Estimación del costo)}}} necesario para alcanzar la meta más cercana desde el estado actual.
+   - La función heurística es una forma de {{{alert(informar)}}} a la búsqueda sobre la dirección a la meta. Provee una modo informado de {{{alert(adivinar)}}} cuál vecino de un nodo nos guía a la meta.
+   - {{{color(green,Compromiso entre:)}}}
+       -  {{{alert(Ahorro)}}} en el esfuerzo en la búsqueda.
+       -  {{{alert(Costo)}}} del cálculo de la heurística en cada nodo.
+
+** Heurística Admisible
+
+*{{{color(green,Heurística Admisible)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Diremos que la heurística es {{{color(blue,admisible)}}}
+si {{{color(blue,subestima)}}} el costo, esto es,
+si su estimación del costo a la meta es {{{color(blue,menor o igual)}}} que el costo real.
+Si $g$ es el costo real de llegar desde el nodo actual a la meta entonces $h\leq g$.
+#+REVEAL_HTML: </div>
+
+#+ATTR_REVEAL: :frag (roll-in)
+¿Cómo es el valor de la heurística en un {{{alert(estado meta)}}}, si es admisible?
+
+** Heurística Admisible
+
+*{{{color(green,Heurística Admisible)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Diremos que la heurística es {{{color(blue,admisible)}}}
+si {{{color(blue,subestima)}}} el costo, esto es,
+si su estimación del costo a la meta es {{{color(blue,menor o igual)}}} que el costo real.
+Si $g$ es el costo real de llegar desde el nodo actual a la meta entonces $h\leq g$.
+#+REVEAL_HTML: </div>
+
+#+ATTR_REVEAL: :frag (roll-in)
+La función heurística  $h_1(n)$ = Número de tejas fuera de lugar,
+ ¿es subestimada?¿es admisible?
+
+**  Heurística Admisible
+
+#+ATTR_REVEAL: :frag (roll-in)
+- La función heurística  $h_1(n)$ = Número de tejas fuera de lugar, ¿es admisible?
+  {{{alert(Si.)}}}
+- Porque $\ldots$
+- Cada teja fuera de lugar tiene que moverse al menos una vez para llegar a su lugar. 
+  $\therefore h_1(n) \leq$ Costo Real. 
+
+  
+** Otra Heurística: 8-puzzle
+#+REVEAL_HTML: <div style="font-size: 70%;">
+*{{{color(green,Distancia de /Manhattan/)}}}*
+
+$h_2(n)$ = Suma de las distancias de las tejas hasta su posición en la meta.
+Se suman las distancias verticales y horizontales (las tejas no pueden moverse en diagonal)
+
+#+ATTR_HTML:  :height 150
+[[file:imagenes/8puzzle.jpg]]
+
+¿Cuál es el valor de la distancia de Manhattan para el nodo inicial?
+
+#+ATTR_REVEAL: :frag (roll-in)
+$h_2(S)$ = 4+0+3+3+1+0+2+1 = 14
+
+#+ATTR_REVEAL: :frag (roll-in)
+¿Es Admisible?
+{{{alert(Si.)}}}
+#+REVEAL_HTML: </div>
+
+** Heurísticas: 8-puzzle
+#+REVEAL_HTML: <div style="font-size: 70%;">
+$h_1(n)$ = Número de tejas fuera de lugar
+
+$h_2(n)$ = Distancia de /Manhattan/
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Suma de las distancias de las tejas hasta su posición en la meta.
+Se suman las distancias verticales y horizontales (las tejas no pueden moverse en diagonal)
+
+
+#+ATTR_HTML:  :height 150
+[[file:imagenes/8puzzle.jpg]]
+
+¿Cuál es el valor de la distancia de Manhattan para el nodo inicial?
+
+$h_1(S) =6$
+
+$h_2(S)$ = 4+0+3+3+1+0+2+1 = 14
+
+¿Cuál elijo? ¿Cuál es mejor?
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** Dominación
+
+Si tenemos dos heurísiticas,
+
+¿Cuál es {{{alert(mejor)}}}?
+
+*{{{color(green,Dominación)}}}*
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Si $h_2(n) \geq h_1(n)$ para todo $n$ (ambas admisibles)  
+entonces $h_2$ {{{color(blue,domina a)}}}  $h_1$ y es {{{color(#FF5733,mejor)}}} para la búsqueda.
+#+REVEAL_HTML: </div>
+
+Dadas heurísticas admisibles $h_a$, $h_b$,
+\[
+  h(n) = \max(h_a(n),h_b(n))
+\]
+
+es también admisible y domina a $h_a$ y a $h_b$
+
+** Inventando Funciones Heurísticas Admisibles
+
+*{{{color(green,Problemas relajados)}}}*
+
+Un problema con {{{color(blue,menos)}}} restricciones sobre las acciones se denomina
+{{{color(blue,problema relajado)}}}.
+
+** Inventando Funciones Heurísticas Admisibles
+
+*{{{color(green,Ejemplo 8-puzzle)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Una teja puede moverse desde el {{{alert(cuadrado A al cuadrado B)}}} si: 
+  {{{color(green,A está horizontalmente)}}} o {{{color(#A569BD,verticalmente adyacente a B)}}}
+  y {{{color(blue,B es el blanco)}}}.
+#+REVEAL_HTML: </div>
+
+*{{{color(green,Problemas relajados)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+-  Una teja  se puede mover de un cuadrado A a uno B si A está adyacente a B.
+-  Una teja se puede mover desde un cuadrado A a uno B si B es el blanco.
+-  Una teja se puede mover desde un cuadrado A a uno B.
+
+
+#+ATTR_REVEAL: :frag (roll-in)
+La idea de la distancia de Manhattan surge del primer problema relajado. Y la heurística $h_1$ del tercer problema.
+#+REVEAL_HTML: </div>
+
+* Búsqueda Heurística
+
+* Primero el Mejor - Best-first Search
+
+** Best-first Search
+
+    - *{{{color(green,Idea)}}}* Usar como /función de evaluación/ $f(n)$  por cada nodo,  una
+      estimación de su cercanía a la meta.
+    - Expande los nodos más "cercanos" primero.
+    - *{{{color(green,Implementación)}}}* La frontera es una {{{color(green,cola ordenada)}}} por la función de evaluación.
+    - *{{{color(green,Estrategias)}}}* La elección de $f$ determina la estrategia:
+      - {{{alert(Greedy Best-First Search:)}}} $f(n)=h(n)$
+      - $A^*$: $f(n)=g(n)+ h(n)$
+
+** Greedy Best-First search
+
+   $f(n)=h(n)$
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+    La función de evaluación  es una heurística $h(n)$, estimación del
+    costo desde $n$ a la meta más cercana.
+
+Greedy best- First Search expande los nodos que /parecen/ estar más cerca de
+la meta.
+#+REVEAL_HTML: </div>
+
+** Greedy Best-First search
+
+*{{{color(green,Implementación)}}}*
+
+Selecciona el primero de la frontera:
+
+#+BEGIN_SRC prolog
+  select(Nodo,[Nodo|Frontera], Frontera).
+#+END_SRC
+
+La frontera es una {{{color(blue,cola ordenada)}}} por la heurística.
+
+#+BEGIN_SRC prolog
+  add_to_frontier(Vecinos, Frontera1, Frontera3):-
+       append(Frontera1,Vecinos,Frontera2),
+       sort_by_h(Frontera2,Frontera3).
+#+END_SRC
+
+** Greedy Best-First search
+
+*{{{color(green,Ir a Bucarest)}}}*
+
+    $h_{{\rm SLD}}(n)$ = Distancia en línea recta (a vuelo de pájaro)
+    desde $n$ a Bucarest.
+
+    
+** Costos en Km
+
+[[file:imagenes/romania2.jpg]]
+
+
+** Ejemplo
+
+[[file:imagenes/greedy-progress01.jpg]]
+
+** Ejemplo
+
+[[file:imagenes/greedy-progress02.jpg]]
+
+** Ejemplo
+
+[[file:imagenes/greedy-progress03.jpg]]
+
+** Ejemplo
+
+[[file:imagenes/greedy-progress04.jpg]]
+
+** Propiedades de Greedy Best-First Search
+
+#+ATTR_REVEAL: :frag (roll-in)
+- ¿Completo?: No, puede entrar en ciclos infinitos, e.g.  Iasi $\to$ Neamt $\to$ Iasi $\to$ Neamt $\to$
+   Es completo en espacios finitos con verificacióon de estados repetidos
+- ¿Tiempo?: $O(b^m)$, pero una buena heurística puede dar grandes mejoras
+- ¿Espacio?: $O(b^m)$  conserva todos los nodos en memoria
+- ¿Óptimo?: No
+
+** $A^*$
+
+*{{{color(green,Idea)}}}*
+
+Evitar expandir caminos que ya son caros. Para esto combina información de:
+
+    -  {{{color(blue,Costo exacto)}}} hasta el punto actual de la búsqueda; y
+    -  {{{color(blue,Costo estimado)}}} desde el punto actual a la meta.
+
+      
+
+    
+** $A^*$
+
+La función de evaluación es  $f(n) = g(n) + h(n)$
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ - $g(n)$ = costo real desde el estado inicial hasta llegar a $n$
+ - $h(n)$ = costo estimado desde $n$ a la meta
+ - $f(n)$ = costo estimado de un camino a la meta que pasa por $n$
+#+REVEAL_HTML: </div>
+
+#+ATTR_HTML:  :height 150
+[[file:imagenes/aestrellab.png]]
+
+** $A^*$
+
+
+*{{{color(green,Implementación)}}}*
+
+Selecciona el primero de la frontera:
+
+#+BEGIN_SRC prolog
+  select(Nodo,[Nodo|Frontera], Frontera).
+#+END_SRC
+
+La frontera es una {{{color(blue,cola ordenada)}}} por la función f.
+
+#+BEGIN_SRC prolog
+  add_to_frontier(Vecinos, Frontera1, Frontera3):-
+       append(Frontera1,Vecinos,Frontera2),
+       sort_by_f(Frontera2,Frontera3).
+#+END_SRC
+
+** $A^*$: Condiciones de Optimalidad
+
+*{{{color(green,theorem)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ $A^*$ implementado árboles de búsqueda es óptimo si $h(n)$ es admisible.
+(Demostración a cargo del lector :) Ver Poole o Russell)
+#+REVEAL_HTML: </div>
+
+$A^*$ usa una heurística /admisible/
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+    $h(n) \leq h^*(n)$ donde $h^*(n)$ es el costo /real/ desde $n$.
+    También requiere que $h(n)\geq 0$, de manera que $h(G)=0$ para
+    toda meta $G$.
+#+REVEAL_HTML: </div>
+
+** Ejemplo de $A^*$
+
+*{{{color(green,Ejemplo)}}}*
+
+    $h_{{\rm SLD}}(n)$ nunca sobrestima la distancia real de la ruta.
+
+** Costos en Km
+
+[[file:imagenes/romania2.jpg]]
+
+    
+
+** Ejemplo
+
+[[file:imagenes/greedy-progress01.jpg]]
+
+** Ejemplo
+
+[[file:imagenes/greedy-progress02.jpg]]
+
+** Ejemplo
+
+[[file:imagenes/greedy-progress03.jpg]]
+
+** Ejemplo
+
+[[file:imagenes/greedy-progress04.jpg]]
+
+** Ejemplo de $A^*$
+
+[[file:imagenes/astar-progress01.jpg]]
+
+** Ejemplo de $A^*$
+
+[[file:imagenes/astar-progress02.jpg]]
+
+** Ejemplo de $A^*$
+
+[[file:imagenes/astar-progress03.jpg]]
+
+** Ejemplo de $A^*$
+
+[[file:imagenes/astar-progress04.jpg]]
+
+** Ejemplo de $A^*$
+
+[[file:imagenes/astar-progress05.jpg]]
+
+** Propiedades de $A^*$
+
+#+ATTR_REVEAL: :frag (roll-in)
+- ¿Completo?: Si, a menos que existan infinitos
+  nodos con $f \leq f(G)$
+- ¿Tiempo?: Exponencial
+- ¿Espacio?: conserva todos los nodos en memoria
+- ¿Óptimo?: Si
+
+  
+
+** Heurísitcas:Dominación
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ Comparación de un método de búsqueda ciega y $A^*$ con dos heurísticas, para el problema 8-puzzle.
+
+*{{{color(green,Típicos costos de búsqueda:)}}}*
+
+- $d = 14$
+  - IDS = 3,473,941 nodos
+  - A$^*(h_1)$ = 539 nodos
+  - A$^*(h_2)$ = 113 nodos
+- $d=24$
+  - IDS $\approx$ 54,000,000,000 nodos
+  - A$^*(h_1)$ = 39,135 nodos
+  - A$^*(h_2)$ = 1,641 nodos
+
+#+REVEAL_HTML: </div>    
+
+** Variaciones
+
+*{{{color(green,Iterative Deepening)}}} $A^*$ ($IDA^*$)*
+Variación del Iterative Deepening y $A^*$
+
+*{{{color(green,Implementación)}}}*
+La diferencia principal entre Iterative Deepening e $IDA^*$ es el corte. En $IDA^*$ el corte es la función $f$ en vez de la profundidad.
+
+** Aplicación
+
+*{{{color(green,Pathfinding)}}}*
+
+- {{{color(#FF5733,Videojuegos)}}}
+- {{{color(#FF5733,Laberintos)}}}
+- {{{color(#FF5733,Robots en terrenos conocidos/desconocidos)}}}
+
+
+** Ejemplo
+#+REVEAL_HTML: <div style="font-size: 70%;">
+|     [[file:imagenes/ejemplo.png]] | Resuelva con los tres métodos de Búsqueda Heurística Vistos. Costo = Profundidad |
+#+REVEAL_HTML: </div>
+
+* Bibliografía
+
+** Referencia Bibliográfica
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+[[file:imagenes/book.png]] S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 3
+  2009
+
+[[file:imagenes/book.png]]  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 4
+  1998
+
+
+#+REVEAL_HTML: </div>

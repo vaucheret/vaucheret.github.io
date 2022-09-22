@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda Heurística</h2><p class="date">Created: 2022-09-22 jue 00:01</p>
+</section>
+
+<section>
+<section id="slide-org17ed512">
+<h2 id="org17ed512">Motivación</h2>
+<div class="outline-text-2" id="text-org17ed512">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org6238ed2">
+<h3 id="org6238ed2">Motivación</h3>
+<p>
+<b><font color="green">Búsqueda Ciega</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Realizan un recorrido <font color=red>exhaustivo</font> del árbol de búsqueda.</li>
+<li>Son <font color=red>independientes</font> del problema que queremos resolver.</li>
+<li>Aún en casos de espacios finitos, resultan de poco interés prácticos cuando el espacio resulta ser <font color=red>suficientemente grande</font>.</li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org22c28b0">
+<h3 id="org22c28b0">¡Qué se haga la luz!</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagenes/Idea.jpg" alt="Idea.jpg" /></td>
+<td class="org-left"><b><font color="green">Epistemología o Teoría del Conocimiento</font></b> Usa  <font color="#A569BD">conocimiento específico del problema</font></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b><font color="green">Consideraciones</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Algunas de las estrategias:
+</p>
+<ul>
+<li>pueden hallar soluciones  <font color="#FF5733">más eficientes</font> que las estrategias ciegas;</li>
+<li>pueden  <font color="#FF5733">no hallar</font> la mejor solución (máximo local).</li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge1faf2c">
+<h3 id="orge1faf2c">¡Qué se haga la luz!</h3>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in">Se introduce una  <font color=red>función de evaluación</font> \(f(n)\) y se expande un nodo basado en la información que dé la función.</li>
+<li class="fragment roll-in">Generalmente se expande el nodo con  <font color=red>menor valor de la función</font>, porque la evaluación mide distancias a la meta.</li>
+<li class="fragment roll-in">Esta función da información acerca del nodo, como por ejemplo el costo de llegar desde la raíz a una meta pasando por ese nodo o <font color=red>una estimación de cuanto falta para llegar desde ese nodo a la meta más cercana</font>.</li>
+<li class="fragment roll-in"><font color="colorgreen">Función de evaluación perfecta:</font> costo real de la raíz a la meta más cercana pasando por el nodo en el que el agente se encuentra :)</li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge183a2b">
+<h2 id="orge183a2b">Heurísticas</h2>
+<div class="outline-text-2" id="text-orge183a2b">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd7daf51">
+<h3 id="orgd7daf51">¿Por qué la gallinita dijo EUREKA?</h3>
+<p>
+<b><font color="green">Heurística</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+La función de evaluación se puede implementar con el  <font color="#FF5733">costo estimado</font>
+del camino menos costoso desde el nodo que estamos evaluando a una  meta.
+</p>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagenes/eureka.jpg" alt="eureka.jpg" />  Arquímides de Siracusa (287 a.C - 212 a.C.)</td>
+<td class="org-left"><font color=red>Heurística:</font> Del griego <i>heuriskein</i></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org9bd9939">
+<h3 id="org9bd9939">Heurística</h3>
+<p class="fragment (roll-in)">
+<b><font color="green">Procedimiento</font></b>
+<font color="#FF5733">Criterio</font> que puede resolver un problema pero que no hay garantía de
+que siempre lo resuelva.
+</p>
+
+<p class="fragment (roll-in)">
+<b><font color="green">Función</font></b>
+<font color="#FF5733">Estimación del costo</font> necesario para alcanzar la solución
+más cercana desde el estado actual.
+</p>
+
+<p class="fragment (roll-in)">
+<font color="#FF5733">Las heurísticas son formalizadas como reglas para elegir (buscar) las ramas en el espacio de estados que son más probables de llegar a una solución aceptable del problema</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgec77cdc">
+<h3 id="orgec77cdc">Heurísticas: Ejemplo</h3>
+<div style="font-size: 70%;">
+<p>
+<b><font color="green">8-puzzle</font></b>
+</p>
+
+<p>
+\(h_1(n)\) = Número de tejas fuera de lugar
+</p>
+
+
+<div id="org0f42eb1" class="figure">
+<p><img src="imagenes/8puzzle.jpg" alt="8puzzle.jpg" />
+</p>
+</div>
+
+<p>
+¿Cuál es el valor de la heurísitica para el estado inicial?
+</p>
+
+<p class="fragment (roll-in)">
+\(h_1(Start State)\) = 6
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org0824952">
+<h3 id="org0824952">Heurísticas: 8-puzzle</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagenes/8puzzle.jpg" alt="8puzzle.jpg" /></td>
+<td class="org-left"><b><font color="green">8-puzzle</font></b> \(h_1(n)\) = Número de tejas fuera de lugar</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+<img src="imagenes/puzzleDown.jpg" alt="puzzleDown.jpg" /> <img src="imagenes/puzzleUp.jpg" alt="puzzleUp.jpg" /> <img src="imagenes/puzzleLeft.jpg" alt="puzzleLeft.jpg" /> <img src="imagenes/puzzleRight.jpg" alt="puzzleRight.jpg" />
+</p>
+
+
+<p>
+¿Cuál es el valor de la heurísitica para cada estado?
+</p>
+<p class="fragment (roll-in)">
+\(h_1() = 6\) \(h_1() = 7\) \(h_1() = 7\) \(h_1() = 5\)
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org0996a42">
+<h3 id="org0996a42">Heurística</h3>
+<ul>
+<li class="fragment roll-in"><b><font color="green">Función</font></b>  <font color="blue">Estimación del costo</font> necesario para alcanzar la meta más cercana desde el estado actual.</li>
+<li class="fragment roll-in">La función heurística es una forma de <font color=red>informar</font> a la búsqueda sobre la dirección a la meta. Provee una modo informado de <font color=red>adivinar</font> cuál vecino de un nodo nos guía a la meta.</li>
+<li class="fragment roll-in"><font color="green">Compromiso entre:</font>
+<ul>
+<li><font color=red>Ahorro</font> en el esfuerzo en la búsqueda.</li>
+<li><font color=red>Costo</font> del cálculo de la heurística en cada nodo.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1c290b4">
+<h3 id="org1c290b4">Heurística Admisible</h3>
+<p>
+<b><font color="green">Heurística Admisible</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Diremos que la heurística es <font color="blue">admisible</font>
+si <font color="blue">subestima</font> el costo, esto es,
+si su estimación del costo a la meta es <font color="blue">menor o igual</font> que el costo real.
+Si \(g\) es el costo real de llegar desde el nodo actual a la meta entonces \(h\leq g\).
+</p>
+</div>
+
+<p class="fragment (roll-in)">
+¿Cómo es el valor de la heurística en un <font color=red>estado meta</font>, si es admisible?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org63428d7">
+<h3 id="org63428d7">Heurística Admisible</h3>
+<p>
+<b><font color="green">Heurística Admisible</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Diremos que la heurística es <font color="blue">admisible</font>
+si <font color="blue">subestima</font> el costo, esto es,
+si su estimación del costo a la meta es <font color="blue">menor o igual</font> que el costo real.
+Si \(g\) es el costo real de llegar desde el nodo actual a la meta entonces \(h\leq g\).
+</p>
+</div>
+
+<p class="fragment (roll-in)">
+La función heurística  \(h_1(n)\) = Número de tejas fuera de lugar,
+ ¿es subestimada?¿es admisible?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc64d4ef">
+<h3 id="orgc64d4ef">Heurística Admisible</h3>
+<ul>
+<li class="fragment roll-in">La función heurística  \(h_1(n)\) = Número de tejas fuera de lugar, ¿es admisible?
+<font color=red>Si.</font></li>
+<li class="fragment roll-in">Porque \(\ldots\)</li>
+<li class="fragment roll-in">Cada teja fuera de lugar tiene que moverse al menos una vez para llegar a su lugar. 
+\(\therefore h_1(n) \leq\) Costo Real.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org36903f2">
+<h3 id="org36903f2">Otra Heurística: 8-puzzle</h3>
+<div style="font-size: 70%;">
+<p>
+<b><font color="green">Distancia de /Manhattan/</font></b>
+</p>
+
+<p>
+\(h_2(n)\) = Suma de las distancias de las tejas hasta su posición en la meta.
+Se suman las distancias verticales y horizontales (las tejas no pueden moverse en diagonal)
+</p>
+
+
+<div id="orgfaa6c2a" class="figure">
+<p><img src="imagenes/8puzzle.jpg" alt="8puzzle.jpg" height="150" />
+</p>
+</div>
+
+<p>
+¿Cuál es el valor de la distancia de Manhattan para el nodo inicial?
+</p>
+
+<p class="fragment (roll-in)">
+\(h_2(S)\) = 4+0+3+3+1+0+2+1 = 14
+</p>
+
+<p class="fragment (roll-in)">
+¿Es Admisible?
+<font color=red>Si.</font>
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3dfcf6f">
+<h3 id="org3dfcf6f">Heurísticas: 8-puzzle</h3>
+<div style="font-size: 70%;">
+<p>
+\(h_1(n)\) = Número de tejas fuera de lugar
+</p>
+
+<p>
+\(h_2(n)\) = Distancia de <i>Manhattan</i>
+</p>
+
+<div style="font-size: 70%;">
+<p>
+Suma de las distancias de las tejas hasta su posición en la meta.
+Se suman las distancias verticales y horizontales (las tejas no pueden moverse en diagonal)
+</p>
+
+
+
+<div id="orgf427bfe" class="figure">
+<p><img src="imagenes/8puzzle.jpg" alt="8puzzle.jpg" height="150" />
+</p>
+</div>
+
+<p>
+¿Cuál es el valor de la distancia de Manhattan para el nodo inicial?
+</p>
+
+<p>
+\(h_1(S) =6\)
+</p>
+
+<p>
+\(h_2(S)\) = 4+0+3+3+1+0+2+1 = 14
+</p>
+
+<p>
+¿Cuál elijo? ¿Cuál es mejor?
+</p>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org1d70443">
+<h3 id="org1d70443">Dominación</h3>
+<p>
+Si tenemos dos heurísiticas,
+</p>
+
+<p>
+¿Cuál es <font color=red>mejor</font>?
+</p>
+
+<p>
+<b><font color="green">Dominación</font></b>
+</p>
+
+<div style="font-size: 70%;">
+<p>
+Si \(h_2(n) \geq h_1(n)\) para todo \(n\) (ambas admisibles)  
+entonces \(h_2\) <font color="blue">domina a</font>  \(h_1\) y es <font color="#FF5733">mejor</font> para la búsqueda.
+</p>
+</div>
+
+<p>
+Dadas heurísticas admisibles \(h_a\), \(h_b\),
+\[
+  h(n) = \max(h_a(n),h_b(n))
+\]
+</p>
+
+<p>
+es también admisible y domina a \(h_a\) y a \(h_b\)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org21aeaf7">
+<h3 id="org21aeaf7">Inventando Funciones Heurísticas Admisibles</h3>
+<p>
+<b><font color="green">Problemas relajados</font></b>
+</p>
+
+<p>
+Un problema con <font color="blue">menos</font> restricciones sobre las acciones se denomina
+<font color="blue">problema relajado</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaef4950">
+<h3 id="orgaef4950">Inventando Funciones Heurísticas Admisibles</h3>
+<p>
+<b><font color="green">Ejemplo 8-puzzle</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Una teja puede moverse desde el <font color=red>cuadrado A al cuadrado B</font> si: 
+  <font color="green">A está horizontalmente</font> o <font color="#A569BD">verticalmente adyacente a B</font>
+  y <font color="blue">B es el blanco</font>.
+</p>
+</div>
+
+<p>
+<b><font color="green">Problemas relajados</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Una teja  se puede mover de un cuadrado A a uno B si A está adyacente a B.</li>
+<li>Una teja se puede mover desde un cuadrado A a uno B si B es el blanco.</li>
+<li>Una teja se puede mover desde un cuadrado A a uno B.</li>
+
+</ul>
+
+
+<p class="fragment (roll-in)">
+La idea de la distancia de Manhattan surge del primer problema relajado. Y la heurística \(h_1\) del tercer problema.
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5b13241">
+<h2 id="org5b13241">Búsqueda Heurística</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfb0af49">
+<h2 id="orgfb0af49">Primero el Mejor - Best-first Search</h2>
+<div class="outline-text-2" id="text-orgfb0af49">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4b51a31">
+<h3 id="org4b51a31">Best-first Search</h3>
+<ul>
+<li><b><font color="green">Idea</font></b> Usar como <i>función de evaluación</i> \(f(n)\)  por cada nodo,  una
+estimación de su cercanía a la meta.</li>
+<li>Expande los nodos más "cercanos" primero.</li>
+<li><b><font color="green">Implementación</font></b> La frontera es una <font color="green">cola ordenada</font> por la función de evaluación.</li>
+<li><b><font color="green">Estrategias</font></b> La elección de \(f\) determina la estrategia:
+<ul>
+<li><font color=red>Greedy Best-First Search:</font> \(f(n)=h(n)\)</li>
+<li>\(A^*\): \(f(n)=g(n)+ h(n)\)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org36219be">
+<h3 id="org36219be">Greedy Best-First search</h3>
+<p>
+\(f(n)=h(n)\)
+</p>
+
+<div style="font-size: 70%;">
+<p>
+La función de evaluación  es una heurística \(h(n)\), estimación del
+costo desde \(n\) a la meta más cercana.
+</p>
+
+<p>
+Greedy best- First Search expande los nodos que <i>parecen</i> estar más cerca de
+la meta.
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org328a06f">
+<h3 id="org328a06f">Greedy Best-First search</h3>
+<p>
+<b><font color="green">Implementación</font></b>
+</p>
+
+<p>
+Selecciona el primero de la frontera:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">select</span>(<span style="color: #eedd82;">Nodo</span>,<span style="color: #00ffff;">[</span><span style="color: #eedd82;">Nodo</span><span style="color: #00ffff;">|</span><span style="color: #eedd82;">Frontera</span><span style="color: #00ffff;">]</span>, <span style="color: #eedd82;">Frontera</span>).
+</code></pre>
+</div>
+
+<p>
+La frontera es una <font color="blue">cola ordenada</font> por la heurística.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">add_to_frontier</span>(<span style="color: #eedd82;">Vecinos</span>, <span style="color: #eedd82;">Frontera1</span>, <span style="color: #eedd82;">Frontera3</span>):-
+     append(<span style="color: #eedd82;">Frontera1</span>,<span style="color: #eedd82;">Vecinos</span>,<span style="color: #eedd82;">Frontera2</span>),
+     sort_by_h(<span style="color: #eedd82;">Frontera2</span>,<span style="color: #eedd82;">Frontera3</span>).
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org015d157">
+<h3 id="org015d157">Greedy Best-First search</h3>
+<p>
+<b><font color="green">Ir a Bucarest</font></b>
+</p>
+
+<p>
+\(h_{{\rm SLD}}(n)\) = Distancia en línea recta (a vuelo de pájaro)
+desde \(n\) a Bucarest.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org4fa7a6f">
+<h3 id="org4fa7a6f">Costos en Km</h3>
+
+<div id="orga6e906a" class="figure">
+<p><img src="imagenes/romania2.jpg" alt="romania2.jpg" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org74f0fec">
+<h3 id="org74f0fec">Ejemplo</h3>
+
+<div id="org0a7e066" class="figure">
+<p><img src="imagenes/greedy-progress01.jpg" alt="greedy-progress01.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org054a7ad">
+<h3 id="org054a7ad">Ejemplo</h3>
+
+<div id="org158704f" class="figure">
+<p><img src="imagenes/greedy-progress02.jpg" alt="greedy-progress02.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7b866bb">
+<h3 id="org7b866bb">Ejemplo</h3>
+
+<div id="org6a5c4b9" class="figure">
+<p><img src="imagenes/greedy-progress03.jpg" alt="greedy-progress03.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd6dbe04">
+<h3 id="orgd6dbe04">Ejemplo</h3>
+
+<div id="org125d515" class="figure">
+<p><img src="imagenes/greedy-progress04.jpg" alt="greedy-progress04.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfdbc737">
+<h3 id="orgfdbc737">Propiedades de Greedy Best-First Search</h3>
+<ul>
+<li class="fragment roll-in">¿Completo?: No, puede entrar en ciclos infinitos, e.g.  Iasi \(\to\) Neamt \(\to\) Iasi \(\to\) Neamt \(\to\)
+Es completo en espacios finitos con verificacióon de estados repetidos</li>
+<li class="fragment roll-in">¿Tiempo?: \(O(b^m)\), pero una buena heurística puede dar grandes mejoras</li>
+<li class="fragment roll-in">¿Espacio?: \(O(b^m)\)  conserva todos los nodos en memoria</li>
+<li class="fragment roll-in">¿Óptimo?: No</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbe0d1f5">
+<h3 id="orgbe0d1f5">\(A^*\)</h3>
+<p>
+<b><font color="green">Idea</font></b>
+</p>
+
+<p>
+Evitar expandir caminos que ya son caros. Para esto combina información de:
+</p>
+
+<ul>
+<li><font color="blue">Costo exacto</font> hasta el punto actual de la búsqueda; y</li>
+<li><font color="blue">Costo estimado</font> desde el punto actual a la meta.</li>
+
+</ul>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org283e00c">
+<h3 id="org283e00c">\(A^*\)</h3>
+<p>
+La función de evaluación es  \(f(n) = g(n) + h(n)\)
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>\(g(n)\) = costo real desde el estado inicial hasta llegar a \(n\)</li>
+<li>\(h(n)\) = costo estimado desde \(n\) a la meta</li>
+<li>\(f(n)\) = costo estimado de un camino a la meta que pasa por \(n\)</li>
+
+</ul>
+</div>
+
+
+<div id="orgf3c4651" class="figure">
+<p><img src="imagenes/aestrellab.png" alt="aestrellab.png" height="150" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org98d48c9">
+<h3 id="org98d48c9">\(A^*\)</h3>
+<p>
+<b><font color="green">Implementación</font></b>
+</p>
+
+<p>
+Selecciona el primero de la frontera:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">select</span>(<span style="color: #eedd82;">Nodo</span>,<span style="color: #00ffff;">[</span><span style="color: #eedd82;">Nodo</span><span style="color: #00ffff;">|</span><span style="color: #eedd82;">Frontera</span><span style="color: #00ffff;">]</span>, <span style="color: #eedd82;">Frontera</span>).
+</code></pre>
+</div>
+
+<p>
+La frontera es una <font color="blue">cola ordenada</font> por la función f.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">add_to_frontier</span>(<span style="color: #eedd82;">Vecinos</span>, <span style="color: #eedd82;">Frontera1</span>, <span style="color: #eedd82;">Frontera3</span>):-
+     append(<span style="color: #eedd82;">Frontera1</span>,<span style="color: #eedd82;">Vecinos</span>,<span style="color: #eedd82;">Frontera2</span>),
+     sort_by_f(<span style="color: #eedd82;">Frontera2</span>,<span style="color: #eedd82;">Frontera3</span>).
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5e4b983">
+<h3 id="org5e4b983">\(A^*\): Condiciones de Optimalidad</h3>
+<p>
+<b><font color="green">theorem</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+ \(A^*\) implementado árboles de búsqueda es óptimo si \(h(n)\) es admisible.
+(Demostración a cargo del lector :) Ver Poole o Russell)
+</p>
+</div>
+
+<p>
+\(A^*\) usa una heurística <i>admisible</i>
+</p>
+
+<div style="font-size: 70%;">
+<p>
+\(h(n) \leq h^*(n)\) donde \(h^*(n)\) es el costo <i>real</i> desde \(n\).
+También requiere que \(h(n)\geq 0\), de manera que \(h(G)=0\) para
+toda meta \(G\).
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb9719b6">
+<h3 id="orgb9719b6">Ejemplo de \(A^*\)</h3>
+<p>
+<b><font color="green">Ejemplo</font></b>
+</p>
+
+<p>
+\(h_{{\rm SLD}}(n)\) nunca sobrestima la distancia real de la ruta.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge53a72f">
+<h3 id="orge53a72f">Costos en Km</h3>
+
+<div id="orgad494c8" class="figure">
+<p><img src="imagenes/romania2.jpg" alt="romania2.jpg" />
+</p>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgab8e4ef">
+<h3 id="orgab8e4ef">Ejemplo</h3>
+
+<div id="org91cef5c" class="figure">
+<p><img src="imagenes/greedy-progress01.jpg" alt="greedy-progress01.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbf69872">
+<h3 id="orgbf69872">Ejemplo</h3>
+
+<div id="org74a7a1e" class="figure">
+<p><img src="imagenes/greedy-progress02.jpg" alt="greedy-progress02.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org427247a">
+<h3 id="org427247a">Ejemplo</h3>
+
+<div id="org0d58688" class="figure">
+<p><img src="imagenes/greedy-progress03.jpg" alt="greedy-progress03.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org47f68c1">
+<h3 id="org47f68c1">Ejemplo</h3>
+
+<div id="org705087e" class="figure">
+<p><img src="imagenes/greedy-progress04.jpg" alt="greedy-progress04.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2fd80d6">
+<h3 id="org2fd80d6">Ejemplo de \(A^*\)</h3>
+
+<div id="orgd25988f" class="figure">
+<p><img src="imagenes/astar-progress01.jpg" alt="astar-progress01.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org257bf75">
+<h3 id="org257bf75">Ejemplo de \(A^*\)</h3>
+
+<div id="orgd263587" class="figure">
+<p><img src="imagenes/astar-progress02.jpg" alt="astar-progress02.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2cd3b6e">
+<h3 id="org2cd3b6e">Ejemplo de \(A^*\)</h3>
+
+<div id="org60a8207" class="figure">
+<p><img src="imagenes/astar-progress03.jpg" alt="astar-progress03.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbd0afe3">
+<h3 id="orgbd0afe3">Ejemplo de \(A^*\)</h3>
+
+<div id="org38dd469" class="figure">
+<p><img src="imagenes/astar-progress04.jpg" alt="astar-progress04.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc5840c9">
+<h3 id="orgc5840c9">Ejemplo de \(A^*\)</h3>
+
+<div id="orgecc2bb9" class="figure">
+<p><img src="imagenes/astar-progress05.jpg" alt="astar-progress05.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfc67531">
+<h3 id="orgfc67531">Propiedades de \(A^*\)</h3>
+<ul>
+<li class="fragment roll-in">¿Completo?: Si, a menos que existan infinitos
+nodos con \(f \leq f(G)\)</li>
+<li class="fragment roll-in">¿Tiempo?: Exponencial</li>
+<li class="fragment roll-in">¿Espacio?: conserva todos los nodos en memoria</li>
+<li class="fragment roll-in">¿Óptimo?: Si</li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org5486336">
+<h3 id="org5486336">Heurísitcas:Dominación</h3>
+<div style="font-size: 80%;">
+<p>
+Comparación de un método de búsqueda ciega y \(A^*\) con dos heurísticas, para el problema 8-puzzle.
+</p>
+
+<p>
+<b><font color="green">Típicos costos de búsqueda:</font></b>
+</p>
+
+<ul>
+<li>\(d = 14\)
+<ul>
+<li>IDS = 3,473,941 nodos</li>
+<li>A\(^*(h_1)\) = 539 nodos</li>
+<li>A\(^*(h_2)\) = 113 nodos</li>
+
+</ul></li>
+<li>\(d=24\)
+<ul>
+<li>IDS \(\approx\) 54,000,000,000 nodos</li>
+<li>A\(^*(h_1)\) = 39,135 nodos</li>
+<li>A\(^*(h_2)\) = 1,641 nodos</li>
+
+</ul></li>
+
+</ul>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb7aee5b">
+<h3 id="orgb7aee5b">Variaciones</h3>
+<p>
+<b><font color="green">Iterative Deepening</font> \(A^*\) (\(IDA^*\))</b>
+Variación del Iterative Deepening y \(A^*\)
+</p>
+
+<p>
+<b><font color="green">Implementación</font></b>
+La diferencia principal entre Iterative Deepening e \(IDA^*\) es el corte. En \(IDA^*\) el corte es la función \(f\) en vez de la profundidad.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org88de45d">
+<h3 id="org88de45d">Aplicación</h3>
+<p>
+<b><font color="green">Pathfinding</font></b>
+</p>
+
+<ul>
+<li><font color="#FF5733">Videojuegos</font></li>
+<li><font color="#FF5733">Laberintos</font></li>
+<li><font color="#FF5733">Robots en terrenos conocidos/desconocidos</font></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb3cacf3">
+<h3 id="orgb3cacf3">Ejemplo</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagenes/ejemplo.png" alt="ejemplo.png" /></td>
+<td class="org-left">Resuelva con los tres métodos de Búsqueda Heurística Vistos. Costo = Profundidad</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf2c06b3">
+<h2 id="orgf2c06b3">Bibliografía</h2>
+<div class="outline-text-2" id="text-orgf2c06b3">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org56cd79b">
+<h3 id="org56cd79b">Referencia Bibliográfica</h3>
+<div style="font-size: 80%;">
+
+<p>
+<img src="imagenes/book.png" alt="book.png" /> S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 3
+  2009
+</p>
+
+<p>
+<img src="imagenes/book.png" alt="book.png" />  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 4
+  1998
+</p>
+
+
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
