@@ -1,0 +1,38 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Búsqueda Adversaria
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Introducción
+
+** Juegos
+
+ | [[file:imagenes/cafr2.jpg]] Fútbol      | [[file:imagenes/Reversi1.jpg]] Reversi   |
+
+#+REVEAL: split
+ 
+ | [[file:imagenes/Deep-Blue.jpg]] Ajedrez | [[file:imagenes/cartas-truco.jpg]] Truco |
+
+** Juegos
+
+*{{{color(green,Definición)}}}*
+
+Un {{{color(orange,juego)}}} consiste en un conjunto de reglas que rigen
+una situación {{{color(green,competitiva)}}} en la cual {{{color(green,dos o más agentes)}}} eligen
+estrategias diseñadas para {{{color(green,maximizar sus propias ganancias)}}} o para minimizar las
+ganancias de sus oponentes.
+
+Las {{{color(orange,reglas)}}} especifican las {{{color(green,acciones)}}} posibles de cada jugador,
+{{{color(colorgreen,la cantidad de información)}}} recibida por cada uno de ellos mientras se juega y
+{{{color(colorgreen,la cantidad de ganancia o pérdida)}}} en varias situaciones.
