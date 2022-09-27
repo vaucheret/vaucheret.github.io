@@ -1,5 +1,5 @@
 #+REVEAL_INIT_OPTIONS:  transition:'cube' 
-#+options: toc:nil num:nil
+#+options: toc:t num:nil
 
 #+REVEAL_THEME: moon
 #+REVEAL_HLEVEL: 2
@@ -36,3 +36,347 @@ ganancias de sus oponentes.
 Las {{{color(orange,reglas)}}} especifican las {{{color(green,acciones)}}} posibles de cada jugador,
 {{{color(colorgreen,la cantidad de información)}}} recibida por cada uno de ellos mientras se juega y
 {{{color(colorgreen,la cantidad de ganancia o pérdida)}}} en varias situaciones.
+
+** Tipos de Juegos
+
+| {{{alert(JUEGOS)}}}                      | {{{color(cyan,Determinísticos)}}}   | {{{color(cyan,Con Azar)}}} |
+| {{{color(cyan,Información Perfecta)}}}   | Tic-tac-toe, Damas, Revesi, Ajedrez | Backgammon, Monopolio      |
+| {{{color(cyan,Información Imperfecta)}}} | Batalla Naval                       | Poker                      |
+
+** Características de los Juegos
+#+REVEAL_HTML: <div style="font-size: 80%;">
+  - {{{alert(Dos)}}} jugadores o agentes.
+  - Movimientos  {{{alert(intercalados)}}}.  Cada decisión es hecha en forma secuencial (no hay movimientos simultáneos). 
+  - {{{alert(Suma Cero)}}}: la ganancia de uno es la pérdida del otro.Por ejemplo, en el ajedrez uno gana (1) y el otro pierde (-1); o bien empatan (0).
+  - {{{alert(No)}}} interviene el  {{{alert(azar)}}}: por ejemplo,  dados.
+  - {{{alert(Información Perfecta)}}}: ambos jugadores tienen acceso a toda la información sobre el estado del juego. No se ocultan información uno al otro.
+#+REVEAL_HTML: </div>
+
+
+
+**  No Suma Cero: Dilema del Prisionero
+
+*{{{color(green,Enunciado Clásico)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+La policía arresta a dos sospechosos. No hay pruebas suficientes para condenarlos y, tras haberlos separado, los visita a cada uno y les ofrece el mismo trato. Si uno confiesa y su cómplice no, el cómplice será condenado a la pena total, diez años, y el primero será liberado. Si uno calla y el cómplice confiesa, el primero recibirá esa pena y será el cómplice quien salga libre. Si ambos confiesan, ambos serán condenados a seis años. Si ambos lo niegan, todo lo que podrán hacer será encerrarlos durante seis meses por un cargo menor. 
+#+REVEAL_HTML: </div>
+
+
+**  No Suma Cero: Dilema del Prisionero
+
+   Resumiendo:
+
+   |                                | {{{color(cyan,Tú confiesas)}}}             | {{{color(cyan,Tú lo niegas)}}}              |
+   | {{{color(cyan,Él confiesa)}}}  | Ambos son condenados a 6 años              | Él sale libre y tu eres condenado a 10 años |
+   | {{{color(cyan,Él lo niega)}}}  | Él es condenado a 10 años y tú sales libre | Ambos son condenados a 6 meses              |
+
+** Juegos
+#+REVEAL_HTML: <div style="font-size: 80%;">   
+| {{{color(cyan,Teoría de los Juegos)}}} | {{{color(cyan,Terminología en IA)}}} |
+| Dos jugadores                          | Dos agentes                                                    |
+| Determinísticos                        | Determinísticos                                                |
+| Por turnos alternados                  | Acciones por turnos alternados                                 |
+| Información Perfecta                   | Totalmente observable                                          |
+| Suma a cero                            | Valores de Utilidad  iguales y opuestos                        |
+#+REVEAL_HTML: </div>
+
+* Juegos como Búsqueda
+   
+** Formalización como un problema de búsqueda
+ 
+
+  - {{{alert(Nodo Inicial:)}}} incluye la posición inicial del juego y determina el jugador que va a mover.
+  - {{{alert(Función Sucesor:)}}} indica los movimientos legales desde un estado y el estado resultante luego de jugar esa jugada.
+  - {{{alert(Test Terminal:)}}} determina cuando terminó el juego (estados terminales).
+  - {{{alert(Función de Utilidad:)}}} Da valores numéricos a los estados terminales. Recordemos la condición de suma cero.
+
+
+** Formalización como un problema de búsqueda
+
+*{{{color(green,Árbol de Juego)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+- El estado inicial y los movimientos legales definen el {{{color(blue,árbol de juego)}}} para un juego.
+- Cada nivel del árbol corresponde a las jugadas de uno de los participantes. Llamaremos a los jugadores MAX y MIN.
+- Consideramos un {{{color(blue,turno completo)}}} cuando ambos jugadores han jugado. En el árbol del juego, se consideran dos niveles de profundidad un turno.
+#+REVEAL_HTML: </div>
+
+*{{{color(green,Solución Óptima)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+En un problema de búsqueda, la {{{color(blue,solución óptima))}}} es una secuencia de movimientos que lleva desde el estado inicial del juego a un estado meta (estado terminal) {{{color(blue,ganador)}}}.
+#+REVEAL_HTML: </div>
+
+
+
+** Formulación como un  Problema de Búsqueda
+
+   Ajedrez
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- {{{alert(Estado Inicial)}}}  Tablero con las piezas ubicadas en la posición inicial. Jugador que comienza: el que juega con piezas blancas.
+- {{{alert(Función sucesor)}}} Dado un tablero legal y un jugador por jugar, se determinan todos los movimientos legales que ese jugador puede hacer.
+      
+- {{{alert(Test de terminación)}}} Determinamos si es jaque mate o tablas.
+
+- {{{alert(Función utilidad:)}}} Puede ser:
+   -  +1, -1, 0 
+#+REVEAL_HTML: </div>
+
+** Formulación como un  Problema de Búsqueda
+
+   Tic-Tac-Toe
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- {{{alert(Estado Inicial)}}}  Tablero $3\times 3$ vacío.
+- {{{alert(Función sucesor)}}}     Inicialmente juega uno de los jugadores con X y puede ubicarla en cualquier cuadro. Dado un tablero legal y un jugador por jugar, el tablero resultante es aquel en el que el jugador puso una ficha suya en un cuadrado vacío.
+- {{{alert(Test de terminación)}}} Hay tres fichas iguales en línea o bien el tablero no contiene cuadros vacíos.
+- {{{alert(Función utilidad:)}}} 
+  - Gana: +1 
+  - Pierde: -1
+  - Empatan: 0
+
+#+REVEAL_HTML: </div>
+
+** Espacio de búsqueda
+
+   #+ATTR_HTML:  :height 500
+   [[file:imagenes/game-tree.jpg]]
+
+* MINIMAX
+
+**   Algoritmo Minimax
+
+Dos jugadores MAX ($\triangle$) y MIN($\triangledown$).
+
+*{{{color(green,Idea)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ El jugador {{{color(blue,MAX)}}} juega a la posición de {{{color(cyan,máximo)}}} valor, mientras que {{{color(blue,MIN)}}} prefiere el estado de {{{color(cyan,menor)}}} valor. Recordar que los valores están dados para MAX, así un valor malo para MAX es bueno para MIN.  
+#+REVEAL_HTML: </div>
+
+**   Algoritmo Minimax
+
+*{{{color(green,Idea)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ El jugador {{{color(blue,MAX)}}} juega a la posición de {{{color(cyan,máximo)}}} valor, mientras que {{{color(blue,MIN)}}} prefiere el estado de {{{color(cyan,menor)}}} valor. Recordar que los valores están dados para MAX, así un valor malo para MAX es bueno para MIN.  
+#+REVEAL_HTML: </div>
+
+[[file:imagenes/algminax.png]]
+
+** Algoritmo Minimax
+
+ - El recorrido del árbol de búsqueda es Depth-First.
+ - Se debe calcular el valor de minimax de cada nodo recursivamente
+
+   | [[file:imagenes/nodomax.png]] | Nodo Max | [[file:imagenes/nodomin.png]] | Nodo Min |
+
+** Espacio de búsqueda
+
+   [[file:imagenes/minimax-illustration-6.jpg]]
+
+** Espacio de búsqueda
+
+[[file:imagenes/minimax-illustration-7.jpg]]
+   
+** Espacio de búsqueda
+
+[[file:imagenes/minimax-illustration-8.jpg]]
+
+** Espacio de búsqueda
+
+ [[file:imagenes/minimax-illustration-9.jpg]]
+
+** Espacio de búsqueda
+
+[[file:imagenes/minimax-illustration.jpg]]
+   
+** Propiedades de Minimax
+
+Asumimos una profundidad máxima del árbol de $m$ y que el juego tiene $b$ movimientos legales en  cada nodo (ramificación). Recordemos que el recorrido es Depth-First.
+
+#+ATTR_REVEAL: :frag (roll-in)
+-  {{{alert(¿Completo? )}}}  Solo si el árbol es finito.\\
+-  {{{alert(¿Complejidad Temporal? )}}}   $O(b^m)$.\\
+-  {{{alert(¿Complejidad Espacial? )}}}   $O(bm)$. \\
+-  {{{alert(¿Óptimo? )}}}   Si, contra un oponente óptimo.¿De lo contrario? \\
+
+  
+* Alpha-Beta
+
+   
+** Minimax
+
+Para el ajedrez tenemos una profundidad $m\approx 100$ y una ramificación $b\approx 35$.
+
+El tiempo estimado es $35^{100}$.
+
+¡HMMMMMMMMMMMM! :(
+
+Solución exacta NO viable completamente con Minimax.
+
+{{{alert(Pensemos...)}}}
+
+¿Será necesario explorar {{{alert(todos)}}} los caminos?
+
+** Poda Alpha-Beta
+#+ATTR_HTML:  :height 400
+   [[file:imagenes/alpha-beta1.jpg]]
+
+   
+** Poda Alpha-Beta
+#+ATTR_HTML:  :height 400
+   [[file:imagenes/alpha-beta2.jpg]]
+
+   
+** Poda Alpha-Beta
+#+ATTR_HTML:  :height 400
+   [[file:imagenes/alpha-beta3.jpg]]
+
+** Poda Alpha-Beta
+#+ATTR_HTML:  :height 400
+   [[file:imagenes/alpha-beta4.jpg]]
+
+   
+** Poda Alpha-Beta
+#+ATTR_HTML:  :height 400
+   [[file:imagenes/alpha-beta5.jpg]]
+
+** Alpha-Beta
+
+- La poda {{{alert(NO)}}} afecta el resultado final.
+- Un buen orden de los movimientos mejora la efectividad de la poda.
+- Con un "orden perfecto", la complejidad en tiempo es $O(b^{m/2})$, a diferencia del Minimax $O(b^m)$.
+
+  
+** Poda Alpha-Beta
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- $\alpha$: es el valor de la mejor elección (valor más alto) que hemos  encontrado hasta ahora  para MAX. Inicialmente en $-\infty$. \\
+
+  - Si estamos analizando  un nodo MIN y su valor  $V_{Min}\leq \alpha$, {{{alert(PODA)}}}, ya que MAX no lo tendrá en cuenta.
+      
+- $\beta$: es el valor de la mejor elección (valor más bajo) que hemos encontrado hasta ahora  para MIN. Inicialmente en $+\infty$.\\
+
+  - Si estamos analizando  un nodo MAX y valor $V_{Max}\geq \beta$, {{{alert(PODA)}}}, ya que MIN no lo tendrá en cuenta.
+#+REVEAL_HTML: </div>
+
+** Algoritmo $\alpha-\beta$
+#+ATTR_HTML:  :height 550
+   [[file:imagenes/alphabeta.png]]
+
+* Tiempo Real
+
+   
+** Toma de decisiones en tiempo real
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- En un  juego, el tiempo para "pensar" la siguiente movida es limitado.
+- Las personas no deseamos esperar mucho tiempo  para que nuestro contrincante realice su movida.
+
+*{{{color(green,Solución)}}}*  
+
+- {{{color(blue),Cortar)}}} el recorrido del espacio de juego antes de llegar a la hojas, convirtiéndo ese nodo interno en hoja y utilizar una {{{color(cyan),función de evaluación)}}}  (medida heurística de utilidad) del nodo.
+- Implementar un {{{color(blue),test de corte (Cutoff test))}}} que nos  determina cuando usamos la función de evaluación.
+#+REVEAL_HTML: </div>
+
+
+
+
+** Función de Evaluación
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+*{{{color(green,Valor estimado de la utilidad  esperada del juego desde  un nodo)}}}*  
+La performance del juego dependerá de la {{{color(blue,calidad)}}} de la función de evaluación. Una función de evaluación imprecisa guiará al agente a una posición  perdedora.
+
+*{{{color(green,Características de diseño:)}}}*
+ - Coincida con la función de utilidad en los nodos terminales.
+ - Su cálculo no sea costoso ni en tiempo ni espacio.
+ - Refleje de la forma más precisa las chances de ganar por ese camino. 
+
+
+#+REVEAL_HTML: </div>
+   
+
+
+
+
+   
+** Función de Evaluación
+
+*{{{color(green,¿Cómo diseñamos una función de evaluación?)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- El diseño de la función depende de la  identificación de características que distinguen a los estados.
+- Por ejemplo: en el ajedrez podría ser número de piezas blancas y negras, si tiene la reina blanca, si tiene la reina negra, etc. 
+#+REVEAL_HTML: </div>
+
+
+   
+** Test de Corte
+
+*{{{color(green,Enfoque Simple)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Límite de profundidad para la búsqueda
+#+REVEAL_HTML: </div>
+#+BEGIN_SRC pascal
+Si Cutoff-Test(state, depth) entonces return Eval(state)
+#+END_SRC
+
+*{{{color(green,Problemas)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- El corte podría  ser aplicado a nodos que parecieran ser prometedores para un jugador A aunque en la siguiente jugada, quedara claramente mostrado que es perdedor para el jugador A.
+- Puede detenerse antes que el tiempo disponible sea usado.
+
+#+ATTR_REVEAL: :frag (roll-in)
+Se requiere de alguna mejora...  
+  
+#+REVEAL_HTML: </div>
+
+** Test de Corte
+
+*{{{color(green,Problemas)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- El corte podría  ser aplicado a nodos que parecieran ser prometedores para un jugador A aunque en la siguiente jugada, quedara claramente mostrado que es perdedor para el jugador A.
+- Puede detenerse antes que el tiempo disponible sea usado.
+#+REVEAL_HTML: </div>
+
+*{{{color(green,Búsqueda en Reposo)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ El corte se aplica sólo a nodos en reposo, es decir a aquellos que tienen poca probabilidad de oscilar bruscamente, según la función de evaluación, en el futuro cercano. 
+#+REVEAL_HTML: </div>
+
+
+   
+** Efecto Horizonte
+
+*{{{color(green,Idea)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Ocurre cuando los movimientos del oponente  causan un daño serio que es inevitable, pero que puede ser evitado temporalmente  retrasado la táctica.
+#+REVEAL_HTML: </div>
+   
+* Conclusiones
+
+** Resumen
+#+ATTR_REVEAL: :frag (roll-in)
+- Algunos {{{alert(juegos)}}} pueden ser representados como problemas de búsquedas
+	  -  {{{color(blue,Arbol de juego)}}}
+- {{{alert(Algoritmo Minimax)}}}
+	  - Asume que el {{{color(blue,oponente)}}} juega de manera {{{color(blue,óptima)}}}
+	  - Definiendo la función de utilidad
+- {{{alert(Las podas)}}} pueden reducir el espacio de búsqueda drásticamente
+
+** Resumen
+#+ATTR_REVEAL: :frag (roll-in)
+- Los juego en {{{alert(tiempo real)}}} requiere  {{{color(blue,cutoffs)}}}
+- Necesita definir una medida de utilidad heurística: {{{alert(función de evaluación)}}}
+	  - Función de evaluación puede ser derivada de simulaciones, análisis, experiencias
+
+
+
+* Bibliografía
+
+** Referencia Bibliográfica
+
+   #+REVEAL_HTML: <div style="font-size: 80%;">
+
+[[file:imagenes/book.png]] S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 5
+  2009
+

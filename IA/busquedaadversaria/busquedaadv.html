@@ -22,23 +22,99 @@
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda Adversaria</h2><p class="date">Created: 2022-09-24 sáb 16:44</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda Adversaria</h2><p class="date">Created: 2022-09-27 mar 09:49</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org3c9571e">Introducción</a>
+<ul>
+<li><a href="#/slide-org534c1de">Juegos</a></li>
+<li><a href="#/slide-org14348be">Juegos</a></li>
+<li><a href="#/slide-org1d66640">Tipos de Juegos</a></li>
+<li><a href="#/slide-org103da99">Características de los Juegos</a></li>
+<li><a href="#/slide-orge2d0505">No Suma Cero: Dilema del Prisionero</a></li>
+<li><a href="#/slide-orgae76c8c">No Suma Cero: Dilema del Prisionero</a></li>
+<li><a href="#/slide-orgf706bc0">Juegos</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orga4dadfa">Juegos como Búsqueda</a>
+<ul>
+<li><a href="#/slide-orgaba77bf">Formalización como un problema de búsqueda</a></li>
+<li><a href="#/slide-org0e08086">Formalización como un problema de búsqueda</a></li>
+<li><a href="#/slide-org2809c58">Formulación como un  Problema de Búsqueda</a></li>
+<li><a href="#/slide-org3ab1942">Formulación como un  Problema de Búsqueda</a></li>
+<li><a href="#/slide-org3ed297a">Espacio de búsqueda</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org8f60a38">MINIMAX</a>
+<ul>
+<li><a href="#/slide-org632f676">Algoritmo Minimax</a></li>
+<li><a href="#/slide-org7244514">Algoritmo Minimax</a></li>
+<li><a href="#/slide-org0c9d0df">Algoritmo Minimax</a></li>
+<li><a href="#/slide-orge5adadb">Espacio de búsqueda</a></li>
+<li><a href="#/slide-org3e4dc05">Espacio de búsqueda</a></li>
+<li><a href="#/slide-org3d94c8a">Espacio de búsqueda</a></li>
+<li><a href="#/slide-orga43e23d">Espacio de búsqueda</a></li>
+<li><a href="#/slide-org4b47eee">Espacio de búsqueda</a></li>
+<li><a href="#/slide-org112dfca">Propiedades de Minimax</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgec62888">Alpha-Beta</a>
+<ul>
+<li><a href="#/slide-org5172ee7">Minimax</a></li>
+<li><a href="#/slide-org7e78f86">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-orgdd0d2bc">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-org02c6a21">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-org9de4013">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-org838f90f">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-org6175de0">Alpha-Beta</a></li>
+<li><a href="#/slide-orgbf0ee3a">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-org4ef4dbd">Algoritmo \(\alpha-\beta\)</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org967b1b1">Tiempo Real</a>
+<ul>
+<li><a href="#/slide-orgc6b59f8">Toma de decisiones en tiempo real</a></li>
+<li><a href="#/slide-org6e55537">Función de Evaluación</a></li>
+<li><a href="#/slide-org830e5e3">Función de Evaluación</a></li>
+<li><a href="#/slide-orgc8bb476">Test de Corte</a></li>
+<li><a href="#/slide-orgb99baa9">Test de Corte</a></li>
+<li><a href="#/slide-orga07111f">Efecto Horizonte</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org07c33d6">Conclusiones</a>
+<ul>
+<li><a href="#/slide-org7ba0a39">Resumen</a></li>
+<li><a href="#/slide-orgd5823d0">Resumen</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgde56258">Bibliografía</a>
+<ul>
+<li><a href="#/slide-orgffe9365">Referencia Bibliográfica</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </section>
 
 <section>
-<section id="slide-org1a0fa16">
-<h2 id="org1a0fa16">Introducción</h2>
-<div class="outline-text-2" id="text-org1a0fa16">
+<section id="slide-org3c9571e">
+<h2 id="org3c9571e">Introducción</h2>
+<div class="outline-text-2" id="text-org3c9571e">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org24f761e">
-<h3 id="org24f761e">Juegos</h3>
+<section id="slide-org534c1de">
+<h3 id="org534c1de">Juegos</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -56,7 +132,7 @@
 </table>
 
 </section>
-<section id="slide-org24f761e-split">
+<section id="slide-org534c1de-split">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -77,8 +153,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org2c1c914">
-<h3 id="org2c1c914">Juegos</h3>
+<section id="slide-org14348be">
+<h3 id="org14348be">Juegos</h3>
 <p>
 <b><font color="green">Definición</font></b>
 </p>
@@ -94,6 +170,791 @@ ganancias de sus oponentes.
 Las <font color="orange">reglas</font> especifican las <font color="green">acciones</font> posibles de cada jugador,
 <font color="colorgreen">la cantidad de información</font> recibida por cada uno de ellos mientras se juega y
 <font color="colorgreen">la cantidad de ganancia o pérdida</font> en varias situaciones.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org1d66640">
+<h3 id="org1d66640">Tipos de Juegos</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><font color=red>JUEGOS</font></td>
+<td class="org-left"><font color="cyan">Determinísticos</font></td>
+<td class="org-left"><font color="cyan">Con Azar</font></td>
+</tr>
+
+<tr>
+<td class="org-left"><font color="cyan">Información Perfecta</font></td>
+<td class="org-left">Tic-tac-toe, Damas, Revesi, Ajedrez</td>
+<td class="org-left">Backgammon, Monopolio</td>
+</tr>
+
+<tr>
+<td class="org-left"><font color="cyan">Información Imperfecta</font></td>
+<td class="org-left">Batalla Naval</td>
+<td class="org-left">Poker</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org103da99">
+<h3 id="org103da99">Características de los Juegos</h3>
+<div style="font-size: 80%;">
+<ul>
+<li><font color=red>Dos</font> jugadores o agentes.</li>
+<li>Movimientos  <font color=red>intercalados</font>.  Cada decisión es hecha en forma secuencial (no hay movimientos simultáneos).</li>
+<li><font color=red>Suma Cero</font>: la ganancia de uno es la pérdida del otro.Por ejemplo, en el ajedrez uno gana (1) y el otro pierde (-1); o bien empatan (0).</li>
+<li><font color=red>No</font> interviene el  <font color=red>azar</font>: por ejemplo,  dados.</li>
+<li><font color=red>Información Perfecta</font>: ambos jugadores tienen acceso a toda la información sobre el estado del juego. No se ocultan información uno al otro.</li>
+
+</ul>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge2d0505">
+<h3 id="orge2d0505">No Suma Cero: Dilema del Prisionero</h3>
+<p>
+<b><font color="green">Enunciado Clásico</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+La policía arresta a dos sospechosos. No hay pruebas suficientes para condenarlos y, tras haberlos separado, los visita a cada uno y les ofrece el mismo trato. Si uno confiesa y su cómplice no, el cómplice será condenado a la pena total, diez años, y el primero será liberado. Si uno calla y el cómplice confiesa, el primero recibirá esa pena y será el cómplice quien salga libre. Si ambos confiesan, ambos serán condenados a seis años. Si ambos lo niegan, todo lo que podrán hacer será encerrarlos durante seis meses por un cargo menor. 
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgae76c8c">
+<h3 id="orgae76c8c">No Suma Cero: Dilema del Prisionero</h3>
+<p>
+Resumiendo:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><font color="cyan">Tú confiesas</font></td>
+<td class="org-left"><font color="cyan">Tú lo niegas</font></td>
+</tr>
+
+<tr>
+<td class="org-left"><font color="cyan">Él confiesa</font></td>
+<td class="org-left">Ambos son condenados a 6 años</td>
+<td class="org-left">Él sale libre y tu eres condenado a 10 años</td>
+</tr>
+
+<tr>
+<td class="org-left"><font color="cyan">Él lo niega</font></td>
+<td class="org-left">Él es condenado a 10 años y tú sales libre</td>
+<td class="org-left">Ambos son condenados a 6 meses</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf706bc0">
+<h3 id="orgf706bc0">Juegos</h3>
+<div style="font-size: 80%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><font color="cyan">Teoría de los Juegos</font></td>
+<td class="org-left"><font color="cyan">Terminología en IA</font></td>
+</tr>
+
+<tr>
+<td class="org-left">Dos jugadores</td>
+<td class="org-left">Dos agentes</td>
+</tr>
+
+<tr>
+<td class="org-left">Determinísticos</td>
+<td class="org-left">Determinísticos</td>
+</tr>
+
+<tr>
+<td class="org-left">Por turnos alternados</td>
+<td class="org-left">Acciones por turnos alternados</td>
+</tr>
+
+<tr>
+<td class="org-left">Información Perfecta</td>
+<td class="org-left">Totalmente observable</td>
+</tr>
+
+<tr>
+<td class="org-left">Suma a cero</td>
+<td class="org-left">Valores de Utilidad  iguales y opuestos</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga4dadfa">
+<h2 id="orga4dadfa">Juegos como Búsqueda</h2>
+<div class="outline-text-2" id="text-orga4dadfa">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgaba77bf">
+<h3 id="orgaba77bf">Formalización como un problema de búsqueda</h3>
+<ul>
+<li><font color=red>Nodo Inicial:</font> incluye la posición inicial del juego y determina el jugador que va a mover.</li>
+<li><font color=red>Función Sucesor:</font> indica los movimientos legales desde un estado y el estado resultante luego de jugar esa jugada.</li>
+<li><font color=red>Test Terminal:</font> determina cuando terminó el juego (estados terminales).</li>
+<li><font color=red>Función de Utilidad:</font> Da valores numéricos a los estados terminales. Recordemos la condición de suma cero.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org0e08086">
+<h3 id="org0e08086">Formalización como un problema de búsqueda</h3>
+<p>
+<b><font color="green">Árbol de Juego</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>El estado inicial y los movimientos legales definen el <font color="blue">árbol de juego</font> para un juego.</li>
+<li>Cada nivel del árbol corresponde a las jugadas de uno de los participantes. Llamaremos a los jugadores MAX y MIN.</li>
+<li>Consideramos un <font color="blue">turno completo</font> cuando ambos jugadores han jugado. En el árbol del juego, se consideran dos niveles de profundidad un turno.</li>
+
+</ul>
+</div>
+
+<p>
+<b><font color="green">Solución Óptima</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+En un problema de búsqueda, la <font color="blue">solución óptima)</font> es una secuencia de movimientos que lleva desde el estado inicial del juego a un estado meta (estado terminal) <font color="blue">ganador</font>.
+</p>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org2809c58">
+<h3 id="org2809c58">Formulación como un  Problema de Búsqueda</h3>
+<p>
+Ajedrez
+</p>
+
+<div style="font-size: 80%;">
+<ul>
+<li><font color=red>Estado Inicial</font>  Tablero con las piezas ubicadas en la posición inicial. Jugador que comienza: el que juega con piezas blancas.</li>
+<li><font color=red>Función sucesor</font> Dado un tablero legal y un jugador por jugar, se determinan todos los movimientos legales que ese jugador puede hacer.</li>
+
+<li><font color=red>Test de terminación</font> Determinamos si es jaque mate o tablas.</li>
+
+<li><font color=red>Función utilidad:</font> Puede ser:
+<ul>
+<li>+1, -1, 0</li>
+
+</ul></li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3ab1942">
+<h3 id="org3ab1942">Formulación como un  Problema de Búsqueda</h3>
+<p>
+Tic-Tac-Toe
+</p>
+
+<div style="font-size: 80%;">
+<ul>
+<li><font color=red>Estado Inicial</font>  Tablero \(3\times 3\) vacío.</li>
+<li><font color=red>Función sucesor</font>     Inicialmente juega uno de los jugadores con X y puede ubicarla en cualquier cuadro. Dado un tablero legal y un jugador por jugar, el tablero resultante es aquel en el que el jugador puso una ficha suya en un cuadrado vacío.</li>
+<li><font color=red>Test de terminación</font> Hay tres fichas iguales en línea o bien el tablero no contiene cuadros vacíos.</li>
+<li><font color=red>Función utilidad:</font> 
+<ul>
+<li>Gana: +1</li>
+<li>Pierde: -1</li>
+<li>Empatan: 0</li>
+
+</ul></li>
+
+</ul>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3ed297a">
+<h3 id="org3ed297a">Espacio de búsqueda</h3>
+
+<div id="org876bd88" class="figure">
+<p><img src="imagenes/game-tree.jpg" alt="game-tree.jpg" height="500" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org8f60a38">
+<h2 id="org8f60a38">MINIMAX</h2>
+<div class="outline-text-2" id="text-org8f60a38">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org632f676">
+<h3 id="org632f676">Algoritmo Minimax</h3>
+<p>
+Dos jugadores MAX (\(\triangle\)) y MIN(\(\triangledown\)).
+</p>
+
+<p>
+<b><font color="green">Idea</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+El jugador <font color="blue">MAX</font> juega a la posición de <font color="cyan">máximo</font> valor, mientras que <font color="blue">MIN</font> prefiere el estado de <font color="cyan">menor</font> valor. Recordar que los valores están dados para MAX, así un valor malo para MAX es bueno para MIN.  
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7244514">
+<h3 id="org7244514">Algoritmo Minimax</h3>
+<p>
+<b><font color="green">Idea</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+El jugador <font color="blue">MAX</font> juega a la posición de <font color="cyan">máximo</font> valor, mientras que <font color="blue">MIN</font> prefiere el estado de <font color="cyan">menor</font> valor. Recordar que los valores están dados para MAX, así un valor malo para MAX es bueno para MIN.  
+</p>
+</div>
+
+
+<div id="org48d379b" class="figure">
+<p><img src="imagenes/algminax.png" alt="algminax.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org0c9d0df">
+<h3 id="org0c9d0df">Algoritmo Minimax</h3>
+<ul>
+<li>El recorrido del árbol de búsqueda es Depth-First.</li>
+<li><p>
+Se debe calcular el valor de minimax de cada nodo recursivamente
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagenes/nodomax.png" alt="nodomax.png" /></td>
+<td class="org-left">Nodo Max</td>
+<td class="org-left"><img src="imagenes/nodomin.png" alt="nodomin.png" /></td>
+<td class="org-left">Nodo Min</td>
+</tr>
+</tbody>
+</table></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orge5adadb">
+<h3 id="orge5adadb">Espacio de búsqueda</h3>
+
+<div id="org3f7f269" class="figure">
+<p><img src="imagenes/minimax-illustration-6.jpg" alt="minimax-illustration-6.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3e4dc05">
+<h3 id="org3e4dc05">Espacio de búsqueda</h3>
+
+<div id="orgf903746" class="figure">
+<p><img src="imagenes/minimax-illustration-7.jpg" alt="minimax-illustration-7.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3d94c8a">
+<h3 id="org3d94c8a">Espacio de búsqueda</h3>
+
+<div id="org5287073" class="figure">
+<p><img src="imagenes/minimax-illustration-8.jpg" alt="minimax-illustration-8.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga43e23d">
+<h3 id="orga43e23d">Espacio de búsqueda</h3>
+
+<div id="org82c037b" class="figure">
+<p><img src="imagenes/minimax-illustration-9.jpg" alt="minimax-illustration-9.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4b47eee">
+<h3 id="org4b47eee">Espacio de búsqueda</h3>
+
+<div id="org91bac83" class="figure">
+<p><img src="imagenes/minimax-illustration.jpg" alt="minimax-illustration.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org112dfca">
+<h3 id="org112dfca">Propiedades de Minimax</h3>
+<p>
+Asumimos una profundidad máxima del árbol de \(m\) y que el juego tiene \(b\) movimientos legales en  cada nodo (ramificación). Recordemos que el recorrido es Depth-First.
+</p>
+
+<ul>
+<li class="fragment roll-in"><font color=red>¿Completo?</font>  Solo si el árbol es finito.<br /></li>
+<li class="fragment roll-in"><font color=red>¿Complejidad Temporal?</font>   \(O(b^m)\).<br /></li>
+<li class="fragment roll-in"><font color=red>¿Complejidad Espacial?</font>   \(O(bm)\). <br /></li>
+<li class="fragment roll-in"><font color=red>¿Óptimo?</font>   Si, contra un oponente óptimo.¿De lo contrario? <br /></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgec62888">
+<h2 id="orgec62888">Alpha-Beta</h2>
+<div class="outline-text-2" id="text-orgec62888">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org5172ee7">
+<h3 id="org5172ee7">Minimax</h3>
+<p>
+Para el ajedrez tenemos una profundidad \(m\approx 100\) y una ramificación \(b\approx 35\).
+</p>
+
+<p>
+El tiempo estimado es \(35^{100}\).
+</p>
+
+<p>
+¡HMMMMMMMMMMMM! :(
+</p>
+
+<p>
+Solución exacta NO viable completamente con Minimax.
+</p>
+
+<p>
+<font color=red>Pensemos...</font>
+</p>
+
+<p>
+¿Será necesario explorar <font color=red>todos</font> los caminos?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7e78f86">
+<h3 id="org7e78f86">Poda Alpha-Beta</h3>
+
+<div id="org5b87a01" class="figure">
+<p><img src="imagenes/alpha-beta1.jpg" alt="alpha-beta1.jpg" height="400" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdd0d2bc">
+<h3 id="orgdd0d2bc">Poda Alpha-Beta</h3>
+
+<div id="org6781f3c" class="figure">
+<p><img src="imagenes/alpha-beta2.jpg" alt="alpha-beta2.jpg" height="400" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org02c6a21">
+<h3 id="org02c6a21">Poda Alpha-Beta</h3>
+
+<div id="orgaef04e7" class="figure">
+<p><img src="imagenes/alpha-beta3.jpg" alt="alpha-beta3.jpg" height="400" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org9de4013">
+<h3 id="org9de4013">Poda Alpha-Beta</h3>
+
+<div id="org8493a22" class="figure">
+<p><img src="imagenes/alpha-beta4.jpg" alt="alpha-beta4.jpg" height="400" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org838f90f">
+<h3 id="org838f90f">Poda Alpha-Beta</h3>
+
+<div id="orgead4948" class="figure">
+<p><img src="imagenes/alpha-beta5.jpg" alt="alpha-beta5.jpg" height="400" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6175de0">
+<h3 id="org6175de0">Alpha-Beta</h3>
+<ul>
+<li>La poda <font color=red>NO</font> afecta el resultado final.</li>
+<li>Un buen orden de los movimientos mejora la efectividad de la poda.</li>
+<li>Con un "orden perfecto", la complejidad en tiempo es \(O(b^{m/2})\), a diferencia del Minimax \(O(b^m)\).</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgbf0ee3a">
+<h3 id="orgbf0ee3a">Poda Alpha-Beta</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>\(\alpha\): es el valor de la mejor elección (valor más alto) que hemos  encontrado hasta ahora  para MAX. Inicialmente en \(-\infty\). <br />
+
+<ul>
+<li>Si estamos analizando  un nodo MIN y su valor  \(V_{Min}\leq \alpha\), <font color=red>PODA</font>, ya que MAX no lo tendrá en cuenta.</li>
+
+</ul></li>
+
+<li>\(\beta\): es el valor de la mejor elección (valor más bajo) que hemos encontrado hasta ahora  para MIN. Inicialmente en \(+\infty\).<br />
+
+<ul>
+<li>Si estamos analizando  un nodo MAX y valor \(V_{Max}\geq \beta\), <font color=red>PODA</font>, ya que MIN no lo tendrá en cuenta.</li>
+
+</ul></li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4ef4dbd">
+<h3 id="org4ef4dbd">Algoritmo \(\alpha-\beta\)</h3>
+
+<div id="org9ee4971" class="figure">
+<p><img src="imagenes/alphabeta.png" alt="alphabeta.png" height="550" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org967b1b1">
+<h2 id="org967b1b1">Tiempo Real</h2>
+<div class="outline-text-2" id="text-org967b1b1">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc6b59f8">
+<h3 id="orgc6b59f8">Toma de decisiones en tiempo real</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>En un  juego, el tiempo para "pensar" la siguiente movida es limitado.</li>
+<li>Las personas no deseamos esperar mucho tiempo  para que nuestro contrincante realice su movida.</li>
+
+</ul>
+
+<p>
+<b><font color="green">Solución</font></b>  
+</p>
+
+<ul>
+<li><font color="blue)">Cortar</font> el recorrido del espacio de juego antes de llegar a la hojas, convirtiéndo ese nodo interno en hoja y utilizar una <font color="cyan)">función de evaluación</font>  (medida heurística de utilidad) del nodo.</li>
+<li>Implementar un <font color="blue)">test de corte (Cutoff test)</font> que nos  determina cuando usamos la función de evaluación.</li>
+
+</ul>
+</div>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org6e55537">
+<h3 id="org6e55537">Función de Evaluación</h3>
+<div style="font-size: 80%;">
+<p>
+<b><font color="green">Valor estimado de la utilidad esperada del juego desde un nodo</font></b>  
+La performance del juego dependerá de la <font color="blue">calidad</font> de la función de evaluación. Una función de evaluación imprecisa guiará al agente a una posición  perdedora.
+</p>
+
+<p>
+<b><font color="green">Características de diseño:</font></b>
+</p>
+<ul>
+<li>Coincida con la función de utilidad en los nodos terminales.</li>
+<li>Su cálculo no sea costoso ni en tiempo ni espacio.</li>
+<li>Refleje de la forma más precisa las chances de ganar por ese camino.</li>
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org830e5e3">
+<h3 id="org830e5e3">Función de Evaluación</h3>
+<p>
+<b><font color="green">¿Cómo diseñamos una función de evaluación?</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">El diseño de la función depende de la  identificación de características que distinguen a los estados.</li>
+<li class="fragment roll-in">Por ejemplo: en el ajedrez podría ser número de piezas blancas y negras, si tiene la reina blanca, si tiene la reina negra, etc.</li>
+
+</ul>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgc8bb476">
+<h3 id="orgc8bb476">Test de Corte</h3>
+<p>
+<b><font color="green">Enfoque Simple</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Límite de profundidad para la búsqueda
+</p>
+</div>
+<div class="org-src-container">
+
+<pre  class="src src-pascal"><code trim>Si Cutoff-Test(state, depth) entonces return Eval(state)
+</code></pre>
+</div>
+
+<p>
+<b><font color="green">Problemas</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>El corte podría  ser aplicado a nodos que parecieran ser prometedores para un jugador A aunque en la siguiente jugada, quedara claramente mostrado que es perdedor para el jugador A.</li>
+<li>Puede detenerse antes que el tiempo disponible sea usado.</li>
+
+</ul>
+
+<p class="fragment (roll-in)">
+Se requiere de alguna mejora&#x2026;  
+</p>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb99baa9">
+<h3 id="orgb99baa9">Test de Corte</h3>
+<p>
+<b><font color="green">Problemas</font></b>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li>El corte podría  ser aplicado a nodos que parecieran ser prometedores para un jugador A aunque en la siguiente jugada, quedara claramente mostrado que es perdedor para el jugador A.</li>
+<li>Puede detenerse antes que el tiempo disponible sea usado.</li>
+
+</ul>
+</div>
+
+<p>
+<b><font color="green">Búsqueda en Reposo</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+El corte se aplica sólo a nodos en reposo, es decir a aquellos que tienen poca probabilidad de oscilar bruscamente, según la función de evaluación, en el futuro cercano. 
+</p>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga07111f">
+<h3 id="orga07111f">Efecto Horizonte</h3>
+<p>
+<b><font color="green">Idea</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Ocurre cuando los movimientos del oponente  causan un daño serio que es inevitable, pero que puede ser evitado temporalmente  retrasado la táctica.
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org07c33d6">
+<h2 id="org07c33d6">Conclusiones</h2>
+<div class="outline-text-2" id="text-org07c33d6">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7ba0a39">
+<h3 id="org7ba0a39">Resumen</h3>
+<ul>
+<li class="fragment roll-in">Algunos <font color=red>juegos</font> pueden ser representados como problemas de búsquedas
+<ul>
+<li><font color="blue">Arbol de juego</font></li>
+
+</ul></li>
+<li class="fragment roll-in"><font color=red>Algoritmo Minimax</font>
+<ul>
+<li>Asume que el <font color="blue">oponente</font> juega de manera <font color="blue">óptima</font></li>
+<li>Definiendo la función de utilidad</li>
+
+</ul></li>
+<li class="fragment roll-in"><font color=red>Las podas</font> pueden reducir el espacio de búsqueda drásticamente</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd5823d0">
+<h3 id="orgd5823d0">Resumen</h3>
+<ul>
+<li class="fragment roll-in">Los juego en <font color=red>tiempo real</font> requiere  <font color="blue">cutoffs</font></li>
+<li class="fragment roll-in">Necesita definir una medida de utilidad heurística: <font color=red>función de evaluación</font>
+<ul>
+<li>Función de evaluación puede ser derivada de simulaciones, análisis, experiencias</li>
+
+</ul></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgde56258">
+<h2 id="orgde56258">Bibliografía</h2>
+<div class="outline-text-2" id="text-orgde56258">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgffe9365">
+<h3 id="orgffe9365">Referencia Bibliográfica</h3>
+<div style="font-size: 80%;">
+
+<p>
+<img src="imagenes/book.png" alt="book.png" /> S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 5
+  2009
 </p>
 </section>
 </section>
