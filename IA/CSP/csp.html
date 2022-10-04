@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Problemas de Satisfacción de Restriccciones</h2><p class="date">Created: 2022-10-04 mar 11:18</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org716ad1a">Definición de un CSP</a></li>
+<li><a href="#/slide-org73a2ce7">Backtracking para CSPs</a></li>
+<li><a href="#/slide-orga69e3f0">Mejorando la eficiencia del Backtracking</a></li>
+<li><a href="#/slide-org6860837">Mínimos valores restantes</a></li>
+<li><a href="#/slide-org9753c84">Variable que más restringe las demás</a></li>
+<li><a href="#/slide-orgb58a233">Valor menos restringido</a></li>
+<li><a href="#/slide-orgf049fbe">Chequeo anticipado</a></li>
+<li><a href="#/slide-orgd15eb2e">Propagación de restricciones</a></li>
+<li><a href="#/slide-orgb7100ae">Consistencia de arcos</a></li>
+<li><a href="#/slide-org26a52cd">Bibliografía</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org716ad1a">
+<h2 id="org716ad1a">Definición de un CSP</h2>
+<div class="outline-text-2" id="text-org716ad1a">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge9ab3bf">
+<h3 id="orge9ab3bf">Problemas de Satisfacción de Restricciones</h3>
+<p>
+<b><font color="green">Problema de Búsqueda Estándar:</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+El <font color=red>estado</font> es atómico o indivisible; una <b>"caja negra"</b> sin  estructura interna.
+El estado permite determinar si es meta, sucesor, etc.
+</p>
+</div>
+
+<p>
+<b><font color="green">Constraint Satisfaction Problems (CSP):</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Usamos una <font color=red>representación factorizada</font> de cada estado.
+  El <font color=red>estado</font> es definido por:
+</p>
+
+<ul>
+<li><b>variables</b>  \(X_i\) con valores del dominio \(D_i\).</li>
+<li>El <b>test de meta</b> es cuando cada variable tiene un valor que  satisface todas las restricciones sobre esa misma variable.</li>
+
+</ul>
+
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org293d91a">
+<h3 id="org293d91a">Problemas de Satisfacción de Restricciones</h3>
+<ul>
+<li class="fragment roll-in">Es un ejemplo simple de un <font color="orange">Lenguaje de Representación Formal</font>. Muchos problemas se representan naturalmente como un CSP.</li>
+<li class="fragment roll-in">Permite algoritmos de <font color="orange">propósito general</font> con
+más poder que los algoritmos estándares. Permite resolver problemas intratables con algoritmos de búsqueda estándar.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org2518de4">
+<h3 id="org2518de4">Ejemplo: Coloreo de Mapas</h3>
+
+<div id="orgaea1bc0" class="figure">
+<p><img src="imagenes/australia.jpg" alt="australia.jpg" height="300" />
+</p>
+</div>
+
+<div style="font-size: 60%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><font color="green">Variables</font></td>
+<td class="org-left"><font color="green">Dominios</font></td>
+</tr>
+
+<tr>
+<td class="org-left">\(WA, NT, Q, NSW, V, SA, T\)</td>
+<td class="org-left">\(D_i = \{red,green,blue\}\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<font color="green">Restricciones</font>
+ Regiones adyacentes deben tener colores diferentes. e.g., 
+ \(WA\neq NT\) o \((WA,NT) \in \{(red,green),(red,blue),(green,red),(green,blue),\ldots\}\)
+</p>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org9d6cec2">
+<h3 id="org9d6cec2">Ejemplo: Coloreo de Mapas</h3>
+
+<div id="orgbae1e28" class="figure">
+<p><img src="imagenes/australia-solucion.jpg" alt="australia-solucion.jpg" height="300" />
+</p>
+</div>
+
+<p>
+Las <font color=red>Soluciones</font> son asignaciones que satisfacen <font color=red>todas</font> las restricciones.
+</p>
+
+<p>
+<font color="green">Ejemplo</font>
+</p>
+<div style="font-size: 60%;">
+<p>
+\(\{WA = red,NT = green,Q = red,NSW = green,V = red,SA = blue ,T = green\}\)
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd3a5522">
+<h3 id="orgd3a5522">Definición de un CSP</h3>
+<p>
+<font color="green">Un CSP consiste de:</font>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">un conjunto de <font color=red>variables</font> \(X=\{X_1,\ldots,X_n\}\).</li>
+<li class="fragment roll-in">un conjunto de <font color=red>dominios</font>, uno para cada variable, \(D=\{D_1,\ldots,D_n\}\). Cada dominio \(D_i\) consiste de un conjunto de valores permitidos \(\{v_1,\ldots,v_k\}\) para la variable \(X_i\).</li>
+<li class="fragment roll-in">un conjunto \(C\) de <font color=red>restricciones</font> que especifican las combinaciones permitidas de los valores.</li>
+
+</ul>
+</div>
+
+</section>
+<section id="slide-orgd3a5522-split">
+
+<p>
+<font color="green">Solución a un CSP</font>
+</p>
+<div style="font-size: 80%;">
+<p>
+<b>Es una <font color=red>asignación consistente y completa</font></b>
+</p>
+
+<p>
+Una asignación es consistente si no viola ninguna restricción y es completa si cada variable está asignada.
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf9da24f">
+<h3 id="orgf9da24f">Grafos de restricciones</h3>
+<div style="font-size: 80%;">
+<ul>
+<li><font color="green">CSP binarios</font> Cada restricción relaciona a lo sumo dos variables.</li>
+<li><p>
+<font color="green">Grafos de restricciones:</font> Los nodos son variables y los arcos muestran restricciones entre las variables.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagenes/australia-csp.jpg" alt="australia-csp.jpg" />  Grafos de restricciones</td>
+<td class="org-left">Algoritmos de CSP de propósito general usan la estructura de grafos para acelerar la búsqueda. E.g. Tasmania es un subproblema independiente.</td>
+</tr>
+</tbody>
+</table></li>
+
+</ul>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org0716fc5">
+<h3 id="org0716fc5">Variedad de CSPs</h3>
+<p>
+<font color="green">Variables Discretas</font>
+</p>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">Dominios Finitos: tamaño  \(d\) \(\implies\) \(O(d^n)\) asignaciones completas. Ej. CSPs
+booleanos: Satisfacibilidad booleana (NP-completo).</li>
+<li class="fragment roll-in">Dominios infinitos. Ej. scheduling, las variables son días start/end para cada tarea y el dominio naturales. Se  necesita un <font color="blue">lenguaje de restricciones</font>.
+Ej. \(StartJob_1 + 5 \leq StartJob_3\)</li>
+<li class="fragment roll-in">Problemas con restricciones <font color=red>lineales</font> son solubles; <font color=red>no-lineales</font> son indecidibles.</li>
+
+</ul>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org3a56b5c">
+<h3 id="org3a56b5c">Variedad de Restricciones</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in"><b><font color="green">Unaria</font></b> Restricciones que involucran una única variable, e.g.  \(SA\neq green\)</li>
+<li class="fragment roll-in"><b><font color="green">Binaria</font></b> Restricciones que involucran pares de variables, e.g. \(SA\neq WA\)</li>
+<li class="fragment roll-in"><b><font color="green">High-order: Globales</font></b>     Restricciones que involucran 3 o más variables, e.g. cryptoaritméticas. Se utilizan <font color=red>hipergrafos de restricciones</font>.</li>
+<li class="fragment roll-in"><p>
+<b><font color="green">Preferencias (restricciones suaves)</font></b>    E.g.,  <i>red</i> es mejor que  <i>green</i>. A menudo representado por un costo para cada asignación de variables \(\rightarrow\) <font color=red>Problema de Optimización de Restricciones</font>.   
+</p>
+</div></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgf479e02">
+<h3 id="orgf479e02">Ejemplo: Criptoaritmética</h3>
+
+<div id="orgf655115" class="figure">
+<p><img src="imagenes/cryptarithmetic.jpg" alt="cryptarithmetic.jpg" height="250" />
+</p>
+</div>
+<div style="font-size: 80%;">
+<ul>
+<li><b><font color="green">Variables</font></b> \(F\ T\ U\ W\ R\ O\ X_1\ X_2\ X_3\)</li>
+<li><b><font color="green">Dominios</font></b> \(\{0,1,2,3,4,5,6,7,8,9\}\)</li>
+<li><p>
+<b><font color="green">Restricciones</font></b>  \(alldiff(F,T,U,W,R,O)\); \(O + O = R + 10\cdot X_1\)
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org73a2ce7">
+<h2 id="org73a2ce7">Backtracking para CSPs</h2>
+<div class="outline-text-2" id="text-org73a2ce7">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org994cb9d">
+<h3 id="org994cb9d">Formulación de búsqueda estándar (incremental)</h3>
+<ul>
+<li class="fragment roll-in"><b><font color="green">Estado Inicial:</font></b> La asignación vacía, \(\emptyset\).</li>
+<li class="fragment roll-in"><b><font color="green">Función sucesor: Asignaciones Parciales</font></b>     Asigna un valor a una variable no asignada que no entra en conflicto con la actual asignación \(\implies\) <font color=red>falla</font> si no hay  asignación legal.</li>
+<li class="fragment roll-in"><b><font color="green">Test de meta:</font></b>      Si la asignación actual está completa.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org15406bd">
+<h3 id="org15406bd">Formulación de búsqueda estándar (incremental)</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">Es la misma para todo CSP.</li>
+<li class="fragment roll-in">Toda solución aparece en la profundidad  \(n\), siendo  \(n\) la cantidad de variables \(\implies\) se puede usar  búsqueda Depth-First.</li>
+<li class="fragment roll-in"><p>
+El camino es irrelevante, por lo tanto, podríamos utilizar la formulación de estado completo, en vez de asignaciones parciales.
+</p>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-org15406bd-split">
+<div style="font-size: 80%;">
+<ul>
+<li><p>
+Un CSP con \(n\) variables de tamaño de dominio \(d\), tenemos un factor de ramificación de \(nd\); en el siguiente nivel \(n(d-1)*n*d\) y así sucesivamente.  En general,  tenemos \(b = (n-\ell)d\) nodos nuevos a profundidad \(\ell\), por cada nodo del nivel anterior.
+</p>
+
+<p>
+     Por lo tanto, tenemos
+       \(nd * (n-1)d * \ldots *d=\)  \(n!d^n\) hojas. :( 
+Y solamente son \(d^n\) asignaciones completas posibles.
+</p></li>
+
+</ul>
+<p>
+HMMMMMMMMMM!!!!!!!!!!!!!!!!
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org9fb21f9">
+<h3 id="org9fb21f9">Bactracking Search</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in">La asignación de variables es <font color="green">conmutativa</font>. 
+Un problema es <font color=red>conmutativo</font> si el orden  de la aplicación de un conjunto de acciones no tiene efecto diferente sobre la asignación parcial.
+Ejemplo, i.e.,
+[ \(WA = red\) -  \(NT = green\)] es lo mismo que [ \(NT = green\) - \(WA = red\)]</li>
+<li class="fragment roll-in">Solo se necesita considerar asignaciones a una <font color=red>única variable</font> en cada nodo \(\implies\) Factor de Ramificación \(b = d\) y así tenemos \(d^n\) hojas.
+Puede resolver el problema de  <i>n</i>-reinas para  \(n \approx 25\).</li>
+<li class="fragment roll-in">Depth-first search para CSPs con asignación de una única variable se llama <font color=red>Backtracking Search</font></li>
+
+</ul>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgcdcdd48">
+<h3 id="orgcdcdd48">Backtracking search</h3>
+
+<div id="org6bb3875" class="figure">
+<p><img src="imagenes/backtrsearck.png" alt="backtrsearck.png" height="500" />
+</p>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdc15bee">
+<h3 id="orgdc15bee">Ejemplo</h3>
+
+<div id="org51d449b" class="figure">
+<p><img src="imagenes/backtrack-progress1c.jpg" alt="backtrack-progress1c.jpg" height="1000" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org824dfa1">
+<h3 id="org824dfa1">Ejemplo</h3>
+
+<div id="org3d0a3f8" class="figure">
+<p><img src="imagenes/backtrack-progress2c.jpg" alt="backtrack-progress2c.jpg" height="1000" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2e2a77f">
+<h3 id="org2e2a77f">Ejemplo</h3>
+
+<div id="org5632aa4" class="figure">
+<p><img src="imagenes/backtrack-progress3c.jpg" alt="backtrack-progress3c.jpg" height="1000" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org905e02d">
+<h3 id="org905e02d">Ejemplo</h3>
+
+<div id="org18a4b99" class="figure">
+<p><img src="imagenes/backtrack-progress4c.jpg" alt="backtrack-progress4c.jpg" height="1000" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga69e3f0">
+<h2 id="orga69e3f0">Mejorando la eficiencia del Backtracking</h2>
+<div class="outline-text-2" id="text-orga69e3f0">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org391b546">
+<h3 id="org391b546">Métodos que pueden mejorar la velocidad</h3>
+<div style="font-size: 80%;">
+
+<p>
+Métodos de <font color="purple">propósito general</font> pueden mejorar mucho el backtracking:
+</p>
+<ul>
+<li class="fragment roll-in">¿Cuál variable debería asignarse primero?</li>
+<li class="fragment roll-in">¿En qué orden deberían ser tratados sus valores?</li>
+<li class="fragment roll-in">¿Podemos detectar fallas inevitables con anticipación?</li>
+<li class="fragment roll-in">¿Podemos aprovecharnos de la estructura del problema?</li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6860837">
+<h2 id="org6860837">Mínimos valores restantes</h2>
+<div class="outline-text-2" id="text-org6860837">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org8aef97d">
+<h3 id="org8aef97d">Mínimos valores restantes</h3>
+<p>
+<b><font color="green">Heurística</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Elegir la variable con menos valores <font color=red>legales</font>.
+</p>
+</div>
+
+
+<div id="org19fa121" class="figure">
+<p><img src="imagenes/australia-most-constrained-variable.jpg" alt="australia-most-constrained-variable.jpg" height="125" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org9753c84">
+<h2 id="org9753c84">Variable que más restringe las demás</h2>
+<div class="outline-text-2" id="text-org9753c84">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge22c07e">
+<h3 id="orge22c07e">Variable que más restringe las demás</h3>
+<p>
+<b><font color="green">Heurística de Grados</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Elegir primero la variable con más restricciones sobre las variables
+restantes.
+</p>
+
+
+
+<div id="org3b26bea" class="figure">
+<p><img src="imagenes/australia-most-constraining-variable.jpg" alt="australia-most-constraining-variable.jpg" height="125" />
+</p>
+</div>
+
+
+<p>
+SA es de grado 5.
+</p>
+
+<p>
+T es de grado 0.
+</p>
+
+<p>
+Las demás son de grado 3 o 2.
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb58a233">
+<h2 id="orgb58a233">Valor menos restringido</h2>
+<div class="outline-text-2" id="text-orgb58a233">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org9b74eac">
+<h3 id="org9b74eac">Valor menos restringido</h3>
+<p>
+<b><font color="green">Heurística</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Dada una variable, elegir el valor menos restrictivo: aquel que deja
+menos valores en las variables restantes. 
+</p>
+
+
+
+<div id="orgd0ec035" class="figure">
+<p><img src="imagenes/australia-least-constraining-value.jpg" alt="australia-least-constraining-value.jpg" height="150" />
+</p>
+</div>
+
+<p>
+Combinando estas tres heurísticas es posible realizar el problema de
+1000-reinas.
+</p>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf049fbe">
+<h2 id="orgf049fbe">Chequeo anticipado</h2>
+<div class="outline-text-2" id="text-orgf049fbe">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org345c11a">
+<h3 id="org345c11a">Chequeo anticipado</h3>
+<p>
+<b><font color="green">Idea:</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Mantener la información de los valores legales restantes de las
+variables sin asignar.</li>
+<li>Terminar la búsqueda cuando alguna variable no tenga valores
+legales.</li>
+
+</ul>
+</div>
+
+
+<div id="org2c0ac75" class="figure">
+<p><img src="imagenes/forward-checking-progress1c.jpg" alt="forward-checking-progress1c.jpg" height="170" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org79aca48">
+<h3 id="org79aca48">Chequeo anticipado</h3>
+<p>
+<b><font color="green">Idea:</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Mantener la información de los valores legales restantes de las
+variables sin asignar.</li>
+<li>Terminar la búsqueda cuando alguna variable no tenga valores
+legales.</li>
+
+</ul>
+</div>
+
+
+<div id="org9d34fd9" class="figure">
+<p><img src="imagenes/forward-checking-progress2c.jpg" alt="forward-checking-progress2c.jpg" height="200" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5bb960f">
+<h3 id="org5bb960f">Chequeo anticipado</h3>
+<p>
+<b><font color="green">Idea:</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Mantener la información de los valores legales restantes de las
+variables sin asignar.</li>
+<li>Terminar la búsqueda cuando alguna variable no tenga valores
+legales.</li>
+
+</ul>
+</div>
+
+
+<div id="org61d9f42" class="figure">
+<p><img src="imagenes/forward-checking-progress3c.jpg" alt="forward-checking-progress3c.jpg" height="230" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc83d1c8">
+<h3 id="orgc83d1c8">Chequeo anticipado</h3>
+<p>
+<b><font color="green">Idea:</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li>Mantener la información de los valores legales restantes de las
+variables sin asignar.</li>
+<li>Terminar la búsqueda cuando alguna variable no tenga valores
+legales.</li>
+
+</ul>
+</div>
+
+
+<div id="orgc74ad3b" class="figure">
+<p><img src="imagenes/forward-checking-progress4c.jpg" alt="forward-checking-progress4c.jpg" height="260" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgd15eb2e">
+<h2 id="orgd15eb2e">Propagación de restricciones</h2>
+<div class="outline-text-2" id="text-orgd15eb2e">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd592ae3">
+<h3 id="orgd592ae3">Propagación de restricciones</h3>
+<div style="font-size: 70%;">
+<p>
+El chequeo anticipado propaga la información desde variables
+instanciadas a no instanciadas, pero no provee detección anticipada
+para todas las fallas.
+</p>
+
+
+
+<div id="orgeadf2b3" class="figure">
+<p><img src="imagenes/forward-checking-progress3c.jpg" alt="forward-checking-progress3c.jpg" height="230" />
+</p>
+</div>
+
+<p>
+\(NT\) y \(SA\) no pueden ser ambas azules!
+</p>
+
+<p>
+La <font color="blue">propagación de restricciones</font> fuerza repetidamente las restricciones localmente.
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb7100ae">
+<h2 id="orgb7100ae">Consistencia de arcos</h2>
+<div class="outline-text-2" id="text-orgb7100ae">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org5c4e786">
+<h3 id="org5c4e786">Consistencia de arcos</h3>
+<div style="font-size: 70%;">
+<p>
+La  forma más simple de propagación hace a cada arco <font color="blue">consistente</font>.
+</p>
+
+
+<p>
+Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente si para
+<font color="purple">todo</font> valor  \(x\) de \(X\) existe <font color="purple">algún</font> valor permitido  \(y\).
+</p>
+
+
+<div id="org3225c3b" class="figure">
+<p><img src="imagenes/ac-example1c.jpg" alt="ac-example1c.jpg" height="200" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgeacc905">
+<h3 id="orgeacc905">Consistencia de arcos</h3>
+<div style="font-size: 70%;">
+<p>
+La  forma más simple de propagación hace a cada arco <font color="blue">consistente</font>.
+</p>
+
+
+<p>
+Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente si para
+<font color="purple">todo</font> valor  \(x\) de \(X\) existe <font color="purple">algún</font> valor permitido  \(y\).
+</p>
+
+
+<div id="orgf5eb41b" class="figure">
+<p><img src="imagenes/ac-example2c.jpg" alt="ac-example2c.jpg" height="200" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org46a890e">
+<h3 id="org46a890e">Consistencia de arcos</h3>
+<div style="font-size: 70%;">
+<p>
+La  forma más simple de propagación hace a cada arco <font color="blue">consistente</font>.
+</p>
+
+
+<p>
+Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente si para
+<font color="purple">todo</font> valor  \(x\) de \(X\) existe <font color="purple">algún</font> valor permitido  \(y\).
+</p>
+
+
+<div id="orgff10491" class="figure">
+<p><img src="imagenes/ac-example3c.jpg" alt="ac-example3c.jpg" height="200" />
+</p>
+</div>
+
+<p>
+Si  \(X\) pierde un valor, los vecinos de  \(X\) necesitan ser rechequeados.
+</p>
+
+
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb45b7ae">
+<h3 id="orgb45b7ae">Consistencia de arcos</h3>
+<div style="font-size: 70%;">
+<p>
+La  forma más simple de propagación hace a cada arco <font color="blue">consistente</font>.
+</p>
+
+
+<p>
+Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente si para
+<font color="purple">todo</font> valor  \(x\) de \(X\) existe <font color="purple">algún</font> valor permitido  \(y\).
+</p>
+
+
+<div id="org70cabce" class="figure">
+<p><img src="imagenes/ac-example4c.jpg" alt="ac-example4c.jpg" height="200" />
+</p>
+</div>
+
+<p>
+La consistencia de arcos detecta fallas más temprano que
+   chequeo anticipado. Puede se ejecutado como un preprocesamiento o
+   después de cada asignación.
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd4582ce">
+<h3 id="orgd4582ce">Consistencia de nodos</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>Una variable simple es <font color=red>nodo consistente</font> si todos los valores en el dominio de la variable  satisfacen  las restricciones unarias  de la variable.</li>
+<li>Supongamos que  la gente de South Australia odia el verde. Luego pondríamos una restricción más al problema:
+  \[SA\neq green\]
+Luego el dominio de SA  \(\{green, red, blue\}\) no sería nodo consistente ya que viola la restricción anterior.</li>
+
+</ul>
+
+<ul>
+<li class="fragment roll-in">El domino que hace al nodo consistente es \(\{ red, blue\}\)</li>
+
+</ul>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org1b93f86">
+<h3 id="org1b93f86">Algoritmo  Consistencia de Arcos AC-3</h3>
+
+<div id="org1bb6589" class="figure">
+<p><img src="imagenes/ac3.png" alt="ac3.png" height="550" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4c82cb4">
+<h3 id="org4c82cb4">Algoritmo  Consistencia de Arcos AC-3</h3>
+<p>
+<b><font color="green">EJEMPLO</font></b>
+</p>
+<div style="font-size: 80%;">
+<p>
+Suponga que un robot necesita planificar las actividades de entrega de objetos \(a,\ b,\ c,\ d,\ e\) y que cada actividad ocurre en un tiempo 1, 2, 3 o 4.
+</p>
+
+<p class="fragment (roll-in)">
+¿Cuáles son las variables?
+</p>
+
+<p class="fragment (roll-in)">
+¿Cuáles son los dominios?
+</p>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgee2cf16">
+<h3 id="orgee2cf16">Algoritmo  Consistencia de Arcos AC-3</h3>
+<p>
+<b><font color="green">EJEMPLO</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Variables: A, B, C, D, E
+</p>
+
+<p>
+Dominios: \(D_A = D_B = D_C= D_D = D_E = \{1,2,3,4\}\)
+</p>
+
+<p>
+Restricciones del problema:
+</p>
+
+<p>
+\[(B\neq 3) \wedge (C\neq 2)\wedge (A\neq B)\wedge (B\neq C)\wedge (C < D) \wedge (A=D) \wedge\]
+</p>
+
+<p>
+\[(E < A) \wedge (E < B) \wedge (E < C) \wedge (E < D) \wedge (B \neq D)\]
+</p>
+
+<p class="fragment (roll-in)">
+Dibujemos el grafo de restricciones dominio consistente.
+Resolvamos el problema.
+</p>
+
+<p class="fragment (roll-in)">
+Solución: A=4, B=2, C=3, D=4, E=1.
+</p>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfc26ba5">
+<h3 id="orgfc26ba5">Algoritmo  Consistencia de Arcos AC-3</h3>
+<p>
+<b><font color="green">Estados en que termina el algoritmo:</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in">Algún dominio es vacío: <font color=red>no</font> hay solución  al CSP.</li>
+<li class="fragment roll-in">Cada dominio tiene un valor único: existe una <font color=red>única</font> solución.</li>
+<li class="fragment roll-in">Cada dominio  es no vacío y al menos uno contiene múltiples  valores: en este caso cada dominio que no sea unitario debe ser  dividido y luego se debe aplicar el algoritmo nuevamente a cada uno de los grafos obtenidos. Dividir el dominio no unitario más chico es usualmente más efectivo.</li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org26a52cd">
+<h2 id="org26a52cd">Bibliografía</h2>
+<div class="outline-text-2" id="text-org26a52cd">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org70f7656">
+<h3 id="org70f7656">Referencia Bibliográfica</h3>
+<div style="font-size: 80%;">
+
+<p>
+<img src="imagenes/book.png" alt="book.png" /> S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 6
+  2009
+</p>
+
+<p>
+<img src="imagenes/book.png" alt="book.png" />]]  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 4
+  1998
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

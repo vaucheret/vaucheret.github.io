@@ -1,0 +1,19 @@
+digraph
+{
+        A,B,C,D,E;
+        A[label="A \n { 1, 2, 3, 4 }"];
+        B[label="B \n { 1, 2, 4 }"];
+        C[label="C \n { 1, 3, 4 }"];
+        D[label="D \n { 1, 2, 3, 4 }"];
+        E[label="E \n { 1, 2, 3, 4 }"];
+        A -> B[label= "A <> B",dir=none];
+        A -> E[label= "E < A",dir=none];
+        A -> D[label= "A = D",dir=none];
+        B -> C[label= "B <> C",dir=none];
+        B -> D[label= "B <> D",dir=none];
+        B -> E[label= "E < B",dir=none];
+        C -> D[label= "C < D",dir=none];
+        C -> E[label= "E < C",dir=none];
+        D -> E[label= "E < D",dir=none];
+}
+

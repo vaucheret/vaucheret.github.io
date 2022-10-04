@@ -1,0 +1,477 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:1 num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Problemas de Satisfacción de Restriccciones
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Definición de un CSP
+  
+** Problemas de Satisfacción de Restricciones
+   *{{{color(green,Problema de Búsqueda Estándar:)}}}*
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+     El {{{alert(estado)}}} es atómico o indivisible; una *"caja negra"* sin  estructura interna.
+     El estado permite determinar si es meta, sucesor, etc.
+   #+REVEAL_HTML: </div>
+
+   *{{{color(green,Constraint Satisfaction Problems (CSP):)}}}*
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+  Usamos una {{{alert(representación factorizada)}}} de cada estado.
+    El {{{alert(estado)}}} es definido por:
+
+  -  *variables*  $X_i$ con valores del dominio $D_i$.
+  - El *test de meta* es cuando cada variable tiene un valor que  satisface todas las restricciones sobre esa misma variable.
+
+
+   #+REVEAL_HTML: </div>
+   
+   
+** Problemas de Satisfacción de Restricciones
+
+  #+ATTR_REVEAL: :frag (roll-in)
+- Es un ejemplo simple de un {{{color(orange,Lenguaje de Representación Formal)}}}. Muchos problemas se representan naturalmente como un CSP.
+- Permite algoritmos de {{{color(orange,propósito general)}}} con
+   más poder que los algoritmos estándares. Permite resolver problemas intratables con algoritmos de búsqueda estándar.
+
+** Ejemplo: Coloreo de Mapas
+#+ATTR_HTML:  :height 300
+   [[file:imagenes/australia.jpg]]
+
+#+REVEAL_HTML: <div style="font-size: 60%;">
+ | {{{color(green,Variables)}}} | {{{color(green,Dominios)}}} |
+ | $WA, NT, Q, NSW, V, SA, T$   | $D_i = \{red,green,blue\}$  |
+
+ {{{color(green,Restricciones)}}}
+  Regiones adyacentes deben tener colores diferentes. e.g., 
+  $WA\neq NT$ o $(WA,NT) \in \{(red,green),(red,blue),(green,red),(green,blue),\ldots\}$
+
+#+REVEAL_HTML: </div>
+
+** Ejemplo: Coloreo de Mapas
+   
+#+ATTR_HTML:  :height 300
+   [[file:imagenes/australia-solucion.jpg]]
+
+Las {{{alert(Soluciones)}}} son asignaciones que satisfacen {{{alert(todas)}}} las restricciones.
+
+{{{color(green,Ejemplo)}}}
+#+REVEAL_HTML: <div style="font-size: 60%;">
+$\{WA = red,NT = green,Q = red,NSW = green,V = red,SA = blue ,T = green\}$
+#+REVEAL_HTML: </div>
+
+** Definición de un CSP
+
+{{{color(green,Un CSP consiste de:)}}}
+#+REVEAL_HTML: <div style="font-size: 80%;">
+ #+ATTR_REVEAL: :frag (roll-in)
+- un conjunto de {{{alert(variables)}}} $X=\{X_1,\ldots,X_n\}$.
+- un conjunto de {{{alert(dominios)}}}, uno para cada variable, $D=\{D_1,\ldots,D_n\}$. Cada dominio $D_i$ consiste de un conjunto de valores permitidos $\{v_1,\ldots,v_k\}$ para la variable $X_i$.
+- un conjunto $C$ de {{{alert(restricciones)}}} que especifican las combinaciones permitidas de los valores. 
+#+REVEAL_HTML: </div>
+
+#+REVEAL: split
+
+{{{color(green,Solución a un CSP)}}}
+#+REVEAL_HTML: <div style="font-size: 80%;">
+*Es una {{{alert(asignación consistente y completa)}}}*
+
+Una asignación es consistente si no viola ninguna restricción y es completa si cada variable está asignada.
+#+REVEAL_HTML: </div>
+
+** Grafos de restricciones
+   #+REVEAL_HTML: <div style="font-size: 80%;">
+   - {{{color(green,CSP binarios)}}} Cada restricción relaciona a lo sumo dos variables.
+   - {{{color(green,Grafos de restricciones:)}}} Los nodos son variables y los arcos muestran restricciones entre las variables.
+
+     | [[file:imagenes/australia-csp.jpg]]  Grafos de restricciones | Algoritmos de CSP de propósito general usan la estructura de grafos para acelerar la búsqueda. E.g. Tasmania es un subproblema independiente.   |
+
+#+REVEAL_HTML: </div>
+
+** Variedad de CSPs
+   {{{color(green,Variables Discretas)}}}
+   #+REVEAL_HTML: <div style="font-size: 80%;">
+   #+ATTR_REVEAL: :frag (roll-in)
+   - Dominios Finitos: tamaño  $d$ $\implies$ $O(d^n)$ asignaciones completas. Ej. CSPs
+    booleanos: Satisfacibilidad booleana (NP-completo).
+   - Dominios infinitos. Ej. scheduling, las variables son días start/end para cada tarea y el dominio naturales. Se  necesita un {{{color(blue,lenguaje de restricciones)}}}.
+      Ej. $StartJob_1 + 5 \leq StartJob_3$
+   - Problemas con restricciones {{{alert(lineales)}}} son solubles; {{{alert(no-lineales)}}} son indecidibles.
+   #+REVEAL_HTML: </div>
+
+   
+** Variedad de Restricciones
+   #+REVEAL_HTML: <div style="font-size: 80%;">   
+#+ATTR_REVEAL: :frag (roll-in)
+- *{{{color(green,Unaria)}}}* Restricciones que involucran una única variable, e.g.  $SA\neq green$
+- *{{{color(green,Binaria)}}}* Restricciones que involucran pares de variables, e.g. $SA\neq WA$
+- *{{{color(green,High-order: Globales)}}}*     Restricciones que involucran 3 o más variables, e.g. cryptoaritméticas. Se utilizan {{{alert(hipergrafos de restricciones)}}}.
+- *{{{color(green,Preferencias (restricciones suaves))}}}*    E.g.,  /red/ es mejor que  /green/. A menudo representado por un costo para cada asignación de variables $\rightarrow$ {{{alert(Problema de Optimización de Restricciones)}}}.   
+   #+REVEAL_HTML: </div>
+
+   
+** Ejemplo: Criptoaritmética
+#+ATTR_HTML:  :height 250
+   [[file:imagenes/cryptarithmetic.jpg]]
+   #+REVEAL_HTML: <div style="font-size: 80%;">   
+- *{{{color(green,Variables)}}}* $F\ T\ U\ W\ R\ O\ X_1\ X_2\ X_3$
+- *{{{color(green,Dominios)}}}* $\{0,1,2,3,4,5,6,7,8,9\}$
+- *{{{color(green,Restricciones)}}}*  $alldiff(F,T,U,W,R,O)$; $O + O = R + 10\cdot X_1$
+   #+REVEAL_HTML: </div>
+
+* Backtracking para CSPs
+  
+** Formulación de búsqueda estándar (incremental)
+
+#+ATTR_REVEAL: :frag (roll-in)
+- *{{{color(green,Estado Inicial:)}}}* La asignación vacía, $\emptyset$.
+- *{{{color(green,Función sucesor: Asignaciones Parciales)}}}*     Asigna un valor a una variable no asignada que no entra en conflicto con la actual asignación $\implies$ {{{alert(falla)}}} si no hay  asignación legal.
+- *{{{color(green,Test de meta:)}}}*      Si la asignación actual está completa.
+   
+   
+** Formulación de búsqueda estándar (incremental)
+
+#+REVEAL_HTML: <div style="font-size: 80%;">      
+#+ATTR_REVEAL: :frag (roll-in)
+  - Es la misma para todo CSP.
+  - Toda solución aparece en la profundidad  $n$, siendo  $n$ la cantidad de variables $\implies$ se puede usar  búsqueda Depth-First.
+  - El camino es irrelevante, por lo tanto, podríamos utilizar la formulación de estado completo, en vez de asignaciones parciales.
+    #+REVEAL_HTML: </div>
+#+REVEAL: split
+#+REVEAL_HTML: <div style="font-size: 80%;">      
+  - Un CSP con $n$ variables de tamaño de dominio $d$, tenemos un factor de ramificación de $nd$; en el siguiente nivel $n(d-1)*n*d$ y así sucesivamente.  En general,  tenemos $b = (n-\ell)d$ nodos nuevos a profundidad $\ell$, por cada nodo del nivel anterior.
+
+          Por lo tanto, tenemos
+            $nd * (n-1)d * \ldots *d=$  $n!d^n$ hojas. :( 
+     Y solamente son $d^n$ asignaciones completas posibles.
+HMMMMMMMMMM!!!!!!!!!!!!!!!!
+#+REVEAL_HTML: </div>
+
+** Bactracking Search
+
+#+REVEAL_HTML: <div style="font-size: 80%;">      
+#+ATTR_REVEAL: :frag (roll-in)
+ - La asignación de variables es {{{color(green,conmutativa)}}}. 
+  Un problema es {{{alert(conmutativo)}}} si el orden  de la aplicación de un conjunto de acciones no tiene efecto diferente sobre la asignación parcial.
+  Ejemplo, i.e.,
+  [ $WA = red$ -  $NT = green$] es lo mismo que [ $NT = green$ - $WA = red$]
+ - Solo se necesita considerar asignaciones a una {{{alert(única variable)}}} en cada nodo $\implies$ Factor de Ramificación $b = d$ y así tenemos $d^n$ hojas.
+  Puede resolver el problema de  /n/-reinas para  $n \approx 25$.
+ - Depth-first search para CSPs con asignación de una única variable se llama {{{alert(Backtracking Search)}}}
+#+REVEAL_HTML: </div>
+
+
+
+** Backtracking search
+#+ATTR_HTML:  :height 500
+   [[file:imagenes/backtrsearck.png]]
+
+
+   
+** Ejemplo
+#+ATTR_HTML:  :height 1000
+   [[file:imagenes/backtrack-progress1c.jpg]]
+
+** Ejemplo
+#+ATTR_HTML:  :height 1000
+   [[file:imagenes/backtrack-progress2c.jpg]]
+
+** Ejemplo
+#+ATTR_HTML:  :height 1000
+   [[file:imagenes/backtrack-progress3c.jpg]]
+
+** Ejemplo
+#+ATTR_HTML:  :height 1000
+   [[file:imagenes/backtrack-progress4c.jpg]]
+
+* Mejorando la eficiencia del Backtracking
+
+   
+** Métodos que pueden mejorar la velocidad
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+Métodos de {{{color(purple,propósito general)}}} pueden mejorar mucho el backtracking:
+#+ATTR_REVEAL: :frag (roll-in)
+- ¿Cuál variable debería asignarse primero?
+- ¿En qué orden deberían ser tratados sus valores?
+- ¿Podemos detectar fallas inevitables con anticipación?
+- ¿Podemos aprovecharnos de la estructura del problema?
+#+REVEAL_HTML: </div>
+
+* Mínimos valores restantes
+
+  
+** Mínimos valores restantes
+
+*{{{color(green,Heurística)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Elegir la variable con menos valores {{{alert(legales)}}}.
+#+REVEAL_HTML: </div>
+
+#+ATTR_HTML:  :height 125
+[[file:imagenes/australia-most-constrained-variable.jpg]]
+
+* Variable que más restringe las demás
+
+** Variable que más restringe las demás
+
+*{{{color(green,Heurística de Grados)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Elegir primero la variable con más restricciones sobre las variables
+restantes.
+
+
+#+ATTR_HTML:  :height 125
+[[file:imagenes/australia-most-constraining-variable.jpg]]
+
+
+SA es de grado 5.
+
+T es de grado 0.
+
+Las demás son de grado 3 o 2.
+#+REVEAL_HTML: </div>
+
+
+* Valor menos restringido
+
+** Valor menos restringido
+
+*{{{color(green,Heurística)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Dada una variable, elegir el valor menos restrictivo: aquel que deja
+menos valores en las variables restantes. 
+
+
+#+ATTR_HTML:  :height 150
+[[file:imagenes/australia-least-constraining-value.jpg]]
+
+Combinando estas tres heurísticas es posible realizar el problema de
+1000-reinas.
+
+#+REVEAL_HTML: </div>
+
+* Chequeo anticipado
+
+** Chequeo anticipado
+
+*{{{color(green,Idea:)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+-  Mantener la información de los valores legales restantes de las
+    variables sin asignar.
+- Terminar la búsqueda cuando alguna variable no tenga valores
+    legales.
+#+REVEAL_HTML: </div>
+
+#+ATTR_HTML:  :height 170
+[[file:imagenes/forward-checking-progress1c.jpg]]
+
+** Chequeo anticipado
+
+*{{{color(green,Idea:)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+-  Mantener la información de los valores legales restantes de las
+    variables sin asignar.
+- Terminar la búsqueda cuando alguna variable no tenga valores
+    legales.
+#+REVEAL_HTML: </div>
+
+#+ATTR_HTML:  :height 200
+[[file:imagenes/forward-checking-progress2c.jpg]]
+
+** Chequeo anticipado
+
+*{{{color(green,Idea:)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+-  Mantener la información de los valores legales restantes de las
+    variables sin asignar.
+- Terminar la búsqueda cuando alguna variable no tenga valores
+    legales.
+#+REVEAL_HTML: </div>
+
+#+ATTR_HTML:  :height 230
+[[file:imagenes/forward-checking-progress3c.jpg]]
+
+** Chequeo anticipado
+
+*{{{color(green,Idea:)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+-  Mantener la información de los valores legales restantes de las
+    variables sin asignar.
+- Terminar la búsqueda cuando alguna variable no tenga valores
+    legales.
+#+REVEAL_HTML: </div>
+
+#+ATTR_HTML:  :height 260
+[[file:imagenes/forward-checking-progress4c.jpg]]
+
+
+* Propagación de restricciones
+  
+** Propagación de restricciones
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+El chequeo anticipado propaga la información desde variables
+instanciadas a no instanciadas, pero no provee detección anticipada
+para todas las fallas.
+
+
+#+ATTR_HTML:  :height 230
+[[file:imagenes/forward-checking-progress3c.jpg]]
+   
+ $NT$ y $SA$ no pueden ser ambas azules!
+
+ La {{{color(blue,propagación de restricciones)}}} fuerza repetidamente las restricciones localmente.
+#+REVEAL_HTML: </div>
+
+* Consistencia de arcos
+
+  
+** Consistencia de arcos
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ La  forma más simple de propagación hace a cada arco {{{color(blue,consistente)}}}.
+ 
+
+ Un arco  $X\rightarrow Y$ es {{{alert(consistente)}}} si y solamente si para
+ {{{color(purple,todo)}}} valor  $x$ de $X$ existe {{{color(purple,algún)}}} valor permitido  $y$.
+
+#+ATTR_HTML:  :height 200
+[[file:imagenes/ac-example1c.jpg]]
+   
+** Consistencia de arcos
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ La  forma más simple de propagación hace a cada arco {{{color(blue,consistente)}}}.
+ 
+
+ Un arco  $X\rightarrow Y$ es {{{alert(consistente)}}} si y solamente si para
+ {{{color(purple,todo)}}} valor  $x$ de $X$ existe {{{color(purple,algún)}}} valor permitido  $y$.
+
+#+ATTR_HTML:  :height 200
+[[file:imagenes/ac-example2c.jpg]]
+   
+
+** Consistencia de arcos
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ La  forma más simple de propagación hace a cada arco {{{color(blue,consistente)}}}.
+ 
+
+ Un arco  $X\rightarrow Y$ es {{{alert(consistente)}}} si y solamente si para
+ {{{color(purple,todo)}}} valor  $x$ de $X$ existe {{{color(purple,algún)}}} valor permitido  $y$.
+
+#+ATTR_HTML:  :height 200
+[[file:imagenes/ac-example3c.jpg]]
+
+Si  $X$ pierde un valor, los vecinos de  $X$ necesitan ser rechequeados.
+   
+
+
+#+REVEAL_HTML: </div>
+   
+** Consistencia de arcos
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ La  forma más simple de propagación hace a cada arco {{{color(blue,consistente)}}}.
+ 
+
+ Un arco  $X\rightarrow Y$ es {{{alert(consistente)}}} si y solamente si para
+ {{{color(purple,todo)}}} valor  $x$ de $X$ existe {{{color(purple,algún)}}} valor permitido  $y$.
+
+#+ATTR_HTML:  :height 200
+[[file:imagenes/ac-example4c.jpg]]
+
+La consistencia de arcos detecta fallas más temprano que
+   chequeo anticipado. Puede se ejecutado como un preprocesamiento o
+   después de cada asignación.
+#+REVEAL_HTML: </div>
+   
+** Consistencia de nodos
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- Una variable simple es {{{alert(nodo consistente)}}} si todos los valores en el dominio de la variable  satisfacen  las restricciones unarias  de la variable.
+- Supongamos que  la gente de South Australia odia el verde. Luego pondríamos una restricción más al problema:
+     \[SA\neq green\]
+   Luego el dominio de SA  $\{green, red, blue\}$ no sería nodo consistente ya que viola la restricción anterior.
+
+#+ATTR_REVEAL: :frag (roll-in)
+- El domino que hace al nodo consistente es $\{ red, blue\}$
+
+#+REVEAL_HTML: </div>
+
+** Algoritmo  Consistencia de Arcos AC-3
+#+ATTR_HTML:  :height 550
+   [[file:imagenes/ac3.png]]
+
+** Algoritmo  Consistencia de Arcos AC-3
+   
+*{{{color(green,EJEMPLO)}}}*
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Suponga que un robot necesita planificar las actividades de entrega de objetos $a,\ b,\ c,\ d,\ e$ y que cada actividad ocurre en un tiempo 1, 2, 3 o 4.
+
+#+ATTR_REVEAL: :frag (roll-in)
+¿Cuáles son las variables?
+
+#+ATTR_REVEAL: :frag (roll-in)
+¿Cuáles son los dominios?
+
+#+REVEAL_HTML: </div>
+
+** Algoritmo  Consistencia de Arcos AC-3
+   
+*{{{color(green,EJEMPLO)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Variables: A, B, C, D, E
+
+Dominios: $D_A = D_B = D_C= D_D = D_E = \{1,2,3,4\}$
+
+Restricciones del problema:
+
+$$(B\neq 3) \wedge (C\neq 2)\wedge (A\neq B)\wedge (B\neq C)\wedge (C < D) \wedge (A=D) \wedge$$
+
+$$(E < A) \wedge (E < B) \wedge (E < C) \wedge (E < D) \wedge (B \neq D)$$
+
+#+ATTR_REVEAL: :frag (roll-in)
+Dibujemos el grafo de restricciones dominio consistente.
+Resolvamos el problema.
+
+#+ATTR_REVEAL: :frag (roll-in)
+Solución: A=4, B=2, C=3, D=4, E=1.
+
+#+REVEAL_HTML: </div>
+
+** Algoritmo  Consistencia de Arcos AC-3
+
+   *{{{color(green,Estados en que termina el algoritmo:)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- Algún dominio es vacío: {{{alert(no)}}} hay solución  al CSP. 
+- Cada dominio tiene un valor único: existe una {{{alert(única)}}} solución.
+- Cada dominio  es no vacío y al menos uno contiene múltiples  valores: en este caso cada dominio que no sea unitario debe ser  dividido y luego se debe aplicar el algoritmo nuevamente a cada uno de los grafos obtenidos. Dividir el dominio no unitario más chico es usualmente más efectivo.
+#+REVEAL_HTML: </div>
+
+* Bibliografía
+
+** Referencia Bibliográfica
+
+   #+REVEAL_HTML: <div style="font-size: 80%;">
+
+[[file:imagenes/book.png]] S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 6
+  2009
+
+file:imagenes/book.png]]  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 4
+  1998
+
