@@ -31,6 +31,7 @@ print_out([F,T,U,W,R,O]) :-
     write('   FOUR'),
     nl,
     nl,
+    
     write('The solution is:'),
     nl,
     nl,
