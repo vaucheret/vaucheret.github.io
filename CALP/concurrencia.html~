@@ -7,10 +7,11 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="../reveal.js-master/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="../reveal.js-master/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
+<link rel="stylesheet" href="./local.css"/>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -18,109 +19,28 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../reveal.js-master/css/print/pdf.css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
+<meta name="description" content="Org-Reveal Introduction.">
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Concurrencia</h2><h2 class="date">2016-10-17 lun 00:00</h2><p class="date">Created: 2017-10-03 mar 13:34</p>
-</section>
-<section id="table-of-contents">
-<nav id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#/slide-org2f74fbb">Introducción</a>
-<ul>
-<li><a href="#/slide-orga3ed1ea">Introducción</a></li>
-<li><a href="#/slide-org84301e7">Arquitecturas de Multiprocesador</a></li>
-<li><a href="#/slide-org57d10bd">Categorías de Concurrencia</a></li>
-<li><a href="#/slide-org77c36d2">Motivación para el estudio de la concurrencia</a></li>
-</ul>
-</li>
-<li><a href="#/slide-orgd933897">Introducción a la concurrencia a nivel de Subprograma</a>
-<ul>
-<li><a href="#/slide-orge00a889">Introducción a la concurrencia a nivel de Subprograma</a></li>
-<li><a href="#/slide-orgeb0f785">Dos categorías generales de tareas</a></li>
-<li><a href="#/slide-org0e6cdeb">Sincronización de Tareas</a></li>
-<li><a href="#/slide-org5ea177e">Clases de sincronización</a></li>
-<li><a href="#/slide-org98a2647">Necesidad de Sincronización de Competición</a></li>
-<li><a href="#/slide-org1f49595">Planificador</a></li>
-<li><a href="#/slide-orgb1069fe">Estados de Ejecución de las Tareas</a></li>
-<li><a href="#/slide-org6528b19">Estados de Ejecución de las Tareas</a></li>
-<li><a href="#/slide-org8234541">Liveness y Deadlock</a></li>
-<li><a href="#/slide-orgdd6744f">Métodos de proveer sincronización</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org95af828">Los semáforos</a>
-<ul>
-<li><a href="#/slide-org875224f">Los semáforos</a></li>
-<li><a href="#/slide-org7eebe3d">Sincronización de Cooperación con semáforos</a></li>
-<li><a href="#/slide-org9b94140">Sincronización de Cooperación con semáforos</a></li>
-<li><a href="#/slide-org77dafb9">Sincronización de Cooperación con semáforos</a></li>
-<li><a href="#/slide-orgec7e89f">Semaforo: operación <i>wait</i></a></li>
-<li><a href="#/slide-org23cf12a">Semáforos: Operación <i>Release</i></a></li>
-<li><a href="#/slide-org515aa79">Codigo Productor/Consumidor</a></li>
-<li><a href="#/slide-orgaf8ff4a">Código Productor/Consumidor</a></li>
-<li><a href="#/slide-orge4c0790">Sincronización de Competición con Semáforos</a></li>
-<li><a href="#/slide-org848957e">Código Productor/Consumidor</a></li>
-<li><a href="#/slide-orgeb1cbd4">Código Productor/Consumidor</a></li>
-<li><a href="#/slide-org2734614">Evaluación de Semáforos</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org93241c0">monitores</a>
-<ul>
-<li><a href="#/slide-org3b47ae8">monitores</a></li>
-<li><a href="#/slide-org4e35dc3">Sincronización de Competición</a></li>
-<li><a href="#/slide-orgb9db792">Sincronización de Cooperación</a></li>
-<li><a href="#/slide-orgdac2e73">Evaluación de Monitores</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org5c8a344">Pasaje de mensajes</a>
-<ul>
-<li><a href="#/slide-org94ae5ff">Pasaje de mensajes</a></li>
-<li><a href="#/slide-orgb921702">Pasaje de mensajes <i>Rendezvous</i></a></li>
-<li><a href="#/slide-orge7ffbe6">Soporte de <b>Ada</b> para concurrencia</a></li>
-<li><a href="#/slide-org2cf60ad">Cuerpo de la Tarea</a></li>
-<li><a href="#/slide-orgd54fd35">Ejemplo de Cuerpo de Tarea</a></li>
-<li><a href="#/slide-orgc6bd91a">Semántica del pasaje de mensajes de <b>Ada</b></a></li>
-<li><a href="#/slide-orgfce125a">Líneas de tiempo del <i>Rendevous</i></a></li>
-<li><a href="#/slide-orgaa7b362">Servidor y actor</a></li>
-<li><a href="#/slide-orgca5185a">Representación Gráfica del <i>Rendezvous</i></a></li>
-<li><a href="#/slide-org1605a68">Ejemplo de tarea <i>Actor</i></a></li>
-<li><a href="#/slide-orgfd92971">Múltiples puntos de entrada</a></li>
-<li><a href="#/slide-orgcb53011">Una tarea con múltiples entradas</a></li>
-<li><a href="#/slide-orgc48168e">Semántica de tareas con multiples clausulas select</a></li>
-<li><a href="#/slide-orge33f7e7">Sincronización de Cooperación con Pasaje de Mensajes</a></li>
-<li><a href="#/slide-org397074b">Semántica del <i>select</i> con cláusulas <i>accept</i> con guardas</a></li>
-<li><a href="#/slide-orgb69fde4">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</a></li>
-<li><a href="#/slide-orgcca56b0">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</a></li>
-<li><a href="#/slide-org582e53d">Sincronización de Competición con Pasaje de Mensajes</a></li>
-<li><a href="#/slide-org87c8134">Concurrencia en Ada 95</a></li>
-<li><a href="#/slide-org1bd3af5">Objetos Protegidos de Ada 95</a></li>
-<li><a href="#/slide-orgd2e3d8e">Evaluación de <b>Ada</b></a></li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
+<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Concurrencia</h2><h2 class="date">2016-10-17 lun 00:00</h2><p class="date">Created: 2022-10-18 mar 08:37</p>
 </section>
 
 <section>
-<section id="slide-org2f74fbb">
-<div class="slide-header"></div>
-<h2 id="org2f74fbb">Introducción</h2>
-<div class="outline-text-2" id="text-org2f74fbb">
-</div><div class="slide-footer"></div>
+<section id="slide-org5ce3c9d">
+<h2 id="org5ce3c9d">Introducción</h2>
+<div class="outline-text-2" id="text-org5ce3c9d">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-orga3ed1ea">
-<div class="slide-header"></div>
-<h3 id="orga3ed1ea">Introducción</h3>
+<section id="slide-org89e53f8">
+<h3 id="org89e53f8">Introducción</h3>
 <ul>
 <li>La concurrencia puede ocurrir en cuatro niveles:
 <ul>
@@ -135,13 +55,11 @@ lenguaje y unidades de programa.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org84301e7">
-<div class="slide-header"></div>
-<h3 id="org84301e7">Arquitecturas de Multiprocesador</h3>
+<section id="slide-orgab1c82b">
+<h3 id="orgab1c82b">Arquitecturas de Multiprocesador</h3>
 <ul>
 <li>Finales de los años 1950 - un procesador de propósito general y uno
 o más procesadores de propósito especial para las operaciones de
@@ -160,13 +78,11 @@ concurrencia de unidad)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org57d10bd">
-<div class="slide-header"></div>
-<h3 id="org57d10bd">Categorías de Concurrencia</h3>
+<section id="slide-org13bd1fa">
+<h3 id="org13bd1fa">Categorías de Concurrencia</h3>
 <ul>
 <li>Un <i>hilo de control</i> en un programa es la secuencia de los puntos
 del programa alcanzados por el flujo de la ejecución del programa</li>
@@ -182,13 +98,11 @@ ser diseñado como si hubieran múltiples hilos de control)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org77c36d2">
-<div class="slide-header"></div>
-<h3 id="org77c36d2">Motivación para el estudio de la concurrencia</h3>
+<section id="slide-org919f745">
+<h3 id="org919f745">Motivación para el estudio de la concurrencia</h3>
 <ul>
 <li>Implica una forma diferente de diseño de software que puede ser muy
 útil, muchas situaciones del mundo real contienen concurrencia</li>
@@ -196,21 +110,18 @@ ser diseñado como si hubieran múltiples hilos de control)</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgd933897">
-<div class="slide-header"></div>
-<h2 id="orgd933897">Introducción a la concurrencia a nivel de Subprograma</h2>
-<div class="outline-text-2" id="text-orgd933897">
-</div><div class="slide-footer"></div>
+<section id="slide-org04385a3">
+<h2 id="org04385a3">Introducción a la concurrencia a nivel de Subprograma</h2>
+<div class="outline-text-2" id="text-org04385a3">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-orge00a889">
-<div class="slide-header"></div>
-<h3 id="orge00a889">Introducción a la concurrencia a nivel de Subprograma</h3>
+<section id="slide-orgfd8d50d">
+<h3 id="orgfd8d50d">Introducción a la concurrencia a nivel de Subprograma</h3>
 <ul>
 <li>Una tarea o proceso es una unidad de programa que puede estar en ejecución concurrente con otras unidades de programa</li>
 <li>Tareas difieren de subprogramas comunes, en que:
@@ -226,13 +137,11 @@ puede no volver al llamador</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgeb0f785">
-<div class="slide-header"></div>
-<h3 id="orgeb0f785">Dos categorías generales de tareas</h3>
+<section id="slide-org39aaee5">
+<h3 id="org39aaee5">Dos categorías generales de tareas</h3>
 <ul>
 <li><i>tareas pesadas</i> ejecutan en su propio espacio de direcciones y
 tienen sus propias pilas de tiempo de ejecución.</li>
@@ -243,13 +152,11 @@ de cualquier otra tarea en el programa de ningún modo.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org0e6cdeb">
-<div class="slide-header"></div>
-<h3 id="org0e6cdeb">Sincronización de Tareas</h3>
+<section id="slide-orgcd64489">
+<h3 id="orgcd64489">Sincronización de Tareas</h3>
 <ul>
 <li>Un mecanismo que controla el orden en que las tareas se ejecutan</li>
 <li>Dos tipos de sincronización
@@ -261,13 +168,11 @@ de cualquier otra tarea en el programa de ningún modo.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org5ea177e">
-<div class="slide-header"></div>
-<h3 id="org5ea177e">Clases de sincronización</h3>
+<section id="slide-orga51412d">
+<h3 id="orga51412d">Clases de sincronización</h3>
 <ul>
 <li><b>Cooperación:</b> La tarea A debe esperar a que la tarea B termine
 alguna actividad específica antes de poder continuar su
@@ -282,26 +187,22 @@ compartido
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org98a2647">
-<div class="slide-header"></div>
-<h3 id="org98a2647">Necesidad de Sincronización de Competición</h3>
+<section id="slide-org8f78d75">
+<h3 id="org8f78d75">Necesidad de Sincronización de Competición</h3>
 
-<figure>
-<img src="competsincr.png" alt="competsincr.png">
+<div id="org8fd46c7" class="figure">
+<p><img src="competsincr.png" alt="competsincr.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org1f49595">
-<div class="slide-header"></div>
-<h3 id="org1f49595">Planificador</h3>
+<section id="slide-orgba31b07">
+<h3 id="orgba31b07">Planificador</h3>
 <ul>
 <li>Proporcionar sincronización requiere un mecanismo para retrasar la
 ejecución de tareas</li>
@@ -311,13 +212,11 @@ tareas a los procesadores disponibles.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgb1069fe">
-<div class="slide-header"></div>
-<h3 id="orgb1069fe">Estados de Ejecución de las Tareas</h3>
+<section id="slide-org16afcfb">
+<h3 id="org16afcfb">Estados de Ejecución de las Tareas</h3>
 <ul>
 <li><b>Nueva</b> - creada, pero aún no se ha inicializada</li>
 <li><b>Ejecutable</b> o <b>lista</b> - lista para funcionar, pero no se está ejecutando actualmente (sin procesador disponible)</li>
@@ -327,26 +226,22 @@ tareas a los procesadores disponibles.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org6528b19">
-<div class="slide-header"></div>
-<h3 id="org6528b19">Estados de Ejecución de las Tareas</h3>
+<section id="slide-org071babe">
+<h3 id="org071babe">Estados de Ejecución de las Tareas</h3>
 
-<figure>
-<img src="estadostareas.png" alt="estadostareas.png">
+<div id="org1e94058" class="figure">
+<p><img src="estadostareas.png" alt="estadostareas.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org8234541">
-<div class="slide-header"></div>
-<h3 id="org8234541">Liveness y Deadlock</h3>
+<section id="slide-org2f17cde">
+<h3 id="org2f17cde">Liveness y Deadlock</h3>
 <ul>
 <li><i>Liveness</i> es una característica que una unidad de programa puede o
 puede  no tener</li>
@@ -357,13 +252,11 @@ se denomina <i>deadlock</i></li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgdd6744f">
-<div class="slide-header"></div>
-<h3 id="orgdd6744f">Métodos de proveer sincronización</h3>
+<section id="slide-org91a66ca">
+<h3 id="org91a66ca">Métodos de proveer sincronización</h3>
 <ul>
 <li>Semáforos</li>
 <li>Monitores</li>
@@ -371,21 +264,18 @@ se denomina <i>deadlock</i></li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org95af828">
-<div class="slide-header"></div>
-<h2 id="org95af828">Los semáforos</h2>
-<div class="outline-text-2" id="text-org95af828">
-</div><div class="slide-footer"></div>
+<section id="slide-org71e1cb4">
+<h2 id="org71e1cb4">Los semáforos</h2>
+<div class="outline-text-2" id="text-org71e1cb4">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org875224f">
-<div class="slide-header"></div>
-<h3 id="org875224f">Los semáforos</h3>
+<section id="slide-org15db0b2">
+<h3 id="org15db0b2">Los semáforos</h3>
 <ul>
 <li>Dijkstra - 1965</li>
 <li>Un semáforo es una estructura de datos que consta de un contador y una cola para almacenar descriptores de tareas.</li>
@@ -397,13 +287,11 @@ sincronización de competencia y de cooperación.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org7eebe3d">
-<div class="slide-header"></div>
-<h3 id="org7eebe3d">Sincronización de Cooperación con semáforos</h3>
+<section id="slide-org9fb5e78">
+<h3 id="org9fb5e78">Sincronización de Cooperación con semáforos</h3>
 <ul>
 <li>Ejemplo: Un buffer compartido</li>
 <li>El buffer se implementa como un Tipo de Dato Abstracto con las
@@ -415,13 +303,11 @@ espacios vacíos y espacios cargados en el buffer.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org9b94140">
-<div class="slide-header"></div>
-<h3 id="org9b94140">Sincronización de Cooperación con semáforos</h3>
+<section id="slide-orgb534a96">
+<h3 id="orgb534a96">Sincronización de Cooperación con semáforos</h3>
 <ul>
 <li><i>DEPOSIT</i> debe comprobar primero <i>emptyspots</i> para ver si hay espacio en el buffer</li>
 <li>Si hay espacio, el contador de <i>emptyspots</i> disminuye y el valor es insertado</li>
@@ -430,13 +316,11 @@ espacios vacíos y espacios cargados en el buffer.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org77dafb9">
-<div class="slide-header"></div>
-<h3 id="org77dafb9">Sincronización de Cooperación con semáforos</h3>
+<section id="slide-orgdc84b46">
+<h3 id="orgdc84b46">Sincronización de Cooperación con semáforos</h3>
 <ul>
 <li><i>FETCH</i> debe comprobar <i>fullspots</i> para ver si hay un valor.
 <ul>
@@ -451,96 +335,86 @@ cabo a través de dos operaciones del semáforo llamadas <i>wait</i> y
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgec7e89f">
-<div class="slide-header"></div>
-<h3 id="orgec7e89f">Semaforo: operación <i>wait</i></h3>
+<section id="slide-org3de0aa7">
+<h3 id="org3de0aa7">Semaforo: operación <i>wait</i></h3>
 <div class="org-src-container">
 
-<pre  class="src src-pascal">wait(aSemaphore)
-<span style="color: #40e0d0; font-weight: bold;">if</span> aSemaphore&#8217;s counter &gt; 0 <span style="color: #40e0d0; font-weight: bold;">then</span> 
+<pre  class="src src-pascal"><code trim>wait(aSemaphore)
+<span style="color: #00ffff;">if</span> aSemaphore&#8217;s counter &gt; 0 <span style="color: #00ffff;">then</span> 
    decrement aSemaphore&#8217;s counter
-<span style="color: #40e0d0; font-weight: bold;">else</span> 
-   put the caller <span style="color: #40e0d0; font-weight: bold;">in</span> aSemaphore&#8217;s queue
-   attempt <span style="color: #40e0d0; font-weight: bold;">to</span> transfer control <span style="color: #40e0d0; font-weight: bold;">to</span> a ready task 
-     -- <span style="color: #40e0d0; font-weight: bold;">if</span> the task ready queue is empty, 
+<span style="color: #00ffff;">else</span> 
+   put the caller <span style="color: #00ffff;">in</span> aSemaphore&#8217;s queue
+   attempt <span style="color: #00ffff;">to</span> transfer control <span style="color: #00ffff;">to</span> a ready task 
+     -- <span style="color: #00ffff;">if</span> the task ready queue is empty, 
      -- deadlock occurs 
-<span style="color: #40e0d0; font-weight: bold;">end</span>
-</pre>
+<span style="color: #00ffff;">end</span>
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org23cf12a">
-<div class="slide-header"></div>
-<h3 id="org23cf12a">Semáforos: Operación <i>Release</i></h3>
+<section id="slide-org6d9f27a">
+<h3 id="org6d9f27a">Semáforos: Operación <i>Release</i></h3>
 <div class="org-src-container">
 
-<pre  class="src src-pascal">release(aSemaphore)
-<span style="color: #40e0d0; font-weight: bold;">if</span> aSemaphore&#8217;s queue is empty <span style="color: #40e0d0; font-weight: bold;">then</span>
+<pre  class="src src-pascal"><code trim>release(aSemaphore)
+<span style="color: #00ffff;">if</span> aSemaphore&#8217;s queue is empty <span style="color: #00ffff;">then</span>
    increment aSemaphore&#8217;s counter
-<span style="color: #40e0d0; font-weight: bold;">else</span>
-   put the calling task <span style="color: #40e0d0; font-weight: bold;">in</span> the task ready queue
-   transfer control <span style="color: #40e0d0; font-weight: bold;">to</span> a task from aSemaphore&#8217;s queue
-<span style="color: #40e0d0; font-weight: bold;">end</span>
-</pre>
+<span style="color: #00ffff;">else</span>
+   put the calling task <span style="color: #00ffff;">in</span> the task ready queue
+   transfer control <span style="color: #00ffff;">to</span> a task from aSemaphore&#8217;s queue
+<span style="color: #00ffff;">end</span>
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org515aa79">
-<div class="slide-header"></div>
-<h3 id="org515aa79">Codigo Productor/Consumidor</h3>
+<section id="slide-orgc10c1a7">
+<h3 id="orgc10c1a7">Codigo Productor/Consumidor</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada">semaphore fullspots, emptyspots;
-fullstops.count = <span style="color: #ff6347; font-weight: bold;">0</span>;
+<pre  class="src src-ada"><code trim>semaphore fullspots, emptyspots;
+fullstops.count = 0;
 emptyspots.count = BUFLEN;
-<span style="color: #40e0d0; font-weight: bold;">task</span> <span style="color: #1e90ff; font-weight: bold;">producer</span>;
-        <span style="color: #40e0d0; font-weight: bold;">loop</span>
-        <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">produce VALUE &#8211;-</span>
-        wait (emptyspots); {wait <span style="color: #40e0d0; font-weight: bold;">for</span> space}
-        DEPOSIT(VALUE);
-        release(fullspots); {increase filled}
-        <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">loop</span>;
-<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">producer</span>;
-</pre>
+task producer;
+	loop
+	-- produce VALUE –-
+	wait (emptyspots); {wait for space}
+	DEPOSIT(VALUE);
+	release(fullspots); {increase filled}
+	end loop;
+end producer;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgaf8ff4a">
-<div class="slide-header"></div>
-<h3 id="orgaf8ff4a">Código Productor/Consumidor</h3>
+<section id="slide-orged3d6dc">
+<h3 id="orged3d6dc">Código Productor/Consumidor</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">task</span> <span style="color: #1e90ff; font-weight: bold;">consumer</span>;
-        <span style="color: #40e0d0; font-weight: bold;">loop</span>
-        wait (fullspots);{wait till <span style="color: #40e0d0; font-weight: bold;">not</span> empty}}
-        FETCH(VALUE);
-        release(emptyspots); {increase empty}
-        <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">consume VALUE &#8211;-</span>
-        <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">loop</span>;
-<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">consumer</span>;
-</pre>
+<pre  class="src src-ada"><code trim>task consumer;
+	loop
+	wait (fullspots);{wait till not empty}}
+	FETCH(VALUE);
+	release(emptyspots); {increase empty}
+	-- consume VALUE –-
+	end loop;
+end consumer;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orge4c0790">
-<div class="slide-header"></div>
-<h3 id="orge4c0790">Sincronización de Competición con Semáforos</h3>
+<section id="slide-orgfefdfe4">
+<h3 id="orgfefdfe4">Sincronización de Competición con Semáforos</h3>
 <ul>
 <li>Un tercer semáforo, llamado <i>acces</i>, se utiliza para controlar el
 acceso (sincronización de competencia)
@@ -553,61 +427,55 @@ acceso (sincronización de competencia)
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org848957e">
-<div class="slide-header"></div>
-<h3 id="org848957e">Código Productor/Consumidor</h3>
+<section id="slide-orgad26e4d">
+<h3 id="orgad26e4d">Código Productor/Consumidor</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada">semaphore <span style="color: #40e0d0; font-weight: bold;">access</span>, fullspots, emptyspots;
-<span style="color: #40e0d0; font-weight: bold;">access</span>.count = <span style="color: #ff6347; font-weight: bold;">0</span>;
-fullstops.count = <span style="color: #ff6347; font-weight: bold;">0</span>;
+<pre  class="src src-ada"><code trim>semaphore access, fullspots, emptyspots;
+access.count = 0;
+fullstops.count = 0;
 emptyspots.count = BUFLEN;
-<span style="color: #40e0d0; font-weight: bold;">task</span> <span style="color: #1e90ff; font-weight: bold;">producer</span>;
-        <span style="color: #40e0d0; font-weight: bold;">loop</span>
-        <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">produce VALUE &#8211;-</span>
-        wait(emptyspots); {wait <span style="color: #40e0d0; font-weight: bold;">for</span> space}
-        wait(<span style="color: #40e0d0; font-weight: bold;">access</span>);     {wait <span style="color: #40e0d0; font-weight: bold;">for</span> <span style="color: #40e0d0; font-weight: bold;">access</span>)
-        DEPOSIT(VALUE);
-        release(<span style="color: #40e0d0; font-weight: bold;">access</span>); {relinquish <span style="color: #40e0d0; font-weight: bold;">access</span>}
-        release(fullspots); {increase filled}
-        <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">loop</span>;
-<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">producer</span>;
-</pre>
+task producer;
+	loop
+	-- produce VALUE –-
+	wait(emptyspots); {wait for space}
+	wait(access);     {wait for access)
+	DEPOSIT(VALUE);
+	release(access); {relinquish access}
+	release(fullspots); {increase filled}
+	end loop;
+end producer;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgeb1cbd4">
-<div class="slide-header"></div>
-<h3 id="orgeb1cbd4">Código Productor/Consumidor</h3>
+<section id="slide-org1595992">
+<h3 id="org1595992">Código Productor/Consumidor</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">task</span> <span style="color: #1e90ff; font-weight: bold;">consumer</span>;
-        <span style="color: #40e0d0; font-weight: bold;">loop</span>
-        wait(fullspots);{wait till <span style="color: #40e0d0; font-weight: bold;">not</span> empty}
-        wait(<span style="color: #40e0d0; font-weight: bold;">access</span>);   {wait <span style="color: #40e0d0; font-weight: bold;">for</span> <span style="color: #40e0d0; font-weight: bold;">access</span>}
-        FETCH(VALUE);
-        release(<span style="color: #40e0d0; font-weight: bold;">access</span>); {relinquish <span style="color: #40e0d0; font-weight: bold;">access</span>}
-        release(emptyspots); {increase empty}
-        <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">consume VALUE &#8211;-</span>
-        <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">loop</span>;
-<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">consumer</span>;
-</pre>
+<pre  class="src src-ada"><code trim>task consumer;
+	loop
+	wait(fullspots);{wait till not empty}
+	wait(access);   {wait for access}
+	FETCH(VALUE);
+	release(access); {relinquish access}
+	release(emptyspots); {increase empty}
+	-- consume VALUE –-
+	end loop;
+end consumer;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org2734614">
-<div class="slide-header"></div>
-<h3 id="org2734614">Evaluación de Semáforos</h3>
+<section id="slide-org0369d8e">
+<h3 id="org0369d8e">Evaluación de Semáforos</h3>
 <ul>
 <li>El mal uso de los semáforos puede provocar fallos en la
 sincronización de la cooperación, por ejemplo, el buffer tendrá
@@ -618,21 +486,18 @@ en <i>Deadlock</i> si el <i>release</i> de <i>access</i> falla.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org93241c0">
-<div class="slide-header"></div>
-<h2 id="org93241c0">monitores</h2>
-<div class="outline-text-2" id="text-org93241c0">
-</div><div class="slide-footer"></div>
+<section id="slide-org4771d9b">
+<h2 id="org4771d9b">monitores</h2>
+<div class="outline-text-2" id="text-org4771d9b">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org3b47ae8">
-<div class="slide-header"></div>
-<h3 id="org3b47ae8">monitores</h3>
+<section id="slide-orgf5db4c0">
+<h3 id="orgf5db4c0">monitores</h3>
 <ul>
 <li><b>Pascal</b> concurrente, <b>Modula</b>, <b>Mesa</b>, <b>Ada</b>, <b>Java</b>, <b>C#</b></li>
 <li>La idea: encapsular los datos compartidos y sus operaciones para restringir el acceso</li>
@@ -640,13 +505,11 @@ en <i>Deadlock</i> si el <i>release</i> de <i>access</i> falla.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org4e35dc3">
-<div class="slide-header"></div>
-<h3 id="org4e35dc3">Sincronización de Competición</h3>
+<section id="slide-orgf614ce3">
+<h3 id="orgf614ce3">Sincronización de Competición</h3>
 <ul>
 <li>Los datos compartidos son residentes en el monitor (en lugar de en las unidades de cliente)</li>
 <li>Todo acceso reside en el monitor
@@ -660,13 +523,11 @@ llamada.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgb9db792">
-<div class="slide-header"></div>
-<h3 id="orgb9db792">Sincronización de Cooperación</h3>
+<section id="slide-org030baf8">
+<h3 id="org030baf8">Sincronización de Cooperación</h3>
 <ul>
 <li>Cooperación entre procesos es todavía una tarea de programación
 <ul>
@@ -678,18 +539,16 @@ experimenta overflow o underflow</li>
 </ul>
 
 
-<figure>
-<img src="monitor.png" alt="monitor.png">
+<div id="org050b251" class="figure">
+<p><img src="monitor.png" alt="monitor.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgdac2e73">
-<div class="slide-header"></div>
-<h3 id="orgdac2e73">Evaluación de Monitores</h3>
+<section id="slide-org648db1e">
+<h3 id="org648db1e">Evaluación de Monitores</h3>
 <ul>
 <li>Es un mejor modo de proporcionar la sincronización de la competencia que los semáforos.</li>
 <li>Los semáforos se pueden utilizar para implementar monitores</li>
@@ -699,21 +558,18 @@ los semáforos, por lo que tiene los mismos problemas</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org5c8a344">
-<div class="slide-header"></div>
-<h2 id="org5c8a344">Pasaje de mensajes</h2>
-<div class="outline-text-2" id="text-org5c8a344">
-</div><div class="slide-footer"></div>
+<section id="slide-org4e9b8c4">
+<h2 id="org4e9b8c4">Pasaje de mensajes</h2>
+<div class="outline-text-2" id="text-org4e9b8c4">
+</div>
 </section>
 </section>
 <section>
-<section id="slide-org94ae5ff">
-<div class="slide-header"></div>
-<h3 id="org94ae5ff">Pasaje de mensajes</h3>
+<section id="slide-orga02fed9">
+<h3 id="orga02fed9">Pasaje de mensajes</h3>
 <ul>
 <li>El paso de mensajes es un modelo general para la concurrencia
 <ul>
@@ -727,13 +583,11 @@ esten listo, te reunirás o tendras un <i>rendezvous</i></li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgb921702">
-<div class="slide-header"></div>
-<h3 id="orgb921702">Pasaje de mensajes <i>Rendezvous</i></h3>
+<section id="slide-org23e1f39">
+<h3 id="org23e1f39">Pasaje de mensajes <i>Rendezvous</i></h3>
 <ul>
 <li>Un mecanismo para permitir que una tarea indique cuándo está
 dispuesta a aceptar mensajes</li>
@@ -745,13 +599,11 @@ tarea receptora, la transmisión de mensaje real se denomina <i>rendezvous</i></
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orge7ffbe6">
-<div class="slide-header"></div>
-<h3 id="orge7ffbe6">Soporte de <b>Ada</b> para concurrencia</h3>
+<section id="slide-org989d2d3">
+<h3 id="org989d2d3">Soporte de <b>Ada</b> para concurrencia</h3>
 <ul>
 <li>El modelo de mensajes de Ada 83
 <ul>
@@ -765,19 +617,17 @@ colección de puntos de entrada:</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">task</span> <span style="color: #1e90ff; font-weight: bold;">Task_Example</span> <span style="color: #40e0d0; font-weight: bold;">is</span>
-        <span style="color: #40e0d0; font-weight: bold;">entry</span> <span style="color: #1e90ff; font-weight: bold;">ENTRY_1</span> (Item : <span style="color: #40e0d0; font-weight: bold;">in</span> <span style="color: #9ac0cd;">Integer</span>);
-<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">Task_Example</span>;
-</pre>
+<pre  class="src src-ada"><code trim>task Task_Example is
+	entry ENTRY_1 (Item : in Integer);
+end Task_Example;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org2cf60ad">
-<div class="slide-header"></div>
-<h3 id="org2cf60ad">Cuerpo de la Tarea</h3>
+<section id="slide-orgf7a430b">
+<h3 id="orgf7a430b">Cuerpo de la Tarea</h3>
 <ul>
 <li>El cuerpo de la tarea describe la acción que tiene lugar cuando se
 produce un <i>rendezvous</i></li>
@@ -790,39 +640,35 @@ cláusulas de <i>accept</i> en el cuerpo:</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">accept</span> <span style="color: #1e90ff; font-weight: bold;">entry_name</span> (formal parameters) <span style="color: #40e0d0; font-weight: bold;">do</span>
+<pre  class="src src-ada"><code trim>accept entry_name (formal parameters) do
     ...
-<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">entry_name</span>
-</pre>
+end entry_name
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgd54fd35">
-<div class="slide-header"></div>
-<h3 id="orgd54fd35">Ejemplo de Cuerpo de Tarea</h3>
+<section id="slide-orgeeb213f">
+<h3 id="orgeeb213f">Ejemplo de Cuerpo de Tarea</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">task body</span> <span style="color: #1e90ff; font-weight: bold;">TASK_EXAMPLE</span> <span style="color: #40e0d0; font-weight: bold;">is</span>
-     <span style="color: #40e0d0; font-weight: bold;">begin</span>
-     <span style="color: #40e0d0; font-weight: bold;">loop</span>
-     <span style="color: #40e0d0; font-weight: bold;">accept</span> <span style="color: #1e90ff; font-weight: bold;">ENTRY_1</span> (ITEM: <span style="color: #40e0d0; font-weight: bold;">in</span> <span style="color: #9ac0cd;">FLOAT</span>) <span style="color: #40e0d0; font-weight: bold;">do</span>
+<pre  class="src src-ada"><code trim>task body TASK_EXAMPLE is
+     begin
+     loop
+     accept ENTRY_1 (ITEM: in FLOAT) do
      ...
-     <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">ENTRY_1</span>;
-     <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">loop</span>;
-   <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">TASK_EXAMPLE</span>;
-</pre>
+     end ENTRY_1;
+     end loop;
+   end TASK_EXAMPLE;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgc6bd91a">
-<div class="slide-header"></div>
-<h3 id="orgc6bd91a">Semántica del pasaje de mensajes de <b>Ada</b></h3>
+<section id="slide-orga956b14">
+<h3 id="orga956b14">Semántica del pasaje de mensajes de <b>Ada</b></h3>
 <ul>
 <li>La tarea se ejecuta hasta la parte superior de la cláusula <i>accept</i> y
 espera un mensaje</li>
@@ -835,26 +681,22 @@ mensajes en espera.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgfce125a">
-<div class="slide-header"></div>
-<h3 id="orgfce125a">Líneas de tiempo del <i>Rendevous</i></h3>
+<section id="slide-org3693f7e">
+<h3 id="org3693f7e">Líneas de tiempo del <i>Rendevous</i></h3>
 
-<figure>
-<img src="rendevous.png" alt="rendevous.png">
+<div id="org70f07b6" class="figure">
+<p><img src="rendevous.png" alt="rendevous.png" />
+</p>
+</div>
 
-</figure>
-
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgaa7b362">
-<div class="slide-header"></div>
-<h3 id="orgaa7b362">Servidor y actor</h3>
+<section id="slide-orgd706d8d">
+<h3 id="orgd706d8d">Servidor y actor</h3>
 <ul>
 <li>Una tarea que tiene cláusulas <i>accept</i>, pero ningún otro código
 se llama una tarea servidor</li>
@@ -867,49 +709,43 @@ se llama una tarea servidor</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgca5185a">
-<div class="slide-header"></div>
-<h3 id="orgca5185a">Representación Gráfica del <i>Rendezvous</i></h3>
+<section id="slide-orgeb7c184">
+<h3 id="orgeb7c184">Representación Gráfica del <i>Rendezvous</i></h3>
 
-<figure>
-<img src="rendevous2.png" alt="rendevous2.png"> 
-
-</figure>
-
-<div class="slide-footer"></div>
-</section>
-</section>
-<section>
-<section id="slide-org1605a68">
-<div class="slide-header"></div>
-<h3 id="org1605a68">Ejemplo de tarea <i>Actor</i></h3>
-<div class="org-src-container">
-
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">task</span> <span style="color: #1e90ff; font-weight: bold;">WATER_MONITOR</span>; <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">specification</span>
-<span style="color: #40e0d0; font-weight: bold;">task body</span> <span style="color: #1e90ff; font-weight: bold;">WATER_MONITOR</span> <span style="color: #40e0d0; font-weight: bold;">is</span> <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">body</span>
-<span style="color: #40e0d0; font-weight: bold;">begin</span>
-  <span style="color: #40e0d0; font-weight: bold;">loop</span>
-  <span style="color: #40e0d0; font-weight: bold;">if</span> WATER_LEVEL &gt; MAX_LEVEL
-    <span style="color: #40e0d0; font-weight: bold;">then</span> SOUND_ALARM;
-  <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">if</span>;
-  <span style="color: #40e0d0; font-weight: bold;">delay</span> <span style="color: #ff6347; font-weight: bold;">1.0</span>; <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">No further execution</span>
-            <span style="color: #ee82ee;">-- </span><span style="color: #ee82ee;">for at least 1 second</span>
-  <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">loop</span>;
-<span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">WATER_MONITOR</span>;
-</pre>
+<div id="org1633874" class="figure">
+<p><img src="rendevous2.png" alt="rendevous2.png" /> 
+</p>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgfd92971">
-<div class="slide-header"></div>
-<h3 id="orgfd92971">Múltiples puntos de entrada</h3>
+<section id="slide-orgec75a92">
+<h3 id="orgec75a92">Ejemplo de tarea <i>Actor</i></h3>
+<div class="org-src-container">
+
+<pre  class="src src-ada"><code trim>task WATER_MONITOR; -- specification
+task body WATER_MONITOR is -- body
+begin
+  loop
+  if WATER_LEVEL &gt; MAX_LEVEL
+    then SOUND_ALARM;
+  end if;
+  delay 1.0; -- No further execution
+	    -- for at least 1 second
+  end loop;
+end WATER_MONITOR;
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org61550e0">
+<h3 id="org61550e0">Múltiples puntos de entrada</h3>
 <ul>
 <li>Las tareas pueden tener más de un punto de entrada
 <ul>
@@ -923,40 +759,36 @@ está en un bucle.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgcb53011">
-<div class="slide-header"></div>
-<h3 id="orgcb53011">Una tarea con múltiples entradas</h3>
+<section id="slide-orge7b1ef7">
+<h3 id="orge7b1ef7">Una tarea con múltiples entradas</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">task body</span> <span style="color: #1e90ff; font-weight: bold;">TASK_EXAMPLE</span> <span style="color: #40e0d0; font-weight: bold;">is</span>
-      <span style="color: #40e0d0; font-weight: bold;">loop</span>
-        <span style="color: #40e0d0; font-weight: bold;">select</span> 
-          <span style="color: #40e0d0; font-weight: bold;">accept</span> <span style="color: #1e90ff; font-weight: bold;">ENTRY_1</span> (formal params) <span style="color: #40e0d0; font-weight: bold;">do</span>
-          ...
-          <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">ENTRY_1</span>;
-          ...
-        <span style="color: #40e0d0; font-weight: bold;">or</span>
-          <span style="color: #40e0d0; font-weight: bold;">accept</span> <span style="color: #1e90ff; font-weight: bold;">ENTRY_2</span> (formal params) <span style="color: #40e0d0; font-weight: bold;">do</span>
-          ...
-          <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">ENTRY_2</span>;
-          ...
-        <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">select</span>;
-      <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">loop</span>;
-    <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">TASK_EXAMPLE</span>;
-</pre>
+<pre  class="src src-ada"><code trim>task body TASK_EXAMPLE is
+      loop
+	select 
+	  accept ENTRY_1 (formal params) do
+	  ...
+	  end ENTRY_1;
+	  ...
+	or
+	  accept ENTRY_2 (formal params) do
+	  ...
+	  end ENTRY_2;
+	  ...
+	end select;
+      end loop;
+    end TASK_EXAMPLE;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgc48168e">
-<div class="slide-header"></div>
-<h3 id="orgc48168e">Semántica de tareas con multiples clausulas select</h3>
+<section id="slide-org8d56593">
+<h3 id="org8d56593">Semántica de tareas con multiples clausulas select</h3>
 <ul>
 <li>Si exactamente una cola de entrada no esta vacía, elija un mensaje de ella</li>
 <li>Si más de una cola de entrada no esta vacía, elije una, de forma no determinística, para aceptar un mensaje</li>
@@ -970,22 +802,20 @@ está en un bucle.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orge33f7e7">
-<div class="slide-header"></div>
-<h3 id="orge33f7e7">Sincronización de Cooperación con Pasaje de Mensajes</h3>
+<section id="slide-org24de911">
+<h3 id="org24de911">Sincronización de Cooperación con Pasaje de Mensajes</h3>
 <ul>
 <li>Provisto por cláusulas <i>accept</i> con guardas:</li>
 
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">when</span> <span style="color: #40e0d0; font-weight: bold;">not</span> FULL(BUFFER) =&gt;
-    <span style="color: #40e0d0; font-weight: bold;">accept</span> <span style="color: #1e90ff; font-weight: bold;">DEPOSIT</span>(NEW_VALUE) <span style="color: #40e0d0; font-weight: bold;">do</span>
-</pre>
+<pre  class="src src-ada"><code trim>when not FULL(BUFFER) =&gt;
+    accept DEPOSIT(NEW_VALUE) do
+</code></pre>
 </div>
 <ul>
 <li>Una cláusula <i>accept</i> con una cláusula <i>when</i> es abierta o cerrada
@@ -998,13 +828,11 @@ está en un bucle.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org397074b">
-<div class="slide-header"></div>
-<h3 id="org397074b">Semántica del <i>select</i> con cláusulas <i>accept</i> con guardas</h3>
+<section id="slide-org54b076a">
+<h3 id="org54b076a">Semántica del <i>select</i> con cláusulas <i>accept</i> con guardas</h3>
 <ul>
 <li><i>select</i> primero verifica las guardas de todas las cláusulas</li>
 <li>Si exactamente una está abierta, se comprueba la cola de mensajes</li>
@@ -1019,59 +847,53 @@ entre ellas para comprobar los mensajes.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgb69fde4">
-<div class="slide-header"></div>
-<h3 id="orgb69fde4">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
+<section id="slide-orgf151a33">
+<h3 id="orgf151a33">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">task</span> <span style="color: #1e90ff; font-weight: bold;">GAS_STATION_ATTENDANT</span> <span style="color: #40e0d0; font-weight: bold;">is</span>
-        <span style="color: #40e0d0; font-weight: bold;">entry</span> <span style="color: #1e90ff; font-weight: bold;">SERVICE_ISLAND</span> (CAR : CAR_TYPE);
-        <span style="color: #40e0d0; font-weight: bold;">entry</span> <span style="color: #1e90ff; font-weight: bold;">GARAGE</span> (CAR : CAR_TYPE);
-        <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">GAS_STATION_ATTENDANT</span>;
-</pre>
+<pre  class="src src-ada"><code trim>task GAS_STATION_ATTENDANT is
+	entry SERVICE_ISLAND (CAR : CAR_TYPE);
+	entry GARAGE (CAR : CAR_TYPE);
+	end GAS_STATION_ATTENDANT;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgcca56b0">
-<div class="slide-header"></div>
-<h3 id="orgcca56b0">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
+<section id="slide-orga58f0a0">
+<h3 id="orga58f0a0">Ejemplo de Tarea con clausulas <i>accept</i> con guardas</h3>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><span style="color: #40e0d0; font-weight: bold;">task body</span> <span style="color: #1e90ff; font-weight: bold;">GAS_STATION_ATTENDANT</span> <span style="color: #40e0d0; font-weight: bold;">is</span>
-  <span style="color: #40e0d0; font-weight: bold;">begin</span>
-    <span style="color: #40e0d0; font-weight: bold;">loop</span>
-      <span style="color: #40e0d0; font-weight: bold;">select</span>
-        <span style="color: #40e0d0; font-weight: bold;">when</span> GAS_AVAILABLE =&gt;
-                   <span style="color: #40e0d0; font-weight: bold;">accept</span> <span style="color: #1e90ff; font-weight: bold;">SERVICE_ISLAND</span> (CAR : CAR_TYPE) <span style="color: #40e0d0; font-weight: bold;">do</span>
-                 FILL_WITH_GAS (CAR);
-               <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">SERVICE_ISLAND</span>;
-      <span style="color: #40e0d0; font-weight: bold;">or</span>
-             <span style="color: #40e0d0; font-weight: bold;">when</span> GARAGE_AVAILABLE =&gt;
-               <span style="color: #40e0d0; font-weight: bold;">accept</span> <span style="color: #1e90ff; font-weight: bold;">GARAGE</span> (CAR : CAR_TYPE) <span style="color: #40e0d0; font-weight: bold;">do</span>
-                 FIX (CAR);
-               <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">GARAGE</span>;
-      <span style="color: #40e0d0; font-weight: bold;">else</span>
-             SLEEP;
-      <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">select</span>;
-    <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #40e0d0; font-weight: bold;">loop</span>;
-  <span style="color: #40e0d0; font-weight: bold;">end</span> <span style="color: #1e90ff; font-weight: bold;">GAS_STATION_ATTENDANT</span>;
-</pre>
+<pre  class="src src-ada"><code trim>task body GAS_STATION_ATTENDANT is
+  begin
+    loop
+      select
+	when GAS_AVAILABLE =&gt;
+		   accept SERVICE_ISLAND (CAR : CAR_TYPE) do
+		 FILL_WITH_GAS (CAR);
+	       end SERVICE_ISLAND;
+      or
+	     when GARAGE_AVAILABLE =&gt;
+	       accept GARAGE (CAR : CAR_TYPE) do
+		 FIX (CAR);
+	       end GARAGE;
+      else
+	     SLEEP;
+      end select;
+    end loop;
+  end GAS_STATION_ATTENDANT;
+</code></pre>
 </div>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org582e53d">
-<div class="slide-header"></div>
-<h3 id="org582e53d">Sincronización de Competición con Pasaje de Mensajes</h3>
+<section id="slide-org938bae4">
+<h3 id="org938bae4">Sincronización de Competición con Pasaje de Mensajes</h3>
 <ul>
 <li>Modela el acceso mutuamente exclusivo a los datos compartidos</li>
 <li>Ejemplo: un búfer compartido</li>
@@ -1084,13 +906,11 @@ entre ellas para comprobar los mensajes.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org87c8134">
-<div class="slide-header"></div>
-<h3 id="org87c8134">Concurrencia en Ada 95</h3>
+<section id="slide-org1fd2f7a">
+<h3 id="org1fd2f7a">Concurrencia en Ada 95</h3>
 <ul>
 <li>Ada 95 incluye las características de Ada 83 para la concurrencia, además
 de dos nuevas características:
@@ -1104,13 +924,11 @@ compartida que se puede hacer sin <i>rendezvous</i></li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-org1bd3af5">
-<div class="slide-header"></div>
-<h3 id="org1bd3af5">Objetos Protegidos de Ada 95</h3>
+<section id="slide-orgae1e9cb">
+<h3 id="orgae1e9cb">Objetos Protegidos de Ada 95</h3>
 <ul>
 <li>Un objeto protegido es similar a un tipo de dato abstracto</li>
 <li>El acceso a un objeto protegido es a través de mensajes pasados a
@@ -1121,13 +939,11 @@ a objetos protegidos.</li>
 
 </ul>
 
-<div class="slide-footer"></div>
 </section>
 </section>
 <section>
-<section id="slide-orgd2e3d8e">
-<div class="slide-header"></div>
-<h3 id="orgd2e3d8e">Evaluación de <b>Ada</b></h3>
+<section id="slide-org5ae8729">
+<h3 id="org5ae8729">Evaluación de <b>Ada</b></h3>
 <ul>
 <li>El modelo de concurrencia de pasaje de mensajes es potente y general.</li>
 <li>Los objetos protegidos son una mejor manera de proporcionar datos compartidos sincronizados</li>
@@ -1137,31 +953,18 @@ gusto</li>
 <li>Para sistemas distribuidos, el paso de mensajes es un mejor modelo para la concurrencia.</li>
 
 </ul>
-<div class="slide-footer"></div>
 </section>
 </section>
 </div>
 </div>
-<script src="../reveal.js-master/lib/js/head.min.js"></script>
-<script src="../reveal.js-master/js/reveal.js"></script>
+<p> Created by yjwen. </p>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 't',
-rollingLinks: false,
-keyboard: true,
-overview: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
+width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server
@@ -1170,12 +973,10 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: '../reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: '../reveal.js-master/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '../reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-,});
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
 </script>
 </body>
 </html>
