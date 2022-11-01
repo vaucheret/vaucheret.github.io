@@ -29,21 +29,21 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Administración de Almacenamient</h2><h2 class="date">2016-08-29 lun 00:00</h2><p class="date">Created: 2021-11-08 lun 11:55</p>
+<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Administración de Almacenamient</h2><h2 class="date">2016-08-29 lun 00:00</h2><p class="date">Created: 2021-11-08 lun 15:15</p>
 </section>
 
 
 
 <section>
-<section id="slide-org74f6117">
-<h2 id="org74f6117">Introducción</h2>
-<div class="outline-text-2" id="text-org74f6117">
+<section id="slide-orgc430be4">
+<h2 id="orgc430be4">Introducción</h2>
+<div class="outline-text-2" id="text-orgc430be4">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org050ce7e">
-<h3 id="org050ce7e">Tiempo de Vida del Objeto y Ligadura</h3>
+<section id="slide-orgaa07c84">
+<h3 id="orgaa07c84">Tiempo de Vida del Objeto y Ligadura</h3>
 <ul>
 <li>Creación del objeto</li>
 <li>Creación de las ligaduras</li>
@@ -61,8 +61,8 @@ temporariamente en desuso</li>
 </section>
 </section>
 <section>
-<section id="slide-org108776e">
-<h3 id="org108776e">Tiempos de vida distintos</h3>
+<section id="slide-orgac28f50">
+<h3 id="orgac28f50">Tiempos de vida distintos</h3>
 <ul>
 <li>Referencias colgadas
 <ul>
@@ -81,8 +81,8 @@ temporariamente en desuso</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc92e1d3">
-<h3 id="orgc92e1d3">Mecanismos de alojamiento</h3>
+<section id="slide-orgc1be1b8">
+<h3 id="orgc1be1b8">Mecanismos de alojamiento</h3>
 <ul>
 <li>Estático
 <ul>
@@ -107,8 +107,8 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </section>
 </section>
 <section>
-<section id="slide-org47d289f">
-<h3 id="org47d289f">Alojamiento Estático</h3>
+<section id="slide-orgfccc39b">
+<h3 id="orgfccc39b">Alojamiento Estático</h3>
 <ul>
 <li>Código</li>
 <li>Variables Globales</li>
@@ -119,10 +119,10 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </ul>
 
 </section>
-<section id="slide-orgbe0b94a">
-<h4 id="orgbe0b94a">Subrutinas</h4>
+<section id="slide-orgfd66764">
+<h4 id="orgfd66764">Subrutinas</h4>
 
-<div id="org9ee2c66" class="figure">
+<div id="org27cc84f" class="figure">
 <p><img src="aljamestaticosub.png" alt="aljamestaticosub.png" />
 </p>
 </div>
@@ -130,8 +130,8 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </section>
 </section>
 <section>
-<section id="slide-org3e9217d">
-<h3 id="org3e9217d">Alojamiento basado en Pila</h3>
+<section id="slide-orgdb87be9">
+<h3 id="orgdb87be9">Alojamiento basado en Pila</h3>
 <ul>
 <li>Pila central para:
 <ul>
@@ -150,17 +150,17 @@ arbitrarios. Requiere algoritmos de administración mas generales y caros.</li>
 </ul>
 
 </section>
-<section id="slide-orgbe01fce">
-<h4 id="orgbe01fce">Subrutinas</h4>
+<section id="slide-org5ff3670">
+<h4 id="org5ff3670">Subrutinas</h4>
 
-<div id="orgda07a3c" class="figure">
+<div id="orgbd5f1be" class="figure">
 <p><img src="alojpilasubr.png" alt="alojpilasubr.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org0f1cf49">
-<h4 id="org0f1cf49">Alojamiento basado en Pila</h4>
+<section id="slide-orge102f0b">
+<h4 id="orge102f0b">Alojamiento basado en Pila</h4>
 <ul>
 <li>Contenido de un Registro de Activación
 <ul>
@@ -178,8 +178,8 @@ activación) en tiempo de compilación.</li>
 </ul>
 
 </section>
-<section id="slide-orga136562">
-<h4 id="orga136562">Alojamiento basado en Pila</h4>
+<section id="slide-orge22678e">
+<h4 id="orge22678e">Alojamiento basado en Pila</h4>
 <ul>
 <li>El mantenimiento de la Pila es responsabilidad de la <i>secuencia de
 llamado</i> del llamador, y de el <i>prologo</i> y el <i>epilogo</i> de la
@@ -201,22 +201,22 @@ el <i>epilogo</i></li>
 </section>
 </section>
 <section>
-<section id="slide-orgad64ec6">
-<h3 id="orgad64ec6">Alojamiento basado en <i>Heap</i></h3>
+<section id="slide-org4b435a7">
+<h3 id="org4b435a7">Alojamiento basado en <i>Heap</i></h3>
 <ul>
 <li>Alojamiento Dinámico</li>
 
 </ul>
 
 
-<div id="org72a6db3" class="figure">
+<div id="org8a6f04b" class="figure">
 <p><img src="alojdinheap.png" alt="alojdinheap.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org7a877b8">
-<h4 id="org7a877b8">Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-orgbe30b8a">
+<h4 id="orgbe30b8a">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>Muchas posibles estrategias</li>
 <li>compromiso entre espacio y tiempo</li>
@@ -235,8 +235,8 @@ alojar un nuevo requerimiento.</li>
 </ul>
 
 </section>
-<section id="slide-orgeca0548">
-<h4 id="orgeca0548">Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-org58ff4fe">
+<h4 id="org58ff4fe">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>Lista ligado de bloques libres</li>
 <li>Algoritmos de asignación
@@ -268,8 +268,8 @@ diponible se divide uno de \(2^{k+1}\)</li>
 
 
 </section>
-<section id="slide-orgfb5587a">
-<h4 id="orgfb5587a">Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-orgec39c26">
+<h4 id="orgec39c26">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li>El problema de referencias sueltas (dangling) son debidas a
 <ul>
@@ -291,36 +291,36 @@ diponible se divide uno de \(2^{k+1}\)</li>
 </ul>
 
 </section>
-<section id="slide-org53eeeab">
-<h4 id="org53eeeab">Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-org1768a82">
+<h4 id="org1768a82">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li><i>Tombstones</i></li>
 
 </ul>
 
 
-<div id="org32c769b" class="figure">
+<div id="org9c38aaa" class="figure">
 <p><img src="tombstones.png" alt="tombstones.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org0d296c5">
-<h4 id="org0d296c5">Alojamiento basado en <i>Heap</i></h4>
+<section id="slide-orgebbcd4d">
+<h4 id="orgebbcd4d">Alojamiento basado en <i>Heap</i></h4>
 <ul>
 <li><i>Locks and Keys</i></li>
 
 </ul>
 
 
-<div id="org4b4be0c" class="figure">
+<div id="org5e1b0a3" class="figure">
 <p><img src="lockskeys.png" alt="lockskeys.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org67535d9">
-<h4 id="org67535d9">Recolección de Basura</h4>
+<section id="slide-orgc0f9f6a">
+<h4 id="orgc0f9f6a">Recolección de Basura</h4>
 <ul>
 <li><i>garbage collection</i>
 <ul>
@@ -333,14 +333,14 @@ diponible se divide uno de \(2^{k+1}\)</li>
 </ul>
 
 
-<div id="orgb83879c" class="figure">
+<div id="org7824b6a" class="figure">
 <p><img src="contadref.png" alt="contadref.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org30d1516">
-<h4 id="org30d1516">Trazado de la colección</h4>
+<section id="slide-org6838f2d">
+<h4 id="org6838f2d">Trazado de la colección</h4>
 <ul>
 <li>marcado y barrido (<i>mark and Sweep</i>
 <ol>
@@ -358,81 +358,81 @@ aún marcado como "usable" a la lista de bloques libres.</li>
 
 
 </section>
-<section id="slide-orgaee3e95">
-<h4 id="orgaee3e95">mark and sweep</h4>
+<section id="slide-org0d6c3c1">
+<h4 id="org0d6c3c1">mark and sweep</h4>
 
-<div id="org54a613a" class="figure">
+<div id="org6d14ced" class="figure">
 <p><img src="marksweep-0.png" alt="marksweep-0.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgb1c8b69">
-<h4 id="orgb1c8b69">mark and sweep</h4>
+<section id="slide-org1f410fc">
+<h4 id="org1f410fc">mark and sweep</h4>
 
-<div id="orgec09633" class="figure">
+<div id="org6187398" class="figure">
 <p><img src="marksweep-1.png" alt="marksweep-1.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org9d03207">
-<h4 id="org9d03207">mark and sweep</h4>
+<section id="slide-orgf46171e">
+<h4 id="orgf46171e">mark and sweep</h4>
 
-<div id="org13ecf68" class="figure">
+<div id="orgac361e9" class="figure">
 <p><img src="marksweep-2.png" alt="marksweep-2.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgacca0f0">
-<h4 id="orgacca0f0">mark and sweep</h4>
+<section id="slide-org7f99eda">
+<h4 id="org7f99eda">mark and sweep</h4>
 
-<div id="orgaf98bde" class="figure">
+<div id="org864c0d6" class="figure">
 <p><img src="marksweep-3.png" alt="marksweep-3.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org0e354aa">
-<h4 id="org0e354aa">mark and sweep</h4>
+<section id="slide-orgac10d8e">
+<h4 id="orgac10d8e">mark and sweep</h4>
 
-<div id="org46204d2" class="figure">
+<div id="org5a68b85" class="figure">
 <p><img src="marksweep-4.png" alt="marksweep-4.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgfa8d155">
-<h4 id="orgfa8d155">mark and sweep</h4>
+<section id="slide-org8930d00">
+<h4 id="org8930d00">mark and sweep</h4>
 
-<div id="org504ba1c" class="figure">
+<div id="orgf091115" class="figure">
 <p><img src="marksweep-5.png" alt="marksweep-5.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org2002ef7">
-<h4 id="org2002ef7">mark and sweep</h4>
+<section id="slide-orge9f15ab">
+<h4 id="orge9f15ab">mark and sweep</h4>
 
-<div id="org068fde1" class="figure">
+<div id="org5ce2c85" class="figure">
 <p><img src="marksweep-6.png" alt="marksweep-6.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org922effe">
-<h4 id="org922effe">mark and sweep</h4>
+<section id="slide-orge1a0dcd">
+<h4 id="orge1a0dcd">mark and sweep</h4>
 
-<div id="orgcd8544e" class="figure">
+<div id="org5d46acf" class="figure">
 <p><img src="marksweep-7.png" alt="marksweep-7.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-org10e64b8">
-<h4 id="org10e64b8">Marcado tri-color</h4>
+<section id="slide-org4e11477">
+<h4 id="org4e11477">Marcado tri-color</h4>
 <ul>
 <li>Se crean tres conjuntos – blanco, negro and gris:
 
@@ -451,7 +451,7 @@ conjunto "blanco".</li>
 </ul>
 
 </section>
-<section id="slide-org10e64b8-split">
+<section id="slide-org4e11477-split">
 
 <ul>
 <li>Inicialmente el conjunto negro esta vacío, El conjunto gris es el 
@@ -470,88 +470,73 @@ raiz y el conjunto blanco incluye todos los demás objetos. El algoritmo procede
 </ul>
 
 </section>
-<section id="slide-org055078f">
-<h4 id="org055078f">Marcado tri-color</h4>
+<section id="slide-org2946dca">
+<h4 id="org2946dca">Marcado tri-color</h4>
 
-<div id="org57cd494" class="figure">
+<div id="org1e6ddfe" class="figure">
 <p><img src="tricolor-0.png" alt="tricolor-0.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-org3ee9dfa">
-<h4 id="org3ee9dfa">Marcado tri-color</h4>
+<section id="slide-org9370c49">
+<h4 id="org9370c49">Marcado tri-color</h4>
 
-<div id="org9566948" class="figure">
+<div id="orga7978ae" class="figure">
 <p><img src="tricolor-1.png" alt="tricolor-1.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-orgea812a8">
-<h4 id="orgea812a8">Marcado tri-color</h4>
+<section id="slide-org204c1ce">
+<h4 id="org204c1ce">Marcado tri-color</h4>
 
-<div id="orga2a5946" class="figure">
+<div id="orgcb73191" class="figure">
 <p><img src="tricolor-2.png" alt="tricolor-2.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-org9c511a9">
-<h4 id="org9c511a9">Marcado tri-color</h4>
+<section id="slide-org4d87162">
+<h4 id="org4d87162">Marcado tri-color</h4>
 
-<div id="org447d232" class="figure">
+<div id="orgb3d03ba" class="figure">
 <p><img src="tricolor-3.png" alt="tricolor-3.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-org02cbffa">
-<h4 id="org02cbffa">Marcado tri-color</h4>
+<section id="slide-org408aad5">
+<h4 id="org408aad5">Marcado tri-color</h4>
 
-<div id="orgece75a1" class="figure">
+<div id="orgc5cef7c" class="figure">
 <p><img src="tricolor-4.png" alt="tricolor-4.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-org3030f81">
-<h4 id="org3030f81">Marcado tri-color</h4>
+<section id="slide-org3cc1e69">
+<h4 id="org3cc1e69">Marcado tri-color</h4>
 
-<div id="org53689d4" class="figure">
+<div id="orgb719e53" class="figure">
 <p><img src="tricolor-5.png" alt="tricolor-5.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-orga2e70db">
-<h4 id="orga2e70db">Marcado tri-color</h4>
+<section id="slide-org9f70625">
+<h4 id="org9f70625">Marcado tri-color</h4>
 
-<div id="org1b1622e" class="figure">
+<div id="org9b9e3b4" class="figure">
 <p><img src="tricolor-6.png" alt="tricolor-6.png" />
 </p>
 </div>
-
-
-</section>
-<section id="slide-orgbfcf03f">
-<h4 id="orgbfcf03f">Recolección de Basura</h4>
-<ul>
-<li>Otras alternativas
-<ul>
-<li>Parar y Copiar</li>
-<li>Recolección Generacional</li>
-<li>Recolección Conservadora</li>
-
-</ul></li>
-
-</ul>
 </section>
 </section>
 </div>

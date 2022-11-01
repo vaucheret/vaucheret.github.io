@@ -1,36 +1,13 @@
-#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
-#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
-#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
-#+OPTIONS: reveal_single_file:nil reveal_slide_number:t num:nil
-#+OPTIONS: reveal_title_slide:auto reveal_width:-1
-#+REVEAL_MARGIN: -1
-#+REVEAL_MIN_SCALE: -1
-#+REVEAL_MAX_SCALE: -1
-#+REVEAL_ROOT: ../reveal.js-master
-#+REVEAL_TRANS: cube
-#+REVEAL_SPEED: default
-#+REVEAL_THEME: solarized
-#+REVEAL_EXTRA_CSS:
-#+REVEAL_EXTRA_JS:
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
+#+OPTIONS: toc:1 num:nil
+#+REVEAL_THEME: moon
 #+REVEAL_HLEVEL: 2
-#+REVEAL_TITLE_SLIDE_TEMPLATE: <h1>%t</h1><h2>%a</h2><h2>%e</h2><h2>%d</h2>
-#+REVEAL_TITLE_SLIDE_BACKGROUND:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_PREAMBLE:
-#+REVEAL_HEAD_PREAMBLE:
-#+REVEAL_POSTAMBLE:
-#+REVEAL_MULTIPLEX_ID:
-#+REVEAL_MULTIPLEX_SECRET:
-#+REVEAL_MULTIPLEX_URL:
-#+REVEAL_MULTIPLEX_SOCKETIO_URL:
-#+REVEAL_SLIDE_HEADER:
-#+REVEAL_SLIDE_FOOTER:
-#+REVEAL_PLUGINS:
-#+REVEAL_DEFAULT_FRAG_STYLE:
-#+REVEAL_INIT_SCRIPT:
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
+#+REVEAL_POSTAMBLE: <p> Created by yjwen. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+#+REVEAL_EXTRA_CSS: ./local.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+
 
 #+TITLE: Conceptos Avanzados en Lenguajes de Programación
 #+DATE:  <2017-11-14 mar>
@@ -40,6 +17,7 @@
 * Scripting
 
 ** ¿Qué es un lenguaje de scripting?
+#+REVEAL_HTML: <div style="font-size: 80%;">
 - Los lenguajes de scripting modernos tienen dos conjuntos principales
   de ancestros
   - Interpretes de comando o "shells" de la computacion tradicional
@@ -53,7 +31,7 @@
     es el lenguaje de scripting de propósito general mas ampliamente usado.
   - Otros lenguajes de scripting de propósito general son Tcl, Python,
     Ruby, VBScript y AppleScript
-
+#+REVEAL_HTML: </div>
 ** ¿Qué es un lenguaje de scripting?
 - Características Comunes
   - Uso interactivo y en lote
@@ -74,6 +52,7 @@
   ver su uso principal en dominios de problemas bien definidos
 
 ** Dominio de Problemas
+#+REVEAL_HTML: <div style="font-size: 80%;">
 - Lenguajes de Shell
   - Tienen características diseñadas para uso interactivo
   - Proporcionan una gran cantidad de mecanismos para manipular
@@ -87,7 +66,7 @@
     - Quoting y Expansión
     - Funciones
     - La Convención #!
-
+#+REVEAL_HTML: </div>
 ** Lenguajes de Shell
 - Nombres de archivo y expansión de variables
   #+BEGIN_SRC shell
@@ -174,6 +153,7 @@ script en *sed* para extraer encabezados de un archivo html.
 script en *awk* para extraer encabezados de un archivo html.
 
 ** Perl
+#+REVEAL_HTML: <div style="font-size: 80%;">
 - Perl fue desarrollado originalmente por Larry Wall en 1987, mientras
 trabajaba en la NSA 
 - La versión original era un intento de combinar sed, awk y sh
@@ -185,13 +165,14 @@ trabajaba en la NSA
 - También es lo suficientemente rápido para un uso generalizado, e incluye
   - mecanismos de compilación separada, modularización y biblioteca dinámica apropiadas para proyectos a gran escala
 - Se ha portado a casi todos los sistemas operativos conocidos.
-
+#+REVEAL_HTML: </div>
 ** Perl 
 - Script en *Perl* para extraer encabezados de un archivo html. 
 
 [[file:perl.png]]
 
 ** Lenguajes y scripting de propósito general
+#+REVEAL_HTML: <div style="font-size: 70%;">
 - Perl
 - Tcl
   - Tcl se desarrolló a fines de la década de 1980 en UC, Berkeley (Prof. John Ousterhout)
@@ -209,7 +190,7 @@ trabajaba en la NSA
     desarrollo de Tcl
 - En comparación con Perl, Tcl es algo más verborrágico
   - Hace menos uso de la puntuación y tiene menos casos especiales
-
+#+REVEAL_HTML: </div>
 ** Perl
 - Script en *Perl* para forzar la salida de procesos errantes.
 
@@ -221,6 +202,7 @@ trabajaba en la NSA
 [[file:tclprocess.png]]
 
 ** Lenguajes de pegado y scripting de propósito general
+#+REVEAL_HTML: <div style="font-size: 70%;">
 - Rexx generalmente se considera el primero de los
   lenguajes de scripting de propósito general, anterior a Perl y Tcl
   en casi una década.
@@ -238,7 +220,7 @@ trabajaba en la NSA
     adicionales, proporcionar funciones adicionales, atender las
     necesidades de dominios de aplicaciones específicos o respaldar un
     estilo de programación
-
+#+REVEAL_HTML: </div>
 ** Python
 - Script en *TCL* para forzar la salida de procesos errantes.
 
@@ -253,6 +235,7 @@ trabajaba en la NSA
     cargar un dibujo; seleccionar, insertar, eliminar o modificar sus
     partes; elejir un estilo de línea, peso o color; acercar o girar la
     pantalla; o modificar las preferencias del usuario.
+#+REVEAL: split
 - Un lenguaje de extensión sirve para aumentar la utilidad de una
   aplicación permitiendo que el usuario cree nuevos comandos,
   generalmente usando los comandos existentes como primitivos.
@@ -263,13 +246,13 @@ trabajaba en la NSA
   - AOLserver, un servidor web de fuente abierta de America On-Line,
     se puede generar mediante Tcl. Disney e Industrial Light and Magic
     usan Python para extender sus herramientas internas.
-
 ** Lenguajes de extensión
 - Para admitir extensión, una herramienta debe:
   - incorporar o comunicarse con un intérprete para un lenguaje de scripting.
   - proporcionar ganchos que permiten que los scripts invoquen los comandos existentes de la herramienta
   - Permitir al usuario vincular los comandos recién definidos a los eventos de la interfaz de usuario
 - Con cuidado, estos mecanismos pueden hacerse independientes de cualquier lenguaje de scripting en particular
+#+REVEAL: split
 - Uno de los mecanismos de extensión existentes más antiguos es el del editor de texto emacs
   - Se ha creado una enorme cantidad de paquetes de extensión para
     emacs; muchos de ellos están instalados por defecto en la
@@ -293,6 +276,7 @@ trabajaba en la NSA
     programa, el servidor ejecuta el programa y envía su salida de
     vuelta al cliente
     - esta salida debe ser algo que el navegador comprenda: típicamente HTML.
+#+REVEAL: split
   - Los scripts CGI se pueden escribir en cualquier idioma disponible
     - Perl es particularmente popular:
       - sus mecanismos de manejo de cadenas y "pegado" son adecuados
@@ -323,6 +307,7 @@ trabajaba en la NSA
       - Sin embargo, el script CGI compilado en código nativo puede ser muy rápido una vez ejecutado
     - Los scripts generalmente deben ser instalados en un directorio de confianza por los administradores de sistemas
       - no pueden residir en ubicaciones arbitrarias como lo hacen las páginas comunes
+#+REVEAL: split
     - El nombre del script aparece en el URI, generalmente con el
       nombre del directorio de confianza, por lo que las páginas
       estáticas y dinámicas se ven diferentes para los usuarios
@@ -360,6 +345,7 @@ trabajaba en la NSA
     scripts CGI y, en menor medida, los scripts incrustables del lado
     del servidor se pueden escribir en muchos idiomas diferentes.
     - Todo lo que el cliente ve es HTML estándar.
+#+REVEAL: split
   - Los scripts del lado del cliente, por el contrario, requieren un intérprete en la máquina del cliente
     - Existe un poderoso incentivo para la convergencia en los
       lenguajes de scripting del lado del cliente: la mayoría de los
@@ -372,6 +358,7 @@ trabajaba en la NSA
     específicas, donde se sabe que todos los clientes de interés
     ejecutan Internet Explorer, las páginas destinadas al público en
     general casi siempre usan JavaScript para funciones interactivas.
+#+REVEAL: split
 - Applets de Java
   - Un applet es un programa diseñado para ejecutarse dentro de otro programa
   - El término se utiliza con mayor frecuencia para los programas de
@@ -400,6 +387,7 @@ trabajaba en la NSA
   notoria) no requieren que las variables sean declaradas
 - Perl y JavaScript, permiten declaraciones opcionales, una especie de
   documentación verificada por el compilador
+#+REVEAL: split
 - Perl se puede ejecutar en un modo (usa 'vars' estrictos) que requiere declaraciones
   - Con o sin declaraciones, la mayoría de los lenguajes de scripting usan tipeo dinámico
 - El intérprete puede realizar una verificación de tipo en tiempo de
@@ -414,6 +402,7 @@ trabajaba en la NSA
   - Las subrutinas (métodos) con nombre no anidan en PHP o Ruby
     - Perl y Ruby se unen a Scheme, Python, JavaScript, al
       proporcionar subrutinas locales anónimas de primera clase
+#+REVEAL: split
   - Los bloques anidados tienen un alcance estático en Perl
     - En Ruby son parte del alcance nombrado en el que aparecen
   - Scheme, Perl, Python proporcionan variables capturadas en clausura
@@ -428,6 +417,7 @@ trabajaba en la NSA
     extendidas de la notación
   - Existen expresiones regulares extendidas en sed, awk, Perl, Tcl, Python y Ruby
   - grep,  es la herramienta de pattern matching de Unix.
+#+REVEAL: split
 - Dos grupos principales.
   - El primer grupo incluye awk, egrep (el más utilizado de varias
     versiones diferentes de grep), las rutinas regex de la biblioteca
@@ -445,6 +435,7 @@ trabajaba en la NSA
   - La mayoría realiza extensas comprobaciones en tiempo de ejecución
     para asegurarse de que los valores nunca se usen de forma
     inapropiada.
+#+REVEAL: split
   - Algunos lenguajes (por ejemplo, Scheme, Python y Ruby) son
     relativamente estrictos sobre esta comprobación
     - Cuando el programador que quiere convertir de un tipo a otro
@@ -461,6 +452,7 @@ trabajaba en la NSA
     - ambos permiten al programador utilizar un estilo imperativo más tradicional
   - Python y Ruby están explícita y uniformemente orientados a objetos
   - Perl usa un modelo /por valor/ para las variables; los objetos siempre se acceden a través de punteros
+#+REVEAL: split
   - En PHP y JavaScript, una variable puede contener un valor de un tipo primitivo o una referencia a un objeto de tipo compuesto.
     - Sin embargo, a diferencia de Perl, estos lenguajes no permiten
       hablar de la referencia en sí, solo el objeto al que se refiere
