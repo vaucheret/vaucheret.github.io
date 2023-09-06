@@ -84,7 +84,7 @@ Contiene {{{alert(toda la información relevante)}}} del mundo que queremos repr
 *{{{color(green,Interfaz con sensores y efectores)}}}*
 #+REVEAL_HTML: <div style="font-size: 70%;">
 -  ~transf_Percep(Percepción, T, SentenciaP)~: contruye una sentencia con las percepciones del agente y el tiempo en que fue percibida.
--  ~const_cons(T,QueryAcción)~: contruye una sentencia para consultar qué acciónd ebería ser hecha en un tiempo dado.
+-  ~const_cons(T,QueryAcción)~: contruye una sentencia para consultar qué acción debería ser hecha en un tiempo dado.
 -  ~transf_Acción(Acc,T, SentenciaA)~: contruye una sentencia que indica que la acción elegida fue ejecutada.
 
 ** Agente basado en Conocimiento
@@ -133,7 +133,7 @@ Algoritmo SAT. Algunas mejoras: heurística de la cláusula unitaria y símbolos
 *{{{color(green,Algoritmos de búsqueda local: WalkSAT)}}}*
 #+REVEAL_HTML: <div style="font-size: 70%;">
 
-Asigna en forma aleatoria valores de verdad a las variables proposicionales. Si esa asginación es
+Asigna en forma aleatoria valores de verdad a las variables proposicionales. Si esa asignación es
 modelo, termina. Sino elige en forma random una de las cláusulas de las cláusulas falsas. Cambia con
 probabilidad p el valor en el modelo encontrado de alguna de los símbolos proposicionales que hacen
 falsa a la cláusula y con probabilidad (1-p) cambia el símbolo de cláusula que maximiza el número de
@@ -353,7 +353,7 @@ $t$.
 #+REVEAL_HTML: <div style="font-size: 80%;">
 Problemas con las variables libres:
 
-$p(X) \leftarrow \sim q(X) \wedge$ r(X)$.
+$p(X) \leftarrow \sim q(X) \wedge r(X)$.
 
 $q(a)$.
 
