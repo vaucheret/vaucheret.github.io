@@ -313,7 +313,7 @@ entonces el completamiento de Clark de W es\[W\leftrightarrow false\]
 [[file:imagenes/NAF-BU.jpg]] 
 
 ** CK: Razonamiento Bottom-up
-
+#+REVEAL_HTML: <div style="font-size: 80%;">
 $p \leftarrow q \wedge  \sim r$.
 
 $p \leftarrow s$.
@@ -326,10 +326,13 @@ $s \leftarrow w$.
 
 $t$.
 
+$w$.
+
+
 ¿Qué devuelve C?
 
 ** CK: Razonamiento Top-down
-#+REVEAL_HTML: <div style="font-size: 80%;">
+#+REVEAL_HTML: <div style="font-size: 75%;">
 Negación por falla.
 
 $p \leftarrow q \wedge  \sim r$.
@@ -343,6 +346,8 @@ $r \leftarrow \sim t$.
 $s \leftarrow w$.
 
 $t$.
+
+$w$.
 
 #+ATTR_REVEAL: :frag (roll-in)
 ¿Qué devuelve /?p/?
