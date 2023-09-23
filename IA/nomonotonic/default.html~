@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="grids.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Lógica Default</h2><p class="date">Created: 2023-09-22 vie 11:59</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org3829092">Introducción</a></li>
+<li><a href="#/slide-org43f6fdb">Sintáxis de la Lógica Default</a></li>
+<li><a href="#/slide-org55bf4c2">Semántica</a></li>
+<li><a href="#/slide-orgf3a7fc8">Semántica Operacional</a></li>
+<li><a href="#/slide-orgf19a439">Lógica Default y Programación en Lógica</a></li>
+<li><a href="#/slide-org2752566">Creencias del Agente</a></li>
+<li><a href="#/slide-org84332ac">Bibliografía</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org3829092">
+<h2 id="org3829092">Introducción</h2>
+<div class="outline-text-2" id="text-org3829092">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd815f51">
+<h3 id="orgd815f51">Lógica Default de Reiter</h3>
+
+<div id="orgbeae9c6" class="figure">
+<p><img src="imagenes/reiter4b.jpg" alt="reiter4b.jpg" height="300" />
+</p>
+</div>
+
+<p>
+Ray Reiter(1939 - 2002)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org71d030a">
+<h3 id="org71d030a">Lógica Default</h3>
+<p>
+Insistimos en  <i><font color=red>construir</font></i>
+</p>
+
+<p>
+un sitio para <i><font color=red>Tweety</font></i>
+</p>
+
+<p>
+que es un <i><font color=red>AVE</font></i> :)
+</p>
+
+<p>
+<font color="limegreen">Pero necesitamos saber si Tweety vuela</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org313461e">
+<h3 id="org313461e">Lógica Default</h3>
+<p>
+Podríamos decir que:
+</p>
+
+<p>
+<font color="limegreen">Si Tweety es un ave y es</font> <font color=red>consistente</font> <font color="limegreen">asumir que vuela entonces podemos concluir que Tweety vuela.</font>
+</p>
+
+<p class="fragment (roll-in)">
+¿Cómo escribimos esta frase?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org474f719">
+<h3 id="org474f719">Lógica Default</h3>
+<p>
+<font color="limegreen">Si Tweety es un ave y es</font> <font color=red>consistente</font> <font color="limegreen">asumir que vuela entonces podemos concluir que Tweety vuela.</font>
+</p>
+
+<p>
+\[\frac{ave(tweety): vuela(tweety)}{vuela(tweety)}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd033f07">
+<h3 id="orgd033f07">Repaso</h3>
+<p>
+<font color="blue">¿Qué es un RRS?</font>
+</p>
+
+<p>
+<font color="blue">¿Qué elementos se distinguen en un RRS?</font>
+</p>
+
+<ul>
+<li class="fragment roll-in">Sintáxis: Lenguaje</li>
+<li class="fragment roll-in">Semántica</li>
+<li class="fragment roll-in">Teoría de Prueba</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org43f6fdb">
+<h2 id="org43f6fdb">Sintáxis de la Lógica Default</h2>
+<div class="outline-text-2" id="text-org43f6fdb">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org530573d">
+<h3 id="org530573d">Lenguaje de la Lógica Default</h3>
+<p>
+<b><font color="green">Teoría Default (Ray Reiter)</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Una <font color="red">Teoría Default</font> \(T\) es un par \((W,D)\) consistente de un
+conjunto \(W\) de fórmulas de la lógica de predicado, llamadas
+<font color="red">hechos o axiomas</font>  de \(T\) y un conjunto contable de \(D\) de
+<font color="red">defaults</font>.
+</p>
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Teoría Default</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Un <font color="red">default</font> \(\delta\) tiene la forma
+\[\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\]
+donde \(\alpha, \psi_1,\psi_2,\ldots,\psi_n,\chi\) son fórmulas cerradas  de la lógica de predicado y \(n>0\). 
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge2ce8e4">
+<h3 id="orge2ce8e4">Lenguaje de la Lógica Default</h3>
+<p>
+\[\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\]
+</p>
+
+<p>
+\(\alpha\) se llama <font color="red">prerequisito</font>
+</p>
+
+<p>
+\(\psi_1,\psi_2\ldots \psi_n\) se llaman las <font color="red">justificaciones</font>
+</p>
+
+<p>
+\(\chi\) es la <font color="red">conclusión</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga3b3719">
+<h3 id="orga3b3719">Ejemplo con Tweety</h3>
+<p>
+Sea la teoría default \(T=(W,D)\) donde 
+</p>
+<div style="font-size: 80%;">
+<p>
+\[W=\{ave(tweety); ñandú(tweety) \rightarrow \neg vuela(tweety)\}\]
+\[D=\left\{\frac{ave(tweety): vuela(tweety)}{vuela(tweety)}\right\}\]
+</p>
+
+<div style="font-size: 120%;">
+<p class="fragment (roll-in)">
+¿Es posible aplicar la regla default?
+</p>
+<p class="fragment (roll-in)">
+Recordemos que:
+</p>
+<p class="fragment (roll-in)">
+<font color="limegreen">Si Tweety es un ave y es consistente asumir que vuela entonces podemos concluir que Tweety vuela.</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org18a2962">
+<h3 id="org18a2962">Ejemplo 2 con Tweety</h3>
+<p>
+Sea la teoría default \(T=(W,D)\) donde 
+</p>
+<div style="font-size: 70%;">
+<p>
+\[W=\{ave(tweety)\}\]
+\[D=\left\{\frac{ave(tweety): vuela(tweety)}{vuela(tweety)}; \frac{ñandú(tweety): \neg vuela(tweety)}{\neg vuela(tweety)}\right\}\]
+</p>
+
+<div style="font-size: 120%;">
+<p class="fragment (roll-in)">
+¿Es posible aplicar las reglas defaults? ¿Cuál?
+</p>
+<p class="fragment (roll-in)">
+Recordemos que:
+</p>
+<p class="fragment (roll-in)">
+<font color="limegreen">Si Tweety es un ave y es consistente asumir que vuela entonces podemos concluir que Tweety vuela.</font>
+</p>
+<p class="fragment (roll-in)">
+<font color="cyan">Si Tweety es un ñandú y es consistente asumir que no vuela entonces podemos concluir que Tweety no vuela.</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge59c142">
+<h3 id="orge59c142">Ejemplo 2 con Tweety</h3>
+<p>
+Agreguemos nueva información:
+</p>
+<div style="font-size: 70%;">
+<p>
+\[W=\{ave(tweety);ñandú(tweety)\}\]
+\[D=\left\{\frac{ave(tweety): vuela(tweety)}{vuela(tweety)}; \frac{ñandú(tweety): \neg vuela(tweety)}{\neg vuela(tweety)}\right\}\]
+</p>
+
+<div style="font-size: 120%;">
+<p class="fragment (roll-in)">
+¿Es posible aplicar las reglas defaults? ¿Cuál?
+</p>
+<p class="fragment (roll-in)">
+Recordemos que:
+</p>
+<p class="fragment (roll-in)">
+<font color="limegreen">Si Tweety es un ave y es consistente asumir que vuela entonces podemos concluir que Tweety vuela.</font>
+</p>
+<p class="fragment (roll-in)">
+<font color="cyan">Si Tweety es un ñandú y es consistente asumir que no vuela entonces podemos concluir que Tweety no vuela.</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org55bf4c2">
+<h2 id="org55bf4c2">Semántica</h2>
+<div class="outline-text-2" id="text-org55bf4c2">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org84046a4">
+<h3 id="org84046a4">Análisis Informal</h3>
+<p>
+\[\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\]
+<b><font color="green">Significado informal</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Si \(\alpha\) es conocido y es consistente asumir \(\psi_1,\psi_2\ldots \psi_n\), luego concluya \(\chi\).
+</p>
+
+<div style="font-size: 120%;">
+<ul>
+<li class="fragment roll-in">En este punto nos preguntaremos:
+<ul>
+<li>Es conocido dónde?</li>
+<li>¿Con qué elementos decidimos si es consistente asumir las justificaciones?</li>
+
+</ul></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org685228c">
+<h3 id="org685228c">Análisis Informal</h3>
+<p>
+\[\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\]
+</p>
+
+<p>
+<b><font color="green">Significado informal</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Si \(\alpha\) es conocido actualmente y es consistente asumir
+\(\psi_1,\psi_2\ldots \psi_n\) con el conocimiento actual, luego
+concluya \(\chi\). La base de conocimiento actual \(E\) se obtiene a partir
+de los hechos y de las consecuencias de las reglas defaults aplicadas
+previamente.
+</p>
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Significado formal</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\) es aplicable sobre un
+conjunto cerrado de fórmulas \(E\) si y solamente si \(\alpha \in E\) y
+\(\neg \psi_1\not\in E,\neg \psi_2\not\in E \ldots \neg \psi_n\not\in
+E\).
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaea0e51">
+<h3 id="orgaea0e51">Semántica</h3>
+<div style="font-size: 80%;">
+<p>
+¿En qué cree un Agente cuya representación de conocimiento es \((W,D)\) y razonamiento es el de la Lógica Default?
+</p>
+
+<p>
+Pensemos&#x2026;&#x2026;
+</p>
+
+<ul>
+<li class="fragment roll-in">Deseamos creer en los hechos que estén en \(W\), ya que \(W\) contiene
+toda la información certera. ¿Sólo en \(W\)?</li>
+<li class="fragment roll-in">Deseamos creer en todo aquello que podamos deducir del conocimiento
+actual (cerrada deductivamente).</li>
+<li class="fragment roll-in">Deseamos creer en todas las consecuencias de todas las reglas que
+podamos aplicar.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org91b37cf">
+<h3 id="org91b37cf">Semántica</h3>
+<div style="font-size: 90%;">
+<p>
+¿En qué cree un Agente cuya representación de conocimiento y
+razonamiento es el de la Lógica Default?
+</p>
+
+<p>
+<b><font color="green">Extensión</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Sea \(F\) un conjunto de fórmulas cerradas y \((W,D)\) una teoría default,
+entonces \(\Gamma(F)\) es el conjunto más pequeño tal que:
+</p>
+
+<ul>
+<li>\(W\subseteq \Gamma(F)\)</li>
+<li>\(Th(\Gamma(F))=\Gamma(F)\); $&Gamma; $ es cerrado bajo consecuencia lógica</li>
+<li>Si \(\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\in D\) y \(\alpha \in \Gamma(F)\) y \(\neg \psi_1,\neg\psi_2,\ldots, \neg \psi_n\not\in F\) entonces \(\chi\in \Gamma(F)\).</li>
+
+</ul>
+<p>
+Un conjunto \(E\) es una <font color=red>extensión</font> de una teoría default
+\((W,D)\) si y solamente si \(\Gamma(E)=E\). Es decir \(E\) es el punto fijo
+del operador \(\Gamma\).
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf3a7fc8">
+<h2 id="orgf3a7fc8">Semántica Operacional</h2>
+<div class="outline-text-2" id="text-orgf3a7fc8">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org8039844">
+<h3 id="org8039844">\(\Pi\)</h3>
+<p>
+Sea \(\Pi =(d0,d1...)\) una secuencia finita o infinita de
+defaults de D sin ocurrencias múltiples.
+</p>
+
+<ul>
+<li class="fragment roll-in">Podemos pensar en \(\Pi\) como en un <font color=red>posible orden de aplicación</font> de los defaults de D.</li>
+<li class="fragment roll-in"><font color=red>No</font> deseamos aplicar un default <font color=red>más de una vez</font>.</li>
+<li class="fragment roll-in">\(\Pi[k]\) es el segmento inicial de \(\Pi\) de longitud \(k\).</li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org9815e6d">
+<h3 id="org9815e6d">IN y OUT</h3>
+<p>
+<b><font color="green">Base de Conocimiento Actual</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\[In(\Pi)\ = \ Th(M)\]siendo \(M= W \cup \{cons(d)| d \mbox{ ocurre en } \Pi\}\).
+</p>
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Fórmulas que NO deberían ser true</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\[Out(\Pi) = \{\neg b| b\in just(d) \mbox{ para algún } d \mbox{ en } \Pi\}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org8d2aa16">
+<h3 id="org8d2aa16">IN y OUT</h3>
+<div style="font-size: 60%;">
+<p>
+Sea la teoría default \(T=(W,D)\) donde \[W=\{ave(tweety),ñandú(tweety)\}\] \[D=\left\{d1=\frac{ave(tweety):
+vuela(tweety)}{vuela(tweety)}; d2=\frac{ñandú(tweety): \neg
+vuela(tweety)}{\neg vuela(tweety)}\right\}\]
+</p>
+
+<div style="font-size: 140%;">
+<ul>
+<li class="fragment roll-in">¿In(d1)? ¿Out(d1)?</li>
+<li class="fragment roll-in">¿In(d2)? ¿Out(d2)?</li>
+<li class="fragment roll-in">¿In(d1d2)? ¿Out(d1d2)?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1c495d9">
+<h3 id="org1c495d9">IN y OUT</h3>
+<div style="font-size: 60%;">
+<p>
+Sea la teoría default \(T=(W,D)\) donde \[W=\{ave(tweety),ñandú(tweety)\}\] \[D=\left\{d1=\frac{ave(tweety):
+vuela(tweety)}{vuela(tweety)}; d2=\frac{ñandú(tweety): \neg
+vuela(tweety)}{\neg vuela(tweety)}\right\}\]
+</p>
+
+<div style="font-size: 120%;">
+<ul>
+<li class="fragment roll-in">In(d1)= Th(ave(tweety), ñandú(tweety), vuela(tweety))
+Out(d1)={&not; vuela(tweety)}</li>
+
+<li class="fragment roll-in">In(d2)= Th(ave(tweety), ñandú(tweety), \(\neg\) vuela(tweety))
+Out(d2)=\(\{\) vuela(tweety)\(\}\)</li>
+
+<li class="fragment roll-in">In(d1d2)= Th(ave(tweety), ñandú(tweety),  vuela(tweety), &not; vuela(tweety))
+Out(d1d2)= {&not; vuela(tweety), vuela(tweety)}</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdc18477">
+<h3 id="orgdc18477">IN y OUT</h3>
+<p>
+<b><font color="green">In</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+<font color=red>Base de Conocimiento Actual</font>
+</p>
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Out</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+<font color=red>Fórmulas que NO deberían ser true</font>
+</p>
+
+<ul>
+<li class="fragment roll-in">In(d1)= Th(ave(tweety), ñandú(tweety), vuela(tweety))
+Out(d1)={&not; vuela(tweety)}</li>
+
+<li class="fragment roll-in">In(d2)= Th(ave(tweety), ñandú(tweety), \(\neg\) vuela(tweety))
+Out(d2)=\(\{\) vuela(tweety)\(\}\)</li>
+
+<li class="fragment roll-in">In(d1d2)= Th(ave(tweety), ñandú(tweety),  vuela(tweety), &not; vuela(tweety))
+Out(d1d2)= {&not; vuela(tweety), vuela(tweety)}</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org80c74f4">
+<h3 id="org80c74f4">Proceso</h3>
+<p>
+<b><font color="green">Definición</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(\Pi\) es un <font color=red>proceso</font> de \(T\) si y solamente si \(d_k\) es
+aplicable a \(In(\Pi[k])\), para cada \(k\), tal que \(d_k\) ocurre en
+\(\Pi\).
+</p>
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Definición</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Una regla default \[d=\frac{\alpha:\beta}{\chi}\] es
+<font color=red>aplicable</font> a \(In(\Pi)\) si y solamente si \(\alpha \in
+In(\Pi)\) y \(\neg \beta\not\in In(\Pi)\).
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org34b7ce9">
+<h3 id="org34b7ce9">Proceso Exitoso y Cerrado</h3>
+<p>
+<b><font color="green">Exitoso</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(\Pi\) es un <font color=red>proceso exitoso</font> de \(T\) si y solamente si
+\(In(\Pi)\cap Out(\Pi) = \varnothing\). De otro modo, es
+<font color=red>fallido</font>.
+</p>
+
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Cerrado</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(\Pi\) es un <font color=red>proceso cerrado</font> de \(T\) si y solamente si cada
+\(d\in D\) que es aplicable a \(In(\Pi)\) ya ocurre en \(\Pi\).
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdf14472">
+<h3 id="orgdf14472">Proceso Exitoso y Cerrado</h3>
+<p>
+<font color="magenta">Exitoso:</font> \(In(\Pi)\cap Out(\Pi) = \varnothing\).
+</p>
+
+<p>
+<font color="magenta">Cerrado:</font> se han aplicado todos los defaults que podían ser aplicados.
+</p>
+
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in">In(d1)= Th(ave(tweety), ñandú(tweety), vuela(tweety))
+Out(d1)={&not; vuela(tweety)}</li>
+
+<li class="fragment roll-in">In(d2)= Th(ave(tweety), ñandú(tweety), \(\neg\) vuela(tweety))
+Out(d2)=\(\{\) vuela(tweety)\(\}\)</li>
+
+<li class="fragment roll-in">In(d1d2)= Th(ave(tweety), ñandú(tweety),  vuela(tweety), &not; vuela(tweety))
+Out(d1d2)= {&not; vuela(tweety), vuela(tweety)}</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org562186c">
+<h3 id="org562186c">Extensión</h3>
+<p>
+Un conjunto de fórmulas E es una <font color=red>extensión</font>
+de una teoría default \(T\) si y solamente si
+existe algún proceso \(\Pi\) de \(T\) <font color=red>cerrado y exitoso</font> tal que \[E=In(\Pi).\]   
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0375b40">
+<h3 id="org0375b40">Árbol de Proceso</h3>
+<p>
+<b><font color="green">Sea T=(W;D) una teoría:</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li><font color="cyan">Nodos del árbol:</font> están etiquetados con dos conjuntos de fórmulas:
+<ul>
+<li><font color="blue">IN:</font> izquierda del nodo.</li>
+<li><font color="blue">OUT:</font> derecha del nodo.</li>
+
+</ul></li>
+<li><font color="cyan">Arcos del árbol:</font> corresponden a aplicaciones de
+defaults y están etiquetados con el default aplicado.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org2155883">
+<h3 id="org2155883">Árbol de Proceso</h3>
+<p>
+<b><font color="green">Raíz</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+La etiquetamos con
+</p>
+<ul>
+<li><font color="blue">IN=</font> \(Th(W)\).</li>
+<li><font color="blue">OUT=</font> \(\varnothing\).</li>
+
+</ul>
+
+<div style="font-size: 130%;">
+<ul>
+<li class="fragment roll-in"><p>
+Un nodo es expandido si \(IN\cap OUT=\varnothing\)
+</p>
+<div style="font-size: 70%;">
+<p>
+De otro modo es marcado como <font color="blue">fallido</font>
+</p>
+<div style="font-size: 130%;"></li>
+<li class="fragment roll-in"><p>
+<b><font color="green">Extensión</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Si \(N\) no puede ser expandido porque no existen más defaults
+aplicables y es exitoso, entonces encontramos una extensión.
+</p></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3a3b621">
+<h3 id="org3a3b621">IN y OUT</h3>
+<p>
+Sea la teoría default \(T=(W,D)\) donde
+\[W=\{cu\acute{a}quero(nixon), republicano(nixon)\}\]
+\[D=\left\{\begin{array}{c} d1=\frac{republicano(nixon): \sim
+pacifista(nixon)}{\sim
+pacifista(nixon)};\\ d2=\frac{cu\acute{a}quero(nixon):
+pacifista(nixon)}{pacifista(nixon)}\end{array}\right\}\]
+</p>
+
+<p>
+Construir el árbol de proceso.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org3b4be75">
+<h3 id="org3b4be75">Árbol de Proceso</h3>
+<div style="font-size: 70%;">
+<p>
+Sea la teoría default \(T=(W,D)\) donde
+\[W=\{cu\acute{a}quero(nixon), republicano(nixon)\}\]
+\[D=\left\{\begin{array}{c} d1=\frac{republicano(nixon): \sim
+pacifista(nixon)}{\sim
+pacifista(nixon)};\\ d2=\frac{cu\acute{a}quero(nixon):
+pacifista(nixon)}{pacifista(nixon)}\end{array}\right\}\]
+</p>
+
+
+<div id="org8846845" class="figure">
+<p><img src="imagenes/Ejemplo1.JPG" alt="Ejemplo1.JPG" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3f6f531">
+<h3 id="org3f6f531">IN y OUT</h3>
+<p>
+Sea la teoría default \(T=(W,D)\) donde 
+\[W=\{\ \}\]
+\[D=\left\{\begin{array}{c}
+d1=\frac{true: p}{\sim q};\\ d2=\frac{true:q}{r}\end{array}\right\}\]
+</p>
+
+<p>
+Construir el árbol de proceso.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org817bb6e">
+<h3 id="org817bb6e">Árbol de Proceso</h3>
+<div style="font-size: 70%;">
+<p>
+Sea la teoría default \(T=(W,D)\) donde 
+\[W=\{\ \}\]
+\[D=\left\{\begin{array}{c}
+d1=\frac{true: p}{\sim q};\\ d2=\frac{true:q}{r}\end{array}\right\}\]
+</p>
+
+
+<div id="orge80984e" class="figure">
+<p><img src="imagenes/Ejemplo2.JPG" alt="Ejemplo2.JPG" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd4537a2">
+<h3 id="orgd4537a2">Razonamiento por casos</h3>
+<div style="font-size: 70%;">
+<p>
+Sea la teoría default \(T=(W,D)\) donde
+</p>
+
+<p>
+\[W=\{italiano \vee franc\acute{e}s\}\]
+</p>
+
+<p>
+\[D=\left\{d1=\frac{italiano: gusta\_vino}{gusta\_vino};
+\ \ \  d2=\frac{franc\acute{e}s:gusta\_vino}{gusta\_vino}\right\}\]
+</p>
+
+
+<ul>
+<li class="fragment roll-in">Intuitivamente, <font color="blue">¿debería ser gusta_vino una conclusión válida?</font></li>
+<li class="fragment roll-in"><font color="blue">¿Es posible concluir gusta_vino?</font></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd8ce384">
+<h3 id="orgd8ce384">Hechos Vs. Defaults</h3>
+<p>
+<font color="blue">Ejemplo 1:</font>
+</p>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">\(W=\{a,b\}\)</td>
+<td class="org-left">\(In(\varnothing)= Th(\{a,b\})\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(D=\left\{d1=\frac{b: \sim a}{c}\right\}\)</td>
+<td class="org-left">\(Out(\varnothing)=\varnothing\)</td>
+</tr>
+</tbody>
+</table>
+
+<div style="font-size: 130%;">
+<p>
+<font color="blue">Ejemplo 2:</font>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(W=\{b\}\)                                                          
+\(D=\left\{d1=\frac{b: \sim a}{c};d2=\frac{true: true}{a}\right\}\)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" class="fragment (roll-in)">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">\(In([d2])= Th(\{a,b\})\)</td>
+<td class="org-left">\(In([d1d2])= Th(a,b,c\})\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(Out([d2])=\varnothing\)</td>
+<td class="org-left">\(Out([d1d2])=\{a, false\}\)</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf19a439">
+<h2 id="orgf19a439">Lógica Default y Programación en Lógica</h2>
+<div class="outline-text-2" id="text-orgf19a439">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc7e3b2d">
+<h3 id="orgc7e3b2d">Negación por Falla Vs. Reglas Defaults</h3>
+<p>
+<b><font color="green">Negación por Falla</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+<font color="blue">Suposición de Mundo Cerrado</font> (CWA).
+</p>
+<div style="font-size: 130%;">
+<p>
+<b><font color="green">Reglas Default</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Se asume consistente suponer la <font color="blue">justificación</font> de la regla.
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge7cc38f">
+<h3 id="orge7cc38f">Relación entre PL y LD</h3>
+<div style="font-size: 80%;">
+<p>
+<b><font color="green">La regla</font>  \({\color{green}{R= A\leftarrow B_1\wedge \ldots\wedge B_n\wedge not\ C_1\wedge\ldots\wedge not\ C_k}}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Se corresponde con la regla default:
+</p>
+
+<p>
+\[{\color{blue}{df(R)=\frac{B_1\wedge \ldots\wedge B_n: \sim C_1, \ldots, \sim C_k}{A}}}\]
+</p>
+
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">La regla</font> \({\color{green}{R= A\leftarrow B_1\wedge \ldots\wedge B_n}}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Se corresponde con la regla default:<br />
+</p>
+
+<p>
+\[{\color{blue}{df(R)=\frac{B_1\wedge \ldots\wedge B_n: true}{A}}}\]
+</p>
+<div style="font-size: 140%;">
+<p>
+<b><font color="green">La regla</font> \({\color{green}{R= A\leftarrow true}}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Se corresponde con la regla default:<br />
+</p>
+
+<p>
+\[{\color{blue}{df(R)=\frac{true: true}{A}}}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org2752566">
+<h2 id="org2752566">Creencias del Agente</h2>
+<div class="outline-text-2" id="text-org2752566">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org15b4bb4">
+<h3 id="org15b4bb4">¿En qué cree un agente?</h3>
+<div style="font-size: 80%;">
+<p>
+Bibliografía: Cuadro del libro de Poole, versión 1998, Pág. 331.
+</p>
+
+<ul>
+<li class="fragment roll-in"><b>Propuesta 1:</b> <font color=red>Creencias Arriesgadas o Crédulas.</font> Existe algún argumento a favor; es decir está en alguna extensión.</li>
+<li class="fragment roll-in"><b>Propuesta 2:</b> <font color=red>Creencias Cautas o Excépticas.</font> No tienen argumentos en contra; es decir está en todas las extensiones.</li>
+<li class="fragment roll-in"><b>Propuesta 3:</b> <font color=red>El camino no está minado.</font> \(g\) es consecuencia si existe un argumento a favor \(D=\{d_1,\ldots ,d_n\}\) y ningún \(\neg d_i\) puede ser explicado.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga8db9e6">
+<h3 id="orga8db9e6">columns</h3>
+<p>
+hola   
+</p>
+
+<div class="column" style="float:left; width:30%">
+<ul>
+<li>My notes based on my partial understanding</li>
+
+</ul>
+</div>
+<div class="column" style="float:right; width:30%">
+<ul>
+<li>My notes based on my partial understanding</li>
+
+</ul>
+</div>
+<div class="column" style="float:right; width:30%">
+<ul>
+<li>Joined late in the project</li>
+
+</ul>
+</div>
+<div style="font-size: 70%;">
+<p>
+hola
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org14237a9">
+<h3 id="org14237a9">otras columnas</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<p>
+The first column's information goes here.
+</p>
+</div>
+<div class="one_of_2_columns">
+<p>
+The first column's information goes here.
+</p>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org8405b71">
+<h3 id="org8405b71">otras filas</h3>
+<div class="gridded_frame_with_rows">
+<div class="one_of_2_rows">
+<p>
+The first row's information goes here.
+</p>
+</div>
+<div class="one_of_2_rows">
+<p>
+The second row's information goes here.
+</p>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org0272ad5">
+<h3 id="org0272ad5">tres columnas</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_3_columns">
+<p>
+The first column's information goes here.
+</p>
+</div>
+<div class="one_of_3_columns">
+<p>
+The second column's information goes here.
+</p>
+</div>
+<div class="one_of_3_columns">
+<p>
+The third column's information goes here.
+</p>
+</div>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org84332ac">
+<h2 id="org84332ac">Bibliografía</h2>
+<div class="outline-text-2" id="text-org84332ac">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org070742c">
+<h3 id="org070742c">Referencia Bibliográfica</h3>
+<div style="font-size: 80%;">
+
+<ul>
+<li><img src="imagenes/book.png" alt="book.png" /> G. Antoniou
+Nonmonotonic Reasoning.
+Parte II: Default Logic. Capítulos 3,4(hasta sección 4.5 - sin incluir)
+<ol>
+<li></li>
+
+</ol></li>
+
+<li><img src="imagenes/book.png" alt="book.png" />  D. Poole, A. Mackworth y R. Goebel
+Computational Intelligence: A Logical Approach.
+Capítulo 9
+1998</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

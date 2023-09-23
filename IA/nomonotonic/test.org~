@@ -1,0 +1,150 @@
++TITLE: Test for gridding
+
+# <Where the reveal.js project
+# (https://github.com/hakimel/reveal.js.git) is cloned/copied to>
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+
+#+REVEAL_INIT_OPTIONS: transition:'none', margin: 0.1
+
+#+REVEAL_HLEVEL: 1
+
+#+REVEAL_EXTRA_CSS: grids.css
+
+* Columns
+** Title and 2 content columns
+   #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+    #+REVEAL_HTML: <div class="one_of_2_columns">
+     A left list
+     - [ ] First
+v     - [X] Second
+     - [ ] Third
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="one_of_2_columns">
+     file:./tallPicture.png
+    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
+** Title and 3 content columns
+   #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+    #+REVEAL_HTML: <div class="one_of_3_columns">
+     First names
+     - Sextus
+     - Gaius
+     - Gnaeus
+     - Lucius
+     - Quintus
+     - Publius
+     - Appius
+     - Mamercus
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="one_of_3_columns">
+     Family Names
+     - Patrician
+       + Julius
+       + Claudius
+       + Cornelius
+     - Plebian
+       + Marius
+       + Tullius
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="one_of_3_columns">
+     Nicknames
+     - Caesar -- "Hairy"
+     - Calvus -- "Bald"
+     - Pictor -- "Painter"
+     - Africanus -- "of Africa"
+     - Nero -- "Strong"
+     - Paetus -- "Squinty"
+     - Paullus -- "Small"
+     - Scaeva -- "left-handed"
+     - Caecus -- "Blind"
+    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
+** Title and 2 content columns, left column being 2 blocks
+   #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+    #+REVEAL_HTML: <div class="one_of_2_columns column_with_rows">
+     #+REVEAL_HTML: <div class="one_of_2_rows">
+      Information
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_rows">
+      Information
+     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="one_of_2_columns">
+     file:./tallPicture.png
+    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
+* Rows
+** Title and 2 content rows
+   #+REVEAL_HTML: <div class="gridded_frame_with_rows">
+    #+REVEAL_HTML: <div class="one_of_2_rows">
+     Information
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="one_of_2_rows">
+     file:widePicture.png
+    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
+** Title and 2 content rows, lower row being 2 blocks
+   #+REVEAL_HTML: <div class="gridded_frame_with_rows">
+    #+REVEAL_HTML: <div class="one_of_2_rows">
+     file:widePicture.png
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="row_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+      A left list
+      - [ ] First
+      - [X] Second
+      - [ ] Third
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+      A right list
+      - [ ] First
+      - [X] Second
+      - [ ] Third
+     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
+* Grids
+** Title and 2x2 content blocks - 2 outer rows
+   #+REVEAL_HTML: <div class="gridded_frame_with_rows">
+    #+REVEAL_HTML: <div class="row_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+      This is the first column in the first row.
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+      This is the second column in the first row.
+     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="row_with_columns">
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+      This is the first column in the second row.
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_2_columns">
+      This is the second column in the second row.
+     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
+** Title and 2 rows of 3 blocks
+   #+REVEAL_HTML: <div class="gridded_frame_with_rows">
+    #+REVEAL_HTML: <div class="row_with_columns">
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+      This is the first column in the first row.
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+      This is the second column in the first row.
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+      This is the third column in the first row.
+     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="row_with_columns">
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+      This is the first column in the second row.
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+      This is the second column in the second row.
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: <div class="one_of_3_columns">
+      This is the third column in the second row.
+     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Razonamiento No monotonico</h2><p class="date">Created: 2023-09-20 mié 22:11</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org057657f">Motivación</a></li>
+<li><a href="#/slide-orgce5a93d">Lógica Clásica vs. No Monotónicas</a></li>
+<li><a href="#/slide-org75cdabf">Ejemplos de Razonamiento No Monotónico</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org057657f">
+<h2 id="org057657f">Motivación</h2>
+<div class="outline-text-2" id="text-org057657f">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org5c43589">
+<h3 id="org5c43589">Razonamiento No Monotónico</h3>
+<div style="font-size: 180%;">
+<p>
+Deseamos <font color=red>construir</font> un sitio para <font color=red>Tweety</font> que es un <font color=red>AVE</font>
+</p>
+
+
+<p>
+<font color="cyan">¿Cómo debemos construirla?</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org6e3569b">
+<h3 id="org6e3569b">Razonamiento No Monotónico</h3>
+<div style="font-size: 150%;">
+<p>
+<font color="blue">¿Cuál elegimos?</font>
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="imagenes/jaula.jpg" alt="jaula.jpg" /></td>
+<td class="org-left"><img src="imagenes/corral.jpg" alt="corral.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org9fc56a7">
+<h3 id="org9fc56a7">Razonamiento No Monotónico</h3>
+<div style="font-size: 150%;">
+<p>
+<font color="blue">¿Tweety?</font>
+</p>
+
+
+<div id="org1868f01" class="figure">
+<p><img src="imagenes/tweety2.jpg" alt="tweety2.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2ad3468">
+<h3 id="org2ad3468">Razonamiento No Monotónico</h3>
+<div style="font-size: 150%;">
+<p>
+<font color="blue">¿Tweety?</font>
+</p>
+
+<div id="orgf857bb2" class="figure">
+<p><img src="imagenes/avestruz.jpg" alt="avestruz.jpg" height="400" />    
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge99fe55">
+<h3 id="orge99fe55">Razonamiento No Monotónico</h3>
+<div style="font-size: 150%;">
+<p>
+<font color="blue">¿Tweety?</font>
+</p>
+
+<div id="orge506a6c" class="figure">
+<p><img src="imagenes/pinguino.jpg" alt="pinguino.jpg" height="400" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4c933d5">
+<h3 id="org4c933d5">Razonamiento No Monotónico</h3>
+<div style="font-size: 90%;">
+
+<p>
+Debemos Representar:
+</p>
+
+<p>
+<font color="blue">Generalmente las aves</font> <font color=red>vuelan</font>
+</p>
+
+
+<p>
+\[ave(Tweety)\ |\!\!\!\sim\ vuela(Tweety)\]
+</p>
+
+
+<p>
+Ante nueva información: 
+</p>
+
+<p>
+Tweety es un avestruz, dejamos de deducir que Tweety vuela.
+</p>
+
+
+<p>
+\[ave(Tweety), avestruz(Tweety)\ \not{|\!\!\!\sim}\ vuela(Tweety)\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgce5a93d">
+<h2 id="orgce5a93d">Lógica Clásica vs. No Monotónicas</h2>
+<div class="outline-text-2" id="text-orgce5a93d">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgbcaef64">
+<h3 id="orgbcaef64">¿Y la Lógica Clásica?</h3>
+<div style="font-size: 70%;">
+<ul>
+<li>Ningún lenguaje puede expresar todo el conocimiento sobre el entorno:
+<ul>
+<li>Un conjunto de fórmulas es sólo una aproximación.</li>
+<li>Una regla general está sujeta a una serie (infinita) de restricciones no codificables.</li>
+
+</ul></li>
+<li>Problema importante: Las reglas de inferencia son adecuadas.
+<ul>
+<li>teoremas son válidos en todos los modelos de la base de conocimiento (no descartan modelos no deseados; no refinan).</li>
+<li>Las reglas de inferencia sólo hacen explícito conocimiento que estaba implícito en la base de conocimiento.</li>
+
+</ul></li>
+<li>la LC sólo utiliza hechos eternamente verdaderos o eternamente falsos, pero ¿Cómo tratar la incertidumbre o la revisión?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org93856c4">
+<h3 id="org93856c4">¿Y la Lógica Clásica?</h3>
+<ul>
+<li>¿Por qué la Lógica Clásica no es suficiente?</li>
+
+</ul>
+<div style="font-size: 90%;">
+<ul>
+<li class="fragment roll-in"><font color="green">La Lógica Clásica es monotónica y por lo tanto es:</font>
+<ul>
+<li><font color="blue">Muy Débil:</font> no nos permite derivar lo que intuimos.</li>
+<li><font color="blue">Muy Fuerte:</font> deriva todo el lenguaje frente a inconsistencias.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb535c46">
+<h3 id="orgb535c46">¿Y la Lógica Clásica?</h3>
+<div style="font-size: 120%;">
+<p>
+La <font color=red>Lógica Clásica</font>  no permite formalizar cierto <font color=red>conocimiento de</font>
+<font color=red>sentido común</font> y manejar <font color=red>inconsistencias</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org37cfa9c">
+<h3 id="org37cfa9c">Lógica Clásica Muy Débil: Ejemplo 1</h3>
+<p>
+Leemos una tabla completa de horarios de colectivos para viajar de Nqn. a Buenos Aires de una empresa A.<br />
+</p>
+
+<div style="font-size: 80%;">
+<p>
+\(cole\_desde\_hasta\_a(nqn,ba,22:30)\)
+</p>
+
+<p>
+\(cole\_desde\_hasta\_a(nqn,ba,17:30)\)
+</p>
+
+<p>
+\(cole\_desde\_hasta\_a(nqn,ba,13:00)\)
+</p>
+
+<p>
+\(cole\_desde\_hasta\_a(nqn,ba,10:25)\)
+</p>
+
+<p>
+\(cole\_desde\_hasta\_a(nqn,ba,7:10)\)
+</p>
+
+<div style="font-size: 120%;">
+<p>
+¿Hay un colectivo que vaya de Nqn. a Bs.As. a las  15:30?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7de833f">
+<h3 id="org7de833f">Lógica Clásica Muy Débil: Ejemplo 1</h3>
+<p>
+¿Hay un colectivo que vaya de Nqn. a Bs.As. a las  15:30?<br />
+</p>
+
+<p>
+La respuesta es: NO
+</p>
+
+
+<p>
+Sin embargo, con la Lógica Clásica no es posible derivar \[\neg cole\_desde\_hasta\_a(nqn,ba,15:30) \]
+</p>
+
+<p>
+<font color=red>Closed World Assumption</font>
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge7c33f1">
+<h3 id="orge7c33f1">Lógica Clásica Muy Débil: Ejemplo 2</h3>
+<p>
+Reglas con <font color=red>Excepciones</font> - Información <font color=red>Incompleta</font>
+</p>
+
+
+<p>
+¿Cuándo podemos decir que un AVE vuela?
+</p>
+
+<p>
+\[ave(X) \wedge \neg avestruz(X) \rightarrow vuela(X)\]
+</p>
+
+<p>
+<font color=red>¿Alcanza?</font>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0bfaf1d">
+<h3 id="org0bfaf1d">Lógica Clásica Muy Débil: Ejemplo 2</h3>
+<p>
+Reglas con <font color=red>Excepciones</font> - Información <font color=red>Incompleta</font>
+</p>
+
+<p>
+¿Cuándo podemos decir que un AVE vuela?
+</p>
+
+<div style="font-size: 80%;">
+<p>
+\[ave(X) \wedge \neg avestruz(X) \wedge \neg muerto(X)\wedge \neg ping\text{ü}ino(X)\wedge\] \[\neg rotas\_alas(X)\wedge \ldots    \rightarrow vuela(X)\]
+</p>
+
+<div style="font-size: 120%;">
+<p class="fragment (roll-in)">
+A menos que se tenga toda la información  no podremos derivar en la Lógica Clásica que Tweety vuela.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org37cce16">
+<h3 id="org37cce16">Lógica Clásica Muy Fuerte: Ejemplo</h3>
+<p>
+<font color=red>Principio Ex falso quodilibit:</font>
+</p>
+
+<p>
+<i><font color=red>De datos inconsistentes podemos derivar todo el lenguaje</font></i>
+</p>
+
+<p>
+Supongamos que tenemos una base de conocimiento con entradas inconsistentes, por ejemplo:
+</p>
+
+<p>
+tweety vuela
+</p>
+
+<p>
+tweety no vuela
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdbd674e">
+<h3 id="orgdbd674e">Lógica Clásica Muy Fuerte: Ejemplo</h3>
+<p>
+Desde estas entradas inconsistentes, podríamos concluir que Mickey Mouse es presidente de los EEUU y Minnie la primera dama
+</p>
+
+
+<div id="org2ef6c3f" class="figure">
+<p><img src="imagenes/mickey.jpg" alt="mickey.jpg" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org75cdabf">
+<h2 id="org75cdabf">Ejemplos de Razonamiento No Monotónico</h2>
+<div class="outline-text-2" id="text-org75cdabf">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org9cb3c3b">
+<h3 id="org9cb3c3b">Notación:</h3>
+<p>
+Utilizaremos la flecha de línea fina  para indicar conocimiento tentativo y la flecha de línea gruesa para el conocimiento certero.   
+</p>
+
+<p>
+Veamos algunos ejemplos &#x2026;.
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

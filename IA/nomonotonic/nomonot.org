@@ -1,0 +1,173 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:1 num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Razonamiento No monotonico
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Motivación
+
+** Razonamiento No Monotónico
+    #+REVEAL_HTML: <div style="font-size: 180%;">
+    Deseamos {{{alert(construir)}}} un sitio para {{{alert(Tweety)}}} que es un {{{alert(AVE)}}}
+
+    
+    {{{color(cyan,¿Cómo debemos construirla?)}}}
+
+** Razonamiento No Monotónico
+    #+REVEAL_HTML: <div style="font-size: 150%;">
+    {{{color(blue,¿Cuál elegimos?)}}}
+| [[file:imagenes/jaula.jpg]] | [[file:imagenes/corral.jpg]] |
+
+** Razonamiento No Monotónico
+    #+REVEAL_HTML: <div style="font-size: 150%;">
+    {{{color(blue,¿Tweety?)}}}
+
+    [[file:imagenes/tweety2.jpg]]
+
+** Razonamiento No Monotónico
+    #+REVEAL_HTML: <div style="font-size: 150%;">
+    {{{color(blue,¿Tweety?)}}}
+#+ATTR_HTML:  :height 400
+    [[file:imagenes/avestruz.jpg]]    
+
+** Razonamiento No Monotónico
+    #+REVEAL_HTML: <div style="font-size: 150%;">
+    {{{color(blue,¿Tweety?)}}}
+#+ATTR_HTML:  :height 400
+    [[file:imagenes/pinguino.jpg]]
+
+** Razonamiento No Monotónico
+    #+REVEAL_HTML: <div style="font-size: 90%;">
+
+    Debemos Representar:
+
+    {{{color(blue,Generalmente las aves)}}} {{{alert(vuelan)}}}
+
+    
+    \[ave(Tweety)\ |\!\!\!\sim\ vuela(Tweety)\]
+
+
+    Ante nueva información: 
+
+Tweety es un avestruz, dejamos de deducir que Tweety vuela.
+
+
+\[ave(Tweety), avestruz(Tweety)\ \not{|\!\!\!\sim}\ vuela(Tweety)\]
+
+* Lógica Clásica vs. No Monotónicas
+
+** ¿Y la Lógica Clásica?
+    #+REVEAL_HTML: <div style="font-size: 70%;">
+   - Ningún lenguaje puede expresar todo el conocimiento sobre el entorno:
+     - Un conjunto de fórmulas es sólo una aproximación.
+     - Una regla general está sujeta a una serie (infinita) de restricciones no codificables.
+   - Problema importante: Las reglas de inferencia son adecuadas.
+     - teoremas son válidos en todos los modelos de la base de conocimiento (no descartan modelos no deseados; no refinan).
+     - Las reglas de inferencia sólo hacen explícito conocimiento que estaba implícito en la base de conocimiento.
+   - la LC sólo utiliza hechos eternamente verdaderos o eternamente falsos, pero ¿Cómo tratar la incertidumbre o la revisión?
+
+** ¿Y la Lógica Clásica?
+
+- ¿Por qué la Lógica Clásica no es suficiente?
+#+REVEAL_HTML: <div style="font-size: 90%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- {{{color(green,La Lógica Clásica es monotónica y por lo tanto es:)}}}
+  - {{{color(blue,Muy Débil:)}}} no nos permite derivar lo que intuimos.
+  - {{{color(blue,Muy Fuerte:)}}} deriva todo el lenguaje frente a inconsistencias.
+
+** ¿Y la Lógica Clásica?
+
+#+REVEAL_HTML: <div style="font-size: 120%;">   
+La {{{alert(Lógica Clásica)}}}  no permite formalizar cierto {{{alert(conocimiento de)}}}
+{{{alert(sentido común)}}} y manejar {{{alert(inconsistencias)}}}.
+
+** Lógica Clásica Muy Débil: Ejemplo 1
+
+   Leemos una tabla completa de horarios de colectivos para viajar de Nqn. a Buenos Aires de una empresa A.\\
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+$cole\_desde\_hasta\_a(nqn,ba,22:30)$
+
+$cole\_desde\_hasta\_a(nqn,ba,17:30)$
+
+$cole\_desde\_hasta\_a(nqn,ba,13:00)$
+
+$cole\_desde\_hasta\_a(nqn,ba,10:25)$
+
+$cole\_desde\_hasta\_a(nqn,ba,7:10)$
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+¿Hay un colectivo que vaya de Nqn. a Bs.As. a las  15:30?
+
+** Lógica Clásica Muy Débil: Ejemplo 1
+
+¿Hay un colectivo que vaya de Nqn. a Bs.As. a las  15:30?\\
+
+La respuesta es: NO
+
+
+Sin embargo, con la Lógica Clásica no es posible derivar \[\neg cole\_desde\_hasta\_a(nqn,ba,15:30) \]
+
+{{{alert(Closed World Assumption)}}}
+
+   
+** Lógica Clásica Muy Débil: Ejemplo 2
+
+   Reglas con {{{alert(Excepciones)}}} - Información {{{alert(Incompleta)}}}
+
+
+¿Cuándo podemos decir que un AVE vuela?
+
+\[ave(X) \wedge \neg avestruz(X) \rightarrow vuela(X)\]
+
+{{{alert(¿Alcanza?)}}}
+
+** Lógica Clásica Muy Débil: Ejemplo 2
+
+   Reglas con {{{alert(Excepciones)}}} - Información {{{alert(Incompleta)}}}
+
+¿Cuándo podemos decir que un AVE vuela?
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+\[ave(X) \wedge \neg avestruz(X) \wedge \neg muerto(X)\wedge \neg ping\text{ü}ino(X)\wedge\] \[\neg rotas\_alas(X)\wedge \ldots    \rightarrow vuela(X)\]
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+#+ATTR_REVEAL: :frag (roll-in)
+A menos que se tenga toda la información  no podremos derivar en la Lógica Clásica que Tweety vuela.
+
+** Lógica Clásica Muy Fuerte: Ejemplo
+
+{{{alert(Principio Ex falso quodilibit:)}}}
+
+/{{{alert(De datos inconsistentes podemos derivar todo el lenguaje)}}}/
+
+Supongamos que tenemos una base de conocimiento con entradas inconsistentes, por ejemplo:
+
+tweety vuela
+
+tweety no vuela
+
+** Lógica Clásica Muy Fuerte: Ejemplo
+
+Desde estas entradas inconsistentes, podríamos concluir que Mickey Mouse es presidente de los EEUU y Minnie la primera dama
+
+[[file:imagenes/mickey.jpg]]
+
+* Ejemplos de Razonamiento No Monotónico
+
+  
+** Notación:
+
+Utilizaremos la flecha de línea fina  para indicar conocimiento tentativo y la flecha de línea gruesa para el conocimiento certero.   
+
+Veamos algunos ejemplos ....

@@ -1,0 +1,498 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:1 num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Lógica Default
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Introducción
+  
+** Lógica Default de Reiter
+
+#+ATTR_HTML:  :height 300 
+[[file:imagenes/reiter4b.jpg]]
+
+Ray Reiter(1939 - 2002)
+
+** Lógica Default
+
+Insistimos en  /{{{alert(construir)}}}/
+
+un sitio para /{{{alert(Tweety)}}}/
+
+que es un /{{{alert(AVE)}}}/ :)
+
+{{{color(limegreen,Pero necesitamos saber si Tweety vuela)}}}
+
+** Lógica Default
+
+Podríamos decir que:
+
+{{{color(limegreen,Si Tweety es un ave y es)}}} {{{alert(consistente)}}} {{{color(limegreen,asumir que vuela entonces podemos concluir que  Tweety vuela. )}}}
+
+#+ATTR_REVEAL: :frag (roll-in)
+¿Cómo escribimos esta frase?
+
+** Lógica Default
+
+{{{color(limegreen,Si Tweety es un ave y es)}}} {{{alert(consistente)}}} {{{color(limegreen,asumir que vuela entonces podemos concluir que  Tweety vuela. )}}}
+
+\[\frac{ave(tweety): vuela(tweety)}{vuela(tweety)}\]
+
+** Repaso
+
+{{{color(blue,¿Qué es un RRS?)}}}
+
+{{{color(blue,¿Qué elementos se distinguen en un RRS?)}}}
+
+#+ATTR_REVEAL: :frag (roll-in)
+- Sintáxis: Lenguaje 
+- Semántica
+- Teoría de Prueba
+
+* Sintáxis de la Lógica Default
+
+** Lenguaje de la Lógica Default
+*{{{color(green,Teoría Default (Ray Reiter))}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Una {{{color(red,Teoría Default)}}} $T$ es un par $(W,D)$ consistente de un
+conjunto $W$ de fórmulas de la lógica de predicado, llamadas
+{{{color(red,hechos o axiomas)}}}  de $T$ y un conjunto contable de $D$ de
+{{{color(red,defaults)}}}.
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Teoría Default)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Un {{{color(red,default)}}} $\delta$ tiene la forma
+\[\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\]
+donde $\alpha, \psi_1,\psi_2,\ldots,\psi_n,\chi$ son fórmulas cerradas  de la lógica de predicado y $n>0$. 
+   
+** Lenguaje de la Lógica Default
+
+   \[\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\]
+
+   $\alpha$ se llama {{{color(red,prerequisito)}}}
+
+   $\psi_1,\psi_2\ldots \psi_n$ se llaman las {{{color(red,justificaciones)}}}
+
+   $\chi$ es la {{{color(red,conclusión)}}}.
+
+** Ejemplo con Tweety
+
+   Sea la teoría default $T=(W,D)$ donde 
+#+REVEAL_HTML: <div style="font-size: 80%;">
+\[W=\{ave(tweety); ñandú(tweety) \rightarrow \neg vuela(tweety)\}\]
+\[D=\left\{\frac{ave(tweety): vuela(tweety)}{vuela(tweety)}\right\}\]
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+#+ATTR_REVEAL: :frag (roll-in)
+¿Es posible aplicar la regla default?
+#+ATTR_REVEAL: :frag (roll-in)
+Recordemos que:
+#+ATTR_REVEAL: :frag (roll-in)
+{{{color(limegreen,Si Tweety es un ave y es consistente asumir que vuela entonces podemos concluir que  Tweety vuela.)}}}
+
+** Ejemplo 2 con Tweety
+   Sea la teoría default $T=(W,D)$ donde 
+#+REVEAL_HTML: <div style="font-size: 70%;">
+\[W=\{ave(tweety)\}\]
+\[D=\left\{\frac{ave(tweety): vuela(tweety)}{vuela(tweety)}; \frac{ñandú(tweety): \neg vuela(tweety)}{\neg vuela(tweety)}\right\}\]
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+#+ATTR_REVEAL: :frag (roll-in)
+¿Es posible aplicar las reglas defaults? ¿Cuál?
+#+ATTR_REVEAL: :frag (roll-in)
+Recordemos que:
+#+ATTR_REVEAL: :frag (roll-in)
+{{{color(limegreen,Si Tweety es un ave y es consistente asumir que vuela entonces podemos concluir que  Tweety vuela.)}}}
+#+ATTR_REVEAL: :frag (roll-in)
+{{{color(cyan,Si Tweety es un ñandú y es consistente asumir que no vuela entonces podemos concluir que  Tweety no vuela.)}}}
+
+** Ejemplo 2 con Tweety
+Agreguemos nueva información:
+#+REVEAL_HTML: <div style="font-size: 70%;">
+\[W=\{ave(tweety);ñandú(tweety)\}\]
+\[D=\left\{\frac{ave(tweety): vuela(tweety)}{vuela(tweety)}; \frac{ñandú(tweety): \neg vuela(tweety)}{\neg vuela(tweety)}\right\}\]
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+#+ATTR_REVEAL: :frag (roll-in)
+¿Es posible aplicar las reglas defaults? ¿Cuál?
+#+ATTR_REVEAL: :frag (roll-in)
+Recordemos que:
+#+ATTR_REVEAL: :frag (roll-in)
+{{{color(limegreen,Si Tweety es un ave y es consistente asumir que vuela entonces podemos concluir que  Tweety vuela.)}}}
+#+ATTR_REVEAL: :frag (roll-in)
+{{{color(cyan,Si Tweety es un ñandú y es consistente asumir que no vuela entonces podemos concluir que  Tweety no vuela.)}}}
+
+* Semántica
+
+  
+** Análisis Informal
+
+   \[\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\]
+*{{{color(green,Significado informal)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Si $\alpha$ es conocido y es consistente asumir $\psi_1,\psi_2\ldots \psi_n$, luego concluya $\chi$.
+   
+#+REVEAL_HTML: <div style="font-size: 120%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- En este punto nos preguntaremos:
+    - Es conocido dónde?
+    - ¿Con qué elementos decidimos si es consistente asumir las justificaciones?
+
+
+
+** Análisis Informal
+   
+\[\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\]
+
+*{{{color(green,Significado informal)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Si $\alpha$ es conocido actualmente y es consistente asumir
+$\psi_1,\psi_2\ldots \psi_n$ con el conocimiento actual, luego
+concluya $\chi$. La base de conocimiento actual $E$ se obtiene a partir
+de los hechos y de las consecuencias de las reglas defaults aplicadas
+previamente.
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Significado formal)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+$\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}$ es aplicable sobre un
+conjunto cerrado de fórmulas $E$ si y solamente si $\alpha \in E$ y
+$\neg \psi_1\not\in E,\neg \psi_2\not\in E \ldots \neg \psi_n\not\in
+E$.
+
+** Semántica
+#+REVEAL_HTML: <div style="font-size: 80%;">
+¿En qué cree un Agente cuya representación de conocimiento es $(W,D)$ y razonamiento es el de la Lógica Default?
+
+Pensemos......
+
+#+ATTR_REVEAL: :frag (roll-in)
+- Deseamos creer en los hechos que estén en $W$, ya que $W$ contiene
+  toda la información certera. ¿Sólo en $W$?
+- Deseamos creer en todo aquello que podamos deducir del conocimiento
+  actual (cerrada deductivamente).
+- Deseamos creer en todas las consecuencias de todas las reglas que
+  podamos aplicar.
+  
+** Semántica
+#+REVEAL_HTML: <div style="font-size: 90%;">
+¿En qué cree un Agente cuya representación de conocimiento y
+razonamiento es el de la Lógica Default?
+
+*{{{color(green,Extensión)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Sea $F$ un conjunto de fórmulas cerradas y $(W,D)$ una teoría default,
+entonces $\Gamma(F)$ es el conjunto más pequeño tal que:
+
+- $W\subseteq \Gamma(F)$
+- $Th(\Gamma(F))=\Gamma(F)$; $\Gamma $ es cerrado bajo consecuencia lógica
+- Si $\frac{\alpha:\psi_1,\psi_2\ldots \psi_n}{\chi}\in D$ y $\alpha \in \Gamma(F)$ y $\neg \psi_1,\neg\psi_2,\ldots, \neg \psi_n\not\in F$ entonces $\chi\in \Gamma(F)$.
+Un conjunto $E$ es una {{{alert(extensión)}}} de una teoría default
+$(W,D)$ si y solamente si $\Gamma(E)=E$. Es decir $E$ es el punto fijo
+del operador $\Gamma$.
+
+* Semántica Operacional
+
+** $\Pi$
+
+Sea $\Pi =(d0,d1...)$ una secuencia finita o infinita de
+defaults de D sin ocurrencias múltiples.
+
+#+ATTR_REVEAL: :frag (roll-in)
+- Podemos pensar en $\Pi$ como en un {{{alert(posible orden de aplicación)}}} de los defaults de D.
+- {{{alert(No)}}} deseamos aplicar un default {{{alert(más de una vez)}}}.
+- $\Pi[k]$ es el segmento inicial de $\Pi$ de longitud $k$.
+
+
+
+** IN y OUT
+
+*{{{color(green,Base de Conocimiento Actual)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+\[In(\Pi)\ = \ Th(M)\]siendo $M= W \cup \{cons(d)| d \mbox{ ocurre en } \Pi\}$.
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Fórmulas que NO deberían ser true)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+\[Out(\Pi) = \{\neg b| b\in just(d) \mbox{ para algún } d \mbox{ en } \Pi\}\]
+
+** IN y OUT
+
+ #+REVEAL_HTML: <div style="font-size: 60%;">
+Sea la teoría default $T=(W,D)$ donde \[W=\{ave(tweety),ñandú(tweety)\}\] \[D=\left\{d1=\frac{ave(tweety):
+vuela(tweety)}{vuela(tweety)}; d2=\frac{ñandú(tweety): \neg
+vuela(tweety)}{\neg vuela(tweety)}\right\}\]
+
+#+REVEAL_HTML: <div style="font-size: 140%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- ¿In(d1)? ¿Out(d1)?
+- ¿In(d2)? ¿Out(d2)?
+- ¿In(d1d2)? ¿Out(d1d2)?
+
+** IN y OUT
+
+ #+REVEAL_HTML: <div style="font-size: 60%;">
+Sea la teoría default $T=(W,D)$ donde \[W=\{ave(tweety),ñandú(tweety)\}\] \[D=\left\{d1=\frac{ave(tweety):
+vuela(tweety)}{vuela(tweety)}; d2=\frac{ñandú(tweety): \neg
+vuela(tweety)}{\neg vuela(tweety)}\right\}\]
+
+#+REVEAL_HTML: <div style="font-size: 120%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- In(d1)= Th(ave(tweety), ñandú(tweety), vuela(tweety))
+  Out(d1)={\neg vuela(tweety)}
+
+- In(d2)= Th(ave(tweety), ñandú(tweety), $\neg$ vuela(tweety))
+ Out(d2)=$\{$ vuela(tweety)$\}$
+
+- In(d1d2)= Th(ave(tweety), ñandú(tweety),  vuela(tweety), \neg vuela(tweety))
+  Out(d1d2)= {\neg vuela(tweety), vuela(tweety)}
+
+
+** IN y OUT
+
+*{{{color(green,In)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+{{{alert(Base de Conocimiento Actual)}}}
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Out)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+{{{alert(Fórmulas que NO deberían ser true)}}}
+
+#+ATTR_REVEAL: :frag (roll-in)
+- In(d1)= Th(ave(tweety), ñandú(tweety), vuela(tweety))
+  Out(d1)={\neg vuela(tweety)}
+
+- In(d2)= Th(ave(tweety), ñandú(tweety), $\neg$ vuela(tweety))
+ Out(d2)=$\{$ vuela(tweety)$\}$
+
+- In(d1d2)= Th(ave(tweety), ñandú(tweety),  vuela(tweety), \neg vuela(tweety))
+  Out(d1d2)= {\neg vuela(tweety), vuela(tweety)}
+
+** Proceso
+
+   
+*{{{color(green,Definición)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+$\Pi$ es un {{{alert(proceso)}}} de $T$ si y solamente si $d_k$ es
+aplicable a $In(\Pi[k])$, para cada $k$, tal que $d_k$ ocurre en
+$\Pi$.
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Definición)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+Una regla default $$d=\frac{\alpha:\beta}{\chi}$$ es
+{{{alert(aplicable)}}} a $In(\Pi)$ si y solamente si $\alpha \in
+In(\Pi)$ y $\neg \beta\not\in In(\Pi)$.
+
+** Proceso Exitoso y Cerrado
+
+*{{{color(green,Exitoso)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+$\Pi$ es un {{{alert(proceso exitoso)}}} de $T$ si y solamente si
+$In(\Pi)\cap Out(\Pi) = \varnothing$. De otro modo, es
+{{{alert(fallido)}}}.
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Cerrado)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+$\Pi$ es un {{{alert(proceso cerrado)}}} de $T$ si y solamente si cada
+$d\in D$ que es aplicable a $In(\Pi)$ ya ocurre en $\Pi$.
+
+** Proceso Exitoso y Cerrado
+
+{{{color(magenta,Exitoso:)}}} $In(\Pi)\cap Out(\Pi) = \varnothing$.
+
+{{{color(magenta,Cerrado:)}}} se han aplicado todos los defaults que podían ser aplicados.
+
+#+REVEAL_HTML: <div style="font-size: 70%;">   
+#+ATTR_REVEAL: :frag (roll-in)
+- In(d1)= Th(ave(tweety), ñandú(tweety), vuela(tweety))
+  Out(d1)={\neg vuela(tweety)}
+
+- In(d2)= Th(ave(tweety), ñandú(tweety), $\neg$ vuela(tweety))
+ Out(d2)=$\{$ vuela(tweety)$\}$
+
+- In(d1d2)= Th(ave(tweety), ñandú(tweety),  vuela(tweety), \neg vuela(tweety))
+  Out(d1d2)= {\neg vuela(tweety), vuela(tweety)}
+
+** Extensión
+
+Un conjunto de fórmulas E es una {{{alert(extensión)}}}
+de una teoría default $T$ si y solamente si
+existe algún proceso $\Pi$ de $T$ {{{alert(cerrado y
+exitoso)}}} tal que $$E=In(\Pi).$$   
+
+** Árbol de Proceso
+
+*{{{color(green,Sea T=(W;D) una teoría:)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+- {{{color(cyan,Nodos del árbol:)}}} están etiquetados con dos conjuntos de fórmulas:
+  - {{{color(blue,IN:)}}} izquierda del nodo.
+  - {{{color(blue,OUT:)}}} derecha del nodo.
+- {{{color(cyan,Arcos del árbol:)}}} corresponden a aplicaciones de
+  defaults y están etiquetados con el default aplicado.
+
+** Árbol de Proceso
+
+*{{{color(green,Raíz)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+La etiquetamos con
+- {{{color(blue,IN=)}}} $Th(W)$. 
+- {{{color(blue,OUT=)}}} $\varnothing$.
+
+#+REVEAL_HTML: <div style="font-size: 130%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- Un nodo es expandido si $IN\cap OUT=\varnothing$
+  #+REVEAL_HTML: <div style="font-size: 70%;">
+  De otro modo es marcado como {{{color(blue,fallido)}}}
+  #+REVEAL_HTML: <div style="font-size: 130%;">
+- *{{{color(green,Extensión)}}}*
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+   Si $N$ no puede ser expandido porque no existen más defaults
+   aplicables y es exitoso, entonces encontramos una extensión.
+
+** IN y OUT
+
+   Sea la teoría default $T=(W,D)$ donde
+\[W=\{cu\acute{a}quero(nixon), republicano(nixon)\}\]
+\[D=\left\{\begin{array}{c} d1=\frac{republicano(nixon): \sim
+pacifista(nixon)}{\sim
+pacifista(nixon)};\\ d2=\frac{cu\acute{a}quero(nixon):
+pacifista(nixon)}{pacifista(nixon)}\end{array}\right\}\]
+
+Construir el árbol de proceso.
+
+** Árbol de Proceso
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+   Sea la teoría default $T=(W,D)$ donde
+\[W=\{cu\acute{a}quero(nixon), republicano(nixon)\}\]
+\[D=\left\{\begin{array}{c} d1=\frac{republicano(nixon): \sim
+pacifista(nixon)}{\sim
+pacifista(nixon)};\\ d2=\frac{cu\acute{a}quero(nixon):
+pacifista(nixon)}{pacifista(nixon)}\end{array}\right\}\]
+
+[[file:imagenes/Ejemplo1.JPG]]
+
+** IN y OUT
+
+   Sea la teoría default $T=(W,D)$ donde 
+\[W=\{\ \}\]
+\[D=\left\{\begin{array}{c}
+d1=\frac{true: p}{\sim q};\\ d2=\frac{true:q}{r}\end{array}\right\}\]
+
+Construir el árbol de proceso.
+
+** Árbol de Proceso
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+   Sea la teoría default $T=(W,D)$ donde 
+\[W=\{\ \}\]
+\[D=\left\{\begin{array}{c}
+d1=\frac{true: p}{\sim q};\\ d2=\frac{true:q}{r}\end{array}\right\}\]
+
+[[file:imagenes/Ejemplo2.JPG]]
+
+** Razonamiento por casos
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+   Sea la teoría default $T=(W,D)$ donde
+
+   \[W=\{italiano \vee franc\acute{e}s\}\]
+
+\[D=\left\{d1=\frac{italiano: gusta\_vino}{gusta\_vino};
+\ \ \  d2=\frac{franc\acute{e}s:gusta\_vino}{gusta\_vino}\right\}\]
+
+
+#+ATTR_REVEAL: :frag (roll-in)
+- Intuitivamente, {{{color(blue,¿debería ser  gusta_vino una conclusión válida?)}}}
+- {{{color(blue,¿Es posible concluir gusta_vino?)}}}
+
+** Hechos Vs. Defaults
+   {{{color(blue,Ejemplo 1:)}}}
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+   | $W=\{a,b\}$                               | $In(\varnothing)= Th(\{a,b\})$ |
+   | $D=\left\{d1=\frac{b: \sim a}{c}\right\}$ | $Out(\varnothing)=\varnothing$ |
+
+   #+REVEAL_HTML: <div style="font-size: 130%;">
+   {{{color(blue,Ejemplo 2:)}}}
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+    $W=\{b\}$                                                          
+    $D=\left\{d1=\frac{b: \sim a}{c};d2=\frac{true: true}{a}\right\}$
+#+ATTR_REVEAL: :frag (roll-in)    
+| $In([d2])= Th(\{a,b\})$ | $In([d1d2])= Th(a,b,c\})$  |
+| $Out([d2])=\varnothing$ | $Out([d1d2])=\{a, false\}$ |
+
+* Lógica Default y Programación en Lógica
+   
+** Negación por Falla Vs. Reglas Defaults
+   
+*{{{color(green,Negación por Falla)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+{{{color(blue,Suposición de Mundo Cerrado)}}} (CWA).
+#+REVEAL_HTML: <div style="font-size: 130%;">
+*{{{color(green,Reglas Default)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Se asume consistente suponer la {{{color(blue,justificación)}}} de la regla.
+
+
+
+** Relación entre PL y LD
+#+REVEAL_HTML: <div style="font-size: 80%;">
+*{{{color(green,La regla)}}}  ${\color{green}{R= A\leftarrow B_1\wedge \ldots\wedge B_n\wedge not\ C_1\wedge\ldots\wedge not\ C_k}}$*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Se corresponde con la regla default:
+
+\[{\color{blue}{df(R)=\frac{B_1\wedge \ldots\wedge B_n: \sim C_1, \ldots, \sim C_k}{A}}}\]
+
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,La regla)}}} ${\color{green}{R= A\leftarrow B_1\wedge \ldots\wedge B_n}}$*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Se corresponde con la regla default:\\
+
+\[{\color{blue}{df(R)=\frac{B_1\wedge \ldots\wedge B_n: true}{A}}}\]
+#+REVEAL_HTML: <div style="font-size: 140%;">
+*{{{color(green,La regla)}}} ${\color{green}{R= A\leftarrow true}}$*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Se corresponde con la regla default:\\
+
+\[{\color{blue}{df(R)=\frac{true: true}{A}}}\]
+
+* Creencias del Agente
+
+  
+** ¿En qué cree un agente?
+#+REVEAL_HTML: <div style="font-size: 80%;">   
+    Bibliografía: Cuadro del libro de Poole, versión 1998, Pág. 331.
+
+#+ATTR_REVEAL: :frag (roll-in)
+- *Propuesta 1:* {{{alert(Creencias Arriesgadas o Crédulas.)}}} Existe algún argumento a favor; es decir está en alguna extensión.
+- *Propuesta 2:* {{{alert(Creencias Cautas o Excépticas.)}}} No tienen argumentos en contra; es decir está en todas las extensiones.
+- *Propuesta 3:* {{{alert(El camino no está minado.)}}} $g$ es consecuencia si existe un argumento a favor $D=\{d_1,\ldots ,d_n\}$ y ningún $\neg d_i$ puede ser explicado.
+
+
+   
+* Bibliografía
+
+** Referencia Bibliográfica
+
+   #+REVEAL_HTML: <div style="font-size: 80%;">
+
+- [[file:imagenes/book.png]] G. Antoniou
+  Nonmonotonic Reasoning.
+  Parte II: Default Logic. Capítulos 3,4(hasta sección 4.5 - sin incluir)
+  1997.
+
+- file:imagenes/book.png  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 9
+  1998
+

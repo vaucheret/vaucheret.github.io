@@ -1,0 +1,785 @@
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:1 num:nil
+
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+MACRO: alert @@html:<font color=red>$1</font>@@
+#+REVEAL_EXTRA_CSS: grids.css
+
+#+TITLE: Inteligencia Artificial
+#+DATE:  Planificación: Acciones
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Búsqueda Vs.Planning
+
+**  Búsqueda Vs. Planning: Acciones Irrelevantes
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+
+ Consideremos la tarea de /obtener leche, bananas y una licuadora/
+ Los algoritmos estándar de búsqueda parecen fallar:
+
+ #+ATTR_HTML:  :height 300 
+ [[file:imagenes/supermarket1.png]]
+
+ Aún si tuviéramos una heurística.
+ #+REVEAL_HTML: </div>
+
+** Búsqueda Vs. Planning
+
+ Con Planning podemos :
+#+ATTR_REVEAL: :frag (roll-in)
+- Abrir la representación de las acciones y las metas para permitir la seleccióon.
+- Dividir y conquistar  descomponiendo el problema en submetas.
+- Relajar los requerimientos de construcción secuencial de las soluciones.
+
+** Búsqueda Vs. Planning
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+|            | *Búsqueda*             | *Planning*                                     |
+| *Estados*  | Estructura de Datos    | Sentencias Lógicas                             |
+| *Acciones* | Código                 | Precondiciones/Efecto                          |
+| *Meta*     | Estructura de Datos    | Sentencias Lógicas                             |
+| *Plan*     | Secuencia desde  $S_0$ | Secuencia con restricciones sobre las acciones |
+
+ #+REVEAL_HTML: </div>
+
+* Representación de los diferentes elementos en el Planning
+
+** Lenguaje de Representación
+{{{alert(Utilizaremos la Estructura Lógica del Problema)}}}
+
+#+ATTR_REVEAL: :frag (roll-in)
+- *{{{color(green,Representación de Estados)}}}*
+  #+REVEAL_HTML: <div style="font-size: 70%;">
+   El mundo es una conjunción de literales.
+  #+REVEAL_HTML: </div>
+- *{{{color(green,Representación de Metas)}}}*
+  #+REVEAL_HTML: <div style="font-size: 70%;">
+  Es un estado particular, representado por una conjunción de literales.
+  #+REVEAL_HTML: </div>
+- *{{{color(green,Definición)}}}*
+  #+REVEAL_HTML: <div style="font-size: 70%;">
+  Un estado proposicional $\color{red}{s}$ satisface una meta $\color{red}{g}$ si
+  $\color{red}{s}$ contiene todos los átomos en $\color{red}{g}$ (y posiblemente
+  otros).
+  #+REVEAL_HTML: </div>
+
+** Representación de las Acciones
+
+  Las especificamos en términos de Precondiciones/Efectos.
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+ #+ATTR_REVEAL: :frag (roll-in)
+ *{{{color(green,PRECONDI)}}}*
+*{{{color(green,CIONES)}}}*
+ Literales que deben ocurrir antes de que la acción sea ejecutada
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+
+$\to$
+ *{{{color(yellow,ACCION)}}}*
+$\to$
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+ #+ATTR_REVEAL: :frag (roll-in)
+ *{{{color(green,EFECTOS)}}}*
+ Aquello que será consecuencia de la ejecucción de la acción.
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** Representación de las Acciones (Ejemplo)
+
+  Las especificamos en términos de Precondiciones/Efectos.
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+ #+ATTR_REVEAL: :frag (roll-in)
+ *{{{color(green,PRECONDI)}}}*
+*{{{color(green,CIONES)}}}*
+$at(p,from) \wedge$
+$plane(p) \wedge$
+$airport(from) \wedge$
+$airport(to)$
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+
+$\to$
+$\color{yellow}{fly(p,from, to)}$ 
+$\to$
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+ #+ATTR_REVEAL: :frag (roll-in)
+ *{{{color(green,EFECTOS)}}}*
+ $\neg at(p,from)  \wedge$
+ $at(p, to)$
+
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+* Problemas con la Representación de Acciones
+
+** Qualification Problem
+{{{alert(¿Cuáles son las precondiciones para que una acción tenga éxito?)}}}
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+
+*{{{color(green,Precondiciones)}}}*
+
+ #+ATTR_REVEAL: :frag (roll-in)
+ - tengo las llaves
+ - tiene nafta
+ - tiene  batería cargada
+ - tiene el caño de escape libre
+ -  ...
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+ $\to$
+ *{{{color(green,arrancar el auto)}}}*
+ $\to$
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+
+** Qualification Problem
+
+  El problema de las circunstancias no representadas que podrían
+  {{{alert(causar que una accióon falle)}}} se conoce como
+  {{{alert(Qualification Problem)}}}.
+  
+** Ramification Problem
+
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+
+{{{alert(¿Cuáles son los efectos de una acción?)}}} 
+
+*{{{color(green,vuela el avión A847 de Nqn a Bs As)}}}*
+
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+
+ *{{{color(green,EFECTOS)}}}*
+
+  #+ATTR_REVEAL: :frag (roll-in)
+ - A847 no está en Neuquén
+ - A847 está en Buenos Aires
+ - los pasajeros no están en Neuquén
+ - los pasajeros están en Buenos Aires
+ - el equipaje que iba en el avión no está en Nqn
+ - el equipaje que iba en el avión  está en BsAs
+ -  ...
+
+
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+   
+** Ramification Problem
+
+  El problema de las circunstancias no representadas que son
+  {{{alert(efecto de la ejecución de una acción)}}} se conoce como
+  {{{alert(Problema de la Ramificación)}}}.
+
+** Frame Problem
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+{{{alert(¿Qué elementos permanecen sin cambios cuando una acción es ejecutada?)}}}
+
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+ #+ATTR_REVEAL: :frag (roll-in)
+ *{{{color(green,ANTES DE)}}}*
+*{{{color(green,LA ACCION)}}}*
+  #+ATTR_REVEAL: :frag (roll-in)
+  - color auto verde
+  - modelo del auto 2003
+  - marca del auto Fiat
+  - ...
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+
+$\to$
+ *{{{color(yellow,arrancar el auto)}}}*
+$\to$
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+ #+ATTR_REVEAL: :frag (roll-in)
+ *{{{color(green,DESPUES DE)}}}*
+*{{{color(green,LA ACCION)}}}*
+  #+ATTR_REVEAL: :frag (roll-in)
+  - color auto verde
+  - modelo del auto 2003
+  - marca del auto Fiat
+  - ...
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>   
+
+** Frame Problem
+
+   El problema de representar todas las circunstancias que
+   {{{alert(permanecen sin cambios)}}} se conoce como {{{alert(Problema del
+   Frame)}}}.
+
+   Necesitamos una solución eficiente a este problema ya que en el
+   mundo real casi todo permanece igual la mayoría del tiempo.
+
+   
+* Encontrando la solución
+
+** Aplicación de una acción
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+{{{alert(Una acción es aplicable en cualquier estado que satisface las precondiciones.)}}}
+
+*{{{color(green,Ejemplo)}}}*
+
+El estado $s=\{at(A810,JN)\wedge at(A550,JFK)\wedge plane(A810)\wedge plane(A550)\wedge$
+$airport(JN)\wedge airport(JFK)\}$
+
+satisface la precondición:
+
+\[\color{red}{at(p,from)\wedge plane(p)\wedge airport(from)\wedge airport(to)}\]
+
+con $\theta=\{p/A810, from/JN, to/JFK\}$.
+
+Luego la acción $\color{red}{fly(A810,JN,JFK)}$ es aplicable
+#+REVEAL_HTML: </div>   
+
+** Solución
+
+Una secuencia de acciones que cuando es ejecutada desde el estado
+inicial resulta en un estado que satisface la meta.
+
+* STRIPS: Standford Research Institute Problem Solver
+  
+** STRIPS
+
+*{{{color(green,Representación de Estados)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+El mundo es una conjunción de literales proposicionales: ground y
+function-free. Utilizamos CWA
+#+REVEAL_HTML: </div>   
+
+*{{{color(green,Ejemplo)}}}*
+
+$at(agent1, neuquen)$
+
+** Representación de la Acciones
+
+*{{{color(green,Esquema de Acción)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Representa un número diferente de acciones que pueden ser derivadas
+instanciando las variables.
+#+REVEAL_HTML: </div>   
+
+*{{{color(green,Acción)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+STRIPS la representa con tres listas:
+#+ATTR_REVEAL: :frag (roll-in)
+- Lista de Precondiciones
+- Lista de Agregados (Add List)
+- Lista de Borrados (Delete List)
+
+#+REVEAL_HTML: </div>   
+
+
+
+** Representación de la Acciones
+
+#+ATTR_REVEAL: :frag (roll-in)
+- *{{{color(green,Lista de Precondiciones)}}}*
+  #+REVEAL_HTML: <div style="font-size: 70%;">
+  Literales que deben cumplirse para que la acción pueda ser exitosa.
+  #+REVEAL_HTML: </div>   
+- *{{{color(green,Lista de Agregados)}}}*
+  #+REVEAL_HTML: <div style="font-size: 70%;">
+  Literales positivos que agregamos para generar el nuevo estado.
+  #+REVEAL_HTML: </div>   
+- *{{{color(green,Lista de Borrados)}}}*
+  #+REVEAL_HTML: <div style="font-size: 70%;">
+  Literales positivos que quitamos porque dejaron de tener efecto en el nuevo estado.
+  #+REVEAL_HTML: </div>     
+
+** Representación de la Acciones
+
+ *{{{color(green, Ejemplo)}}}*
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+ #+ATTR_REVEAL: :frag (roll-in)
+ *{{{color(green,PRECONDI)}}}*
+*{{{color(green,CIONES)}}}*
+$at(p,from) \wedge$
+$plane(p) \wedge$
+$airport(from) \wedge$
+$airport(to)$
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+
+$\to$
+$\color{yellow}{fly(p,from, to)}$ 
+$\to$
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_3_columns">
+ #+ATTR_REVEAL: :frag (roll-in)
+ *{{{color(green,EFECTOS)}}}*
+ Add List={$at(p, to)$} 
+ Delete List={$at(p,from)$
+
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** Aplicación de una acción
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+*{{{color(green,Ejemplo)}}}*
+
+El estado $s=\{at(A810,JN)\wedge at(A550,JFK)\wedge plane(A810)\wedge plane(A550)\wedge$
+$airport(JN)\wedge airport(JFK)\}$
+
+satisface la precondición:
+
+\[\color{red}{at(p,from)\wedge plane(p)\wedge airport(from)\wedge airport(to)}\]
+
+con $\theta=\{p/A810, from/JN, to/JFK\}$.
+
+Luego la acción $\color{red}{fly(A810,JN,JFK)}$ es aplicable
+
+*{{{color(green,Solucion)}}}*
+
+Nuevo estado $s^\prime$:
+
+$s^\prime\ = \ s\ -\ \{at(A810,JN)\} \ \cup \ \{at(A810,JFK)\}$
+
+#+REVEAL_HTML: </div>   
+   
+** STRIPS y los Problemas de la Representación
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- {{{color(cyan,Qualification Problem:)}}} Lista de Precondiciones
+- {{{color(cyan,Ramification Problem:)}}} Lista de Agregados y
+  Borrado. No alcanza para expresar todos los efectos. Ejemplo, no hay modo
+  de representar que si el avión cambió de lugar su contenido también lo hizo,
+  a menos que escribamos uno  a uno estos efectos de la acción.
+- {{{color(cyan,Frame Problem:)}}} cada literal no mencionado en los efectos permanece sin cambios.
+- STRIPS es insuficientemente expresivo para algunos dominios reales.
+
+#+REVEAL_HTML: </div>   
+
+** Action Description Language
+ #+REVEAL_HTML: <div style="font-size: 60%;">
+   | *{{{color(green,Lenguaje STRIPS)}}}*                                 | *{{{color(green,Lenguaje ADL)}}}*                                                       |
+   | Sólo literales positivos en los estados: $poor\wedge unknown$        | Literales positivos y negativos en los estados: $\neg rich \wedge \neg famous$          |
+   | Closed World Assumption: Literales no mencionados son falsos         | Open World Assumption: Literales no mencionados son desconocidos                        |
+   | El efecto de $P\wedge \neg Q$ significa agregue $P$ y borre $Q$      | El efecto de $P\wedge \neg Q$ significa agregue $P$ y $\neg Q$ y borre $\neg P$ y $Q$   |
+   | Sólo se permiten literales ground en las metas: $rich \wedge famous$ | Se permiten variables cuantificadas en las metas: $\exists X \ at(p1,X)\wedge at(p2,X)$ |
+   | Las metas son conjunciones                                           | Las metas permiten conjunciones y disyunciones                                          |
+   | No soporta la igualdad                                               | Predicados de igualdad $(x=y)$ predefinidos                                             |
+   | No soporta tipos                                                     | Las variables pueden tener tipos (p:Plane).                                             |
+#+REVEAL_HTML: </div>   
+
+** Planning Domain Definition Language
+   Surge como combinación de STRIPS y ADL.
+ #+REVEAL_HTML: <div style="font-size: 60%;">
+   | *{{{color(green,Lenguaje STRIPS)}}}*                                                                | *{{{color(green,PDDL)}}}*                                                                                               |
+   | Sólo literales positivos en los estados: $poor\wedge unknown$                                       | Literales positivos y negativos en los estados: $\neg rich \wedge \neg famous$                                          |
+   | Closed World Assumption                                                                             | Open World Assumption                                                                                                   |
+   | El efecto de $P\wedge \neg Q$ significa agregue $P$ y borre $Q$ Tiene dos listas Agregados/Borrados | El efecto de $P\wedge \neg Q$ significa agregue $P$ y $\neg Q$ y borre $\neg P$ y $Q$ Sólo tiene un conjunto de EFECTOS |
+   | Sólo se permiten literales ground en las metas: $rich \wedge famous$                                | Se permiten variables cuantificadas en las metas: $\exists X \ at(p1,X)\wedge at(p2,X)$                                 |
+   | Las metas son conjunciones                                                                          | Las metas permiten conjunciones y disyunciones                                                                          |
+   | No soporta tipos                                                                                    | Las variables pueden tener tipos (p:Plane).                                                                             |
+#+REVEAL_HTML: </div>   
+
+** Mundo de Bloques
+
+   #+ATTR_HTML:  :height 300 
+   [[file:imagenes/blocks.png]]
+
+
+** Mundo de Bloques
+#+REVEAL_HTML: <div style="font-size: 60%;">
+   Mundo de Bloques: Definición de Dominio
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+*{{{color(green,ACCIONES)}}}*
+- {{{color(yellow,Mover)}}} mueve un bloque que está sobre uno a otro
+- {{{color(yellow,Mover)}}} mueve un bloque que está sobre la mesa sobre otro
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+#+ATTR_HTML:  :height 200 
+[[file:imagenes/bloqueinit.png][file:~/tmp/slides/IA/representplanning/imagenes/bloqueinit.png]]
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+*{{{color(green,Relaciones para representar)}}}*
+- El color de un bloque
+- que un bloque esté libre
+- que un bloque está sobre la mesa
+- que un bloque está sobre otro
+- que un bloque esta (por) encima de otro 
+#+REVEAL_HTML: </div>   
+  
+** Mundo de Bloques
+#+REVEAL_HTML: <div style="font-size: 60%;">
+   Mundo de Bloques: Definición de Dominio
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+*{{{color(green,ACCIONES)}}}*
+- {{{color(yellow,Mover)}}} mueve un bloque que está sobre uno a otro
+- {{{color(yellow,Mover)}}} mueve un bloque que está sobre la mesa sobre otro
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+#+ATTR_HTML:  :height 200 
+[[file:imagenes/bloqueinit.png][file:~/tmp/slides/IA/representplanning/imagenes/bloqueinit.png]]
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+*{{{color(green,Relaciones para representar)}}}*
+- El color de un bloque {{{color(cyan,relación estática)}}}
+- que un bloque esté libre {{{color(colorfucsia,primitiva)}}} {{{color(cyan,rel. dinámica)}}}
+- que un bloque está sobre la mesa {{{color(colorfucsia,primitiva)}}} {{{color(cyan,rel. dinámica)}}}
+- que un bloque está sobre otro {{{color(colorfucsia,primitiva)}}} {{{color(cyan,rel. dinámica)}}}
+- que un bloque esta (por) encima de otro {{{color(colorfucsia,rel. derivada)}}} {{{color(cyan,rel. dinámica)}}}
+#+REVEAL_HTML: </div>   
+  
+** STRIPS
+   #+REVEAL_HTML: <div style="font-size: 75%;">
+- El tiempo se modela de acuedo a la visión de
+  {{{color(colorgreen,espacio de estados)}}}, donde sólo un estado se
+  representa en la lógica en un momento dado y las acciones son
+  *{{{color(colorgreen,externas)}}}* a la lógica.
+- Para cada acción se establece cuándo puede llevarse a cabo y cuál es
+  el efecto de dicha acción (es decir, qué relaciones primitivas son
+  afectadas por la acción).
+- Conjuntamente, se asume que todas las relac. primitivas no
+  mencionadas en la descripción del efecto de la acción permanecen
+  inalteradas luego de ser ejecutada {{{color(colorgreen,(suposición
+  STRIPS))}}}. De esta forma, se elude el  {{{color(colororange,Problema del Marco)}}}.
+- La representación STRIPS se basa en la idea de que la ejecución de
+  una acción solo afecta una pequeña porción de la descripción actual
+  del mundo. Es decir, solo afecta unas pocas relaciones primitivas.
+#+REVEAL_HTML: </div>   
+
+** Mundo de Bloques: Representación
+
+*$\color{green}{on(X,Y) \mbox{ o } sobre(X,Y)}$*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Es verdadero cuando el bloque X está sobre Y, donde Y es otro bloque o
+la mesa.
+#+REVEAL_HTML: </div>
+
+*$\color{green}{move(B,X,Y)}$*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+Acción de mover el bloque B del tope de X a Y.
+#+REVEAL_HTML: </div>   
+
+** Mundo de Bloques: Move(B,X,Y)
+
+*{{{color(green,Precondiciones en ADL)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ $\neg\exists X On(X,B)$
+ 
+ $\neg\exists X On(X,Y)$ 
+#+REVEAL_HTML: </div>
+
+*{{{color(green,Precondiciones en STRIPS)}}}*
+#+REVEAL_HTML: <div style="font-size: 70%;">
+ $Clear(B)$
+ 
+ $Clear(Y)$
+ 
+ $On(B,X)$
+#+REVEAL_HTML: </div>   
+
+** Mundo de Bloques: Move(B,X,Y)
+
+ *{{{color(green,Efectos en ADL)}}}*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+  $\neg On(B,X)$
+ 
+  $On(B,Y)$
+ #+REVEAL_HTML: </div>
+
+ *{{{color(green,Efectos en STRIPS)}}}*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+  Lista de Agregados: {$Clear(X) , On(B,Y)$}
+ 
+  Lista de Borrados: {$Clear(Y), On(B,X)$}
+ #+REVEAL_HTML: </div>   
+
+** Mundo de Bloques: Move(B,X,Y)
+
+   
+Situaciones especiales:
+
+- Mover desde y a la mesa: la mesa permanece "clear".
+- Move(B,C,C)
+
+** Mundo de Bloques
+
+#+ATTR_HTML:  :height 450    
+[[file:imagenes/bloquestrips4.png]]
+
+* Situation Calculus
+
+  
+** Situation Calculus
+   En vez de concentrarnos en tiempos nos concentramos en situaciones:
+
+   #+ATTR_HTML:  :height 400    
+   [[file:imagenes/situation.png]]
+
+** Situation Calculus
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+- El tiempo se modela de acuerdo a la visión de
+  {{{color(green,espacio de estados)}}}, donde las acciones y los estados (o situaciones) se reifican.
+- Al decir que las acciones y estados se reifican, nos referimos
+  concretamente a que se utilizan {{{color(green,términos)}}} lógicos para {{{color(green,denotar/ nombrar/ referirse a estados y acciones)}}}.
+- De esta manera es posible representar, *{{{color(green,en)}}}* la lógica, {{{color(green,sentencias que hablan de/se refieren a acciones y estados)}}} particulares.
+ #+REVEAL_HTML: </div>   
+
+
+
+**  Situation Calculus: Representación
+
+    Representamos a las situaciones como:
+
+- {{{color(cyan,Situación Inicial)}}}: $S_0$ o $init$
+- {{{color(blue,Situaciones que resulta de realizar la acción A a partir de la situación S a condición de que la acción A sea aplicable a partir de S:)}}} $do(A,S)$
+
+
+\[S_0 \ \ \stackrel{A_0}{\longrightarrow}{}\ \ \stackrel{result(A_0,s_0)}{do(A_0,s_0)}\ \ \stackrel{A_1}{\longrightarrow}{}\ \ \ \stackrel{result(A_1,result(A_0,s_0))}{do(A_1,do(A_0,s_0))}\]
+
+
+** Situation Calculus: Representación
+
+- *{{{color(green,Predicados Atemporales)}}}*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+  Son predicados que permanecen {{{alert(invariables)}}} en todas las
+  situaciones. Ejemplo: $agente(bond)$
+ #+REVEAL_HTML: </div>
+#+ATTR_REVEAL: :frag (roll-in)
+- *{{{color(green,Fluentes)}}}*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+  Son predicados que {{{alert(varían)}}} desde alguna situación a la siguiente.
+ #+REVEAL_HTML: </div>   
+
+** Situation Calculus: Representación
+
+- *{{{color(green,Representación de un Estado)}}}*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+  Fórmulas lógicas con un parámetro más que indica la situación en la que es verdadera.Ejemplo:
+ \[at(bond,[1,1],S_0)\]
+ \[holding(bond,gun,do(get(gun), do(go([1,1],[2,2]),S_0)))\]
+ \[agente(bond)\]
+ #+REVEAL_HTML: </div>
+   
+** Situation Calculus
+
+   #+ATTR_HTML:  :height 450    
+   [[file:imagenes/rlcs.png]]
+
+   
+** Situation Calculus: Representación
+
+*{{{color(green,Representación de una Acción)}}}*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+ #+ATTR_REVEAL: :frag (roll-in)
+- *{{{alert(Axioma de Posibilidad:)}}}* indica cuando es posible ejecutar una acción. (precondiciones)
+- *{{{alert(Axioma de Estado Sucesor:)}}}* Cada acción tiene asociado
+  un axioma de efecto, que especifica el efecto de ejecutar la
+  acción. Es decir, un fluente es verdadero después de ejecutar una
+  acción si:
+   #+ATTR_REVEAL: :frag (roll-in)
+  - El efecto de la acción que ejecutamos  hizo verdadero al fluente ({{{color(green,Axioma de Efecto)}}}), o
+  - el fluente era verdadero antes y la acción lo dejó igual ({{{color(green,Axioma del Frame)}}}) 
+#+REVEAL_HTML: </div>
+
+
+** Situation Calculus: Mundo de Bloques
+
+$\color{cyan}{Move(B,X,Y)}$
+   
+ - *{{{color(green,Precondiciones)}}}*
+ #+REVEAL_HTML: <div style="font-size: 60%;">
+ poss(move(B,X,Y),S) $\leftarrow$ bloque(B),bloque(X),bloque(Y),clear(Y,S),clear(B,S), on(B,X,S).
+ #+REVEAL_HTML: </div>
+#+ATTR_REVEAL: :frag (roll-in)
+- *{{{color(green,Estado Sucesor)}}}*
+ #+REVEAL_HTML: <div style="font-size: 55%;">
+  $\Bigr($ clear(X,do(A,S))$\leftrightarrow$ $\bigl($ A=move(B,X,Y) $\vee$ 
+ $( clear(X,S) \wedge A\neq  move(B,Z,X) \bigl)\Bigl)$. 
+
+  Siguiendo notación de Poole, utilizamos dos reglas:
+  
+ *Ax de efecto:*
+ 
+ clear(X,do(move(B,X,Y),S))$\leftarrow$ poss(move(B,X,Y),S).
+ 
+ *Ax de frame:*
+ 
+  clear(X,do(A,S))$\leftarrow$ clear(X,S) $\wedge$ poss(A,S) $\wedge$ A $\neq$ move(B,Z,X)
+ #+REVEAL_HTML: </div>
+
+ 
+* Event Calculus
+
+** Event Calculus
+
+- El Cálculo Situacional permite a un agente ejecutar acciones
+  discretas instantáneas.
+- Problemas para representar acciones que tienen duración o que se
+  realizan en paralelo.
+- Necesitamos
+  #+ATTR_REVEAL: :frag (roll-in)
+  - Representación Temporal Basada en tiempos en vez de en situaciones.
+  
+** Event Calculus: Características
+ #+ATTR_REVEAL: :frag (roll-in)
+- Los fluentes  ocurren en un punto en el tiempo 
+- El cálculo está diseñado para permitir razonamiento sobre intervalos
+  de tiempos.
+- *{{{color(green,Un fluente es verdadero en un punto en el tiempo)}}}* *$\color{green}{t}$*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+  #+ATTR_REVEAL: :frag (roll-in)
+   - Si el fluente fue */inicializado/* por un evento en algún tiempo  $t^\prime$ del pasado, es decir $t^\prime < t$ y
+   - Si el fluente */no fue terminado/* por un evento intermedio, es decir algún evento que ocurrió  entre $t^\prime$  y $t$. 
+ #+REVEAL_HTML: </div>
+
+ 
+** Event Calculus: Representación
+
+*$\color{green}{event(E,T)}$*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+ El evento $E$ ocurrió en el tiempo $T$.
+
+Para cada evento debemos especificar aquello que hace verdadero y
+aquello que deja de ser verdadero:
+ #+REVEAL_HTML: </div>
+
+ #+ATTR_REVEAL: :frag (roll-in)
+ - *$\color{green}{initiates(E,P,T)}$*
+    #+REVEAL_HTML: <div style="font-size: 70%;">
+    Es verdadero si el evento E hace al predicado P verdadero en el tiempo T.
+    #+REVEAL_HTML: </div>
+ - *$\color{green}{terminates(E,P,T)}$*
+    #+REVEAL_HTML: <div style="font-size: 70%;">
+    Es verdadero si el evento E hace que el predicado P deje de ser verdadero en el tiempo T.
+    #+REVEAL_HTML: </div>
+
+    
+** Event Calculus: Representación
+#+REVEAL_HTML: <div style="font-size: 70%;">
+   Para cada fluente, deberemos determinar si éste ocurre o no en un
+   tiempo particular:
+
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+ $holds(P,T) \leftarrow$
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+#+ATTR_HTML:  :height 200 
+$event(E,T0) \wedge T0 <  T \wedge$
+$\color{green}{initiates(E,P,T0)} \wedge$
+$\sim clipped(P,T0,T)$.
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+$clipped(P,T0,T)\leftarrow$
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+#+ATTR_HTML:  :height 200
+$event(E1,T1) \wedge$
+$\color{green}{terminates(E1,P,T1)} \wedge$
+$T0 < T1 \wedge T1 < T$.
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+ #+REVEAL_HTML: </div>
+
+ 
+** Event Calculus: Mundo de Bloques
+
+*$\color{green}{move(B,X,Y))}$*
+ #+REVEAL_HTML: <div style="font-size: 70%;">
+$initiates(move(B,X,Y),clear(X),T) \leftarrow poss(move(B,X,Y),T)$.\\
+
+$initiates(move(B,X,Y),on(B,Y),T) \leftarrow  poss(move(B,X,Y),T)$.\\
+
+$terminates(move(B,X,Y),clear(Y),T) \leftarrow poss(move(B,X,Y),T)$.\\
+
+$terminates(move(B,X,Y),on(B,X),T) \leftarrow poss(move(B,X,Y),T)$.\\
+
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+$poss(move(B,X,Y),T) \leftarrow$
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns">
+#+ATTR_HTML:  :height 200
+$holds(clear(B),T) \wedge$
+$holds(clear(Y),T) \wedge$
+$holds(on(B,X),T)$
+ #+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+ 
+ #+REVEAL_HTML: </div>
+
+ 
+** Rep. de Acciones y Cambio
+#+REVEAL_HTML: <div style="font-size: 80%;">
+- {{{alert(Tiempo Discreto:)}}} se modela como saltando de un punto en
+  el tiempo a otro, separados entre sí de manera uniforme.
+- {{{alert(Tiempo Continuo:)}}} se modela como una estructura lineal
+  continua.
+- {{{alert(Tiempo Basado en Eventos:)}}} Análogo a Tiempo Discreto,
+  pero los puntos en el tiempo marcan eventos “interesantes”, y no
+  necesitan estar separados entre sí de manera uniforme. Ej: Cálculo
+  de Eventos.
+- {{{alert(Espacio de Estados:)}}} en lugar de considerar el tiempo
+  explícitamete, podemos considerar a las acciones como mapeando de un
+  estado a otro del mundo. Ej: Cálculo de Situaciones y STRIPS.
+ #+REVEAL_HTML: </div>
+
+** Rep. de Acciones y Cambio
+#+REVEAL_HTML: <div style="font-size: 70%;">
+El tiempo pude incorporarse a un sistema de Rep. de Conoc. y
+Razonamiento de diferentes formas:
+
+- {{{alert(El Tiempo /y acciones/ son externas a la lógica:)}}} Se
+  representa en la lógica solo un estado (correspondiente a un
+  determinado momento), y se utilizan sentencias fuera de la lógica
+  para especificar cómo una acción mapea desde la descripción de un
+  estado a la descripción del siguiente. Ej. {{{color(green,STRIPS)}}}.
+- {{{alert(El Tiempo se encuentra reificado.)}}} ie, el tiempo es otro
+  objeto más, que se representa y del que se puede hablar, en la
+  lógica. Concretamente, se puede agregar un argumento a las
+  relaciones para especificar cuando valen.  Ej: pasa-autobus($101$,
+  cuadra(Mitre, $200$), pm($15:35$)) Ej {{{color(green,Cálculo de Situaciones)}}}
+ #+REVEAL_HTML: </div>
+
+* Bibliografía
+  
+** Referencia Bibliográfica
+
+   
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+[[file:imagenes/book.png]] S. Russell  y P.Norvig
+  Artificial Intelligence: A Modern Approach (Third Edition).
+  Capítulo 10
+  2009
+
+file:imagenes/book.png  D. Poole, A. Mackworth y R. Goebel
+  Computational Intelligence: A Logical Approach.
+  Capítulo 8
+  1998
+
+#+REVEAL_HTML: </div>

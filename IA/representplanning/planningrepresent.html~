@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="grids.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Planificación: Acciones</h2><p class="date">Created: 2023-09-23 sáb 10:09</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org49c9596">Búsqueda Vs.Planning</a></li>
+<li><a href="#/slide-org3582d86">Representación de los diferentes elementos en el Planning</a></li>
+<li><a href="#/slide-org6a2ccdb">Problemas con la Representación de Acciones</a></li>
+<li><a href="#/slide-org4b23a1c">Encontrando la solución</a></li>
+<li><a href="#/slide-orgc4c925d">STRIPS: Standford Research Institute Problem Solver</a></li>
+<li><a href="#/slide-org62b8e20">Situation Calculus</a></li>
+<li><a href="#/slide-orgacb2f53">Event Calculus</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org49c9596">
+<h2 id="org49c9596">Búsqueda Vs.Planning</h2>
+<div class="outline-text-2" id="text-org49c9596">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgdcba61f">
+<h3 id="orgdcba61f">Búsqueda Vs. Planning: Acciones Irrelevantes</h3>
+<div style="font-size: 70%;">
+
+<p>
+Consideremos la tarea de <i>obtener leche, bananas y una licuadora</i>
+Los algoritmos estándar de búsqueda parecen fallar:
+</p>
+
+
+<div id="org4091416" class="figure">
+<p><img src="imagenes/supermarket1.png" alt="supermarket1.png" height="300" />
+</p>
+</div>
+
+<p>
+Aún si tuviéramos una heurística.
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org93cb898">
+<h3 id="org93cb898">Búsqueda Vs. Planning</h3>
+<p>
+Con Planning podemos :
+</p>
+<ul>
+<li class="fragment roll-in">Abrir la representación de las acciones y las metas para permitir la seleccióon.</li>
+<li class="fragment roll-in">Dividir y conquistar  descomponiendo el problema en submetas.</li>
+<li class="fragment roll-in">Relajar los requerimientos de construcción secuencial de las soluciones.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4552cdf">
+<h3 id="org4552cdf">Búsqueda Vs. Planning</h3>
+<div style="font-size: 70%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>Búsqueda</b></td>
+<td class="org-left"><b>Planning</b></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Estados</b></td>
+<td class="org-left">Estructura de Datos</td>
+<td class="org-left">Sentencias Lógicas</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Acciones</b></td>
+<td class="org-left">Código</td>
+<td class="org-left">Precondiciones/Efecto</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Meta</b></td>
+<td class="org-left">Estructura de Datos</td>
+<td class="org-left">Sentencias Lógicas</td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Plan</b></td>
+<td class="org-left">Secuencia desde  \(S_0\)</td>
+<td class="org-left">Secuencia con restricciones sobre las acciones</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3582d86">
+<h2 id="org3582d86">Representación de los diferentes elementos en el Planning</h2>
+<div class="outline-text-2" id="text-org3582d86">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgff241ec">
+<h3 id="orgff241ec">Lenguaje de Representación</h3>
+<p>
+<font color=red>Utilizaremos la Estructura Lógica del Problema</font>
+</p>
+
+<ul>
+<li class="fragment roll-in"><p>
+<b><font color="green">Representación de Estados</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+El mundo es una conjunción de literales.
+</p>
+</div></li>
+<li class="fragment roll-in"><p>
+<b><font color="green">Representación de Metas</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Es un estado particular, representado por una conjunción de literales.
+</p>
+</div></li>
+<li class="fragment roll-in"><p>
+<b><font color="green">Definición</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Un estado proposicional \(\color{red}{s}\) satisface una meta \(\color{red}{g}\) si
+\(\color{red}{s}\) contiene todos los átomos en \(\color{red}{g}\) (y posiblemente
+otros).
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9a1e87b">
+<h3 id="org9a1e87b">Representación de las Acciones</h3>
+<p>
+Las especificamos en términos de Precondiciones/Efectos.
+</p>
+<div class="gridded_frame_with_columns">
+<div class="one_of_3_columns">
+<p class="fragment (roll-in)">
+<b><font color="green">PRECONDI</font></b>
+<b><font color="green">CIONES</font></b>
+Literales que deben ocurrir antes de que la acción sea ejecutada
+</p>
+</div>
+<div class="one_of_3_columns">
+
+<p>
+\(\to\)
+ <b><font color="yellow">ACCION</font></b>
+\(\to\)
+</p>
+
+</div>
+<div class="one_of_3_columns">
+<p class="fragment (roll-in)">
+<b><font color="green">EFECTOS</font></b>
+Aquello que será consecuencia de la ejecucción de la acción.
+</p>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org31c7545">
+<h3 id="org31c7545">Representación de las Acciones (Ejemplo)</h3>
+<p>
+Las especificamos en términos de Precondiciones/Efectos.
+</p>
+<div class="gridded_frame_with_columns">
+<div class="one_of_3_columns">
+<p class="fragment (roll-in)">
+<b><font color="green">PRECONDI</font></b>
+<b><font color="green">CIONES</font></b>
+\(at(p,from) \wedge\)
+\(plane(p) \wedge\)
+\(airport(from) \wedge\)
+\(airport(to)\)
+</p>
+</div>
+<div class="one_of_3_columns">
+
+<p>
+\(\to\)
+\(\color{yellow}{fly(p,from, to)}\) 
+\(\to\)
+</p>
+
+</div>
+<div class="one_of_3_columns">
+<p class="fragment (roll-in)">
+<b><font color="green">EFECTOS</font></b>
+\(\neg at(p,from)  \wedge\)
+\(at(p, to)\)
+</p>
+
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6a2ccdb">
+<h2 id="org6a2ccdb">Problemas con la Representación de Acciones</h2>
+<div class="outline-text-2" id="text-org6a2ccdb">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgaef64f0">
+<h3 id="orgaef64f0">Qualification Problem</h3>
+<p>
+<font color=red>¿Cuáles son las precondiciones para que una acción tenga éxito?</font>
+</p>
+
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+<p>
+<b><font color="green">Precondiciones</font></b>
+</p>
+
+<ul>
+<li class="fragment roll-in">tengo las llaves</li>
+<li class="fragment roll-in">tiene nafta</li>
+<li class="fragment roll-in">tiene  batería cargada</li>
+<li class="fragment roll-in">tiene el caño de escape libre</li>
+<li class="fragment roll-in">&#x2026;</li>
+
+</ul>
+
+</div>
+<div class="one_of_2_columns">
+<p>
+\(\to\)
+<b><font color="green">arrancar el auto</font></b>
+\(\to\)
+</p>
+</div>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge03f97c">
+<h3 id="orge03f97c">Qualification Problem</h3>
+<p>
+El problema de las circunstancias no representadas que podrían
+<font color=red>causar que una accióon falle</font> se conoce como
+<font color=red>Qualification Problem</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org055c85f">
+<h3 id="org055c85f">Ramification Problem</h3>
+<div style="font-size: 70%;">
+
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+<p>
+<font color=red>¿Cuáles son los efectos de una acción?</font> 
+</p>
+
+<p>
+<b><font color="green">vuela el avión A847 de Nqn a Bs As</font></b>
+</p>
+
+
+</div>
+<div class="one_of_2_columns">
+
+<p>
+<b><font color="green">EFECTOS</font></b>
+</p>
+
+<ul>
+<li class="fragment roll-in">A847 no está en Neuquén</li>
+<li class="fragment roll-in">A847 está en Buenos Aires</li>
+<li class="fragment roll-in">los pasajeros no están en Neuquén</li>
+<li class="fragment roll-in">los pasajeros están en Buenos Aires</li>
+<li class="fragment roll-in">el equipaje que iba en el avión no está en Nqn</li>
+<li class="fragment roll-in">el equipaje que iba en el avión  está en BsAs</li>
+<li class="fragment roll-in">&#x2026;</li>
+
+</ul>
+
+
+</div>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org34ccc45">
+<h3 id="org34ccc45">Ramification Problem</h3>
+<p>
+El problema de las circunstancias no representadas que son
+<font color=red>efecto de la ejecución de una acción</font> se conoce como
+<font color=red>Problema de la Ramificación</font>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org540ba9d">
+<h3 id="org540ba9d">Frame Problem</h3>
+<div style="font-size: 70%;">
+<p>
+<font color=red>¿Qué elementos permanecen sin cambios cuando una acción es ejecutada?</font>
+</p>
+
+<div class="gridded_frame_with_columns">
+<div class="one_of_3_columns">
+<p class="fragment (roll-in)">
+<b><font color="green">ANTES DE</font></b>
+<b><font color="green">LA ACCION</font></b>
+</p>
+<ul>
+<li class="fragment roll-in">color auto verde</li>
+<li class="fragment roll-in">modelo del auto 2003</li>
+<li class="fragment roll-in">marca del auto Fiat</li>
+<li class="fragment roll-in">&#x2026;</li>
+
+</ul>
+</div>
+<div class="one_of_3_columns">
+
+<p>
+\(\to\)
+ <b><font color="yellow">arrancar el auto</font></b>
+\(\to\)
+</p>
+
+</div>
+<div class="one_of_3_columns">
+<p class="fragment (roll-in)">
+<b><font color="green">DESPUES DE</font></b>
+<b><font color="green">LA ACCION</font></b>
+</p>
+<ul>
+<li class="fragment roll-in">color auto verde</li>
+<li class="fragment roll-in">modelo del auto 2003</li>
+<li class="fragment roll-in">marca del auto Fiat</li>
+<li class="fragment roll-in">&#x2026;</li>
+
+</ul>
+</div>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6780459">
+<h3 id="org6780459">Frame Problem</h3>
+<p>
+El problema de representar todas las circunstancias que
+<font color=red>permanecen sin cambios</font> se conoce como <font color=red>Problema del Frame</font>.
+</p>
+
+<p>
+Necesitamos una solución eficiente a este problema ya que en el
+mundo real casi todo permanece igual la mayoría del tiempo.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org4b23a1c">
+<h2 id="org4b23a1c">Encontrando la solución</h2>
+<div class="outline-text-2" id="text-org4b23a1c">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2eda892">
+<h3 id="org2eda892">Aplicación de una acción</h3>
+<div style="font-size: 70%;">
+<p>
+<font color=red>Una acción es aplicable en cualquier estado que satisface las precondiciones.</font>
+</p>
+
+<p>
+<b><font color="green">Ejemplo</font></b>
+</p>
+
+<p>
+El estado \(s=\{at(A810,JN)\wedge at(A550,JFK)\wedge plane(A810)\wedge plane(A550)\wedge\)
+\(airport(JN)\wedge airport(JFK)\}\)
+</p>
+
+<p>
+satisface la precondición:
+</p>
+
+<p>
+\[\color{red}{at(p,from)\wedge plane(p)\wedge airport(from)\wedge airport(to)}\]
+</p>
+
+<p>
+con \(\theta=\{p/A810, from/JN, to/JFK\}\).
+</p>
+
+<p>
+Luego la acción \(\color{red}{fly(A810,JN,JFK)}\) es aplicable
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgae1109e">
+<h3 id="orgae1109e">Solución</h3>
+<p>
+Una secuencia de acciones que cuando es ejecutada desde el estado
+inicial resulta en un estado que satisface la meta.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc4c925d">
+<h2 id="orgc4c925d">STRIPS: Standford Research Institute Problem Solver</h2>
+<div class="outline-text-2" id="text-orgc4c925d">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org97aff8c">
+<h3 id="org97aff8c">STRIPS</h3>
+<p>
+<b><font color="green">Representación de Estados</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+El mundo es una conjunción de literales proposicionales: ground y
+function-free. Utilizamos CWA
+</p>
+</div>
+
+<p>
+<b><font color="green">Ejemplo</font></b>
+</p>
+
+<p>
+\(at(agent1, neuquen)\)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb1cbd5f">
+<h3 id="orgb1cbd5f">Representación de la Acciones</h3>
+<p>
+<b><font color="green">Esquema de Acción</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Representa un número diferente de acciones que pueden ser derivadas
+instanciando las variables.
+</p>
+</div>
+
+<p>
+<b><font color="green">Acción</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+STRIPS la representa con tres listas:
+</p>
+<ul>
+<li class="fragment roll-in">Lista de Precondiciones</li>
+<li class="fragment roll-in">Lista de Agregados (Add List)</li>
+<li class="fragment roll-in">Lista de Borrados (Delete List)</li>
+
+</ul>
+
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org4a5309e">
+<h3 id="org4a5309e">Representación de la Acciones</h3>
+<ul>
+<li class="fragment roll-in"><p>
+<b><font color="green">Lista de Precondiciones</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Literales que deben cumplirse para que la acción pueda ser exitosa.
+</p>
+</div></li>
+<li class="fragment roll-in"><p>
+<b><font color="green">Lista de Agregados</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Literales positivos que agregamos para generar el nuevo estado.
+</p>
+</div></li>
+<li class="fragment roll-in"><p>
+<b><font color="green">Lista de Borrados</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Literales positivos que quitamos porque dejaron de tener efecto en el nuevo estado.
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd0a7838">
+<h3 id="orgd0a7838">Representación de la Acciones</h3>
+<p>
+<b><font color="green"> Ejemplo</font></b>
+</p>
+<div class="gridded_frame_with_columns">
+<div class="one_of_3_columns">
+<p class="fragment (roll-in)">
+<b><font color="green">PRECONDI</font></b>
+<b><font color="green">CIONES</font></b>
+\(at(p,from) \wedge\)
+\(plane(p) \wedge\)
+\(airport(from) \wedge\)
+\(airport(to)\)
+</p>
+</div>
+<div class="one_of_3_columns">
+
+<p>
+\(\to\)
+\(\color{yellow}{fly(p,from, to)}\) 
+\(\to\)
+</p>
+
+</div>
+<div class="one_of_3_columns">
+<p class="fragment (roll-in)">
+<b><font color="green">EFECTOS</font></b>
+Add List={\(at(p, to)\)} 
+Delete List={\(at(p,from)\)
+</p>
+
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6700cc4">
+<h3 id="org6700cc4">Aplicación de una acción</h3>
+<div style="font-size: 70%;">
+<p>
+<b><font color="green">Ejemplo</font></b>
+</p>
+
+<p>
+El estado \(s=\{at(A810,JN)\wedge at(A550,JFK)\wedge plane(A810)\wedge plane(A550)\wedge\)
+\(airport(JN)\wedge airport(JFK)\}\)
+</p>
+
+<p>
+satisface la precondición:
+</p>
+
+<p>
+\[\color{red}{at(p,from)\wedge plane(p)\wedge airport(from)\wedge airport(to)}\]
+</p>
+
+<p>
+con \(\theta=\{p/A810, from/JN, to/JFK\}\).
+</p>
+
+<p>
+Luego la acción \(\color{red}{fly(A810,JN,JFK)}\) es aplicable
+</p>
+
+<p>
+<b><font color="green">Solucion</font></b>
+</p>
+
+<p>
+Nuevo estado \(s^\prime\):
+</p>
+
+<p>
+\(s^\prime\ = \ s\ -\ \{at(A810,JN)\} \ \cup \ \{at(A810,JFK)\}\)
+</p>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org479ccb4">
+<h3 id="org479ccb4">STRIPS y los Problemas de la Representación</h3>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in"><font color="cyan">Qualification Problem:</font> Lista de Precondiciones</li>
+<li class="fragment roll-in"><font color="cyan">Ramification Problem:</font> Lista de Agregados y
+Borrado. No alcanza para expresar todos los efectos. Ejemplo, no hay modo
+de representar que si el avión cambió de lugar su contenido también lo hizo,
+a menos que escribamos uno  a uno estos efectos de la acción.</li>
+<li class="fragment roll-in"><font color="cyan">Frame Problem:</font> cada literal no mencionado en los efectos permanece sin cambios.</li>
+<li class="fragment roll-in">STRIPS es insuficientemente expresivo para algunos dominios reales.</li>
+
+</ul>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga2601f2">
+<h3 id="orga2601f2">Action Description Language</h3>
+<div style="font-size: 60%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b><font color="green">Lenguaje STRIPS</font></b></td>
+<td class="org-left"><b><font color="green">Lenguaje ADL</font></b></td>
+</tr>
+
+<tr>
+<td class="org-left">Sólo literales positivos en los estados: \(poor\wedge unknown\)</td>
+<td class="org-left">Literales positivos y negativos en los estados: \(\neg rich \wedge \neg famous\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Closed World Assumption: Literales no mencionados son falsos</td>
+<td class="org-left">Open World Assumption: Literales no mencionados son desconocidos</td>
+</tr>
+
+<tr>
+<td class="org-left">El efecto de \(P\wedge \neg Q\) significa agregue \(P\) y borre \(Q\)</td>
+<td class="org-left">El efecto de \(P\wedge \neg Q\) significa agregue \(P\) y \(\neg Q\) y borre \(\neg P\) y \(Q\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Sólo se permiten literales ground en las metas: \(rich \wedge famous\)</td>
+<td class="org-left">Se permiten variables cuantificadas en las metas: \(\exists X \ at(p1,X)\wedge at(p2,X)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Las metas son conjunciones</td>
+<td class="org-left">Las metas permiten conjunciones y disyunciones</td>
+</tr>
+
+<tr>
+<td class="org-left">No soporta la igualdad</td>
+<td class="org-left">Predicados de igualdad \((x=y)\) predefinidos</td>
+</tr>
+
+<tr>
+<td class="org-left">No soporta tipos</td>
+<td class="org-left">Las variables pueden tener tipos (p:Plane).</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfb5d2c1">
+<h3 id="orgfb5d2c1">Planning Domain Definition Language</h3>
+<p>
+Surge como combinación de STRIPS y ADL.
+</p>
+<div style="font-size: 60%;">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><b><font color="green">Lenguaje STRIPS</font></b></td>
+<td class="org-left"><b><font color="green">PDDL</font></b></td>
+</tr>
+
+<tr>
+<td class="org-left">Sólo literales positivos en los estados: \(poor\wedge unknown\)</td>
+<td class="org-left">Literales positivos y negativos en los estados: \(\neg rich \wedge \neg famous\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Closed World Assumption</td>
+<td class="org-left">Open World Assumption</td>
+</tr>
+
+<tr>
+<td class="org-left">El efecto de \(P\wedge \neg Q\) significa agregue \(P\) y borre \(Q\) Tiene dos listas Agregados/Borrados</td>
+<td class="org-left">El efecto de \(P\wedge \neg Q\) significa agregue \(P\) y \(\neg Q\) y borre \(\neg P\) y \(Q\) Sólo tiene un conjunto de EFECTOS</td>
+</tr>
+
+<tr>
+<td class="org-left">Sólo se permiten literales ground en las metas: \(rich \wedge famous\)</td>
+<td class="org-left">Se permiten variables cuantificadas en las metas: \(\exists X \ at(p1,X)\wedge at(p2,X)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Las metas son conjunciones</td>
+<td class="org-left">Las metas permiten conjunciones y disyunciones</td>
+</tr>
+
+<tr>
+<td class="org-left">No soporta tipos</td>
+<td class="org-left">Las variables pueden tener tipos (p:Plane).</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaf99952">
+<h3 id="orgaf99952">Mundo de Bloques</h3>
+
+<div id="org6f8c5b4" class="figure">
+<p><img src="imagenes/blocks.png" alt="blocks.png" height="300" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org77bc8a5">
+<h3 id="org77bc8a5">Mundo de Bloques</h3>
+<div style="font-size: 60%;">
+<p>
+Mundo de Bloques: Definición de Dominio
+</p>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<p>
+<b><font color="green">ACCIONES</font></b>
+</p>
+<ul>
+<li><font color="yellow">Mover</font> mueve un bloque que está sobre uno a otro</li>
+<li><p>
+<font color="yellow">Mover</font> mueve un bloque que está sobre la mesa sobre otro
+</p>
+</div>
+<div class="one_of_2_columns"></li>
+
+</ul>
+
+<div id="orgbafeefb" class="figure">
+<p><a href="imagenes/bloqueinit.png" height="200"><img src="file:///home/cv/tmp/slides/IA/representplanning/imagenes/bloqueinit.png" alt="bloqueinit.png" height="200" /></a>
+</p>
+</div>
+</div>
+</div>
+<p>
+<b><font color="green">Relaciones para representar</font></b>
+</p>
+<ul>
+<li>El color de un bloque</li>
+<li>que un bloque esté libre</li>
+<li>que un bloque está sobre la mesa</li>
+<li>que un bloque está sobre otro</li>
+<li>que un bloque esta (por) encima de otro</li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcf592e6">
+<h3 id="orgcf592e6">Mundo de Bloques</h3>
+<div style="font-size: 60%;">
+<p>
+Mundo de Bloques: Definición de Dominio
+</p>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<p>
+<b><font color="green">ACCIONES</font></b>
+</p>
+<ul>
+<li><font color="yellow">Mover</font> mueve un bloque que está sobre uno a otro</li>
+<li><p>
+<font color="yellow">Mover</font> mueve un bloque que está sobre la mesa sobre otro
+</p>
+</div>
+<div class="one_of_2_columns"></li>
+
+</ul>
+
+<div id="org753db29" class="figure">
+<p><a href="imagenes/bloqueinit.png" height="200"><img src="file:///home/cv/tmp/slides/IA/representplanning/imagenes/bloqueinit.png" alt="bloqueinit.png" height="200" /></a>
+</p>
+</div>
+</div>
+</div>
+<p>
+<b><font color="green">Relaciones para representar</font></b>
+</p>
+<ul>
+<li>El color de un bloque <font color="cyan">relación estática</font></li>
+<li>que un bloque esté libre <font color="colorfucsia">primitiva</font> <font color="cyan">rel. dinámica</font></li>
+<li>que un bloque está sobre la mesa <font color="colorfucsia">primitiva</font> <font color="cyan">rel. dinámica</font></li>
+<li>que un bloque está sobre otro <font color="colorfucsia">primitiva</font> <font color="cyan">rel. dinámica</font></li>
+<li>que un bloque esta (por) encima de otro <font color="colorfucsia">rel. derivada</font> <font color="cyan">rel. dinámica</font></li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3138702">
+<h3 id="org3138702">STRIPS</h3>
+<div style="font-size: 75%;">
+<ul>
+<li>El tiempo se modela de acuedo a la visión de
+<font color="colorgreen">espacio de estados</font>, donde sólo un estado se
+representa en la lógica en un momento dado y las acciones son
+<b><font color="colorgreen">externas</font></b> a la lógica.</li>
+<li>Para cada acción se establece cuándo puede llevarse a cabo y cuál es
+el efecto de dicha acción (es decir, qué relaciones primitivas son
+afectadas por la acción).</li>
+<li>Conjuntamente, se asume que todas las relac. primitivas no
+mencionadas en la descripción del efecto de la acción permanecen
+inalteradas luego de ser ejecutada <font color="colorgreen">(suposición STRIPS)</font>. De esta forma, se elude el  <font color="colororange">Problema del Marco</font>.</li>
+<li>La representación STRIPS se basa en la idea de que la ejecución de
+una acción solo afecta una pequeña porción de la descripción actual
+del mundo. Es decir, solo afecta unas pocas relaciones primitivas.</li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6efa2ca">
+<h3 id="org6efa2ca">Mundo de Bloques: Representación</h3>
+<p>
+<b>\(\color{green}{on(X,Y) \mbox{ o } sobre(X,Y)}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Es verdadero cuando el bloque X está sobre Y, donde Y es otro bloque o
+la mesa.
+</p>
+</div>
+
+<p>
+<b>\(\color{green}{move(B,X,Y)}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Acción de mover el bloque B del tope de X a Y.
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbfd0897">
+<h3 id="orgbfd0897">Mundo de Bloques: Move(B,X,Y)</h3>
+<p>
+<b><font color="green">Precondiciones en ADL</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(\neg\exists X On(X,B)\)
+</p>
+
+<p>
+\(\neg\exists X On(X,Y)\) 
+</p>
+</div>
+
+<p>
+<b><font color="green">Precondiciones en STRIPS</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(Clear(B)\)
+</p>
+
+<p>
+\(Clear(Y)\)
+</p>
+
+<p>
+\(On(B,X)\)
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf556b37">
+<h3 id="orgf556b37">Mundo de Bloques: Move(B,X,Y)</h3>
+<p>
+<b><font color="green">Efectos en ADL</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(\neg On(B,X)\)
+</p>
+
+<p>
+\(On(B,Y)\)
+</p>
+</div>
+
+<p>
+<b><font color="green">Efectos en STRIPS</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Lista de Agregados: {\(Clear(X) , On(B,Y)\)}
+</p>
+
+<p>
+Lista de Borrados: {\(Clear(Y), On(B,X)\)}
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org61e20f3">
+<h3 id="org61e20f3">Mundo de Bloques: Move(B,X,Y)</h3>
+<p>
+Situaciones especiales:
+</p>
+
+<ul>
+<li>Mover desde y a la mesa: la mesa permanece "clear".</li>
+<li>Move(B,C,C)</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1f80d47">
+<h3 id="org1f80d47">Mundo de Bloques</h3>
+
+<div id="org52bdc3b" class="figure">
+<p><img src="imagenes/bloquestrips4.png" alt="bloquestrips4.png" height="450" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org62b8e20">
+<h2 id="org62b8e20">Situation Calculus</h2>
+<div class="outline-text-2" id="text-org62b8e20">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org599d412">
+<h3 id="org599d412">Situation Calculus</h3>
+<p>
+En vez de concentrarnos en tiempos nos concentramos en situaciones:
+</p>
+
+
+<div id="org17a7c2e" class="figure">
+<p><img src="imagenes/situation.png" alt="situation.png" height="400" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4a21582">
+<h3 id="org4a21582">Situation Calculus</h3>
+<div style="font-size: 70%;">
+<ul>
+<li>El tiempo se modela de acuerdo a la visión de
+<font color="green">espacio de estados</font>, donde las acciones y los estados (o situaciones) se reifican.</li>
+<li>Al decir que las acciones y estados se reifican, nos referimos
+concretamente a que se utilizan <font color="green">términos</font> lógicos para <font color="green">denotar/ nombrar/ referirse a estados y acciones</font>.</li>
+<li><p>
+De esta manera es posible representar, <b><font color="green">en</font></b> la lógica, <font color="green">sentencias que hablan de/se refieren a acciones y estados</font> particulares.
+</p>
+</div></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8ac3dbd">
+<h3 id="org8ac3dbd">Situation Calculus: Representación</h3>
+<p>
+Representamos a las situaciones como:
+</p>
+
+<ul>
+<li><font color="cyan">Situación Inicial</font>: \(S_0\) o \(init\)</li>
+<li><font color="blue">Situaciones que resulta de realizar la acción A a partir de la situación S a condición de que la acción A sea aplicable a partir de S:</font> \(do(A,S)\)</li>
+
+</ul>
+
+
+<p>
+\[S_0 \ \ \stackrel{A_0}{\longrightarrow}{}\ \ \stackrel{result(A_0,s_0)}{do(A_0,s_0)}\ \ \stackrel{A_1}{\longrightarrow}{}\ \ \ \stackrel{result(A_1,result(A_0,s_0))}{do(A_1,do(A_0,s_0))}\]
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org55e87c6">
+<h3 id="org55e87c6">Situation Calculus: Representación</h3>
+<ul>
+<li><p>
+<b><font color="green">Predicados Atemporales</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Son predicados que permanecen <font color=red>invariables</font> en todas las
+situaciones. Ejemplo: \(agente(bond)\)
+</p>
+</div></li>
+
+</ul>
+<ul>
+<li class="fragment roll-in"><p>
+<b><font color="green">Fluentes</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Son predicados que <font color=red>varían</font> desde alguna situación a la siguiente.
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4301969">
+<h3 id="org4301969">Situation Calculus: Representación</h3>
+<ul>
+<li><p>
+<b><font color="green">Representación de un Estado</font></b>
+</p>
+<div style="font-size: 70%;">
+<p>
+ Fórmulas lógicas con un parámetro más que indica la situación en la que es verdadera.Ejemplo:
+\[at(bond,[1,1],S_0)\]
+\[holding(bond,gun,do(get(gun), do(go([1,1],[2,2]),S_0)))\]
+\[agente(bond)\]
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgeee45ea">
+<h3 id="orgeee45ea">Situation Calculus</h3>
+
+<div id="org56a6453" class="figure">
+<p><img src="imagenes/rlcs.png" alt="rlcs.png" height="450" />
+</p>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org9993b13">
+<h3 id="org9993b13">Situation Calculus: Representación</h3>
+<p>
+<b><font color="green">Representación de una Acción</font></b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in"><b><font color=red>Axioma de Posibilidad:</font></b> indica cuando es posible ejecutar una acción. (precondiciones)</li>
+<li class="fragment roll-in"><b><font color=red>Axioma de Estado Sucesor:</font></b> Cada acción tiene asociado
+un axioma de efecto, que especifica el efecto de ejecutar la
+acción. Es decir, un fluente es verdadero después de ejecutar una
+acción si:
+<ul>
+<li class="fragment roll-in">El efecto de la acción que ejecutamos  hizo verdadero al fluente (<font color="green">Axioma de Efecto</font>), o</li>
+<li class="fragment roll-in">el fluente era verdadero antes y la acción lo dejó igual (<font color="green">Axioma del Frame</font>)</li>
+
+</ul></li>
+
+</ul>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge412dce">
+<h3 id="orge412dce">Situation Calculus: Mundo de Bloques</h3>
+<p>
+\(\color{cyan}{Move(B,X,Y)}\)
+</p>
+
+<ul>
+<li><b><font color="green">Precondiciones</font></b></li>
+
+</ul>
+<div style="font-size: 60%;">
+<p>
+poss(move(B,X,Y),S) \(\leftarrow\) bloque(B),bloque(X),bloque(Y),clear(Y,S),clear(B,S), on(B,X,S).
+</p>
+</div>
+<ul>
+<li class="fragment roll-in"><p>
+<b><font color="green">Estado Sucesor</font></b>
+</p>
+<div style="font-size: 55%;">
+<p>
+ \(\Bigr(\) clear(X,do(A,S))\(\leftrightarrow\) \(\bigl(\) A=move(B,X,Y) \(\vee\) 
+\(( clear(X,S) \wedge A\neq  move(B,Z,X) \bigl)\Bigl)\). 
+</p>
+
+<p>
+Siguiendo notación de Poole, utilizamos dos reglas:
+</p>
+
+<p>
+<b>Ax de efecto:</b>
+</p>
+
+<p>
+clear(X,do(move(B,X,Y),S))\(\leftarrow\) poss(move(B,X,Y),S).
+</p>
+
+<p>
+<b>Ax de frame:</b>
+</p>
+
+<p>
+clear(X,do(A,S))\(\leftarrow\) clear(X,S) \(\wedge\) poss(A,S) \(\wedge\) A \(\neq\) move(B,Z,X)
+</p>
+</div></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgacb2f53">
+<h2 id="orgacb2f53">Event Calculus</h2>
+<div class="outline-text-2" id="text-orgacb2f53">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org1ac76f2">
+<h3 id="org1ac76f2">Event Calculus</h3>
+<ul>
+<li>El Cálculo Situacional permite a un agente ejecutar acciones
+discretas instantáneas.</li>
+<li>Problemas para representar acciones que tienen duración o que se
+realizan en paralelo.</li>
+<li>Necesitamos
+<ul>
+<li class="fragment roll-in">Representación Temporal Basada en tiempos en vez de en situaciones.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org46c2d58">
+<h3 id="org46c2d58">Event Calculus: Características</h3>
+<ul>
+<li class="fragment roll-in">Los fluentes  ocurren en un punto en el tiempo</li>
+<li class="fragment roll-in">El cálculo está diseñado para permitir razonamiento sobre intervalos
+de tiempos.</li>
+<li class="fragment roll-in"><p>
+<b><font color="green">Un fluente es verdadero en un punto en el tiempo</font></b> <b>\(\color{green}{t}\)</b>
+</p>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in">Si el fluente fue <b><i>inicializado</i></b> por un evento en algún tiempo  \(t^\prime\) del pasado, es decir \(t^\prime < t\) y</li>
+<li class="fragment roll-in">Si el fluente <b><i>no fue terminado</i></b> por un evento intermedio, es decir algún evento que ocurrió  entre \(t^\prime\)  y \(t\).</li>
+
+</ul>
+</div></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgc655c42">
+<h3 id="orgc655c42">Event Calculus: Representación</h3>
+<p>
+<b>\(\color{green}{event(E,T)}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+El evento \(E\) ocurrió en el tiempo \(T\).
+</p>
+
+<p>
+Para cada evento debemos especificar aquello que hace verdadero y
+aquello que deja de ser verdadero:
+</p>
+</div>
+
+<ul>
+<li class="fragment roll-in"><p>
+<b>\(\color{green}{initiates(E,P,T)}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Es verdadero si el evento E hace al predicado P verdadero en el tiempo T.
+</p>
+</div></li>
+<li class="fragment roll-in"><p>
+<b>\(\color{green}{terminates(E,P,T)}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+Es verdadero si el evento E hace que el predicado P deje de ser verdadero en el tiempo T.
+</p>
+</div></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgd2bde35">
+<h3 id="orgd2bde35">Event Calculus: Representación</h3>
+<div style="font-size: 70%;">
+<p>
+Para cada fluente, deberemos determinar si éste ocurre o no en un
+tiempo particular:
+</p>
+
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<p>
+\(holds(P,T) \leftarrow\)
+</p>
+</div>
+<div class="one_of_2_columns">
+<p height="200">
+\(event(E,T0) \wedge T0 <  T \wedge\)
+\(\color{green}{initiates(E,P,T0)} \wedge\)
+\(\sim clipped(P,T0,T)\).
+</p>
+</div>
+</div>
+
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<p>
+\(clipped(P,T0,T)\leftarrow\)
+</p>
+</div>
+<div class="one_of_2_columns">
+<p height="200">
+\(event(E1,T1) \wedge\)
+\(\color{green}{terminates(E1,P,T1)} \wedge\)
+\(T0 < T1 \wedge T1 < T\).
+</p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdae1e24">
+<h3 id="orgdae1e24">Event Calculus: Mundo de Bloques</h3>
+<p>
+<b>\(\color{green}{move(B,X,Y))}\)</b>
+</p>
+<div style="font-size: 70%;">
+<p>
+\(initiates(move(B,X,Y),clear(X),T) \leftarrow poss(move(B,X,Y),T)\).<br />
+</p>
+
+<p>
+\(initiates(move(B,X,Y),on(B,Y),T) \leftarrow  poss(move(B,X,Y),T)\).<br />
+</p>
+
+<p>
+\(terminates(move(B,X,Y),clear(Y),T) \leftarrow poss(move(B,X,Y),T)\).<br />
+</p>
+
+<p>
+\(terminates(move(B,X,Y),on(B,X),T) \leftarrow poss(move(B,X,Y),T)\).<br />
+</p>
+
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<p>
+\(poss(move(B,X,Y),T) \leftarrow\)
+</p>
+</div>
+<div class="one_of_2_columns">
+<p height="200">
+\(holds(clear(B),T) \wedge\)
+\(holds(clear(Y),T) \wedge\)
+\(holds(on(B,X),T)\)
+</p>
+</div>
+</div>
+
+
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga12ca08">
+<h3 id="orga12ca08">Rep. de Acciones y Cambio</h3>
+<div style="font-size: 80%;">
+<ul>
+<li><font color=red>Tiempo Discreto:</font> se modela como saltando de un punto en
+el tiempo a otro, separados entre sí de manera uniforme.</li>
+<li><font color=red>Tiempo Continuo:</font> se modela como una estructura lineal
+continua.</li>
+<li><font color=red>Tiempo Basado en Eventos:</font> Análogo a Tiempo Discreto,
+pero los puntos en el tiempo marcan eventos “interesantes”, y no
+necesitan estar separados entre sí de manera uniforme. Ej: Cálculo
+de Eventos.</li>
+<li><p>
+<font color=red>Espacio de Estados:</font> en lugar de considerar el tiempo
+explícitamete, podemos considerar a las acciones como mapeando de un
+estado a otro del mundo. Ej: Cálculo de Situaciones y STRIPS.
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org2c3625b">
+<h3 id="org2c3625b">Rep. de Acciones y Cambio</h3>
+<div style="font-size: 70%;">
+<p>
+El tiempo pude incorporarse a un sistema de Rep. de Conoc. y
+Razonamiento de diferentes formas:
+</p>
+
+<ul>
+<li><font color=red>El Tiempo /y acciones/ son externas a la lógica:</font> Se
+representa en la lógica solo un estado (correspondiente a un
+determinado momento), y se utilizan sentencias fuera de la lógica
+para especificar cómo una acción mapea desde la descripción de un
+estado a la descripción del siguiente. Ej. <font color="green">STRIPS</font>.</li>
+<li><p>
+<font color=red>El Tiempo se encuentra reificado.</font> ie, el tiempo es otro
+objeto más, que se representa y del que se puede hablar, en la
+lógica. Concretamente, se puede agregar un argumento a las
+relaciones para especificar cuando valen.  Ej: pasa-autobus(\(101\),
+cuadra(Mitre, \(200\)), pm(\(15:35\))) Ej <font color="green">Cálculo de Situaciones</font>
+</p>
+</div></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'cube',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
