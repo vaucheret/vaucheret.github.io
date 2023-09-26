@@ -9,7 +9,7 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
 
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -27,19 +27,94 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda Adversaria</h2><p class="date">Created: 2022-09-27 mar 09:48</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda Adversaria</h2><p class="date">Created: 2023-09-26 mar 19:44</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orga9ab57f">Introducción</a>
+<ul>
+<li><a href="#/slide-org0ef178b">Juegos</a></li>
+<li><a href="#/slide-orgabd743e">Juegos</a></li>
+<li><a href="#/slide-org0ece84b">Tipos de Juegos</a></li>
+<li><a href="#/slide-org5058e9d">Características de los Juegos</a></li>
+<li><a href="#/slide-org252ce81">No Suma Cero: Dilema del Prisionero</a></li>
+<li><a href="#/slide-org24b9b0d">No Suma Cero: Dilema del Prisionero</a></li>
+<li><a href="#/slide-org1890919">Juegos</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orge8d9111">Juegos como Búsqueda</a>
+<ul>
+<li><a href="#/slide-orga7d0fd0">Formalización como un problema de búsqueda</a></li>
+<li><a href="#/slide-orgf6105d1">Formalización como un problema de búsqueda</a></li>
+<li><a href="#/slide-org660e7a1">Formulación como un  Problema de Búsqueda</a></li>
+<li><a href="#/slide-orgaf3fef4">Formulación como un  Problema de Búsqueda</a></li>
+<li><a href="#/slide-orgd925229">Espacio de búsqueda</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org05d9b7f">MINIMAX</a>
+<ul>
+<li><a href="#/slide-org529c6b0">Algoritmo Minimax</a></li>
+<li><a href="#/slide-orgd9f9dd0">Algoritmo Minimax</a></li>
+<li><a href="#/slide-orgfc082ae">Algoritmo Minimax</a></li>
+<li><a href="#/slide-org5a764f0">Espacio de búsqueda</a></li>
+<li><a href="#/slide-org1599ee7">Espacio de búsqueda</a></li>
+<li><a href="#/slide-org6d9f4c5">Espacio de búsqueda</a></li>
+<li><a href="#/slide-org1ca7701">Espacio de búsqueda</a></li>
+<li><a href="#/slide-orgb74a896">Espacio de búsqueda</a></li>
+<li><a href="#/slide-org8e65894">Propiedades de Minimax</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org530e96c">Alpha-Beta</a>
+<ul>
+<li><a href="#/slide-org05ece0e">Minimax</a></li>
+<li><a href="#/slide-org72f5289">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-org6766967">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-orga12bf87">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-orgf75b205">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-orgab7bc6f">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-org93309bd">Alpha-Beta</a></li>
+<li><a href="#/slide-org0e39bc6">Poda Alpha-Beta</a></li>
+<li><a href="#/slide-orgb1cc9a9">Algoritmo \(\alpha-\beta\)</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgc5ea71e">Tiempo Real</a>
+<ul>
+<li><a href="#/slide-orgd1bd559">Toma de decisiones en tiempo real</a></li>
+<li><a href="#/slide-org53ac3fe">Función de Evaluación</a></li>
+<li><a href="#/slide-org8a3c96d">Función de Evaluación</a></li>
+<li><a href="#/slide-org854356d">Test de Corte</a></li>
+<li><a href="#/slide-org663355b">Test de Corte</a></li>
+<li><a href="#/slide-orgb6e3d85">Efecto Horizonte</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org83d6d4d">Conclusiones</a>
+<ul>
+<li><a href="#/slide-org178a3c8">Resumen</a></li>
+<li><a href="#/slide-org564ef4b">Resumen</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org21873bf">Bibliografía</a>
+<ul>
+<li><a href="#/slide-org53c4ad8">Referencia Bibliográfica</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </section>
 
 <section>
-<section id="slide-orgf5b45ef">
-<h2 id="orgf5b45ef">Introducción</h2>
-<div class="outline-text-2" id="text-orgf5b45ef">
+<section id="slide-orga9ab57f">
+<h2 id="orga9ab57f">Introducción</h2>
+<div class="outline-text-2" id="text-orga9ab57f">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org2b6b5fb">
-<h3 id="org2b6b5fb">Juegos</h3>
+<section id="slide-org0ef178b">
+<h3 id="org0ef178b">Juegos</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -57,7 +132,7 @@
 </table>
 
 </section>
-<section id="slide-org2b6b5fb-split">
+<section id="slide-org0ef178b-split">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -78,8 +153,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgd6bacc5">
-<h3 id="orgd6bacc5">Juegos</h3>
+<section id="slide-orgabd743e">
+<h3 id="orgabd743e">Juegos</h3>
 <p>
 <b><font color="green">Definición</font></b>
 </p>
@@ -100,8 +175,8 @@ Las <font color="orange">reglas</font> especifican las <font color="green">accio
 </section>
 </section>
 <section>
-<section id="slide-orgd8a0ef6">
-<h3 id="orgd8a0ef6">Tipos de Juegos</h3>
+<section id="slide-org0ece84b">
+<h3 id="org0ece84b">Tipos de Juegos</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -136,8 +211,8 @@ Las <font color="orange">reglas</font> especifican las <font color="green">accio
 </section>
 </section>
 <section>
-<section id="slide-org415ff60">
-<h3 id="org415ff60">Características de los Juegos</h3>
+<section id="slide-org5058e9d">
+<h3 id="org5058e9d">Características de los Juegos</h3>
 <div style="font-size: 80%;">
 <ul>
 <li><font color=red>Dos</font> jugadores o agentes.</li>
@@ -154,8 +229,8 @@ Las <font color="orange">reglas</font> especifican las <font color="green">accio
 </section>
 </section>
 <section>
-<section id="slide-org18bee29">
-<h3 id="org18bee29">No Suma Cero: Dilema del Prisionero</h3>
+<section id="slide-org252ce81">
+<h3 id="org252ce81">No Suma Cero: Dilema del Prisionero</h3>
 <p>
 <b><font color="green">Enunciado Clásico</font></b>
 </p>
@@ -169,8 +244,8 @@ La policía arresta a dos sospechosos. No hay pruebas suficientes para condenarl
 </section>
 </section>
 <section>
-<section id="slide-orgc8728a2">
-<h3 id="orgc8728a2">No Suma Cero: Dilema del Prisionero</h3>
+<section id="slide-org24b9b0d">
+<h3 id="org24b9b0d">No Suma Cero: Dilema del Prisionero</h3>
 <p>
 Resumiendo:
 </p>
@@ -209,8 +284,8 @@ Resumiendo:
 </section>
 </section>
 <section>
-<section id="slide-orgde86766">
-<h3 id="orgde86766">Juegos</h3>
+<section id="slide-org1890919">
+<h3 id="org1890919">Juegos</h3>
 <div style="font-size: 80%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -257,15 +332,15 @@ Resumiendo:
 </section>
 </section>
 <section>
-<section id="slide-org30727be">
-<h2 id="org30727be">Juegos como Búsqueda</h2>
-<div class="outline-text-2" id="text-org30727be">
+<section id="slide-orge8d9111">
+<h2 id="orge8d9111">Juegos como Búsqueda</h2>
+<div class="outline-text-2" id="text-orge8d9111">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org50aa74c">
-<h3 id="org50aa74c">Formalización como un problema de búsqueda</h3>
+<section id="slide-orga7d0fd0">
+<h3 id="orga7d0fd0">Formalización como un problema de búsqueda</h3>
 <ul>
 <li><font color=red>Nodo Inicial:</font> incluye la posición inicial del juego y determina el jugador que va a mover.</li>
 <li><font color=red>Función Sucesor:</font> indica los movimientos legales desde un estado y el estado resultante luego de jugar esa jugada.</li>
@@ -278,8 +353,8 @@ Resumiendo:
 </section>
 </section>
 <section>
-<section id="slide-orgdec768e">
-<h3 id="orgdec768e">Formalización como un problema de búsqueda</h3>
+<section id="slide-orgf6105d1">
+<h3 id="orgf6105d1">Formalización como un problema de búsqueda</h3>
 <p>
 <b><font color="green">Árbol de Juego</font></b>
 </p>
@@ -306,8 +381,8 @@ En un problema de búsqueda, la <font color="blue">solución óptima)</font> es 
 </section>
 </section>
 <section>
-<section id="slide-orgdc7829d">
-<h3 id="orgdc7829d">Formulación como un  Problema de Búsqueda</h3>
+<section id="slide-org660e7a1">
+<h3 id="org660e7a1">Formulación como un  Problema de Búsqueda</h3>
 <p>
 Ajedrez
 </p>
@@ -331,8 +406,8 @@ Ajedrez
 </section>
 </section>
 <section>
-<section id="slide-org77fd970">
-<h3 id="org77fd970">Formulación como un  Problema de Búsqueda</h3>
+<section id="slide-orgaf3fef4">
+<h3 id="orgaf3fef4">Formulación como un  Problema de Búsqueda</h3>
 <p>
 Tic-Tac-Toe
 </p>
@@ -357,10 +432,10 @@ Tic-Tac-Toe
 </section>
 </section>
 <section>
-<section id="slide-org436a224">
-<h3 id="org436a224">Espacio de búsqueda</h3>
+<section id="slide-orgd925229">
+<h3 id="orgd925229">Espacio de búsqueda</h3>
 
-<div id="org7dc575b" class="figure">
+<div id="orgfa6d033" class="figure">
 <p><img src="imagenes/game-tree.jpg" alt="game-tree.jpg" height="500" />
 </p>
 </div>
@@ -368,15 +443,15 @@ Tic-Tac-Toe
 </section>
 </section>
 <section>
-<section id="slide-org4004a3a">
-<h2 id="org4004a3a">MINIMAX</h2>
-<div class="outline-text-2" id="text-org4004a3a">
+<section id="slide-org05d9b7f">
+<h2 id="org05d9b7f">MINIMAX</h2>
+<div class="outline-text-2" id="text-org05d9b7f">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgfc007c5">
-<h3 id="orgfc007c5">Algoritmo Minimax</h3>
+<section id="slide-org529c6b0">
+<h3 id="org529c6b0">Algoritmo Minimax</h3>
 <p>
 Dos jugadores MAX (\(\triangle\)) y MIN(\(\triangledown\)).
 </p>
@@ -393,8 +468,8 @@ El jugador <font color="blue">MAX</font> juega a la posición de <font color="cy
 </section>
 </section>
 <section>
-<section id="slide-orgc4dabe2">
-<h3 id="orgc4dabe2">Algoritmo Minimax</h3>
+<section id="slide-orgd9f9dd0">
+<h3 id="orgd9f9dd0">Algoritmo Minimax</h3>
 <p>
 <b><font color="green">Idea</font></b>
 </p>
@@ -405,7 +480,7 @@ El jugador <font color="blue">MAX</font> juega a la posición de <font color="cy
 </div>
 
 
-<div id="orgeac1e66" class="figure">
+<div id="org68cf8c8" class="figure">
 <p><img src="imagenes/algminax.png" alt="algminax.png" />
 </p>
 </div>
@@ -413,8 +488,8 @@ El jugador <font color="blue">MAX</font> juega a la posición de <font color="cy
 </section>
 </section>
 <section>
-<section id="slide-org28218e1">
-<h3 id="org28218e1">Algoritmo Minimax</h3>
+<section id="slide-orgfc082ae">
+<h3 id="orgfc082ae">Algoritmo Minimax</h3>
 <ul>
 <li>El recorrido del árbol de búsqueda es Depth-First.</li>
 <li><p>
@@ -448,10 +523,10 @@ Se debe calcular el valor de minimax de cada nodo recursivamente
 </section>
 </section>
 <section>
-<section id="slide-org7324b43">
-<h3 id="org7324b43">Espacio de búsqueda</h3>
+<section id="slide-org5a764f0">
+<h3 id="org5a764f0">Espacio de búsqueda</h3>
 
-<div id="orgb528272" class="figure">
+<div id="orga9bafcf" class="figure">
 <p><img src="imagenes/minimax-illustration-6.jpg" alt="minimax-illustration-6.jpg" />
 </p>
 </div>
@@ -459,10 +534,10 @@ Se debe calcular el valor de minimax de cada nodo recursivamente
 </section>
 </section>
 <section>
-<section id="slide-orgb0d9cf2">
-<h3 id="orgb0d9cf2">Espacio de búsqueda</h3>
+<section id="slide-org1599ee7">
+<h3 id="org1599ee7">Espacio de búsqueda</h3>
 
-<div id="orgcefb670" class="figure">
+<div id="org7979be8" class="figure">
 <p><img src="imagenes/minimax-illustration-7.jpg" alt="minimax-illustration-7.jpg" />
 </p>
 </div>
@@ -470,10 +545,10 @@ Se debe calcular el valor de minimax de cada nodo recursivamente
 </section>
 </section>
 <section>
-<section id="slide-orgd5b425c">
-<h3 id="orgd5b425c">Espacio de búsqueda</h3>
+<section id="slide-org6d9f4c5">
+<h3 id="org6d9f4c5">Espacio de búsqueda</h3>
 
-<div id="orgadcf350" class="figure">
+<div id="org30dceb3" class="figure">
 <p><img src="imagenes/minimax-illustration-8.jpg" alt="minimax-illustration-8.jpg" />
 </p>
 </div>
@@ -481,10 +556,10 @@ Se debe calcular el valor de minimax de cada nodo recursivamente
 </section>
 </section>
 <section>
-<section id="slide-orgd86e0b9">
-<h3 id="orgd86e0b9">Espacio de búsqueda</h3>
+<section id="slide-org1ca7701">
+<h3 id="org1ca7701">Espacio de búsqueda</h3>
 
-<div id="org392993d" class="figure">
+<div id="orgacca863" class="figure">
 <p><img src="imagenes/minimax-illustration-9.jpg" alt="minimax-illustration-9.jpg" />
 </p>
 </div>
@@ -492,10 +567,10 @@ Se debe calcular el valor de minimax de cada nodo recursivamente
 </section>
 </section>
 <section>
-<section id="slide-org87100b1">
-<h3 id="org87100b1">Espacio de búsqueda</h3>
+<section id="slide-orgb74a896">
+<h3 id="orgb74a896">Espacio de búsqueda</h3>
 
-<div id="orge10abad" class="figure">
+<div id="org212ff11" class="figure">
 <p><img src="imagenes/minimax-illustration.jpg" alt="minimax-illustration.jpg" />
 </p>
 </div>
@@ -503,8 +578,8 @@ Se debe calcular el valor de minimax de cada nodo recursivamente
 </section>
 </section>
 <section>
-<section id="slide-orgf7a48bc">
-<h3 id="orgf7a48bc">Propiedades de Minimax</h3>
+<section id="slide-org8e65894">
+<h3 id="org8e65894">Propiedades de Minimax</h3>
 <p>
 Asumimos una profundidad máxima del árbol de \(m\) y que el juego tiene \(b\) movimientos legales en  cada nodo (ramificación). Recordemos que el recorrido es Depth-First.
 </p>
@@ -521,15 +596,15 @@ Asumimos una profundidad máxima del árbol de \(m\) y que el juego tiene \(b\) 
 </section>
 </section>
 <section>
-<section id="slide-org739b351">
-<h2 id="org739b351">Alpha-Beta</h2>
-<div class="outline-text-2" id="text-org739b351">
+<section id="slide-org530e96c">
+<h2 id="org530e96c">Alpha-Beta</h2>
+<div class="outline-text-2" id="text-org530e96c">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org032658d">
-<h3 id="org032658d">Minimax</h3>
+<section id="slide-org05ece0e">
+<h3 id="org05ece0e">Minimax</h3>
 <p>
 Para el ajedrez tenemos una profundidad \(m\approx 100\) y una ramificación \(b\approx 35\).
 </p>
@@ -557,10 +632,10 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-orgce23485">
-<h3 id="orgce23485">Poda Alpha-Beta</h3>
+<section id="slide-org72f5289">
+<h3 id="org72f5289">Poda Alpha-Beta</h3>
 
-<div id="org8ce7745" class="figure">
+<div id="org8a81008" class="figure">
 <p><img src="imagenes/alpha-beta1.jpg" alt="alpha-beta1.jpg" height="400" />
 </p>
 </div>
@@ -569,10 +644,10 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-orgaf8da7f">
-<h3 id="orgaf8da7f">Poda Alpha-Beta</h3>
+<section id="slide-org6766967">
+<h3 id="org6766967">Poda Alpha-Beta</h3>
 
-<div id="org786b2a8" class="figure">
+<div id="orgdc7bb2e" class="figure">
 <p><img src="imagenes/alpha-beta2.jpg" alt="alpha-beta2.jpg" height="400" />
 </p>
 </div>
@@ -581,10 +656,10 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-org40f5d9f">
-<h3 id="org40f5d9f">Poda Alpha-Beta</h3>
+<section id="slide-orga12bf87">
+<h3 id="orga12bf87">Poda Alpha-Beta</h3>
 
-<div id="orgc861701" class="figure">
+<div id="orgea3af1b" class="figure">
 <p><img src="imagenes/alpha-beta3.jpg" alt="alpha-beta3.jpg" height="400" />
 </p>
 </div>
@@ -592,10 +667,10 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-orge84e960">
-<h3 id="orge84e960">Poda Alpha-Beta</h3>
+<section id="slide-orgf75b205">
+<h3 id="orgf75b205">Poda Alpha-Beta</h3>
 
-<div id="orge754290" class="figure">
+<div id="orgb631a45" class="figure">
 <p><img src="imagenes/alpha-beta4.jpg" alt="alpha-beta4.jpg" height="400" />
 </p>
 </div>
@@ -604,10 +679,10 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-org7414085">
-<h3 id="org7414085">Poda Alpha-Beta</h3>
+<section id="slide-orgab7bc6f">
+<h3 id="orgab7bc6f">Poda Alpha-Beta</h3>
 
-<div id="orgc561398" class="figure">
+<div id="org907e6d7" class="figure">
 <p><img src="imagenes/alpha-beta5.jpg" alt="alpha-beta5.jpg" height="400" />
 </p>
 </div>
@@ -615,8 +690,8 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-org9403c84">
-<h3 id="org9403c84">Alpha-Beta</h3>
+<section id="slide-org93309bd">
+<h3 id="org93309bd">Alpha-Beta</h3>
 <ul>
 <li>La poda <font color=red>NO</font> afecta el resultado final.</li>
 <li>Un buen orden de los movimientos mejora la efectividad de la poda.</li>
@@ -628,8 +703,8 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-org8ba6464">
-<h3 id="org8ba6464">Poda Alpha-Beta</h3>
+<section id="slide-org0e39bc6">
+<h3 id="org0e39bc6">Poda Alpha-Beta</h3>
 <div style="font-size: 80%;">
 <ul>
 <li>\(\alpha\): es el valor de la mejor elección (valor más alto) que hemos  encontrado hasta ahora  para MAX. Inicialmente en \(-\infty\). <br />
@@ -652,10 +727,10 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-org76f6908">
-<h3 id="org76f6908">Algoritmo \(\alpha-\beta\)</h3>
+<section id="slide-orgb1cc9a9">
+<h3 id="orgb1cc9a9">Algoritmo \(\alpha-\beta\)</h3>
 
-<div id="org796b5fa" class="figure">
+<div id="orgb2fc059" class="figure">
 <p><img src="imagenes/alphabeta.png" alt="alphabeta.png" height="550" />
 </p>
 </div>
@@ -663,15 +738,15 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-orgbfd877d">
-<h2 id="orgbfd877d">Tiempo Real</h2>
-<div class="outline-text-2" id="text-orgbfd877d">
+<section id="slide-orgc5ea71e">
+<h2 id="orgc5ea71e">Tiempo Real</h2>
+<div class="outline-text-2" id="text-orgc5ea71e">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org92e1484">
-<h3 id="org92e1484">Toma de decisiones en tiempo real</h3>
+<section id="slide-orgd1bd559">
+<h3 id="orgd1bd559">Toma de decisiones en tiempo real</h3>
 <div style="font-size: 80%;">
 <ul>
 <li>En un  juego, el tiempo para "pensar" la siguiente movida es limitado.</li>
@@ -696,8 +771,8 @@ Solución exacta NO viable completamente con Minimax.
 </section>
 </section>
 <section>
-<section id="slide-orgfbd09d6">
-<h3 id="orgfbd09d6">Función de Evaluación</h3>
+<section id="slide-org53ac3fe">
+<h3 id="org53ac3fe">Función de Evaluación</h3>
 <div style="font-size: 80%;">
 <p>
 <b><font color="green">Valor estimado de la utilidad esperada del juego desde un nodo</font></b>  
@@ -725,8 +800,8 @@ La performance del juego dependerá de la <font color="blue">calidad</font> de l
 </section>
 </section>
 <section>
-<section id="slide-orgb141569">
-<h3 id="orgb141569">Función de Evaluación</h3>
+<section id="slide-org8a3c96d">
+<h3 id="org8a3c96d">Función de Evaluación</h3>
 <p>
 <b><font color="green">¿Cómo diseñamos una función de evaluación?</font></b>
 </p>
@@ -743,8 +818,8 @@ La performance del juego dependerá de la <font color="blue">calidad</font> de l
 </section>
 </section>
 <section>
-<section id="slide-orge9f218b">
-<h3 id="orge9f218b">Test de Corte</h3>
+<section id="slide-org854356d">
+<h3 id="org854356d">Test de Corte</h3>
 <p>
 <b><font color="green">Enfoque Simple</font></b>
 </p>
@@ -778,8 +853,8 @@ Se requiere de alguna mejora&#x2026;
 </section>
 </section>
 <section>
-<section id="slide-org5de3cc4">
-<h3 id="org5de3cc4">Test de Corte</h3>
+<section id="slide-org663355b">
+<h3 id="org663355b">Test de Corte</h3>
 <p>
 <b><font color="green">Problemas</font></b>
 </p>
@@ -805,8 +880,8 @@ El corte se aplica sólo a nodos en reposo, es decir a aquellos que tienen poca 
 </section>
 </section>
 <section>
-<section id="slide-orga6612e6">
-<h3 id="orga6612e6">Efecto Horizonte</h3>
+<section id="slide-orgb6e3d85">
+<h3 id="orgb6e3d85">Efecto Horizonte</h3>
 <p>
 <b><font color="green">Idea</font></b>
 </p>
@@ -819,15 +894,15 @@ Ocurre cuando los movimientos del oponente  causan un daño serio que es inevita
 </section>
 </section>
 <section>
-<section id="slide-orgd5371cd">
-<h2 id="orgd5371cd">Conclusiones</h2>
-<div class="outline-text-2" id="text-orgd5371cd">
+<section id="slide-org83d6d4d">
+<h2 id="org83d6d4d">Conclusiones</h2>
+<div class="outline-text-2" id="text-org83d6d4d">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org69f82aa">
-<h3 id="org69f82aa">Resumen</h3>
+<section id="slide-org178a3c8">
+<h3 id="org178a3c8">Resumen</h3>
 <ul>
 <li class="fragment roll-in">Algunos <font color=red>juegos</font> pueden ser representados como problemas de búsquedas
 <ul>
@@ -847,8 +922,8 @@ Ocurre cuando los movimientos del oponente  causan un daño serio que es inevita
 </section>
 </section>
 <section>
-<section id="slide-org5fe5549">
-<h3 id="org5fe5549">Resumen</h3>
+<section id="slide-org564ef4b">
+<h3 id="org564ef4b">Resumen</h3>
 <ul>
 <li class="fragment roll-in">Los juego en <font color=red>tiempo real</font> requiere  <font color="blue">cutoffs</font></li>
 <li class="fragment roll-in">Necesita definir una medida de utilidad heurística: <font color=red>función de evaluación</font>
@@ -864,15 +939,15 @@ Ocurre cuando los movimientos del oponente  causan un daño serio que es inevita
 </section>
 </section>
 <section>
-<section id="slide-org8e97ff4">
-<h2 id="org8e97ff4">Bibliografía</h2>
-<div class="outline-text-2" id="text-org8e97ff4">
+<section id="slide-org21873bf">
+<h2 id="org21873bf">Bibliografía</h2>
+<div class="outline-text-2" id="text-org21873bf">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org3ba4013">
-<h3 id="org3ba4013">Referencia Bibliográfica</h3>
+<section id="slide-org53c4ad8">
+<h3 id="org53c4ad8">Referencia Bibliográfica</h3>
 <div style="font-size: 80%;">
 
 <p>
@@ -891,7 +966,7 @@ Ocurre cuando los movimientos del oponente  causan un daño serio que es inevita
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-transition:'cube',
+transition:'none',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server

@@ -9,7 +9,7 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
 
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -27,19 +27,19 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda Heurística</h2><p class="date">Created: 2022-09-22 jue 00:01</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda Heurística</h2><p class="date">Created: 2023-09-26 mar 19:38</p>
 </section>
 
 <section>
-<section id="slide-org17ed512">
-<h2 id="org17ed512">Motivación</h2>
-<div class="outline-text-2" id="text-org17ed512">
+<section id="slide-org711c838">
+<h2 id="org711c838">Motivación</h2>
+<div class="outline-text-2" id="text-org711c838">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org6238ed2">
-<h3 id="org6238ed2">Motivación</h3>
+<section id="slide-orgfbd531e">
+<h3 id="orgfbd531e">Motivación</h3>
 <p>
 <b><font color="green">Búsqueda Ciega</font></b>
 </p>
@@ -55,8 +55,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org22c28b0">
-<h3 id="org22c28b0">¡Qué se haga la luz!</h3>
+<section id="slide-org405a63a">
+<h3 id="org405a63a">¡Qué se haga la luz!</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -90,8 +90,8 @@ Algunas de las estrategias:
 </section>
 </section>
 <section>
-<section id="slide-orge1faf2c">
-<h3 id="orge1faf2c">¡Qué se haga la luz!</h3>
+<section id="slide-orgccab0dd">
+<h3 id="orgccab0dd">¡Qué se haga la luz!</h3>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">Se introduce una  <font color=red>función de evaluación</font> \(f(n)\) y se expande un nodo basado en la información que dé la función.</li>
@@ -105,15 +105,15 @@ Algunas de las estrategias:
 </section>
 </section>
 <section>
-<section id="slide-orge183a2b">
-<h2 id="orge183a2b">Heurísticas</h2>
-<div class="outline-text-2" id="text-orge183a2b">
+<section id="slide-orgdc94f54">
+<h2 id="orgdc94f54">Heurísticas</h2>
+<div class="outline-text-2" id="text-orgdc94f54">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgd7daf51">
-<h3 id="orgd7daf51">¿Por qué la gallinita dijo EUREKA?</h3>
+<section id="slide-orgcf1fbc3">
+<h3 id="orgcf1fbc3">¿Por qué la gallinita dijo EUREKA?</h3>
 <p>
 <b><font color="green">Heurística</font></b>
 </p>
@@ -144,8 +144,8 @@ del camino menos costoso desde el nodo que estamos evaluando a una  meta.
 </section>
 </section>
 <section>
-<section id="slide-org9bd9939">
-<h3 id="org9bd9939">Heurística</h3>
+<section id="slide-org19bec8c">
+<h3 id="org19bec8c">Heurística</h3>
 <p class="fragment (roll-in)">
 <b><font color="green">Procedimiento</font></b>
 <font color="#FF5733">Criterio</font> que puede resolver un problema pero que no hay garantía de
@@ -165,8 +165,8 @@ más cercana desde el estado actual.
 </section>
 </section>
 <section>
-<section id="slide-orgec77cdc">
-<h3 id="orgec77cdc">Heurísticas: Ejemplo</h3>
+<section id="slide-orge531c5c">
+<h3 id="orge531c5c">Heurísticas: Ejemplo</h3>
 <div style="font-size: 70%;">
 <p>
 <b><font color="green">8-puzzle</font></b>
@@ -177,7 +177,7 @@ más cercana desde el estado actual.
 </p>
 
 
-<div id="org0f42eb1" class="figure">
+<div id="org0df3289" class="figure">
 <p><img src="imagenes/8puzzle.jpg" alt="8puzzle.jpg" />
 </p>
 </div>
@@ -194,8 +194,8 @@ más cercana desde el estado actual.
 </section>
 </section>
 <section>
-<section id="slide-org0824952">
-<h3 id="org0824952">Heurísticas: 8-puzzle</h3>
+<section id="slide-org1bbb35b">
+<h3 id="org1bbb35b">Heurísticas: 8-puzzle</h3>
 <div style="font-size: 70%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -230,8 +230,8 @@ más cercana desde el estado actual.
 </section>
 </section>
 <section>
-<section id="slide-org0996a42">
-<h3 id="org0996a42">Heurística</h3>
+<section id="slide-orga05e55e">
+<h3 id="orga05e55e">Heurística</h3>
 <ul>
 <li class="fragment roll-in"><b><font color="green">Función</font></b>  <font color="blue">Estimación del costo</font> necesario para alcanzar la meta más cercana desde el estado actual.</li>
 <li class="fragment roll-in">La función heurística es una forma de <font color=red>informar</font> a la búsqueda sobre la dirección a la meta. Provee una modo informado de <font color=red>adivinar</font> cuál vecino de un nodo nos guía a la meta.</li>
@@ -247,8 +247,8 @@ más cercana desde el estado actual.
 </section>
 </section>
 <section>
-<section id="slide-org1c290b4">
-<h3 id="org1c290b4">Heurística Admisible</h3>
+<section id="slide-orgbd339c3">
+<h3 id="orgbd339c3">Heurística Admisible</h3>
 <p>
 <b><font color="green">Heurística Admisible</font></b>
 </p>
@@ -268,8 +268,8 @@ Si \(g\) es el costo real de llegar desde el nodo actual a la meta entonces \(h\
 </section>
 </section>
 <section>
-<section id="slide-org63428d7">
-<h3 id="org63428d7">Heurística Admisible</h3>
+<section id="slide-org80ab725">
+<h3 id="org80ab725">Heurística Admisible</h3>
 <p>
 <b><font color="green">Heurística Admisible</font></b>
 </p>
@@ -290,8 +290,8 @@ La función heurística  \(h_1(n)\) = Número de tejas fuera de lugar,
 </section>
 </section>
 <section>
-<section id="slide-orgc64d4ef">
-<h3 id="orgc64d4ef">Heurística Admisible</h3>
+<section id="slide-orge61c379">
+<h3 id="orge61c379">Heurística Admisible</h3>
 <ul>
 <li class="fragment roll-in">La función heurística  \(h_1(n)\) = Número de tejas fuera de lugar, ¿es admisible?
 <font color=red>Si.</font></li>
@@ -305,8 +305,8 @@ La función heurística  \(h_1(n)\) = Número de tejas fuera de lugar,
 </section>
 </section>
 <section>
-<section id="slide-org36903f2">
-<h3 id="org36903f2">Otra Heurística: 8-puzzle</h3>
+<section id="slide-orge38c987">
+<h3 id="orge38c987">Otra Heurística: 8-puzzle</h3>
 <div style="font-size: 70%;">
 <p>
 <b><font color="green">Distancia de /Manhattan/</font></b>
@@ -318,7 +318,7 @@ Se suman las distancias verticales y horizontales (las tejas no pueden moverse e
 </p>
 
 
-<div id="orgfaa6c2a" class="figure">
+<div id="org38c08b0" class="figure">
 <p><img src="imagenes/8puzzle.jpg" alt="8puzzle.jpg" height="150" />
 </p>
 </div>
@@ -340,8 +340,8 @@ Se suman las distancias verticales y horizontales (las tejas no pueden moverse e
 </section>
 </section>
 <section>
-<section id="slide-org3dfcf6f">
-<h3 id="org3dfcf6f">Heurísticas: 8-puzzle</h3>
+<section id="slide-org502f61f">
+<h3 id="org502f61f">Heurísticas: 8-puzzle</h3>
 <div style="font-size: 70%;">
 <p>
 \(h_1(n)\) = Número de tejas fuera de lugar
@@ -359,7 +359,7 @@ Se suman las distancias verticales y horizontales (las tejas no pueden moverse e
 
 
 
-<div id="orgf427bfe" class="figure">
+<div id="orgd1fb42f" class="figure">
 <p><img src="imagenes/8puzzle.jpg" alt="8puzzle.jpg" height="150" />
 </p>
 </div>
@@ -385,8 +385,8 @@ Se suman las distancias verticales y horizontales (las tejas no pueden moverse e
 </section>
 </section>
 <section>
-<section id="slide-org1d70443">
-<h3 id="org1d70443">Dominación</h3>
+<section id="slide-org8eb7010">
+<h3 id="org8eb7010">Dominación</h3>
 <p>
 Si tenemos dos heurísiticas,
 </p>
@@ -420,8 +420,8 @@ es también admisible y domina a \(h_a\) y a \(h_b\)
 </section>
 </section>
 <section>
-<section id="slide-org21aeaf7">
-<h3 id="org21aeaf7">Inventando Funciones Heurísticas Admisibles</h3>
+<section id="slide-org5092f7d">
+<h3 id="org5092f7d">Inventando Funciones Heurísticas Admisibles</h3>
 <p>
 <b><font color="green">Problemas relajados</font></b>
 </p>
@@ -434,8 +434,8 @@ Un problema con <font color="blue">menos</font> restricciones sobre las acciones
 </section>
 </section>
 <section>
-<section id="slide-orgaef4950">
-<h3 id="orgaef4950">Inventando Funciones Heurísticas Admisibles</h3>
+<section id="slide-org6492fff">
+<h3 id="org6492fff">Inventando Funciones Heurísticas Admisibles</h3>
 <p>
 <b><font color="green">Ejemplo 8-puzzle</font></b>
 </p>
@@ -467,21 +467,21 @@ La idea de la distancia de Manhattan surge del primer problema relajado. Y la he
 </section>
 </section>
 <section>
-<section id="slide-org5b13241">
-<h2 id="org5b13241">Búsqueda Heurística</h2>
+<section id="slide-org4914d43">
+<h2 id="org4914d43">Búsqueda Heurística</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-orgfb0af49">
-<h2 id="orgfb0af49">Primero el Mejor - Best-first Search</h2>
-<div class="outline-text-2" id="text-orgfb0af49">
+<section id="slide-org45c059a">
+<h2 id="org45c059a">Primero el Mejor - Best-first Search</h2>
+<div class="outline-text-2" id="text-org45c059a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org4b51a31">
-<h3 id="org4b51a31">Best-first Search</h3>
+<section id="slide-org762f6d9">
+<h3 id="org762f6d9">Best-first Search</h3>
 <ul>
 <li><b><font color="green">Idea</font></b> Usar como <i>función de evaluación</i> \(f(n)\)  por cada nodo,  una
 estimación de su cercanía a la meta.</li>
@@ -499,8 +499,8 @@ estimación de su cercanía a la meta.</li>
 </section>
 </section>
 <section>
-<section id="slide-org36219be">
-<h3 id="org36219be">Greedy Best-First search</h3>
+<section id="slide-orge1f173a">
+<h3 id="orge1f173a">Greedy Best-First search</h3>
 <p>
 \(f(n)=h(n)\)
 </p>
@@ -520,8 +520,8 @@ la meta.
 </section>
 </section>
 <section>
-<section id="slide-org328a06f">
-<h3 id="org328a06f">Greedy Best-First search</h3>
+<section id="slide-org55d7cc2">
+<h3 id="org55d7cc2">Greedy Best-First search</h3>
 <p>
 <b><font color="green">Implementación</font></b>
 </p>
@@ -532,7 +532,7 @@ Selecciona el primero de la frontera:
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">select</span>(<span style="color: #eedd82;">Nodo</span>,<span style="color: #00ffff;">[</span><span style="color: #eedd82;">Nodo</span><span style="color: #00ffff;">|</span><span style="color: #eedd82;">Frontera</span><span style="color: #00ffff;">]</span>, <span style="color: #eedd82;">Frontera</span>).
+<pre  class="src src-prolog"><code trim><span style="color: #cd9b1d;">select</span>(<span style="color: #2e8b57;">Nodo</span>,<span style="color: #1c86ee;">[</span><span style="color: #2e8b57;">Nodo</span><span style="color: #1c86ee;">|</span><span style="color: #2e8b57;">Frontera</span><span style="color: #1c86ee;">]</span>, <span style="color: #2e8b57;">Frontera</span>).
 </code></pre>
 </div>
 
@@ -542,17 +542,17 @@ La frontera es una <font color="blue">cola ordenada</font> por la heurística.
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">add_to_frontier</span>(<span style="color: #eedd82;">Vecinos</span>, <span style="color: #eedd82;">Frontera1</span>, <span style="color: #eedd82;">Frontera3</span>):-
-     append(<span style="color: #eedd82;">Frontera1</span>,<span style="color: #eedd82;">Vecinos</span>,<span style="color: #eedd82;">Frontera2</span>),
-     sort_by_h(<span style="color: #eedd82;">Frontera2</span>,<span style="color: #eedd82;">Frontera3</span>).
+<pre  class="src src-prolog"><code trim><span style="color: #cd9b1d;">add_to_frontier</span>(<span style="color: #2e8b57;">Vecinos</span>, <span style="color: #2e8b57;">Frontera1</span>, <span style="color: #2e8b57;">Frontera3</span>):-
+     append(<span style="color: #2e8b57;">Frontera1</span>,<span style="color: #2e8b57;">Vecinos</span>,<span style="color: #2e8b57;">Frontera2</span>),
+     sort_by_h(<span style="color: #2e8b57;">Frontera2</span>,<span style="color: #2e8b57;">Frontera3</span>).
 </code></pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org015d157">
-<h3 id="org015d157">Greedy Best-First search</h3>
+<section id="slide-org1b07885">
+<h3 id="org1b07885">Greedy Best-First search</h3>
 <p>
 <b><font color="green">Ir a Bucarest</font></b>
 </p>
@@ -566,10 +566,10 @@ desde \(n\) a Bucarest.
 </section>
 </section>
 <section>
-<section id="slide-org4fa7a6f">
-<h3 id="org4fa7a6f">Costos en Km</h3>
+<section id="slide-org91cb9ee">
+<h3 id="org91cb9ee">Costos en Km</h3>
 
-<div id="orga6e906a" class="figure">
+<div id="orgd227b34" class="figure">
 <p><img src="imagenes/romania2.jpg" alt="romania2.jpg" />
 </p>
 </div>
@@ -578,10 +578,10 @@ desde \(n\) a Bucarest.
 </section>
 </section>
 <section>
-<section id="slide-org74f0fec">
-<h3 id="org74f0fec">Ejemplo</h3>
+<section id="slide-org4546e32">
+<h3 id="org4546e32">Ejemplo</h3>
 
-<div id="org0a7e066" class="figure">
+<div id="org2ab1471" class="figure">
 <p><img src="imagenes/greedy-progress01.jpg" alt="greedy-progress01.jpg" />
 </p>
 </div>
@@ -589,10 +589,10 @@ desde \(n\) a Bucarest.
 </section>
 </section>
 <section>
-<section id="slide-org054a7ad">
-<h3 id="org054a7ad">Ejemplo</h3>
+<section id="slide-orgc8faab4">
+<h3 id="orgc8faab4">Ejemplo</h3>
 
-<div id="org158704f" class="figure">
+<div id="orgc4976e5" class="figure">
 <p><img src="imagenes/greedy-progress02.jpg" alt="greedy-progress02.jpg" />
 </p>
 </div>
@@ -600,10 +600,10 @@ desde \(n\) a Bucarest.
 </section>
 </section>
 <section>
-<section id="slide-org7b866bb">
-<h3 id="org7b866bb">Ejemplo</h3>
+<section id="slide-orgabd66f7">
+<h3 id="orgabd66f7">Ejemplo</h3>
 
-<div id="org6a5c4b9" class="figure">
+<div id="orga69d056" class="figure">
 <p><img src="imagenes/greedy-progress03.jpg" alt="greedy-progress03.jpg" />
 </p>
 </div>
@@ -611,10 +611,10 @@ desde \(n\) a Bucarest.
 </section>
 </section>
 <section>
-<section id="slide-orgd6dbe04">
-<h3 id="orgd6dbe04">Ejemplo</h3>
+<section id="slide-orgc7d7d6c">
+<h3 id="orgc7d7d6c">Ejemplo</h3>
 
-<div id="org125d515" class="figure">
+<div id="org04741d4" class="figure">
 <p><img src="imagenes/greedy-progress04.jpg" alt="greedy-progress04.jpg" />
 </p>
 </div>
@@ -622,8 +622,8 @@ desde \(n\) a Bucarest.
 </section>
 </section>
 <section>
-<section id="slide-orgfdbc737">
-<h3 id="orgfdbc737">Propiedades de Greedy Best-First Search</h3>
+<section id="slide-org7888592">
+<h3 id="org7888592">Propiedades de Greedy Best-First Search</h3>
 <ul>
 <li class="fragment roll-in">¿Completo?: No, puede entrar en ciclos infinitos, e.g.  Iasi \(\to\) Neamt \(\to\) Iasi \(\to\) Neamt \(\to\)
 Es completo en espacios finitos con verificacióon de estados repetidos</li>
@@ -636,8 +636,8 @@ Es completo en espacios finitos con verificacióon de estados repetidos</li>
 </section>
 </section>
 <section>
-<section id="slide-orgbe0d1f5">
-<h3 id="orgbe0d1f5">\(A^*\)</h3>
+<section id="slide-orge01a25c">
+<h3 id="orge01a25c">\(A^*\)</h3>
 <p>
 <b><font color="green">Idea</font></b>
 </p>
@@ -658,8 +658,8 @@ Evitar expandir caminos que ya son caros. Para esto combina información de:
 </section>
 </section>
 <section>
-<section id="slide-org283e00c">
-<h3 id="org283e00c">\(A^*\)</h3>
+<section id="slide-org6a40b2d">
+<h3 id="org6a40b2d">\(A^*\)</h3>
 <p>
 La función de evaluación es  \(f(n) = g(n) + h(n)\)
 </p>
@@ -673,7 +673,7 @@ La función de evaluación es  \(f(n) = g(n) + h(n)\)
 </div>
 
 
-<div id="orgf3c4651" class="figure">
+<div id="org16076bb" class="figure">
 <p><img src="imagenes/aestrellab.png" alt="aestrellab.png" height="150" />
 </p>
 </div>
@@ -681,8 +681,8 @@ La función de evaluación es  \(f(n) = g(n) + h(n)\)
 </section>
 </section>
 <section>
-<section id="slide-org98d48c9">
-<h3 id="org98d48c9">\(A^*\)</h3>
+<section id="slide-org4e9197a">
+<h3 id="org4e9197a">\(A^*\)</h3>
 <p>
 <b><font color="green">Implementación</font></b>
 </p>
@@ -693,7 +693,7 @@ Selecciona el primero de la frontera:
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">select</span>(<span style="color: #eedd82;">Nodo</span>,<span style="color: #00ffff;">[</span><span style="color: #eedd82;">Nodo</span><span style="color: #00ffff;">|</span><span style="color: #eedd82;">Frontera</span><span style="color: #00ffff;">]</span>, <span style="color: #eedd82;">Frontera</span>).
+<pre  class="src src-prolog"><code trim><span style="color: #cd9b1d;">select</span>(<span style="color: #2e8b57;">Nodo</span>,<span style="color: #1c86ee;">[</span><span style="color: #2e8b57;">Nodo</span><span style="color: #1c86ee;">|</span><span style="color: #2e8b57;">Frontera</span><span style="color: #1c86ee;">]</span>, <span style="color: #2e8b57;">Frontera</span>).
 </code></pre>
 </div>
 
@@ -703,17 +703,17 @@ La frontera es una <font color="blue">cola ordenada</font> por la función f.
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim><span style="color: #87cefa;">add_to_frontier</span>(<span style="color: #eedd82;">Vecinos</span>, <span style="color: #eedd82;">Frontera1</span>, <span style="color: #eedd82;">Frontera3</span>):-
-     append(<span style="color: #eedd82;">Frontera1</span>,<span style="color: #eedd82;">Vecinos</span>,<span style="color: #eedd82;">Frontera2</span>),
-     sort_by_f(<span style="color: #eedd82;">Frontera2</span>,<span style="color: #eedd82;">Frontera3</span>).
+<pre  class="src src-prolog"><code trim><span style="color: #cd9b1d;">add_to_frontier</span>(<span style="color: #2e8b57;">Vecinos</span>, <span style="color: #2e8b57;">Frontera1</span>, <span style="color: #2e8b57;">Frontera3</span>):-
+     append(<span style="color: #2e8b57;">Frontera1</span>,<span style="color: #2e8b57;">Vecinos</span>,<span style="color: #2e8b57;">Frontera2</span>),
+     sort_by_f(<span style="color: #2e8b57;">Frontera2</span>,<span style="color: #2e8b57;">Frontera3</span>).
 </code></pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org5e4b983">
-<h3 id="org5e4b983">\(A^*\): Condiciones de Optimalidad</h3>
+<section id="slide-org06e451a">
+<h3 id="org06e451a">\(A^*\): Condiciones de Optimalidad</h3>
 <p>
 <b><font color="green">theorem</font></b>
 </p>
@@ -739,8 +739,8 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-orgb9719b6">
-<h3 id="orgb9719b6">Ejemplo de \(A^*\)</h3>
+<section id="slide-orgb0d1d07">
+<h3 id="orgb0d1d07">Ejemplo de \(A^*\)</h3>
 <p>
 <b><font color="green">Ejemplo</font></b>
 </p>
@@ -752,10 +752,10 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-orge53a72f">
-<h3 id="orge53a72f">Costos en Km</h3>
+<section id="slide-org4e7fe3d">
+<h3 id="org4e7fe3d">Costos en Km</h3>
 
-<div id="orgad494c8" class="figure">
+<div id="orgfcc406e" class="figure">
 <p><img src="imagenes/romania2.jpg" alt="romania2.jpg" />
 </p>
 </div>
@@ -765,43 +765,43 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-orgab8e4ef">
-<h3 id="orgab8e4ef">Ejemplo</h3>
+<section id="slide-orgf7a989a">
+<h3 id="orgf7a989a">Ejemplo</h3>
 
-<div id="org91cef5c" class="figure">
+<div id="org0757c3c" class="figure">
 <p><img src="imagenes/greedy-progress01.jpg" alt="greedy-progress01.jpg" />
 </p>
 </div>
 
 </section>
 </section>
-<section>
-<section id="slide-orgbf69872">
-<h3 id="orgbf69872">Ejemplo</h3>
+<section data-transition="none">
+<section id="slide-org1a70716" data-transition="none">
+<h3 id="org1a70716">Ejemplo</h3>
 
-<div id="org74a7a1e" class="figure">
+<div id="org0addc2c" class="figure">
 <p><img src="imagenes/greedy-progress02.jpg" alt="greedy-progress02.jpg" />
 </p>
 </div>
 
 </section>
 </section>
-<section>
-<section id="slide-org427247a">
-<h3 id="org427247a">Ejemplo</h3>
+<section data-transition="none">
+<section id="slide-orgb7bdc40" data-transition="none">
+<h3 id="orgb7bdc40">Ejemplo</h3>
 
-<div id="org0d58688" class="figure">
+<div id="org0652a3a" class="figure">
 <p><img src="imagenes/greedy-progress03.jpg" alt="greedy-progress03.jpg" />
 </p>
 </div>
 
 </section>
 </section>
-<section>
-<section id="slide-org47f68c1">
-<h3 id="org47f68c1">Ejemplo</h3>
+<section data-transition="none">
+<section id="slide-orgfb6ac21" data-transition="none">
+<h3 id="orgfb6ac21">Ejemplo</h3>
 
-<div id="org705087e" class="figure">
+<div id="orgfcf7b4f" class="figure">
 <p><img src="imagenes/greedy-progress04.jpg" alt="greedy-progress04.jpg" />
 </p>
 </div>
@@ -809,10 +809,10 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-org2fd80d6">
-<h3 id="org2fd80d6">Ejemplo de \(A^*\)</h3>
+<section id="slide-orgcbd1c0e">
+<h3 id="orgcbd1c0e">Ejemplo de \(A^*\)</h3>
 
-<div id="orgd25988f" class="figure">
+<div id="org3582495" class="figure">
 <p><img src="imagenes/astar-progress01.jpg" alt="astar-progress01.jpg" />
 </p>
 </div>
@@ -820,10 +820,10 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-org257bf75">
-<h3 id="org257bf75">Ejemplo de \(A^*\)</h3>
+<section id="slide-orgb20b7c8">
+<h3 id="orgb20b7c8">Ejemplo de \(A^*\)</h3>
 
-<div id="orgd263587" class="figure">
+<div id="org8479d3e" class="figure">
 <p><img src="imagenes/astar-progress02.jpg" alt="astar-progress02.jpg" />
 </p>
 </div>
@@ -831,10 +831,10 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-org2cd3b6e">
-<h3 id="org2cd3b6e">Ejemplo de \(A^*\)</h3>
+<section id="slide-org0139dfc">
+<h3 id="org0139dfc">Ejemplo de \(A^*\)</h3>
 
-<div id="org60a8207" class="figure">
+<div id="org04d63d2" class="figure">
 <p><img src="imagenes/astar-progress03.jpg" alt="astar-progress03.jpg" />
 </p>
 </div>
@@ -842,10 +842,10 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-orgbd0afe3">
-<h3 id="orgbd0afe3">Ejemplo de \(A^*\)</h3>
+<section id="slide-orgf601609">
+<h3 id="orgf601609">Ejemplo de \(A^*\)</h3>
 
-<div id="org38dd469" class="figure">
+<div id="org764879b" class="figure">
 <p><img src="imagenes/astar-progress04.jpg" alt="astar-progress04.jpg" />
 </p>
 </div>
@@ -853,10 +853,10 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-orgc5840c9">
-<h3 id="orgc5840c9">Ejemplo de \(A^*\)</h3>
+<section id="slide-org4c2d4cc">
+<h3 id="org4c2d4cc">Ejemplo de \(A^*\)</h3>
 
-<div id="orgecc2bb9" class="figure">
+<div id="orgf928e47" class="figure">
 <p><img src="imagenes/astar-progress05.jpg" alt="astar-progress05.jpg" />
 </p>
 </div>
@@ -864,8 +864,8 @@ toda meta \(G\).
 </section>
 </section>
 <section>
-<section id="slide-orgfc67531">
-<h3 id="orgfc67531">Propiedades de \(A^*\)</h3>
+<section id="slide-orgaedbd73">
+<h3 id="orgaedbd73">Propiedades de \(A^*\)</h3>
 <ul>
 <li class="fragment roll-in">¿Completo?: Si, a menos que existan infinitos
 nodos con \(f \leq f(G)\)</li>
@@ -880,8 +880,8 @@ nodos con \(f \leq f(G)\)</li>
 </section>
 </section>
 <section>
-<section id="slide-org5486336">
-<h3 id="org5486336">Heurísitcas:Dominación</h3>
+<section id="slide-org6f3b02e">
+<h3 id="org6f3b02e">Heurísitcas:Dominación</h3>
 <div style="font-size: 80%;">
 <p>
 Comparación de un método de búsqueda ciega y \(A^*\) con dos heurísticas, para el problema 8-puzzle.
@@ -914,8 +914,8 @@ Comparación de un método de búsqueda ciega y \(A^*\) con dos heurísticas, pa
 </section>
 </section>
 <section>
-<section id="slide-orgb7aee5b">
-<h3 id="orgb7aee5b">Variaciones</h3>
+<section id="slide-org3521424">
+<h3 id="org3521424">Variaciones</h3>
 <p>
 <b><font color="green">Iterative Deepening</font> \(A^*\) (\(IDA^*\))</b>
 Variación del Iterative Deepening y \(A^*\)
@@ -929,8 +929,8 @@ La diferencia principal entre Iterative Deepening e \(IDA^*\) es el corte. En \(
 </section>
 </section>
 <section>
-<section id="slide-org88de45d">
-<h3 id="org88de45d">Aplicación</h3>
+<section id="slide-orgf351410">
+<h3 id="orgf351410">Aplicación</h3>
 <p>
 <b><font color="green">Pathfinding</font></b>
 </p>
@@ -946,8 +946,8 @@ La diferencia principal entre Iterative Deepening e \(IDA^*\) es el corte. En \(
 </section>
 </section>
 <section>
-<section id="slide-orgb3cacf3">
-<h3 id="orgb3cacf3">Ejemplo</h3>
+<section id="slide-org92c9a0d">
+<h3 id="org92c9a0d">Ejemplo</h3>
 <div style="font-size: 70%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -969,15 +969,15 @@ La diferencia principal entre Iterative Deepening e \(IDA^*\) es el corte. En \(
 </section>
 </section>
 <section>
-<section id="slide-orgf2c06b3">
-<h2 id="orgf2c06b3">Bibliografía</h2>
-<div class="outline-text-2" id="text-orgf2c06b3">
+<section id="slide-org9394a34">
+<h2 id="org9394a34">Bibliografía</h2>
+<div class="outline-text-2" id="text-org9394a34">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org56cd79b">
-<h3 id="org56cd79b">Referencia Bibliográfica</h3>
+<section id="slide-org6618ad8">
+<h3 id="org6618ad8">Referencia Bibliográfica</h3>
 <div style="font-size: 80%;">
 
 <p>
@@ -1006,7 +1006,7 @@ La diferencia principal entre Iterative Deepening e \(IDA^*\) es el corte. En \(
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-transition:'cube',
+transition:'none',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Planificación: Regresión</h2><p class="date">Created: 2023-09-26 mar 18:13</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org802c347">Repaso</a></li>
+<li><a href="#/slide-org9d4787e">Mundo de Bloques</a></li>
+<li><a href="#/slide-orgf52036b">Planificadores</a></li>
+<li><a href="#/slide-org0beead3">Planificación por Regresión</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org802c347">
+<h2 id="org802c347">Repaso</h2>
+<div class="outline-text-2" id="text-org802c347">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org1abb7b7">
+<h3 id="org1abb7b7">¿Qué vimos?</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out">Representación de las acciones: STRIPS, Situation Calculus, Event Calculus</li>
+<li class="fragment fade-in-then-semi-out">Problemas en la representación del Cambio: Frame, Ramification y Qualification</li>
+<li class="fragment fade-in-then-semi-out">Representación del tiempo</li>
+<li class="fragment fade-in-then-semi-out">Algoritmos Forward y basados en resolución</li>
+<li class="fragment fade-in-then-semi-out">Algoritmo STRIPS. Problemas con el algoritmo</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:red;">HOY</span> Algoritmos de Planificación: Regresión</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9d4787e">
+<h2 id="org9d4787e">Mundo de Bloques</h2>
+<div class="outline-text-2" id="text-org9d4787e">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org5d9eba6">
+<h3 id="org5d9eba6">Estado Inicial</h3>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment fade-in-then-semi-out"><p>
+<b><span style="color:green;">Estado Inicial</span></b>
+</p>
+<blockquote >
+<p>
+<span style="color:blue;">libre(a), libre(c), sobre(b, mesa), sobre(a, mesa), sobre(c,b)</span>
+</p>
+</blockquote></li>
+<li class="fragment fade-in-then-semi-out"><p>
+<b><span style="color:green;">Estado Final</span></b>
+</p>
+<blockquote >
+<p>
+<span style="color:blue;">libre(a), sobre(b,c), sobre(a,b), sobre(c, mesa)</span>
+</p>
+</blockquote></li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Acción MOVE(X,P1,P2): movemos el bloque X de la posición P1 a la posición P2</span></b>
+<ul>
+<li><span style="color:green;">Lista de Precondición:</span> <i><span style="color:blue;">P2</span></i> \(\neq\) <i><span style="color:blue;">mesa - bloque(P2), libre(X), bloque(X), libre(P2), sobre(X,P1).</span></i></li>
+<li><span style="color:green;">Lista Add:</span> <i><span style="color:blue;">libre(P1), sobre(X,P2)</span></i>.</li>
+<li><span style="color:green;">Lista Del:</span> /.</li>
+
+</ul></li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf52036b">
+<h2 id="orgf52036b">Planificadores</h2>
+<div class="outline-text-2" id="text-orgf52036b">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org494adbf">
+<h3 id="org494adbf">Problemas con los Planificadores</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out">Existen planificadores forward pero tienen problemas con el tamaño
+del espacio de búsqueda que generan.</li>
+<li class="fragment fade-in-then-semi-out">El planificador de STRIPS si bien toma una meta y ve que acciones la
+logra, es decir es un planificador backward, Este planificador tiene
+un problema que no es trivial: <span style="color:red;">algunas acciones pueden deshacer metas ya alcanzadas</span></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0beead3">
+<h2 id="org0beead3">Planificación por Regresión</h2>
+<div class="outline-text-2" id="text-org0beead3">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd0fe7dc">
+<h3 id="orgd0fe7dc">Regresión</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out">Este algoritmo reduce el factor de ramificación porque trabaja desde
+las metas hacia atrás, eligiendo solamente aquellas acciones que
+alcanzan alguna de las metas a lograr.</li>
+<li class="fragment fade-in-then-semi-out">Asimismo trata el problema de las submetas que están en relación, ya
+que no intenta resolver las metas por separado, sino que sigue la
+pista a todas las metas que tiene que lograr.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgf85808a">
+<h3 id="orgf85808a">Planificación por Regresión</h3>
+<div style="font-size: 70%;">
+<ul>
+<li>Podemos analizar el algoritmo en términos de un grafo de búsqueda.</li>
+<li>Los nodos están etiquetados  con conjuntos de metas y los arcos corresponden a las acciones.</li>
+<li>Un nodo etiquetado con el conjunto de metas G tiene un nodo vecino por cada acción A que logre una de las metas  en G.</li>
+
+</ul>
+</div>
+
+<div id="org1d8733f" class="figure">
+<p><img src="imagenes/grbus.png" alt="grbus.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org424c7cd">
+<h3 id="org424c7cd">Precondición más débil</h3>
+<div class="column" style="font-size: 70%; float:left; width: 80%">
+<ul>
+<li>El vecino que corresponde  a la acción A es etiquetado como <span style="color:red;">\(G_A\)</span>.</li>
+<li>\(G_A\) tiene que ser verdadera <span style="color:red;">inmediatamente antes</span> de ejecutar la acción A.</li>
+<li>\(G_A\)  se llama <span style="color:red;">precondición más débil</span> para la acción A y la lista de metas G.</li>
+<li><span style="color:red;">\(wp(A,GL,G_A)\)</span>  es verdadera si \(G_A\) es la precondición más débil que ocurre inmediatamente  antes de la acción A de modo que cada elemento en la lista de metas GL sea verdadera después de la ejecucción de A.</li>
+<li><p>
+Es la más débil ya que cualquier otra precondición debe implicarla.
+</p>
+</div>
+<div class="column" float:right; width: 20%">
+
+<div id="org94abbe9" class="figure">
+<p><img src="imagenes/prec.png" alt="prec.png" />
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9eaa02d">
+<h3 id="org9eaa02d">Precondición más débil</h3>
+<div class="column" style="font-size: 70%; float:left; width: 80%">
+<p>
+En STRIPS, <span style="color:red;">\(wp(A,GL,WP)\)</span> se define como sigue: 
+</p>
+<ul>
+<li>Es <i><span style="color:red;">falso</span></i> si algún elemento de GL está en la lista de borrado de la
+acción A. En este caso es imposible para todo elemento en GL ser
+verdadero inmediatamente después de la acción A.</li>
+<li><p>
+De otro modo, el valor de WP es <span style="color:red;">\[precondiciones(A)\cup \{G\in GL: G\not\in add\_list(A)\}\]​</span> 
+donde precondiciones(A) es la lista de precondiciones de A y \(add\_list(A)\)  es el conjunto de condiciones que agrega la acción A.
+</p>
+</div>
+<div class="column" style="float:right; width: 20%">
+
+<div id="org61cd8cd" class="figure">
+<p><img src="imagenes/prec2.png" alt="prec2.png" />
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org73ba0f3">
+<h3 id="org73ba0f3">Precondición más débil</h3>
+<ul>
+<li><p>
+<b><span style="color:green;">Ejemplo sobre el mundo de bloques</span></b>
+</p>
+<div style="font-size: 55%;">
+<p>
+Encontremos la precondición más débil para 
+\[GL=\{sobre(b,c), sobre(a,b),libre(a),sobre(c,mesa)\}\]
+con la acción \(move(a,mesa,b)\).
+</p>
+</div></li>
+<li><p>
+<b><span style="color:green;">Acción \(move(a,mesa,b)\)</span></b>
+</p>
+<div style="font-size: 55%;">
+<ul>
+<li><span style="color:blue;">Lista de Precondición</span>: bloque(b), libre(a), bloque(a), libre(b), sobre(a,mesa).</li>
+<li><span style="color:blue;">Lista Add</span>: sobre(a,b)</li>
+<li><span style="color:blue;">Lista Del</span>: libre(b), sobre(a,mesa).</li>
+
+</ul>
+</div></li>
+<li><p>
+¿Es falso?
+</p>
+<div style="font-size: 55%;">
+<p>
+Debemos verificar que ningún elemento GL está en la lista de borrado
+de la acción A.
+</p>
+</div></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org1343f44">
+<h3 id="org1343f44">Precondición más débil</h3>
+<ul>
+<li><p>
+<b><span style="color:green;">Ejemplo sobre el mundo de bloques</span></b>
+</p>
+<div style="font-size: 55%;">
+<p>
+Encontremos la precondición más débil para 
+\[GL=\{sobre(b,c), sobre(a,b),libre(a),sobre(c,mesa)\}\]
+con la acción \(move(a,mesa,b)\).
+</p>
+</div></li>
+<li><p>
+<b><span style="color:green;">Acción \(move(a,mesa,b)\)</span></b>
+</p>
+<div style="font-size: 55%;">
+<ul>
+<li><span style="color:blue;">Lista de Precondición</span>: bloque(b), libre(a), bloque(a), libre(b), sobre(a,mesa).</li>
+<li><span style="color:blue;">Lista Add</span>: sobre(a,b)</li>
+<li><span style="color:blue;">Lista Del</span>: libre(b), sobre(a,mesa).</li>
+
+</ul>
+</div></li>
+<li><span style="color:red;">\(precondiciones(A)\cup \{G\in GL: G\not\in add\_list(A)\}\)</span></li>
+
+</ul>
+<div style="font-size: 55%;">
+<p>
+\(\{bloque(b), libre(a), bloque(a), libre(b), sobre(a,mesa)\}\cup \{sobre(b,c), libre(a),sobre(c,mesa)\}\)
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2f95166">
+<h3 id="org2f95166">Precondición más débil</h3>
+<ul>
+<li><p>
+<b><span style="color:green;">Ejemplo sobre el mundo de bloques</span></b>
+</p>
+<div style="font-size: 55%;">
+<p>
+Encontremos la precondición más débil para 
+\[GL=\{sobre(b,c), sobre(a,b),libre(a),sobre(c,mesa)\}\]
+con la acción \(move(b,c,a)\).
+</p>
+</div></li>
+<li><p>
+<b><span style="color:green;">Acción \(move(a,mesa,b)\)</span></b>
+</p>
+<div style="font-size: 55%;">
+<ul>
+<li><span style="color:blue;">Lista de Precondición</span>: bloque(a), libre(b), bloque(b), libre(a), sobre(b,c).</li>
+<li><span style="color:blue;">Lista Add</span>: libre(c), sobre(b,a).</li>
+<li><span style="color:blue;">Lista Del</span>: libre(a), sobre(b,c).</li>
+
+</ul>
+</div></li>
+<li><p>
+¿Es falso?
+</p>
+<div style="font-size: 55%;">
+<p>
+Debemos verificar que ningún elemento GL está en la lista de borrado
+de la acción A.
+</p>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org5fd3e3d">
+<h3 id="org5fd3e3d">Precondición más débil: Algoritmo</h3>
+<p>
+El algoritmo que se presenta a continuación tiene algunas simplificaciones:
+</p>
+<ul>
+<li>No tiene en cuenta las relaciones derivadas.</li>
+<li>Pueden existir elementos repetidos en la precondición más débil.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcbf45f5">
+<h3 id="orgcbf45f5">Precondición más débil: Algoritmo</h3>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #7f7f7f;">%  </span><span style="color: #7f7f7f;">wp( A, GL, WP ) es verdadera si WP es la precondici&#243;n</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">m&#225;s d&#233;bil que debe ser cierta inmediatamente antes de A,</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">de modo que A es posible y cada elemento de la lista de</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">metas GL es verdadera inmediatamente despu&#233;s de A.</span>
+
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">Si no hay metas por cumplir, entonces la precondici&#243;n m&#225;s</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">d&#233;bil es el conjunto de las precondiciones de la acci&#243;n A.</span>
+
+<span style="color: #cd9b1d;">wp</span>(<span style="color: #2e8b57;">A</span>,<span style="color: #1c86ee;">[]</span>,<span style="color: #2e8b57;">P</span>) :-
+    preconditions(<span style="color: #2e8b57;">A</span>,<span style="color: #2e8b57;">P</span>).
+<span style="color: #cd9b1d;">wp</span>(<span style="color: #2e8b57;">A</span>,<span style="color: #1c86ee;">[</span><span style="color: #2e8b57;">G</span><span style="color: #1c86ee;">|</span><span style="color: #2e8b57;">R</span><span style="color: #1c86ee;">]</span>,<span style="color: #2e8b57;">P1</span>) :-
+    wp(<span style="color: #2e8b57;">A</span>,<span style="color: #2e8b57;">R</span>,<span style="color: #2e8b57;">P0</span>),
+    regress(<span style="color: #2e8b57;">G</span>,<span style="color: #2e8b57;">A</span>,<span style="color: #2e8b57;">P0</span>,<span style="color: #2e8b57;">P1</span>).
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge18c032">
+<h3 id="orge18c032">Precondición más débil: Algoritmo</h3>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">regress(G,A,P0,P1) es verdadera si P1 es una lista de</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">condiciones que extiende P0 para incluir las condiciones </span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">suficientes que deben valer inmediatamente antes de A</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">como para garantizar que G es verdadera inmediatamente</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">despu&#233;s de A.</span>
+
+<span style="color: #cd9b1d;">regress</span>(<span style="color: #2e8b57;">G</span>,<span style="color: #2e8b57;">A</span>,<span style="color: #2e8b57;">P</span>,<span style="color: #2e8b57;">P</span>) :- achieves(<span style="color: #2e8b57;">A</span>,<span style="color: #2e8b57;">G</span>).
+
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">G es una meta que alcanzamos con la acci&#243;n A.</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">G es una meta que pertenece a la lista Add de la acci&#243;n A.</span>
+
+<span style="color: #cd9b1d;">achieves</span>(<span style="color: #2e8b57;">Action</span>,<span style="color: #2e8b57;">Goal</span>) :- member(<span style="color: #2e8b57;">Goal</span>,add_List(<span style="color: #2e8b57;">Action</span>)).
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaaebe67">
+<h3 id="orgaaebe67">Precondición más débil: Algoritmo</h3>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">Si G no est&#225; entre las metas que se logran con la acci&#243;n A</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">entonces debe permanecer entre las metas a resolver</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">m&#225;s adelante.</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">Sin embargo, deberemos controlar que la acci&#243;n A no la  </span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">contenga entre las metas que deja de hacer cumplir </span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">(ie, las de la lista Delete).</span>
+
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">No pertenece a la add list de la acci&#243;n A, luego debe </span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">cumplirse desde antes de la acci&#243;n A.</span>
+
+<span style="color: #cd9b1d;">regress</span>(<span style="color: #2e8b57;">G</span>,<span style="color: #2e8b57;">A</span>,<span style="color: #2e8b57;">P</span>,<span style="color: #1c86ee;">[</span><span style="color: #2e8b57;">G</span><span style="color: #1c86ee;">|</span><span style="color: #2e8b57;">P</span><span style="color: #1c86ee;">]</span>) :-
+    not_on_add_list(<span style="color: #2e8b57;">A</span>,<span style="color: #2e8b57;">G</span>),
+    not_on_delete_list(<span style="color: #2e8b57;">A</span>, <span style="color: #2e8b57;">G</span>).
+</code></pre>
+</div>
+
+<p class="fragment (fade-in-then-semi-out)">
+¡ATENCIÓN! La  acción A no borra a G.
+</p>
+<p class="fragment (fade-in-then-semi-out)">
+<span style="color:cyan;">Esto permite controlar que  NO se deshaga una meta ya lograda.</span>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org85d1113">
+<h3 id="org85d1113">Planificador por Regresión</h3>
+<ul>
+<li class="fragment fade-in-then-semi-out">Un problema de planificación se resuelve con un <span style="color:red;">planificador por
+regresión</span> dándole un conjunto de metas que deben ser <span style="color:red;">verdaderas
+en el estado final</span>.</li>
+<li class="fragment fade-in-then-semi-out">El problema fue resuelto cuando el conjunto de metas es verdadero
+en el <span style="color:red;">estado inicial</span>.</li>
+<li class="fragment fade-in-then-semi-out">Un planificador por regresión trabaja manteniendo un conjunto de
+metas a ser alcanzadas en un momento dado.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3243fc6">
+<h3 id="org3243fc6">Planificador por Regresión</h3>
+<ul>
+<li><p>
+<b><span style="color:green;">IDEA</span></b>
+</p>
+<div style="font-size: 60%;">
+<blockquote >
+<p>
+    El planificador elige una meta a resolver y luego elige una
+acción, que será la última en ejecutarse y que alcanza la meta
+seleccionada.
+</p>
+
+<p>
+Calcula la precondición más débil que debe ocurrir antes de que la
+acción se ejecute, de modo que el conjunto de metas sea verdadera
+después de la acción.
+</p>
+
+<p>
+Así <span style="color:red;">regresamos</span> desde las metas finales a través de las acciones.
+</p>
+
+<p>
+Luego logramos un plan que resuelva el nuevo conjunto de metas y
+continuamos hasta que las metas que alcanzamos son verdaderas en el
+estado inicial.
+</p>
+</blockquote>
+</div></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga7d6e4a">
+<h3 id="orga7d6e4a">Planificación por Regresión</h3>
+<div class="org-src-container">
+
+<pre  class="src src-prolog"><code trim><span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">solve(GL,W) es verdadero si todo elemento de la lista GL</span>
+<span style="color: #7f7f7f;">% </span><span style="color: #7f7f7f;">es verdadero en el mundo W</span>
+
+<span style="color: #cd9b1d;">solve</span>(<span style="color: #2e8b57;">GoalSet</span>,<span style="color: #2e8b57;">Init</span>) :-
+    holdsall(<span style="color: #2e8b57;">GoalSet</span>,<span style="color: #2e8b57;">Init</span>).
+<span style="color: #cd9b1d;">solve</span>(<span style="color: #2e8b57;">GoalSet</span>,do(<span style="color: #2e8b57;">Action</span>,<span style="color: #2e8b57;">W</span>)) :-
+    consistent(<span style="color: #2e8b57;">GoalSet</span>),
+    choose_goal(<span style="color: #2e8b57;">Goal</span>,<span style="color: #2e8b57;">Goalset</span>),
+    choose_action(<span style="color: #2e8b57;">Action</span>,<span style="color: #2e8b57;">Goal</span>),
+    wp(<span style="color: #2e8b57;">Action</span>,<span style="color: #2e8b57;">GoalSet</span>,<span style="color: #2e8b57;">NewGoalSet</span>),
+    solve(<span style="color: #2e8b57;">NewGoalset</span>,<span style="color: #2e8b57;">W</span>).
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd960fe1">
+<h3 id="orgd960fe1">Planificador por Regresión</h3>
+<div style="font-size: 70%;">
+<p>
+Algunas consideraciones:
+</p>
+<ul>
+<li class="fragment fade-in-then-semi-out">El problema de decidir cuando un conjunto de metas <span style="color:red;">no es
+consistente o no es alcanzable</span> no es fácil de resolver desde las
+acciones y sus efectos. Por ejemplo, no deseamos entre nuestras
+metas que un objeto esté en dos posiciones. Esto requiere de
+conocimiento específico del dominio.</li>
+<li class="fragment fade-in-then-semi-out">La <span style="color:red;">detección de ciclos</span> puede ser incorporada al planificador por
+regresión. Se dice que una meta \(G_1\) es más simple que una meta
+\(G_2\) si \(G_1\subseteq G_2\). Si durante la búsqueda encontramos
+un nodo \(N\), pero uno de sus ancestros \(N^{\prime}\) es el mismo o
+más simple, podemos podar \(N\). Recordar que el proceso es
+backward.</li>
+<li class="fragment fade-in-then-semi-out"><p>
+El plan que devuelve este planificador da un <span style="color:red;">orden total sobre las acciones</span>
+ aún cuando no es necesario. Este orden total
+tiende a incrementar la complejidad del espacio de búsqueda.
+</p>
+</div></li>
+
+</ul>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgc1c870c">
+<h3 id="orgc1c870c">Mundo de Bloques: Ejemplo</h3>
+<div class="column" style="float:left; width: 60%">
+
+<div id="org47e9489" class="figure">
+<p><img src="imagenes/MundoBloquesInit.png" alt="MundoBloquesInit.png" />
+</p>
+</div>
+
+<p>
+Estado Inicial
+</p>
+</div>
+<div class="column" style="float:right; width: 40%">
+
+<div id="orgd1f1587" class="figure">
+<p><img src="imagenes/MundoBloquesFinal.png" alt="MundoBloquesFinal.png" />
+</p>
+</div>
+
+<p>
+Estado Final 
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7faabec">
+<h3 id="org7faabec">Mundo de Bloques: Ejemplo</h3>
+<div style="font-size: 70%;">
+<p class="fragment (fade-in-then-semi-out)">
+\[\{sobre(b,c), \color{red}{sobre(a,b)},libre(a),sobre(c,mesa),bloque(b),bloque(a),bloque(c)\}\]
+</p>
+<p class="fragment (fade-in-then-semi-out)">
+\[move(a,mesa,b)\]
+</p>
+<div class="org-center">
+<p class="fragment (fade-in-then-semi-out)">
+\[\{bloque(b), libre(a), bloque(a), libre(b), sobre(a,mesa)\}\cup \]
+\(\{\color{red}{sobre(b,c)}, libre(a),sobre(c,mesa), bloque(c)\}\)
+</p>
+</div>
+<p class="fragment (fade-in-then-semi-out)">
+\[move(b,mesa,c)\]
+</p>
+<div class="org-center">
+<p class="fragment (fade-in-then-semi-out)">
+\[\{bloque(c),bloque(b),libre(a),bloque(a),libre(b),sobre(a,mesa),\]
+\(sobre(b, mesa),sobre(c,mesa), libre(c)\}\)
+</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'slide',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

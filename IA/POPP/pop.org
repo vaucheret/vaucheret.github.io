@@ -1,0 +1,60 @@
+#+REVEAL_INIT_OPTIONS:  transition:'slide' 
+#+options: toc:1 num:nil
+
+#+REVEAL_THEME: sky
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+#+TITLE: Inteligencia Artificial
+#+DATE:  Planificación: POP
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Repaso
+
+** ¿Qué vimos?
+  - Representación de las acciones: STRIPS, Situation Calculus, Event Calculus
+  - Problemas en la representación del Cambio: Frame, Ramification y Qualification
+  - Regresión
+
+
+[[color:red][HOY]]
+[[color:red][Algoritmos de Planificación: Planificador de Orden Parcial]]
+
+* Planificación de Orden Parcial
+
+** Planificación de Orden Parcial
+   - Los planificadores dados dan como resultado un plan  totalmente ordenado.
+   - No utilizan las ventajas de la descomposición del problema.
+   - Al utilizar un orden parcial entre acciones sólo se compromete un
+     orden sobre las acciones cuando realmente fuere necesario.
+
+** Back to Matemática Discreta :)
+
+   [[color:red][¿Qué es un orden parcial?]]
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+   Es una relación de orden reflexiva, antisimétrica y transitiva.
+
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+   [[color:red][¿y un orden parcial estricto?]]
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+   Un orden parcial estricto es irreflexivo, transitivo y asimétrico.
+
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+   Utilizaremos para el orden parcial la relación [[color:red][antes que]],
+   que es irreflexiva, asimétrica y transitiva, es decir es un
+   [[color:red][orden parcial estricto]].
+
+** Back to the future: IA
+   #+REVEAL_HTML: <div style="font-size: 70%;">
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+   - *[[color:green][Planificación de Orden Parcial]]*
+     - un conjunto de [[color:red][acciones]] junto con un [[color:red][orden parcial]],
+       representando la relación [[color:blue][antes que]] sobre acciones,
+     - cualquier orden total sobre las acciones, consistente con el
+       orden parcial, resuelve la meta desde el nodo inicial
+   - Si tenemos el siguiente orden parcial entre las acciones:
+     - $a_1 < a_2$  $a_3 < a_4$
+     - los siguientes órdenes totales son [[color:red][consistentes]] con el orden parcial anterior:
+       - $a_1 < a_2 < a_3 < a_4$ , $a_3 < a_4 < a_1 < a_2$
+       - $a_3 < a_1 < a_4 < a_2$ , $a_1 < a_3 < a_4 < a_2$
+    #+REVEAL_HTML: </div>             

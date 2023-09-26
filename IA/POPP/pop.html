@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inteligencia Artificial</title>
+<meta name="author" content="(Claudio Vaucheret)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Planificación: POP</h2><p class="date">Created: 2023-09-26 mar 18:52</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org9cfd2ac">Repaso</a></li>
+<li><a href="#/slide-orgbfe4c0c">Planificación de Orden Parcial</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org9cfd2ac">
+<h2 id="org9cfd2ac">Repaso</h2>
+<div class="outline-text-2" id="text-org9cfd2ac">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7cd4d56">
+<h3 id="org7cd4d56">¿Qué vimos?</h3>
+<ul>
+<li>Representación de las acciones: STRIPS, Situation Calculus, Event Calculus</li>
+<li>Problemas en la representación del Cambio: Frame, Ramification y Qualification</li>
+<li>Regresión</li>
+
+</ul>
+
+
+<p>
+<span style="color:red;">HOY</span>
+<span style="color:red;">Algoritmos de Planificación: Planificador de Orden Parcial</span>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbfe4c0c">
+<h2 id="orgbfe4c0c">Planificación de Orden Parcial</h2>
+<div class="outline-text-2" id="text-orgbfe4c0c">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgdd70394">
+<h3 id="orgdd70394">Planificación de Orden Parcial</h3>
+<ul>
+<li>Los planificadores dados dan como resultado un plan  totalmente ordenado.</li>
+<li>No utilizan las ventajas de la descomposición del problema.</li>
+<li>Al utilizar un orden parcial entre acciones sólo se compromete un
+orden sobre las acciones cuando realmente fuere necesario.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org63ac9b9">
+<h3 id="org63ac9b9">Back to Matemática Discreta :)</h3>
+<p>
+<span style="color:red;">¿Qué es un orden parcial?</span>
+</p>
+<p class="fragment (fade-in-then-semi-out)">
+Es una relación de orden reflexiva, antisimétrica y transitiva.
+</p>
+
+<p class="fragment (fade-in-then-semi-out)">
+<span style="color:red;">¿y un orden parcial estricto?</span>
+</p>
+<p class="fragment (fade-in-then-semi-out)">
+Un orden parcial estricto es irreflexivo, transitivo y asimétrico.
+</p>
+
+<p class="fragment (fade-in-then-semi-out)">
+Utilizaremos para el orden parcial la relación <span style="color:red;">antes que</span>,
+que es irreflexiva, asimétrica y transitiva, es decir es un
+<span style="color:red;">orden parcial estricto</span>.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcd80b82">
+<h3 id="orgcd80b82">Back to the future: IA</h3>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Planificación de Orden Parcial</span></b>
+<ul>
+<li>un conjunto de <span style="color:red;">acciones</span> junto con un <span style="color:red;">orden parcial</span>,
+representando la relación <span style="color:blue;">antes que</span> sobre acciones,</li>
+<li>cualquier orden total sobre las acciones, consistente con el
+orden parcial, resuelve la meta desde el nodo inicial</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><p>
+Si tenemos el siguiente orden parcial entre las acciones:
+</p>
+<ul>
+<li>\(a_1 < a_2\)  \(a_3 < a_4\)</li>
+<li>los siguientes órdenes totales son <span style="color:red;">consistentes</span> con el orden parcial anterior:
+<ul>
+<li>\(a_1 < a_2 < a_3 < a_4\) , \(a_3 < a_4 < a_1 < a_2\)</li>
+<li>\(a_3 < a_1 < a_4 < a_2\) , \(a_1 < a_3 < a_4 < a_2\)</li>
+
+</ul></li>
+
+</ul>
+</div></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'slide',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

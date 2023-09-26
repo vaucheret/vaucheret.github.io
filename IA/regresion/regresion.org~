@@ -1,0 +1,124 @@
+#+REVEAL_INIT_OPTIONS:  transition:'slide' 
+#+options: toc:1 num:nil
+
+#+REVEAL_THEME: sky
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+#+TITLE: Inteligencia Artificial
+#+DATE:  Planificación: Regresión
+#+AUTHOR: Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+* Repaso
+  
+** ¿Qué vimos?
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+- Representación de las acciones: STRIPS, Situation Calculus, Event Calculus
+- Problemas en la representación del Cambio: Frame, Ramification y Qualification
+- Representación del tiempo
+- Algoritmos Forward y basados en resolución
+- Algoritmo STRIPS. Problemas con el algoritmo
+- [[color:red][HOY]] Algoritmos de Planificación: Regresión 
+ 
+* Mundo de Bloques
+
+** Estado Inicial
+    #+REVEAL_HTML: <div style="font-size: 70%;">
+     #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+   - *[[color:green][Estado Inicial]]*
+     #+BEGIN_QUOTE
+      [[color:blue][libre(a), libre(c), sobre(b, mesa), sobre(a, mesa), sobre(c,b)]]
+     #+END_QUOTE
+   - *[[color:green][Estado Final]]*
+     #+BEGIN_QUOTE
+       [[color:blue][libre(a), sobre(b,c), sobre(a,b), sobre(c, mesa)]]
+     #+END_QUOTE
+   - *[[color:green][Acción MOVE(X,P1,P2): movemos el bloque X de la posición P1 a la posición P2]]*
+     - [[color:green][Lista de Precondición:]] /[[color:blue][P2]]/ $\neq$ /[[color:blue][mesa - bloque(P2), libre(X), bloque(X), libre(P2), sobre(X,P1).]]/
+     - [[color:green][Lista Add:]] /[[color:blue][libre(P1), sobre(X,P2)]]/.
+     - [[color:green][Lista Del:]] /.
+ #+REVEAL_HTML: </div>       
+       
+* Planificadores
+
+**   Problemas con los Planificadores
+  #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+- Existen planificadores forward pero tienen problemas con el tamaño
+  del espacio de búsqueda que generan.
+- El planificador de STRIPS si bien toma una meta y ve que acciones la
+  logra, es decir es un planificador backward, Este planificador tiene
+  un problema que no es trivial: [[color:red][algunas acciones pueden deshacer metas ya alcanzadas]]
+
+* Planificación por Regresión
+
+** Regresión
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+- Este algoritmo reduce el factor de ramificación porque trabaja desde
+  las metas hacia atrás, eligiendo solamente aquellas acciones que
+  alcanzan alguna de las metas a lograr.
+- Asimismo trata el problema de las submetas que están en relación, ya
+  que no intenta resolver las metas por separado, sino que sigue la
+  pista a todas las metas que tiene que lograr.
+
+  
+** Planificación por Regresión
+    #+REVEAL_HTML: <div style="font-size: 70%;">
+    - Podemos analizar el algoritmo en términos de un grafo de búsqueda.
+    - Los nodos están etiquetados  con conjuntos de metas y los arcos corresponden a las acciones.
+    - Un nodo etiquetado con el conjunto de metas G tiene un nodo vecino por cada acción A que logre una de las metas  en G.
+    #+REVEAL_HTML: </div>
+    #+BEGIN_SRC dot :file imagenes/grbus.png :cmdline -Kdot -Tpng
+      digraph G  {
+	G[label=G,color=blue shape=circle];
+	P1[label=<P¹<SUB>G</SUB>>,color=blue shape=circle];
+	P2[label=<P²<SUB>G</SUB>>,color=blue shape=circle];
+	Pn[label=<Pⁿ<SUB>G</SUB>>,color=blue shape=circle];
+	G -> P1[label="a₁",color=red];
+	G -> P2[label="a₂",color=red];
+	G -> Pn[label="aₙ",color=red] 
+      }
+    #+END_SRC
+
+    #+RESULTS:
+    [[file:imagenes/grbus.png]]
+
+** Precondición más débil
+   #+REVEAL_HTML: <div class="column" style="font-size: 70%; float:left; width: 80%">
+- El vecino que corresponde  a la acción A es etiquetado como [[color:red][$G_A$]].
+- $G_A$ tiene que ser verdadera [[color:red][inmediatamente antes]] de ejecutar la acción A.
+- $G_A$  se llama [[color:red][precondición más débil]] para la acción A y la lista de metas G.
+- [[color:red][$wp(A,GL,G_A)$]]  es verdadera si $G_A$ es la precondición más débil que ocurre inmediatamente  antes de la acción A de modo que cada elemento en la lista de metas GL sea verdadera después de la ejecucción de A.
+- Es la más débil ya que cualquier otra precondición debe implicarla.
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="column" float:right; width: 20%">    
+    #+begin_src dot :file imagenes/prec.png :cmdline -Kdot -Tpng
+      digraph G  {
+	GL[label="GL",color=blue shape=circle];
+	GA[label=<G<SUB>A</SUB>>,color=blue shape=circle];
+	GL -> GA[label="A",color=red]
+      }
+    #+END_SRC
+
+    #+RESULTS:
+    [[file:imagenes/prec.png]]
+
+** Precondición más débil
+   #+REVEAL_HTML: <div class="column" style="font-size: 70%; float:left; width: 80%">
+ En STRIPS, [[color:red][$wp(A,GL,WP)$]] se define como sigue: 
+- Es /[[color:red][falso]]/ si algún elemento de GL está en la lista de borrado de la
+  acción A. En este caso es imposible para todo elemento en GL ser
+  verdadero inmediatamente después de la acción A.
+- De otro modo, el valor de WP es [[color:red][\[precondiciones(A)\cup \{G\in GL: G\not\in add\_list(A)\}\]​]] 
+  donde precondiciones(A) es la lista de precondiciones de A y $add\_list(A)$  es el conjunto de condiciones que agrega la acción A.
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: <div class="column" float:right; width: 20%">    
+    #+begin_src dot :file imagenes/prec2.png :cmdline -Kdot -Tpng
+      digraph G  {
+	GL[label="GL",color=blue shape=circle];
+	GA[label=<G<SUB>A</SUB>>,color=blue shape=circle];
+	GL -> GA[label="A",color=red]
+      }
+    #+END_SRC
+
+    #+RESULTS:
+    [[file:imagenes/prec2.png]]

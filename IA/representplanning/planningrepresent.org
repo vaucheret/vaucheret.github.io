@@ -1,7 +1,7 @@
-#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+REVEAL_INIT_OPTIONS:  transition:'slide' 
 #+options: toc:1 num:nil
 
-#+REVEAL_THEME: moon
+#+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 2
 #+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
 
@@ -14,7 +14,7 @@
 #+AUTHOR: Claudio Vaucheret
 #+EMAIL: cv@fi.uncoma.edu.ar
 
-* Búsqueda Vs.Planning
+* Búsqueda Vs. Planning
 
 **  Búsqueda Vs. Planning: Acciones Irrelevantes
  #+REVEAL_HTML: <div style="font-size: 70%;">
@@ -32,7 +32,7 @@
 
  Con Planning podemos :
 #+ATTR_REVEAL: :frag (roll-in)
-- Abrir la representación de las acciones y las metas para permitir la seleccióon.
+- Abrir la representación de las acciones y las metas para permitir la selección.
 - Dividir y conquistar  descomponiendo el problema en submetas.
 - Relajar los requerimientos de construcción secuencial de las soluciones.
 
@@ -49,18 +49,18 @@
 * Representación de los diferentes elementos en el Planning
 
 ** Lenguaje de Representación
-{{{alert(Utilizaremos la Estructura Lógica del Problema)}}}
+[[color:red][Utilizaremos la Estructura Lógica del Problema]]
 
 #+ATTR_REVEAL: :frag (roll-in)
-- *{{{color(green,Representación de Estados)}}}*
+- *[[color:green][Representación de Estados]]*
   #+REVEAL_HTML: <div style="font-size: 70%;">
    El mundo es una conjunción de literales.
   #+REVEAL_HTML: </div>
-- *{{{color(green,Representación de Metas)}}}*
+- *[[color:green][Representación de Metas]]*
   #+REVEAL_HTML: <div style="font-size: 70%;">
   Es un estado particular, representado por una conjunción de literales.
   #+REVEAL_HTML: </div>
-- *{{{color(green,Definición)}}}*
+- *[[color:green][Definición]]*
   #+REVEAL_HTML: <div style="font-size: 70%;">
   Un estado proposicional $\color{red}{s}$ satisface una meta $\color{red}{g}$ si
   $\color{red}{s}$ contiene todos los átomos en $\color{red}{g}$ (y posiblemente
@@ -73,20 +73,20 @@
  #+REVEAL_HTML: <div class="gridded_frame_with_columns">
  #+REVEAL_HTML: <div class="one_of_3_columns">
  #+ATTR_REVEAL: :frag (roll-in)
- *{{{color(green,PRECONDI)}}}*
-*{{{color(green,CIONES)}}}*
+ *[[color:green][PRECONDI]]*
+  *[[color:green][CIONES]]*
  Literales que deben ocurrir antes de que la acción sea ejecutada
  #+REVEAL_HTML: </div>
  #+REVEAL_HTML: <div class="one_of_3_columns">
 
 $\to$
- *{{{color(yellow,ACCION)}}}*
+ *[[color:orange][ACCION]]*
 $\to$
 
  #+REVEAL_HTML: </div>
  #+REVEAL_HTML: <div class="one_of_3_columns">
  #+ATTR_REVEAL: :frag (roll-in)
- *{{{color(green,EFECTOS)}}}*
+ *[[color:green][EFECTOS]]*
  Aquello que será consecuencia de la ejecucción de la acción.
  #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
@@ -107,7 +107,7 @@ $airport(to)$
  #+REVEAL_HTML: <div class="one_of_3_columns">
 
 $\to$
-$\color{yellow}{fly(p,from, to)}$ 
+$\color{orange}{fly(p,from, to)}$ 
 $\to$
 
  #+REVEAL_HTML: </div>
@@ -207,7 +207,7 @@ $\to$
  #+REVEAL_HTML: <div class="one_of_3_columns">
 
 $\to$
- *{{{color(yellow,arrancar el auto)}}}*
+ *{{{color(orange,arrancar el auto)}}}*
 $\to$
 
  #+REVEAL_HTML: </div>
@@ -325,7 +325,7 @@ $airport(to)$
  #+REVEAL_HTML: <div class="one_of_3_columns">
 
 $\to$
-$\color{yellow}{fly(p,from, to)}$ 
+$\color{orange}{fly(p,from, to)}$ 
 $\to$
 
  #+REVEAL_HTML: </div>
@@ -410,8 +410,8 @@ $s^\prime\ = \ s\ -\ \{at(A810,JN)\} \ \cup \ \{at(A810,JFK)\}$
  #+REVEAL_HTML: <div class="gridded_frame_with_columns">
  #+REVEAL_HTML: <div class="one_of_2_columns">
 *{{{color(green,ACCIONES)}}}*
-- {{{color(yellow,Mover)}}} mueve un bloque que está sobre uno a otro
-- {{{color(yellow,Mover)}}} mueve un bloque que está sobre la mesa sobre otro
+- {{{color(orange,Mover)}}} mueve un bloque que está sobre uno a otro
+- {{{color(orange,Mover)}}} mueve un bloque que está sobre la mesa sobre otro
  #+REVEAL_HTML: </div>
  #+REVEAL_HTML: <div class="one_of_2_columns">
 #+ATTR_HTML:  :height 200 
@@ -432,8 +432,8 @@ $s^\prime\ = \ s\ -\ \{at(A810,JN)\} \ \cup \ \{at(A810,JFK)\}$
  #+REVEAL_HTML: <div class="gridded_frame_with_columns">
  #+REVEAL_HTML: <div class="one_of_2_columns">
 *{{{color(green,ACCIONES)}}}*
-- {{{color(yellow,Mover)}}} mueve un bloque que está sobre uno a otro
-- {{{color(yellow,Mover)}}} mueve un bloque que está sobre la mesa sobre otro
+- {{{color(orange,Mover)}}} mueve un bloque que está sobre uno a otro
+- {{{color(orange,Mover)}}} mueve un bloque que está sobre la mesa sobre otro
  #+REVEAL_HTML: </div>
  #+REVEAL_HTML: <div class="one_of_2_columns">
 #+ATTR_HTML:  :height 200 
@@ -603,31 +603,35 @@ Situaciones especiales:
 
 
 ** Situation Calculus: Mundo de Bloques
-
+#+REVEAL_HTML: <div style="font-size: 60%;">
 $\color{cyan}{Move(B,X,Y)}$
    
  - *{{{color(green,Precondiciones)}}}*
- #+REVEAL_HTML: <div style="font-size: 60%;">
- poss(move(B,X,Y),S) $\leftarrow$ bloque(B),bloque(X),bloque(Y),clear(Y,S),clear(B,S), on(B,X,S).
- #+REVEAL_HTML: </div>
-#+ATTR_REVEAL: :frag (roll-in)
-- *{{{color(green,Estado Sucesor)}}}*
- #+REVEAL_HTML: <div style="font-size: 55%;">
-  $\Bigr($ clear(X,do(A,S))$\leftrightarrow$ $\bigl($ A=move(B,X,Y) $\vee$ 
- $( clear(X,S) \wedge A\neq  move(B,Z,X) \bigl)\Bigl)$. 
 
-  Siguiendo notación de Poole, utilizamos dos reglas:
-  
- *Ax de efecto:*
+ poss(move(B,X,Y),S) $\leftarrow$ bloque(B),bloque(X),bloque(Y),clear(Y,S),clear(B,S), on(B,X,S).
+
+- *{{{color(green,Estado Sucesor)}}}*
+
+  $\Bigr($ clear(X,do(A,S))$\leftrightarrow$ $\bigl($ A=move(B,X,Y) $\vee$ 
+ $( clear(X,S) \wedge A\neq  move(B,Z,X) \bigl)\Bigl)$.
  
+  Siguiendo notación de Poole, utilizamos dos reglas:
+
+#+REVEAL_HTML: <div class="column" style="font-size: 80%; float:left; width: 30%">
+  *Ax de efecto:*
+  
+  *Ax de frame:*
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div class="column" style="font-size: 80%; float:right; width: 70%">
  clear(X,do(move(B,X,Y),S))$\leftarrow$ poss(move(B,X,Y),S).
  
- *Ax de frame:*
- 
-  clear(X,do(A,S))$\leftarrow$ clear(X,S) $\wedge$ poss(A,S) $\wedge$ A $\neq$ move(B,Z,X)
- #+REVEAL_HTML: </div>
+ clear(X,do(A,S))$\leftarrow$ clear(X,S) $\wedge$ poss(A,S) $\wedge$ A $\neq$ move(B,Z,X)
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
 
- 
+
+
+
 * Event Calculus
 
 ** Event Calculus
@@ -753,7 +757,7 @@ $holds(on(B,X),T)$
 El tiempo pude incorporarse a un sistema de Rep. de Conoc. y
 Razonamiento de diferentes formas:
 
-- {{{alert(El Tiempo /y acciones/ son externas a la lógica:)}}} Se
+- [[color:red][El Tiempo /y acciones/ son externas a la lógica:]] Se
   representa en la lógica solo un estado (correspondiente a un
   determinado momento), y se utilizan sentencias fuera de la lógica
   para especificar cómo una acción mapea desde la descripción de un
@@ -783,3 +787,5 @@ file:imagenes/book.png  D. Poole, A. Mackworth y R. Goebel
   1998
 
 #+REVEAL_HTML: </div>
+
+

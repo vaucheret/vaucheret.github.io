@@ -1,6 +1,6 @@
 #+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'none'
 #+OPTIONS: toc:nil num:nil
-#+REVEAL_THEME: moon
+#+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 2
 #+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
 #+REVEAL_POSTAMBLE: <p> Created by yjwen. </p>
@@ -223,17 +223,19 @@ end
 [[file:farbolbusq.jpg]]
 
 *** Implementación Algoritmo de Búsqueda Genérico
+    #+REVEAL_HTML: <div style="font-size: 140%;">
+#+BEGIN_SRC prolog
+      search(F0) :-
+          select(Node,F0,F1),
+          is_goal(Node).
 
-
- | search($F_0$) | $\leftarrow$ | select(Node,$F_0$,$F_1$),           |
- |               |              | is-goal(Node).                      |
- |               |              |                                     |
- | search($F_0$) | $\leftarrow$ | select(Node,$F_0$,$F_1$),           |
- |               |              | neighbors(Node,NN),                 |
- |               |              | add-to-frontier(NN,$F_1$, $F_2$),   |
- |               |              | search($F_2$).                      |
-
- 
+      search(F0) :-
+          select(Node,F0,F1),
+          neighbors(Node,NN),
+          add-to-frontier(NN,F1,F2),
+          search(F2).
+#+END_SRC 
+    #+REVEAL_HTML: </div>
 *** Estrategias de búsqueda
 
 file:farbolbusq.jpg
