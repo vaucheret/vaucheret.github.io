@@ -28,28 +28,28 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Lenguajes de scripting</h2><h2 class="date">2017-11-14 mar 00:00</h2><p class="date">Created: 2022-11-01 mar 13:18</p>
+<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Lenguajes de scripting</h2><h2 class="date">2017-11-14 mar 00:00</h2><p class="date">Created: 2023-10-31 mar 10:08</p>
 </section>
-<section id="table-of-contents"><div id="table-of-contents" role="doc-toc">
+<section id="table-of-contents"><div id="table-of-contents">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
+<div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org1897561">Scripting</a></li>
+<li><a href="#/slide-org34a385f">Scripting</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org1897561">
-<h2 id="org1897561">Scripting</h2>
-<div class="outline-text-2" id="text-org1897561">
+<section id="slide-org34a385f">
+<h2 id="org34a385f">Scripting</h2>
+<div class="outline-text-2" id="text-org34a385f">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgcbd8e37">
-<h3 id="orgcbd8e37">¿Qué es un lenguaje de scripting?</h3>
+<section id="slide-orgcd54c61">
+<h3 id="orgcd54c61">¿Qué es un lenguaje de scripting?</h3>
 <div style="font-size: 80%;">
 <ul>
 <li>Los lenguajes de scripting modernos tienen dos conjuntos principales
@@ -83,8 +83,8 @@ Ruby, VBScript y AppleScript</li>
 </section>
 </section>
 <section>
-<section id="slide-orge1f6989">
-<h3 id="orge1f6989">¿Qué es un lenguaje de scripting?</h3>
+<section id="slide-org35d887d">
+<h3 id="org35d887d">¿Qué es un lenguaje de scripting?</h3>
 <ul>
 <li>Características Comunes
 <ul>
@@ -103,8 +103,8 @@ Ruby, VBScript y AppleScript</li>
 </section>
 </section>
 <section>
-<section id="slide-org3b887c5">
-<h3 id="org3b887c5">Dominio de Problemas</h3>
+<section id="slide-org74d0e0a">
+<h3 id="org74d0e0a">Dominio de Problemas</h3>
 <ul>
 <li>Algunos lenguajes de uso general (Scheme y Visual Basic en particular) son ampliamente utilizados para el scripting</li>
 <li>Por el contrario, algunos lenguajes de scripting, incluyendo Perl,
@@ -122,8 +122,8 @@ ver su uso principal en dominios de problemas bien definidos</li>
 </section>
 </section>
 <section>
-<section id="slide-orgd90772c">
-<h3 id="orgd90772c">Dominio de Problemas</h3>
+<section id="slide-org9cd994c">
+<h3 id="org9cd994c">Dominio de Problemas</h3>
 <div style="font-size: 80%;">
 <ul>
 <li>Lenguajes de Shell
@@ -154,18 +154,18 @@ programas
 </section>
 </section>
 <section>
-<section id="slide-org6ae7933">
-<h3 id="org6ae7933">Lenguajes de Shell</h3>
+<section id="slide-org76fd44f">
+<h3 id="org76fd44f">Lenguajes de Shell</h3>
 <ul>
 <li><p>
 Nombres de archivo y expansión de variables
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #00ffff;">for</span> fig<span style="color: #00ffff;"> in</span> *.eps
-<span style="color: #00ffff;">do</span> 
-    ps2pdf $<span style="color: #eedd82;">fig</span>
-<span style="color: #00ffff;">done</span>
+<pre  class="src src-shell"><code trim><span style="color: #1c86ee;">for</span> fig<span style="color: #1c86ee;"> in</span> *.eps
+<span style="color: #1c86ee;">do</span> 
+    ps2pdf $<span style="color: #2e8b57;">fig</span>
+<span style="color: #1c86ee;">done</span>
 </code></pre>
 </div></li>
 <li><p>
@@ -173,14 +173,14 @@ Tests, consultas y condiciones
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #00ffff;">for</span> fig<span style="color: #00ffff;"> in</span> *.eps
-<span style="color: #00ffff;">do</span>
-    <span style="color: #eedd82;">target</span>=${<span style="color: #eedd82;">fig</span>%.eps}.pdf
-    <span style="color: #00ffff;">if</span> [ $<span style="color: #eedd82;">fig</span> -nt $<span style="color: #eedd82;">target</span> ]
-    <span style="color: #00ffff;">then</span> 
-    ps2pdf $<span style="color: #eedd82;">fig</span>
-    <span style="color: #00ffff;">fi</span>
-<span style="color: #00ffff;">done</span>
+<pre  class="src src-shell"><code trim><span style="color: #1c86ee;">for</span> fig<span style="color: #1c86ee;"> in</span> *.eps
+<span style="color: #1c86ee;">do</span>
+    <span style="color: #2e8b57;">target</span>=${<span style="color: #2e8b57;">fig</span>%.eps}.pdf
+    <span style="color: #1c86ee;">if</span> [ $<span style="color: #2e8b57;">fig</span> -nt $<span style="color: #2e8b57;">target</span> ]
+    <span style="color: #1c86ee;">then</span> 
+    ps2pdf $<span style="color: #2e8b57;">fig</span>
+    <span style="color: #1c86ee;">fi</span>
+<span style="color: #1c86ee;">done</span>
 </code></pre>
 </div></li>
 
@@ -189,15 +189,15 @@ Tests, consultas y condiciones
 </section>
 </section>
 <section>
-<section id="slide-orgabbdaae">
-<h3 id="orgabbdaae">Pipes y redirección.</h3>
+<section id="slide-org083a664">
+<h3 id="org083a664">Pipes y redirección.</h3>
 <ul>
 <li>Para contar la cantidad de figuras</li>
 
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #00ffff;">for</span> fig<span style="color: #00ffff;"> in</span> *; <span style="color: #00ffff;">do </span><span style="color: #b0c4de;">echo</span> ${<span style="color: #eedd82;">fig</span>%.*}; <span style="color: #00ffff;">done</span> | sort -u | wc -l
+<pre  class="src src-shell"><code trim><span style="color: #1c86ee;">for</span> fig<span style="color: #1c86ee;"> in</span> *; <span style="color: #1c86ee;">do </span><span style="color: #cd6600;">echo</span> ${<span style="color: #2e8b57;">fig</span>%.*}; <span style="color: #1c86ee;">done</span> | sort -u | wc -l
 </code></pre>
 </div>
 <ul>
@@ -207,7 +207,7 @@ Para crear una lista de figuras
 
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #00ffff;">for</span> fig<span style="color: #00ffff;"> in</span> *; <span style="color: #00ffff;">do </span><span style="color: #b0c4de;">echo</span> ${<span style="color: #eedd82;">fig</span>%.*}; <span style="color: #00ffff;">done</span> | sort -u &gt; all_figs
+<pre  class="src src-shell"><code trim><span style="color: #1c86ee;">for</span> fig<span style="color: #1c86ee;"> in</span> *; <span style="color: #1c86ee;">do </span><span style="color: #cd6600;">echo</span> ${<span style="color: #2e8b57;">fig</span>%.*}; <span style="color: #1c86ee;">done</span> | sort -u &gt; all_figs
 </code></pre>
 </div></li>
 
@@ -218,7 +218,7 @@ espacio
 
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim>tr <span style="color: #ffa07a;">'\n'</span> <span style="color: #ffa07a;">' '</span> &lt; all_figs
+<pre  class="src src-shell"><code trim>tr <span style="color: #8b7355;">'\n'</span> <span style="color: #8b7355;">' '</span> &lt; all_figs
 </code></pre>
 </div></li>
 
@@ -227,8 +227,8 @@ espacio
 </section>
 </section>
 <section>
-<section id="slide-orgc56c850">
-<h3 id="orgc56c850">Quoting y Expansión</h3>
+<section id="slide-org7ef94f7">
+<h3 id="org7ef94f7">Quoting y Expansión</h3>
 <ul>
 <li><p>
 comillas simples inhiben la expansión y las dobles tratan el
@@ -236,10 +236,10 @@ contenido como una palabra simple:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #eedd82;">foo</span>=bar
-<span style="color: #eedd82;">single</span>=<span style="color: #ffa07a;">'$foo'</span>
-<span style="color: #eedd82;">double</span>=<span style="color: #ffa07a;">"$foo"</span>
-<span style="color: #eedd82;">echo</span>= $<span style="color: #eedd82;">single</span> $<span style="color: #eedd82;">double</span>
+<pre  class="src src-shell"><code trim><span style="color: #2e8b57;">foo</span>=bar
+<span style="color: #2e8b57;">single</span>=<span style="color: #8b7355;">'$foo'</span>
+<span style="color: #2e8b57;">double</span>=<span style="color: #8b7355;">"$foo"</span>
+<span style="color: #2e8b57;">echo</span>= $<span style="color: #2e8b57;">single</span> $<span style="color: #2e8b57;">double</span>
 </code></pre>
 </div></li>
 
@@ -254,7 +254,7 @@ para evaluación
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #00ffff;">for</span> fig<span style="color: #00ffff;"> in</span> $(<span style="color: #fa8072;">cat</span> my_figs); <span style="color: #00ffff;">do</span> ps2pdf ${<span style="color: #eedd82;">fig</span>}.eps, done
+<pre  class="src src-shell"><code trim><span style="color: #1c86ee;">for</span> fig<span style="color: #1c86ee;"> in</span> $(<span style="color: #ff00ff;">cat</span> my_figs); <span style="color: #1c86ee;">do</span> ps2pdf ${<span style="color: #2e8b57;">fig</span>}.eps, done
 </code></pre>
 </div></li>
 
@@ -263,16 +263,16 @@ para evaluación
 </section>
 </section>
 <section>
-<section id="slide-org7e33a7d">
-<h3 id="org7e33a7d">Funciones y encabezamiento #!</h3>
+<section id="slide-org3fc8c2b">
+<h3 id="org3fc8c2b">Funciones y encabezamiento #!</h3>
 <ul>
 <li><p>
 definir funciones y usarlas como predefinidas
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #00ffff;">function</span> <span style="color: #87cefa;">ll</span> () {
-ls -l <span style="color: #ffa07a;">"$@"</span>
+<pre  class="src src-shell"><code trim><span style="color: #1c86ee;">function</span> <span style="color: #cd9b1d;">ll</span> () {
+ls -l <span style="color: #8b7355;">"$@"</span>
 }
 </code></pre>
 </div></li>
@@ -285,7 +285,7 @@ se pueden ejecutar comandos shell desde un archivo script
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #b0c4de;">.</span> my_script
+<pre  class="src src-shell"><code trim><span style="color: #cd6600;">.</span> my_script
 </code></pre>
 </div></li>
 <li><p>
@@ -293,7 +293,7 @@ o como un programa ejecutable con el encabezado
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-shell"><code trim><span style="color: #ff4500;">#</span><span style="color: #ff4500;">!/bin/</span><span style="color: #00ffff;">bash</span>
+<pre  class="src src-shell"><code trim><span style="color: #7f7f7f;">#</span><span style="color: #7f7f7f;">!/bin/</span><span style="color: #1c86ee;">bash</span>
 </code></pre>
 </div></li>
 
@@ -302,15 +302,15 @@ o como un programa ejecutable con el encabezado
 </section>
 </section>
 <section>
-<section id="slide-org4150c1a">
-<h3 id="org4150c1a">Procesamiento de Texto y Generación de Reportes</h3>
+<section id="slide-orgf838d08">
+<h3 id="orgf838d08">Procesamiento de Texto y Generación de Reportes</h3>
 <ul>
 <li><p>
 sed
 </p>
 
 
-<div id="orgf8129b3" class="figure">
+<div id="org1048bde" class="figure">
 <p><img src="sed.png" alt="sed.png" />
 </p>
 </div></li>
@@ -324,15 +324,15 @@ script en <b>sed</b> para extraer encabezados de un archivo html.
 </section>
 </section>
 <section>
-<section id="slide-orgafe4424">
-<h3 id="orgafe4424">Procesamiento de Texto y Generación de Reportes</h3>
+<section id="slide-orgb635bc5">
+<h3 id="orgb635bc5">Procesamiento de Texto y Generación de Reportes</h3>
 <ul>
 <li><p>
 Awk
 </p>
 
 
-<div id="orgef80183" class="figure">
+<div id="orgcd851da" class="figure">
 <p><img src="awk.png" alt="awk.png" />
 </p>
 </div></li>
@@ -346,8 +346,8 @@ script en <b>awk</b> para extraer encabezados de un archivo html.
 </section>
 </section>
 <section>
-<section id="slide-orgc6212d9">
-<h3 id="orgc6212d9">Perl</h3>
+<section id="slide-org7c88f94">
+<h3 id="org7c88f94">Perl</h3>
 <div style="font-size: 80%;">
 <ul>
 <li>Perl fue desarrollado originalmente por Larry Wall en 1987, mientras</li>
@@ -378,15 +378,15 @@ and report lenguage")
 </section>
 </section>
 <section>
-<section id="slide-org9886a47">
-<h3 id="org9886a47">Perl</h3>
+<section id="slide-org88da5d8">
+<h3 id="org88da5d8">Perl</h3>
 <ul>
 <li>Script en <b>Perl</b> para extraer encabezados de un archivo html.</li>
 
 </ul>
 
 
-<div id="org58df414" class="figure">
+<div id="org8cf5f3d" class="figure">
 <p><img src="perl.png" alt="perl.png" />
 </p>
 </div>
@@ -394,8 +394,8 @@ and report lenguage")
 </section>
 </section>
 <section>
-<section id="slide-orga5b9021">
-<h3 id="orga5b9021">Lenguajes y scripting de propósito general</h3>
+<section id="slide-org2e05e34">
+<h3 id="org2e05e34">Lenguajes y scripting de propósito general</h3>
 <div style="font-size: 70%;">
 <ul>
 <li>Perl</li>
@@ -430,15 +430,15 @@ desarrollo de Tcl</li>
 </section>
 </section>
 <section>
-<section id="slide-org8e6a9ae">
-<h3 id="org8e6a9ae">Perl</h3>
+<section id="slide-org4f63855">
+<h3 id="org4f63855">Perl</h3>
 <ul>
 <li><p>
 Script en <b>Perl</b> para forzar la salida de procesos errantes.
 </p>
 
 
-<div id="orgc7519b9" class="figure">
+<div id="org7a53d35" class="figure">
 <p><img src="perlprocess.png" alt="perlprocess.png" />
 </p>
 </div></li>
@@ -448,15 +448,15 @@ Script en <b>Perl</b> para forzar la salida de procesos errantes.
 </section>
 </section>
 <section>
-<section id="slide-orgb90fad3">
-<h3 id="orgb90fad3">Tcl</h3>
+<section id="slide-org9ea02bb">
+<h3 id="org9ea02bb">Tcl</h3>
 <ul>
 <li>Script en <b>TCL</b> para forzar la salida de procesos errantes.</li>
 
 </ul>
 
 
-<div id="org7d0fc33" class="figure">
+<div id="orgd1153b5" class="figure">
 <p><img src="tclprocess.png" alt="tclprocess.png" />
 </p>
 </div>
@@ -464,8 +464,8 @@ Script en <b>Perl</b> para forzar la salida de procesos errantes.
 </section>
 </section>
 <section>
-<section id="slide-org6993b01">
-<h3 id="org6993b01">Lenguajes de pegado y scripting de propósito general</h3>
+<section id="slide-orga69c49c">
+<h3 id="orga69c49c">Lenguajes de pegado y scripting de propósito general</h3>
 <div style="font-size: 70%;">
 <ul>
 <li>Rexx generalmente se considera el primero de los
@@ -503,15 +503,15 @@ estilo de programación</li>
 </section>
 </section>
 <section>
-<section id="slide-org0090e30">
-<h3 id="org0090e30">Python</h3>
+<section id="slide-orgbbb58b3">
+<h3 id="orgbbb58b3">Python</h3>
 <ul>
-<li>Script en <b>TCL</b> para forzar la salida de procesos errantes.</li>
+<li>Script en <b>Python</b> para forzar la salida de procesos errantes.</li>
 
 </ul>
 
 
-<div id="org86eb09a" class="figure">
+<div id="org0b4bff9" class="figure">
 <p><img src="pythonprocc.png" alt="pythonprocc.png" /> 
 </p>
 </div>
@@ -519,8 +519,8 @@ estilo de programación</li>
 </section>
 </section>
 <section>
-<section id="slide-orga46973e">
-<h3 id="orga46973e">Lenguajes de extensión</h3>
+<section id="slide-orgd45b749">
+<h3 id="orgd45b749">Lenguajes de extensión</h3>
 <ul>
 <li>La mayoría de las aplicaciones aceptan alguna clase de <i>comandos</i>
 <ul>
@@ -536,7 +536,7 @@ pantalla; o modificar las preferencias del usuario.</li>
 
 </ul>
 </section>
-<section id="slide-orga46973e-split">
+<section id="slide-orgd45b749-split">
 <ul>
 <li>Un lenguaje de extensión sirve para aumentar la utilidad de una
 aplicación permitiendo que el usuario cree nuevos comandos,
@@ -556,8 +556,8 @@ usan Python para extender sus herramientas internas.</li>
 </section>
 </section>
 <section>
-<section id="slide-orga385425">
-<h3 id="orga385425">Lenguajes de extensión</h3>
+<section id="slide-orgaddcc4f">
+<h3 id="orgaddcc4f">Lenguajes de extensión</h3>
 <ul>
 <li>Para admitir extensión, una herramienta debe:
 <ul>
@@ -570,7 +570,7 @@ usan Python para extender sus herramientas internas.</li>
 
 </ul>
 </section>
-<section id="slide-orga385425-split">
+<section id="slide-orgaddcc4f-split">
 <ul>
 <li>Uno de los mecanismos de extensión existentes más antiguos es el del editor de texto emacs
 <ul>
@@ -586,8 +586,8 @@ distribución estándar.</li>
 </section>
 </section>
 <section>
-<section id="slide-org2597bdb">
-<h3 id="org2597bdb">Emacs Lisp</h3>
+<section id="slide-org1657084">
+<h3 id="org1657084">Emacs Lisp</h3>
 <ul>
 <li>Una función de Emacs Lisp para numerar las lineas en una región
 seleccionada del texto.</li>
@@ -595,7 +595,7 @@ seleccionada del texto.</li>
 </ul>
 
 
-<div id="org42d25f3" class="figure">
+<div id="org1ba94c9" class="figure">
 <p><img src="lisp.png" alt="lisp.png" /> 
 </p>
 </div>
@@ -603,8 +603,8 @@ seleccionada del texto.</li>
 </section>
 </section>
 <section>
-<section id="slide-org876181c">
-<h3 id="org876181c">Scripting en la WWW</h3>
+<section id="slide-org9b6b041">
+<h3 id="org9b6b041">Scripting en la WWW</h3>
 <ul>
 <li>Scripts CGI
 <ul>
@@ -624,7 +624,7 @@ vuelta al cliente
 
 </ul>
 </section>
-<section id="slide-org876181c-split">
+<section id="slide-org9b6b041-split">
 <ul>
 <li>Los scripts CGI se pueden escribir en cualquier idioma disponible
 <ul>
@@ -643,24 +643,24 @@ los primeros años de la web</li>
 </section>
 </section>
 <section>
-<section id="slide-orgbf0c1f9">
-<h3 id="orgbf0c1f9">Scripting en la WWW</h3>
+<section id="slide-org1d187ec">
+<h3 id="org1d187ec">Scripting en la WWW</h3>
 <ul>
 <li>un simple CGI script en Perl.</li>
 
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-perl"><code trim><span style="color: #ff4500;">#</span><span style="color: #ff4500;">!/usr/bin/perl</span>
+<pre  class="src src-perl"><code trim><span style="color: #7f7f7f;">#</span><span style="color: #7f7f7f;">!/usr/bin/perl</span>
 
-print <span style="color: #ffa07a;">"Content-type: text/html\n\n"</span>;
+print <span style="color: #8b7355;">"Content-type: text/html\n\n"</span>;
 
-$<span style="color: #eedd82;">host</span> = <span style="color: #ffa07a;">'hostname'</span>; chop $<span style="color: #eedd82;">host</span>;
-print <span style="color: #ffa07a;">"&lt;HTML&gt;\n&lt;HEAD&gt;\n&lt;TITLE&gt;Status of "</span>, $<span style="color: #eedd82;">host</span>,
-      <span style="color: #ffa07a;">"&lt;/TITLE&gt;\n&lt;/HEAD&gt;\n&lt;BODY&gt;\n"</span>;
-print <span style="color: #ffa07a;">"&lt;H1&gt;"</span>, $<span style="color: #eedd82;">host</span>, <span style="color: #ffa07a;">"&lt;/H1&gt;\n"</span>;
-print <span style="color: #ffa07a;">"&lt;PRE&gt;\n"</span>, <span style="color: #ffa07a;">'uptime'</span>, <span style="color: #ffa07a;">"\n"</span>, <span style="color: #ffa07a;">'who'</span>;
-print <span style="color: #ffa07a;">"&lt;/PRE&gt;\n&lt;/BODY&gt;\n&lt;/HTML&gt;\n"</span>;
+$<span style="color: #2e8b57;">host</span> = <span style="color: #8b7355;">'hostname'</span>; chop $<span style="color: #2e8b57;">host</span>;
+print <span style="color: #8b7355;">"&lt;HTML&gt;\n&lt;HEAD&gt;\n&lt;TITLE&gt;Status of "</span>, $<span style="color: #2e8b57;">host</span>,
+      <span style="color: #8b7355;">"&lt;/TITLE&gt;\n&lt;/HEAD&gt;\n&lt;BODY&gt;\n"</span>;
+print <span style="color: #8b7355;">"&lt;H1&gt;"</span>, $<span style="color: #2e8b57;">host</span>, <span style="color: #8b7355;">"&lt;/H1&gt;\n"</span>;
+print <span style="color: #8b7355;">"&lt;PRE&gt;\n"</span>, <span style="color: #8b7355;">'uptime'</span>, <span style="color: #8b7355;">"\n"</span>, <span style="color: #8b7355;">'who'</span>;
+print <span style="color: #8b7355;">"&lt;/PRE&gt;\n&lt;/BODY&gt;\n&lt;/HTML&gt;\n"</span>;
 
 </code></pre>
 </div>
@@ -669,8 +669,8 @@ print <span style="color: #ffa07a;">"&lt;/PRE&gt;\n&lt;/BODY&gt;\n&lt;/HTML&gt;\
 </section>
 </section>
 <section>
-<section id="slide-orga2080d2">
-<h3 id="orga2080d2">Scripting en la WWW</h3>
+<section id="slide-orgb3ea55b">
+<h3 id="orgb3ea55b">Scripting en la WWW</h3>
 <ul>
 <li>Scripts embebidos del lado del servidor
 <ul>
@@ -693,7 +693,7 @@ print <span style="color: #ffa07a;">"&lt;/PRE&gt;\n&lt;/BODY&gt;\n&lt;/HTML&gt;\
 
 </ul>
 </section>
-<section id="slide-orga2080d2-split">
+<section id="slide-orgb3ea55b-split">
 <ul>
 <li>El nombre del script aparece en el URI, generalmente con el
 nombre del directorio de confianza, por lo que las páginas
@@ -716,8 +716,8 @@ lenguajes de scripting</li>
 </section>
 </section>
 <section>
-<section id="slide-org55a3b9b">
-<h3 id="org55a3b9b">Scripting en la WWW</h3>
+<section id="slide-org2192548">
+<h3 id="org2192548">Scripting en la WWW</h3>
 <ul>
 <li>un simple CGI script en PHP embebido en una página web.</li>
 
@@ -741,8 +741,8 @@ lenguajes de scripting</li>
 </section>
 </section>
 <section>
-<section id="slide-org6ed6e34">
-<h3 id="org6ed6e34">Scripting en la WWW</h3>
+<section id="slide-org8907323">
+<h3 id="org8907323">Scripting en la WWW</h3>
 <ul>
 <li>Scripts del lado del cliente
 <ul>
@@ -765,7 +765,7 @@ del servidor se pueden escribir en muchos idiomas diferentes.
 
 </ul>
 </section>
-<section id="slide-org6ed6e34-split">
+<section id="slide-org8907323-split">
 <ul>
 <li>Los scripts del lado del cliente, por el contrario, requieren un intérprete en la máquina del cliente
 <ul>
@@ -781,8 +781,8 @@ audiencia lo más amplia posible.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgd061958">
-<h3 id="orgd061958">Scripting en la WWW</h3>
+<section id="slide-orgf206f10">
+<h3 id="orgf206f10">Scripting en la WWW</h3>
 <ul>
 <li>Scripts del lado del cliente
 <ul>
@@ -795,7 +795,7 @@ general casi siempre usan JavaScript para funciones interactivas.</li>
 
 </ul>
 </section>
-<section id="slide-orgd061958-split">
+<section id="slide-orgf206f10-split">
 <ul>
 <li>Applets de Java
 <ul>
@@ -812,15 +812,15 @@ navegadores modernos contienen una máquina virtual Java</li>
 </section>
 </section>
 <section>
-<section id="slide-orgff96719">
-<h3 id="orgff96719">Scripting en la WWW</h3>
+<section id="slide-orgd99375c">
+<h3 id="orgd99375c">Scripting en la WWW</h3>
 <ul>
 <li><p>
 una pagina web interactiva JavaScript 
 </p>
 
 
-<div id="org3ca9d9f" class="figure">
+<div id="org7f3a1b9" class="figure">
 <p><img src="javascript.png" alt="javascript.png" />
 </p>
 </div></li>
@@ -830,8 +830,8 @@ una pagina web interactiva JavaScript
 </section>
 </section>
 <section>
-<section id="slide-org558f921">
-<h3 id="org558f921">Evolución</h3>
+<section id="slide-orgc8f731a">
+<h3 id="orgc8f731a">Evolución</h3>
 <ul>
 <li>Veamos nuevamente las Características Comunes:
 <ul>
@@ -850,8 +850,8 @@ una pagina web interactiva JavaScript
 </section>
 </section>
 <section>
-<section id="slide-org28c7d59">
-<h3 id="org28c7d59">Comparación</h3>
+<section id="slide-org3cda0ee">
+<h3 id="org3cda0ee">Comparación</h3>
 <ul>
 <li>La mayoría de los lenguajes de scripting (Scheme es la excepción mas
 notoria) no requieren que las variables sean declaradas</li>
@@ -860,7 +860,7 @@ documentación verificada por el compilador</li>
 
 </ul>
 </section>
-<section id="slide-org28c7d59-split">
+<section id="slide-org3cda0ee-split">
 <ul>
 <li>Perl se puede ejecutar en un modo (usa 'vars' estrictos) que requiere declaraciones
 <ul>
@@ -877,8 +877,8 @@ representan internamente como cadenas</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb00646a">
-<h3 id="orgb00646a">Comparación</h3>
+<section id="slide-orgcccdad4">
+<h3 id="orgcccdad4">Comparación</h3>
 <ul>
 <li>Las convenciones de anidación y alcance varían bastante
 <ul>
@@ -895,7 +895,7 @@ proporcionar subrutinas locales anónimas de primera clase</li>
 
 </ul>
 </section>
-<section id="slide-orgb00646a-split">
+<section id="slide-orgcccdad4-split">
 <ul>
 <li>Los bloques anidados tienen un alcance estático en Perl
 <ul>
@@ -915,8 +915,8 @@ de nombres de módulos separados</li>
 </section>
 </section>
 <section>
-<section id="slide-org0786c17">
-<h3 id="org0786c17">Comparación</h3>
+<section id="slide-orgaad6a1e">
+<h3 id="orgaad6a1e">Comparación</h3>
 <ul>
 <li>Manipulación de Patrones y Cadenas
 <ul>
@@ -930,7 +930,7 @@ extendidas de la notación</li>
 
 </ul>
 </section>
-<section id="slide-org0786c17-split">
+<section id="slide-orgaad6a1e-split">
 <ul>
 <li>Dos grupos principales.
 <ul>
@@ -952,8 +952,8 @@ RE avanzado.</li>
 </section>
 </section>
 <section>
-<section id="slide-org90c9f39">
-<h3 id="org90c9f39">Comparación</h3>
+<section id="slide-orge4d43d3">
+<h3 id="orge4d43d3">Comparación</h3>
 <ul>
 <li>Tipos de datos
 <ul>
@@ -968,7 +968,7 @@ inapropiada.</li>
 
 </ul>
 </section>
-<section id="slide-org90c9f39-split">
+<section id="slide-orge4d43d3-split">
 <ul>
 <li>Algunos lenguajes (por ejemplo, Scheme, Python y Ruby) son
 relativamente estrictos sobre esta comprobación
@@ -990,8 +990,8 @@ razonable</li>
 </section>
 </section>
 <section>
-<section id="slide-org7780d9a">
-<h3 id="org7780d9a">Comparación</h3>
+<section id="slide-orgc0a61ac">
+<h3 id="orgc0a61ac">Comparación</h3>
 <ul>
 <li>Orientación a objetos
 <ul>
@@ -1008,7 +1008,7 @@ razonable</li>
 
 </ul>
 </section>
-<section id="slide-org7780d9a-split">
+<section id="slide-orgc0a61ac-split">
 <ul>
 <li>En PHP y JavaScript, una variable puede contener un valor de un tipo primitivo o una referencia a un objeto de tipo compuesto.
 <ul>
@@ -1022,8 +1022,8 @@ hablar de la referencia en sí, solo el objeto al que se refiere</li>
 </section>
 </section>
 <section>
-<section id="slide-org1d8e0d3">
-<h3 id="org1d8e0d3">Comparación</h3>
+<section id="slide-org5cc9fe2">
+<h3 id="org5cc9fe2">Comparación</h3>
 <ul>
 <li>Orientación del objeto
 <ul>
