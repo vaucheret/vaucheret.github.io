@@ -182,3 +182,114 @@ en el enlace causal (de s1 a s2)
 #+REVEAL_HTML: </div>
 #+REVEAL_HTML: </div>
 
+** Amenaza del enlace causal
+#+REVEAL_HTML: <div style="font-size: 80%;">   
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+#+REVEAL_HTML: <div class="one_of_2_columns">
+
+- *[[color:green][Dos formas de resolver amenazas]]*:
+  - *Degradación:* La acción que amenaza se realiza antes del vínculo causal.
+  - *Ascenso:* La acción que amenaza se realiza después del vínculo causal.
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div class="one_of_2_columns">
+
+[[file:imagenes/amenazaCausal.png]]
+
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+** Amenaza del enlace causal
+#+REVEAL_HTML: <div style="font-size: 80%;">   
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+#+REVEAL_HTML: <div class="one_of_2_columns">
+
+[[file:imagenes/arriba.png]]
+
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div class="one_of_2_columns">
+
+[[file:imagenes/abajo.png]]
+
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: </div>
+
+
+
+**  Amenaza del enlace causal
+
+   - Estas amenazas no se pueden resolver directamente (las dos
+     acciones se amenazan mutuamente y ningún orden permite
+     resolverlas).
+
+[[file:imagenes/casa.png]]
+
+**  Amenaza del enlace causal
+
+[[file:imagenes/solcasa.png]]
+
+** Plan de Orden Parcial
+
+   #+REVEAL_HTML: <div style="font-size: 80%;">
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+   - *[[color:green][Plan Parcial]]*
+     - Un [[color:red][plan parcial]] es un término de la forma
+       $plan(As,Os,Ls)$, donde $As$ es una lista de acciones, $Os$ es
+       un orden parcial sobre acciones y $Ls$ es una lista de enlaces
+       causales.
+   - *[[color:green][Plan Seguro]]*
+     - El plan es [[color:red][seguro]] si para toda acción $A\in As$
+       que amenaza a $cl(A_0,P,A_1)\in Ls$ , el orden parcial $Os$
+       deriva que $A< A_0$ o $A_1 < A$.
+
+** Plan de Orden Parcial
+
+   #+REVEAL_HTML: <div style="font-size: 80%;">
+   #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
+   - *[[color:green][Agenda]]*
+     - Una [[color:red][agenda]] es un conjunto de submetas para cada
+       precondición no soportada de todas las metas en $As$.
+   - *[[color:green][Submeta]]*
+     - Una [[color:red][submeta]] es un término de la forma [[color:red][goal(P,A)]], donde $P$ es
+       una proposición atómica que es una precondición para la acción
+       $A$.
+   - *[[color:green][Plan Completo]]*
+     - Un [[color:red][plan completo]] es un plan parcial seguro con una
+       agenda vacía.
+
+     
+
+
+   
+** Planificador de Orden Parcial
+
+[[file:imagenes/Pop.png]]
+
+** Planificador de Orden Parcial
+
+[[file:imagenes/Pop2.png]]
+
+** Planificador de Orden Parcial
+
+[[file:imagenes/Pop3.png]]
+
+** Planificador de Orden Parcial
+
+[[file:imagenes/Pop4.png]]
+
+** Planificador de Orden Parcial
+
+[[file:imagenes/Pop5.png]]
+
+** Planificador de Orden Parcial
+
+[[file:imagenes/Pop6.png]]
+
+** Planificador de Orden Parcial
+
+[[file:imagenes/Pop7.png]]
+
+** Planificador de Orden Parcial
+
+[[file:imagenes/Pop8.png]]
