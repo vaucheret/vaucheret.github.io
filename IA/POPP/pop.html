@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
 
+<link rel="stylesheet" href="grids.css"/>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -27,29 +28,29 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Planificación: POP</h2><p class="date">Created: 2023-09-26 mar 18:52</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Planificación: POP</h2><p class="date">Created: 2023-11-16 jue 13:48</p>
 </section>
 <section id="table-of-contents"><div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org9cfd2ac">Repaso</a></li>
-<li><a href="#/slide-orgbfe4c0c">Planificación de Orden Parcial</a></li>
+<li><a href="#/slide-orga770518">Repaso</a></li>
+<li><a href="#/slide-org33679e2">Planificación de Orden Parcial</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org9cfd2ac">
-<h2 id="org9cfd2ac">Repaso</h2>
-<div class="outline-text-2" id="text-org9cfd2ac">
+<section id="slide-orga770518">
+<h2 id="orga770518">Repaso</h2>
+<div class="outline-text-2" id="text-orga770518">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org7cd4d56">
-<h3 id="org7cd4d56">¿Qué vimos?</h3>
+<section id="slide-org8dc6ad9">
+<h3 id="org8dc6ad9">¿Qué vimos?</h3>
 <ul>
 <li>Representación de las acciones: STRIPS, Situation Calculus, Event Calculus</li>
 <li>Problemas en la representación del Cambio: Frame, Ramification y Qualification</li>
@@ -66,15 +67,15 @@
 </section>
 </section>
 <section>
-<section id="slide-orgbfe4c0c">
-<h2 id="orgbfe4c0c">Planificación de Orden Parcial</h2>
-<div class="outline-text-2" id="text-orgbfe4c0c">
+<section id="slide-org33679e2">
+<h2 id="org33679e2">Planificación de Orden Parcial</h2>
+<div class="outline-text-2" id="text-org33679e2">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgdd70394">
-<h3 id="orgdd70394">Planificación de Orden Parcial</h3>
+<section id="slide-org8aa8d70">
+<h3 id="org8aa8d70">Planificación de Orden Parcial</h3>
 <ul>
 <li>Los planificadores dados dan como resultado un plan  totalmente ordenado.</li>
 <li>No utilizan las ventajas de la descomposición del problema.</li>
@@ -86,8 +87,8 @@ orden sobre las acciones cuando realmente fuere necesario.</li>
 </section>
 </section>
 <section>
-<section id="slide-org63ac9b9">
-<h3 id="org63ac9b9">Back to Matemática Discreta :)</h3>
+<section id="slide-org445fa16">
+<h3 id="org445fa16">Back to Matemática Discreta :)</h3>
 <p>
 <span style="color:red;">¿Qué es un orden parcial?</span>
 </p>
@@ -111,8 +112,8 @@ que es irreflexiva, asimétrica y transitiva, es decir es un
 </section>
 </section>
 <section>
-<section id="slide-orgcd80b82">
-<h3 id="orgcd80b82">Back to the future: IA</h3>
+<section id="slide-orgac96ace">
+<h3 id="orgac96ace">Back to the future: IA</h3>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Planificación de Orden Parcial</span></b>
@@ -139,6 +140,234 @@ Si tenemos el siguiente orden parcial entre las acciones:
 </div></li>
 
 </ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6c2c5ae">
+<h3 id="org6c2c5ae">Zapatos y Medias</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Zapatos y Medias</span></b>
+<ul>
+<li>Supongamos que quiero ponerme los zapatos y las medias en ambos pies. Hagamos un plan para esto.</li>
+<li>Una solución:
+<ul>
+<li><p>
+MediaIzq- MediaDer-ZapDer-ZapIzq      
+</p>
+
+<p>
+¿Otra solución?
+</p></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgc4079e1">
+<h3 id="orgc4079e1">Zapatos y Medias</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Orden Parcial</span></b>
+<ul>
+<li><span style="color:red;">MedDer \(<\) ZapDer</span></li>
+<li><span style="color:red;">MedIzq \(<\) ZapIzq</span></li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Cualquier orden total consistente con este orden parcial estricto
+es solución al problema.</li>
+
+</ul>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgddbcd2a">
+<h3 id="orgddbcd2a">Orden entre las Acciones</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">\(A_0 < A_1\)</span></b>
+<ul>
+<li>La acción \(A_0\)  está antes que \(A_1\) en el orden parcial.</li>
+<li>La acción \(A_0\)  ocurrió antes que \(A_1\).</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">¡Atención!</span></b>
+<ul>
+<li>\(A_0\)  <span style="color:red;">no</span> es necesario que esté inmediatamente antes que \(A_1\)</li>
+
+</ul></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org6676780">
+<h3 id="org6676780">Acciones Especiales</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">START</span></b>
+<ul>
+<li>Es una acción que alcanza las relaciones que son verdaderas en
+el estado inicial. Sin precondición y su efecto es agregar los
+fluentes que son Verdaderos en el estado inicial.</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">FINISH</span></b>
+<ul>
+<li>Es una acción cuyas precondiciones son las metas a ser
+resueltas y no tiene efecto.</li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out">Son acciones que sirven al momento de construir el plan como límites.
+<ul>
+<li>Cuando se ejecuta el plan START y FINISH son ignorados.</li>
+
+</ul></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdefddf7">
+<h3 id="orgdefddf7">Acciones Especiales</h3>
+<p>
+Para toda acción \(A\) se cumple que: 
+</p>
+
+<p>
+\[START< A\]
+\[A< FINISH\]
+\[START< FINISH\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org6d0a10a">
+<h3 id="org6d0a10a">Enlace Causal</h3>
+<p>
+Para cada precondición \(P\) de la acción \(A_1\) tenemos asociada una  acción \(A_0\):
+</p>
+
+
+<div id="org0bf6f08" class="figure">
+<p><img src="imagenes/EnlaceCausal.png" alt="EnlaceCausal.png" />
+</p>
+</div>
+
+<p>
+\[A_0\ <\ A_1\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf1b2cd5">
+<h3 id="orgf1b2cd5">Enlace Causal</h3>
+<p>
+Cada acción \(A\) que borre a \(P\) tiene que estar antes de \(A_0\) o
+después de \(A_1\):
+</p>
+
+
+<div id="orga9a4e0c" class="figure">
+<p><img src="imagenes/EnlaceCausal2.png" alt="EnlaceCausal2.png" />
+</p>
+</div>
+
+<p>
+   \[A_0\ <\ A_1\ <\ A\]
+o bien 
+</p>
+
+<p>
+\[A\ <\ A_0\ <\ A_1\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc0b2e22">
+<h3 id="orgc0b2e22">Enlace Causal</h3>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Enlace Causal</span></b>
+<ul>
+<li>Es un término de la forma \([[color:red][\) cl(A<sub>0,P,A</sub><sub>1</sub>)$]]} donde
+\(A_0\) y \(A_1\) son acciones y \(P\) es un fluente. \(P\) es una
+precondición de la acción \(A_1\). La acción \(A_0\) logra \(P\). \(P\)
+está soportado por la acción \(A_0\).
+   <img src="imagenes/EnlaceCausal.png" alt="EnlaceCausal.png" /></li>
+
+</ul></li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Amenaza</span></b>
+<ul>
+<li>Una acción \(A\) <span style="color:red;">amenaza</span> un enlace causal \(cl(A_0,P,A_1)\) si la
+acción \(A\) borra la proposición \(P\).</li>
+
+</ul></li>
+
+</ul>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgeb1c80c">
+<h3 id="orgeb1c80c">Amenaza del enlace causal</h3>
+<div style="font-size: 90%;">
+<ul>
+<li><b><span style="color:green;">Amenaza</span></b>
+<ul>
+<li>Una acción \(A\)  <span style="color:red;">amenaza</span> un enlace causal
+\(cl(A_0,P,A_1)\) si la acción \(A\) borra la proposición \(P\).</li>
+
+</ul></li>
+
+</ul>
+
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+<p>
+Para resolver las amenazas,
+se añaden restricciones de orden:
+Nos aseguramos de que la acción
+que amenaza (s3) no interviene
+en el enlace causal (de s1 a s2)
+</p>
+
+
+</div>
+<div class="one_of_2_columns">
+
+
+<div id="org5ca702b" class="figure">
+<p><img src="imagenes/amenazaCausal.png" alt="amenazaCausal.png" />
+</p>
+</div>
+
+</div>
+</div>
+</div>
 </section>
 </section>
 </div>
