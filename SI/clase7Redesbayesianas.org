@@ -4,13 +4,14 @@
 #+AUTHOR: Redes Bayesianas
 #+EMAIL: cv@fi.uncoma.edu.ar
 
-#+REVEAL_INIT_OPTIONS:  transition:'cube' 
-#+options: toc:nil num:nil
+#+REVEAL_INIT_OPTIONS:  transition:'slide' 
+#+options: toc:1 num:nil
 
-#+REVEAL_THEME: moon
+#+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 2
 #+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
-#+MACRO: color @@html:<font color="$1">$2</font>@@
+
+#+REVEAL_EXTRA_CSS: grids.css
 
 * Suposición de Independencia
   
@@ -19,17 +20,17 @@
 #+REVEAL_HTML: <div style="font-size: 70%;">   
 #+ATTR_REVEAL: :frag (roll-in)   
  - Si contemplamos un dominio descripto con $n$ variables Booleanas y
-   utilizamos el enfoque de {{{color(red,probabilidades conjuntas)}}},
+   utilizamos el enfoque de [[color:red][probabilidades conjuntas]],
    se requerirá una tabla de tamaño $O(2^n)$ (exactamente $2^n − 1$
    ¿porqué?). En problemas reales, hay que considerar cientos o miles
    de variables random.
- -  {{{color(blue,Problema)}}}
+ - [[color:blue][Problema]]
 
    Cantidad Excesiva de Información a
    mantener con la base de conocimiento. Intratabilidad con
-   {{{color(red,Complejidad Exponencial)}}} del cálculo de
+   [[color:red][Complejidad Exponencial]] del cálculo de
    probabilidades conjuntas
- - {{{color(blue,Solución: *Independencia*)}}}
+ - [[color:blue][Solución: *Independencia*]]
 
    Detectar proposiciones cuya creencia no
    afecta la creencia de otra proposición
@@ -38,11 +39,11 @@
 
 ** Solución a las Probabilidades Conjuntas
 
-  - {{{color(blue,Independencia)}}}
+  - [[color:blue][Independencia]]
 
     Detectar proposiciones cuya creencia no afecta la creencia de otra proposición
 
-  - {{{color(blue,Independencia Total es muy rara)}}}
+  - [[color:blue][Independencia Total es muy rara]]
 
     Independencia Condicional
 
@@ -78,8 +79,8 @@ $$P(h, e) = P(h ∧ e) = P(h|e) × P(e) = P(h) × P(e)$$
    $$P(h|e) = P(h|f ∧ e)$$ Esto significa que $f$ es irrelevante para
    la probabilidad de $h$ dado $e$.
 
- *  {{{color(blue,$$P(carie = true|dolordemuela = true ∧ clima = lluvioso) =$$)}}}
-    {{{color(blue,$$P(carie = true|dolordemuela = true)$$)}}}
+ *  [[color:blue][$$P(carie = true|dolordemuela = true ∧ clima = lluvioso) =$$]]
+    [[color:blue][$$P(carie = true|dolordemuela = true)$$]]
     La información sobre el clima es irrelevante en el dominio de las caries.
 
 
@@ -96,7 +97,7 @@ $$P(h, e) = P(h ∧ e) = P(h|e) × P(e) = P(h) × P(e)$$
 
 #+REVEAL_HTML: <div style="font-size: 70%;">
    
-- {{{color(blue,Regla de la Cadena:sucesivas aplicaciones de la Regla del Producto)}}}
+- [[color:blue][Regla de la Cadena: sucesivas aplicaciones de la Regla del Producto]]
 
 #+REVEAL_HTML: <div style="font-size: 70%;">
 
@@ -115,10 +116,10 @@ $$P(h, e) = P(h ∧ e) = P(h|e) × P(e) = P(h) × P(e)$$
 
 #+REVEAL_HTML: <div style="font-size: 75%;">
    
-- {{{color(blue,Definición)}}}
+- [[color:blue][Definición]]
 
   Una variable $X$ se dice que es
-  {{{color(red,independiente)}}} de la variable aleatoria $Y$ dada la
+  [[color:red][independiente]] de la variable aleatoria $Y$ dada la
   variable aleatoria $Z$ , si para todos los valores de esa variable,
   ie para todo $a_i$ , $b_j$ y $c_k$ se cumple: $$P(X = a_i | Y = b_j
   ∧ Z = c_k ) = P(X = a_i | Z = c_k)$$ Esto es, el valor de $Y$ no
@@ -129,7 +130,7 @@ $$P(h, e) = P(h ∧ e) = P(h|e) × P(e) = P(h) × P(e)$$
 
 #+REVEAL_HTML: <div style="font-size: 55%;">
    
-- {{{color(blue,Theorem)}}}
+- [[color:blue][Theorem]]
 
   Si la variable aleatoria $X$ es independiente de la variable $Y$
   dada la variable aleatoria $Z$, entonces para todo $a_i$ , $b_j$
@@ -141,7 +142,7 @@ $$P(h, e) = P(h ∧ e) = P(h|e) × P(e) = P(h) × P(e)$$
 - Estructura de datos que representa la dependencia entre variables.
 - Da una especificación concisa de la distribución de la probabilidad.
   
-*Una {{{color(blue,Red Bayesiana)}}} es un grafo dirigido acı́clico en  el que cada nodo es etiquetado con la información cuantitativa  probabilı́stica*
+*Una [[color:blue][Red Bayesiana]] es un grafo dirigido acı́clico en  el que cada nodo es etiquetado con la información cuantitativa  probabilı́stica*
 
 ** Red de Creencias o Bayesiana
 
@@ -150,18 +151,17 @@ $$P(h, e) = P(h ∧ e) = P(h|e) × P(e) = P(h) × P(e)$$
 [[file:weathercavity1.png]]   
 
 #+ATTR_REVEAL: :frag (roll-in)         
-- {{{color(green,Weather)}}} es independiente de todas las otras variables.
-- {{{color(green,Cavity)}}} influencia en forma causal a
-  {{{color(green,Toothache)}}} y caries {{{color(red,son causa
-  directa)}}} de dolor y huecos.
-- {{{color(green,Toothache)}}} y {{{color(green,Catch)}}} {{{color(red,son 
-  condicionalmente independientes)}}} dado {{{color(green,Cavity)}}} $$P(Catch|Toothache, Cavity ) =
+- [[color:green][Weather]] es independiente de todas las otras variables.
+- [[color:green][Cavity]] influencia en forma causal a
+  [[color:green][Toothache]] y caries [[color:red][son causa directa]] de dolor y huecos.
+- [[color:green][Toothache]] y [[color:green][Catch]] [[color:red][son condicionalmente independientes]] dado [[color:green][Cavity]] $$P(Catch|Toothache, Cavity ) =
   P(Catch|Cavity )$$
 
 ** Red de Creencias o Bayesiana (Russell y Norvig)
 
-#+REVEAL_HTML: <div style="font-size: 60%;">
-   
+#+REVEAL_HTML: <div style="font-size: 50%;">
+
+   #+ATTR_HTML:  :height 400    
    [[file:redcrebay.png]]
 
 Nótese que solo se representa una columna en el caso de variables bivaluadas.
@@ -169,7 +169,7 @@ En el caso del tiempo podrı́amos haber representado solo 3 valores.
 
 ** Influencia Local
    
-- {{{color(blue,La redes de creencias explotan la propiedad de localidad)}}}
+- [[color:blue][La redes de creencias explotan la propiedad de localidad]]
   
 Dada una variable aleatoria $V$ puede existir solo un conjunto
 limitado de variables con la propiedad de afectar directamente los
@@ -292,6 +292,7 @@ ordenamos en forma causal (causa-efecto).
 
 ** Red Bayesiana: Especificación de las Tablas de Probabilidades Condicionales
 
+   #+ATTR_HTML:  :height 440    
    [[file:redtablas.png]]
    
 ** Red Bayesiana de la Alarma
