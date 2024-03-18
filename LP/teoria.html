@@ -9,8 +9,9 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
 
+<link rel="stylesheet" href="grids.css"/>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -27,23 +28,23 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Semanticas</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2023-03-25 sáb 14:33</p>
+<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Semanticas</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-03-18 lun 13:40</p>
 </section>
 <section id="table-of-contents"><div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org261a459">Semanticas</a>
+<li><a href="#/slide-orgf1eeb25">Semanticas</a>
 <ul>
-<li><a href="#/slide-org1699645">Arbol SLD</a></li>
-<li><a href="#/slide-orgec83bb8">Arbol SLD</a></li>
-<li><a href="#/slide-org8df3e6e">Ejemplo</a></li>
-<li><a href="#/slide-org8cedd8e">Ejemplo</a></li>
-<li><a href="#/slide-org7e6ae68">Arbol SLD</a></li>
-<li><a href="#/slide-org482b67c">Semántica de Modelos Mínimos</a></li>
-<li><a href="#/slide-orgf26fb6a">Ejemplo</a></li>
-<li><a href="#/slide-orgdcf73ff">Semántica de Punto Fijo</a></li>
-<li><a href="#/slide-org4ce8f47">Ejemplo</a></li>
+<li><a href="#/slide-org61b6078">Arbol SLD</a></li>
+<li><a href="#/slide-org49c9040">Arbol SLD</a></li>
+<li><a href="#/slide-org71fce7a">Ejemplo</a></li>
+<li><a href="#/slide-org3765e5d">Ejemplo</a></li>
+<li><a href="#/slide-orgf721e2c">Arbol SLD</a></li>
+<li><a href="#/slide-org981a6df">Semántica de Modelos Mínimos</a></li>
+<li><a href="#/slide-org894a2ed">Ejemplo</a></li>
+<li><a href="#/slide-org963a2bb">Semántica de Punto Fijo</a></li>
+<li><a href="#/slide-org6aa8585">Ejemplo</a></li>
 </ul>
 </li>
 </ul>
@@ -51,17 +52,16 @@
 </div>
 </section>
 
-
 <section>
-<section id="slide-org261a459">
-<h2 id="org261a459">Semanticas</h2>
-<div class="outline-text-2" id="text-org261a459">
+<section id="slide-orgf1eeb25">
+<h2 id="orgf1eeb25">Semanticas</h2>
+<div class="outline-text-2" id="text-orgf1eeb25">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org1699645">
-<h3 id="org1699645">Arbol SLD</h3>
+<section id="slide-org61b6078">
+<h3 id="org61b6078">Arbol SLD</h3>
 <div style="font-size: 70%;">
 
 <p>
@@ -87,8 +87,8 @@ variables renombradas si hace falta) t.q. \(\theta = mgu({\cal
 </section>
 </section>
 <section>
-<section id="slide-orgec83bb8">
-<h3 id="orgec83bb8">Arbol SLD</h3>
+<section id="slide-org49c9040">
+<h3 id="org49c9040">Arbol SLD</h3>
 <ul>
 <li>Cada nodo del árbol es una cláusula meta. \({\cal G}_{i}\) es el <i>nodo
 padre</i> de \({\cal G}_{ij}\) y \({\cal G}_{ij}\) es <i>nodo hijo</i> de \({\cal G}_{i}\).</li>
@@ -104,8 +104,8 @@ padre</i> de \({\cal G}_{ij}\) y \({\cal G}_{ij}\) es <i>nodo hijo</i> de \({\ca
 </section>
 </section>
 <section>
-<section id="slide-org8df3e6e">
-<h3 id="org8df3e6e">Ejemplo</h3>
+<section id="slide-org71fce7a">
+<h3 id="org71fce7a">Ejemplo</h3>
 <p>
 Sea el programa definido
 </p>
@@ -123,8 +123,8 @@ y la meta definida \({\cal G} \equiv\leftarrow p(X,b)\).
 </section>
 </section>
 <section>
-<section id="slide-org8cedd8e">
-<h3 id="org8cedd8e">Ejemplo</h3>
+<section id="slide-org3765e5d">
+<h3 id="org3765e5d">Ejemplo</h3>
 <div style="font-size: 50%;">
 
 <p>
@@ -135,7 +135,7 @@ de la meta considerada.
 
 
 
-<div id="org3acfcd3" class="figure">
+<div id="orgacf652c" class="figure">
 <p><img src="sld1.png" alt="sld1.png" />
 </p>
 </div>
@@ -144,8 +144,8 @@ de la meta considerada.
 </section>
 </section>
 <section>
-<section id="slide-org7e6ae68">
-<h3 id="org7e6ae68">Arbol SLD</h3>
+<section id="slide-orgf721e2c">
+<h3 id="orgf721e2c">Arbol SLD</h3>
 <ul>
 <li>Un <b>procedimiento de prueba por refutación</b> \(SLD\) queda
 completamente especificado fijando:
@@ -164,8 +164,8 @@ completamente especificado fijando:
 </section>
 </section>
 <section>
-<section id="slide-org482b67c">
-<h3 id="org482b67c">Semántica de Modelos Mínimos</h3>
+<section id="slide-org981a6df">
+<h3 id="org981a6df">Semántica de Modelos Mínimos</h3>
 <p>
 Sea \(I\) un conjunto índices y conjunto no vacío de modelos de Herbrand
 de un programa \(\Pi\), \(\{{\cal M}_i \mid (i \in I) \wedge ({\cal M}_i\) 
@@ -182,8 +182,8 @@ L}(\Pi) \wedge \Pi \models {\cal A}\}\)
 </section>
 </section>
 <section>
-<section id="slide-orgf26fb6a">
-<h3 id="orgf26fb6a">Ejemplo</h3>
+<section id="slide-org894a2ed">
+<h3 id="org894a2ed">Ejemplo</h3>
 <div style="font-size: 70%;">
 
 <p>
@@ -219,8 +219,8 @@ La interpretación modelo mínimo de Herbrand es:
 </section>
 </section>
 <section>
-<section id="slide-orgdcf73ff">
-<h3 id="orgdcf73ff">Semántica de Punto Fijo</h3>
+<section id="slide-org963a2bb">
+<h3 id="org963a2bb">Semántica de Punto Fijo</h3>
 <div style="font-size: 70%;">
 
 <p>
@@ -252,8 +252,8 @@ de \(\Pi\).
 </section>
 </section>
 <section>
-<section id="slide-org4ce8f47">
-<h3 id="org4ce8f47">Ejemplo</h3>
+<section id="slide-org6aa8585">
+<h3 id="org6aa8585">Ejemplo</h3>
 <div style="font-size: 70%;">
 
 <p>
@@ -288,7 +288,7 @@ Se alcanza el punto fijo en la tercera iteración y por consiguiente,
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-transition:'cube',
+transition:'slide',
 multiplex: {
     secret: '', // null if client
     id: '', // id, obtained from socket.io server
