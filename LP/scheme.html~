@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Lenguajes Declarativos</title>
+<meta name="author" content="(Scheme)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+
+<link rel="stylesheet" href="grids.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Scheme</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-03-23 sáb 03:28</p>
+</section>
+<section id="table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orga6ec5ce">Lenguaje Scheme</a>
+<ul>
+<li><a href="#/slide-orgb8f8e5c">Lenguajes Funcionales</a></li>
+<li><a href="#/slide-orgd636be6">Calculo Lambda</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org033a3c1">Sintaxis</a>
+<ul>
+<li><a href="#/slide-orgbbbe72a">Numeros y símbolos</a></li>
+<li><a href="#/slide-org51d5624">Scheme REPL</a></li>
+<li><a href="#/slide-org258aa54">Scheme REPL</a></li>
+<li><a href="#/slide-org49de00e">Aritmetica</a></li>
+<li><a href="#/slide-orgdbe9354">Listas</a></li>
+<li><a href="#/slide-org3fd05fd">Listas</a></li>
+</ul>
+</li>
+<li><a href="#/slide-org856dda6">Procedimientos y Recursión</a>
+<ul>
+<li><a href="#/slide-org422c683">Expresión Lambda</a></li>
+<li><a href="#/slide-org000ca52">Procedimientos</a></li>
+<li><a href="#/slide-org6533592">Condicional</a></li>
+<li><a href="#/slide-orgcfb25bb">fibonacci</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+
+<section>
+<section id="slide-orga6ec5ce">
+<h2 id="orga6ec5ce">Lenguaje Scheme</h2>
+<div class="outline-text-2" id="text-orga6ec5ce">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgb8f8e5c">
+<h3 id="orgb8f8e5c">Lenguajes Funcionales</h3>
+<ul>
+<li class="fragment roll-in"><p>
+Cálculo Lambda
+</p>
+<p height="150" float="wrap">
+<img src="Alonzo_Church.jpg" alt="Alonzo_Church.jpg" height="150" float="wrap" />
+ Alonzo Church
+</p></li>
+<li class="fragment roll-in"><p>
+Lisp
+</p>
+<p height="150" title="John McCarthy" float="wrap">
+<img src="John_McCarthy_Stanford.jpg" alt="John_McCarthy_Stanford.jpg" height="150" title="John McCarthy" float="wrap" />
+ John McCarthy
+</p>
+</section>
+<section id="slide-orgadbd369-split"></li>
+
+</ul>
+
+<p>
+Scheme
+</p>
+<p height="150" title="John McCarthy" float="wrap">
+<img src="Guy_Steele.jpg" alt="Guy_Steele.jpg" height="150" title="John McCarthy" float="wrap" />
+Guy L. Steele, Jr. y
+</p>
+<p height="150" title="John McCarthy" float="wrap">
+<img src="Jerry_Sussman.jpg" alt="Jerry_Sussman.jpg" height="150" title="John McCarthy" float="wrap" />
+ Gerald Sussman
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd636be6">
+<h3 id="orgd636be6">Calculo Lambda</h3>
+<ul>
+<li>Abstracción: Dar a algo un <i>nombre</i>.</li>
+<li>Referencia: Mencionar algo por su nombre.</li>
+<li>Sintesis: combinar dos cosas para hacer una mas compleja.</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org033a3c1">
+<h2 id="org033a3c1">Sintaxis</h2>
+<div class="outline-text-2" id="text-org033a3c1">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgbbbe72a">
+<h3 id="orgbbbe72a">Numeros y símbolos</h3>
+<div style="font-size: 70%;">
+<ul>
+<li class="fragment roll-in"><p>
+Los siguientes caracteres tienen un significado especial y no pueden aparecer en simbolos
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>()[]{}<span style="color: #7f7f7f;">;</span><span style="color: #7f7f7f;">."''#\</span>
+</code></pre>
+</div></li>
+<li class="fragment roll-in"><p>
+y los siguientes son usados en números y no pueden aparecer como primer caracter de un símbolo
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>+ - .
+</code></pre>
+</div></li>
+<li class="fragment roll-in"><p>
+Ejemplos de simbolos en Scheme son:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>abed r cdr p2q4 bugs? one-two *now&amp;
+</code></pre>
+</div></li>
+<li class="fragment roll-in"><p>
+Los números no se consideran símbolos y son una categoría separada
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>10, -763, 31.5
+</code></pre>
+</div></li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org51d5624">
+<h3 id="org51d5624">Scheme REPL</h3>
+<ul>
+<li>Read-Eval-Print Loop 
+top level de scheme.</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Welcome to Racket v7.9 [bc].</span>
+<span style="color: #7f7f7f;">; </span>
+&gt; 7
+7
+&gt; 
+&gt; ten
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">ten: undefined;</span>
+<span style="color: #7f7f7f;">;   </span><span style="color: #7f7f7f;">cannot reference an identifier before its definition</span>
+<span style="color: #7f7f7f;">;   </span><span style="color: #7f7f7f;">in module: top-level</span>
+&gt; 
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org258aa54">
+<h3 id="org258aa54">Scheme REPL</h3>
+<div class="org-center">
+<p>
+(define <i>var</i> <i>expr</i>)
+</p>
+</div>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>&gt; (<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">ten</span> 10)
+&gt; ten
+10
+&gt; 
+</code></pre>
+</div>
+<div class="org-center">
+<p>
+(quote <i>symbol</i>)
+</p>
+</div>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>&gt; (quote ten)
+'ten
+&gt; 
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org49de00e">
+<h3 id="org49de00e">Aritmetica</h3>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>&gt; (+ 4 7)
+11
+&gt; '(+ 4 7)
+'(+ 4 7)
+&gt;
+&gt; (* 3 (- 12 5))
+21
+&gt; (+ 2 (/ 30 15))
+4
+&gt; 
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdbe9354">
+<h3 id="orgdbe9354">Listas</h3>
+<ul>
+<li><p>
+<span style="color:red;">LIS</span>t <span style="color:red;">P</span>rocessing
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>&gt; (cons 1 '())
+'(1)
+&gt; (<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">ls1</span> (cons 1 '()))
+&gt; ls1
+'(1)
+&gt; (cons 2 ls1)
+'(2 1)
+&gt; (cons 'a (cons 'b (cons 'c '())))
+'(a b c)
+&gt; 
+</code></pre>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3fd05fd">
+<h3 id="org3fd05fd">Listas</h3>
+<ul>
+<li>IBM 704 "<span style="color:red;">C</span>ontents of <span style="color:red;">A</span>ddress <span style="color:red;">R</span>egister" "<span style="color:red;">C</span>ontents of <span style="color:red;">D</span>ecrement <span style="color:red;">R</span>egister"</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>&gt; (car '(1 2 3 4))
+1
+&gt; (car '((1 2) 3 (4 5)))
+'(1 2)
+&gt; (car '(ab (cd ef) gh))
+'ab
+&gt; (cdr '(1 2 4))
+'(2 4)
+&gt; (car (cdr '(a b c d)))
+'b
+&gt; (cadr '(a b c d))
+'b
+&gt; 
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org856dda6">
+<h2 id="org856dda6">Procedimientos y Recursión</h2>
+<div class="outline-text-2" id="text-org856dda6">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org422c683">
+<h3 id="org422c683">Expresión Lambda</h3>
+<div style="font-size: 90%;">
+<ul>
+<li>(λ (<i>parameters</i>) <i>body</i>)</li>
+<li>(lambda (<i>parameters</i>) <i>body</i>)</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>&gt; (cons 19 '())
+'(19)
+&gt; (cons 'bit '())
+'(bit)
+&gt; ((<span style="color: #1c86ee;">&#955;</span> (item) (cons item '())) 19)
+'(19)
+&gt; ((<span style="color: #1c86ee;">lambda</span> (item) (cons item '())) 'bit)
+'(bit)
+&gt; ((<span style="color: #1c86ee;">lambda</span> (item) (cons item '())) (* 5 6))
+'(30)
+&gt; (<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">make-singleton</span> (<span style="color: #1c86ee;">lambda</span> (item) (cons item '())))
+&gt; (make-singleton 19)
+'(19)
+&gt; (make-singleton 'bit)
+'(bit)
+&gt; (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">make-singleton</span> item) (cons item '()))
+</code></pre>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org000ca52">
+<h3 id="org000ca52">Procedimientos</h3>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim> (<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">make-singleton</span>
+   (<span style="color: #1c86ee;">lambda</span> (item)
+     (cons item '())
+     )
+   )
+
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">make-singleton</span> item)
+ (cons item '())
+ )
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6533592">
+<h3 id="org6533592">Condicional</h3>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>  (<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">car-if-pair</span>
+    (<span style="color: #1c86ee;">lambda</span> (item)
+      (<span style="color: #1c86ee;">cond</span>
+       ((pair? item) (car item))
+       (<span style="color: #1c86ee;">else</span> item))
+      )
+    )
+
+(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">singleton-list?</span>
+   (<span style="color: #1c86ee;">lambda</span> (ls)
+     (<span style="color: #1c86ee;">and</span> (pair? ls) (null? (cdr ls)))
+     )
+   )
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcfb25bb">
+<h3 id="orgcfb25bb">fibonacci</h3>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">fib</span>
+  (<span style="color: #1c86ee;">&#955;</span> (n)
+    (<span style="color: #1c86ee;">cond</span>
+      ((= n 0) 1)
+      ((= n 1) 1)
+      (<span style="color: #1c86ee;">else</span> (+ (fib (- n 1)) (fib (- n 2))))
+      )
+    )
+  )
+
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">fib1</span> n)
+  (<span style="color: #1c86ee;">cond</span>
+    ((= n 0) 1)
+    ((= n 1) 1)
+    (<span style="color: #1c86ee;">else</span> (+ (fib (- n 1)) (fib (- n 2))))
+    )
+  )
+</code></pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'slide',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
