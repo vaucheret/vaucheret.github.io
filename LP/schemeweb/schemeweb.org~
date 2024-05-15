@@ -1,0 +1,186 @@
+#+TITLE: Lenguajes Declarativos 
+#+DATE:  Claudio Vaucheret
+#+AUTHOR: Aplicaciones Web en Racket
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+
+#+REVEAL_INIT_OPTIONS:  transition:'slide' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: sky
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_EXTRA_CSS: grids.css
+
+
+* Aplicaciones Web en Racket
+  
+** Comienzo
+
+- Introduzca las siguientes lineas de código. Y ejecute en el REPL
+   
+   #+BEGIN_SRC scheme
+     #lang web-server/insta
+     (define (start request)
+       (response/xexpr
+	'(html
+	  (head (title "My Blog"))
+	  (body (h1 "Under construction")))))
+   #+END_SRC
+
+   
+** La Aplicación
+   #+REVEAL_HTML: <div style="font-size: 80%;">
+  En éste tutorial se muesta cómo desarrollar un Blog. Usuarios del
+  Blog deberían ser capaz de crear nuevas Publicaciones y agregar comentarios a
+  las publicaciones existentes. Mostraremos el desarrollo incrementalmente. Realizando las siguientes tareas:
+
+  #+ATTR_REVEAL: :frag (roll-in)
+  - Muestra una lista estática de publicaciones.
+  - Permitir que un usuario agregue nuevas publicaciones al sistema.
+  - Amplíe el modelo para permitir que un usuario agregue comentarios a una publicación.
+  - Permita que todos los usuarios compartan el mismo conjunto de publicaciones.
+  - Guardar los datos en disco.
+ #+REVEAL_HTML: </div>             
+
+** Blog Básico
+
+   Necesitamos una estructura de datos para representar el BLOG
+
+ #+BEGIN_SRC scheme
+   (struct post (title body))
+   #+END_SRC
+
+ - Ejemplo:
+
+ #+BEGIN_SRC scheme
+  (define BLOG (list (post "First Post!"
+                    "Hey, this is my first post!")))
+   #+END_SRC
+
+** "Rendering" HTML
+
+   racket usa la función ~response/xexpr~ que toma una ~X-epression~
+   para representar una expresión en HTML.
+
+   - Ejemplo:
+ #+BEGIN_SRC html
+<p>This is an example</p>
+   #+END_SRC
+
+   es representado por
+
+ #+BEGIN_SRC scheme
+'(p "This is an example").
+   #+END_SRC
+   
+#+REVEAL: split     
+
+- Otro ejemplo
+   #+BEGIN_SRC html
+p>This is <div class="emph">another</div> example.</p>
+   #+END_SRC
+
+   es representado por
+
+ #+BEGIN_SRC scheme
+'(p "This is " (div ((class "emph")) "another") " example.").
+   #+END_SRC
+
+- las siguientes expresiones evalúan a la misma ~X-expression~
+
+  
+ #+BEGIN_SRC scheme
+   (list 'html (list 'head (list 'title "Some title"))
+	  (list 'body (list 'p "This is a simple static page.")))
+
+   '(html (head (title "Some title"))
+	  (body (p "This is a simple static page.")))
+   #+END_SRC
+
+  
+** Contenido Dinámico
+
+- Para evaluar expresiones se usa ",(" 
+   
+ #+BEGIN_SRC scheme
+; render-greeting: string -> response
+; Consumes a name, and produces a dynamic response.
+(define (render-greeting a-name)
+  (response/xexpr
+   `(html (head (title "Welcome"))
+          (body (p ,(string-append "Hello " a-name))))))
+ #+END_SRC
+
+** forma ~unquote-splicing~ : ",@"
+
+ -  si queremos
+
+ #+BEGIN_SRC scheme
+'(ul (li "Larry")
+     (li "Curly")
+     (li "Moe"))
+ #+END_SRC
+
+ de una lista, entonces
+
+#+BEGIN_SRC scheme
+`(ul ,@'((li "Larry") (li "Curly") (li "Moe")))
+ #+END_SRC
+ 
+   
+
+#+REVEAL: split
+
+- ejemplo
+
+ #+BEGIN_SRC scheme
+; render-as-itemized-list: (listof xexpr) -> xexpr
+; Consumes a list of items, and produces a rendering
+; as an unordered list.
+(define (render-as-itemized-list fragments)
+  `(ul ,@(map render-as-item fragments)))
+ 
+; render-as-item: xexpr -> xexpr
+; Consumes an xexpr, and produces a rendering
+; as a list item.
+(define (render-as-item a-fragment)
+  `(li ,a-fragment))
+ #+END_SRC
+  
+#+REVEAL: split
+
+- otro ejemplo, una función ~render-posts~ que
+
+ #+BEGIN_SRC scheme
+(render-posts empty)
+ #+END_SRC
+
+ produce
+
+  #+BEGIN_SRC scheme
+'(div ((class "posts")))
+ #+END_SRC
+
+ y
+
+  #+BEGIN_SRC scheme
+(render-posts (list (post "Post 1" "Body 1")
+                    (post "Post 2" "Body 2")))
+ #+END_SRC
+
+ que produce
+
+  #+BEGIN_SRC scheme
+'(div ((class "posts"))
+      (div ((class "post")) "Post 1" (p "Body 1"))
+      (div ((class "post")) "Post 2" (p "Body 2")))
+ #+END_SRC
+
+** Inspeccionando "Requests"
+
+   - Para extraer valores de los formularios en la web se usa la función ~request-bindings~
+   - Para extaer un simple valor de formulario de un conjunto racket provee la función ~extract-binding/single~
+   - Para verificar que un conjunto de enlaces contiene un compo particular usa ~exists-binding?~
+
+     

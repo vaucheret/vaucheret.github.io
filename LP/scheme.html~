@@ -27,34 +27,35 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Scheme</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-03-23 sáb 03:28</p>
+<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Scheme</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-03-23 sáb 03:40</p>
 </section>
 <section id="table-of-contents"><div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orga6ec5ce">Lenguaje Scheme</a>
+<li><a href="#/slide-org5388436">Lenguaje Scheme</a>
 <ul>
-<li><a href="#/slide-orgb8f8e5c">Lenguajes Funcionales</a></li>
-<li><a href="#/slide-orgd636be6">Calculo Lambda</a></li>
+<li><a href="#/slide-orgb6ec265">Lenguajes Funcionales</a></li>
+<li><a href="#/slide-orgd6ba298">Calculo Lambda</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org033a3c1">Sintaxis</a>
+<li><a href="#/slide-org00df196">Sintaxis</a>
 <ul>
-<li><a href="#/slide-orgbbbe72a">Numeros y símbolos</a></li>
-<li><a href="#/slide-org51d5624">Scheme REPL</a></li>
-<li><a href="#/slide-org258aa54">Scheme REPL</a></li>
-<li><a href="#/slide-org49de00e">Aritmetica</a></li>
-<li><a href="#/slide-orgdbe9354">Listas</a></li>
-<li><a href="#/slide-org3fd05fd">Listas</a></li>
+<li><a href="#/slide-org29bc91a">Numeros y símbolos</a></li>
+<li><a href="#/slide-orgfa64245">Scheme REPL</a></li>
+<li><a href="#/slide-org091394e">Scheme REPL</a></li>
+<li><a href="#/slide-org57faa51">Aritmetica</a></li>
+<li><a href="#/slide-orgb299528">Listas</a></li>
+<li><a href="#/slide-org4ab4fd2">Listas</a></li>
 </ul>
 </li>
-<li><a href="#/slide-org856dda6">Procedimientos y Recursión</a>
+<li><a href="#/slide-orgd773627">Procedimientos y Recursión</a>
 <ul>
-<li><a href="#/slide-org422c683">Expresión Lambda</a></li>
-<li><a href="#/slide-org000ca52">Procedimientos</a></li>
-<li><a href="#/slide-org6533592">Condicional</a></li>
-<li><a href="#/slide-orgcfb25bb">fibonacci</a></li>
+<li><a href="#/slide-orgbf45eb6">Expresión Lambda</a></li>
+<li><a href="#/slide-org6ebb290">Procedimientos</a></li>
+<li><a href="#/slide-org3bb94b3">Condicional</a></li>
+<li><a href="#/slide-orgdd1d8f1">fibonacci</a></li>
+<li><a href="#/slide-org03dc2b2">fibonacci</a></li>
 </ul>
 </li>
 </ul>
@@ -64,15 +65,15 @@
 
 
 <section>
-<section id="slide-orga6ec5ce">
-<h2 id="orga6ec5ce">Lenguaje Scheme</h2>
-<div class="outline-text-2" id="text-orga6ec5ce">
+<section id="slide-org5388436">
+<h2 id="org5388436">Lenguaje Scheme</h2>
+<div class="outline-text-2" id="text-org5388436">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb8f8e5c">
-<h3 id="orgb8f8e5c">Lenguajes Funcionales</h3>
+<section id="slide-orgb6ec265">
+<h3 id="orgb6ec265">Lenguajes Funcionales</h3>
 <ul>
 <li class="fragment roll-in"><p>
 Cálculo Lambda
@@ -89,7 +90,7 @@ Lisp
  John McCarthy
 </p>
 </section>
-<section id="slide-orgadbd369-split"></li>
+<section id="slide-orgd7b355a-split"></li>
 
 </ul>
 
@@ -108,8 +109,8 @@ Guy L. Steele, Jr. y
 </section>
 </section>
 <section>
-<section id="slide-orgd636be6">
-<h3 id="orgd636be6">Calculo Lambda</h3>
+<section id="slide-orgd6ba298">
+<h3 id="orgd6ba298">Calculo Lambda</h3>
 <ul>
 <li>Abstracción: Dar a algo un <i>nombre</i>.</li>
 <li>Referencia: Mencionar algo por su nombre.</li>
@@ -121,15 +122,15 @@ Guy L. Steele, Jr. y
 </section>
 </section>
 <section>
-<section id="slide-org033a3c1">
-<h2 id="org033a3c1">Sintaxis</h2>
-<div class="outline-text-2" id="text-org033a3c1">
+<section id="slide-org00df196">
+<h2 id="org00df196">Sintaxis</h2>
+<div class="outline-text-2" id="text-org00df196">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgbbbe72a">
-<h3 id="orgbbbe72a">Numeros y símbolos</h3>
+<section id="slide-org29bc91a">
+<h3 id="org29bc91a">Numeros y símbolos</h3>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in"><p>
@@ -171,8 +172,8 @@ Los números no se consideran símbolos y son una categoría separada
 </section>
 </section>
 <section>
-<section id="slide-org51d5624">
-<h3 id="org51d5624">Scheme REPL</h3>
+<section id="slide-orgfa64245">
+<h3 id="orgfa64245">Scheme REPL</h3>
 <ul>
 <li>Read-Eval-Print Loop 
 top level de scheme.</li>
@@ -198,8 +199,8 @@ top level de scheme.</li>
 </section>
 </section>
 <section>
-<section id="slide-org258aa54">
-<h3 id="org258aa54">Scheme REPL</h3>
+<section id="slide-org091394e">
+<h3 id="org091394e">Scheme REPL</h3>
 <div class="org-center">
 <p>
 (define <i>var</i> <i>expr</i>)
@@ -229,8 +230,8 @@ top level de scheme.</li>
 </section>
 </section>
 <section>
-<section id="slide-org49de00e">
-<h3 id="org49de00e">Aritmetica</h3>
+<section id="slide-org57faa51">
+<h3 id="org57faa51">Aritmetica</h3>
 <div class="org-src-container">
 
 <pre  class="src src-scheme"><code trim>&gt; (+ 4 7)
@@ -249,8 +250,8 @@ top level de scheme.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgdbe9354">
-<h3 id="orgdbe9354">Listas</h3>
+<section id="slide-orgb299528">
+<h3 id="orgb299528">Listas</h3>
 <ul>
 <li><p>
 <span style="color:red;">LIS</span>t <span style="color:red;">P</span>rocessing
@@ -276,8 +277,8 @@ top level de scheme.</li>
 </section>
 </section>
 <section>
-<section id="slide-org3fd05fd">
-<h3 id="org3fd05fd">Listas</h3>
+<section id="slide-org4ab4fd2">
+<h3 id="org4ab4fd2">Listas</h3>
 <ul>
 <li>IBM 704 "<span style="color:red;">C</span>ontents of <span style="color:red;">A</span>ddress <span style="color:red;">R</span>egister" "<span style="color:red;">C</span>ontents of <span style="color:red;">D</span>ecrement <span style="color:red;">R</span>egister"</li>
 
@@ -304,15 +305,15 @@ top level de scheme.</li>
 </section>
 </section>
 <section>
-<section id="slide-org856dda6">
-<h2 id="org856dda6">Procedimientos y Recursión</h2>
-<div class="outline-text-2" id="text-org856dda6">
+<section id="slide-orgd773627">
+<h2 id="orgd773627">Procedimientos y Recursión</h2>
+<div class="outline-text-2" id="text-orgd773627">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org422c683">
-<h3 id="org422c683">Expresión Lambda</h3>
+<section id="slide-orgbf45eb6">
+<h3 id="orgbf45eb6">Expresión Lambda</h3>
 <div style="font-size: 90%;">
 <ul>
 <li>(λ (<i>parameters</i>) <i>body</i>)</li>
@@ -345,8 +346,8 @@ top level de scheme.</li>
 </section>
 </section>
 <section>
-<section id="slide-org000ca52">
-<h3 id="org000ca52">Procedimientos</h3>
+<section id="slide-org6ebb290">
+<h3 id="org6ebb290">Procedimientos</h3>
 <div class="org-src-container">
 
 <pre  class="src src-scheme"><code trim> (<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">make-singleton</span>
@@ -364,8 +365,8 @@ top level de scheme.</li>
 </section>
 </section>
 <section>
-<section id="slide-org6533592">
-<h3 id="org6533592">Condicional</h3>
+<section id="slide-org3bb94b3">
+<h3 id="org3bb94b3">Condicional</h3>
 <div class="org-src-container">
 
 <pre  class="src src-scheme"><code trim>  (<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">car-if-pair</span>
@@ -387,8 +388,8 @@ top level de scheme.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgcfb25bb">
-<h3 id="orgcfb25bb">fibonacci</h3>
+<section id="slide-orgdd1d8f1">
+<h3 id="orgdd1d8f1">fibonacci</h3>
 <div class="org-src-container">
 
 <pre  class="src src-scheme"><code trim>(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">fib</span>
@@ -406,6 +407,43 @@ top level de scheme.</li>
     ((= n 0) 1)
     ((= n 1) 1)
     (<span style="color: #1c86ee;">else</span> (+ (fib (- n 1)) (fib (- n 2))))
+    )
+  )
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org03dc2b2">
+<h3 id="org03dc2b2">fibonacci</h3>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">fibi</span> n)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">fibaux</span> m a1 a2)
+    (<span style="color: #1c86ee;">cond</span>
+      ((= n m) (+ a1 a2))
+      (<span style="color: #1c86ee;">else</span> (fibaux (+ m 1) a2 (+ a1 a2)))
+      )
+    )
+  (<span style="color: #1c86ee;">cond</span>
+    ((= n 0) 1)
+    ((= n 1) 1)
+    (<span style="color: #1c86ee;">else</span> (fibaux 2 1 1))
+    )
+    )
+
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">fibb</span> n)
+  (<span style="color: #1c86ee;">cond</span>
+    ((= n 0) 1)
+    ((= n 1) 1)
+    (<span style="color: #1c86ee;">else</span> (<span style="color: #1c86ee;">let</span> <span style="color: #cd9b1d;">fibaux</span> ((m 2) (a1 1) (a2 1))
+       (<span style="color: #1c86ee;">cond</span>
+      ((= n m) (+ a1 a2))
+      (<span style="color: #1c86ee;">else</span> (fibaux (+ m 1) a2 (+ a1 a2)))
+      )     
+       )
+          )
     )
   )
 </code></pre>

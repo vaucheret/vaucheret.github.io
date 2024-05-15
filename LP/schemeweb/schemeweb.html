@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Lenguajes Declarativos</title>
+<meta name="author" content="(Aplicaciones Web en Racket)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+
+<link rel="stylesheet" href="grids.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Aplicaciones Web en Racket</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-05-15 mié 11:19</p>
+</section>
+
+
+<section>
+<section id="slide-org5716194">
+<h2 id="org5716194">Aplicaciones Web en Racket</h2>
+<div class="outline-text-2" id="text-org5716194">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgaafe59b">
+<h3 id="orgaafe59b">Comienzo</h3>
+<ul>
+<li><p>
+Introduzca las siguientes lineas de código. Y ejecute en el REPL
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>#lang web-server/insta
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
+  (response/xexpr
+   '(html
+     (head (title <span style="color: #8b7355;">"My Blog"</span>))
+     (body (h1 <span style="color: #8b7355;">"Under construction"</span>)))))
+</code></pre>
+</div></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga4e5a35">
+<h3 id="orga4e5a35">La Aplicación</h3>
+<div style="font-size: 80%;">
+<p>
+En éste tutorial se muesta cómo desarrollar un Blog. Usuarios del
+Blog deberían ser capaz de crear nuevas Publicaciones y agregar comentarios a
+las publicaciones existentes. Mostraremos el desarrollo incrementalmente. Realizando las siguientes tareas:
+</p>
+
+<ul>
+<li class="fragment roll-in">Muestra una lista estática de publicaciones.</li>
+<li class="fragment roll-in">Permitir que un usuario agregue nuevas publicaciones al sistema.</li>
+<li class="fragment roll-in">Amplíe el modelo para permitir que un usuario agregue comentarios a una publicación.</li>
+<li class="fragment roll-in">Permita que todos los usuarios compartan el mismo conjunto de publicaciones.</li>
+<li class="fragment roll-in">Guardar los datos en disco.</li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orged184b1">
+<h3 id="orged184b1">Blog Básico</h3>
+<p>
+Necesitamos una estructura de datos para representar el BLOG
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(struct post (title body))
+</code></pre>
+</div>
+
+<ul>
+<li>Ejemplo:</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">BLOG</span> (list (post <span style="color: #8b7355;">"First Post!"</span>
+                  <span style="color: #8b7355;">"Hey, this is my first post!"</span>)))
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org30b4d5f">
+<h3 id="org30b4d5f">"Rendering" HTML</h3>
+<p>
+racket usa la función <code>response/xexpr</code> que toma una <code>X-epression</code>
+para representar una expresión en HTML.
+</p>
+
+<ul>
+<li>Ejemplo:</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-html"><code trim>&lt;<span style="color: #cd9b1d;">p</span>&gt;This is an example&lt;/<span style="color: #cd9b1d;">p</span>&gt;
+</code></pre>
+</div>
+
+<p>
+es representado por
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>'(p <span style="color: #8b7355;">"This is an example"</span>).
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org30b4d5f-split">
+
+<ul>
+<li><p>
+Otro ejemplo
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-html"><code trim>p&gt;This is &lt;<span style="color: #cd9b1d;">div</span> <span style="color: #2e8b57;">class</span>=<span style="color: #8b7355;">"emph"</span>&gt;another&lt;/<span style="color: #cd9b1d;">div</span>&gt; example.&lt;/<span style="color: #cd9b1d;">p</span>&gt;
+</code></pre>
+</div>
+
+<p>
+es representado por
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>'(p <span style="color: #8b7355;">"This is "</span> (div ((class <span style="color: #8b7355;">"emph"</span>)) <span style="color: #8b7355;">"another"</span>) <span style="color: #8b7355;">" example."</span>).
+</code></pre>
+</div></li>
+
+<li>las siguientes expresiones evalúan a la misma <code>X-expression</code></li>
+
+</ul>
+
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(list 'html (list 'head (list 'title <span style="color: #8b7355;">"Some title"</span>))
+       (list 'body (list 'p <span style="color: #8b7355;">"This is a simple static page."</span>)))
+
+'(html (head (title <span style="color: #8b7355;">"Some title"</span>))
+       (body (p <span style="color: #8b7355;">"This is a simple static page."</span>)))
+</code></pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga9d10bf">
+<h3 id="orga9d10bf">Contenido Dinámico</h3>
+<ul>
+<li><p>
+Para evaluar expresiones se usa ",(" 
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-greeting: string -&gt; response</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a name, and produces a dynamic response.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-greeting</span> a-name)
+  (response/xexpr
+   `(html (head (title <span style="color: #8b7355;">"Welcome"</span>))
+          (body (p ,(string-append <span style="color: #8b7355;">"Hello "</span> a-name))))))
+</code></pre>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0974b45">
+<h3 id="org0974b45">forma <code>unquote-splicing</code> : ",@"</h3>
+<ul>
+<li>si queremos</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>'(ul (li <span style="color: #8b7355;">"Larry"</span>)
+     (li <span style="color: #8b7355;">"Curly"</span>)
+     (li <span style="color: #8b7355;">"Moe"</span>))
+</code></pre>
+</div>
+
+<p>
+de una lista, entonces
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>`(ul ,@'((li <span style="color: #8b7355;">"Larry"</span>) (li <span style="color: #8b7355;">"Curly"</span>) (li <span style="color: #8b7355;">"Moe"</span>)))
+</code></pre>
+</div>
+
+
+
+</section>
+<section id="slide-org0974b45-split">
+
+<ul>
+<li><p>
+ejemplo
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-as-itemized-list: (listof xexpr) -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a list of items, and produces a rendering</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">as an unordered list.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-as-itemized-list</span> fragments)
+  `(ul ,@(<span style="color: #1c86ee;">map</span> render-as-item fragments)))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-as-item: xexpr -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes an xexpr, and produces a rendering</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">as a list item.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-as-item</span> a-fragment)
+  `(li ,a-fragment))
+</code></pre>
+</div></li>
+
+</ul>
+
+</section>
+<section id="slide-org0974b45-split">
+
+<ul>
+<li><p>
+otro ejemplo, una función <code>render-posts</code> que
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(render-posts empty)
+</code></pre>
+</div>
+
+<p>
+produce
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>'(div ((class <span style="color: #8b7355;">"posts"</span>)))
+</code></pre>
+</div>
+
+<p>
+y
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(render-posts (list (post <span style="color: #8b7355;">"Post 1"</span> <span style="color: #8b7355;">"Body 1"</span>)
+                    (post <span style="color: #8b7355;">"Post 2"</span> <span style="color: #8b7355;">"Body 2"</span>)))
+</code></pre>
+</div>
+
+<p>
+que produce
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>'(div ((class <span style="color: #8b7355;">"posts"</span>))
+      (div ((class <span style="color: #8b7355;">"post"</span>)) <span style="color: #8b7355;">"Post 1"</span> (p <span style="color: #8b7355;">"Body 1"</span>))
+      (div ((class <span style="color: #8b7355;">"post"</span>)) <span style="color: #8b7355;">"Post 2"</span> (p <span style="color: #8b7355;">"Body 2"</span>)))
+</code></pre>
+</div></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4a0a0ea">
+<h3 id="org4a0a0ea">Inspeccionando "Requests"</h3>
+<ul>
+<li>Para extraer valores de los formularios en la web se usa la función <code>request-bindings</code></li>
+<li>Para extaer un simple valor de formulario de un conjunto racket provee la función <code>extract-binding/single</code></li>
+<li>Para verificar que un conjunto de enlaces contiene un compo particular usa <code>exists-binding?</code></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdd8a35e">
+<h3 id="orgdd8a35e"><code>send/suspend/dispatch</code></h3>
+<div style="font-size: 70%;">
+<ul>
+<li>La función, <code>enviar/suspender/enviar</code>, nos permite crear URL que
+dirigen las solicitudes dirigidas a ellas a funciones específicas
+en nuestra aplicación. Permite implementar manejadores "handlers"</li>
+<li>Ejemplo</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">start: request -&gt; response</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
+  (phase-1 request))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">phase-1: request -&gt; response</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">phase-1</span> request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html
+       (body (h1 <span style="color: #8b7355;">"Phase 1"</span>)
+             (a ((href ,(embed/url phase-2)))
+                <span style="color: #8b7355;">"click me!"</span>)))))
+  (send/suspend/dispatch response-generator))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">phase-2: request -&gt; response</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">phase-2</span> request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html
+       (body (h1 <span style="color: #8b7355;">"Phase 2"</span>)
+             (a ((href ,(embed/url phase-1)))
+                <span style="color: #8b7355;">"click me!"</span>)))))
+  (send/suspend/dispatch response-generator))
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgdd8a35e-split">
+
+<ul>
+<li>otro ejemplo</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">start: request -&gt; response</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
+  (show-counter 0 request))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">show-counter: number request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Displays a number that's hyperlinked: when the link is pressed,</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">returns a new page with the incremented number.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">show-counter</span> n request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html (head (title <span style="color: #8b7355;">"Counting example"</span>))
+            (body
+             (a ((href ,(embed/url next-number-handler)))
+                ,(number-&gt;string n))))))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">next-number-handler</span> request)
+    (show-counter (+ n 1) request))
+  (send/suspend/dispatch response-generator))
+</code></pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org316c8d2">
+<h3 id="org316c8d2">Nueva Version</h3>
+<ul>
+<li>Problema, visitar en una nueva ventana</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>#lang web-server/insta
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">A blog is a (listof post)</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">and a post is a (post title body)</span>
+(struct post (title body))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">BLOG: blog</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">The static blog.</span>
+(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">BLOG</span>
+  (list (post <span style="color: #8b7355;">"Second Post"</span> <span style="color: #8b7355;">"This is another post"</span>)
+        (post <span style="color: #8b7355;">"First Post"</span> <span style="color: #8b7355;">"This is my first post"</span>)))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">start: request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a request and produces a page that displays all of the</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">web content.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
+  (render-blog-page BLOG request))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">parse-post: bindings -&gt; post</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Extracts a post out of the bindings.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">parse-post</span> bindings)
+  (post (extract-binding/single 'title bindings)
+        (extract-binding/single 'body bindings)))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-blog-page: blog request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a blog and a request, and produces an HTML page</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">of the content of the blog.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-blog-page</span> a-blog request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html (head (title <span style="color: #8b7355;">"My Blog"</span>))
+            (body
+             (h1 <span style="color: #8b7355;">"My Blog"</span>)
+             ,(render-posts a-blog)
+             (form ((action
+                     ,(embed/url insert-post-handler)))
+                   (input ((name <span style="color: #8b7355;">"title"</span>)))
+                   (input ((name <span style="color: #8b7355;">"body"</span>)))
+                   (input ((type <span style="color: #8b7355;">"submit"</span>))))))))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">insert-post-handler</span> request)
+    (render-blog-page
+     (cons (parse-post (request-bindings request))
+           a-blog)
+     request))
+  (send/suspend/dispatch response-generator))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-post: post -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a post, produces an xexpr fragment of the post.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-post</span> a-post)
+  `(div ((class <span style="color: #8b7355;">"post"</span>))
+        ,(post-title a-post)
+        (p ,(post-body a-post))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-posts: blog -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a blog, produces an xexpr fragment</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">of all its posts.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-posts</span> a-blog)
+  `(div ((class <span style="color: #8b7355;">"posts"</span>))
+        ,@(<span style="color: #1c86ee;">map</span> render-post a-blog)))
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2b3e575">
+<h3 id="org2b3e575">Estado Interno</h3>
+<ul>
+<li>Poder modificar el BLOG</li>
+<li>Reemplazar</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(struct blog (posts))
+</code></pre>
+</div>
+
+<p>
+por
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(struct blog (posts) <span style="color: #cd6600;">#:mutable</span>)
+</code></pre>
+</div>
+<ul>
+<li>por medio de las funciones <code>set-blog-post!</code> y <code>blog-insert-post!</code></li>
+
+</ul>
+
+</section>
+<section id="slide-org2b3e575-split">
+
+<ul>
+<li>nueva version</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>#lang web-server/insta
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">A blog is a (blog posts)</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where posts is a (listof post)</span>
+(struct blog (posts) <span style="color: #cd6600;">#:mutable</span>)
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">and post is a (post title body)</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where title is a string, and body is a string</span>
+(struct post (title body))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">BLOG: blog</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">The initial BLOG.</span>
+(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">BLOG</span>
+  (blog
+   (list (post <span style="color: #8b7355;">"Second Post"</span> <span style="color: #8b7355;">"This is another post"</span>)
+         (post <span style="color: #8b7355;">"First Post"</span> <span style="color: #8b7355;">"This is my first post"</span>))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">blog-insert-post!: blog post -&gt; void</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a blog and a post, adds the post at the top of the blog.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">blog-insert-post!</span> a-blog a-post)
+  (set-blog-posts! a-blog
+                   (cons a-post (blog-posts a-blog))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">start: request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a request and produces a page that displays</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">all of the web content.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
+  (render-blog-page request))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">parse-post: bindings -&gt; post</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Extracts a post out of the bindings.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">parse-post</span> bindings)
+  (post (extract-binding/single 'title bindings)
+        (extract-binding/single 'body bindings)))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-blog-page: request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Produces an HTML page of the content of the BLOG.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-blog-page</span> request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html (head (title <span style="color: #8b7355;">"My Blog"</span>))
+            (body
+             (h1 <span style="color: #8b7355;">"My Blog"</span>)
+             ,(render-posts)
+             (form ((action
+                     ,(embed/url insert-post-handler)))
+                   (input ((name <span style="color: #8b7355;">"title"</span>)))
+                   (input ((name <span style="color: #8b7355;">"body"</span>)))
+                   (input ((type <span style="color: #8b7355;">"submit"</span>))))))))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">insert-post-handler</span> request)
+    (blog-insert-post!
+     BLOG (parse-post (request-bindings request)))
+    (render-blog-page request))
+
+  (send/suspend/dispatch response-generator))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-post: post -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a post, produces an xexpr fragment of the post.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-post</span> a-post)
+  `(div ((class <span style="color: #8b7355;">"post"</span>))
+        ,(post-title a-post)
+        (p ,(post-body a-post))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-posts: -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a blog, produces an xexpr fragment</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">of all its posts.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-posts</span>)
+  `(div ((class <span style="color: #8b7355;">"posts"</span>))
+        ,@(<span style="color: #1c86ee;">map</span> render-post (blog-posts BLOG))))
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org9400630">
+<h3 id="org9400630">Agregando Comentarios al Blog</h3>
+<ul>
+<li>La estructura de datos es:</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(struct post (title body comments)  <span style="color: #cd6600;">#:mutable</span>)
+</code></pre>
+</div>
+
+
+<div id="orge19293d" class="figure">
+<p><img src="comment.png" alt="comment.png" height="250" />
+</p>
+</div>
+
+</section>
+<section id="slide-org9400630-split">
+
+<ul>
+<li>nueva version</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>#lang web-server/insta
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">A blog is a (blog posts)</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where posts is a (listof post)</span>
+(struct blog (posts) <span style="color: #cd6600;">#:mutable</span>)
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">and post is a (post title body comments)</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where title is a string, body is a string,</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">and comments is a (listof string)</span>
+(struct post (title body comments) <span style="color: #cd6600;">#:mutable</span>)
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">BLOG: blog</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">The initial BLOG.</span>
+(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">BLOG</span>
+  (blog
+   (list (post <span style="color: #8b7355;">"Second Post"</span>
+               <span style="color: #8b7355;">"This is another post"</span>
+               (list))
+         (post <span style="color: #8b7355;">"First Post"</span>
+               <span style="color: #8b7355;">"This is my first post"</span>
+               (list <span style="color: #8b7355;">"First comment!"</span>)))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">blog-insert-post!: blog post -&gt; void</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a blog and a post, adds the post at the top of the blog.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">blog-insert-post!</span> a-blog a-post)
+  (set-blog-posts! a-blog
+                   (cons a-post (blog-posts a-blog))))
+
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">post-insert-comment!: post string -&gt; void</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a post and a comment string.  As a side-effect, </span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">adds the comment to the bottom of the post's list of comments.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">post-insert-comment!</span> a-post a-comment)
+  (set-post-comments!
+   a-post
+   (append (post-comments a-post) (list a-comment))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">start: request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a request, and produces a page that displays</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">all of the web content.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
+  (render-blog-page request))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-blog-page: request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Produces an HTML page of the content of the</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">BLOG.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-blog-page</span> request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html (head (title <span style="color: #8b7355;">"My Blog"</span>))
+            (body
+             (h1 <span style="color: #8b7355;">"My Blog"</span>)
+             ,(render-posts embed/url)
+             (form ((action
+                     ,(embed/url insert-post-handler)))
+                   (input ((name <span style="color: #8b7355;">"title"</span>)))
+                   (input ((name <span style="color: #8b7355;">"body"</span>)))
+                   (input ((type <span style="color: #8b7355;">"submit"</span>))))))))
+
+  <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">parse-post: bindings -&gt; post</span>
+  <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Extracts a post out of the bindings.</span>
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">parse-post</span> bindings)
+    (post (extract-binding/single 'title bindings)
+          (extract-binding/single 'body bindings)
+          (list)))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">insert-post-handler</span> request)
+    (blog-insert-post!
+     BLOG (parse-post (request-bindings request)))
+    (render-blog-page request))
+  (send/suspend/dispatch response-generator))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-post-detail-page: post request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a post and request, and produces a detail page</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">of the post. The user will be able to insert new comments.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-post-detail-page</span> a-post request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html (head (title <span style="color: #8b7355;">"Post Details"</span>))
+            (body
+             (h1 <span style="color: #8b7355;">"Post Details"</span>)
+             (h2 ,(post-title a-post))
+             (p ,(post-body a-post))
+             ,(render-as-itemized-list
+               (post-comments a-post))
+             (form ((action
+                     ,(embed/url insert-comment-handler)))
+                   (input ((name <span style="color: #8b7355;">"comment"</span>)))
+                   (input ((type <span style="color: #8b7355;">"submit"</span>))))))))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">parse-comment</span> bindings)
+    (extract-binding/single 'comment bindings))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">insert-comment-handler</span> a-request)
+    (post-insert-comment!
+     a-post (parse-comment (request-bindings a-request)))
+    (render-post-detail-page a-post a-request))
+  (send/suspend/dispatch response-generator))
+
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-post: post (handler -&gt; string) -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a post, produces an xexpr fragment of the post.</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">The fragment contains a link to show a detailed view of the post.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-post</span> a-post embed/url)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">view-post-handler</span> request)
+    (render-post-detail-page a-post request))
+  `(div ((class <span style="color: #8b7355;">"post"</span>))
+        (a ((href ,(embed/url view-post-handler)))
+           ,(post-title a-post))
+        (p ,(post-body a-post))
+        (div ,(number-&gt;string (length (post-comments a-post)))
+             <span style="color: #8b7355;">" comment(s)"</span>)))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-posts: (handler -&gt; string) -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a embed/url, and produces an xexpr fragment</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">of all its posts.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-posts</span> embed/url)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-post/embed/url</span> a-post)
+    (render-post a-post embed/url))
+  `(div ((class <span style="color: #8b7355;">"posts"</span>))
+        ,@(<span style="color: #1c86ee;">map</span> render-post/embed/url (blog-posts BLOG))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-as-itemized-list: (listof xexpr) -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a list of items, and produces a rendering as</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">an unorderered list.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-as-itemized-list</span> fragments)
+  `(ul ,@(<span style="color: #1c86ee;">map</span> render-as-item fragments)))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-as-item: xexpr -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes an xexpr, and produces a rendering</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">as a list item.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-as-item</span> a-fragment)
+  `(li ,a-fragment))
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc09d61d">
+<h3 id="orgc09d61d">Agregando un boton de retroceso</h3>
+<ul>
+<li>Esquema</li>
+
+</ul>
+
+
+<div id="org3f50114" class="figure">
+<p><img src="backbutton.png" alt="backbutton.png" height="400" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc09d61d-split">
+
+<ul>
+<li>nueva version</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>#lang web-server/insta
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">A blog is a (blog posts)</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where posts is a (listof post)</span>
+(struct blog (posts) <span style="color: #cd6600;">#:mutable</span>)
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">and post is a (post title body comments)</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where title is a string, body is a string,</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">and comments is a (listof string)</span>
+(struct post (title body comments) <span style="color: #cd6600;">#:mutable</span>)
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">BLOG: blog</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">The initial BLOG.</span>
+(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">BLOG</span>
+  (blog
+   (list (post <span style="color: #8b7355;">"Second Post"</span>
+               <span style="color: #8b7355;">"This is another post"</span>
+               (list))
+         (post <span style="color: #8b7355;">"First Post"</span>
+               <span style="color: #8b7355;">"This is my first post"</span>
+               (list <span style="color: #8b7355;">"First comment!"</span>)))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">blog-insert-post!: blog post -&gt; void</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a blog and a post, adds the post at the top of the blog.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">blog-insert-post!</span> a-blog a-post)
+  (set-blog-posts! a-blog
+                   (cons a-post (blog-posts a-blog))))
+
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">post-insert-comment!: post string -&gt; void</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a post and a comment string.  As a side-efect, </span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">adds the comment to the bottom of the post's list of comments.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">post-insert-comment!</span> a-post a-comment)
+  (set-post-comments!
+   a-post
+   (append (post-comments a-post) (list a-comment))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">start: request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a request and produces a page that displays</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">all of the web content.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
+  (render-blog-page request))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-blog-page: request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Produces an HTML page of the content of the</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">BLOG.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-blog-page</span> request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html (head (title <span style="color: #8b7355;">"My Blog"</span>))
+            (body
+             (h1 <span style="color: #8b7355;">"My Blog"</span>)
+             ,(render-posts embed/url)
+             (form ((action
+                     ,(embed/url insert-post-handler)))
+                   (input ((name <span style="color: #8b7355;">"title"</span>)))
+                   (input ((name <span style="color: #8b7355;">"body"</span>)))
+                   (input ((type <span style="color: #8b7355;">"submit"</span>))))))))
+
+  <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">parse-post: bindings -&gt; post</span>
+  <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Extracts a post out of the bindings.</span>
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">parse-post</span> bindings)
+    (post (extract-binding/single 'title bindings)
+          (extract-binding/single 'body bindings)
+          (list)))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">insert-post-handler</span> request)
+    (blog-insert-post!
+     BLOG (parse-post (request-bindings request)))
+    (render-blog-page request))
+  (send/suspend/dispatch response-generator))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-post-detail-page: post request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a post and produces a detail page of the post.</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">The user will be able to either insert new comments</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">or go back to render-blog-page.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-post-detail-page</span> a-post request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html (head (title <span style="color: #8b7355;">"Post Details"</span>))
+            (body
+             (h1 <span style="color: #8b7355;">"Post Details"</span>)
+             (h2 ,(post-title a-post))
+             (p ,(post-body a-post))
+             ,(render-as-itemized-list
+               (post-comments a-post))
+             (form ((action
+                     ,(embed/url insert-comment-handler)))
+                   (input ((name <span style="color: #8b7355;">"comment"</span>)))
+                   (input ((type <span style="color: #8b7355;">"submit"</span>))))
+             (a ((href ,(embed/url back-handler)))
+                <span style="color: #8b7355;">"Back to the blog"</span>)))))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">parse-comment</span> bindings)
+    (extract-binding/single 'comment bindings))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">insert-comment-handler</span> request)
+    (render-confirm-add-comment-page
+     (parse-comment (request-bindings request))
+     a-post
+     request))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">back-handler</span> request)
+    (render-blog-page request))
+  (send/suspend/dispatch response-generator))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-confirm-add-comment-page :</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">comment post request -&gt; doesn't return</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a comment that we intend to add to a post, as well</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">as the request. If the user follows through, adds a comment </span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">and goes back to the display page. Otherwise, goes back to </span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">the detail page of the post.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-confirm-add-comment-page</span> a-comment a-post request)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">response-generator</span> embed/url)
+    (response/xexpr
+     `(html (head (title <span style="color: #8b7355;">"Add a Comment"</span>))
+            (body
+             (h1 <span style="color: #8b7355;">"Add a Comment"</span>)
+             <span style="color: #8b7355;">"The comment: "</span> (div (p ,a-comment))
+             <span style="color: #8b7355;">"will be added to "</span>
+             (div ,(post-title a-post))
+
+             (p (a ((href ,(embed/url yes-handler)))
+                   <span style="color: #8b7355;">"Yes, add the comment."</span>))
+             (p (a ((href ,(embed/url cancel-handler)))
+                   <span style="color: #8b7355;">"No, I changed my mind!"</span>))))))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">yes-handler</span> request)
+    (post-insert-comment! a-post a-comment)
+    (render-post-detail-page a-post request))
+
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">cancel-handler</span> request)
+    (render-post-detail-page a-post request))
+  (send/suspend/dispatch response-generator))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-post: post (handler -&gt; string) -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a post, produces an xexpr fragment of the post.</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">The fragment contains a link to show a detailed view of the post.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-post</span> a-post embed/url)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">view-post-handler</span> request)
+    (render-post-detail-page a-post request))
+  `(div ((class <span style="color: #8b7355;">"post"</span>))
+        (a ((href ,(embed/url view-post-handler)))
+           ,(post-title a-post))
+        (p ,(post-body a-post))
+        (div ,(number-&gt;string (length (post-comments a-post)))
+             <span style="color: #8b7355;">" comment(s)"</span>)))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-posts: (handler -&gt; string) -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a embed/url, produces an xexpr fragment</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">of all its posts.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-posts</span> embed/url)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-post/embed/url</span> a-post)
+    (render-post a-post embed/url))
+  `(div ((class <span style="color: #8b7355;">"posts"</span>))
+        ,@(<span style="color: #1c86ee;">map</span> render-post/embed/url (blog-posts BLOG))))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-as-itemized-list: (listof xexpr) -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a list of items, and produces a rendering as</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">an unorderered list.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-as-itemized-list</span> fragments)
+  `(ul ,@(<span style="color: #1c86ee;">map</span> render-as-item fragments)))
+
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-as-item: xexpr -&gt; xexpr</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes an xexpr, and produces a rendering</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">as a list item.</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-as-item</span> a-fragment)
+  `(li ,a-fragment))
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgddcc43c">
+<h3 id="orgddcc43c">Decorando con Estilos</h3>
+<ul>
+<li>CSS puede agregarse mediante <code>static-files-path</code></li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>#lang web-server/insta
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
+  (response/xexpr
+   '(html (head (title <span style="color: #8b7355;">"Testing"</span>)
+                (link ((rel <span style="color: #8b7355;">"stylesheet"</span>)
+                       (href <span style="color: #8b7355;">"/test-static.css"</span>)
+                       (type <span style="color: #8b7355;">"text/css"</span>))))
+          (body (h1 <span style="color: #8b7355;">"Testing"</span>)
+                (h2 <span style="color: #8b7355;">"This is a header"</span>)
+                (p <span style="color: #8b7355;">"This is "</span> (span ((class <span style="color: #8b7355;">"hot"</span>)) <span style="color: #8b7355;">"hot"</span>) <span style="color: #8b7355;">"."</span>)))))
+
+(static-files-path <span style="color: #8b7355;">"htdocs"</span>)
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgddcc43c-split">
+
+<ul>
+<li>y en un subdirectorio llamado "htdocs"</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-css"><code trim><span style="color: #cd9b1d;">body </span>{
+  <span style="color: #1c86ee;">margin-left</span>: 10%;
+  <span style="color: #1c86ee;">margin-right</span>: 10%;
+}
+<span style="color: #cd9b1d;">p </span>{ <span style="color: #1c86ee;">font-family</span>: sans-serif }
+<span style="color: #cd9b1d;">h1 </span>{ <span style="color: #1c86ee;">color</span>: <span style="color: #ffffff; background-color: #008000;">green</span> }
+<span style="color: #cd9b1d;">h2 </span>{ <span style="color: #1c86ee;">font-size</span>: small }
+<span style="color: #cd9b1d;">span.hot </span>{ <span style="color: #1c86ee;">color</span>: <span style="color: #ffffff; background-color: #ff0000;">red</span> }
+</code></pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'slide',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
