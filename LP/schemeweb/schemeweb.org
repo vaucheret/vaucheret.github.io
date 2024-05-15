@@ -770,3 +770,49 @@ h1 { color: green }
 h2 { font-size: small }
 span.hot { color: red }
 #+END_SRC
+
+** Un Modelo Persistente
+
+- prefab
+
+#+BEGIN_SRC scheme
+(struct blog (posts) #:mutable #:prefab)
+#+END_SRC
+
+- inicialización del BLOG
+
+#+BEGIN_SRC scheme
+; initialize-blog! : path? -> blog
+; Reads a blog from a path, if not present, returns default
+(define (initialize-blog! home)
+  (define (log-missing-exn-handler exn)
+    (blog
+     (path->string home)
+     (list (post "First Post"
+                 "This is my first post"
+                 (list "First comment!"))
+           (post "Second Post"
+                 "This is another post"
+                 (list)))))
+  (define the-blog
+    (with-handlers ([exn? log-missing-exn-handler])
+      (with-input-from-file home read)))
+  (set-blog-home! the-blog (path->string home))
+  the-blog)
+#+END_SRC
+  
+#+REVEAL: split
+
+- Grabar el Blog en disco
+
+#+BEGIN_SRC scheme
+; save-blog! : blog -> void
+; Saves the contents of a blog to its home
+(define (save-blog! a-blog)
+  (define (write-to-blog)
+    (write a-blog))
+  (with-output-to-file (blog-home a-blog)
+    write-to-blog
+    #:exists 'replace))
+#+END_SRC
+  

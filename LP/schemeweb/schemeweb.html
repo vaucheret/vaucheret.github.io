@@ -27,20 +27,20 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Aplicaciones Web en Racket</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-05-15 mié 11:19</p>
+<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Aplicaciones Web en Racket</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-05-15 mié 15:56</p>
 </section>
 
 
 <section>
-<section id="slide-org5716194">
-<h2 id="org5716194">Aplicaciones Web en Racket</h2>
-<div class="outline-text-2" id="text-org5716194">
+<section id="slide-org2b4dfb4">
+<h2 id="org2b4dfb4">Aplicaciones Web en Racket</h2>
+<div class="outline-text-2" id="text-org2b4dfb4">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgaafe59b">
-<h3 id="orgaafe59b">Comienzo</h3>
+<section id="slide-orgdda5280">
+<h3 id="orgdda5280">Comienzo</h3>
 <ul>
 <li><p>
 Introduzca las siguientes lineas de código. Y ejecute en el REPL
@@ -63,8 +63,8 @@ Introduzca las siguientes lineas de código. Y ejecute en el REPL
 </section>
 </section>
 <section>
-<section id="slide-orga4e5a35">
-<h3 id="orga4e5a35">La Aplicación</h3>
+<section id="slide-orgbc163fd">
+<h3 id="orgbc163fd">La Aplicación</h3>
 <div style="font-size: 80%;">
 <p>
 En éste tutorial se muesta cómo desarrollar un Blog. Usuarios del
@@ -85,8 +85,8 @@ las publicaciones existentes. Mostraremos el desarrollo incrementalmente. Realiz
 </section>
 </section>
 <section>
-<section id="slide-orged184b1">
-<h3 id="orged184b1">Blog Básico</h3>
+<section id="slide-orgfc877a5">
+<h3 id="orgfc877a5">Blog Básico</h3>
 <p>
 Necesitamos una estructura de datos para representar el BLOG
 </p>
@@ -112,8 +112,8 @@ Necesitamos una estructura de datos para representar el BLOG
 </section>
 </section>
 <section>
-<section id="slide-org30b4d5f">
-<h3 id="org30b4d5f">"Rendering" HTML</h3>
+<section id="slide-orgc10c546">
+<h3 id="orgc10c546">"Rendering" HTML</h3>
 <p>
 racket usa la función <code>response/xexpr</code> que toma una <code>X-epression</code>
 para representar una expresión en HTML.
@@ -140,7 +140,7 @@ es representado por
 </div>
 
 </section>
-<section id="slide-org30b4d5f-split">
+<section id="slide-orgc10c546-split">
 
 <ul>
 <li><p>
@@ -181,8 +181,8 @@ es representado por
 </section>
 </section>
 <section>
-<section id="slide-orga9d10bf">
-<h3 id="orga9d10bf">Contenido Dinámico</h3>
+<section id="slide-org71e209e">
+<h3 id="org71e209e">Contenido Dinámico</h3>
 <ul>
 <li><p>
 Para evaluar expresiones se usa ",(" 
@@ -204,8 +204,8 @@ Para evaluar expresiones se usa ",("
 </section>
 </section>
 <section>
-<section id="slide-org0974b45">
-<h3 id="org0974b45">forma <code>unquote-splicing</code> : ",@"</h3>
+<section id="slide-org9449a50">
+<h3 id="org9449a50">forma <code>unquote-splicing</code> : ",@"</h3>
 <ul>
 <li>si queremos</li>
 
@@ -232,7 +232,7 @@ de una lista, entonces
 
 
 </section>
-<section id="slide-org0974b45-split">
+<section id="slide-org9449a50-split">
 
 <ul>
 <li><p>
@@ -258,7 +258,7 @@ ejemplo
 </ul>
 
 </section>
-<section id="slide-org0974b45-split">
+<section id="slide-org9449a50-split">
 
 <ul>
 <li><p>
@@ -309,8 +309,8 @@ que produce
 </section>
 </section>
 <section>
-<section id="slide-org4a0a0ea">
-<h3 id="org4a0a0ea">Inspeccionando "Requests"</h3>
+<section id="slide-org89c0531">
+<h3 id="org89c0531">Inspeccionando "Requests"</h3>
 <ul>
 <li>Para extraer valores de los formularios en la web se usa la función <code>request-bindings</code></li>
 <li>Para extaer un simple valor de formulario de un conjunto racket provee la función <code>extract-binding/single</code></li>
@@ -322,8 +322,8 @@ que produce
 </section>
 </section>
 <section>
-<section id="slide-orgdd8a35e">
-<h3 id="orgdd8a35e"><code>send/suspend/dispatch</code></h3>
+<section id="slide-org90c95fd">
+<h3 id="org90c95fd"><code>send/suspend/dispatch</code></h3>
 <div style="font-size: 70%;">
 <ul>
 <li>La función, <code>enviar/suspender/enviar</code>, nos permite crear URL que
@@ -363,7 +363,7 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 </div>
 
 </section>
-<section id="slide-orgdd8a35e-split">
+<section id="slide-org90c95fd-split">
 
 <ul>
 <li>otro ejemplo</li>
@@ -398,8 +398,8 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 </section>
 </section>
 <section>
-<section id="slide-org316c8d2">
-<h3 id="org316c8d2">Nueva Version</h3>
+<section id="slide-org33f6bd4">
+<h3 id="org33f6bd4">Nueva Version</h3>
 <ul>
 <li>Problema, visitar en una nueva ventana</li>
 
@@ -473,8 +473,8 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 </section>
 </section>
 <section>
-<section id="slide-org2b3e575">
-<h3 id="org2b3e575">Estado Interno</h3>
+<section id="slide-org25aeed5">
+<h3 id="org25aeed5">Estado Interno</h3>
 <ul>
 <li>Poder modificar el BLOG</li>
 <li>Reemplazar</li>
@@ -501,7 +501,7 @@ por
 </ul>
 
 </section>
-<section id="slide-org2b3e575-split">
+<section id="slide-org25aeed5-split">
 
 <ul>
 <li>nueva version</li>
@@ -586,8 +586,8 @@ por
 </section>
 </section>
 <section>
-<section id="slide-org9400630">
-<h3 id="org9400630">Agregando Comentarios al Blog</h3>
+<section id="slide-org654d765">
+<h3 id="org654d765">Agregando Comentarios al Blog</h3>
 <ul>
 <li>La estructura de datos es:</li>
 
@@ -600,13 +600,13 @@ por
 </div>
 
 
-<div id="orge19293d" class="figure">
+<div id="org0bc08cc" class="figure">
 <p><img src="comment.png" alt="comment.png" height="250" />
 </p>
 </div>
 
 </section>
-<section id="slide-org9400630-split">
+<section id="slide-org654d765-split">
 
 <ul>
 <li>nueva version</li>
@@ -754,21 +754,21 @@ por
 </section>
 </section>
 <section>
-<section id="slide-orgc09d61d">
-<h3 id="orgc09d61d">Agregando un boton de retroceso</h3>
+<section id="slide-org67472ed">
+<h3 id="org67472ed">Agregando un boton de retroceso</h3>
 <ul>
 <li>Esquema</li>
 
 </ul>
 
 
-<div id="org3f50114" class="figure">
+<div id="org9a34c7f" class="figure">
 <p><img src="backbutton.png" alt="backbutton.png" height="400" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgc09d61d-split">
+<section id="slide-org67472ed-split">
 
 <ul>
 <li>nueva version</li>
@@ -951,8 +951,8 @@ por
 </section>
 </section>
 <section>
-<section id="slide-orgddcc43c">
-<h3 id="orgddcc43c">Decorando con Estilos</h3>
+<section id="slide-org97ece21">
+<h3 id="org97ece21">Decorando con Estilos</h3>
 <ul>
 <li>CSS puede agregarse mediante <code>static-files-path</code></li>
 
@@ -976,7 +976,7 @@ por
 </div>
 
 </section>
-<section id="slide-orgddcc43c-split">
+<section id="slide-org97ece21-split">
 
 <ul>
 <li>y en un subdirectorio llamado "htdocs"</li>
@@ -993,6 +993,70 @@ por
 <span style="color: #cd9b1d;">h1 </span>{ <span style="color: #1c86ee;">color</span>: <span style="color: #ffffff; background-color: #008000;">green</span> }
 <span style="color: #cd9b1d;">h2 </span>{ <span style="color: #1c86ee;">font-size</span>: small }
 <span style="color: #cd9b1d;">span.hot </span>{ <span style="color: #1c86ee;">color</span>: <span style="color: #ffffff; background-color: #ff0000;">red</span> }
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org6f0f0d6">
+<h3 id="org6f0f0d6">Un Modelo Persistente</h3>
+<ul>
+<li>prefab</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim>(struct blog (posts) <span style="color: #cd6600;">#:mutable</span> <span style="color: #cd6600;">#:prefab</span>)
+</code></pre>
+</div>
+
+<ul>
+<li>inicialización del BLOG</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">initialize-blog! : path? -&gt; blog</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Reads a blog from a path, if not present, returns default</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">initialize-blog!</span> home)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">log-missing-exn-handler</span> exn)
+    (blog
+     (path-&gt;string home)
+     (list (post <span style="color: #8b7355;">"First Post"</span>
+                 <span style="color: #8b7355;">"This is my first post"</span>
+                 (list <span style="color: #8b7355;">"First comment!"</span>))
+           (post <span style="color: #8b7355;">"Second Post"</span>
+                 <span style="color: #8b7355;">"This is another post"</span>
+                 (list)))))
+  (<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">the-blog</span>
+    (with-handlers ([exn? log-missing-exn-handler])
+      (with-input-from-file home read)))
+  (set-blog-home! the-blog (path-&gt;string home))
+  the-blog)
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org6f0f0d6-split">
+
+<ul>
+<li>Grabar el Blog en disco</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">save-blog! : blog -&gt; void</span>
+<span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Saves the contents of a blog to its home</span>
+(<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">save-blog!</span> a-blog)
+  (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">write-to-blog</span>)
+    (write a-blog))
+  (with-output-to-file (blog-home a-blog)
+    write-to-blog
+    <span style="color: #cd6600;">#:exists</span> 'replace))
 </code></pre>
 </div>
 </section>
