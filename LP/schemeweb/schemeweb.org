@@ -13,7 +13,7 @@
 #+REVEAL_EXTRA_CSS: grids.css
 
 
-* Aplicaciones Web en Racket
+* Aplicaciones Web en [[color:orange][Racket]]
   
 ** Comienzo
 
@@ -31,7 +31,7 @@
    
 ** La Aplicación
    #+REVEAL_HTML: <div style="font-size: 80%;">
-  En éste tutorial se muesta cómo desarrollar un Blog. Usuarios del
+  En éste tutorial se muesta cómo desarrollar un [[color:blue][Blog]]. Usuarios del
   Blog deberían ser capaz de crear nuevas Publicaciones y agregar comentarios a
   las publicaciones existentes. Mostraremos el desarrollo incrementalmente. Realizando las siguientes tareas:
 
@@ -45,7 +45,7 @@
 
 ** Blog Básico
 
-   Necesitamos una estructura de datos para representar el BLOG
+   Necesitamos una estructura de datos para representar el [[color:blue][BLOG]]
 
  #+BEGIN_SRC scheme
    (struct post (title body))
@@ -60,20 +60,26 @@
 
 ** "Rendering" HTML
 
-   racket usa la función ~response/xexpr~ que toma una ~X-epression~
-   para representar una expresión en HTML.
+- [[color:orange][racket]] usa la función ~response/xexpr~ que toma una ~X-epression~
+ para representar una expresión en [[color:blue][HTML]].
 
-   - Ejemplo:
- #+BEGIN_SRC html
-<p>This is an example</p>
-   #+END_SRC
+- Ejemplo:
+   #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+    #+REVEAL_HTML: <div class="one_of_2_columns">
+   #+BEGIN_SRC html
+  <p>This is an example</p>
+     #+END_SRC
+   #+REVEAL_HTML: </div>
 
-   es representado por
+     # es representado por
 
- #+BEGIN_SRC scheme
-'(p "This is an example").
-   #+END_SRC
-   
+    #+REVEAL_HTML: <div class="one_of_2_columns">
+   #+BEGIN_SRC scheme
+  '(p "This is an example").
+     #+END_SRC
+      #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
+  
 #+REVEAL: split     
 
 - Otro ejemplo
@@ -179,9 +185,9 @@ p>This is <div class="emph">another</div> example.</p>
 
 ** Inspeccionando "Requests"
 
-   - Para extraer valores de los formularios en la web se usa la función ~request-bindings~
-   - Para extaer un simple valor de formulario de un conjunto racket provee la función ~extract-binding/single~
-   - Para verificar que un conjunto de enlaces contiene un compo particular usa ~exists-binding?~
+   - Para extraer valores de los formularios en la web se usa la función [[color:green][~request-bindings~]]
+   - Para extaer un simple valor de formulario de un conjunto racket provee la función [[color:green][~extract-binding/single~]]
+   - Para verificar que un conjunto de enlaces contiene un compo particular usa [[color:green][~exists-binding?~]]
 
      
 ** ~send/suspend/dispatch~

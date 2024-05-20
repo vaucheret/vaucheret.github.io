@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <title>Lenguajes Declarativos</title>
-<meta name="author" content="(Aplicaciones Web en Racket)"/>
+<meta name="author" content="Aplicaciones Web en Racket"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -27,20 +29,21 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><h2 class="author">Aplicaciones Web en Racket</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-05-15 mié 15:56</p>
+<section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><p class="subtitle"></p>
+<h2 class="author">Aplicaciones Web en Racket</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-05-19 dom 14:39</p>
 </section>
 
 
 <section>
-<section id="slide-org2b4dfb4">
-<h2 id="org2b4dfb4">Aplicaciones Web en Racket</h2>
-<div class="outline-text-2" id="text-org2b4dfb4">
+<section id="slide-orgf8f49dd">
+<h2 id="orgf8f49dd">Aplicaciones Web en <span style="color:orange;">Racket</span></h2>
+<div class="outline-text-2" id="text-orgf8f49dd">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgdda5280">
-<h3 id="orgdda5280">Comienzo</h3>
+<section id="slide-orge4fee3c">
+<h3 id="orge4fee3c">Comienzo</h3>
 <ul>
 <li><p>
 Introduzca las siguientes lineas de código. Y ejecute en el REPL
@@ -48,7 +51,7 @@ Introduzca las siguientes lineas de código. Y ejecute en el REPL
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<pre  class="src src-scheme"   ><code trim>#lang web-server/insta
 (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
   (response/xexpr
    '(html
@@ -63,11 +66,11 @@ Introduzca las siguientes lineas de código. Y ejecute en el REPL
 </section>
 </section>
 <section>
-<section id="slide-orgbc163fd">
-<h3 id="orgbc163fd">La Aplicación</h3>
+<section id="slide-org8b63fa4">
+<h3 id="org8b63fa4">La Aplicación</h3>
 <div style="font-size: 80%;">
 <p>
-En éste tutorial se muesta cómo desarrollar un Blog. Usuarios del
+En éste tutorial se muesta cómo desarrollar un <span style="color:blue;">Blog</span>. Usuarios del
 Blog deberían ser capaz de crear nuevas Publicaciones y agregar comentarios a
 las publicaciones existentes. Mostraremos el desarrollo incrementalmente. Realizando las siguientes tareas:
 </p>
@@ -85,15 +88,15 @@ las publicaciones existentes. Mostraremos el desarrollo incrementalmente. Realiz
 </section>
 </section>
 <section>
-<section id="slide-orgfc877a5">
-<h3 id="orgfc877a5">Blog Básico</h3>
+<section id="slide-org7561a83">
+<h3 id="org7561a83">Blog Básico</h3>
 <p>
-Necesitamos una estructura de datos para representar el BLOG
+Necesitamos una estructura de datos para representar el <span style="color:blue;">BLOG</span>
 </p>
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(struct post (title body))
+<pre  class="src src-scheme"   ><code trim>(struct post (title body))
 </code></pre>
 </div>
 
@@ -104,7 +107,7 @@ Necesitamos una estructura de datos para representar el BLOG
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">BLOG</span> (list (post <span style="color: #8b7355;">"First Post!"</span>
+<pre  class="src src-scheme"   ><code trim>(<span style="color: #1c86ee;">define</span> <span style="color: #cd9b1d;">BLOG</span> (list (post <span style="color: #8b7355;">"First Post!"</span>
                   <span style="color: #8b7355;">"Hey, this is my first post!"</span>)))
 </code></pre>
 </div>
@@ -112,35 +115,37 @@ Necesitamos una estructura de datos para representar el BLOG
 </section>
 </section>
 <section>
-<section id="slide-orgc10c546">
-<h3 id="orgc10c546">"Rendering" HTML</h3>
-<p>
-racket usa la función <code>response/xexpr</code> que toma una <code>X-epression</code>
-para representar una expresión en HTML.
-</p>
-
+<section id="slide-orgd38ea1f">
+<h3 id="orgd38ea1f">"Rendering" HTML</h3>
 <ul>
-<li>Ejemplo:</li>
+<li><span style="color:orange;">racket</span> usa la función <code>response/xexpr</code> que toma una <code>X-epression</code>
+para representar una expresión en <span style="color:blue;">HTML</span>.</li>
+
+<li><p>
+Ejemplo:
+</p>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<div class="org-src-container">
+
+<pre  class="src src-html"   ><code trim>&lt;<span style="color: #cd9b1d;">p</span>&gt;This is an example&lt;/<span style="color: #cd9b1d;">p</span>&gt;
+</code></pre>
+</div>
+</div>
+
+<div class="one_of_2_columns">
+<div class="org-src-container">
+
+<pre  class="src src-scheme"   ><code trim>'(p <span style="color: #8b7355;">"This is an example"</span>).
+</code></pre>
+</div>
+</div>
+</div></li>
 
 </ul>
-<div class="org-src-container">
-
-<pre  class="src src-html"><code trim>&lt;<span style="color: #cd9b1d;">p</span>&gt;This is an example&lt;/<span style="color: #cd9b1d;">p</span>&gt;
-</code></pre>
-</div>
-
-<p>
-es representado por
-</p>
-
-<div class="org-src-container">
-
-<pre  class="src src-scheme"><code trim>'(p <span style="color: #8b7355;">"This is an example"</span>).
-</code></pre>
-</div>
 
 </section>
-<section id="slide-orgc10c546-split">
+<section id="slide-orgd38ea1f-split">
 
 <ul>
 <li><p>
@@ -148,7 +153,7 @@ Otro ejemplo
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-html"><code trim>p&gt;This is &lt;<span style="color: #cd9b1d;">div</span> <span style="color: #2e8b57;">class</span>=<span style="color: #8b7355;">"emph"</span>&gt;another&lt;/<span style="color: #cd9b1d;">div</span>&gt; example.&lt;/<span style="color: #cd9b1d;">p</span>&gt;
+<pre  class="src src-html"   ><code trim>p&gt;This is &lt;<span style="color: #cd9b1d;">div</span> <span style="color: #2e8b57;">class</span>=<span style="color: #8b7355;">"emph"</span>&gt;another&lt;/<span style="color: #cd9b1d;">div</span>&gt; example.&lt;/<span style="color: #cd9b1d;">p</span>&gt;
 </code></pre>
 </div>
 
@@ -158,7 +163,7 @@ es representado por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>'(p <span style="color: #8b7355;">"This is "</span> (div ((class <span style="color: #8b7355;">"emph"</span>)) <span style="color: #8b7355;">"another"</span>) <span style="color: #8b7355;">" example."</span>).
+<pre  class="src src-scheme"   ><code trim>'(p <span style="color: #8b7355;">"This is "</span> (div ((class <span style="color: #8b7355;">"emph"</span>)) <span style="color: #8b7355;">"another"</span>) <span style="color: #8b7355;">" example."</span>).
 </code></pre>
 </div></li>
 
@@ -169,7 +174,7 @@ es representado por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(list 'html (list 'head (list 'title <span style="color: #8b7355;">"Some title"</span>))
+<pre  class="src src-scheme"   ><code trim>(list 'html (list 'head (list 'title <span style="color: #8b7355;">"Some title"</span>))
        (list 'body (list 'p <span style="color: #8b7355;">"This is a simple static page."</span>)))
 
 '(html (head (title <span style="color: #8b7355;">"Some title"</span>))
@@ -181,8 +186,8 @@ es representado por
 </section>
 </section>
 <section>
-<section id="slide-org71e209e">
-<h3 id="org71e209e">Contenido Dinámico</h3>
+<section id="slide-org33799ca">
+<h3 id="org33799ca">Contenido Dinámico</h3>
 <ul>
 <li><p>
 Para evaluar expresiones se usa ",(" 
@@ -190,7 +195,7 @@ Para evaluar expresiones se usa ",("
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-greeting: string -&gt; response</span>
+<pre  class="src src-scheme"   ><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-greeting: string -&gt; response</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a name, and produces a dynamic response.</span>
 (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-greeting</span> a-name)
   (response/xexpr
@@ -204,8 +209,8 @@ Para evaluar expresiones se usa ",("
 </section>
 </section>
 <section>
-<section id="slide-org9449a50">
-<h3 id="org9449a50">forma <code>unquote-splicing</code> : ",@"</h3>
+<section id="slide-org3af815f">
+<h3 id="org3af815f">forma <code>unquote-splicing</code> : ",@"</h3>
 <ul>
 <li>si queremos</li>
 
@@ -213,7 +218,7 @@ Para evaluar expresiones se usa ",("
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>'(ul (li <span style="color: #8b7355;">"Larry"</span>)
+<pre  class="src src-scheme"   ><code trim>'(ul (li <span style="color: #8b7355;">"Larry"</span>)
      (li <span style="color: #8b7355;">"Curly"</span>)
      (li <span style="color: #8b7355;">"Moe"</span>))
 </code></pre>
@@ -225,14 +230,14 @@ de una lista, entonces
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>`(ul ,@'((li <span style="color: #8b7355;">"Larry"</span>) (li <span style="color: #8b7355;">"Curly"</span>) (li <span style="color: #8b7355;">"Moe"</span>)))
+<pre  class="src src-scheme"   ><code trim>`(ul ,@'((li <span style="color: #8b7355;">"Larry"</span>) (li <span style="color: #8b7355;">"Curly"</span>) (li <span style="color: #8b7355;">"Moe"</span>)))
 </code></pre>
 </div>
 
 
 
 </section>
-<section id="slide-org9449a50-split">
+<section id="slide-org3af815f-split">
 
 <ul>
 <li><p>
@@ -241,7 +246,7 @@ ejemplo
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-as-itemized-list: (listof xexpr) -&gt; xexpr</span>
+<pre  class="src src-scheme"   ><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">render-as-itemized-list: (listof xexpr) -&gt; xexpr</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Consumes a list of items, and produces a rendering</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">as an unordered list.</span>
 (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">render-as-itemized-list</span> fragments)
@@ -258,7 +263,7 @@ ejemplo
 </ul>
 
 </section>
-<section id="slide-org9449a50-split">
+<section id="slide-org3af815f-split">
 
 <ul>
 <li><p>
@@ -267,7 +272,7 @@ otro ejemplo, una función <code>render-posts</code> que
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(render-posts empty)
+<pre  class="src src-scheme"   ><code trim>(render-posts empty)
 </code></pre>
 </div>
 
@@ -277,7 +282,7 @@ produce
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>'(div ((class <span style="color: #8b7355;">"posts"</span>)))
+<pre  class="src src-scheme"   ><code trim>'(div ((class <span style="color: #8b7355;">"posts"</span>)))
 </code></pre>
 </div>
 
@@ -287,7 +292,7 @@ y
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(render-posts (list (post <span style="color: #8b7355;">"Post 1"</span> <span style="color: #8b7355;">"Body 1"</span>)
+<pre  class="src src-scheme"   ><code trim>(render-posts (list (post <span style="color: #8b7355;">"Post 1"</span> <span style="color: #8b7355;">"Body 1"</span>)
                     (post <span style="color: #8b7355;">"Post 2"</span> <span style="color: #8b7355;">"Body 2"</span>)))
 </code></pre>
 </div>
@@ -298,7 +303,7 @@ que produce
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>'(div ((class <span style="color: #8b7355;">"posts"</span>))
+<pre  class="src src-scheme"   ><code trim>'(div ((class <span style="color: #8b7355;">"posts"</span>))
       (div ((class <span style="color: #8b7355;">"post"</span>)) <span style="color: #8b7355;">"Post 1"</span> (p <span style="color: #8b7355;">"Body 1"</span>))
       (div ((class <span style="color: #8b7355;">"post"</span>)) <span style="color: #8b7355;">"Post 2"</span> (p <span style="color: #8b7355;">"Body 2"</span>)))
 </code></pre>
@@ -309,12 +314,12 @@ que produce
 </section>
 </section>
 <section>
-<section id="slide-org89c0531">
-<h3 id="org89c0531">Inspeccionando "Requests"</h3>
+<section id="slide-orgb799058">
+<h3 id="orgb799058">Inspeccionando "Requests"</h3>
 <ul>
-<li>Para extraer valores de los formularios en la web se usa la función <code>request-bindings</code></li>
-<li>Para extaer un simple valor de formulario de un conjunto racket provee la función <code>extract-binding/single</code></li>
-<li>Para verificar que un conjunto de enlaces contiene un compo particular usa <code>exists-binding?</code></li>
+<li>Para extraer valores de los formularios en la web se usa la función <span style="color:green;"><code>request-bindings</code></span></li>
+<li>Para extaer un simple valor de formulario de un conjunto racket provee la función <span style="color:green;"><code>extract-binding/single</code></span></li>
+<li>Para verificar que un conjunto de enlaces contiene un compo particular usa <span style="color:green;"><code>exists-binding?</code></span></li>
 
 </ul>
 
@@ -322,8 +327,8 @@ que produce
 </section>
 </section>
 <section>
-<section id="slide-org90c95fd">
-<h3 id="org90c95fd"><code>send/suspend/dispatch</code></h3>
+<section id="slide-orgc3f2d27">
+<h3 id="orgc3f2d27"><code>send/suspend/dispatch</code></h3>
 <div style="font-size: 70%;">
 <ul>
 <li>La función, <code>enviar/suspender/enviar</code>, nos permite crear URL que
@@ -335,7 +340,7 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<pre  class="src src-scheme"   ><code trim>#lang web-server/insta
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">start: request -&gt; response</span>
 (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
   (phase-1 request))
@@ -363,7 +368,7 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 </div>
 
 </section>
-<section id="slide-org90c95fd-split">
+<section id="slide-orgc3f2d27-split">
 
 <ul>
 <li>otro ejemplo</li>
@@ -372,7 +377,7 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<pre  class="src src-scheme"   ><code trim>#lang web-server/insta
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">start: request -&gt; response</span>
 (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
   (show-counter 0 request))
@@ -398,8 +403,8 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 </section>
 </section>
 <section>
-<section id="slide-org33f6bd4">
-<h3 id="org33f6bd4">Nueva Version</h3>
+<section id="slide-org3a20605">
+<h3 id="org3a20605">Nueva Version</h3>
 <ul>
 <li>Problema, visitar en una nueva ventana</li>
 
@@ -407,7 +412,7 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<pre  class="src src-scheme"   ><code trim>#lang web-server/insta
 
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">A blog is a (listof post)</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">and a post is a (post title body)</span>
@@ -473,8 +478,8 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 </section>
 </section>
 <section>
-<section id="slide-org25aeed5">
-<h3 id="org25aeed5">Estado Interno</h3>
+<section id="slide-orgfaecf3c">
+<h3 id="orgfaecf3c">Estado Interno</h3>
 <ul>
 <li>Poder modificar el BLOG</li>
 <li>Reemplazar</li>
@@ -482,7 +487,7 @@ en nuestra aplicación. Permite implementar manejadores "handlers"</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(struct blog (posts))
+<pre  class="src src-scheme"   ><code trim>(struct blog (posts))
 </code></pre>
 </div>
 
@@ -492,7 +497,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(struct blog (posts) <span style="color: #cd6600;">#:mutable</span>)
+<pre  class="src src-scheme"   ><code trim>(struct blog (posts) <span style="color: #cd6600;">#:mutable</span>)
 </code></pre>
 </div>
 <ul>
@@ -501,7 +506,7 @@ por
 </ul>
 
 </section>
-<section id="slide-org25aeed5-split">
+<section id="slide-orgfaecf3c-split">
 
 <ul>
 <li>nueva version</li>
@@ -510,7 +515,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<pre  class="src src-scheme"   ><code trim>#lang web-server/insta
 
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">A blog is a (blog posts)</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where posts is a (listof post)</span>
@@ -586,8 +591,8 @@ por
 </section>
 </section>
 <section>
-<section id="slide-org654d765">
-<h3 id="org654d765">Agregando Comentarios al Blog</h3>
+<section id="slide-orgd8c1ded">
+<h3 id="orgd8c1ded">Agregando Comentarios al Blog</h3>
 <ul>
 <li>La estructura de datos es:</li>
 
@@ -595,18 +600,18 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(struct post (title body comments)  <span style="color: #cd6600;">#:mutable</span>)
+<pre  class="src src-scheme"   ><code trim>(struct post (title body comments)  <span style="color: #cd6600;">#:mutable</span>)
 </code></pre>
 </div>
 
 
-<div id="org0bc08cc" class="figure">
+<div class="figure">
 <p><img src="comment.png" alt="comment.png" height="250" />
 </p>
 </div>
 
 </section>
-<section id="slide-org654d765-split">
+<section id="slide-orgd8c1ded-split">
 
 <ul>
 <li>nueva version</li>
@@ -615,7 +620,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<pre  class="src src-scheme"   ><code trim>#lang web-server/insta
 
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">A blog is a (blog posts)</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where posts is a (listof post)</span>
@@ -754,21 +759,21 @@ por
 </section>
 </section>
 <section>
-<section id="slide-org67472ed">
-<h3 id="org67472ed">Agregando un boton de retroceso</h3>
+<section id="slide-org1f30fb4">
+<h3 id="org1f30fb4">Agregando un boton de retroceso</h3>
 <ul>
 <li>Esquema</li>
 
 </ul>
 
 
-<div id="org9a34c7f" class="figure">
+<div class="figure">
 <p><img src="backbutton.png" alt="backbutton.png" height="400" />
 </p>
 </div>
 
 </section>
-<section id="slide-org67472ed-split">
+<section id="slide-org1f30fb4-split">
 
 <ul>
 <li>nueva version</li>
@@ -777,7 +782,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<pre  class="src src-scheme"   ><code trim>#lang web-server/insta
 
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">A blog is a (blog posts)</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">where posts is a (listof post)</span>
@@ -951,8 +956,8 @@ por
 </section>
 </section>
 <section>
-<section id="slide-org97ece21">
-<h3 id="org97ece21">Decorando con Estilos</h3>
+<section id="slide-orgf6b0b9d">
+<h3 id="orgf6b0b9d">Decorando con Estilos</h3>
 <ul>
 <li>CSS puede agregarse mediante <code>static-files-path</code></li>
 
@@ -960,7 +965,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>#lang web-server/insta
+<pre  class="src src-scheme"   ><code trim>#lang web-server/insta
 (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">start</span> request)
   (response/xexpr
    '(html (head (title <span style="color: #8b7355;">"Testing"</span>)
@@ -976,7 +981,7 @@ por
 </div>
 
 </section>
-<section id="slide-org97ece21-split">
+<section id="slide-orgf6b0b9d-split">
 
 <ul>
 <li>y en un subdirectorio llamado "htdocs"</li>
@@ -985,7 +990,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-css"><code trim><span style="color: #cd9b1d;">body </span>{
+<pre  class="src src-css"   ><code trim><span style="color: #cd9b1d;">body </span>{
   <span style="color: #1c86ee;">margin-left</span>: 10%;
   <span style="color: #1c86ee;">margin-right</span>: 10%;
 }
@@ -999,8 +1004,8 @@ por
 </section>
 </section>
 <section>
-<section id="slide-org6f0f0d6">
-<h3 id="org6f0f0d6">Un Modelo Persistente</h3>
+<section id="slide-orgff7bdf4">
+<h3 id="orgff7bdf4">Un Modelo Persistente</h3>
 <ul>
 <li>prefab</li>
 
@@ -1008,7 +1013,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim>(struct blog (posts) <span style="color: #cd6600;">#:mutable</span> <span style="color: #cd6600;">#:prefab</span>)
+<pre  class="src src-scheme"   ><code trim>(struct blog (posts) <span style="color: #cd6600;">#:mutable</span> <span style="color: #cd6600;">#:prefab</span>)
 </code></pre>
 </div>
 
@@ -1019,7 +1024,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">initialize-blog! : path? -&gt; blog</span>
+<pre  class="src src-scheme"   ><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">initialize-blog! : path? -&gt; blog</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Reads a blog from a path, if not present, returns default</span>
 (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">initialize-blog!</span> home)
   (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">log-missing-exn-handler</span> exn)
@@ -1040,7 +1045,7 @@ por
 </div>
 
 </section>
-<section id="slide-org6f0f0d6-split">
+<section id="slide-orgff7bdf4-split">
 
 <ul>
 <li>Grabar el Blog en disco</li>
@@ -1049,7 +1054,7 @@ por
 
 <div class="org-src-container">
 
-<pre  class="src src-scheme"><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">save-blog! : blog -&gt; void</span>
+<pre  class="src src-scheme"   ><code trim><span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">save-blog! : blog -&gt; void</span>
 <span style="color: #7f7f7f;">; </span><span style="color: #7f7f7f;">Saves the contents of a blog to its home</span>
 (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">save-blog!</span> a-blog)
   (<span style="color: #1c86ee;">define</span> (<span style="color: #cd9b1d;">write-to-blog</span>)
@@ -1070,20 +1075,16 @@ por
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
 transition:'slide',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
+
 </script>
 </body>
 </html>
