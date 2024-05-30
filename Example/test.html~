@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Test</title>
+<meta name="author" content="org reveal"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+
+<link rel="stylesheet" href="grids.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Test</h1><p class="subtitle"></p>
+<h2 class="author">org reveal</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-05-22 mié 23:25</p>
+</section>
+<section id="sec-table-of-contents"><div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org133e8d8">Sección</a>
+<ul>
+<li><a href="#/slide-orge025e8c">slide</a></li>
+<li><a href="#/slide-orgf8e1559">otro slide</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgcef9bca">Otra Seccion</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+
+
+
+
+<section>
+<section id="slide-org133e8d8">
+<h2 id="org133e8d8">Sección</h2>
+<div class="outline-text-2" id="text-org133e8d8">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge025e8c">
+<h3 id="orge025e8c">slide</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<ul>
+<li class="fragment roll-in"><span style="color:orange;">uno</span></li>
+<li class="fragment roll-in"><span style="color:green;">dos</span></li>
+<li class="fragment roll-in"><span style="color:yellow;">tres</span></li>
+
+</ul>
+
+</div>
+<div class="one_of_2_columns">
+<ul>
+<li class="fragment roll-in"><span style="color:blue;">cuatro</span></li>
+<li class="fragment roll-in"><span style="color:red;">cinco</span></li>
+<li class="fragment roll-in"><span style="color:brown;">seis</span></li>
+
+</ul>
+
+</div>
+</div>
+
+</section>
+<section id="slide-orge025e8c-split">
+<div style="font-size: 50%;">
+<ul>
+<li>imagen reducida</li>
+
+</ul>
+
+
+<div class="figure">
+<p><img src="9dejulio.jpg" alt="9dejulio.jpg" height="400" align="center" />
+</p>
+<p><span class="figure-number">Figure 1: </span>El obelisco</p>
+</div>
+
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf8e1559">
+<h3 id="orgf8e1559">otro slide</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<ul>
+<li class="fragment shrink"><span style="color:orange;">uno</span></li>
+<li class="fragment shrink"><span style="color:green;">dos</span></li>
+<li class="fragment shrink"><span style="color:yellow;">tres</span></li>
+
+</ul>
+
+</div>
+<div class="one_of_2_columns">
+<ul>
+<li data-fragment-index="6" class="fragment grow"><span style="color:blue;">cuatro</span></li>
+<li data-fragment-index="5" class="fragment shrink"><span style="color:red;">cinco</span></li>
+<li data-fragment-index="4" class="fragment fade-out"><span style="color:brown;">seis</span></li>
+
+</ul>
+
+</div>
+</div>
+
+</section>
+<section id="slide-orgf8e1559-split">
+<div style="font-size: 50%;">
+<ul>
+<li>imagen reducida</li>
+
+</ul>
+
+
+<div class="figure">
+<p><img src="9dejulio.jpg" alt="9dejulio.jpg" height="400" align="center" />
+</p>
+<p><span class="figure-number">Figure 2: </span>El obelisco</p>
+</div>
+
+</div>
+
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgcef9bca">
+<h2 id="orgcef9bca">Otra Seccion</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'slide',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>

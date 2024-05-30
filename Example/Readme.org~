@@ -1,0 +1,1035 @@
+#+Title: Introduction to Org-Reveal
+#+Author: Yujie Wen
+#+Email: yjwen.ty@gmail.com
+
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
+#+OPTIONS: toc:nil
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
+#+REVEAL_POSTAMBLE: <p> Created by yjwen. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+#+REVEAL_EXTRA_CSS: ./local.css
+
+[[http://melpa.org/#/ox-reveal][file:http://melpa.org/packages/ox-reveal-badge.svg]]
+[[http://www.gnu.org/licenses/gpl-3.0.html][file:https://img.shields.io/:license-gpl3-blue.svg]]
+
+* Table of Contents
+  Title links are for viewing within org-mode buffer only. *Github
+  viewers please use the =(gh)= links.*
+
+  - [[Table of Contents][Table of Contents]]([[https://github.com/yjwen/org-reveal#table-of-contents][gh]])
+  - [[Reveal.js and Org-Reveal][Reveal.js and Org-Reveal]]([[https://github.com/yjwen/org-reveal#revealjs-and-org-reveal][gh]])
+  - [[Requirements and Installation][Requirements and Installation]]([[https://github.com/yjwen/org-reveal#requirements-and-installation][gh]])
+    - [[Install Reveal.js][Install Reveal.js]]([[https://github.com/yjwen/org-reveal#install-revealjs][gh]])
+    - [[Install org-reveal from MELPA][Install org-reveal from MELPA]]([[https://github.com/yjwen/org-reveal#install-org-reveal-from-melpa][gh]])
+    - [[Install org-reveal from GitHub][Install org-reveal from GitHub]]([[https://github.com/yjwen/org-reveal#install-org-reveal-from-github][gh]])
+#+REVEAL: split:t
+  - [[Configuration][Configuration]]([[https://github.com/yjwen/org-reveal#configuration][gh]])
+    - [[Set the location of Reveal.js][Set the location of Reveal.js]]([[https://github.com/yjwen/org-reveal#set-the-location-of-revealjs][gh]])
+      - [[Url form for file location][Url form for file location]]([[https://github.com/yjwen/org-reveal#url-form-for-file-location][gh]])
+    - [[First Try][First Try]]([[https://github.com/yjwen/org-reveal#first-try][gh]])
+    - [[The HLevel][The HLevel]]([[https://github.com/yjwen/org-reveal#the-hlevel][gh]])
+      - [[HLevel's Effects on Slides Layout][HLevel's Effects on Slides Layout]]([[https://github.com/yjwen/org-reveal#hlevels-effects-on-slides-layout][gh]])
+      - [[Configure HLevel's Value][Configure HLevel's Value]]([[https://github.com/yjwen/org-reveal#configure-hlevels-value][gh]])
+    - [[Force Split][Force Split]]([[https://github.com/yjwen/org-reveal#force-split][gh]])
+#+REVEAL: split:t
+    - [[Select Theme][Select Theme]]([[https://github.com/yjwen/org-reveal#select-theme][gh]])
+    - [[Set The Title Slide][Set The Title Slide]]([[https://github.com/yjwen/org-reveal#set-the-title-slide][gh]])
+      - [[Customize the Title Slide][Customize the Title Slide]]([[https://github.com/yjwen/org-reveal#customize-the-title-slide][gh]])
+      - [[Title Slide State][Title Slide State]]([[https://github.com/yjwen/org-reveal#title-slide-state][gh]])
+    - [[Set Slide Background][Set Slide Background]]([[https://github.com/yjwen/org-reveal#set-slide-background][gh]])
+      - [[Single Colored Background][Single Colored Background]]([[https://github.com/yjwen/org-reveal#single-colored-background][gh]])
+      - [[Single Image Background][Single Image Background]]([[https://github.com/yjwen/org-reveal#single-image-background][gh]])
+      - [[Repeating Image Background][Repeating Image Background]]([[https://github.com/yjwen/org-reveal#repeating-image-background][gh]])
+      - [[Title Slide Background Image][Title Slide Background Image]]([[https://github.com/yjwen/org-reveal#title-slide-background-image][gh]])
+      - [[Table of Contents Slide Background Image][Table of Contents Slide Background Image]]([[https://github.com/yjwen/org-reveal#table-of-contents-slide-background-image][gh]])
+      - [[Background for all slides][Background for all slides]]([[https://github.com/yjwen/org-reveal#background-for-all-slides][gh]])
+#+REVEAL: split:t
+    - [[Slide Size][Slide Size]]([[https://github.com/yjwen/org-reveal#slide-size][gh]])
+    - [[Slide Numbering][Slide Numbering]]([[https://github.com/yjwen/org-reveal#slide-numbering][gh]])
+    - [[Slide Header/Footer][Slide Header/Footer]]([[https://github.com/yjwen/org-reveal#slide-header/footer][gh]])
+    - [[Fragmented Contents][Fragmented Contents]]([[https://github.com/yjwen/org-reveal#fragmented-contents][gh]])
+      - [[Fragment Styles][Fragment Styles]]([[https://github.com/yjwen/org-reveal#fragment-styles][gh]])
+      - [[Fragment Index][Fragment Index]]([[https://github.com/yjwen/org-reveal#fragment-index][gh]])
+      - [[List Fragments][List Fragments]]([[https://github.com/yjwen/org-reveal#list-fragments][gh]])
+#+REVEAL: split:t
+    - [[Initialization options][Initialization options]]([[https://github.com/yjwen/org-reveal#initialization-options][gh]])
+    - [[Third-Party Plugins][Third-Party Plugins]]([[https://github.com/yjwen/org-reveal#third-party-plugins][gh]])
+    - [[Highlight Source Code][Highlight Source Code]]([[https://github.com/yjwen/org-reveal#highlight-source-code][gh]])
+      - [[Using highlight.js][Using highlight.js]]([[https://github.com/yjwen/org-reveal#using-highlightjs][gh]])
+    - [[Auto-Animate]] ([[https://github.com/yjwen/org-reveal#auto-animate][gh]])
+    - [[Editable Source Code][Editable Source Code]]([[https://github.com/yjwen/org-reveal#editable-source-code][gh]])
+    - [[MathJax][MathJax]]([[https://github.com/yjwen/org-reveal#mathjax][gh]])
+#+REVEAL: split:t
+    - [[Preamble and Postamble][Preamble and Postamble]]([[https://github.com/yjwen/org-reveal#preamble-and-postamble][gh]])
+      - [[Generating Pre/Postamble by Emacs-Lisp Functions][Generating Pre/Postamble by Emacs-Lisp Functions]]([[https://github.com/yjwen/org-reveal#generating-pre/postamble-by-emacs-lisp-functions][gh]])
+    - [[Prologue and Epilogue]]([[https://github.com/yjwen/org-reveal#prologue-and-epilogue][gh]])
+    - [[Raw HTML in Slides][Raw HTML in Slides]]([[https://github.com/yjwen/org-reveal#raw-html-in-slides][gh]])
+    - [[Speaker Notes][Speaker Notes]]([[https://github.com/yjwen/org-reveal#speaker-notes][gh]])
+    - [[Multiplexing][Multiplexing]]([[https://github.com/yjwen/org-reveal#multiplexing][gh]])
+    - [[Extra Stylesheets and Script Sources][Extra Stylesheets and Script Sources]]([[https://github.com/yjwen/org-reveal#extra-stylesheets-and-script-sources][gh]])
+    - [[Select Built-In Scripts][Select Built-In Scripts]]([[https://github.com/yjwen/org-reveal#select-built-in-scripts][gh]])
+    - [[Extra Dependent Script][Extra Dependent Script]]([[https://github.com/yjwen/org-reveal#extra-dependent-script][gh]])
+    - [[Extra Slide Attribute][Extra Slide Attribute]]([[https://github.com/yjwen/org-reveal#extra-slide-attribute][gh]])
+    - [[Export into Single File][Export into Single File]]([[https://github.com/yjwen/org-reveal#export-into-single-file][gh]])
+    - [[Export Current Subtree][Export Current Subtree]]([[https://github.com/yjwen/org-reveal#export-current-subtree][gh]])
+#+REVEAL: split:t
+  - [[Tips][Tips]]([[https://github.com/yjwen/org-reveal#tips][gh]])
+    - [[Managing Table of Contents][Managing Table of Contents]]([[https://github.com/yjwen/org-reveal#managing-table-of-contents][gh]])
+    - [[Internal Links][Internal Links]]([[https://github.com/yjwen/org-reveal#internal-links][gh]])
+    - [[Custom JS][Custom JS]]([[https://github.com/yjwen/org-reveal#custom-js][gh]])
+    - [[Executable Source Blocks][Executable Source Blocks]]([[https://github.com/yjwen/org-reveal#executable-source-blocks][gh]])
+      - [[HTML Src Block][HTML Src Block]]([[https://github.com/yjwen/org-reveal#html-src-block][gh]])
+      - [[Javascript Src Block][Javascript Src Block]]([[https://github.com/yjwen/org-reveal#javascript-src-block][gh]])
+      - [[Perl Src Block (not klipsified)][Perl Src Block (not klipsified)]]([[https://github.com/yjwen/org-reveal#perl-src-block-(not-klipsified)][gh]])
+    - [[Properties for Sub-headings][Properties for Sub-headings]]([[https://github.com/yjwen/org-reveal#properties-for-sub-headings][gh]])
+    - [[Customize iframe background slide][Customize iframe background slide]]([[https://github.com/yjwen/org-reveal#customize-iframe-background-slide][gh]])
+  - [[Thanks][Thanks]]([[https://github.com/yjwen/org-reveal#thanks][gh]])
+
+* Reveal.js and Org-Reveal
+
+  - *Reveal.js* is a tool for creating good-looking HTML presentations,
+    authored by [[http://hakim.se/][Hakim El Hattab]]. \\
+    For an example of a reveal.js presentation, see [[http://lab.hakim.se/reveal-js/#/][here]].
+  - *Org-Reveal* exports your [[http://orgmode.org/][Org]] documents to reveal.js
+    presentations.\\
+    With Org-reveal, you can create beautiful presentations with 3D
+    effects from simple but powerful Org contents.
+
+* Requirements and Installation
+
+  - Reveal.js.
+  - Org-mode.
+  - ox-reveal.el.
+  - htmlize.el (optional, for syntax highlighting).
+  - And, of course, emacs.
+
+** Install Reveal.js
+
+   Download Reveal.js packages from [[https://github.com/hakimel/reveal.js/][here]].
+
+   Extract Reveal.js folders from the downloaded zip file.
+
+   If you do not wish to download reveal.js yourself and would rather get a copy from a CDN,
+   see the section [[https://github.com/yjwen/org-reveal#set-the-location-of-revealjs][Set the location of Reveal.js]]
+
+** Install org-reveal from MELPA
+
+   The easiest way to install org-reveal is to install package
+   ox-reveal from MELPA.
+
+   Please refer to [[http://melpa.org/#/getting-started]] for using MELPA.
+
+   *Note*: It is suggested to use the [[http://orgmode.org/elpa.html][Org ELPA]] archive in pair
+   with the ox-reveal packages. Emacs builtin Org-mode package may be
+   out of date for MELPA's ox-reveal.
+
+** Install org-reveal from GitHub
+
+   You can also install the latest developing version of org-reveal directly
+   from GitHub.
+
+   Please download the latest Org-reveal package from [[https://github.com/yjwen/org-reveal][the Org-reveal
+   GitHub page]]. Or clone the GitHub repository:
+   #+BEGIN_SRC sh
+   git clone https://github.com/yjwen/org-reveal.git
+   #+END_SRC
+
+   Copy =ox-reveal.el= to one of your Emacs's ~load-path~, and add the
+   following statement to your =.emacs= file.
+   #+BEGIN_SRC lisp
+   (require 'ox-reveal)
+   #+END_SRC
+
+   *Note*: It is suggested to use the Org-mode git repository in pair
+   with the GitHub org-reveal. Please get the Org-mode git repository
+   by:
+   #+BEGIN_SRC sh
+   $ git clone https://code.orgmode.org/bzg/org-mode
+   #+END_SRC
+
+   Follow the [[http://orgmode.org/worg/dev/org-build-system.html][online instruction]] for building and installing Org-mode.
+
+
+* Configuration
+
+** Set the location of Reveal.js
+
+   Org-reveal must know where Reveal.js is on your computer before
+   exporting Org contents. The location of Reveal.js is the path to
+   the top directory of the Reveal.js packages, the directory which contains
+   file *README.md*, but *not* the one that contains the file reveal.js.
+
+   The default location is =./reveal.js=, relative to the Org file.
+
+   Changing =org-reveal-root= 's value will change the location
+   globally. For example, add the following statement to your .emacs
+   file:
+#+BEGIN_SRC lisp
+(setq org-reveal-root "file:///d:/reveal.js")
+#+END_SRC
+   *IMPORTANT*: the absolute path to Reveal.js should be in URL form,
+   "file:///path_to_reveal.js", as illustrated above.  By setting
+   option =REVEAL_ROOT=, the location is only affected within the Org
+   file.
+
+   #+BEGIN_SRC org
+   ,#+REVEAL_ROOT: file:///d:/reveal.js
+   #+END_SRC
+
+   Set your =REVEAL_ROOT= to the following URL to download reveal.js from
+   a CDN instead of downloading a local copy.
+
+   #+BEGIN_SRC org
+   ,#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+   #+END_SRC
+
+
+*** Url form for file location
+
+    For example if you cloned this repository to your home directory,
+    this file in Mac OS X would be referred to as
+    "file:///Users/username/org-reveal/readme.org".  This file in
+    Ubuntu would be "file:///home/username/org-reveal/readme.org" and
+    in Windows this file would be
+    "file:///c:/Users/username/org-reveal/readme.org".  For more
+    detail on this standard please refer to
+    [[http://en.wikipedia.org/wiki/File_URI_scheme]]
+
+** First Try
+
+   To load Org-reveal, type "M-x load-library", then type
+   "ox-reveal".
+
+   Now you can export this manual into Reveal.js presentation by
+   typing "C-c C-e R R".
+
+   Open the generated "Readme.html" in your browser and enjoy the
+   cool slides.
+
+** The HLevel
+
+   Org-reveal maps each heading and its contents to one Reveal.js
+   slide. Since Reveal.js arranges slides into a 2-dimensional matrix,
+   Org-reveal use a *HLevel* value to decide whether to map headings to horizontal
+   or vertical slides.
+
+   * Headings of level less than or equal to *HLevel* are mapped to horizontal
+     slides.
+   * Headings with a deeper level are mapped to vertical slides.
+
+   HLevel's default value is 1, means only level 1 headings are arranged
+   horizontally. Deeper headings are mapped to vertical slides below their
+   parent level 1 heading.
+
+*** HLevel's Effects on Slides Layout
+
+    Assume we have a simple Org file as below:
+#+BEGIN_SRC org
+,* H1
+,* H2
+,** H2.1
+,*** H2.1.1
+,* H3
+#+END_SRC
+
+    If HLevel is 1, the default value, headings H2.1 and H2.1.1 will
+    be mapped to vertical slides below the slides of heading H2.
+
+    [[./images/hlevel.png]]
+
+    If HLevel is changed to 2, slides of heading H2.1 will be changed
+    to the main horizontal queue, and slides of heading H2.1.1 will be
+    a vertical slide below it.
+
+    [[./images/hlevel2.png]]
+
+*** Configure HLevel's Value
+
+    * Change variable =org-reveal-hlevel='s value to set HLevel globally.\\
+      For example, add the following statement to your =.emacs= file.
+#+BEGIN_SRC lisp
+(setq org-reveal-hlevel 2)
+#+END_SRC
+
+    * Setting Org files local HLevel to option =REVEAL_HLEVEL=.
+#+BEGIN_SRC org
+,#+REVEAL_HLEVEL: 2
+#+END_SRC
+
+** Force Split
+
+   If one heading has too many things to fit into one slide, you can
+   split the contents into multiple vertical slides manually, by inserting
+
+#+BEGIN_SRC org
+,#+REVEAL: split
+#+END_SRC
+
+#+REVEAL: split
+
+   Now a new slide begins after =#+REVEAL= keyword.
+
+   To repeat the heading title on the split slide, please insert
+   ~#+REVEAL: split:t~ instead.
+
+** Select Theme
+
+Theme is set globally throughout the whole file by setting option
+=REVEAL_THEME=.
+
+Available themes can be found in ~dist/theme~ in the reveal.js
+directory and can be select by giving the CSS file base name (without
+.css extension) to =REVEAL_THEME=.
+
+A custom theme CSS can be also set by giving its URL to
+~REVEAL_THEME~.
+
+Slide transition style is set by initialization option ~transition~
+and the transition speed is set by ~transitionSpeed~ . Please refer to
+section [[Initialization options]] for details.
+
+Available transitions are: default|cube|page|concave|zoom|linear|fade|none.
+
+For an example of these settings, please check the heading part of this document.
+** Set The Title Slide
+   By default, Org-reveal generates a title slide displaying the
+   title, the author, the Email, the date and the time-stamp of the
+   Org document, controlled by Org's [[http://orgmode.org/org.html#Export-settings][export settings]].
+
+   To avoid a title slide, please set variable
+   ~org-reveal-title-slide~ to ~nil~, or add ~reveal_title_slide:nil~ to
+   ~#+OPTIONS:~ line.
+
+   To restore the default title slide, please set variable
+   ~org-reveal-title-slide~ to ~'auto~.
+
+*** Customize the Title Slide
+
+    There are 3 ways to customize the title slide.
+
+    1. Set variable ~org-reveal-title-slide~ to a string of HTML markups.
+    2. Set ~reveal_title_slide~ in the ~#+OPTIONS:~ line to a string of HTML markups.
+    3. Use one or more option lines ~#+REVEAL_TITLE_SLIDE:~ to specify
+       the HTML of the title slide.
+
+    The following escaping characters can be used to retrieve document
+    information:
+    | ~%t~ | Title     |
+    | ~%s~ | Subtitle  |
+    | ~%a~ | Author    |
+    | ~%e~ | Email     |
+    | ~%d~ | Date      |
+    | ~%%~ | Literal % |
+
+*** Title Slide State
+
+    Using this option allows to thoroughly change the style of the title slide:
+
+    * =REVEAL_TITLE_SLIDE_STATE=: Style applied to the [[https://revealjs.com/markup/#viewport][viewport]] of title slide.
+      See the [[https://revealjs.com/markup/#slide-states][reveal.js documentation]]
+      for details.
+
+** Set Slide Background
+
+   Slide background can be set to a color, an image, a repeating image
+   array or an iframe by setting heading properties.
+
+*** Single Colored Background
+   :PROPERTIES:
+   :reveal_background: #543210
+   :END:
+
+    Set property =reveal_background= to either an RGB color value, or any
+    supported CSS color format.
+
+#+BEGIN_SRC org
+,*** Single Colored Background
+   :PROPERTIES:
+   :reveal_background: #123456
+   :END:
+#+END_SRC
+
+*** Single Image Background
+    :PROPERTIES:
+    :reveal_background: ./images/whale.jpg
+    :reveal_background_trans: slide
+    :END:
+
+    Set property =reveal_background= to an URL of background image.
+    Set property =reveal_background_trans= to =slide= to make background image
+    sliding rather than fading.
+#+BEGIN_SRC org
+,*** Single Image Background
+    :PROPERTIES:
+    :reveal_background: ./images/whale.jpg
+    :reveal_background_trans: slide
+    :END:
+#+END_SRC
+
+*** Repeating Image Background
+    :PROPERTIES:
+    :reveal_background: ./images/whale.jpg
+    :reveal_background_size: 200px
+    :reveal_background_repeat: repeat
+    :reveal_background_opacity: 0.2
+    :END:
+
+    Resize background image by setting property
+    =reveal_background_size= to a number.
+
+    Set property =reveal_background_repeat= to =repeat= to repeat
+    image on the background, =reveal_background_opacity= for the
+    background opacity, which is a value of 0-1.
+#+BEGIN_SRC org
+,*** Repeating Image Background
+    :PROPERTIES:
+    :reveal_background: ./images/whale.jpg
+    :reveal_background_size: 200px
+    :reveal_background_repeat: repeat
+    :reveal_background_opacity: 0.2
+    :END:
+#+END_SRC
+
+*** Iframe background
+    :PROPERTIES:
+    :reveal_background_iframe: https://hakim.se
+    :reveal_background: rgb(0,0,0)
+    :reveal_background_opacity: 0.8
+    :END:
+
+    When =iframe= is being used as slide background, the content of the slide will
+    be put inside a dedicated division. The other background options can be used to
+    configure this new division. The =reveal_background= supports both color and
+    image as a normal slide.
+#+BEGIN_SRC org
+    :PROPERTIES:
+    :reveal_background_iframe: https://hakim.se
+    :reveal_background: rgb(0,0,0)
+    :reveal_background_opacity: 0.8
+    :END:
+#+END_SRC
+
+*** Title Slide Background Image
+
+    To set the title slide's background image, please specify the
+    following options:
+
+    * =REVEAL_TITLE_SLIDE_BACKGROUND=: A URL to the background image.
+    * =REVEAL_TITLE_SLIDE_BACKGROUND_SIZE=: HTML size specification, e.g. ~200px~.
+    * =REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT=: Set to ~repeat~ to repeat the image.
+    * =REVEAL_TITLE_SLIDE_BACKGROUND_OPACITY=: Set the background opacity.
+
+*** Table of Contents Slide Background Image
+
+    To set the (automatically generated) table of contents slide's background
+    image, please specify the following options:
+
+    * =REVEAL_TOC_SLIDE_BACKGROUND=: A URL to the background image.
+    * =REVEAL_TOC_SLIDE_BACKGROUND_SIZE=: HTML size specification, e.g. ~200px~.
+    * =REVEAL_TOC_SLIDE_BACKGROUND_REPEAT=: Set to ~repeat~ to repeat the image.
+    * =REVEAL_TOC_SLIDE_BACKGROUND_OPACITY=: Set the background opacity.
+*** Background for all slides
+
+    You can also configure the background for all slides in the presentation with:
+
+    * =REVEAL_DEFAULT_SLIDE_BACKGROUND=
+    * =REVEAL_DEFAULT_SLIDE_BACKGROUND_SIZE=
+    * =REVEAL_DEFAULT_SLIDE_BACKGROUND_POSITION=
+    * =REVEAL_DEFAULT_SLIDE_BACKGROUND_REPEAT=
+    * =REVEAL_DEFAULT_SLIDE_BACKGROUND_TRANSITION=
+
+    Refer to the [[https://github.com/yjwen/org-reveal#set-slide-background][Set slide background section]] for instructions on how to use each
+    parameter.
+
+** Slide Size
+
+   Reveal.js scales slides to best fit the display resolution, but you can
+   also specify the desired size by settings the option tags =reveal_width=
+   and =reveal_height=.
+
+   The scaling behavior can also be constrained by setting following
+   options:
+   * =#+REVEAL_MARGIN:= :: a float number, the factor of empty area
+        surrounding slide contents.
+   * =#+REVEAL_MIN_SCALE:= :: a float number, the minimum scaling down
+        ratio.
+   * =#+REVEAL_MAX_SCALE:= :: a float number, the maximum scaling up
+        ratio.
+
+** Slide Numbering
+
+To enable slide numbers, please add the following Reveal.js initial option.
+#+BEGIN_SRC org
+,#+REVEAL_INIT_OPTIONS: slideNumber:true
+#+END_SRC
+
+Other possible choice for slide numbers are:
+| "h.v" | Horizontal . vertical slide number. The same as ~true~ |
+| "h/v" | Horizontal / vertical slide number                     |
+| "c"   | Flatten slide number                                   |
+| "c/t" | Flatten slide number / total slides                    |
+
+** Slide Header/Footer
+   Specify Slide header/footer globally by =#+REVEAL_SLIDE_HEADER:=
+   and =#+REVEAL_SLIDE_FOOTER:=. The option content will be put into
+   divisions of class =slide-header= and =slide-footer=, so you can
+   control their appearance in custom CSS file(see [[https://github.com/rafadc/org-reveal#extra-stylesheets][Extra Stylesheets]]).
+   By default header/footer content will only display on content
+   slides. To show them also on the title and toc slide you can add
+   ~reveal_global_header:t~ and ~reveal_global_footer:t~ to
+   ~#+OPTIONS:~ line.
+
+** Fragmented Contents
+
+    Make contents fragmented (show up one-by-one) by setting option
+    =ATTR_REVEAL= with property ":frag frag-style", as illustrated
+    below.
+
+#+ATTR_REVEAL: :frag roll-in
+    Paragraphs can be fragmented.
+
+#+ATTR_REVEAL: :frag roll-in
+    - Lists can
+    - be fragmented.
+
+#+ATTR_REVEAL: :frag roll-in
+    Pictures, tables and many other HTML elements can be fragmented.
+
+*** Fragment Styles
+    Available fragment styles are:
+#+ATTR_REVEAL: :frag t
+    * grow
+    * shrink
+    * roll-in
+    * fade-out
+    * highlight-red
+    * highlight-green
+    * highlight-blue
+    * appear
+
+    Setting ~:frag t~ will use Reveal.js default fragment style, which
+    can be overridden by local option ~#+REVEAL_DEFAULT_FRAG_STYLE~ or
+    global variable ~org-reveal-default-frag-style~.
+
+*** Fragment Index
+    Fragment sequence can be changed by assigning adding ~:frag_idx~
+    property to each fragmented element.
+
+#+ATTR_REVEAL: :frag t :frag_idx 3
+    And, this paragraph shows at last.
+
+#+ATTR_REVEAL: :frag t :frag_idx 2
+    This paragraph shows secondly.
+
+#+ATTR_REVEAL: :frag t :frag_idx 1
+    This paragraph shows at first.
+
+*** List Fragments
+
+    ~#+ATTR_REVEAL: :frag frag-style~ above a list defines fragment
+    style for the list as a whole.
+#+ATTR_REVEAL: :frag grow
+    1. All items grow.
+    2. As a whole.
+
+    To define fragment styles for every list item, please enumerate
+    each item's style in a lisp list.
+
+    ~none~ in the style list will disable fragment for the
+    corresponding list item.
+
+    Custom fragment sequence should also be enumerated for each list
+    item.
+
+#+REVEAL: split:t
+    An example:
+
+#+BEGIN_SRC org
+,#+ATTR_REVEAL: :frag (grow shrink roll-in fade-out none) :frag_idx (4 3 2 1 -)
+   * I will grow.
+   * I will shrink.
+   * I rolled in.
+   * I will fade out.
+   * I don't fragment.
+#+END_SRC
+
+#+ATTR_REVEAL: :frag (grow shrink roll-in fade-out none) :frag_idx (4 3 2 1 -)
+   * I will grow.
+   * I will shrink.
+   * I rolled in.
+   * I will fade out.
+   * I don't fragment.
+#+REVEAL: split:t
+   When there is ~:frag_idx~ specified, insufficient fragment style
+   list will be extended by its last element. So a ~:frag (appear)~
+   assigns each item of a list the ~appear~ fragment style.
+#+BEGIN_SRC org
+,#+ATTR_REVEAL: :frag (appear)
+   * I appear.
+   * I appear.
+   * I appear.
+#+END_SRC
+#+ATTR_REVEAL: :frag (appear)
+   * I appear.
+   * I appear.
+   * I appear.
+
+** Initialization options
+Use ~#+REVEAL_INIT_OPTIONS~ to give JS snippet for initialize
+reveal.js with different options. Check [[https://github.com/hakimel/reveal.js/#configuration][reveal.js document]] for
+supported options. Check the head part of this document for an
+example.
+** Third-Party Plugins
+Reveal.js is also extensible through third-party plugins. Org-reveal
+provides a customizable variable ~org-reveal-external-plugins~ for
+defining available third-party plugins. This variable is an
+associative list. The first element of each Assoc cell is a symbol
+same as the name of the plugin and the second is either a string
+specifying the location of the plugin script or a list of string in
+case of multiple scripts. Each script string can have ONE optional
+~%s~, which will be replaced by `reveal-root`. Code below is an
+example.
+#+begin_src lisp
+(setq org-reveal-external-plugins '((RevealMenu . "path/to/reveal.js-menu/menu.js"))
+#+end_src
+
+#+REVEAL: split:t
+
+Plugins can be specified in buffer by one or more
+~#+REVEAL_EXTERNAL_PLUGINS~ options. Each option can have one or more
+plugin specifications of the same format as in
+~org-reveal-external-plugins~. Below is an example.
+
+#+begin_src org
+  ,#+REVEAL_EXTERNAL_PLUGINS: (plugin1 . "ex/plugin1.js") (plugin2 . "ex/plugin2.js")
+  ,#+REVEAL_EXTERNAL_PLUGINS: (plugin3 "ex/plugin3-1.js" "ex/plugin3-2.js")
+#+end_src
+
+At most one ~%s~ can be inserted into each plugin string, which will
+be replaced by Reveal.js root path.
+
+** Highlight Source Code
+
+   There are two ways to highlight source code.
+   1. Use your Emacs theme
+   2. Use highlight.js
+
+
+   To Use your Emacs theme, please make sure ~htmlize.el~ is
+   installed. Then no more setup is necessary.
+
+   Below is an example of highlighted lisp code from org-reveal.
+   #+BEGIN_SRC lisp
+     (defun org-reveal--read-file (file)
+       "Return the content of file"
+       (with-temp-buffer
+	 (insert-file-contents-literally file)
+	 (buffer-string)))
+   #+END_SRC
+
+   If you saw odd indentation, please set variable =org-html-indent=
+   to =nil= and export again.
+
+*** Using highlight.js
+
+    You can also use [[https://highlightjs.org][highlight.js]], by adding ~highlight~ to the Reveal.js
+    plugin list.
+    #+BEGIN_SRC org
+      ,#+REVEAL_PLUGINS: (highlight)
+    #+END_SRC
+
+    The default highlighting theme is ~zenburn.css~ brought with
+    Reveal.js. To use other themes, please specify the CSS file name by
+    ~#+REVEAL_HIGHLIGHT_CSS~ or the variable ~org-reveal-highlight-css~.
+
+    The "%r" in the given CSS file name will be replaced by Reveal.js'
+    URL.
+
+    Reveal.js supports to enable line numbers and highlighting on
+    given line numbers. Please use ~:code_attribs~ to pass [[https://github.com/hakimel/reveal.js#line-numbers--highlights][the proper
+    attributes]] to the source code block . Below is an example.
+#+BEGIN_SRC org
+,#+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
+,#+BEGIN_SRC c++
+int main()
+{
+  cout << "Hello" << endl;
+}
+,#+END_SRC
+#+END_SRC
+
+** Auto-Animate
+   To enable [[https://revealjs.com/auto-animate/][auto-animate]], please add ~data-auto-animate~ to heading's
+   ~REVEAL_EXTRA_ATTR~ property. To force Reveal.js to match source
+   codes across slides, please add the same ~:data_id foo~ to the
+   ~#+ADDR_REVEAL:~ tag of the source code blocks. Example as below.
+   #+begin_src org
+          ,* Heading 1
+            :PROPERTIES:
+            :REVEAL_EXTRA_ATTR: data-auto-animate
+            :END:
+
+            ,#+ATTR_REVEAL: :data_id foo
+            ,#+begin_src js
+              let index = 1
+            ,#+end_src
+
+
+     ,* Heading 2
+       :PROPERTIES:
+       :REVEAL_EXTRA_ATTR: data-auto-animate
+       :END:
+
+
+       ,#+ATTR_REVEAL: :data_id foo
+       ,#+begin_src js
+         let index = 1
+         let value = 2
+       ,#+end_src
+
+   #+end_src
+
+
+** Editable Source Code
+It is now possible to embed code blocks in a codemirror instance in order to edit code during a presentation.  At present, this capacity is turned on or off at time export using these defcustoms:
+- ~org-reveal-klipsify-src~
+- ~org-reveal-klipse-css~
+- ~org-reveal-klipse-js~
+This feature is turned off by default and needs to be switched on with ~org-reveal-klipsify-src~.  At present code editing is supported in javascript, clojure, php, ruby, scheme, and python only.
+
+** MathJax
+  :PROPERTIES:
+  :CUSTOM_ID: my-heading
+  :END:
+
+
+   ${n! \over k!(n-k)!} = {n \choose k}$
+
+   LateX equation are rendered in native HTML5 contents.
+
+   *IMPORTANT*: Displaying equations requires internet connection to
+   [[http://mathjax.org/][mathjax.org]] or local MathJax installation. For local MathJax
+   installation, set option =REVEAL_MATHJAX_URL= to the URL pointing
+   to the local MathJax location.
+
+   *Note*: Option ~reveal_mathjax~ is obsolete now. Org-reveal
+   exports necessary MathJax configurations when there is Latex
+   equation found.
+
+** Preamble and Postamble
+
+   You can define preamble and postamble contents which will not be
+   shown as slides, but will be exported into the body part of the
+   generated HTML file, at just before and after the slide contents.
+
+   Change preamble and postamble contents globally by setting variable
+   =org-reveal-preamble= and =org-reveal-postamble=.
+
+   Change preamble and postamble contents locally by setting options
+   =REVEAL_PREAMBLE= and =REVEAL_POSTAMBLE=, as illustrated at the
+   heading part of this document.
+
+   To add custom contents into HTML =<head>= parts, set contents to
+   variable =org-reveal-head-preamble= or option
+   =REVEAL_HEAD_PREAMBLE=.
+
+*** Generating Pre/Postamble by Emacs-Lisp Functions
+
+    If the contents of pre/postamble is the name of an evaluated
+    Emacs-Lisp function, which must accept an argument of Org-mode
+    info and return a string, the returned string will be taken
+    as pre/postamble contents.
+
+    So you can embed the Emacs-Lisp function as an Org-Babel source
+    block and mark it to be evaluated when exporting the document.
+
+** Prologue and Epilogue
+
+Similar to preamble and postamble, arbitrary HTML contents can be
+inserted between the opening ~<div reveal>~ and ~<div slides>~ tags,
+called prologue, and their closing counterparts, called epilogue.
+
+Specify those contents by options ~REVEAL_PROLOGUE~ and
+~REVEAL_EPILOGUE~ for one buffer, or by variable ~org-reveal-prologue~
+and ~org-reveal-epilogue~ for global setup.
+
+** Raw HTML in Slides
+
+   Besides the Org contents, you can embed raw HTML contents
+   into slides by placing a =#+REVEAL_HTML= keyword.
+
+   The famous cat jump fail:
+#+REVEAL_HTML: <iframe width="420" height="315" src="https://www.youtube.com/embed/Awf45u6zrP0" frameborder="0" allowfullscreen></iframe>
+** Speaker Notes
+   Reveal.js supports speaker notes, which are displayed in a separate
+   browser window. Pressing 's' on slide's windows will pop up a window
+   displaying the current slide, the next slide and the speaker notes on the current
+   slide.
+
+   Org-reveal recognize texts between =#+BEGIN_NOTES= and =#+END_NOTES=
+   as speaker notes. See the example below.
+
+#+BEGIN_SRC org
+,* Heading 1
+   Some contents.
+,#+BEGIN_NOTES
+  Enter speaker notes here.
+,#+END_NOTES
+#+END_SRC
+
+   To skip exporting speaker notes, please set variable
+   ~org-reveal-ignore-speaker-notes~ to ~t~.
+
+#+REVEAL: split
+   Speaker notes requires the ~notes~ plug-in. If you changed default
+   plug-in setting by specifying =#+REVEAL_PLUGINS= or by setting
+   variable =org-reveal-plugins=, please make sure ~notes~ is in the
+   plug-in list to enable speaker notes.
+
+#+REVEAL: split
+
+   Due to a bug in Reveal.js, sometimes the speaker notes window
+   shows only blank screens. A workaround to this issue is to put
+   the presentation HTML file into the Reveal.js root directory and
+   reopen it in the browser.
+
+** Multiplexing
+   Reveal.js supports a [[https://github.com/reveal/multiplex#multiplex-plugin][multiplexing plugin]], which allows your
+   audience to view the slides of the presentation you are controlling
+   on their own phone, tablet or laptop. As the master presentation
+   navigates the slides, all client presentations will update in real
+   time. See a demo at [[https://reveal-multiplex.glitch.me/]].
+
+   To use multiplexing, first prepare a Socket.io server by the
+   instruction [[https://github.com/reveal/multiplex#socketio-server][here]]. Then include the following options in the org
+   file. Contents in ~[]~ are commentary notes, not part of the
+   options.
+#+BEGIN_SRC org
+,#+REVEAL_MULTIPLEX_ID: [Obtained from the socket.io server. ]
+,#+REVEAL_MULTIPLEX_SECRET: [Obtained from socket.io server. Gives the master control of the presentation.]
+,#+REVEAL_MULTIPLEX_URL:  https://reveal-multiplex.glitch.me [Location of socket.io server]
+#+END_SRC
+
+   If your are using Reveal.js 3.x, an extra option is necessary for
+   Socket.io scripts.
+#+BEGIN_SRC org
+,#+REVEAL_MULTIPLEX_SOCKETIO_URL: http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js
+#+END_SRC
+
+   You must generate unique values for the =REVEAL_MULTIPLEX_ID= and
+   =REVEAL_MULTIPLEX_SECRET= options, obtaining these from the socket.io server
+   you are using.
+
+   If you include these options in your .org file, reveal-org will enable your
+   .html file as the master file for multiplexing and will generate a file named
+   in the form =[filename]_client.html= in the same directory as the client
+   .html file. Provide your audience with a link to the client file to allow
+   them to track your presentation on their own device.
+
+** Extra Stylesheets and Script Sources
+
+   Set =REVEAL_EXTRA_CSS= to a stylesheet file path to load extra
+   custom styles after loading a theme.
+
+   Set =REVEAL_EXTRA_SCRIPT_SRC= to script file path to load extra
+   script sources. In case of multiple script files, specify each of
+   them by one =REVEAL_EXTRA_SCRIPT_SRC= line. The specified scripts
+   is loaded after Reveal.js initialization.
+
+   Scripts that must be loaded before Reveal.js initialization can be
+   set by one or more =REVEAL_EXTRA_SCRIPT_BEFORE_SRC= lines.
+
+#+BEGIN_SRC org
+  ,#+REVEAL_EXTRA_CSS: url-to-custom-stylesheet.css
+  ,#+REVEAL_EXTRA_SCRIPT_SRC: url-to-custom-script
+#+END_SRC
+
+   Same setup can be done globally by customize variables
+   ~org-reveal-extra-css~, ~org-reveal-extra-script-src~ and
+   ~org-reveal-extra-script-before-src~. In case of multiple script
+   files, organize the script file names as a list.
+
+** Select Built-In Scripts
+
+   Set option =REVEAL_PLUGINS= or variable =org-reveal-plugins= to a
+   lisp list to select built-in scripts.
+
+   Available built-in scripts are:
+   classList/markdown/highlight/zoom/notes/search/remotes.
+
+   Default built-ins are: classList/markdown/highlight/zoom/notes/multiplex.
+
+   The following examples select /markdown/ and /highlight/ only.
+#+BEGIN_SRC org
+,#+REVEAL_PLUGINS: (markdown highlight)
+#+END_SRC
+
+** Extra Dependent Script
+
+   Set =REVEAL_EXTRA_JS= to the url of extra reveal.js dependent
+   script if necessary.
+#+BEGIN_SRC org
+,#+REVEAL_EXTRA_JS: url-to-custom-script.js
+#+END_SRC
+
+** Extra Slide Attribute
+
+   Set property =reveal_extra_attr= to headings to add any necessary attributes
+   to slides.
+
+** Export into Single File
+
+   By setting option =reveal_single_file= to ~t~, images and necessary
+   Reveal.js scripts will be embedded into the exported HTML file, to make
+   a portable HTML. Please note that remote images will /not/ be included in the
+   single file, so presentations with remote images will still require an Internet
+   connection.
+
+   Attention: This needs locally available reveal.js files!
+
+   #+BEGIN_SRC org
+   ,#+OPTIONS: reveal_single_file:t
+   #+END_SRC
+
+   When exporting into single file, functions provided by Reveal.js
+   libraries will be disabled due to limitation, including PDF export,
+   Markdown support, zooming, speaker notes and remote control.
+
+   Code highlight by highlight.js is also disabled. But *code
+   highlight by Emacs is not effected.*
+
+** Export Current Subtree
+
+  Use menu entry " C-c C-e R S" to export only current subtree,
+  without the title slide and the table of content, for a quick preview
+  of your current edition.
+
+** Skip headings
+Any heading with tag ~:noexport:~ will be discarded when exporting to
+all backends. If you want a heading being discard when exporting to
+Reveal.js only, please use tag ~:noexport_reveal:~.
+* Tips
+
+** Managing Table of Contents
+
+It is well often the automatic "Table of Contents" is too large to fit
+into one slide. One workaround is to disable the automatic TOC and
+generate one manually, which can be split into multiple
+slides. Org-reveal provides a helper function to insert a TOC to the
+current org buffer. Type ~M-x org-reveal-manual-toc~ to invoke it.
+
+To disable the automatic TOC, add =toc:nil= to =#+OPTIONS=
+#+BEGIN_SRC org
+,#+OPTIONS: toc:nil
+#+END_SRC
+
+
+
+** Internal Links
+
+   Reveal.js supports only jump between slides, but not between
+   elements on slides. Thus, we can only link to headlines in an Org
+   document.
+
+   You can create links pointing to a headline's text, or its
+   custom-id, as the examples below:
+
+   * [[Tips]].
+   * [[#my-heading][Heading]] with a =CUSTOM_ID= property.
+
+** Custom JS
+
+   To pass custom JS code to ~Reveal.initialize~, state the code by
+   ~#+REVEAL_EXTRA_INITIAL_JS~ (multiple statements are concatenated)
+   or by custom variable ~org-reveal-extra-initial-js~. The first
+   appearance of ~%s~ in the script will be replaced by Reveal.js root path.
+
+   If you want to add extra code outside of the ~Reveal.initialize~
+   block, then ~#+REVEAL_EXTRA_SCRIPT~ can be used. The code will be
+   inserted after closing the ~Reveal.initialize~ statement, but before
+   the closing ~</script>~ tag.
+
+** Executable Source Blocks
+To allow live execution of code in some languages, enable the klipse plugin by setting ~org-reveal-klipsify-src~ to non-nil.  Src blocks with the languages ~js~, ~clojure~, ~html~, ~python~, ~ruby~, ~scheme~, ~php~ will be executed with output shown in a console-like environment.  See the source code of ~org-reveal-src-block~ for more details.
+
+*** HTML Src Block
+#+BEGIN_SRC html
+<h1 class="whatever">hello, what's your name</h1>
+#+END_SRC
+
+*** Javascript Src Block
+#+BEGIN_SRC js
+console.log("success");
+var x='string using single quote';
+x
+#+END_SRC
+
+*** Perl Src Block (not klipsified)
+#+BEGIN_SRC perl
+I don't know perl!
+#+END_SRC
+
+** Properties for Sub-headings
+
+If you want to have multiple reveal presentations in a single Org-mode
+file, you might want to switch from file-based properties like:
+
+#+BEGIN_SRC org
+,#+REVEAL_HLEVEL: 2
+,#+REVEAL_INIT_OPTIONS: transition: 'cube'
+,#+REVEAL_THEME: moon
+#+END_SRC
+
+to properties of sub-headings like:
+
+#+BEGIN_SRC org
+:PROPERTIES:
+:EXPORT_REVEAL_HLEVEL: 2
+:EXPORT_INIT_OPTIONS: transition: 'cube'
+:EXPORT_REVEAL_THEME: moon
+:END:
+#+END_SRC
+
+This way, each org-reveal presentation can have its own settings. An example heading with corresponding settings would look like:
+
+#+BEGIN_SRC org
+   ,* My org-reveal presentation among many within the same Org-mode file
+  :PROPERTIES:
+  :reveal_overview: t
+  :EXPORT_AUTHOR: Test Author
+  :EXPORT_DATE: 2018-01-01
+  :EXPORT_TITLE: My Title
+  :EXPORT_EMAIL: Test@example.com
+  :EXPORT_OPTIONS: num:nil toc:nil reveal_keyboard:t reveal_overview:t
+  :EXPORT_REVEAL_HLEVEL: 3
+  :EXPORT_REVEAL_MARGIN: 200
+  :END:
+#+END_SRC
+
+** Customize iframe background slide
+:PROPERTIES:
+:reveal_background_iframe: https://hakim.se
+:reveal_background: rgb(0,0,0)
+:reveal_background_opacity: 0.8
+:reveal_background_position: absolute
+:reveal_extra_attr: height: 200px; bottom: -700px; border-radius: 10px; padding: 20px
+:END:
+#+REVEAL_HTML: <smaller>
+#+BEGIN_SRC org
+  :reveal_background_position: absolute
+  :reveal_extra_attr: height: 200px; bottom: -700px; border-radius: 10px; padding: 20px
+#+END_SRC
+#+REVEAL_HTML: </smaller>
+
+* Thanks
+
+  Courtesy to:
+
+#+ATTR_REVEAL: :frag roll-in
+  The powerful Org-mode,
+#+ATTR_REVEAL: :frag roll-in
+  the impressive Reveal.js
+#+ATTR_REVEAL: :frag roll-in
+  and the precise MathJax

@@ -13,6 +13,77 @@
 #+REVEAL_EXTRA_CSS: grids.css
 
 
+
+
+
 * Sección 
   
 ** slide
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+  #+ATTR_REVEAL: :frag (roll-in)
+  - [[color:orange][uno]]
+  - [[color:green][dos]]
+  - [[color:yellow][tres]]
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+  #+ATTR_REVEAL: :frag (roll-in)
+  - [[color:blue][cuatro]]
+  - [[color:red][cinco]]
+  - [[color:brown][seis]]
+
+  #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+
+#+REVEAL: split
+#+REVEAL_HTML: <div style="font-size: 50%;">   
+- imagen reducida
+
+#+CAPTION: El obelisco
+#+ATTR_HTML: :height 400 :align center
+[[file:9dejulio.jpg]]
+
+ #+REVEAL_HTML: </div>
+
+** otro slide
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+  #+ATTR_REVEAL: :frag (shrink)
+  - [[color:orange][uno]]
+  - [[color:green][dos]]
+  - [[color:yellow][tres]]
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+  #+ATTR_REVEAL: :frag (grow shrink fade-out) :frag_idx (3 2 1)
+  - [[color:blue][cuatro]]
+  - [[color:red][cinco]]
+  - [[color:brown][seis]]
+
+  #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+
+#+REVEAL: split
+#+REVEAL_HTML: <div class="gridded_frame_with_columns">
+#+REVEAL_HTML: <div class="one_of_2_columns"> 
+#+REVEAL_HTML: <div style="font-size: 50%;">   
+- imagen reducida
+
+#+CAPTION: El obelisco
+#+ATTR_HTML: :height 400 :align center
+[[file:9dejulio.jpg]]
+
+ #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div class="one_of_2_columns"> 
+  #+ATTR_REVEAL: :frag (grow shrink fade-out) :frag_idx (3 2 1)
+  - [[color:blue][cuatro]]
+  - [[color:red][cinco]]
+  - [[color:brown][seis]]
+  #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+
+
+
+* Otra Seccion
