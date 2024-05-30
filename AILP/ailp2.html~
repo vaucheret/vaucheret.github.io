@@ -31,12 +31,12 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title"><span style="font-size:65%;">Interpretación Abstracta de Programas Logicos</span></h1><p class="subtitle"></p>
-<p class="date">Created: 2024-05-30 jue 11:56</p>
+<p class="date">Created: 2024-05-30 jue 13:20</p>
 </section>
 
 <section>
-<section id="slide-org48cdb76">
-<h2 id="org48cdb76">Introducción</h2>
+<section id="slide-org70e6b75">
+<h2 id="org70e6b75">Introducción</h2>
 <div style="font-size: 70%;">
 
 <ul>
@@ -72,8 +72,8 @@ Dado Un programa <span style="color:orange;">\(P\)</span>, generar un programa <
 </section>
 </section>
 <section>
-<section id="slide-org524beae">
-<h2 id="org524beae">Analisis de Programas</h2>
+<section id="slide-orge6e4c63">
+<h2 id="orge6e4c63">Analisis de Programas</h2>
 <div style="font-size: 90%;">
 <ul>
 <li class="fragment roll-in">Frecuente en compiladores aunque raramente tratados en modo formal:
@@ -95,8 +95,8 @@ herramientas de <span style="color:green;">análisis</span> de <span style="colo
 </section>
 </section>
 <section>
-<section id="slide-org0a8c319">
-<h2 id="org0a8c319"><span style="font-size:70%;">¿Qué es la Interpretación Abstracta?</span></h2>
+<section id="slide-orgd96262e">
+<h2 id="orgd96262e"><span style="font-size:70%;">¿Qué es la Interpretación Abstracta?</span></h2>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in"><p>
@@ -124,8 +124,8 @@ problema del analisis del flujo del programa</li>
 
 </ul>
 </section>
-<section id="slide-org233359a">
-<h3 id="org233359a">¿Qué es la Interpretación Abstracta?</h3>
+<section id="slide-orgcf53bee">
+<h3 id="orgcf53bee">¿Qué es la Interpretación Abstracta?</h3>
 <div style="font-size: 80%;">
 <ul>
 <li><p>
@@ -144,8 +144,8 @@ aproximado en lugar del dominio concreto.</li>
 </section>
 </section>
 <section>
-<section id="slide-org909f844">
-<h2 id="org909f844"><span style="font-size:70%;">Ejemplo: La regla de los signos</span></h2>
+<section id="slide-orge4ee184">
+<h2 id="orge4ee184"><span style="font-size:70%;">Ejemplo: La regla de los signos</span></h2>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in">Consideremos el dominio \(D = Z\) (enteros)</li>
@@ -194,8 +194,8 @@ negativo
 
 </ul>
 </section>
-<section id="slide-org1358e44">
-<h3 id="org1358e44">Algunas observaciones:</h3>
+<section id="slide-org3adad01">
+<h3 id="org3adad01">Algunas observaciones:</h3>
 <ul>
 <li>si tenemos <span style="color:green;">\(z = x * y\)</span> entonces:
 si <span style="color:green;">\(x,y \in Z\)</span> son aproximados con <span style="color:green;">\(x_\alpha, y_\alpha \in
@@ -213,8 +213,8 @@ probar que un análisis es correcto</li>
 </section>
 </section>
 <section>
-<section id="slide-org1fe7ead">
-<h2 id="org1fe7ead"><span style="font-size:65%;">Ejemplo: La regla de los signos (cont.)</span></h2>
+<section id="slide-org4876f40">
+<h2 id="org4876f40"><span style="font-size:65%;">Ejemplo: La regla de los signos (cont.)</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">De nuevo \(D = Z\) (enteros)</li>
@@ -274,8 +274,8 @@ Esto nos permite razonar, que \(z=y*(0*x)\) es cero
 
 </ul>
 </section>
-<section id="slide-orged707fa">
-<h3 id="orged707fa">Algunas observaciones:</h3>
+<section id="slide-org7721203">
+<h3 id="org7721203">Algunas observaciones:</h3>
 <ul>
 <li>Hay un grado de libertad en definir operadores abstractos y
 dominios diferentes</li>
@@ -289,8 +289,8 @@ dominios diferentes</li>
 </section>
 </section>
 <section>
-<section id="slide-orgdf617e7">
-<h2 id="orgdf617e7"><span style="font-size:65%;">Ejemplo: La regla de los signos (cont.)</span></h2>
+<section id="slide-org6df5735">
+<h2 id="org6df5735"><span style="font-size:65%;">Ejemplo: La regla de los signos (cont.)</span></h2>
 <div style="font-size: 85%;">
 <ul>
 <li class="fragment roll-in">De nuevo \(D = Z\) (enteros)</li>
@@ -306,8 +306,8 @@ Nuevo <b>dominio abstracto</b>: \(D''_\alpha = \{[-],[0],[+],\top\}\)
 
 </ul>
 </section>
-<section id="slide-org8688624">
-<h3 id="org8688624">suma abstracta</h3>
+<section id="slide-org4c95847">
+<h3 id="org4c95847">suma abstracta</h3>
 <ul>
 <li><p>
 \(+_\alpha : {D''_\alpha}^2 \to D''_\alpha\)
@@ -378,8 +378,8 @@ definido por:
 </section>
 </section>
 <section>
-<section id="slide-org525ccc2">
-<h2 id="org525ccc2">Observaciones Importantes</h2>
+<section id="slide-org50fe3b5">
+<h2 id="org50fe3b5">Observaciones Importantes</h2>
 <ul>
 <li class="fragment roll-in">Además de la imprecisión debido a la "tosquedad" o lo "básico" de
 \(D_\alpha\), las versiones abstractas de las operaciones
@@ -393,8 +393,8 @@ definido por:
 </section>
 </section>
 <section>
-<section id="slide-orgdb0d5d4">
-<h2 id="orgdb0d5d4"><span style="font-size:65%;">Propiedades de la Interpretación Abstracta</span></h2>
+<section id="slide-org232510b">
+<h2 id="org232510b"><span style="font-size:65%;">Propiedades de la Interpretación Abstracta</span></h2>
 <div style="font-size: 65%;">
 <ul>
 <li class="fragment roll-in"><span style="color:blue;">Requeridas</span>:
@@ -425,8 +425,8 @@ procedimiento de interpretación imita la semántica del lenguaje</li>
 </section>
 </section>
 <section>
-<section id="slide-org2f0e8a2">
-<h2 id="org2f0e8a2"><span style="font-size:60%;">Aproximaciones Correctas</span></h2>
+<section id="slide-org648361d">
+<h2 id="org648361d"><span style="font-size:60%;">Aproximaciones Correctas</span></h2>
 <div style="font-size: 60%;">
 <ul>
 <li class="fragment roll-in"><span style="color:blue;">Idea básica en aproximación</span>: para alguna propiedad \(p\) queremos mostrar
@@ -448,8 +448,8 @@ Una función
 </section>
 </section>
 <section>
-<section id="slide-orgb9bfb51">
-<h2 id="orgb9bfb51"><span style="font-size:55%;">Aproximación del significado de un programa</span></h2>
+<section id="slide-org05e2339">
+<h2 id="org05e2339"><span style="font-size:55%;">Aproximación del significado de un programa</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">El significado de un programa \(P\) es un mapeo \(F_P\) de entrada a
@@ -464,8 +464,8 @@ denota el conjunto potencia de S, y \[F_P^*(S) = \{F_P(x) \arrowvert x \in  S\}\
 
 </ul>
 </section>
-<section id="slide-org0e9a743">
-<h3 id="org0e9a743"><span style="font-size:75%;">Aproximación del significado de un programa</span></h3>
+<section id="slide-orgb5eeaa1">
+<h3 id="orgb5eeaa1"><span style="font-size:75%;">Aproximación del significado de un programa</span></h3>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">Una función \[G: \wp(D) \rightarrow \wp(D)\] es una aproximación segura de
@@ -479,8 +479,8 @@ Las propiedades se pueden demostrar usando \(G\) en lugar de \(F_P^*\)
 </section>
 </section>
 <section>
-<section id="slide-orga72e514">
-<h2 id="orga72e514"><span style="font-size:70%;">Aproximación del significado de un programa (cont.)</span></h2>
+<section id="slide-orge5011ef">
+<h2 id="orge5011ef"><span style="font-size:70%;">Aproximación del significado de un programa (cont.)</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">Para alguna propiedad \(p\) queremos mostrar que para las
@@ -499,8 +499,8 @@ Y como \(S_a \supseteq S\), entonces: para las entradas \(S, p(F_P^*(S))\)
 </section>
 </section>
 <section>
-<section id="slide-org95e836e">
-<h2 id="org95e836e"><span style="font-size:70%;">Dominio abstracto y función de concretización</span></h2>
+<section id="slide-org0c7f573">
+<h2 id="org0c7f573"><span style="font-size:70%;">Dominio abstracto y función de concretización</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">El dominio \(\wp(D)\) se puede representar mediante un dominio
@@ -516,8 +516,8 @@ describe [\((\wp(D), \supseteq)\) es obviamente una retículo completo]
 
 </ul>
 </section>
-<section id="slide-org5690f6a">
-<h3 id="org5690f6a">Ejemplo</h3>
+<section id="slide-org2a88ea2">
+<h3 id="org2a88ea2">Ejemplo</h3>
 <ul>
 <li class="fragment roll-in">En el ejemplo de los "signos", con \(D_\alpha =
   \{[-],[0],[+],\top \}\), \(\gamma\) viene dado por \[
@@ -535,8 +535,8 @@ describe [\((\wp(D), \supseteq)\) es obviamente una retículo completo]
 </section>
 </section>
 <section>
-<section id="slide-orgd62499c">
-<h2 id="orgd62499c"><span style="font-size:85%;">Función de abstracción</span></h2>
+<section id="slide-orgcebc43b">
+<h2 id="orgcebc43b"><span style="font-size:85%;">Función de abstracción</span></h2>
 <div style="font-size: 85%;">
 <p>
 También podemos definir (no estrictamente necesario) una función de
@@ -547,8 +547,8 @@ También podemos definir (no estrictamente necesario) una función de
 </p>
 </div>
 </section>
-<section id="slide-orge3cbc29">
-<h3 id="orge3cbc29">Por Ejemplo</h3>
+<section id="slide-orgb55ae1b">
+<h3 id="orgb55ae1b">Por Ejemplo</h3>
 <div style="font-size: 85%;">
 <p>
 En el ejemplo de los "signos", \[
@@ -565,8 +565,8 @@ En el ejemplo de los "signos", \[
 </section>
 </section>
 <section>
-<section id="slide-org4afcb86">
-<h2 id="org4afcb86"><span style="font-size:70%;">Significado abstracto y seguridad</span></h2>
+<section id="slide-orgffa72f9">
+<h2 id="orgffa72f9"><span style="font-size:70%;">Significado abstracto y seguridad</span></h2>
 <div style="font-size: 70%;">
 <div class="gridded_frame_with_columns">
 <div class="one_of_2_columns">
@@ -596,8 +596,8 @@ P.ej. puede demostrarse, una propiedad como "si este programa toma un número po
 </section>
 </section>
 <section>
-<section id="slide-orgc65bd90">
-<h2 id="orgc65bd90"><span style="font-size:70%;">Demostrar propiedades en abstracto</span></h2>
+<section id="slide-orge7945ea">
+<h2 id="orge7945ea"><span style="font-size:70%;">Demostrar propiedades en abstracto</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">Generando \(F_\alpha\):
@@ -627,8 +627,8 @@ negativo como salida"</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc87ebc9">
-<h2 id="orgc87ebc9"><span style="font-size:70%;">Semánticas Colectoras</span></h2>
+<section id="slide-org71e3d72">
+<h2 id="org71e3d72"><span style="font-size:70%;">Semánticas Colectoras</span></h2>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in">La semántica de "entrada-salida" es a menudo demasiado tosca para un
@@ -645,8 +645,8 @@ colectoras"
 
 </ul>
 </section>
-<section id="slide-org26c1a66">
-<h3 id="org26c1a66">Semánticas Colectoras</h3>
+<section id="slide-org480d019">
+<h3 id="org480d019">Semánticas Colectoras</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in">El análisis a menudo calcula una colección de estados abstractos
@@ -662,8 +662,8 @@ mejor descripción \(\to\)  estructura de retículo en un dominio abstracto \[\{
 </section>
 </section>
 <section>
-<section id="slide-orgf34c63d">
-<h2 id="orgf34c63d"><span style="font-size:70%;">Estructura de Retículo</span></h2>
+<section id="slide-org5314975">
+<h2 id="org5314975"><span style="font-size:70%;">Estructura de Retículo</span></h2>
 <div style="font-size: 65%;">
 <div class="gridded_frame_with_columns">
 <div class="one_of_2_columns">
@@ -708,8 +708,8 @@ descripción "general" para el punto:
 </section>
 </section>
 <section>
-<section id="slide-org0dcdaf1">
-<h2 id="org0dcdaf1"><span style="font-size:80%;">Ejemplo: aritmética entera de signos</span></h2>
+<section id="slide-org82bfc5a">
+<h2 id="org82bfc5a"><span style="font-size:80%;">Ejemplo: aritmética entera de signos</span></h2>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in"><p>
@@ -726,8 +726,8 @@ para tener una retículo completo: \(D_\alpha = \{\bot, [-], [0],
 
 </ul>
 </section>
-<section id="slide-org72866db">
-<h3 id="org72866db">Ejemplo: aritmética entera de signos</h3>
+<section id="slide-orgc09884c">
+<h3 id="orgc09884c">Ejemplo: aritmética entera de signos</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in">La función de concretización debe ampliarse con \(\gamma(\bot) = \emptyset\)</li>
@@ -749,8 +749,8 @@ El reticulo es:
 </section>
 </section>
 <section>
-<section id="slide-orgb693313">
-<h2 id="orgb693313"><span style="font-size:60%;">Ejemplo:aritmética entera de signos(cont.)</span></h2>
+<section id="slide-org415cce6">
+<h2 id="org415cce6"><span style="font-size:60%;">Ejemplo:aritmética entera de signos(cont.)</span></h2>
 <div style="font-size: 55%;">
 <ul>
 <li>Para hacer <span style="color:blue;">\(t\)</span> mas significativo, consideramos <span style="color:blue;">\(D_\alpha =
@@ -819,8 +819,8 @@ El reticulo es:
 </section>
 </section>
 <section>
-<section id="slide-org6c082b6">
-<h2 id="org6c082b6"><span style="font-size:70%;">El enfoque de la inserción de Galois</span></h2>
+<section id="slide-org0a34116">
+<h2 id="org0a34116"><span style="font-size:70%;">El enfoque de la inserción de Galois</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li>A continuación, nos referiremos a \(\wp(D)\) simplemente como \(D\)</li>
@@ -845,8 +845,8 @@ se denomina <i>inserción de Galois</i> si:
 
 </ul>
 </section>
-<section id="slide-orgf1d11e3">
-<h3 id="orgf1d11e3">La <i>Aproximación segura</i></h3>
+<section id="slide-org49f7783">
+<h3 id="org49f7783">La <i>Aproximación segura</i></h3>
 <div style="font-size: 70%;">
 <ul>
 <li>definida ahora en términos de una
@@ -867,8 +867,8 @@ aproximación de \(lfp(F)\)
 </section>
 </section>
 <section>
-<section id="slide-orgf297b22">
-<h2 id="orgf297b22"><span style="font-size:70%;">Terminación: condiciones en \(F_\alpha\) y \(D_\alpha\)</span></h2>
+<section id="slide-orgd1960ae">
+<h2 id="orgd1960ae"><span style="font-size:70%;">Terminación: condiciones en \(F_\alpha\) y \(D_\alpha\)</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">La pregunta es si \(lfp(F_\alpha)\) es finitamente computable</li>
@@ -893,8 +893,8 @@ secuencia de Kleene será finito en casos que incluyen:
 </section>
 </section>
 <section>
-<section id="slide-org2d45bdb">
-<h2 id="org2d45bdb"><span style="font-size:70%;">Estructura de Retículos</span></h2>
+<section id="slide-orgd0ecd67">
+<h2 id="orgd0ecd67"><span style="font-size:70%;">Estructura de Retículos</span></h2>
 <div style="font-size: 70%;">
 <div class="gridded_frame_with_columns">
 <div class="one_of_3_columns">
@@ -941,8 +941,8 @@ secuencia de Kleene será finito en casos que incluyen:
 </section>
 </section>
 <section>
-<section id="slide-org540760d">
-<h2 id="org540760d"><span style="font-size:80%;">Terminación: Discusión</span></h2>
+<section id="slide-orgb2b3c6a">
+<h2 id="orgb2b3c6a"><span style="font-size:80%;">Terminación: Discusión</span></h2>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in">Demostrar la monotonicidad de \(F_\alpha\) puede ser más difícil que
@@ -962,8 +962,8 @@ dinámica, etc. (Ver: widening y narrowing)
 </section>
 </section>
 <section>
-<section id="slide-org042959f">
-<h2 id="org042959f"><span style="font-size:80%;">Análisis de programas lógicos</span></h2>
+<section id="slide-orgd371fb9">
+<h2 id="orgd371fb9"><span style="font-size:80%;">Análisis de programas lógicos</span></h2>
 <div style="font-size: 80%;">
 <ul>
 <li>¿Qué semántica?
@@ -990,8 +990,8 @@ Semántica operativa: cercana al comportamiento del programa
 
 </ul>
 </section>
-<section id="slide-org1cadac8">
-<h3 id="org1cadac8">Análisis de programas lógicos</h3>
+<section id="slide-orgfeb2605">
+<h3 id="orgfeb2605">Análisis de programas lógicos</h3>
 <div style="font-size: 80%;">
 <ul>
 <li>Los análisis basados en semántica declarativa a menudo se denominan análisis <b>bottom up</b></li>
@@ -1008,8 +1008,8 @@ transformación de programas)
 </section>
 </section>
 <section>
-<section id="slide-org0841654">
-<h2 id="org0841654"><span style="font-size:80%;">Caso de Estudio: Semántica de punto fijo</span></h2>
+<section id="slide-org85a8852">
+<h2 id="org85a8852"><span style="font-size:80%;">Caso de Estudio: Semántica de punto fijo</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">Dado el lenguaje de primer orden \(L\) asociado con un programa \(P\)
@@ -1027,8 +1027,8 @@ todos las consecuencias del programa.
 
 </ul>
 </section>
-<section id="slide-org00f7035">
-<h3 id="org00f7035">Caso de Estudio: Semántica de punto fijo</h3>
+<section id="slide-org7d09349">
+<h3 id="org7d09349">Caso de Estudio: Semántica de punto fijo</h3>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in">El operador de consecuencia inmediata (\(T_P\)) es un mapeo \(T_P : I
@@ -1048,8 +1048,8 @@ elemento inferior del retículo (la interpretación vacía, \(\emptyset\)).</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc4318a9">
-<h2 id="orgc4318a9"><span style="font-size:70%;">Semántica de punto fijo: Ejemplo</span></h2>
+<section id="slide-org553b824">
+<h2 id="org553b824"><span style="font-size:70%;">Semántica de punto fijo: Ejemplo</span></h2>
 <div style="font-size: 70%;">
 <p>
 \(P = \{ p(f(X)) \leftarrow p(X). \\
@@ -1089,8 +1089,8 @@ T_P \uparrow \omega &= H \\
 </section>
 </section>
 <section>
-<section id="slide-org692b65d">
-<h2 id="org692b65d"><span style="font-size:80%;">Interpretación abstracta "Bottom up"</span></h2>
+<section id="slide-orgdb59af4">
+<h2 id="orgdb59af4"><span style="font-size:80%;">Interpretación abstracta "Bottom up"</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li>Encuentra una aproximación de \(H\) al aproximar \(lfp(T_P)\)</li>
@@ -1110,8 +1110,8 @@ Operador Abstracto: versión abstracta del operador \(T_P\)
 
 </ul>
 </section>
-<section id="slide-org8fd7b51">
-<h3 id="org8fd7b51">Interpretación abstracta "Bottom up" (cont.)</h3>
+<section id="slide-org3a5afca">
+<h3 id="org3a5afca">Interpretación abstracta "Bottom up" (cont.)</h3>
 <div style="font-size: 70%;">
 <ul>
 <li>Aplicamos interpretación abstracta:
@@ -1142,8 +1142,8 @@ obtendrá en un número finito de pasos \(n\) y \(H^\alpha\) se aproximará a \(
 </ul>
 
 </section>
-<section id="slide-orgc8fd427">
-<h3 id="orgc8fd427">Interpretación abstracta "Bottom up" (cont.)</h3>
+<section id="slide-orge21a06a">
+<h3 id="orge21a06a">Interpretación abstracta "Bottom up" (cont.)</h3>
 
 <div class="figure">
 <p><img src="bottomup3.png" alt="bottomup3.png" />
@@ -1154,8 +1154,8 @@ obtendrá en un número finito de pasos \(n\) y \(H^\alpha\) se aproximará a \(
 </section>
 </section>
 <section>
-<section id="slide-org3de052c">
-<h2 id="org3de052c"><span style="font-size:70%;">Ejemplo: simple inferencia de "tipos"</span></h2>
+<section id="slide-orgfbc24e1">
+<h2 id="orgfbc24e1"><span style="font-size:70%;">Ejemplo: simple inferencia de "tipos"</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li>Problema de "inferencia de tipo" mínimal [Sondergaard]: Aproximación
@@ -1182,8 +1182,8 @@ de qué predicados están en \(H\)</li>
 
 </ul>
 </section>
-<section id="slide-org3413bed">
-<h3 id="org3413bed">Ejemplo: simple inferencia de "tipos" (cont.)</h3>
+<section id="slide-orgad4a894">
+<h3 id="orgad4a894">Ejemplo: simple inferencia de "tipos" (cont.)</h3>
 <div style="font-size: 70%;">
 <ul>
 <li>Versión abstracta de \(T_P\) (después de alguna simplificación): \[T_P
@@ -1209,8 +1209,8 @@ finito de pasos \(n\) y \(H^\alpha = T^\alpha_P \uparrow n\) se aproxima a \(H\)
 </ul>
 
 </section>
-<section id="slide-orgf6fa543">
-<h3 id="orgf6fa543">Ejemplo: simple inferencia de "tipos" (cont.)</h3>
+<section id="slide-org46f8226">
+<h3 id="org46f8226">Ejemplo: simple inferencia de "tipos" (cont.)</h3>
 <div style="font-size: 65%;">
 
 <ul>
@@ -1259,8 +1259,8 @@ finito de pasos \(n\) y \(H^\alpha = T^\alpha_P \uparrow n\) se aproxima a \(H\)
 </section>
 </section>
 <section>
-<section id="slide-org32afa82">
-<h2 id="org32afa82"><span style="font-size:70%;">Análisis <b>bottom up</b> basado en \(T_P\): Discusión</span></h2>
+<section id="slide-org8e1eda8">
+<h2 id="org8e1eda8"><span style="font-size:70%;">Análisis <b>bottom up</b> basado en \(T_P\): Discusión</span></h2>
 <div style="font-size: 65%;">
 <ul>
 <li>Ventajas:
@@ -1290,8 +1290,8 @@ de una consulta)
 </section>
 </section>
 <section>
-<section id="slide-org0cf5a59">
-<h2 id="org0cf5a59"><span style="font-size:70%;">Análisis <b>Top down</b> (resumido)</span></h2>
+<section id="slide-org7cc8e1f">
+<h2 id="org7cc8e1f"><span style="font-size:70%;">Análisis <b>Top down</b> (resumido)</span></h2>
 <div style="font-size: 68%;">
 <ul>
 <li class="fragment roll-in">Definir una semántica concreta extendida (recolectora), derivada de
@@ -1319,8 +1319,8 @@ esto hace que el análisis de programas lógicos sea muy interesante (y bastante
 </section>
 </section>
 <section>
-<section id="slide-orge3b6555">
-<h2 id="orge3b6555"><span style="font-size:70%;">Arbol AND-OR abstracto</span></h2>
+<section id="slide-orgc998ebb">
+<h2 id="orgc998ebb"><span style="font-size:70%;">Arbol AND-OR abstracto</span></h2>
 <div style="font-size: 65%;">
 <ul>
 <li>Exploración del árbol <code>?- p.   h:- p1, ... pn.</code>
@@ -1342,8 +1342,8 @@ Procedure exit: de (each or all of the) \(\beta{i}_{exit}\) obtiene \(\lambda_{s
 </section>
 </section>
 <section>
-<section id="slide-org8411d98">
-<h2 id="org8411d98"><span style="font-size:70%;">Optimización de Punto Fijo</span></h2>
+<section id="slide-org10890f2">
+<h2 id="org10890f2"><span style="font-size:70%;">Optimización de Punto Fijo</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li>Punto fijo es requerido solo en los predicados recursivos:</li>
@@ -1367,8 +1367,8 @@ es alcanzado"
 </section>
 </section>
 <section>
-<section id="slide-orgbfd0782">
-<h2 id="orgbfd0782">Ciaopp</h2>
+<section id="slide-org084e0db">
+<h2 id="org084e0db">Ciaopp</h2>
 <div style="font-size: 80%;">
 <ul>
 <li>Entrada 
@@ -1399,8 +1399,8 @@ Programa Transformado con:
 </section>
 </section>
 <section>
-<section id="slide-org6f257c0">
-<h2 id="org6f257c0"><span style="font-size:75%;">Aserciones</span></h2>
+<section id="slide-orgba95876">
+<h2 id="orgba95876"><span style="font-size:75%;">Aserciones</span></h2>
 <div style="font-size: 75%;">
 <ul>
 <li>estado de las aserciones
@@ -1433,8 +1433,8 @@ ejemplo
 </section>
 </section>
 <section>
-<section id="slide-orga5c5cc4">
-<h2 id="orga5c5cc4"><span style="font-size:75%;">Propiedades del estado de éxito</span></h2>
+<section id="slide-org79f2802">
+<h2 id="org79f2802"><span style="font-size:75%;">Propiedades del estado de éxito</span></h2>
 <div style="font-size: 75%;">
 <ul>
 <li class="fragment roll-in"><p>
@@ -1474,8 +1474,8 @@ para la cual <code>Predcond</code> ocurre, si la llamada
 </section>
 </section>
 <section>
-<section id="slide-org382a15d">
-<h2 id="org382a15d"><span style="font-size:70%;">Propiedades en la llamada y computación</span></h2>
+<section id="slide-org708db9f">
+<h2 id="org708db9f"><span style="font-size:70%;">Propiedades en la llamada y computación</span></h2>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in"><p>
@@ -1515,8 +1515,8 @@ computación de <code>Goal</code>".
 </section>
 </section>
 <section>
-<section id="slide-org669709a">
-<h2 id="org669709a"><span style="font-size:75%;">Composición de Aserciones</span></h2>
+<section id="slide-orgb670649">
+<h2 id="orgb670649"><span style="font-size:75%;">Composición de Aserciones</span></h2>
 <div style="font-size: 75%;">
 <p>
 Para facilitar la escritura una aserción compuesta de un predicado
@@ -1565,8 +1565,8 @@ si la aserción <code>pred</code> tiene los campos <code>+</code> y <code>:</cod
 </section>
 </section>
 <section>
-<section id="slide-orgb880a0b">
-<h2 id="orgb880a0b"><span style="font-size:70%;">Ejemplo de aserciones compuestas</span></h2>
+<section id="slide-org4cc99da">
+<h2 id="org4cc99da"><span style="font-size:70%;">Ejemplo de aserciones compuestas</span></h2>
 <div style="font-size: 75%;">
 <ul>
 <li>Consideremos el programa clasico quicksort <code>qsort</code> . Podemos usar la</li>
@@ -1610,8 +1610,8 @@ La diferencia reside en que se espera que <code>B</code> sea una lista en los ca
 </section>
 </section>
 <section>
-<section id="slide-orgb9efbc7">
-<h2 id="orgb9efbc7"><span style="font-size:70%;">Ejemplo de aserciones compuestas (cont.)</span></h2>
+<section id="slide-org6a9f505">
+<h2 id="org6a9f505"><span style="font-size:70%;">Ejemplo de aserciones compuestas (cont.)</span></h2>
 <div style="font-size: 75%;">
 <ul>
 <li><p>
@@ -1647,8 +1647,9 @@ argumento y una variable en el segundo no fallen:
 </section>
 </section>
 <section>
-<section id="slide-org2644146">
-<h2 id="org2644146">Ejemplo de aserciones compuestas (cont.)</h2>
+<section id="slide-orgcfbe047">
+<h2 id="orgcfbe047"><span style="font-size:70%;">Ejemplo de aserciones compuestas (cont.)</span></h2>
+<div style="font-size: 75%;">
 <p>
 En lugar de todas estas aserciones se puede usar la compuesta:
 </p>
@@ -1674,12 +1675,13 @@ que es equivalente a:
 </code></pre>
 </div>
 </div>
-
+</div>
 </section>
 </section>
 <section>
-<section id="slide-orgdbf943c">
-<h2 id="orgdbf943c">Ejemplo de aserciones compuestas (cont.)</h2>
+<section id="slide-orgd07d77c">
+<h2 id="orgd07d77c"><span style="font-size:70%;">Ejemplo de aserciones compuestas (cont.)</span></h2>
+<div style="font-size: 75%;">
 <p>
 si queremos llamar a <code>qsort</code> con algo diferente a una variable en el
 segundo argumento se debe agregar:
@@ -1707,12 +1709,14 @@ que es equivalente a:
 </code></pre>
 </div>
 </div>
+</div>
 
 </section>
 </section>
 <section>
-<section id="slide-org1b74962">
-<h2 id="org1b74962">Tipos Regulares</h2>
+<section id="slide-org1e93df5">
+<h2 id="org1e93df5"><span style="font-size:80%;">Tipos Regulares</span></h2>
+<div style="font-size: 80%;">
 <p>
 Tipos Regulares son propiedades cuyas definiciones son  <i>"programas
 regulares"</i>. Ejemplos:
@@ -1735,12 +1739,14 @@ regulares"</i>. Ejemplos:
 </code></pre>
 </div>
 </div>
+</div>
 
 </section>
 </section>
 <section>
-<section id="slide-org378e524">
-<h2 id="org378e524">Lenguaje de aserciones</h2>
+<section id="slide-org7d6a1b4">
+<h2 id="org7d6a1b4"><span style="font-size:70%;">Lenguaje de aserciones</span></h2>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 ejemplo de <code>pred/1</code> 
@@ -1766,8 +1772,16 @@ ejemplo de <code>pred/2</code>
 <pre  class="src src-prolog"   ><code trim>:- check pred length(<span style="color: #ffd700;">L</span>,<span style="color: #ffd700;">N</span>) : list * var =&gt; list * integer.
 </code></pre>
 </div>
+</div>
 </div></li>
 
+</ul>
+
+</section>
+<section id="slide-orgde21e3f">
+<h3 id="orgde21e3f"><span style="font-size:100%;">Lenguaje de aserciones</span></h3>
+<div style="font-size: 80%;">
+<ul>
 <li><p>
 ejemplo de <code>comp/1</code>
 </p>
@@ -1779,6 +1793,10 @@ ejemplo de <code>comp/1</code>
 </div>
 </div></li>
 
+</ul>
+
+
+<ul>
 <li><p>
 <code>test</code> es similar a <code>success</code> pero especifica un caso de test como
 parte de la especificación del predicado
@@ -1789,15 +1807,16 @@ parte de la especificación del predicado
 <pre  class="src src-prolog"   ><code trim>:- test length(<span style="color: #ffd700;">L</span>,<span style="color: #ffd700;">N</span>) : ( <span style="color: #ffd700;">L</span> = <span style="color: #ffb6c1; font-size: 105%;">[</span>1,2,5,2<span style="color: #ffb6c1; font-size: 105%;">]</span> ) =&gt; ( <span style="color: #ffd700;">N</span> = 4 ).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
-
 </section>
 </section>
 <section>
-<section id="slide-org23e22d4">
-<h2 id="org23e22d4">Lenguaje de aserciones (cont.)</h2>
+<section id="slide-orgd95a409">
+<h2 id="orgd95a409"><span style="font-size:70%;">Lenguaje de aserciones (cont)</span></h2>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 definición de nuevos modos
@@ -1836,6 +1855,7 @@ documentación
 :- doc(p(<span style="color: #ffd700;">A</span>,<span style="color: #ffd700;">B</span>),<span style="color: #ffa07a;">"A is bound upon predicate entry."</span>).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
@@ -1844,8 +1864,8 @@ documentación
 </section>
 </section>
 <section>
-<section id="slide-org09a706e">
-<h2 id="org09a706e">Ciaopp</h2>
+<section id="slide-org12e25e8">
+<h2 id="org12e25e8">Ciaopp</h2>
 
 <div class="figure">
 <p><img src="arquitectura.png" alt="arquitectura.png" />
@@ -1863,8 +1883,9 @@ documentación
 </section>
 </section>
 <section>
-<section id="slide-orgf53b770">
-<h2 id="orgf53b770">Analisis</h2>
+<section id="slide-orgdc6192e">
+<h2 id="orgdc6192e"><span style="font-size:80%;">Analisis</span></h2>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Entrada
@@ -1897,13 +1918,15 @@ Salida
 
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
 
 </section>
-<section id="slide-org432130a">
-<h3 id="org432130a">Analisis</h3>
+<section id="slide-org0445843">
+<h3 id="org0445843">Analisis</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Entrada
@@ -1931,13 +1954,14 @@ Entrada
 <span style="color: #1e90ff; font-size: 105%; font-weight: bold;">append</span>(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">H</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">X</span><span style="color: #ffb6c1; font-size: 105%;">]</span>,<span style="color: #ffd700;">Y</span>,<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">H</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Z</span><span style="color: #ffb6c1; font-size: 105%;">]</span>):- append(<span style="color: #ffd700;">X</span>,<span style="color: #ffd700;">Y</span>,<span style="color: #ffd700;">Z</span>).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
-
 </section>
-<section id="slide-orgfec600d">
-<h3 id="orgfec600d">Analisis</h3>
+<section id="slide-org85dbcd1">
+<h3 id="org85dbcd1">Analisis</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 dominio shfr sin el ~:- entry &#x2026; ~ 
@@ -1958,13 +1982,14 @@ dominio shfr sin el ~:- entry &#x2026; ~
    =&gt; ( mshare(<span style="color: #ffb6c1; font-size: 105%;">[[</span><span style="color: #ffd700;">X</span>,<span style="color: #ffd700;">_B</span><span style="color: #ffb6c1; font-size: 105%;">]]</span>), ground(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">_A</span><span style="color: #ffb6c1; font-size: 105%;">]</span>) ).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
-
 </section>
-<section id="slide-org2accd8f">
-<h3 id="org2accd8f">Analisis</h3>
+<section id="slide-orgfa2a748">
+<h3 id="orgfa2a748">Analisis</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 dominio shfr con el <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code> 
@@ -1985,13 +2010,15 @@ dominio shfr con el <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code>
    =&gt; ground(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">_A</span>,<span style="color: #ffd700;">X</span>,<span style="color: #ffd700;">_B</span><span style="color: #ffb6c1; font-size: 105%;">]</span>).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
 
 </section>
-<section id="slide-orge2bcc87">
-<h3 id="orge2bcc87">Analisis</h3>
+<section id="slide-orgeffba46">
+<h3 id="orgeffba46">Analisis</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 dominio eterms sin  <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code> 
@@ -2013,13 +2040,16 @@ dominio eterms sin  <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code>
    =&gt; ( list(<span style="color: #ffd700;">_A</span>), non_empty_list(<span style="color: #ffd700;">X</span>), non_empty_list(<span style="color: #ffd700;">_B</span>) ).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
 
 </section>
-<section id="slide-org9c9368a">
-<h3 id="org9c9368a">Analisis</h3>
+<section id="slide-orgddbd2a4">
+<h3 id="orgddbd2a4">Analisis</h3>
+<div style="font-size: 80%;">
+
 <ul>
 <li><p>
 dominio eterms con  <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code> 
@@ -2047,8 +2077,9 @@ dominio eterms con  <code>:- entry qsort(A,B) : (list(num, A), var(B)).</code>
 </section>
 </section>
 <section>
-<section id="slide-org2b46eed">
-<h2 id="org2b46eed">Debugging</h2>
+<section id="slide-orgfcfe057">
+<h2 id="orgfcfe057"><span style="font-size:80%;">Debugging</span></h2>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Entrada
@@ -2077,13 +2108,15 @@ Entrada
 
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
 
 </section>
-<section id="slide-orga72035b">
-<h3 id="orga72035b">Debugging</h3>
+<section id="slide-orgd11a140">
+<h3 id="orgd11a140">Debugging</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Salida
@@ -2097,13 +2130,14 @@ Salida
 
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
-
 </section>
-<section id="slide-orgb110cdd">
-<h3 id="orgb110cdd">Debugging</h3>
+<section id="slide-orgf505f5f">
+<h3 id="orgf505f5f">Debugging</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Entrada
@@ -2131,14 +2165,15 @@ Entrada
 <span style="color: #1e90ff; font-size: 105%; font-weight: bold;">append</span>(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">H</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">X</span><span style="color: #ffb6c1; font-size: 105%;">]</span>,<span style="color: #ffd700;">Y</span>,<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">H</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Z</span><span style="color: #ffb6c1; font-size: 105%;">]</span>):- append(<span style="color: #ffd700;">X</span>,<span style="color: #ffd700;">Y</span>,<span style="color: #ffd700;">Z</span>).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
 
-
 </section>
-<section id="slide-org9748355">
-<h3 id="org9748355">Debugging</h3>
+<section id="slide-org051f870">
+<h3 id="org051f870">Debugging</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Salida
@@ -2157,14 +2192,15 @@ Salida
 literal 1 does not succeed<span style="color: #ffb6c1; font-size: 105%;">!</span>
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
 
-
 </section>
-<section id="slide-org9bdc2d2">
-<h3 id="org9bdc2d2">Debugging</h3>
+<section id="slide-orgccfd1a8">
+<h3 id="orgccfd1a8">Debugging</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Chequear Aserciones
@@ -2204,6 +2240,7 @@ Chequear Aserciones
 <span style="color: #1e90ff; font-size: 105%; font-weight: bold;">append</span>(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">H</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">X</span><span style="color: #ffb6c1; font-size: 105%;">]</span>,<span style="color: #ffd700;">Y</span>,<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">H</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Z</span><span style="color: #ffb6c1; font-size: 105%;">]</span>):- append(<span style="color: #ffd700;">X</span>,<span style="color: #ffd700;">Y</span>,<span style="color: #ffd700;">Z</span>).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
@@ -2211,8 +2248,9 @@ Chequear Aserciones
 </section>
 </section>
 <section>
-<section id="slide-orgad2fb78">
-<h2 id="orgad2fb78">Optimización</h2>
+<section id="slide-org6780cab">
+<h2 id="org6780cab"><span style="font-size:80%;">Optimización</span></h2>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Entrada
@@ -2244,18 +2282,20 @@ Salida
 
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
-
 </section>
-<section id="slide-org4ea08ae">
-<h3 id="org4ea08ae">Optimización</h3>
-<ul>
-<li><p>
+<section id="slide-orge31d4b5">
+<h3 id="orge31d4b5">Optimización</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<div style="font-size: 80%;">
+<p>
 Entrada
 </p>
-<div style="font-size: 110%;">
+<div style="font-size: 95%;">
 <div class="org-src-container">
 
 <pre  class="src src-prolog"   ><code trim>:- <span style="color: #87cefa; text-decoration: underline;">module</span>(append,<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">appe/3</span><span style="color: #ffb6c1; font-size: 105%;">]</span>,<span style="color: #ffb6c1; font-size: 105%;">[</span>assertions<span style="color: #ffb6c1; font-size: 105%;">]</span> ) .
@@ -2269,12 +2309,15 @@ Entrada
 <span style="color: #1e90ff; font-size: 105%; font-weight: bold;">append</span>(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">H</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">X</span><span style="color: #ffb6c1; font-size: 105%;">]</span>,<span style="color: #ffd700;">Y</span>, <span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">H</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Z</span><span style="color: #ffb6c1; font-size: 105%;">]</span>):- append(<span style="color: #ffd700;">X</span>,<span style="color: #ffd700;">Y</span>,<span style="color: #ffd700;">Z</span>) .
 </code></pre>
 </div>
-</div></li>
-
-<li><p>
+</div>
+</div>
+</div>
+<div class="one_of_2_columns">
+<div style="font-size: 80%;">
+<p>
 Salida 
 </p>
-<div style="font-size: 110%;">
+<div style="font-size: 95%;">
 <div class="org-src-container">
 
 <pre  class="src src-prolog"   ><code trim>:- <span style="color: #87cefa; text-decoration: underline;">module</span>(<span style="color: #ffd700;">_1</span>,<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">appe/3</span><span style="color: #ffb6c1; font-size: 105%;">]</span>,<span style="color: #ffb6c1; font-size: 105%;">[</span>assertions<span style="color: #ffb6c1; font-size: 105%;">]</span>).
@@ -2290,13 +2333,15 @@ Salida
     append_1(<span style="color: #ffd700;">C</span>,<span style="color: #ffd700;">A</span>,<span style="color: #ffd700;">D</span>).
 </code></pre>
 </div>
-</div></li>
-
-</ul>
+</div>
+</div>
+</div>
+</div>
 
 </section>
-<section id="slide-org92e859b">
-<h3 id="org92e859b">Optimización</h3>
+<section id="slide-org910cea6">
+<h3 id="org910cea6">Optimización</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Entrada
@@ -2323,12 +2368,14 @@ Entrada
     exp_ac(<span style="color: #ffd700;">Expl</span>,<span style="color: #ffd700;">Base</span>,<span style="color: #ffd700;">NTmp</span>,<span style="color: #ffd700;">Res</span>).
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
 </section>
-<section id="slide-orgb139796">
-<h3 id="orgb139796">Optimizacion</h3>
+<section id="slide-org8720964">
+<h3 id="org8720964">Optimizacion</h3>
+<div style="font-size: 80%;">
 <ul>
 <li><p>
 Salida 
@@ -2351,6 +2398,7 @@ Salida
 
 </code></pre>
 </div>
+</div>
 </div></li>
 
 </ul>
@@ -2358,8 +2406,8 @@ Salida
 </section>
 </section>
 <section>
-<section id="slide-org8d30d02">
-<h2 id="org8d30d02">Certificación</h2>
+<section id="slide-org7faf002">
+<h2 id="org7faf002">Certificación</h2>
 <ul>
 <li><p>
 Entrada
@@ -2395,8 +2443,8 @@ Entrada
 </ul>
 
 </section>
-<section id="slide-org4c5af5e">
-<h3 id="org4c5af5e">Certificación</h3>
+<section id="slide-org5e08874">
+<h3 id="org5e08874">Certificación</h3>
 <ul>
 <li><p>
 Certificado

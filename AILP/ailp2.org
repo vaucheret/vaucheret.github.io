@@ -891,8 +891,8 @@ que es equivalente a:
    #+REVEAL_HTML: </div>
    #+REVEAL_HTML: </div>
 
-* Tipos Regulares
-
+* [[size:80%][Tipos Regulares]]
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 Tipos Regulares son propiedades cuyas definiciones son  /"programas
 regulares"/. Ejemplos:
 
@@ -911,8 +911,10 @@ regulares"/. Ejemplos:
    intlist([X|R]) :- int(X), intlist(R).
    #+END_SRC 
    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
 
-* Lenguaje de aserciones
+* [[size:70%][Lenguaje de aserciones]]
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
  - ejemplo de ~pred/1~ 
     #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -930,24 +932,28 @@ regulares"/. Ejemplos:
    :- check pred length(L,N) : list * var => list * integer.
     #+END_SRC 
     #+REVEAL_HTML: </div>
-
- - ejemplo de ~comp/1~
-    #+REVEAL_HTML: <div style="font-size: 130%;">
-    #+BEGIN_SRC prolog
-   :- comp append(Xs,Ys,Zs) : var * var * var + not_fail.
-    #+END_SRC 
     #+REVEAL_HTML: </div>
 
- - ~test~ es similar a ~success~ pero especifica un caso de test como
-   parte de la especificación del predicado
-    #+REVEAL_HTML: <div style="font-size: 130%;">
-    #+BEGIN_SRC prolog
-    :- test length(L,N) : ( L = [1,2,5,2] ) => ( N = 4 ).
-    #+END_SRC 
-    #+REVEAL_HTML: </div>
+** [[size:100%][Lenguaje de aserciones]]
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
+  - ejemplo de ~comp/1~
+     #+REVEAL_HTML: <div style="font-size: 130%;">
+     #+BEGIN_SRC prolog
+    :- comp append(Xs,Ys,Zs) : var * var * var + not_fail.
+     #+END_SRC 
+     #+REVEAL_HTML: </div>
 
-* Lenguaje de aserciones (cont.)
 
+  - ~test~ es similar a ~success~ pero especifica un caso de test como
+    parte de la especificación del predicado
+     #+REVEAL_HTML: <div style="font-size: 130%;">
+     #+BEGIN_SRC prolog
+     :- test length(L,N) : ( L = [1,2,5,2] ) => ( N = 4 ).
+     #+END_SRC 
+     #+REVEAL_HTML: </div>
+     #+REVEAL_HTML: </div>
+* [[size:70%][Lenguaje de aserciones (cont)]]
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - definición de nuevos modos
 
     #+REVEAL_HTML: <div style="font-size: 130%;">
@@ -974,6 +980,7 @@ regulares"/. Ejemplos:
    :- doc(p(A,B),"A is bound upon predicate entry.").
    #+END_SRC 
    #+REVEAL_HTML: </div>
+   #+REVEAL_HTML: </div>
 
 
 * Ciaopp
@@ -991,7 +998,8 @@ regulares"/. Ejemplos:
 
    
 
-* Analisis
+* [[size:80%][Analisis]]
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Entrada
     #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1016,8 +1024,10 @@ regulares"/. Ejemplos:
 
     #+END_SRC 
     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
 
 ** Analisis
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Entrada
   #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1041,8 +1051,9 @@ append([],X,X).
 append([H|X],Y,[H|Z]):- append(X,Y,Z).
     #+END_SRC 
     #+REVEAL_HTML: </div>
-
+    #+REVEAL_HTML: </div>
 ** Analisis 
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - dominio shfr sin el ~:- entry ... ~ 
   #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1059,8 +1070,9 @@ append([H|X],Y,[H|Z]):- append(X,Y,Z).
       => ( mshare([[X,_B]]), ground([_A]) ).
     #+END_SRC 
     #+REVEAL_HTML: </div>
-
+    #+REVEAL_HTML: </div>
 ** Analisis 
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - dominio shfr con el ~:- entry qsort(A,B) : (list(num, A), var(B)).~ 
   #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1077,8 +1089,10 @@ append([H|X],Y,[H|Z]):- append(X,Y,Z).
        => ground([_A,X,_B]).
     #+END_SRC 
     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
 
 ** Analisis 
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - dominio eterms sin  ~:- entry qsort(A,B) : (list(num, A), var(B)).~ 
   #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1096,8 +1110,11 @@ append([H|X],Y,[H|Z]):- append(X,Y,Z).
        => ( list(_A), non_empty_list(X), non_empty_list(_B) ).
     #+END_SRC 
     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
 
 ** Analisis 
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
+
 - dominio eterms con  ~:- entry qsort(A,B) : (list(num, A), var(B)).~ 
   #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1115,7 +1132,8 @@ append([H|X],Y,[H|Z]):- append(X,Y,Z).
     #+END_SRC 
     #+REVEAL_HTML: </div>
 
-* Debugging
+* [[size:80%][Debugging]]
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Entrada
     #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1140,8 +1158,10 @@ append([H|X],Y,[H|Z]):- append(X,Y,Z).
 
     #+END_SRC 
     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
 
 ** Debugging
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Salida
     #+REVEAL_HTML: <div style="font-size: 150%;">
     #+BEGIN_SRC prolog
@@ -1151,8 +1171,9 @@ append([H|X],Y,[H|Z]):- append(X,Y,Z).
 
     #+END_SRC 
     #+REVEAL_HTML: </div>
-
+    #+REVEAL_HTML: </div>
 ** Debugging
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Entrada
     #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1176,9 +1197,10 @@ append([],X,X).
 append([H|X],Y,[H|Z]):- append(X,Y,Z).
     #+END_SRC 
     #+REVEAL_HTML: </div>
-
+    #+REVEAL_HTML: </div>
 
 ** Debugging
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Salida
     #+REVEAL_HTML: <div style="font-size: 100%;">
     #+BEGIN_SRC prolog
@@ -1193,9 +1215,10 @@ WARNING (preproc_errors): (lns 14-15) goal arithmetic:>=(E,C) at
 literal 1 does not succeed!
     #+END_SRC 
     #+REVEAL_HTML: </div>
-
+    #+REVEAL_HTML: </div>
 
 ** Debugging
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Chequear Aserciones
     #+REVEAL_HTML: <div style="font-size: 80%;">
     #+BEGIN_SRC prolog
@@ -1231,8 +1254,10 @@ append([],X,X).
 append([H|X],Y,[H|Z]):- append(X,Y,Z).
     #+END_SRC 
     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
 
-* Optimización
+* [[size:80%][Optimización]]
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Entrada
     #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1256,10 +1281,13 @@ dup_first([A|B],[A,A|B]).
 
     #+END_SRC 
     #+REVEAL_HTML: </div>
- 
+     #+REVEAL_HTML: </div>
 ** Optimización
-- Entrada
-    #+REVEAL_HTML: <div style="font-size: 110%;">
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
+Entrada
+    #+REVEAL_HTML: <div style="font-size: 95%;">
     #+BEGIN_SRC prolog
 :- module(append,[appe/3],[assertions] ) .
 
@@ -1272,9 +1300,12 @@ append([],X,X).
 append([H|X],Y, [H|Z]):- append(X,Y,Z) .
     #+END_SRC 
     #+REVEAL_HTML: </div>
-
-- Salida 
-    #+REVEAL_HTML: <div style="font-size: 110%;">
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+ #+REVEAL_HTML: <div style="font-size: 80%;">
+Salida 
+    #+REVEAL_HTML: <div style="font-size: 95%;">
     #+BEGIN_SRC prolog
 :- module(_1,[appe/3],[assertions]).
 
@@ -1289,8 +1320,12 @@ append_1([B|C],A,[B|D]) :-
     append_1(C,A,D).
     #+END_SRC 
     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
 
 ** Optimización
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Entrada
     #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1313,7 +1348,9 @@ exp_ac(Exp,Base,Tmp,Res) :-
     exp_ac(Expl,Base,NTmp,Res).
     #+END_SRC 
     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
 ** Optimizacion
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Salida 
     #+REVEAL_HTML: <div style="font-size: 130%;">
     #+BEGIN_SRC prolog
@@ -1332,10 +1369,12 @@ exp_ac_1(_1,A,A).
 
     #+END_SRC 
     #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
 
-* Certificación
+* [[size:75%][Certificación]]
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Entrada
-    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+REVEAL_HTML: <div style="font-size: 120%;">
     #+BEGIN_SRC prolog
 :- module(multiply,_,[assertions]).
 
@@ -1360,10 +1399,11 @@ vmul([H1|T1],[H2|T2],Result):-
     Result is Product+Newresult.
     #+END_SRC 
     #+REVEAL_HTML: </div>
-
+    #+REVEAL_HTML: </div>
 ** Certificación
+ #+REVEAL_HTML: <div style="font-size: 80%;">     
 - Certificado
-    #+REVEAL_HTML: <div style="font-size: 130%;">
+    #+REVEAL_HTML: <div style="font-size: 120%;">
     #+BEGIN_SRC prolog
 :- true pred A is B+C : (mshare([[A]]),var(A),ground([B,C]))
                           => (ground([A,B,C])).
@@ -1376,5 +1416,6 @@ vmul([H1|T1],[H2|T2],Result):-
 :- true pred A is B*C : (term(A),num(B),num(C))
                          => (num(A),num(B),num(C)).
     #+END_SRC 
+    #+REVEAL_HTML: </div>
     #+REVEAL_HTML: </div>
 
