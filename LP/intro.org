@@ -342,3 +342,106 @@ $accepts(s3,[a,a,b]),accepts(s3,[b,a,b]),accepts(s1,[a,a,a,b])$
 $accepts(s1,[b,a,a,b]),accepts(s1,[a,b,a,b]),accepts(s1,[b,b,a,b])\}$
  
  
+
+
+** Máquina de Turing
+#+REVEAL_HTML: <div style="font-size: 60%;">   
+Una máquina de Turing con una sola cinta puede definirse como una $7-tupla$:
+
+$$M=(Q,\Sigma ,\Gamma ,s,b,F,\delta )$$
+
+donde:
+
+- $Q$ es un conjunto finito de estados.
+- $\Sigma$ es un conjunto finito de símbolos distinto del espacio en blanco, denominado alfabeto de máquina o de entrada.
+- $\Gamma$ es un conjunto finito de símbolos de cinta, denominado alfabeto de cinta
+- $\Sigma \subseteq \Gamma$.
+- $s\in Q$ es el estado inicial.
+- $b\in \Gamma$ es un símbolo denominado blanco, y es el único símbolo que se puede repetir un número infinito de veces.
+- $F\subseteq Q$ es el conjunto de estados finales de aceptación.
+- $\delta :Q\times \Gamma \rightarrow Q\times \Gamma \times \{L,R\}} es una /función parcial/ denominada función de transición, donde 
+$L$ es un movimiento a la izquierda y $R$ es el movimiento a la derecha.
+ #+REVEAL_HTML: </div>
+
+*** Código
+
+#+BEGIN_SRC prolog
+:- module(tur,_).
+
+
+turing(Tape0, Tape) :-
+       perform(q0, [], Ls, Tape0, Rs),
+       reverse(Ls, Ls1),
+       append(Ls1, Rs, Tape).
+
+perform(qf, Ls, Ls, Rs, Rs) :- !.
+
+perform(Q0, Ls0, Ls, Rs0, Rs) :-
+       symbol(Rs0, Sym, RsRest),
+       once(rule(Q0, Sym, Q1, NewSym, Action)),
+       action(Action, Ls0, Ls1, [NewSym|RsRest], Rs1),
+       perform(Q1, Ls1, Ls, Rs1, Rs).
+
+symbol([], b, []).
+symbol([Sym|Rs], Sym, Rs).
+
+action(left, Ls0, Ls, Rs0, Rs) :- left(Ls0, Ls, Rs0, Rs).
+action(stay, Ls, Ls, Rs, Rs).
+action(right, Ls0, [Sym|Ls0], [Sym|Rs], Rs).
+
+left([], [], Rs0, [b|Rs0]).
+left([L|Ls], Ls, Rs, [L|Rs]).
+
+rule(q0, 1, q0, 1, right).
+rule(q0, b, qf, 1, stay).
+
+
+%% rule(q0, 1, q0,  1,right).
+%% rule(q0, 0, q0,  0,right).
+%% rule(q0,b,q1,c,left).
+
+%% rule(q1, 0, q1,  0,left ).
+%% rule(q1, 1, q1,  1,left ).
+%% rule(q1,b,q2,b,right).
+
+%% rule(q2, 0, q3,y,right).
+%% rule(q2, 1, q7,x,right).
+%% rule(q2,c, q11,c,left).
+
+
+%% rule(q3, 0, q3,  0,right).
+%% rule(q3, 1, q3,  1,right).
+%% rule(q3,c,q4,c,right).
+
+%% rule(q4,  0,q4,  0,right).
+%% rule(q4,  1,q4,  1,right).
+%% rule(q4,b,q5,  0,left ).
+
+%% rule(q5,  0,q5,  0,left ).
+%% rule(q5,  1,q5,  1,left ).
+%% rule(q5,c,q6,c,left ).
+
+%% rule(q6,  0,q6,  0,left ).
+%% rule(q6,  1,q6,  1,left ).
+%% rule(q6,y,q2,y,right).
+
+%% rule(q7, 0, q7,  0,right).
+%% rule(q7, 1, q7,  1,right).
+%% rule(q7,c,q8,c,right).
+
+%% rule(q8,  0,q8,  0,right).
+%% rule(q8,  1,q8,  1,right).
+%% rule(q8,b,q9,  1,left ).
+
+%% rule(q9,  0,q9,  0,left ).
+%% rule(q9,  1,q9,  1,left ).
+%% rule(q9,c,q10,c,left ).
+
+%% rule(q10,  0,q10,  0,left ).
+%% rule(q10,  1,q10,  1,left ).
+%% rule(q10,x,q2,x,right).
+
+%% rule(q11,x,q11,1,left).
+%% rule(q11,y,q11,0,left).
+%% rule(q11,b,qf,b,stay).
+#+END_SRC
