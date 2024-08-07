@@ -1,0 +1,48 @@
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_compiler: pdflatex
+#+date: \today
+
+
+ #+BEGIN_SRC prolog
+
+:- checked calls get_primes(N,Primes)
+   : ( num(N), var(Primes) ).
+
+
+:- checked success get_primes(N,Primes)
+   : ( num(N), var(Primes) )
+   => numlist(Primes).
+
+ #+END_SRC 
+
+ #+BEGIN_SRC prolog
+
+:- check success get_primes(N,Primes)
+   : ( num(N), var(Primes) )
+   => numlist(Primes).
+
+:- checked calls get_primes(N,Primes)
+   : ( num(N), var(Primes) ).
+
+
+ #+END_SRC 
+
+
+ #+BEGIN_SRC prolog
+
+:- check calls get_primes(N,Primes)
+   : ( num(N), var(Primes) ).
+
+:- checked success get_primes(N,Primes)
+   : ( num(N), var(Primes) )
+   => numlist(Primes).
+
+ #+END_SRC 
+
+

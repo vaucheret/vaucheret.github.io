@@ -1,0 +1,362 @@
+#+TITLE: [[size:65%][Sistemas Inteligentes]]
+#+AUTHOR: Redes Neuronales Artificiales
+#+DATE:  Claudio Vaucheret
+#+EMAIL: cv@fi.uncoma.edu.ar
+
+
+#+REVEAL_INIT_OPTIONS:  transition:'slide' 
+#+options: toc:nil num:nil
+
+#+REVEAL_THEME: sky
+#+REVEAL_HLEVEL: 2
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_EXTRA_CSS: grids.css
+
+* Introducción
+
+** ¿Qué vimos?
+#+REVEAL_HTML: <div style="font-size: 80%;">   
+    - Clases de Aprendizaje
+      - Supervisado
+	- Árboles de decisión
+	- SVM
+	- Evaluación de los Modelos
+      - No Supervisado
+	- Clustering
+        - K-means
+	- Clustering Jerárquico
+	- Evaluación de los Modelos
+      - Por refuerzo
+
+#+REVEAL_HTML: <div style="font-size: 120%;">   	
+#+ATTR_REVEAL: :frag (roll-in)
+  - [[color:red][Hoy:   Redes Neuronales Artificiales]]
+ #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+
+** Inteligencia Artificial
+#+REVEAL_HTML: <div style="font-size: 75%;">
+    - *Simbólica*: [[color:blue][Hipótesis del sistema de símbolos físicos]]
+       - [[color:orange][Allen Newell y Herbert Simon]].
+    - *Subsimbólica*:
+      - [[color:green][/Modelos Emergentes/]]
+	- basados en la evolución, las soluciones potenciales
+          compiten y evolucionan.
+	- Propiedades: masivamente paralelos, comportamiento complejo evoluciona a partir de comportamiento simple.
+	- Ejemplo: algoritmos genéticos, vida artificial.
+      - [[color:green][/Modelos Conexionistas/]]
+	- basados en el cerebro, modela neuronas individuales y sus conexiones.
+	- Propiedades: paralelos y distribuidos.
+	- Ejemplo: [[color:red][redes neuronales]]
+ #+REVEAL_HTML: </div>
+
+* Historia
+
+** Inicios
+#+REVEAL_HTML: <div style="font-size: 60%;">   
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+
+#+ATTR_HTML: :height 300 :align center
+[[file:~/tmp/slides/concurso/imagenes/wsmcculloch.jpg]]
+
+ Warren Sturgis McCulloch (1898-1969)
+ Neurólogo e Informático Estadounidense
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+#+ATTR_HTML: :height 300 :align center
+[[file:~/tmp/slides/concurso/imagenes/walterPitts-2.jpg]] 
+ 
+ Walter Harry Pitts
+(1923 - 1969)
+Lógico estadounidense que trabajó en el campo de neurociencia computacional.
+  #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+  [[color:brown][*1943:*]] Escriben un trabajo en el que describen el primer modelo
+   matemático para una red neuronal.
+  #+REVEAL_HTML: </div>
+
+** Hitos
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+ATTR_REVEAL: :frag (roll-in)
+- [[color:green][*1943-1949*]] Nacimiento teórico de las Redes Neuronales Artificiales - McCulloch & Pitts (1943), Hebb (1949)
+- [[color:green][*1950's & 1960's*]] Desarrollo optimista  Minsky (50's), Rosenblatt (60's)
+- [[color:green][*1970's*]] Minsky & Papert muestran serias limitaciones
+- [[color:green][*1980's & 1990's*]] Renacimiento: nuevos modelos y técnicas, Backpropagation, Hopfield, redes recurrentes
+- [[color:green][*2012*]] Aprendizaje en Profundidad, Redes Convolucionales,
+- [[color:green][*2014*]] Redes Generativas Adversarias.
+- [[color:green][*2017-*]] Transformers y Procesamiento de Lenguaje Natural, Atencion.
+ #+REVEAL_HTML: </div>
+
+  
+** Perceptron vs Multi Capa
+
+
+[[file:imagenes/percp.webp]]
+
+
+  
+* Motivación
+
+** De dónde surgió la idea
+
+[[file:imagenes/brain-and-happiness.jpg]]
+
+ El cerebro tiene 100.000 millones de neuronas.
+
+ 
+** Neurona Natural
+
+[[file:imagenes/neurona.png]]
+
+#+REVEAL: split
+
+
+	- Las [[color:red][dendritas]] recogen la señales de otras neuronas
+	- El [[color:red][Soma]] Procesa la información
+	- Los [[color:red][axones]] envían señales a otras neuronas
+	- las [[color:red][sinapsis]] son los puntos de conexión a otras neuronas
+
+#+REVEAL: split
+
+
+[[file:imagenes/potencial.png]]
+
+
+* Neuronas Artificiales
+
+
+** Neurona de McCulloch y Pitts
+
+[[file:imagenes/McCulloch-Pitts.png]]
+
+#+REVEAL: split
+
+Para $n$ entradas $(x_1,x_2,\ldots,x_j,\ldots,x_n)$
+
+$$z = b + \sum_{i=1}^{n}w_ix_i$$ 
+
+$$ a = f(z) \left\{ \begin{array}{ll} 1    &  z \ge 0 \\  0  &  z < 0  \end{array}  \right. $$
+
+o sea en su definición mas simple con dos entradas
+
+$$ a =  \left\{ \begin{array}{ll} 1    &  \mathrm{si\ } b + w_1x_1 + w_2x_2  \ge 0 \\  0  &  \mathrm{si\ } b + w_1x_1 + w_2x_2 < 0  \end{array}  \right. $$
+
+
+** Perceptrón
+
+
+[[file:imagenes/McCulloch-Pitts.png]]
+
+*** Función de activación
+
+#+ATTR_HTML: :height 300 :align center
+[[file:imagenes/escalon.png]]
+
+$$  f(n) =  \left\{ \begin{array}{ll} 1    &  n \ge 0 \\  0  &  n < 0  \end{array}  \right. $$
+
+
+*** Entrenamiento
+
+sea $(x^1,y^1),\ldots,(x^r,y^r),\ldots,(x^N,y^N)$ un conjunto de entrenamiento
+
+se ajustan los pesos con la *regla de Hebb*:
+
+$$w_i(t + 1) = w_i(t) + \eta\sum_{r=1}^{N}(y^r - a^r)x_i^r$$
+
+$$b(t + 1) = b(t) + \eta\sum_{r=1}^{N}(y^r - a^r)$$
+
+
+*** Expresividad
+
+[[file:imagenes/xorandnot.png]]
+
+** Modelo Bicapa
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+#+ATTR_HTML: :height 300 :align center
+[[file:imagenes/bicapan.png]]
+
+ #+REVEAL_HTML: </div>
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+
+Rosenblatt en [[color:orange][1958]] introdujo el perceptrón simple formado por dos capas, una de entrada con [[color:orange][$n$]] neuronas y una de salida con [[color:orange][$m$]] neuronas.
+
+#+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+
+#+REVEAL: split
+
+$$z_i = b_i + \sum_{j=1}^{n}w_{ij}x_j (i = 1\ldots m)$$
+
+$$a_i = f(z_i)$$
+
+la variable objetivo $y^r$, donde $r = 1\ldots N$ se convierte en un vector de $m$ posiciones.
+
+$$y^r = (y^r_i) \mathrm{\  con \ } i = 1\ldots m$$
+ 
+*** Función de activación
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+#+REVEAL_HTML: <div style="font-size: 80%;">
+
+$$f(z)=\sigma(z)= \frac{1}{1+ e^{-z}}$$
+
+su derivada es muy simple:
+
+$$y^\prime = \frac{dy}{dx}=\frac{e^{-x}}{(1+e^{-x})^2}$$
+  #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+
+ #+REVEAL_HTML: <div class="one_of_2_columns">   
+#+ATTR_HTML: :height 300 :align center
+[[file:imagenes/FuncionSigmoide.png]]
+
+#+REVEAL_HTML: </div>
+ #+REVEAL_HTML: </div>
+
+
+*** Entrenamiento
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+se basa en minimizar la función de errores al cuadrado por el
+procedimiento iterativo de gradiente de descenso. Donde la función de
+errores al cuadrado es:
+#+REVEAL_HTML: </div>
+
+$$C(b_i,w_{ij}) = \frac{1}{2} \sum_{r=1}^{N}(a_i^r - y_i^r)²  (i = 1 \ldots m)$$
+
+$$C(b_i,w_{ij}) = \frac{1}{2} \sum_{r=1}^{N}\left(\sigma\left(b_i + \sum_{j=1}^{n}w_{ij}x_j^r \right) - y_i^r\right)^2  (i = 1 \ldots m)$$
+
+
+#+REVEAL: split
+#+REVEAL_HTML: <div style="font-size: 80%;">
+se sabe que el vector gradiente :
+#+REVEAL_HTML: </div>
+
+$$\Delta C(b_i,w_i) = (\frac{\partial C}{\partial b_i}, \frac{\partial C}{\partial w_{i1}},\ldots,\frac{\partial C}{\partial w_{in}})$$
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+va en la diraccion del mayor incremento de $C$ en el punto del dominio $(b_i,w_i)$.
+ para ir en el sentido del mayor decremento del error cuadrático se toma el valor negativo $- \Delta C(b_i,w_i)$
+ el factor de aprendizaje $\eta$ determina el tamaño del salto.
+#+REVEAL_HTML: </div>
+
+$$(b_i,w_i)[t+1] = (b_i,w_i)[t]- \eta \Delta C(b_i,w_i)$$
+
+
+#+REVEAL: split
+
+#+ATTR_HTML: :height 350 :align center
+[[file:imagenes/gradiente-descenso.png]]
+#+REVEAL_HTML: <div style="font-size: 80%;">
+$$\frac{\partial C}{\partial w_{ij}} = \sum_{r=1}^{N}(a_i^r - y_i^r) \sigma'(z_i^r)x_j^r \mathrm{\ \ \ \ \  } i=1\ldots m$$
+
+$$\frac{\partial C}{\partial b_i} = \sum_{r=1}^{N}(a_i^r - y_i^r) \sigma'(z_i^r) \mathrm{\ \ \ \ \  } i=1\ldots m$$
+#+REVEAL_HTML: </div>
+*** Resolución matricial
+
+
+
+#+ATTR_HTML: :height 400 :align center
+[[file:imagenes/Neurona-2Capas.png]]
+
+#+REVEAL: split
+
+$$Z = B^T \oplus X \cdot W^T$$
+
+
+$$A = \sigma (Z)$$
+
+$$A - Y$$
+
+$$\Delta = (A - Y) \odot \sigma'(Z)$$
+
+$$W(t + 1) = W(t) - \eta \Delta^T \cdot X$$
+
+$$B(t + 1) = B(t) - \eta \Delta^T \cdot \mathbf{1}$$
+
+** Modelo Multicapa
+
+#+ATTR_HTML: :height 400 :align center
+[[file:imagenes/RedMultiCapa.png]]
+
+*** Retropropagación
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+El algoritmo de retropropagación que permite entrenar una red
+multicapa se introduce en 1970, pero no es hasta 1986 con el artículo
+de Rumelhart, 1986 cuando se aprecia su potencial
+#+REVEAL_HTML: </div>
+
+
+[[file:imagenes/RedTriCapa.png]]
+
+$$\frac{\partial C}{\partial w_{jk}^l};\frac{\partial C}{\partial b_j^l}$$
+
+
+#+REVEAL: split
+
+
+Para la capa $1 \le l \le L$:
+
+$$A^l = \sigma((B^l)^T \oplus A^{l-1} \cdot (W^l)^T) = \sigma(Z^l)$$
+
+$$E = Y - A^L$$
+
+$$\Delta^L = (Y - A^L) \odot \sigma'(Z^L)$$
+
+$$\Delta^L = (\Delta^{l + 1} \cdot W^{l + 1}) \odot \sigma'(Z^L)$$
+
+
+$$W^l(t + 1) = W^l(t) - \eta(\Delta^l)^T \cdot A^{l - 1}$$
+
+$$B^l(t + 1) = B^l(t) - \eta(\Delta^l)^T \cdot \mathbf{1}$$
+
+
+
+** [[size:70%][Otras Funciones de Activación]]
+
+ #+REVEAL_HTML: <div class="gridded_frame_with_columns">
+ #+REVEAL_HTML: <div class="one_of_2_columns"> 
+
+#+ATTR_HTML: :height 400 :align center
+[[file:imagenes/factivacion.png]]
+
+
+  #+REVEAL_HTML: </div>
+
+ #+REVEAL_HTML: <div class="one_of_2_columns">   
+
+#+REVEAL_HTML: <div style="font-size: 50%;">
+ - *La función tangente hiperbólica  (muy similar a la sigmoidea)*:
+
+   Satura y anula el gradiente. Lenta convergencia. Centrada
+   en 0. Esta acotada entre -1 y 1. Se utiliza para clasificaciones
+   binarias. Buen desempeño en redes recurrentes (que se utilizan para
+   analizar series temporales).
+
+ - *La función ReLU (Rectified Lineal Unit)*:
+
+   Solo se activa si son positivos. No está acotada. Puede anular
+   demasiadas neuronas. Se comporta bien con imágenes. Buen desempeño
+   en redes convolucionales
+   #+REVEAL_HTML: </div>
+  #+REVEAL_HTML: </div>
+    #+REVEAL_HTML: </div>
+
+    
+** Overfitting
+
+[[file:imagenes/overfittingc.png]]
+
+#+ATTR_HTML: :height 300 :align center
+[[file:imagenes/sobreajuste.png]]
+
+** PlayGround
+
+https://playground.tensorflow.org/
+

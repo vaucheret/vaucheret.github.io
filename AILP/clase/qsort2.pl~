@@ -1,0 +1,129 @@
+:- module(_, [qsort/2], [assertions]).
+
+:- entry qsort(A,B) : (list(num, A), var(B)).
+
+qsort([X|L],R) :-
+    partition(L,L1,X,L2),  % <-- swapped second and third arguments
+    qsort(L2,R2), qsort(L1,R1),
+    append(R2,[X|R1],R).
+qsort([],[]).
+
+partition([],_B,[],[]).
+partition([e|R],C,[E|Left1],Right):-  % <-- 'e' should be E (variable)
+    E < C, !, partition(R,C,Left1,Right).
+partition([E|R],C,Left,[E|Right1]):-
+    E >= C, partition(R,C,Left,Right1).
+
+append([],X,X).
+append([H|X],Y,[H|Z]):- append(X,Y,Z).
+DEBUGGING
+Salida
+
+{In /home/claudio/tmp/orgfiles/data/ciaopp/clase2/hacerslides/debugging/qsort2.pl
+WARNING (preproc_errors): (lns 4-8) goal qsort2:partition(L,L1,X,L2) at literal 1 does not succeed!
+}
+{ERROR (ctchecks_messages): error printing:message_clause_incompatible(qsort2:partition/4/2,eterms
+ ,qsort2:partition([e|C],A,[D|E],B),[A,B,C,D,E],[C,Right,R,E,Left1])
+}
+{In /home/claudio/tmp/orgfiles/data/ciaopp/clase2/hacerslides/debugging/qsort2.pl
+WARNING (preproc_errors): (lns 14-15) goal arithmetic:>=(E,C) at
+literal 1 does not succeed!
+DEBUGGING
+Chequear Aserciones
+
+:- module(qsort3, [qsort/2], [assertions,regtypes,nativeprops]).
+
+:- entry qsort(A,B) : (list(num, A), var(B)).
+
+:- calls qsort(A,B) : list(num, A).                        % A1
+:- success qsort(A,B)  => (ground(B), sorted_num_list(B)). % A2
+:- calls partition(A,B,C,D) : (ground(A), ground(B)).      % A3
+:- success partition(A,B,C,D) => (list(num, C),ground(D)). % A4
+:- calls append(A,B,C) : (list(num,A),list(num,B)).        % A5
+
+:- prop sorted_num_list/1.
+sorted_num_list([]).
+sorted_num_list([X]):- number(X).
+sorted_num_list([X,Y|Z]):- 
+    number(X), number(Y), X=<Y, sorted_num_list([Y|Z]).
+
+qsort([X|L],R) :-
+    partition(L,X,L1,L2),
+    qsort(L2,R2), qsort(L1,R1),
+    append(R2,[x|R1],R).
+qsort([],[]).
+
+partition([],_B,[],[]).
+partition([E|R],C,[E|Left1],Right):-
+    E < C, !, partition(R,C,Left1,Right).
+partition([E|R],C,Left,[E|Right1]):-
+    E >= C, partition(R,C,Left,Right1).
+
+append([],X,X).
+append([H|X],Y,[H|Z]):- append(X,Y,Z).
+OPTIMIZACIÓN
+Entrada
+
+:- module(_, [dup_first/2], []).
+
+dup_first([X|Xs], Zs) :-
+    app([X], [X|Xs], Zs).
+
+app([],Y,Y).
+app([X|Xs], Ys, [X|Zs]) :-
+    app(Xs,Ys,Zs).
+Salida
+
+:- module(_1,[dup_first/2],[assertions]).
+
+dup_first([A|B],[A,A|B]).
+
+OPTIMIZACIÓN
+Entrada
+
+:- module(append,[appe/3],[assertions] ) .
+
+
+:- entry appe(A,B,C). 
+
+appe(A,B,C) :- append([1,2,3|A],B,C).
+
+append([],X,X).
+append([H|X],Y, [H|Z]):- append(X,Y,Z) .
+Salida
+
+:- module(_1,[appe/3],[assertions]).
+
+:- entry appe(A,B,C).
+
+appe([],A,[1,2,3|A]).
+appe([B|C],A,[1,2,3,B|D]) :-
+    append_1(C,A,D).
+
+append_1([],A,A).
+append_1([B|C],A,[B|D]) :-
+    append_1(C,A,D).
+CERTIFICACIÓN
+Entrada
+
+:- module(multiply,_,[assertions]).
+
+:- entry mmultiply(X,Y,Z): (var(Z),list(X,list(num)),list(Y,list(num))).
+:- entry mmultiply(X,Y,Z) : (var(Z),ground(X),ground(Y)). 
+
+
+mmultiply([],_,[]).
+mmultiply([VO|Rest],V1,[Result|Others]):-
+    mmultiply(Rest,V1,Others),
+    multiply(V1,VO,Result).
+
+multiply([],_,[]).
+multiply([VO|Rest],VI,[Result|Others]):-
+    multiply(Rest,VI,Others),
+    vmul(VO,VI,Result).
+
+vmul([],[],0).
+vmul([H1|T1],[H2|T2],Result):-
+    vmul(T1,T2,Newresult),
+    Product is H1*H2,
+    Result is Product+Newresult.

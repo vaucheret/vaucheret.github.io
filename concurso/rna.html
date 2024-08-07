@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title><span style="font-size:65%;">Sistemas Inteligentes</span></title>
+<meta name="author" content="Redes Neuronales Artificiales"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+
+<link rel="stylesheet" href="grids.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title"><span style="font-size:65%;">Sistemas Inteligentes</span></h1><p class="subtitle"></p>
+<h2 class="author">Redes Neuronales Artificiales</h2><h2 class="date">Claudio Vaucheret</h2><p class="date">Created: 2024-08-07 mié 18:59</p>
+</section>
+
+<section>
+<section id="slide-orgfa0f72a">
+<h2 id="orgfa0f72a">Introducción</h2>
+<div class="outline-text-2" id="text-orgfa0f72a">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org8810492">
+<h3 id="org8810492">¿Qué vimos?</h3>
+<div style="font-size: 80%;">
+<ul>
+<li>Clases de Aprendizaje
+<ul>
+<li>Supervisado
+<ul>
+<li>Árboles de decisión</li>
+<li>SVM</li>
+<li>Evaluación de los Modelos</li>
+
+</ul></li>
+<li>No Supervisado
+<ul>
+<li>Clustering</li>
+<li>K-means</li>
+<li>Clustering Jerárquico</li>
+<li>Evaluación de los Modelos</li>
+
+</ul></li>
+<li>Por refuerzo</li>
+
+</ul></li>
+
+</ul>
+
+<div style="font-size: 120%;">
+<ul>
+<li class="fragment roll-in"><span style="color:red;">Hoy:   Redes Neuronales Artificiales</span></li>
+
+</ul>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org90c78ac">
+<h3 id="org90c78ac">Inteligencia Artificial</h3>
+<div style="font-size: 75%;">
+<ul>
+<li><b>Simbólica</b>: <span style="color:blue;">Hipótesis del sistema de símbolos físicos</span>
+<ul>
+<li><span style="color:orange;">Allen Newell y Herbert Simon</span>.</li>
+
+</ul></li>
+<li><b>Subsimbólica</b>:
+<ul>
+<li><span style="color:green;"><i>Modelos Emergentes</i></span>
+<ul>
+<li>basados en la evolución, las soluciones potenciales
+compiten y evolucionan.</li>
+<li>Propiedades: masivamente paralelos, comportamiento complejo evoluciona a partir de comportamiento simple.</li>
+<li>Ejemplo: algoritmos genéticos, vida artificial.</li>
+
+</ul></li>
+<li><span style="color:green;"><i>Modelos Conexionistas</i></span>
+<ul>
+<li>basados en el cerebro, modela neuronas individuales y sus conexiones.</li>
+<li>Propiedades: paralelos y distribuidos.</li>
+<li>Ejemplo: <span style="color:red;">redes neuronales</span></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge81f7bb">
+<h2 id="orge81f7bb">Historia</h2>
+<div class="outline-text-2" id="text-orge81f7bb">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7ce7f18">
+<h3 id="org7ce7f18">Inicios</h3>
+<div style="font-size: 60%;">
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+
+<div id="orgab1a74f" class="figure">
+<p><img src="file:///home/cv/tmp/slides/concurso/imagenes/wsmcculloch.jpg" alt="wsmcculloch.jpg" height="300" align="center" />
+</p>
+</div>
+
+<p>
+Warren Sturgis McCulloch (1898-1969)
+Neurólogo e Informático Estadounidense
+</p>
+</div>
+<div class="one_of_2_columns">
+
+<div id="orgf29a0b2" class="figure">
+<p><img src="file:///home/cv/tmp/slides/concurso/imagenes/walterPitts-2.jpg" alt="walterPitts-2.jpg" height="300" align="center" /> 
+</p>
+</div>
+
+<p>
+ Walter Harry Pitts
+(1923 - 1969)
+Lógico estadounidense que trabajó en el campo de neurociencia computacional.
+</p>
+</div>
+</div>
+<p>
+<span style="color:brown;"><b>1943:</b></span> Escriben un trabajo en el que describen el primer modelo
+ matemático para una red neuronal.
+</p>
+</div>
+
+</section>
+<section id="slide-orgfb65c38">
+<h4 id="orgfb65c38">Hitos</h4>
+<div style="font-size: 80%;">
+<ul>
+<li class="fragment roll-in"><span style="color:green;"><b>1943-1949</b></span> Nacimiento teórico de las Redes Neuronales Artificiales - McCulloch &amp; Pitts (1943), Hebb (1949)</li>
+<li class="fragment roll-in"><span style="color:green;"><b>1950's &amp; 1960's</b></span> Desarrollo optimista  Minsky (50's), Rosenblatt (60's)</li>
+<li class="fragment roll-in"><span style="color:green;"><b>1970's</b></span> Minsky &amp; Papert muestran serias limitaciones</li>
+<li class="fragment roll-in"><span style="color:green;"><b>1980's &amp; 1990's</b></span> Renacimiento: nuevos modelos y técnicas, Backpropagation, Hopfield, redes recurrentes</li>
+<li class="fragment roll-in"><span style="color:green;"><b>2012</b></span> Aprendizaje en Profundidad, Redes Convolucionales,</li>
+<li class="fragment roll-in"><span style="color:green;"><b>2014</b></span> Redes Generativas Adversarias.</li>
+<li class="fragment roll-in"><p>
+<span style="color:green;"><b>2017-</b></span> Transformers y Procesamiento de Lenguaje Natural, Atencion.
+</p>
+</div></li>
+
+</ul>
+
+
+</section>
+<section id="slide-orgafb4a73">
+<h4 id="orgafb4a73">Perceptron vs Multi Capa</h4>
+
+<div id="org25a1f76" class="figure">
+<p><img src="imagenes/percp.webp" alt="percp.webp" />
+</p>
+</div>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org0de6a07">
+<h2 id="org0de6a07">Motivación</h2>
+<div class="outline-text-2" id="text-org0de6a07">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org18ccf54">
+<h3 id="org18ccf54">De dónde surgió la idea</h3>
+
+<div id="org93fbfea" class="figure">
+<p><img src="imagenes/brain-and-happiness.jpg" alt="brain-and-happiness.jpg" />
+</p>
+</div>
+
+<p>
+El cerebro tiene 100.000 millones de neuronas.
+</p>
+
+
+</section>
+<section id="slide-org44dee77">
+<h4 id="org44dee77">Neurona Natural</h4>
+
+<div id="orgdfbb78d" class="figure">
+<p><img src="imagenes/neurona.png" alt="neurona.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org44dee77-split">
+
+
+<ul>
+<li>Las <span style="color:red;">dendritas</span> recogen la señales de otras neuronas</li>
+<li>El <span style="color:red;">Soma</span> Procesa la información</li>
+<li>Los <span style="color:red;">axones</span> envían señales a otras neuronas</li>
+<li>las <span style="color:red;">sinapsis</span> son los puntos de conexión a otras neuronas</li>
+
+</ul>
+
+</section>
+<section id="slide-org44dee77-split">
+<div style="font-size: 80%;">
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+<div id="org460118d" class="figure">
+<p><img src="imagenes/potencial.png" alt="potencial.png" />
+</p>
+</div>
+
+<ul>
+<li>Finalmente, si debe existir respuesta, se excitan neuronas eferentes que controlan músculos, glándulas u otras estructuras anatómicas.</li>
+
+</ul>
+
+
+</div>
+<div class="one_of_2_columns">
+
+
+<ul>
+<li>La señal se inicia cuando una neurona sensorial recibe un estímulo externo. Su axón se denomina fibra aferente.</li>
+<li>Esta neurona sensorial transmite una señal a otra aledaña, de modo que acceda un centro de integración del sistema nervioso.</li>
+<li>Las interneuronas, situadas en dicho sistema, transportan la señal a través de sinapsis.</li>
+
+</ul>
+
+</div>
+</div>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga1e614a">
+<h2 id="orga1e614a">Neuronas Artificiales</h2>
+<div class="outline-text-2" id="text-orga1e614a">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4cb4807">
+<h3 id="org4cb4807">Neurona de McCulloch y Pitts</h3>
+
+<div id="org9e9e317" class="figure">
+<p><img src="imagenes/pills.png" alt="pills.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4cb4807-split">
+
+<p>
+Para \(n\) entradas \((x_1,x_2,\ldots,x_j,\ldots,x_n)\)
+</p>
+
+<p>
+\[z = b + \sum_{i=1}^{n}w_ix_i\] 
+</p>
+
+<p>
+\[ a = f(z) \left\{ \begin{array}{ll} 1    &  z \ge 0 \\  0  &  z < 0  \end{array}  \right. \]
+</p>
+
+<p>
+o sea en su definición mas simple con dos entradas
+</p>
+
+<p>
+\[ a =  \left\{ \begin{array}{ll} 1    &  \mathrm{si\ } b + w_1x_1 + w_2x_2  \ge 0 \\  0  &  \mathrm{si\ } b + w_1x_1 + w_2x_2 < 0  \end{array}  \right. \]
+</p>
+
+</section>
+<section id="slide-org4cb4807-split">
+
+<p>
+siendo \(b + w_1x_1 + w_2x_2 = 0\) una recta que define la frontera de la decisión.
+</p>
+
+
+<p class="fragment (roll-in)">
+Supongamos \(w_1 = -1\) , \(w_2 = 2\)  y \(b = 0\) tenemos la recta \(-x_1 + 2x_2 = 0\)
+</p>
+
+
+<div id="org7abd04b" class="figure">
+<p><img src="imagenes/frontera1.png" alt="frontera1.png" class="fragment (roll-in)" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4cb4807-split">
+
+<p>
+¿Qué ocurre cuando \(b \not= 0\)?
+</p>
+
+<p>
+\[ W^T \times X + b = \left[ \begin{matrix} -1 & 2 \end{matrix} \right] \left[ \begin{matrix} x_1 \\ x_2 \end{matrix} \right] + b =  -x_1 + 2x_2 + b = 0\]
+</p>
+
+
+<div id="org9b58673" class="figure">
+<p><img src="imagenes/frontera2.png" alt="frontera2.png" class="fragment (roll-in)" />
+</p>
+</div>
+
+</section>
+<section id="slide-org92220f8">
+<h4 id="org92220f8">Resumiendo</h4>
+<ul>
+<li>Frontera de Decisión: Una neurona perceptrón divide al espacio  de entrada  en dos para clasificar patrones.</li>
+<li>\(W\), los pesos sinápticos controlan la orientación de la Frontera de Decisión.</li>
+<li>El  umbral o polarización  \(b\) controla la traslación de la Frontera de Decisión.</li>
+
+</ul>
+
+
+
+
+</section>
+<section id="slide-org9a02e43">
+<h4 id="org9a02e43">Ejemplo</h4>
+<div style="font-size: 80%;">
+<p>
+Supongamos que queremos clasificar ananás y manzanas y que disponemos
+de dos atributos: peso y color promedio.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">\(x_1\) = Peso</th>
+<th scope="col" class="org-right">\(x_2\) = Color</th>
+<th scope="col" class="org-left">Clasificación</th>
+<th scope="col" class="org-right">Salida de la Neurona</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1.5</td>
+<td class="org-right">-0.3</td>
+<td class="org-left"><span style="color:red;">ananá</span></td>
+<td class="org-right">-1</td>
+</tr>
+
+<tr>
+<td class="org-right">0.9</td>
+<td class="org-right">0.05</td>
+<td class="org-left"><span style="color:red;">ananá</span></td>
+<td class="org-right">-1</td>
+</tr>
+
+<tr>
+<td class="org-right">2.1</td>
+<td class="org-right">0.2</td>
+<td class="org-left"><span style="color:red;">ananá</span></td>
+<td class="org-right">-1</td>
+</tr>
+
+<tr>
+<td class="org-right">0.24</td>
+<td class="org-right">-0.87</td>
+<td class="org-left"><span style="color:blue;">manzana</span></td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0.45</td>
+<td class="org-right">-0.6</td>
+<td class="org-left"><span style="color:blue;">manzana</span></td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0.15</td>
+<td class="org-right">-0.43</td>
+<td class="org-left"><span style="color:blue;">manzana</span></td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="slide-org9a02e43-split">
+
+
+<div id="org708c91d" class="figure">
+<p><img src="imagenes/ejemplo1t.png" alt="ejemplo1t.png" />
+</p>
+</div>
+
+<p>
+<span style="color:red;">Rojo</span> = ananá y <span style="color:blue;">Azul</span> = manzana 
+</p>
+
+<p>
+¿Cuáles serían posibles valores para los pesos  sinápticos y el umbral?
+</p>
+
+</section>
+<section id="slide-org9a02e43-split">
+
+<p>
+Elegimos <span style="color:brown;">\(-x_1 - x_2 + 0.5=0\)</span>
+</p>
+
+
+<div id="org0641f6a" class="figure">
+<p><img src="imagenes/ejemplo2t.png" alt="ejemplo2t.png" />
+</p>
+</div>
+
+<div style="font-size: 90%;">
+<p>
+Voilá!!! Obtuvimos los pesos sinápticos y el umbral.
+\[\mathbf{w}=\Bigg[ \begin{matrix}-1 \\ -1 \end{matrix}\Bigg] \ \ \ b=0.5 \]
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4235aef">
+<h3 id="org4235aef">Perceptrón</h3>
+
+<div id="org0b3a20d" class="figure">
+<p><img src="imagenes/pills.png" alt="pills.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org2fe29fd">
+<h4 id="org2fe29fd">Función de activación</h4>
+
+<div id="org140a497" class="figure">
+<p><img src="imagenes/escalon.png" alt="escalon.png" height="300" align="center" />
+</p>
+</div>
+
+<p>
+\[  f(n) =  \left\{ \begin{array}{ll} 1    &  n \ge 0 \\  0  &  n < 0  \end{array}  \right. \]
+</p>
+
+
+</section>
+<section id="slide-org7911ddd">
+<h4 id="org7911ddd">Entrenamiento</h4>
+<p>
+sea \((x^1,y^1),\ldots,(x^r,y^r),\ldots,(x^N,y^N)\) un conjunto de entrenamiento
+</p>
+
+<p>
+se ajustan los pesos con la <b>regla de Hebb</b>:
+</p>
+
+<p>
+\[w_i(t + 1) = w_i(t) + \eta\sum_{r=1}^{N}(y^r - a^r)x_i^r\]
+</p>
+
+<p>
+\[b(t + 1) = b(t) + \eta\sum_{r=1}^{N}(y^r - a^r)\]
+</p>
+
+
+</section>
+<section id="slide-org238a1a4">
+<h4 id="org238a1a4">Expresividad</h4>
+
+<div id="orga7b2b32" class="figure">
+<p><img src="imagenes/xorandnot.png" alt="xorandnot.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org9cbcf04">
+<h3 id="org9cbcf04">Modelo Bicapa</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+<div id="org035aa6a" class="figure">
+<p><img src="imagenes/bicapan.png" alt="bicapan.png" height="300" align="center" />
+</p>
+</div>
+
+</div>
+<div class="one_of_2_columns">
+<div style="font-size: 80%;">
+
+
+<p>
+Rosenblatt en <span style="color:orange;">1958</span> introdujo el perceptrón simple formado por dos capas, una de entrada con <span style="color:orange;">\(n\)</span> neuronas y una de salida con <span style="color:orange;">\(m\)</span> neuronas.
+</p>
+
+</div>
+</div>
+</div>
+
+</section>
+<section id="slide-org9cbcf04-split">
+
+<p>
+\[z_i = b_i + \sum_{j=1}^{n}w_{ij}x_j (i = 1\ldots m)\]
+</p>
+
+<p>
+\[a_i = f(z_i)\]
+</p>
+
+<p>
+la variable objetivo \(y^r\), donde \(r = 1\ldots N\) se convierte en un vector de \(m\) posiciones.
+</p>
+
+<p>
+\[y^r = (y^r_i) \mathrm{\  con \ } i = 1\ldots m\]
+</p>
+
+</section>
+<section id="slide-org112f12a">
+<h4 id="org112f12a">Función de activación</h4>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<div style="font-size: 80%;">
+
+<p>
+\[f(z)=\sigma(z)= \frac{1}{1+ e^{-z}}\]
+</p>
+
+<p>
+su derivada es muy simple:
+</p>
+
+<p>
+\[y^\prime = \frac{dy}{dx}=\frac{e^{-x}}{(1+e^{-x})^2}\]
+</p>
+</div>
+</div>
+
+<div class="one_of_2_columns">
+
+<div id="org5548668" class="figure">
+<p><img src="imagenes/FuncionSigmoide.png" alt="FuncionSigmoide.png" height="300" align="center" />
+</p>
+</div>
+
+</div>
+</div>
+
+
+</section>
+<section id="slide-orge3a027f">
+<h4 id="orge3a027f">Entrenamiento</h4>
+<div style="font-size: 80%;">
+<p>
+se basa en minimizar la función de errores al cuadrado por el
+procedimiento iterativo de gradiente de descenso. Donde la función de
+errores al cuadrado es:
+</p>
+</div>
+
+<p>
+\[C(b_i,w_{ij}) = \frac{1}{2} \sum_{r=1}^{N}(a_i^r - y_i^r)²  (i = 1 \ldots m)\]
+</p>
+
+<p>
+\[C(b_i,w_{ij}) = \frac{1}{2} \sum_{r=1}^{N}\left(\sigma\left(b_i + \sum_{j=1}^{n}w_{ij}x_j^r \right) - y_i^r\right)^2  (i = 1 \ldots m)\]
+</p>
+
+
+</section>
+<section id="slide-orge3a027f-split">
+<div style="font-size: 80%;">
+<p>
+se sabe que el vector gradiente :
+</p>
+</div>
+
+<p>
+\[\Delta C(b_i,w_i) = (\frac{\partial C}{\partial b_i}, \frac{\partial C}{\partial w_{i1}},\ldots,\frac{\partial C}{\partial w_{in}})\]
+</p>
+
+<div style="font-size: 80%;">
+<p>
+va en la diraccion del mayor incremento de \(C\) en el punto del dominio \((b_i,w_i)\).
+ para ir en el sentido del mayor decremento del error cuadrático se toma el valor negativo \(- \Delta C(b_i,w_i)\)
+ el factor de aprendizaje \(\eta\) determina el tamaño del salto.
+</p>
+</div>
+
+<p>
+\[(b_i,w_i)[t+1] = (b_i,w_i)[t]- \eta \Delta C(b_i,w_i)\]
+</p>
+
+
+</section>
+<section id="slide-orge3a027f-split">
+
+
+<div id="org5864a1a" class="figure">
+<p><img src="imagenes/gradiente-descenso.png" alt="gradiente-descenso.png" height="350" align="center" />
+</p>
+</div>
+<div style="font-size: 80%;">
+<p>
+\[\frac{\partial C}{\partial w_{ij}} = \sum_{r=1}^{N}(a_i^r - y_i^r) \sigma'(z_i^r)x_j^r \mathrm{\ \ \ \ \  } i=1\ldots m\]
+</p>
+
+<p>
+\[\frac{\partial C}{\partial b_i} = \sum_{r=1}^{N}(a_i^r - y_i^r) \sigma'(z_i^r) \mathrm{\ \ \ \ \  } i=1\ldots m\]
+</p>
+</div>
+</section>
+<section id="slide-orgff50c2a">
+<h4 id="orgff50c2a">Resolución matricial</h4>
+
+<div id="org08cc3a0" class="figure">
+<p><img src="imagenes/Neurona-2Capas.png" alt="Neurona-2Capas.png" height="400" align="center" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgff50c2a-split">
+
+<p>
+\[Z = B^T \oplus X \cdot W^T\]
+</p>
+
+
+<p>
+\[A = \sigma (Z)\]
+</p>
+
+<p>
+\[A - Y\]
+</p>
+
+<p>
+\[\Delta = (A - Y) \odot \sigma'(Z)\]
+</p>
+
+<p>
+\[W(t + 1) = W(t) - \eta \Delta^T \cdot X\]
+</p>
+
+<p>
+\[B(t + 1) = B(t) - \eta \Delta^T \cdot \mathbf{1}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org3f31856">
+<h3 id="org3f31856">Modelo Multicapa</h3>
+
+<div id="orgf2655f8" class="figure">
+<p><img src="imagenes/RedMultiCapa.png" alt="RedMultiCapa.png" height="400" align="center" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgd3dcb0f">
+<h4 id="orgd3dcb0f">Retropropagación</h4>
+<div style="font-size: 80%;">
+<p>
+El algoritmo de retropropagación que permite entrenar una red
+multicapa se introduce en 1970, pero no es hasta 1986 con el artículo
+de Rumelhart, 1986 cuando se aprecia su potencial
+</p>
+</div>
+
+
+
+<div id="orga46c848" class="figure">
+<p><img src="imagenes/RedTriCapa.png" alt="RedTriCapa.png" />
+</p>
+</div>
+
+<p>
+\[\frac{\partial C}{\partial w_{jk}^l};\frac{\partial C}{\partial b_j^l}\]
+</p>
+
+
+</section>
+<section id="slide-orgd3dcb0f-split">
+
+
+<p>
+Para la capa \(1 \le l \le L\):
+</p>
+
+<p>
+\[A^l = \sigma((B^l)^T \oplus A^{l-1} \cdot (W^l)^T) = \sigma(Z^l)\]
+</p>
+
+<p>
+\[E = Y - A^L\]
+</p>
+
+<p>
+\[\Delta^L = (Y - A^L) \odot \sigma'(Z^L)\]
+</p>
+
+<p>
+\[\Delta^L = (\Delta^{l + 1} \cdot W^{l + 1}) \odot \sigma'(Z^L)\]
+</p>
+
+
+<p>
+\[W^l(t + 1) = W^l(t) - \eta(\Delta^l)^T \cdot A^{l - 1}\]
+</p>
+
+<p>
+\[B^l(t + 1) = B^l(t) - \eta(\Delta^l)^T \cdot \mathbf{1}\]
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8e5be36">
+<h3 id="org8e5be36"><span style="font-size:70%;">Otras Funciones de Activación</span></h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+
+
+<div id="org9d77fc0" class="figure">
+<p><img src="imagenes/factivacion.png" alt="factivacion.png" height="400" align="center" />
+</p>
+</div>
+
+
+</div>
+
+<div class="one_of_2_columns">
+
+<div style="font-size: 50%;">
+<ul>
+<li><p>
+<b>La función tangente hiperbólica  (muy similar a la sigmoidea)</b>:
+</p>
+
+<p>
+Satura y anula el gradiente. Lenta convergencia. Centrada
+en 0. Esta acotada entre -1 y 1. Se utiliza para clasificaciones
+binarias. Buen desempeño en redes recurrentes (que se utilizan para
+analizar series temporales).
+</p></li>
+
+<li><p>
+<b>La función ReLU (Rectified Lineal Unit)</b>:
+</p>
+
+<p>
+Solo se activa si son positivos. No está acotada. Puede anular
+demasiadas neuronas. Se comporta bien con imágenes. Buen desempeño
+en redes convolucionales
+</p>
+</div>
+</div>
+</div></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org8c6e8ec">
+<h3 id="org8c6e8ec">Overfitting</h3>
+
+<div id="org089bd15" class="figure">
+<p><img src="imagenes/overfittingc.png" alt="overfittingc.png" />
+</p>
+</div>
+
+
+<div id="org6225709" class="figure">
+<p><img src="imagenes/sobreajuste.png" alt="sobreajuste.png" height="300" align="center" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7134aa6">
+<h3 id="org7134aa6">PlayGround</h3>
+<p>
+<a href="https://playground.tensorflow.org/">https://playground.tensorflow.org/</a>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+transition:'slide',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>

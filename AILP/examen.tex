@@ -1,0 +1,66 @@
+% Created 2024-06-26 mié 12:15
+% Intended LaTeX compiler: pdflatex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{claudio}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={claudio},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\begin{verbatim}
+
+:- checked calls get_primes(N,Primes)
+   : ( num(N), var(Primes) ).
+
+
+:- checked success get_primes(N,Primes)
+   : ( num(N), var(Primes) )
+   => numlist(Primes).
+
+\end{verbatim}
+
+\begin{verbatim}
+
+:- check success get_primes(N,Primes)
+   : ( num(N), var(Primes) )
+   => numlist(Primes).
+
+:- checked calls get_primes(N,Primes)
+   : ( num(N), var(Primes) ).
+
+
+\end{verbatim}
+
+
+\begin{verbatim}
+
+:- check calls get_primes(N,Primes)
+   : ( num(N), var(Primes) ).
+
+:- checked success get_primes(N,Primes)
+   : ( num(N), var(Primes) )
+   => numlist(Primes).
+
+\end{verbatim}
+\end{document}
