@@ -317,7 +317,7 @@ se sabe que el vector gradiente :
 $$\Delta C(b_i,w_i) = (\frac{\partial C}{\partial b_i}, \frac{\partial C}{\partial w_{i1}},\ldots,\frac{\partial C}{\partial w_{in}})$$
 
 #+REVEAL_HTML: <div style="font-size: 80%;">
-va en la diraccion del mayor incremento de $C$ en el punto del dominio $(b_i,w_i)$.
+va en la dirección del mayor incremento de $C$ en el punto del dominio $(b_i,w_i)$.
  para ir en el sentido del mayor decremento del error cuadrático se toma el valor negativo $- \Delta C(b_i,w_i)$
  el factor de aprendizaje $\eta$ determina el tamaño del salto.
 #+REVEAL_HTML: </div>
@@ -343,23 +343,57 @@ $$\frac{\partial C}{\partial b_i} = \sum_{r=1}^{N}(a_i^r - y_i^r) \sigma'(z_i^r)
 
 #+REVEAL: split
 
-$$Z = B^T \oplus X \cdot W^T$$
+#+REVEAL_HTML: <div style="font-size: 80%;">
+Dada dada una matriz $X$ de $N$ registros que entran a la neurona y dados
+ unos pesos y bias definidos en las matrices $W$ y $B$, se tendrá la
+ siguiente salida de forma matricial:
+#+REVEAL_HTML: </div>
 
+$$Z = B^T \oplus X \cdot W^T$$ y
 
 $$A = \sigma (Z)$$
 
+#+REVEAL_HTML: <div style="font-size: 80%;">
+El error neto entre los valores reales $Y$ y los activados:
+#+REVEAL_HTML: </div>
+
 $$A - Y$$
+
+#+REVEAL: split
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+La tasa de variación del error cuadrático por unidad de entrada, que
+es la parte común de los dos gradientes anteriores, se puede poner
+matricialmente mediante la matriz $\Delta$ :
+#+REVEAL_HTML: </div>
 
 $$\Delta = (A - Y) \odot \sigma'(Z)$$
 
+#+REVEAL_HTML: <div style="font-size: 80%;">
+se utiliza el producto de Hadamard $(s \odot t)$, que aplicado a dos
+matrices o vectores, es el producto de sus elementos término a término
+#+REVEAL_HTML: </div>
+
+#+REVEAL: split
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+finalmente, el entrenamiento en $T$ etapas, partiendo de valores aleatorios en las matrices $W$ y $B$ en $t=1$, de forma que en sucesivos $t$:
+
+#+REVEAL_HTML: </div>
 $$W(t + 1) = W(t) - \eta \Delta^T \cdot X$$
 
 $$B(t + 1) = B(t) - \eta \Delta^T \cdot \mathbf{1}$$
 
-** Modelo Multicapa
+** [[size:80%][Modelo Multicapa]]
 
 #+ATTR_HTML: :height 400 :align center
 [[file:imagenes/RedMultiCapa.png]]
+
+#+REVEAL_HTML: <div style="font-size: 70%;">
+La función de coste del error en la  última capa $L$ es:
+
+$$C = \frac{1}{2} \sum_x \| a^L - y \|^2  \ \ \ \ \ \ \ \ \ \ \ \frac{\partial C}{\partial w_{jk}^l};\frac{\partial C}{\partial b_j^l}$$
+#+REVEAL_HTML: </div>
 
 *** Retropropagación
 
@@ -369,30 +403,52 @@ multicapa se introduce en 1970, pero no es hasta 1986 con el artículo
 de Rumelhart, 1986 cuando se aprecia su potencial
 #+REVEAL_HTML: </div>
 
+# #+ATTR_HTML: :height 200 :align center
+# [[file:imagenes/RedTriCapa.png]]
 
-[[file:imagenes/RedTriCapa.png]]
-
-$$\frac{\partial C}{\partial w_{jk}^l};\frac{\partial C}{\partial b_j^l}$$
 
 
 #+REVEAL: split
 
+Proceso hacia Adelante o  Forward,
 
 Para la capa $1 \le l \le L$:
 
 $$A^l = \sigma((B^l)^T \oplus A^{l-1} \cdot (W^l)^T) = \sigma(Z^l)$$
 
+si $l = 1$ entonces $A^{l-1} = X$
+
+#+REVEAL: split
+
+Luego calculamos el error en la última capa
+
 $$E = Y - A^L$$
+
+La tasa de variación del error cuadrático por unidad de activación en la última capa $L$ es:
 
 $$\Delta^L = (Y - A^L) \odot \sigma'(Z^L)$$
 
+#+REVEAL: split
+
+Luego calculamos la variación del error cuadrático en cada capa $l$ desde $L - 1$ hasta $1$:
+(Retropropagación)
+
+
 $$\Delta^L = (\Delta^{l + 1} \cdot W^{l + 1}) \odot \sigma'(Z^L)$$
 
+#+REVEAL: split
+
+Finalmente entrenamos la red, con del descenso del gradiente.
 
 $$W^l(t + 1) = W^l(t) - \eta(\Delta^l)^T \cdot A^{l - 1}$$
 
 $$B^l(t + 1) = B^l(t) - \eta(\Delta^l)^T \cdot \mathbf{1}$$
 
+siendo $\mathbf{1}$ una matriz columna de $N$ unos que realiza la sumatoria de las filas de $\Delta^T$
+
+Ademas si $l = 1$
+
+$$A^{l-1} = X$$
 
 
 ** [[size:70%][Otras Funciones de Activación]]
