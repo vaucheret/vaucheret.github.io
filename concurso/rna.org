@@ -35,10 +35,12 @@
   #+REVEAL_HTML: </div>
 
 ** Inteligencia Artificial
-#+REVEAL_HTML: <div style="font-size: 75%;">
+#+REVEAL_HTML: <div style="font-size: 65%;">
+#+ATTR_REVEAL: :frag (roll-in)
     - *Simbólica*: [[color:blue][Hipótesis del sistema de símbolos físicos]]
        - [[color:orange][Allen Newell y Herbert Simon]].
     - *Subsimbólica*:
+      #+ATTR_REVEAL: :frag (roll-in)
       - [[color:green][/Modelos Emergentes/]]
 	- basados en la evolución, las soluciones potenciales
           compiten y evolucionan.
@@ -47,7 +49,9 @@
       - [[color:green][/Modelos Conexionistas/]]
 	- basados en el cerebro, modela neuronas individuales y sus conexiones.
 	- Propiedades: paralelos y distribuidos.
-	- Ejemplo: [[color:red][redes neuronales]]
+	- Ejemplo:
+  	  #+ATTR_REVEAL: :frag (roll-in)
+	  [[color:red][Redes Neuronales Artificiales]]
  #+REVEAL_HTML: </div>
 
 * Historia
@@ -300,7 +304,7 @@ $$y^\prime = \frac{dy}{dx}=\frac{e^{-x}}{(1+e^{-x})^2}$$
 
 #+REVEAL_HTML: <div style="font-size: 80%;">
 se basa en minimizar la función de errores al cuadrado por el
-procedimiento iterativo de gradiente de descenso. Donde la función de
+procedimiento iterativo del descenso del gradiente. Donde la función de
 errores al cuadrado es:
 #+REVEAL_HTML: </div>
 
@@ -434,11 +438,11 @@ Luego calculamos la variación del error cuadrático en cada capa $l$ desde $L -
 (Retropropagación)
 
 
-$$\Delta^L = (\Delta^{l + 1} \cdot W^{l + 1}) \odot \sigma'(Z^L)$$
+$$\Delta^l = (\Delta^{l + 1} \cdot W^{l + 1}) \odot \sigma'(Z^l)$$
 
 #+REVEAL: split
 
-Finalmente entrenamos la red, con del descenso del gradiente.
+Finalmente entrenamos la red, con el método del descenso del gradiente.
 
 $$W^l(t + 1) = W^l(t) - \eta(\Delta^l)^T \cdot A^{l - 1}$$
 
@@ -486,6 +490,7 @@ $$A^{l-1} = X$$
 
 [[file:imagenes/overfittingc.png]]
 
+#+ATTR_REVEAL: :frag (roll-in)
 #+ATTR_HTML: :height 300 :align center
 [[file:imagenes/sobreajuste.png]]
 
