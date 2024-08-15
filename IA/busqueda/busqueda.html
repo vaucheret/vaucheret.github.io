@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <title>Inteligencia Artificial</title>
-<meta name="author" content="(Claudio Vaucheret)"/>
+<meta name="author" content="Claudio Vaucheret"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -29,21 +31,22 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda</h2><p class="date">Created: 2023-09-26 mar 19:12</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><p class="subtitle"></p>
+<h2 class="author">Claudio Vaucheret</h2><h2 class="date">Búsqueda</h2><p class="date">Created: 2024-08-12 lun 17:09</p>
 </section>
 
 
 
 <section>
-<section id="slide-orga336dc3">
-<h2 id="orga336dc3">Agente Solucionador de Problemas</h2>
-<div class="outline-text-2" id="text-orga336dc3">
+<section id="slide-org15666c1">
+<h2 id="org15666c1">Agente Solucionador de Problemas</h2>
+<div class="outline-text-2" id="text-org15666c1">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org8e73f46">
-<h3 id="org8e73f46">Agente Solucionador de Problemas</h3>
+<section id="slide-orgd383df1">
+<h3 id="orgd383df1">Agente Solucionador de Problemas</h3>
 <p>
 Un agente inteligente <font color="red">orientado a la meta</font> que resuelve los problemas
 considerando <font color="orange">secuencias de acciones</font> que logren su meta.
@@ -52,8 +55,8 @@ considerando <font color="orange">secuencias de acciones</font> que logren su me
 </section>
 </section>
 <section>
-<section id="slide-orgf72cb60">
-<h3 id="orgf72cb60">Agente Solucionador de Problemas</h3>
+<section id="slide-org19a4630">
+<h3 id="org19a4630">Agente Solucionador de Problemas</h3>
 <p>
 ¿Qué tenemos en cuenta al definir esta clase de agentes?
 </p>
@@ -70,23 +73,23 @@ considerando <font color="orange">secuencias de acciones</font> que logren su me
 </section>
 </section>
 <section>
-<section id="slide-org53de684">
-<h2 id="org53de684">Busqueda</h2>
-<div class="outline-text-2" id="text-org53de684">
+<section id="slide-orga2732d7">
+<h2 id="orga2732d7">Busqueda</h2>
+<div class="outline-text-2" id="text-orga2732d7">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgc1bae2e">
-<h3 id="orgc1bae2e">Resolución de Problemas: Búsqueda</h3>
+<section id="slide-orgf548ebd">
+<h3 id="orgf548ebd">Resolución de Problemas: Búsqueda</h3>
 <p>
 El proceso de buscar una <font color="blue">secuencia de acciones</font> que alcance una meta se llama
 <font color="blue">Búsqueda</font>.
 </p>
 
 </section>
-<section id="slide-org5655c5e">
-<h4 id="org5655c5e">Resolución de Problemas: Formulación</h4>
+<section id="slide-org3ac35dd">
+<h4 id="org3ac35dd">Resolución de Problemas: Formulación</h4>
 <p>
 Un <font color="red">problema</font> puede ser definido a través de los siguientes componentes:
 </p>
@@ -102,8 +105,8 @@ ser ejecutadas desde \(s\). Decimos que cada una de estas acciones son
 
 
 </section>
-<section id="slide-org5409d70">
-<h4 id="org5409d70">Resolución de Problemas: Formulación</h4>
+<section id="slide-org9c5e157">
+<h4 id="org9c5e157">Resolución de Problemas: Formulación</h4>
 <p>
 Un <font color="red">problema</font> puede ser definido a través de los siguientes componentes:
 </p>
@@ -125,8 +128,8 @@ aplicar \(a\) a \(x\).
 
 
 </section>
-<section id="slide-orgd4d4b73">
-<h4 id="orgd4d4b73">Resolución de Problemas: Formulación</h4>
+<section id="slide-org2c0f781">
+<h4 id="org2c0f781">Resolución de Problemas: Formulación</h4>
 <p>
 Un <font color="red">problema</font> puede ser definido a través de los siguientes componentes:
 </p>
@@ -137,8 +140,8 @@ Un <font color="red">problema</font> puede ser definido a través de los siguien
 </ul>
 
 </section>
-<section id="slide-org7b87a01">
-<h4 id="org7b87a01">Resolución de Problemas: Espacio de Búsqueda</h4>
+<section id="slide-org85147a1">
+<h4 id="org85147a1">Resolución de Problemas: Espacio de Búsqueda</h4>
 <p>
 Con  el estado inicial, las acciones y la función del estado sucesor se define el <font color="red">espacio de búsqueda</font> de un problema.
 </p>
@@ -157,21 +160,21 @@ conectados por una secuencia de acciones.
 </section>
 </section>
 <section>
-<section id="slide-org44792bd">
-<h3 id="org44792bd">Función del Agente</h3>
+<section id="slide-org1725466">
+<h3 id="org1725466">Función del Agente</h3>
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><code trim><span style="color: #1c86ee;">function</span> <span style="color: #cd9b1d;">Agente</span>-Solucionador(percept) returns an action
+<pre  class="src src-pascal"   ><code trim><span style="color: #00ffff;">function</span> <span style="color: #4186be;">Agente</span>-Solucionador(percept) returns an action
 static: sec, una secuencia de accion, inicialmente vacia
        state, descripcion del estado del mundo actual
        goal, una meta, inicialmente nula
        problem, una formulaci&#243;n del problema
 
-<span style="color: #1c86ee;">if</span> seq is empty <span style="color: #1c86ee;">then</span> 
+<span style="color: #00ffff;">if</span> seq is empty <span style="color: #00ffff;">then</span> 
        goal &lt;- Formulate-Goal(state)
        problem &lt;- Formulate-Problem(state,goal)
        seq &lt;- Search(problem) 
-       <span style="color: #1c86ee;">if</span> seq=failure <span style="color: #1c86ee;">then</span> return a null action
+       <span style="color: #00ffff;">if</span> seq=failure <span style="color: #00ffff;">then</span> return a null action
 action &lt;- First(seq)
 seq &lt;- Rest(seq)
 return action
@@ -181,8 +184,8 @@ return action
 </section>
 </section>
 <section>
-<section id="slide-org71ba29b">
-<h3 id="org71ba29b">Ejemplo: Ir a Bucarest</h3>
+<section id="slide-org4a026ce">
+<h3 id="org4a026ce">Ejemplo: Ir a Bucarest</h3>
 <ul>
 <li class="fragment roll-in"><b>Situación inicial</b> Nos encontramos en Rumania; exactamente en  Arad. El vuelo parte mañana desde Bucarest</li>
 <li class="fragment roll-in"><b>Formular Objetivo</b>  Estar en Bucarest</li>
@@ -198,17 +201,17 @@ return action
 
 
 </section>
-<section id="slide-org63be095">
-<h4 id="org63be095">Ejemplo (cont)</h4>
+<section id="slide-org25334e4">
+<h4 id="org25334e4">Ejemplo (cont)</h4>
 
-<div id="org9241fce" class="figure">
+<div id="org0277603" class="figure">
 <p><img src="mapa.png" alt="mapa.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgd626400">
-<h4 id="orgd626400">Formulación de un problema de estado simple</h4>
+<section id="slide-org48c3b5f">
+<h4 id="org48c3b5f">Formulación de un problema de estado simple</h4>
 <ul>
 <li>Un problema se define por cinco items
 <ul>
@@ -223,8 +226,8 @@ return action
 </ul>
 
 </section>
-<section id="slide-org59a032f">
-<h4 id="org59a032f">Formulación de un problema de estado simple</h4>
+<section id="slide-org7d9b10d">
+<h4 id="org7d9b10d">Formulación de un problema de estado simple</h4>
 <ul>
 <li><p>
 <b>SOLUCIÓN</b> 
@@ -240,8 +243,8 @@ estado incial al estado meta.
 </section>
 </section>
 <section>
-<section id="slide-orge61d5ac">
-<h3 id="orge61d5ac">Seleccionando un espacio de estados</h3>
+<section id="slide-org47254b5">
+<h3 id="org47254b5">Seleccionando un espacio de estados</h3>
 <ul>
 <li>El mundo real es demasiado <font color="red">complejo</font>.</li>
 <li>El espacio de estados debe ser <i>abstraído</i> para la resolución de problemas.</li>
@@ -265,10 +268,10 @@ paradas de descanso, etc..</li>
 </p>
 
 </section>
-<section id="slide-org8d157fe">
-<h4 id="org8d157fe">Grafo del espacio de estados de la aspiradora</h4>
+<section id="slide-orgacdb29c">
+<h4 id="orgacdb29c">Grafo del espacio de estados de la aspiradora</h4>
 
-<div id="org5e83484" class="figure">
+<div id="orge107a76" class="figure">
 <p><img src="vacuum2-paths.png" alt="vacuum2-paths.png" />
 </p>
 </div>
@@ -283,10 +286,10 @@ paradas de descanso, etc..</li>
 
 
 </section>
-<section id="slide-org611baae">
-<h4 id="org611baae">Ejemplo: 8-puzzle</h4>
+<section id="slide-org013cf60">
+<h4 id="org013cf60">Ejemplo: 8-puzzle</h4>
 
-<div id="org2d22c31" class="figure">
+<div id="org075d77c" class="figure">
 <p><img src="8puzzle.png" alt="8puzzle.png" />
 </p>
 </div>
@@ -300,8 +303,8 @@ paradas de descanso, etc..</li>
 </ul>
 
 </section>
-<section id="slide-org0d2490a">
-<h4 id="org0d2490a">Misioneros y Caníbales</h4>
+<section id="slide-org81a8c6a">
+<h4 id="org81a8c6a">Misioneros y Caníbales</h4>
 <ul>
 <li><b>Problema a resolver</b></li>
 
@@ -315,7 +318,7 @@ secuencia de movimientos en la barca que permite trasladarlos a todos al otro la
 </p>
 
 
-<div id="org853ecac" class="figure">
+<div id="org652c1b1" class="figure">
 <p><img src="canibales.jpg" alt="canibales.jpg" />
 </p>
 </div>
@@ -323,8 +326,8 @@ secuencia de movimientos en la barca que permite trasladarlos a todos al otro la
 </section>
 </section>
 <section>
-<section id="slide-orgfc897d8">
-<h3 id="orgfc897d8">Algoritmos de Búsqueda</h3>
+<section id="slide-orgb2a1d03">
+<h3 id="orgb2a1d03">Algoritmos de Búsqueda</h3>
 <ul>
 <li><b>Idea Básica</b> 
 "offline", simular la exploración del espacio de estados generando los sucesores de los estados ya explorados</li>
@@ -333,47 +336,47 @@ secuencia de movimientos en la barca que permite trasladarlos a todos al otro la
 
 <div class="org-src-container">
 
-<pre  class="src src-pascal"><code trim><span style="color: #1c86ee;">function</span> <span style="color: #cd9b1d;">B&#250;squeda</span>-Arbol(problem,strategy) returns an soluci&#243;n o falla
+<pre  class="src src-pascal"   ><code trim><span style="color: #00ffff;">function</span> <span style="color: #4186be;">B&#250;squeda</span>-Arbol(problem,strategy) returns an soluci&#243;n o falla
 Inicializar el &#225;rbol de b&#250;squeda usando el estado inicial de problem
-loop <span style="color: #1c86ee;">do</span> 
-      <span style="color: #1c86ee;">if</span> no hay candidatos para la expansi&#243;n <span style="color: #1c86ee;">then</span> return falla
+loop <span style="color: #00ffff;">do</span> 
+      <span style="color: #00ffff;">if</span> no hay candidatos para la expansi&#243;n <span style="color: #00ffff;">then</span> return falla
       elegir un nodo hoja expandiendo de acuerdo a la strategy 
-      <span style="color: #1c86ee;">if</span> el nodo contiene un estado meta <span style="color: #1c86ee;">then</span> return la soluci&#243;n correspondiente
-      <span style="color: #1c86ee;">else</span> expandir el nodo y agregar los nodos resultantes al &#225;rbol de b&#250;squeda
-<span style="color: #1c86ee;">end</span>
+      <span style="color: #00ffff;">if</span> el nodo contiene un estado meta <span style="color: #00ffff;">then</span> return la soluci&#243;n correspondiente
+      <span style="color: #00ffff;">else</span> expandir el nodo y agregar los nodos resultantes al &#225;rbol de b&#250;squeda
+<span style="color: #00ffff;">end</span>
 </code></pre>
 </div>
 
 </section>
-<section id="slide-org8bf55c2">
-<h4 id="org8bf55c2">Ejemplo</h4>
+<section id="slide-orgde0db4f">
+<h4 id="orgde0db4f">Ejemplo</h4>
 
-<div id="orgb865cb7" class="figure">
+<div id="orgdc005f5" class="figure">
 <p><img src="search-map1c.jpg" alt="search-map1c.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org438b728">
-<h4 id="org438b728">Ejemplo</h4>
+<section id="slide-orgca94aec">
+<h4 id="orgca94aec">Ejemplo</h4>
 
-<div id="orgb4c658c" class="figure">
+<div id="org98f8000" class="figure">
 <p><img src="search-map2c.jpg" alt="search-map2c.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgf0dff7c">
-<h4 id="orgf0dff7c">Ejemplo</h4>
+<section id="slide-org55570de">
+<h4 id="org55570de">Ejemplo</h4>
 
-<div id="org7ee4127" class="figure">
+<div id="orga283aa4" class="figure">
 <p><img src="search-map3c.jpg" alt="search-map3c.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgb2fe8e9">
-<h4 id="orgb2fe8e9">Implementación: estados vs. nodos</h4>
+<section id="slide-org2567258">
+<h4 id="org2567258">Implementación: estados vs. nodos</h4>
 <ul>
 <li><b>Estado</b>
 Es una <i>representació</i>  de una configuración física</li>
@@ -384,44 +387,44 @@ búsqueda, incluye <font color="blue">padre</font>, <font color="blue">hijo</fon
 </ul>
 
 
-<div id="orga1075a4" class="figure">
+<div id="orga22451f" class="figure">
 <p><img src="state-vs-node.png" alt="state-vs-node.png" />
 </p>
 </div>
 
 
 </section>
-<section id="slide-org75331f6">
-<h4 id="org75331f6">Árbol de Búsqueda</h4>
+<section id="slide-orgf70b5bc">
+<h4 id="orgf70b5bc">Árbol de Búsqueda</h4>
 
-<div id="org7e93e01" class="figure">
+<div id="org29ce6f3" class="figure">
 <p><img src="farbolbusq.jpg" alt="farbolbusq.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org6fdb926">
-<h4 id="org6fdb926">Implementación Algoritmo de Búsqueda Genérico</h4>
+<section id="slide-orga641017">
+<h4 id="orga641017">Implementación Algoritmo de Búsqueda Genérico</h4>
 <div style="font-size: 140%;">
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim><span style="color: #cd9b1d;">search</span>(<span style="color: #2e8b57;">F0</span>) :-
-    select(<span style="color: #2e8b57;">Node</span>,<span style="color: #2e8b57;">F0</span>,<span style="color: #2e8b57;">F1</span>),
-    is_goal(<span style="color: #2e8b57;">Node</span>).
+<pre  class="src src-prolog"   ><code trim><span style="color: #4186be;">search</span>(<span style="color: #ffffff; font-weight: bold;">F0</span>) :-
+    select(<span style="color: #ffffff; font-weight: bold;">Node</span>,<span style="color: #ffffff; font-weight: bold;">F0</span>,<span style="color: #ffffff; font-weight: bold;">F1</span>),
+    is_goal(<span style="color: #ffffff; font-weight: bold;">Node</span>).
 
-<span style="color: #cd9b1d;">search</span>(<span style="color: #2e8b57;">F0</span>) :-
-    select(<span style="color: #2e8b57;">Node</span>,<span style="color: #2e8b57;">F0</span>,<span style="color: #2e8b57;">F1</span>),
-    neighbors(<span style="color: #2e8b57;">Node</span>,<span style="color: #2e8b57;">NN</span>),
-    add-to-frontier(<span style="color: #2e8b57;">NN</span>,<span style="color: #2e8b57;">F1</span>,<span style="color: #2e8b57;">F2</span>),
-    search(<span style="color: #2e8b57;">F2</span>).
+<span style="color: #4186be;">search</span>(<span style="color: #ffffff; font-weight: bold;">F0</span>) :-
+    select(<span style="color: #ffffff; font-weight: bold;">Node</span>,<span style="color: #ffffff; font-weight: bold;">F0</span>,<span style="color: #ffffff; font-weight: bold;">F1</span>),
+    neighbors(<span style="color: #ffffff; font-weight: bold;">Node</span>,<span style="color: #ffffff; font-weight: bold;">NN</span>),
+    add-to-frontier(<span style="color: #ffffff; font-weight: bold;">NN</span>,<span style="color: #ffffff; font-weight: bold;">F1</span>,<span style="color: #ffffff; font-weight: bold;">F2</span>),
+    search(<span style="color: #ffffff; font-weight: bold;">F2</span>).
 </code></pre>
 </div>
 </div>
 </section>
-<section id="slide-org622d40b">
-<h4 id="org622d40b">Estrategias de búsqueda</h4>
+<section id="slide-org38118eb">
+<h4 id="org38118eb">Estrategias de búsqueda</h4>
 
-<div id="org4cd82cd" class="figure">
+<div id="org7c516dc" class="figure">
 <p><img src="farbolbusq.jpg" alt="farbolbusq.jpg" />
 </p>
 </div>
@@ -431,8 +434,8 @@ Una estrategia es definida eligiendo el <font color="red">orden de la expansión
 </p>
 
 </section>
-<section id="slide-org4afc1c8">
-<h4 id="org4afc1c8">Estrategias de búsqueda</h4>
+<section id="slide-org37b5260">
+<h4 id="org37b5260">Estrategias de búsqueda</h4>
 <ul>
 <li>Las estrategias son evaluadas según las siguientes dimensiones:
 <ul>
@@ -446,8 +449,8 @@ Una estrategia es definida eligiendo el <font color="red">orden de la expansión
 </ul>
 
 </section>
-<section id="slide-orgae6c43e">
-<h4 id="orgae6c43e">Estrategias de búsqueda</h4>
+<section id="slide-org06aeeac">
+<h4 id="org06aeeac">Estrategias de búsqueda</h4>
 <ul>
 <li>La complejidad es medida en términos de 
 <ul>
@@ -462,8 +465,8 @@ Una estrategia es definida eligiendo el <font color="red">orden de la expansión
 </section>
 </section>
 <section>
-<section id="slide-org22c5d6d">
-<h3 id="org22c5d6d">Estrategias de Búsqueda No Informadas (Ciegas)</h3>
+<section id="slide-orgaa00bbf">
+<h3 id="orgaa00bbf">Estrategias de Búsqueda No Informadas (Ciegas)</h3>
 <ul>
 <li>Primero en anchura (Breadth-first search)</li>
 <li>Costo uniforme (Uniform-cost search)</li>
@@ -474,8 +477,8 @@ Una estrategia es definida eligiendo el <font color="red">orden de la expansión
 </ul>
 
 </section>
-<section id="slide-orgf27af5c">
-<h4 id="orgf27af5c">Primero en Anchura - Breadth-First</h4>
+<section id="slide-org99961e5">
+<h4 id="org99961e5">Primero en Anchura - Breadth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más cercanos.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola FIFO, i.e., los sucesores nuevos van al final</li>
@@ -483,14 +486,14 @@ Una estrategia es definida eligiendo el <font color="red">orden de la expansión
 </ul>
 
 
-<div id="orgc1ddc8e" class="figure">
+<div id="org9636804" class="figure">
 <p><img src="bfs-progress1.jpg" alt="bfs-progress1.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org6bf2ff6">
-<h4 id="org6bf2ff6">Primero en Anchura - Breadth-First</h4>
+<section id="slide-org0bee39b">
+<h4 id="org0bee39b">Primero en Anchura - Breadth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más cercanos.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola FIFO, i.e., los sucesores nuevos van al final</li>
@@ -498,14 +501,14 @@ Una estrategia es definida eligiendo el <font color="red">orden de la expansión
 </ul>
 
 
-<div id="org1ef98fb" class="figure">
+<div id="org2c63e6a" class="figure">
 <p><img src="bfs-progress2.jpg" alt="bfs-progress2.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org85fc33f">
-<h4 id="org85fc33f">Primero en Anchura - Breadth-First</h4>
+<section id="slide-org44f5a06">
+<h4 id="org44f5a06">Primero en Anchura - Breadth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más cercanos.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola FIFO, i.e., los sucesores nuevos van al final</li>
@@ -513,14 +516,14 @@ Una estrategia es definida eligiendo el <font color="red">orden de la expansión
 </ul>
 
 
-<div id="orge9ab450" class="figure">
+<div id="orgf3e970c" class="figure">
 <p><img src="bfs-progress3.jpg" alt="bfs-progress3.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org3f43dbf">
-<h4 id="org3f43dbf">Primero en Anchura - Breadth-First</h4>
+<section id="slide-org01e36dd">
+<h4 id="org01e36dd">Primero en Anchura - Breadth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más cercanos.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola FIFO, i.e., los sucesores nuevos van al final</li>
@@ -528,23 +531,23 @@ Una estrategia es definida eligiendo el <font color="red">orden de la expansión
 </ul>
 
 
-<div id="orgfc67281" class="figure">
+<div id="org5e78a06" class="figure">
 <p><img src="bfs-progress4.jpg" alt="bfs-progress4.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org47fa67f">
-<h4 id="org47fa67f">Breadth-First</h4>
+<section id="slide-orgcd8c554">
+<h4 id="orgcd8c554">Breadth-First</h4>
 
-<div id="org94d19ed" class="figure">
+<div id="org3abd7bf" class="figure">
 <p><img src="farbolbreadth.jpg" alt="farbolbreadth.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org22c1f71">
-<h4 id="org22c1f71">Propiedades de Breadth-First</h4>
+<section id="slide-orgda63df1">
+<h4 id="orgda63df1">Propiedades de Breadth-First</h4>
 <ul>
 <li><b>¿Completo?:</b> Si (si \(b\) es finito)</li>
 <li><b>¿Tiempo?:</b> \(1+b+b^2+b^3+\ldots +b^d. O(b^{d})\), i.e., exp. en \(d\)</li>
@@ -566,8 +569,8 @@ un tiempo de 350 años y 10 hexabytes. :(</li>
 
 
 </section>
-<section id="slide-orga8ac503">
-<h4 id="orga8ac503">Costo-uniforme</h4>
+<section id="slide-orge40a6d8">
+<h4 id="orge40a6d8">Costo-uniforme</h4>
 <ul>
 <li>Expande el nodo no expandido que tenga el menor costo.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola ordenada
@@ -583,8 +586,8 @@ si los costos son todos iguales.</li>
 
 
 </section>
-<section id="slide-orga5f5bdb">
-<h4 id="orga5f5bdb">Primero en Profundidad - Depth-First</h4>
+<section id="slide-org6e079d4">
+<h4 id="org6e079d4">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundos.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -592,14 +595,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="org68c3feb" class="figure">
+<div id="orgbbeec73" class="figure">
 <p><img src="dfs-progress01.jpg" alt="dfs-progress01.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org3d5e9a2">
-<h4 id="org3d5e9a2">Primero en Profundidad - Depth-First</h4>
+<section id="slide-orgdd0f3d7">
+<h4 id="orgdd0f3d7">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -607,14 +610,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="org89c8e5c" class="figure">
+<div id="orgb55a6e5" class="figure">
 <p><img src="dfs-progress02.jpg" alt="dfs-progress02.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgbea3b66">
-<h4 id="orgbea3b66">Primero en Profundidad - Depth-First</h4>
+<section id="slide-org2edd889">
+<h4 id="org2edd889">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -622,14 +625,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="orgb713225" class="figure">
+<div id="org80fb8e6" class="figure">
 <p><img src="dfs-progress03.jpg" alt="dfs-progress03.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org83806f5">
-<h4 id="org83806f5">Primero en Profundidad - Depth-First</h4>
+<section id="slide-orgda3009c">
+<h4 id="orgda3009c">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -637,14 +640,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="org7ddbc33" class="figure">
+<div id="orgd7240b6" class="figure">
 <p><img src="dfs-progress04.jpg" alt="dfs-progress04.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgfb8607b">
-<h4 id="orgfb8607b">Primero en Profundidad - Depth-First</h4>
+<section id="slide-orgad2cb96">
+<h4 id="orgad2cb96">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -652,14 +655,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="orgc0858d6" class="figure">
+<div id="org526176d" class="figure">
 <p><img src="dfs-progress05.jpg" alt="dfs-progress05.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org4b597d7">
-<h4 id="org4b597d7">Primero en Profundidad - Depth-First</h4>
+<section id="slide-org5bbbe96">
+<h4 id="org5bbbe96">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -667,14 +670,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="org28b2388" class="figure">
+<div id="orgd87290e" class="figure">
 <p><img src="dfs-progress06.jpg" alt="dfs-progress06.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgd8fc971">
-<h4 id="orgd8fc971">Primero en Profundidad - Depth-First</h4>
+<section id="slide-org5aabe68">
+<h4 id="org5aabe68">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -682,14 +685,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="org090e9ca" class="figure">
+<div id="orge001599" class="figure">
 <p><img src="dfs-progress07.jpg" alt="dfs-progress07.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgb690020">
-<h4 id="orgb690020">Primero en Profundidad - Depth-First</h4>
+<section id="slide-org7457330">
+<h4 id="org7457330">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -697,14 +700,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="org0f13996" class="figure">
+<div id="orgf845ae3" class="figure">
 <p><img src="dfs-progress08.jpg" alt="dfs-progress08.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org772fafc">
-<h4 id="org772fafc">Primero en Profundidad - Depth-First</h4>
+<section id="slide-org1cd6ca2">
+<h4 id="org1cd6ca2">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -712,14 +715,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="orgf2a170e" class="figure">
+<div id="org20e0e59" class="figure">
 <p><img src="dfs-progress09.jpg" alt="dfs-progress09.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orga4adb53">
-<h4 id="orga4adb53">Primero en Profundidad - Depth-First</h4>
+<section id="slide-org85cea2b">
+<h4 id="org85cea2b">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -727,14 +730,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="org244e032" class="figure">
+<div id="org1a3329d" class="figure">
 <p><img src="dfs-progress10.jpg" alt="dfs-progress10.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgd4bb480">
-<h4 id="orgd4bb480">Primero en Profundidad - Depth-First</h4>
+<section id="slide-org1eb9465">
+<h4 id="org1eb9465">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -742,14 +745,14 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="orgfa6d4fb" class="figure">
+<div id="org60cf4ea" class="figure">
 <p><img src="dfs-progress11.jpg" alt="dfs-progress11.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgef0a024">
-<h4 id="orgef0a024">Primero en Profundidad - Depth-First</h4>
+<section id="slide-orgbf3210f">
+<h4 id="orgbf3210f">Primero en Profundidad - Depth-First</h4>
 <ul>
 <li>Expande los nodos no expandidos más profundoss.</li>
 <li><font color="green">Implementación</font>: La <i>frontera</i> es un cola LIFO, i.e., los sucesores nuevos van al frente</li>
@@ -757,23 +760,23 @@ si los costos son todos iguales.</li>
 </ul>
 
 
-<div id="org374d3d6" class="figure">
+<div id="orgb05af92" class="figure">
 <p><img src="dfs-progress12.jpg" alt="dfs-progress12.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org12f50fa">
-<h4 id="org12f50fa">Espacio de Búsqueda recorrido con depth-first</h4>
+<section id="slide-orgd6309d9">
+<h4 id="orgd6309d9">Espacio de Búsqueda recorrido con depth-first</h4>
 
-<div id="org34dd47c" class="figure">
+<div id="org820455f" class="figure">
 <p><img src="farboldepth.jpg" alt="farboldepth.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org575dcec">
-<h4 id="org575dcec">Propiedades de depth-first</h4>
+<section id="slide-org31be69a">
+<h4 id="org31be69a">Propiedades de depth-first</h4>
 <ul>
 <li><b>¿Completo?:</b> No, falla en espacios de
 profundidad infinita, espacios con ciclos. Se puede modificar para
@@ -789,8 +792,8 @@ soluciones son densas, puede ser mucho más rápido que Breadth-First.</li>
 
 
 </section>
-<section id="slide-org88584a9">
-<h4 id="org88584a9">Búsqueda con Profundidad Limitada - Depth-limited Search</h4>
+<section id="slide-org0844cfd">
+<h4 id="org0844cfd">Búsqueda con Profundidad Limitada - Depth-limited Search</h4>
 <ul>
 <li>Igual a depth-first con un límite de profundidad \(l\).</li>
 <li>Esto es,  los  nodos de profundidad \(l\) no se expanden, aún cuando tengan sucesores.</li>
@@ -798,44 +801,44 @@ soluciones son densas, puede ser mucho más rápido que Breadth-First.</li>
 </ul>
 
 </section>
-<section id="slide-org4690098">
-<h4 id="org4690098">Búsqueda Iterative Deepening</h4>
+<section id="slide-org795db09">
+<h4 id="org795db09">Búsqueda Iterative Deepening</h4>
 
-<div id="orgce3dc36" class="figure">
+<div id="orgf99ad08" class="figure">
 <p><img src="ids-progress1.jpg" alt="ids-progress1.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orge079aee">
-<h4 id="orge079aee">Búsqueda Iterative Deepening</h4>
+<section id="slide-orgb25eabd">
+<h4 id="orgb25eabd">Búsqueda Iterative Deepening</h4>
 
-<div id="org570d3ca" class="figure">
+<div id="orgd313742" class="figure">
 <p><img src="ids-progress2.jpg" alt="ids-progress2.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org1387d62">
-<h4 id="org1387d62">Búsqueda Iterative Deepening</h4>
+<section id="slide-org03e20f2">
+<h4 id="org03e20f2">Búsqueda Iterative Deepening</h4>
 
-<div id="orgdeaefdf" class="figure">
+<div id="orgd93b53b" class="figure">
 <p><img src="ids-progress3.jpg" alt="ids-progress3.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org9f709bf">
-<h4 id="org9f709bf">Búsqueda Iterative Deepening</h4>
+<section id="slide-org3da9817">
+<h4 id="org3da9817">Búsqueda Iterative Deepening</h4>
 
-<div id="org53c30a1" class="figure">
+<div id="org91622af" class="figure">
 <p><img src="ids-progress4.jpg" alt="ids-progress4.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org842ef6a">
-<h4 id="org842ef6a">Propiedades de iterative deepening</h4>
+<section id="slide-org2848dca">
+<h4 id="org2848dca">Propiedades de iterative deepening</h4>
 <ul>
 <li><b>¿Completo?:</b> Si</li>
 <li><b>¿Tiempo?:</b> \((d+1)b^0 + d b^1 + (d-1)b^2 + \ldots + b^d = O(b^d)\)</li>
@@ -855,21 +858,21 @@ BFS puede ser modificado para aplicar el test de meta cuando un nodo es <i>gener
 </section>
 </section>
 <section>
-<section id="slide-orgb6aec6d">
-<h3 id="orgb6aec6d">Búsqueda Bidireccional</h3>
+<section id="slide-org75eb097">
+<h3 id="org75eb097">Búsqueda Bidireccional</h3>
 <p>
 Búsqueda simultánea desde el estado inicial y el final.
 </p>
 
 
-<div id="org7542cde" class="figure">
+<div id="org60a737a" class="figure">
 <p><img src="bidireccional.png" alt="bidireccional.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org29f15b2">
-<h4 id="org29f15b2">Búsqueda Bidireccional</h4>
+<section id="slide-orgda098c2">
+<h4 id="orgda098c2">Búsqueda Bidireccional</h4>
 <ul>
 <li>Condicionantes:
 <ul>
@@ -882,8 +885,8 @@ Búsqueda simultánea desde el estado inicial y el final.
 </ul>
 
 </section>
-<section id="slide-org09c3d9e">
-<h4 id="org09c3d9e">Propiedades de la Búsqueda Bidireccional</h4>
+<section id="slide-org8548473">
+<h4 id="org8548473">Propiedades de la Búsqueda Bidireccional</h4>
 <ul>
 <li><b>¿Completo?:</b> Si, si \(b\) es finito y en ambos sentidos se utiliza búsqueda breadth-first.</li>
 <li><b>¿Tiempo?:</b> \(O(b^{d/2})\)</li>
@@ -895,8 +898,8 @@ Búsqueda simultánea desde el estado inicial y el final.
 </section>
 </section>
 <section>
-<section id="slide-org1071b9c">
-<h3 id="org1071b9c">Resumen de los algoritmos</h3>
+<section id="slide-org91fcec1">
+<h3 id="org91fcec1">Resumen de los algoritmos</h3>
 <div style="font-size: 85%;">
 
 
@@ -980,8 +983,8 @@ Búsqueda simultánea desde el estado inicial y el final.
 </section>
 </section>
 <section>
-<section id="slide-org1f6f337">
-<h3 id="org1f6f337">Estados repetidos</h3>
+<section id="slide-orgf548278">
+<h3 id="orgf548278">Estados repetidos</h3>
 <ul>
 <li>Los Algoritmos que olvidan su historia están condenados a repetirlos.</li>
 <li>No detectar estados repetidos puede transformar un problema lineal en uno exponencial!!</li>
@@ -989,7 +992,7 @@ Búsqueda simultánea desde el estado inicial y el final.
 </ul>
 
 
-<div id="orga246dbc" class="figure">
+<div id="org839fdf5" class="figure">
 <p><img src="ribbon-space.png" alt="ribbon-space.png" />
 </p>
 </div>
@@ -997,8 +1000,8 @@ Búsqueda simultánea desde el estado inicial y el final.
 </section>
 </section>
 <section>
-<section id="slide-org989580a">
-<h3 id="org989580a">Conclusiones</h3>
+<section id="slide-org6bcb770">
+<h3 id="org6bcb770">Conclusiones</h3>
 <ul>
 <li>La formulación de problemas requiere usualmente abstraerse de los detalles del mundo real para definir un espacio de estados que pueda ser explorado fácilmente.</li>
 <li>Variedad de estrategias de búsqueda ciegas.</li>
@@ -1018,18 +1021,15 @@ Búsqueda simultánea desde el estado inicial y el final.
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
 width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'none',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
+
 </script>
 </body>
 </html>

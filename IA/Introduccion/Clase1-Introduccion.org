@@ -1,49 +1,18 @@
-#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
-#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
-#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
-#+OPTIONS: reveal_single_file:nil reveal_slide_number:"c"
-#+OPTIONS: reveal_title_slide:auto reveal_width:-1
-#+REVEAL_MARGIN: -1
-#+REVEAL_MIN_SCALE: -1
-#+REVEAL_MAX_SCALE: -1
-#+REVEAL_ROOT: ../reveal.js-master
-#+REVEAL_TRANS: default
-#+REVEAL_SPEED: default
+
+
+#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+options: toc:nil num:nil
+
 #+REVEAL_THEME: moon
-#+REVEAL_EXTRA_CSS:
-#+REVEAL_EXTRA_JS:
 #+REVEAL_HLEVEL: 2
-#+REVEAL_TITLE_SLIDE_BACKGROUND:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_POSITION:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
-#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
-#+REVEAL_DEFAULT_SLIDE_BACKGROUND:
-#+REVEAL_DEFAULT_SLIDE_BACKGROUND_SIZE:
-#+REVEAL_DEFAULT_SLIDE_BACKGROUND_POSITION:
-#+REVEAL_DEFAULT_SLIDE_BACKGROUND_REPEAT:
-#+REVEAL_DEFAULT_SLIDE_BACKGROUND_TRANSITION:
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_PREAMBLE:
-#+REVEAL_HEAD_PREAMBLE:
-#+REVEAL_POSTAMBLE:
-#+REVEAL_MULTIPLEX_ID:
-#+REVEAL_MULTIPLEX_SECRET:
-#+REVEAL_MULTIPLEX_URL:
-#+REVEAL_MULTIPLEX_SOCKETIO_URL:
-#+REVEAL_SLIDE_HEADER:
-#+REVEAL_SLIDE_FOOTER:
-#+REVEAL_PLUGINS:
-#+REVEAL_DEFAULT_FRAG_STYLE:
-#+REVEAL_INIT_SCRIPT:
-#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+#+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
 
 #+MACRO: color @@html:<font color="$1">$2</font>@@
 
 #+TITLE: Inteligencia Artificial
 #+DATE:  Introducción
-#+AUTHOR: Claudio Vaucheret
-#+EMAIL: cv@fi.uncoma.edu.ar
+#+AUTHOR: German Braun
+#+EMAIL: german.braun@fi.uncoma.edu.ar
 
 
 * ¿Que es IA?
@@ -89,12 +58,12 @@ Sistemas que:
 |-----------------------------------+-------------------------------------------------------------+-----------------------|
 
 *** Pensando humanamente: Enfoque del modelamiento cognitivo
-
+#+REVEAL_HTML: <div style="font-size: 80%;">   
 #+ATTR_REVEAL: :frag t
 Requiere teorías científicas de las actividades internas del cerebro
 #+ATTR_REVEAL: :frag t
 -  ¿Cómo pensamos los humanos? 
--  ¿Cuál es la naturaleza de nuestra inteligencia y cóomo funciona?
+-  ¿Cuál es la naturaleza de nuestra inteligencia y cómo funciona?
 
 #+ATTR_REVEAL: :frag t
 Para analizar si una máquina piensa como un humano, tenemos que determinar cómo piensan los 
@@ -158,14 +127,14 @@ Sistemas que:
 |-----------------------------------+----------------------------------------------------------+-----------------------|
 
 *** Actuando humanamente: El test de Turing
-
+#+REVEAL_HTML: <div style="font-size: 90%;">   
 {{{color(green,El modelo es el hombre; el objetivo es construir un sistema que pase por humano)}}}
 
 | Matemático inglés. Marcó el comienzo de la {{{color(red,Teoría de la Computación)}}}. También fue pionero de la {{{color(red,Inteligencia Artificial)}}} | Juego de Imitación  [[file:turing.png]] Alan Turing (1912-1954)       |
 
 
 *** Actuando humanamente: El test de Turing en el cine 
-
+#+REVEAL_HTML: <div style="font-size: 80%;">   
 | [[file:exmachina.jpeg]] | [[file:codigoenigma.jpg]]  |
 |---------------------+------------------------|
 | [[file:dicaprio.jpeg]]  | [[file:codigoenigma2.jpg]] |
@@ -221,7 +190,7 @@ En su trabajo:
   razonamiento, entendimiento del lenguaje, aprendizaje
 
 ***  El test de Turing: Objeciones
-
+#+REVEAL_HTML: <div style="font-size: 90%;">   
 | El pensamiento es una función del {{{color(fucsia,alma inmortal del ser humano)}}}. Dios ha dado un alma a cada ser humano,  pero no a los animales o a las máquinas. Luego, ningún animal o máquina puede pensar. | Objeción Teológica  [[file:chistegenoma.jpg]]  |
 
 Religiones que consideran que los animales tienen alma y otras que las mujeres no la tienen.
@@ -236,6 +205,7 @@ No restringe la omnipotencia de Dios.
 | Existen varios {{{color(orange,resultados)}}} de la lógica matemática que podrían ser utilizados para mostrar que existen {{{color(orange,limitaciones)}}} en el poder de las máquinas de {{{color(orange,estados discretos)}}}.  Luego, existen preguntas que las máquinas no podrán responder. | Objeción Matemática  [[file:Mafalda.png]] |
 
 *** El test de Turing: Objeciones
+#+REVEAL_HTML: <div style="font-size: 80%;">
 
 | Hasta que una máquina {{{color(orange,no sepa escribir)}}} un soneto o componer un concierto con {{{color(orange,base)}}} en los pensamientos y las emociones que {{{color(orange,siente)}}}, y no a consecuencia de la caída venturosa de símbolos, no podremos estar de acuerdo en que la máquina pueda ser igual que un cerebro, es decir, que no solamente sepa escribirlos, sino también que sepa que los ha escrito. | Obejción de la Conciencia  [[file:Composicion-inteligencia-artificial-sony.jpg]] |
 
@@ -257,7 +227,7 @@ Premio Loebner
 http://www.loebner.net/Prizef/loebner-prize.html
 
 ***  El test de Turing: Estado del Arte
-
+#+REVEAL_HTML: <div style="font-size: 90%;">   
 Los premios para cada año son:
 
 - Medalla de bronce. En 2016 el primer premio ascendió a $4.000, el segundo a $1.500, el tercero a $1.000 y el cuarto a $500.

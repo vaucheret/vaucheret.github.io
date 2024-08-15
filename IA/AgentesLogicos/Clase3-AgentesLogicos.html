@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <title>Inteligencia Artificial</title>
-<meta name="author" content="(Claudio Vaucheret)"/>
+<meta name="author" content="Claudio Vaucheret"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -27,19 +29,20 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Agentes Lógicos</h2><p class="date">Created: 2023-09-06 mié 11:56</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><p class="subtitle"></p>
+<h2 class="author">Claudio Vaucheret</h2><h2 class="date">Agentes Lógicos</h2><p class="date">Created: 2024-08-12 lun 17:17</p>
 </section>
 
 <section>
-<section id="slide-org87011a6">
-<h2 id="org87011a6">Agentes Basados en Conocimiento</h2>
-<div class="outline-text-2" id="text-org87011a6">
+<section id="slide-org04e7814">
+<h2 id="org04e7814">Agentes Basados en Conocimiento</h2>
+<div class="outline-text-2" id="text-org04e7814">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org7892371">
-<h3 id="org7892371">IA Simbólica</h3>
+<section id="slide-orgf7c6077">
+<h3 id="orgf7c6077">IA Simbólica</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -59,10 +62,10 @@
 </section>
 </section>
 <section>
-<section id="slide-org5ccce31">
-<h3 id="org5ccce31">IA Simbólica</h3>
+<section id="slide-orgfb92f06">
+<h3 id="orgfb92f06">IA Simbólica</h3>
 
-<div id="orgfcc6b9f" class="figure">
+<div id="org679d7d9" class="figure">
 <p><img src="imagenes/Razonamiento.JPG" alt="Razonamiento.JPG" />
 </p>
 </div>
@@ -70,8 +73,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org0beecc3">
-<h3 id="org0beecc3">Agentes basados en Conocimiento</h3>
+<section id="slide-org5b9e407">
+<h3 id="org5b9e407">Agentes basados en Conocimiento</h3>
 <p>
 <b><font color="green">Idea</font></b>
 </p>
@@ -101,8 +104,8 @@ inteligencia corresponde a los <font color="blue">Agentes Basados en Conocimient
 </section>
 </section>
 <section>
-<section id="slide-orgfe2d702">
-<h3 id="orgfe2d702">Agentes basados en Conocimiento</h3>
+<section id="slide-org39feb70">
+<h3 id="org39feb70">Agentes basados en Conocimiento</h3>
 <div style="font-size: 70%;">
 <p>
 El principal componente  de un agente basado en conocimiento es su <font color="blue">Base de Conocimientod (KB)</font>.
@@ -129,8 +132,8 @@ Contiene <font color=red>toda la información relevante</font> del mundo que que
 </section>
 </section>
 <section>
-<section id="slide-org8ea4f45">
-<h3 id="org8ea4f45">Agentes basados en Conocimiento</h3>
+<section id="slide-orgf3ffcc7">
+<h3 id="orgf3ffcc7">Agentes basados en Conocimiento</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -150,8 +153,8 @@ Contiene <font color=red>toda la información relevante</font> del mundo que que
 </section>
 </section>
 <section>
-<section id="slide-org177b5c6">
-<h3 id="org177b5c6">Frame de un Agente basado en Conocimiento</h3>
+<section id="slide-orged74f3d">
+<h3 id="orged74f3d">Frame de un Agente basado en Conocimiento</h3>
 <p>
 <b><font color="green">¿Qué ejecuta el agente?</font></b>
 </p>
@@ -165,24 +168,24 @@ Contiene <font color=red>toda la información relevante</font> del mundo que que
 </section>
 </section>
 <section>
-<section id="slide-org751d708">
-<h3 id="org751d708">Frame de un Agente basado en Conocimiento</h3>
+<section id="slide-orge6ba860">
+<h3 id="orge6ba860">Frame de un Agente basado en Conocimiento</h3>
 <div style="font-size: 130%;">
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim><span style="color: #cd9b1d;">agente</span>(<span style="color: #2e8b57;">Percepcion</span>, <span style="color: #2e8b57;">T</span>, <span style="color: #2e8b57;">Accion</span>):-
-    transf_Percep(<span style="color: #2e8b57;">P</span>, <span style="color: #2e8b57;">T</span>, <span style="color: #2e8b57;">S</span>),
-    tell(<span style="color: #2e8b57;">S</span>),
-    const_cons(<span style="color: #2e8b57;">T</span>,<span style="color: #2e8b57;">QA</span>),
-    ask(<span style="color: #2e8b57;">QA</span>, <span style="color: #2e8b57;">A</span>),
-    transf_Acci&#243;n(<span style="color: #2e8b57;">A</span>,<span style="color: #2e8b57;">T</span>, <span style="color: #2e8b57;">S</span>),
-    tell(<span style="color: #2e8b57;">S</span>).
+<pre  class="src src-prolog"   ><code trim><span style="color: #4186be;">agente</span>(<span style="color: #ffffff; font-weight: bold;">Percepcion</span>, <span style="color: #ffffff; font-weight: bold;">T</span>, <span style="color: #ffffff; font-weight: bold;">Accion</span>):-
+    transf_Percep(<span style="color: #ffffff; font-weight: bold;">P</span>, <span style="color: #ffffff; font-weight: bold;">T</span>, <span style="color: #ffffff; font-weight: bold;">S</span>),
+    tell(<span style="color: #ffffff; font-weight: bold;">S</span>),
+    const_cons(<span style="color: #ffffff; font-weight: bold;">T</span>,<span style="color: #ffffff; font-weight: bold;">QA</span>),
+    ask(<span style="color: #ffffff; font-weight: bold;">QA</span>, <span style="color: #ffffff; font-weight: bold;">A</span>),
+    transf_Acci&#243;n(<span style="color: #ffffff; font-weight: bold;">A</span>,<span style="color: #ffffff; font-weight: bold;">T</span>, <span style="color: #ffffff; font-weight: bold;">S</span>),
+    tell(<span style="color: #ffffff; font-weight: bold;">S</span>).
 </code></pre>
 </div>
 </div>
 
 </section>
-<section id="slide-org751d708-split">
+<section id="slide-orge6ba860-split">
 
 <p>
 <b><font color="green">Interfaz con sensores y efectores</font></b>
@@ -198,8 +201,8 @@ Contiene <font color=red>toda la información relevante</font> del mundo que que
 </section>
 </section>
 <section>
-<section id="slide-org2cb16b7">
-<h3 id="org2cb16b7">Agente basado en Conocimiento</h3>
+<section id="slide-org33b1996">
+<h3 id="org33b1996">Agente basado en Conocimiento</h3>
 <p>
 <b><font color="green">Puede describirse a:</font></b>
 </p>
@@ -213,8 +216,8 @@ Contiene <font color=red>toda la información relevante</font> del mundo que que
 </section>
 </section>
 <section>
-<section id="slide-org1f7552c">
-<h3 id="org1f7552c">Representemos en un lenguaje que sepamos todos :)</h3>
+<section id="slide-org81eb573">
+<h3 id="org81eb573">Representemos en un lenguaje que sepamos todos :)</h3>
 <p>
 Construyamos un agente basado en Datalog
 </p>
@@ -230,8 +233,8 @@ Construyamos un agente basado en Datalog
 </section>
 </section>
 <section>
-<section id="slide-org5a4dda9">
-<h3 id="org5a4dda9">Wumpus</h3>
+<section id="slide-org6806be8">
+<h3 id="org6806be8">Wumpus</h3>
 <div style="font-size: 70%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -253,8 +256,8 @@ Construyamos un agente basado en Datalog
 </section>
 </section>
 <section>
-<section id="slide-orgfa00593">
-<h3 id="orgfa00593">Wumpus</h3>
+<section id="slide-org56c59b3">
+<h3 id="org56c59b3">Wumpus</h3>
 <div style="font-size: 70%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -275,8 +278,8 @@ Construyamos un agente basado en Datalog
 </section>
 </section>
 <section>
-<section id="slide-orgf08d831">
-<h3 id="orgf08d831">Wumpus PEAS</h3>
+<section id="slide-org0d13982">
+<h3 id="org0d13982">Wumpus PEAS</h3>
 <div style="font-size: 70%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -297,8 +300,8 @@ Construyamos un agente basado en Datalog
 </section>
 </section>
 <section>
-<section id="slide-orgc38a0c9">
-<h3 id="orgc38a0c9">Wumpus PEAS</h3>
+<section id="slide-org7145f46">
+<h3 id="org7145f46">Wumpus PEAS</h3>
 <div style="font-size: 70%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -319,8 +322,8 @@ Construyamos un agente basado en Datalog
 </section>
 </section>
 <section>
-<section id="slide-org5bcadfe">
-<h3 id="org5bcadfe">Wumpus PEAS</h3>
+<section id="slide-org404ed31">
+<h3 id="org404ed31">Wumpus PEAS</h3>
 <div style="font-size: 70%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -341,8 +344,8 @@ Construyamos un agente basado en Datalog
 </section>
 </section>
 <section>
-<section id="slide-org8ffdce6">
-<h3 id="org8ffdce6">Máquinas de Inferencia para Lenguajes de la Lógica</h3>
+<section id="slide-org992bc03">
+<h3 id="org992bc03">Máquinas de Inferencia para Lenguajes de la Lógica</h3>
 <p>
 <b><font color="green">Chequeo de Modelos</font></b>
 </p>
@@ -368,10 +371,10 @@ cláusulas satisfechas.
 </section>
 </section>
 <section>
-<section id="slide-orgde2b0ba">
-<h3 id="orgde2b0ba">Wumpus: Model Checking</h3>
+<section id="slide-orgf75ef67">
+<h3 id="orgf75ef67">Wumpus: Model Checking</h3>
 
-<div id="org151498f" class="figure">
+<div id="org586eb93" class="figure">
 <p><img src="imagenes/wumpus-entailment.png" alt="wumpus-entailment.png" height="350" />
 </p>
 </div>
@@ -389,21 +392,21 @@ Observando que no hay nada en [1,1] y que hay brisa en [2,1] los modelos para de
 </section>
 </section>
 <section>
-<section id="slide-org79a70f5">
-<h2 id="org79a70f5">Conocimiento No Definido</h2>
+<section id="slide-orgebd2604">
+<h2 id="orgebd2604">Conocimiento No Definido</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-org5a3ba54">
-<h2 id="org5a3ba54">Restricciones de Integridad</h2>
-<div class="outline-text-2" id="text-org5a3ba54">
+<section id="slide-org4437419">
+<h2 id="org4437419">Restricciones de Integridad</h2>
+<div class="outline-text-2" id="text-org4437419">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org4a6b4da">
-<h3 id="org4a6b4da">Restricción de Integridad: Aplicaciones</h3>
+<section id="slide-org4ce9ee7">
+<h3 id="org4ce9ee7">Restricción de Integridad: Aplicaciones</h3>
 <p>
 <b>Diagnóstico basado en consistencia</b>
 </p>
@@ -416,10 +419,10 @@ Observando que no hay nada en [1,1] y que hay brisa en [2,1] los modelos para de
 </section>
 </section>
 <section>
-<section id="slide-org778e94a">
-<h3 id="org778e94a">Diagnóstico basado en consistencia</h3>
+<section id="slide-orge030393">
+<h3 id="orge030393">Diagnóstico basado en consistencia</h3>
 
-<div id="org4d31d47" class="figure">
+<div id="org1f8113d" class="figure">
 <p><img src="imagenes/circuito.jpg" alt="circuito.jpg" height="250" />
 </p>
 </div>
@@ -437,8 +440,8 @@ Si está on(a) y on(b) y off(e), ¿qué podemos concluir?
 </section>
 </section>
 <section>
-<section id="slide-org48250f5">
-<h3 id="org48250f5">Restricción de Integridad: Aplicaciones</h3>
+<section id="slide-org7b8f1aa">
+<h3 id="org7b8f1aa">Restricción de Integridad: Aplicaciones</h3>
 <ul>
 <li class="fragment roll-in">Restricciones que el diseñador de una base de datos conoce y que no deberían violarse jamás.</li>
 <li class="fragment roll-in">En la base de estudiantes de una universidad, no podría ocurrir que un alumno tuviera diferentes notas de aprobación del mismo curso</li>
@@ -456,8 +459,8 @@ Si está on(a) y on(b) y off(e), ¿qué podemos concluir?
 </section>
 </section>
 <section>
-<section id="slide-org6d23eae">
-<h3 id="org6d23eae">Restricciones de Integridad</h3>
+<section id="slide-org88caee0">
+<h3 id="org88caee0">Restricciones de Integridad</h3>
 <ul>
 <li class="fragment roll-in">Nos ayuda a conservar la <font color=red>consistencia</font> en los datos.</li>
 <li class="fragment roll-in">No es posible que una luz esté prendida y apagada</li>
@@ -471,8 +474,8 @@ Si está on(a) y on(b) y off(e), ¿qué podemos concluir?
 </section>
 </section>
 <section>
-<section id="slide-org6f4fe32">
-<h3 id="org6f4fe32">RI:Representación del Conocimiento</h3>
+<section id="slide-orgad5ddb1">
+<h3 id="orgad5ddb1">RI:Representación del Conocimiento</h3>
 <p>
 <b><font color="green">Restricción de Integridad</font></b>
 </p>
@@ -502,8 +505,8 @@ Es una cláusula de definida o una restricción de integridad.
 </section>
 </section>
 <section>
-<section id="slide-orgfb61326">
-<h3 id="orgfb61326">Restricción de Integridad</h3>
+<section id="slide-org122181b">
+<h3 id="org122181b">Restricción de Integridad</h3>
 <p>
 <b><font color="green">Ejemplo: Introduce negación</font></b>
 </p>
@@ -538,8 +541,8 @@ b \(\leftarrow\) c.
 </section>
 </section>
 <section>
-<section id="slide-org7ef947a">
-<h3 id="org7ef947a">Restricción de Integridad</h3>
+<section id="slide-org76b01a7">
+<h3 id="org76b01a7">Restricción de Integridad</h3>
 <p>
 <b><font color="green">Ejemplo: Respuestas disyuntivas</font></b>
 </p>
@@ -581,15 +584,15 @@ b \(\leftarrow\) e.
 </section>
 </section>
 <section>
-<section id="slide-org4158263">
-<h2 id="org4158263">Suposición de Conocimiento Completo</h2>
-<div class="outline-text-2" id="text-org4158263">
+<section id="slide-org8542fc6">
+<h2 id="org8542fc6">Suposición de Conocimiento Completo</h2>
+<div class="outline-text-2" id="text-org8542fc6">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orga2b0522">
-<h3 id="orga2b0522">Suposición de Conocimiento Completo</h3>
+<section id="slide-org3fc6cd9">
+<h3 id="org3fc6cd9">Suposición de Conocimiento Completo</h3>
 <p>
 <b><font color="green">Conocimiento Completo</font></b>
 </p>
@@ -604,8 +607,8 @@ b \(\leftarrow\) e.
 </section>
 </section>
 <section>
-<section id="slide-orgff7ba6f">
-<h3 id="orgff7ba6f">Conocimiento Completo</h3>
+<section id="slide-org3c6c2a5">
+<h3 id="org3c6c2a5">Conocimiento Completo</h3>
 <p>
 <b><font color="green">No Monotonicidad</font></b>
 </p>
@@ -620,8 +623,8 @@ b \(\leftarrow\) e.
 </section>
 </section>
 <section>
-<section id="slide-orge0cb0d1">
-<h3 id="orge0cb0d1">Conocimiento Completo</h3>
+<section id="slide-org6c07d8d">
+<h3 id="org6c07d8d">Conocimiento Completo</h3>
 <p>
 <b><font color="green">CWA: Closed World Assumption</font></b>
 </p>
@@ -637,8 +640,8 @@ Permite asumir a un agente  que un <font color="blue">hecho es falso</font> si <
 </section>
 </section>
 <section>
-<section id="slide-orgd57760d">
-<h3 id="orgd57760d">Conocimiento Completo</h3>
+<section id="slide-org16000d9">
+<h3 id="org16000d9">Conocimiento Completo</h3>
 <div style="font-size: 80%;">
 <p>
 \(a \leftarrow B1\)
@@ -672,8 +675,8 @@ y la suposición de conocimiento completo nos permite concluir que
 </section>
 </section>
 <section>
-<section id="slide-org6e7d927">
-<h3 id="org6e7d927">Conocimiento Completo</h3>
+<section id="slide-orgb4128f2">
+<h3 id="orgb4128f2">Conocimiento Completo</h3>
 <p>
 <b><font color="green">Completamiento de Clark</font></b>
 </p>
@@ -696,10 +699,10 @@ entonces el completamiento de Clark de W es\[W\leftrightarrow false\]
 </section>
 </section>
 <section>
-<section id="slide-org81382cd">
-<h3 id="org81382cd">CK: Razonamiento Bottom-up</h3>
+<section id="slide-orga53b9ae">
+<h3 id="orga53b9ae">CK: Razonamiento Bottom-up</h3>
 
-<div id="org8f20b67" class="figure">
+<div id="org6136107" class="figure">
 <p><img src="imagenes/NAF-BU.jpg" alt="NAF-BU.jpg" height="400" /> 
 </p>
 </div>
@@ -707,8 +710,8 @@ entonces el completamiento de Clark de W es\[W\leftrightarrow false\]
 </section>
 </section>
 <section>
-<section id="slide-org9c92641">
-<h3 id="org9c92641">CK: Razonamiento Bottom-up</h3>
+<section id="slide-orgb3930e4">
+<h3 id="orgb3930e4">CK: Razonamiento Bottom-up</h3>
 <div style="font-size: 80%;">
 <p>
 \(p \leftarrow q \wedge  \sim r\).
@@ -746,8 +749,8 @@ entonces el completamiento de Clark de W es\[W\leftrightarrow false\]
 </section>
 </section>
 <section>
-<section id="slide-org3e8708a">
-<h3 id="org3e8708a">CK: Razonamiento Top-down</h3>
+<section id="slide-orgdf975f4">
+<h3 id="orgdf975f4">CK: Razonamiento Top-down</h3>
 <div style="font-size: 75%;">
 <p>
 Negación por falla.
@@ -791,8 +794,8 @@ Negación por falla.
 </section>
 </section>
 <section>
-<section id="slide-org0cf5f55">
-<h3 id="org0cf5f55">CK: Razonamiento Top-down</h3>
+<section id="slide-org7fe3341">
+<h3 id="org7fe3341">CK: Razonamiento Top-down</h3>
 <div style="font-size: 80%;">
 <p>
 Problemas con las variables libres:
@@ -825,15 +828,15 @@ Solución: retrasar la NAF de las metas con variables libres hasta que se liguen
 </section>
 </section>
 <section>
-<section id="slide-org24b3962">
-<h2 id="org24b3962">Bibliografía</h2>
-<div class="outline-text-2" id="text-org24b3962">
+<section id="slide-org01ff56b">
+<h2 id="org01ff56b">Bibliografía</h2>
+<div class="outline-text-2" id="text-org01ff56b">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org8ed450f">
-<h3 id="org8ed450f">Referencia Bibliográfica</h3>
+<section id="slide-orgf825ed1">
+<h3 id="orgf825ed1">Referencia Bibliográfica</h3>
 <div style="font-size: 80%;">
 
 <p>
@@ -861,20 +864,16 @@ Solución: retrasar la NAF de las metas con variables libres hasta que se liguen
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
 transition:'cube',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
+
 </script>
 </body>
 </html>

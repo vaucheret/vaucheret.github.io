@@ -1,104 +1,113 @@
 
 #+TITLE: C.A.L.P.
 #+DATE:  <2023-08-15 mar>
-#+AUTHOR: Claudio Vaucheret / Marcelo Amaolo
-#+EMAIL: cv@fi.uncoma.edu.ar / marcelo.amaolo@fi.uncoma.edu.ar
+#+AUTHOR: Claudio Vaucheret 
+#+EMAIL: cv@fi.uncoma.edu.ar 
 
-#+REVEAL_INIT_OPTIONS:  transition:'cube' 
+#+REVEAL_INIT_OPTIONS:  transition:'slide' 
 #+options: toc:nil num:nil
 
-#+REVEAL_THEME: moon
+#+REVEAL_THEME: sky
 #+REVEAL_HLEVEL: 2
 #+reveal_root:  https://cdn.jsdelivr.net/npm/reveal.js
-#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+REVEAL_EXTRA_CSS: grids.css
+
 
 
 * Introducción
 
 ** Razones para estudiar Conceptos de Lenguajes de Programación
+#+ATTR_REVEAL: :frag (appear)
 - Incrementa la habilidad para expresar ideas
 - Mejora la capacidad de elegir el lenguaje apropiado
 - Incrementa la capacidad de aprender nuevos lenguajes
 - Mejora el entendimiento del funcionamiento interno del lenguaje
   (implementación)
 
+
 ** Dominios de Programación
-   #+REVEAL_HTML: <div style="font-size: 65%;">   
-- Aplicaciones Científicas
+   #+REVEAL_HTML: <div style="font-size: 65%;">
+#+ATTR_REVEAL: :frag (appear)
+- [[color:blue][Aplicaciones Científicas]]
   - Gran número de computación de punto flotante
   - Fortran
-- Aplicaciones Empresariales
+- [[color:blue][Aplicaciones Empresariales]]
   - Producción de Reportes, uso de números decimales y caracteres
   - Cobol
-- Inteligencia Artificial
+- [[color:blue][Inteligencia Artificial]]
   - Manipulación simbólica (en lugar de números)
   - LISP
-- Sistemas de Programación
+- [[color:blue][Sistemas de Programación]]
   - Necesidad de eficiencia (debido al uso continuo)
   - C
-- Software para la WEB
-  - Colección ecléctica de lenguajes: maukup (e.g. HTML5), scripting
+- [[color:blue][Software para la WEB]]
+  - Colección ecléctica de lenguajes: markup (e.g. HTML5), scripting
     (e.g. PHP), de propósito general (e.g. Java)
 
 ** Criterios de Evaluación de Lenguajes
-- *Legibilidad*: la facilidad con la cual los programas pueden ser
+#+ATTR_REVEAL: :frag (appear) 
+- [[color:blue][*Legibilidad*]]: la facilidad con la cual los programas pueden ser
   leídos y entendidos.
 - *Escribilidad*: la facilidad con la cual un lenguaje puede ser usado
   para crear programas
-- *Confiabilidad*: El grado en que el lenguaje funciona de acuerdo a
+- [[color:orange][*Confiabilidad*]]: El grado en que el lenguaje funciona de acuerdo a
   sus especificaciones.
-- *Costo*: de uso, compilación, mantenimiento etc.
+- [[color:red][*Costo*]]: de uso, compilación, mantenimiento etc.
 
-*** Legibilidad
-     #+REVEAL_HTML: <div style="font-size: 60%;">   
-- Simplicidad
+*** [[color:blue][Legibilidad]]
+     #+REVEAL_HTML: <div style="font-size: 60%;">
+#+ATTR_REVEAL: :frag (appear)     
+- [[color:blue][*Simplicidad*]]
   - Un conjunto manejable de características y construcciones
   - Poca multiplicidad de características (medios de realizar la misma operación)
   - Minima sobrecarga de operadores
-- Ortogonalidad
+- [[color:blue][*Ortogonalidad*]]
   - Un conjunto relativamente pequeño de construcciones primitivas que
     puedan ser combinadas en un numero pequeño de modos
   - Toda posible combinación sea legal.
-- Sentencas de Control
+- [[color:blue][*Sentencas de Control*]]
   - La presencia de bien conocidas estructuras de control
-- Tipos de Datos y Estructuras
+- [[color:blue][*Tipos de Datos y Estructuras*]]
   - La presencia de facilidades adecuadas para definir estructuras de datos
-- Consideraciones sintácticas
+- [[color:blue][*Consideraciones sintácticas*]]
   - Composición flexible de identificadores
   - Palabras especiales y métodos para formar sentencias compuestas
   - Construcciones autodescriptivas, palabras reservadas
     significativas
 
 *** Escribilidad
-     #+REVEAL_HTML: <div style="font-size: 80%;">   
-- Simplicidad y ortogonalidad
+     #+REVEAL_HTML: <div style="font-size: 80%;">
+#+ATTR_REVEAL: :frag (appear)     
+- *Simplicidad y ortogonalidad*
   - Pocas constucciones, numero pequeño de primitivas y pocas reglas
     para combinarlas.
-- Soporte para la abstracción
+- *Soporte para la abstracción*
   - La habilidad para definir y usar estructuras complejas u
     operaciones de modo que los detalles puedan ser ignorados
-- Expresibilidad
+- *Expresibilidad*
   - Un conjunto conveniente de modos de especificar operaciones
   - Ejemplo: La inclusión de la sentencia *FOR* en  muchos lenguajes modernos
 
-*** Confiabilidad
-     #+REVEAL_HTML: <div style="font-size: 70%;">   
-- Chequeo de Tipos
+*** [[color:orange][Confiabilidad]]
+     #+REVEAL_HTML: <div style="font-size: 70%;">
+#+ATTR_REVEAL: :frag (appear)     
+- [[color:orange][*Chequeo de Tipos*]]
   - verificación de errores de tipos
-- Manejo de Excepciones
+- [[color:orange][*Manejo de Excepciones*]]
   - interceptar errores en ejecución y tomar medidas correctivas
-- Aliasing
+- [[color:orange][*Aliasing*]]
   - Presencia de dos o mas distintas referencias para el mismo lugar
     de memoria
-- Legibilidad y Escribilidad
+- [[color:orange][*Legibilidad y Escribilidad*]]
   - Un lenguage que no soporta modos "naturales" de expresar un
     algoritmo necesariamente usará aproximaciones "no naturales" y asi
     reducirá la confiabilidad
 
-*** Costo
+*** [[color:red][Costo]]
      #+REVEAL_HTML: <div style="font-size: 80%;">   
     
-- Costo de ...
+- *Costo de ...*
+#+ATTR_REVEAL: :frag (appear)  
   + Entrenar programadores para usar un lenguaje
   + Escribir programas (cercano a aplicaciones particulares)
   + Compilar programas
@@ -108,26 +117,30 @@
   + Mantener programas
 
 *** Otros
-- Portabildad
+#+ATTR_REVEAL: :frag (appear)
+- *Portabildad*
   + La facilidad con que los programas puedan moverse de una
     implementación a otra
-- Generalidad
+- *Generalidad*
   + Su aplicabilidad a un amplio rango de aplicaciones.
-- Bien definido
+- *Bien definido*
   + La completitud y precisión de la definición oficial del lenguaje
 
 ** Influencias en el diseño de los lenguajes
-        #+REVEAL_HTML: <div style="font-size: 90%;">   
- - Arquitectura de Computadoras
+        #+REVEAL_HTML: <div style="font-size: 90%;">
+	
+#+ATTR_REVEAL: :frag highlight-blue
+ - *Arquitectura de Computadoras*
    + Lenguajes son desarrollados alrededor de la arquitectura de
      computadora prevaleciente, conocida como arquitectura de /von Neumann/
- - Metodologías de Programación
+#+ATTR_REVEAL: :frag highlight-green     
+ - *Metodologías de Programación*
    + Nuevas metodologías de desarrollo de software (e.g. desarrollo de
      software orientado a objetos) llevan a nuevos paradigmas y por
      extensión a nuevos lenguajes de programación
 
-*** Influencia de la Arquitectura de Computadoras
-     #+REVEAL_HTML: <div style="font-size: 90%;">   
+*** [[color:blue][Influencia de la Arquitectura de Computadoras]]
+     #+REVEAL_HTML: <div style="font-size: 90%;">
 - Arquitectura de Computadora bien conocida: Von Neumann
 - Lenguajes Imperativos mas dominantes debido a la arquitectura
   dominante
@@ -138,69 +151,69 @@
     - Variables modelan celdas de memoria
     - La iteración es eficiente
 
-*** Arquitectura de Von Neumann
+*** [[color:blue][Arquitectura de Von Neumann]]
 
-[[file:vonneumann.png]] 
+[[file:vonneumann2.png]] 
 
-*** Influencia de las Metodogías de Programación
+*** [[color:green][Influencia de las Metodogías de Programación]]
          #+REVEAL_HTML: <div style="font-size: 80%;">   
-- Décadas de los 50 y 60: Simples aplicaciones; preocupación principal
+- [[color:green][Décadas de los 50 y 60:]] Simples aplicaciones; preocupación principal
   la eficiencia
-- Finales de los 60: Eficiencia de programación toma importancia:
+- [[color:green][Finales de los 60:]] Eficiencia de programación toma importancia:
   legibilidad, mejores estructuras de control
   + Programación Estructurada
   + Diseño /top-down/ y refinamiento /step-wise/
-- Finales de los 70: De Orientación a Procesos a Orientación a Datos.
+- [[color:green][Finales de los 70:]] De Orientación a Procesos a Orientación a Datos.
   + Abstracción de Datos
-- Mediados de los 80: Programación orientada a Objetos
+- [[color:green][Mediados de los 80:]] Programación orientada a Objetos
   - Abstracción de Datos + Herencia + Polimorfismo
 
-*** Categoría de Lenguajes
+*** [[color:green][Categoría de Lenguajes]]
              #+REVEAL_HTML: <div style="font-size: 65%;">   
-- Imperativa
+- *Imperativa*
   + Variables, sentencias de asignación e iteración
   + Ejemplos: C, Pascal
-- Funcional
+- *Funcional*
   + Principal medio de computación es aplicar funciones a parámetros
   + Ejemplos: LISP, Scheme
-- Lógica
+- *Lógica*
   + Basado en Reglas
   + Ejemplo: Prolog
-- Orientado a Objetos
+- *Orientado a Objetos*
   + abstracción de datos, herencia, ligadura tardía
   + Ejemplos: Java, C++
-- Marcado
+- *Marcado*
   + No programación per se, pero usados para especificar la
     información mostrada en documentos web
   + Ejemplos: XHTML, XML
 
-*** Compromisos en el diseño de Lenguajes
+*** [[color:green][Compromisos en el diseño de Lenguajes]]
              #+REVEAL_HTML: <div style="font-size: 80%;">   
-- Confiabilidad vs. Costo de ejecución
+- *Confiabilidad vs. Costo de ejecución*
   + Ejemplo: Java exige que todas las referencias a elementos de los
     arreglos sean chequeadas si la indexación es correcta, pero esto
     incrementa el costo de ejecución
-- Legibilidad vs. Escribilidad
+- *Legibilidad vs. Escribilidad*
   + Ejemplo: APL provee muchos operadores poderosos (y un gran numero
     de nuevos simbolos) permitiendo que complejas operaciones sean
     escritas en un programa compacto pero con el costo de pobre legibilidad
-- Flexibilidad vs. Confiabilidad
+- *Flexibilidad vs. Confiabilidad*
   + Ejemplo: Los punteros de C++ son poderosos y muy flexibles pero de
     un uso poco confiable.
 
 ** Métodos de Implementación 
-- Compilación
+- [[color:orange][*Compilación*]]
   + Los programas son traducidos al lenguaje máquina
-- Interpretación Pura
+- [[color:brown][*Interpretación Pura*]]
   + Los programas son interpretados por otro programa llamado intérprete
-- Sistemas de implementación híbridos
+- [[color:purple][*Sistemas de implementación híbridos*]]
   + Un compromiso entre compilación y interpretación pura
 
 *** Capas de Implementación de Lenguajes
 #+ATTR_HTML: :width 70% :height auto
-[[file:interfacecapas.png]]
+[[file:interfacecapas2.png]]
 
-*** Compilación
+*** [[color:orange][Compilación]]
                  #+REVEAL_HTML: <div style="font-size: 90%;">   
 - Traduce programas de alto nivel (lenguaje fuente) en codigo máquina
 - Traducción lenta, ejecución rápida
@@ -212,22 +225,22 @@
   + análisis semántico: Genera código intermedio
   + generación de código: Codigo máquina es generado
 
-*** El proceso de compilación
+*** [[color:orange][El proceso de compilación]]
 
-[[file:procesocomp.png]] 
+[[file:procesocomp2.png]] 
 
-*** Terminología Adicional de Compilación
+*** [[color:orange][Terminología Adicional de Compilación]]
 
 - Módulo de carga (imagen ejecutable) : El código del usuario y del
   sistema juntos
 - /linking and loading/ Enlazado y Carga: El proceso de recolectar los
   programas del sistema y enlazarlo al programa del usuario
 
-*** Ejecución del Código Máquina
+*** [[color:orange][Ejecución del Código Máquina]]
 
 - ciclo de traer y ejecutar (sobre una arquitectura Von Neumann)
 
-#+BEGIN_SRC pascal
+#+BEGIN_SRC ada
 repeat  por siempre
    traer la instrucción apuntada por el contador
    incrementar el contador
@@ -236,7 +249,7 @@ repeat  por siempre
 end repeat
 #+END_SRC
 
-*** /Cuello de botella/ de Von Neumann
+*** [[color:orange][/Cuello de botella/ de Von Neumann]]
 
 - La velocidad de conección entre la memoria de la computadora y su
   procesador determina la velocidad de la computadora
@@ -245,7 +258,7 @@ end repeat
 - Es conocido que /cuello de botella/ de la arquitectura de Von
   Neumann es el principal factor en la velocidad de las computadoras
 
-*** Interpretación Pura
+*** [[color:brown][Interpretación Pura]]
 - Sin traducción
 - Facil implementación de programas. Errores de tiempo de ejecución
   pueden ser facilmente reconocidos
@@ -254,11 +267,11 @@ end repeat
 - Se volvio infrecuente en lenguajes de alto nivel
 - Han retornado con lenguajes de /sripting/ para la Web (e.g. JavaScript)
 
-*** Proceso de Interpretación Pura
+*** [[color:brown][Proceso de Interpretación Pura]]
 
-[[file:procesointerppuro.png]]
+[[file:procesointerppuro2.png]]
 
-*** Sistemas de Implementación Híbrida
+*** [[color:purple][Sistemas de Implementación Híbrida]]
                  #+REVEAL_HTML: <div style="font-size: 80%;">   
 - Un compromiso entre compilador y intérprete puro
 - El programa en lenguaje de alto nivel es traducido a un lenguaje
@@ -272,11 +285,11 @@ end repeat
     tenía un interprete de /byte code/ y un sistema de /run time/
     (juntos son llamados la máquina virtual de java)
 
-*** Proceso de Implementación Híbrida
+*** [[color:purple][Proceso de Implementación Híbrida]]
     #+ATTR_HTML: :width 23% :height auto
-[[file:procesohibrido.png]] 
+[[file:procesohibrido2.png]] 
 
-*** Sistemas de Implementación /Just in Time/
+*** [[color:purple][Sistemas de Implementación /Just in Time/]]
 - Inicialmente Los programas se traducen a un lenguaje intermedio
 - Luego el lenguaje intermedio se compila a código máquina
 - La versión en máquina se conserva para llamadas subsecuentes
@@ -305,17 +318,24 @@ end repeat
   + Usado para programar en C#, Visual Basic .NET, jscript, J# o C++
   
 
-* Evolución de los 
-Lenguajes de Programación
+* Evolución de los Lenguajes de Programación
 
 ** Lenguajes de Programación
 
-[[file:evolleng.png]]
+#+ATTR_HTML: :width auto :height 570
+[[https://ingenieriadesoftware.es/wp-content/uploads/2019/04/diagram-languages-light.png][file:diagram-languages-light.png]]
+
+** Lenguajes de Programación
+
+#+ATTR_HTML: :width auto :height 570
+[[https://ingenieriadesoftware.es/wp-content/uploads/2019/04/diagram-languages-full.png][file:diagram-languages-full.png]]
 
 ** Evolución de los primeros lenguajes
  #+ATTR_REVEAL: :frag (roll-in)
 
-**  Konrad Zuze's language de la computadora Z4.
+**  Konrad Zuse's language de la computadora Z4.
+
+[[file:z4.png]]
 
 *** Zuse's Plankalkül
 
