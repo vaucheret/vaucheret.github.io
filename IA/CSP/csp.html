@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <title>Inteligencia Artificial</title>
-<meta name="author" content="(Claudio Vaucheret)"/>
+<meta name="author" content="Germán Braun"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -27,37 +29,38 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Problemas de Satisfacción de Restriccciones</h2><p class="date">Created: 2023-10-07 sáb 22:27</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><p class="subtitle"></p>
+<h2 class="author">Germán Braun</h2><h2 class="date">Problemas de Satisfacción de Restriccciones</h2><p class="date">Created: 2024-08-16 vie 12:41</p>
 </section>
-<section id="table-of-contents"><div id="table-of-contents">
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org0823a04">Definición de un CSP</a></li>
-<li><a href="#/slide-org9ebb8c5">Backtracking para CSPs</a></li>
-<li><a href="#/slide-orgb6551f8">Mejorando la eficiencia del Backtracking</a></li>
-<li><a href="#/slide-org7e6717b">Mínimos valores restantes</a></li>
-<li><a href="#/slide-org1b95cb5">Variable que más restringe las demás</a></li>
-<li><a href="#/slide-orge943833">Valor menos restringido</a></li>
-<li><a href="#/slide-org86bf859">Chequeo anticipado</a></li>
-<li><a href="#/slide-orgec6c4fc">Propagación de restricciones</a></li>
-<li><a href="#/slide-orgef614c6">Consistencia de arcos</a></li>
-<li><a href="#/slide-orgf9a4ed8">Bibliografía</a></li>
+<li><a href="#/slide-org7904854">Definición de un CSP</a></li>
+<li><a href="#/slide-org42700fd">Backtracking para CSPs</a></li>
+<li><a href="#/slide-orgde8ff8d">Mejorando la eficiencia del Backtracking</a></li>
+<li><a href="#/slide-orgf17cb8a">Mínimos valores restantes</a></li>
+<li><a href="#/slide-orgf006c91">Variable que más restringe las demás</a></li>
+<li><a href="#/slide-org0407031">Valor menos restringido</a></li>
+<li><a href="#/slide-org3240f04">Chequeo anticipado</a></li>
+<li><a href="#/slide-orgc9cdf20">Propagación de restricciones</a></li>
+<li><a href="#/slide-org4b60aa7">Consistencia de arcos</a></li>
+<li><a href="#/slide-orgee2fe36">Bibliografía</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org0823a04">
-<h2 id="org0823a04">Definición de un CSP</h2>
-<div class="outline-text-2" id="text-org0823a04">
+<section id="slide-org7904854">
+<h2 id="org7904854">Definición de un CSP</h2>
+<div class="outline-text-2" id="text-org7904854">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgf32bbce">
-<h3 id="orgf32bbce">Problemas de Satisfacción de Restricciones</h3>
+<section id="slide-org9e4fb19">
+<h3 id="org9e4fb19">Problemas de Satisfacción de Restricciones</h3>
 <p>
 <b><font color="green">Problema de Búsqueda Estándar:</font></b>
 </p>
@@ -90,8 +93,8 @@ Usamos una <font color=red>representación factorizada</font> de cada estado.
 </section>
 </section>
 <section>
-<section id="slide-orgc2458f1">
-<h3 id="orgc2458f1">Problemas de Satisfacción de Restricciones</h3>
+<section id="slide-orge0b5461">
+<h3 id="orge0b5461">Problemas de Satisfacción de Restricciones</h3>
 <ul>
 <li class="fragment roll-in">Es un ejemplo simple de un <font color="orange">Lenguaje de Representación Formal</font>. Muchos problemas se representan naturalmente como un CSP.</li>
 <li class="fragment roll-in">Permite algoritmos de <font color="orange">propósito general</font> con
@@ -102,10 +105,10 @@ más poder que los algoritmos estándares. Permite resolver problemas intratable
 </section>
 </section>
 <section>
-<section id="slide-org4918b71">
-<h3 id="org4918b71">Ejemplo: Coloreo de Mapas</h3>
+<section id="slide-orgaa5d9ac">
+<h3 id="orgaa5d9ac">Ejemplo: Coloreo de Mapas</h3>
 
-<div id="orgaf92826" class="figure">
+<div id="orgad4bc5f" class="figure">
 <p><img src="imagenes/australia.jpg" alt="australia.jpg" height="300" />
 </p>
 </div>
@@ -143,10 +146,10 @@ más poder que los algoritmos estándares. Permite resolver problemas intratable
 </section>
 </section>
 <section>
-<section id="slide-orge1fe0ed">
-<h3 id="orge1fe0ed">Ejemplo: Coloreo de Mapas</h3>
+<section id="slide-org19b4f99">
+<h3 id="org19b4f99">Ejemplo: Coloreo de Mapas</h3>
 
-<div id="orgfee286a" class="figure">
+<div id="org6177aa2" class="figure">
 <p><img src="imagenes/australia-solution.jpg" alt="australia-solution.jpg" height="250" />
 </p>
 </div>
@@ -167,8 +170,8 @@ Las <font color=red>Soluciones</font> son asignaciones que satisfacen <font colo
 </section>
 </section>
 <section>
-<section id="slide-orga81d5d5">
-<h3 id="orga81d5d5">Definición de un CSP</h3>
+<section id="slide-orgcfd949b">
+<h3 id="orgcfd949b">Definición de un CSP</h3>
 <p>
 <font color="green">Un CSP consiste de:</font>
 </p>
@@ -182,7 +185,7 @@ Las <font color=red>Soluciones</font> son asignaciones que satisfacen <font colo
 </div>
 
 </section>
-<section id="slide-orga81d5d5-split">
+<section id="slide-orgcfd949b-split">
 
 <p>
 <font color="green">Solución a un CSP</font>
@@ -200,8 +203,8 @@ Una asignación es consistente si no viola ninguna restricción y es completa si
 </section>
 </section>
 <section>
-<section id="slide-orgfaa65d4">
-<h3 id="orgfaa65d4">Grafos de restricciones</h3>
+<section id="slide-org575741b">
+<h3 id="org575741b">Grafos de restricciones</h3>
 <div style="font-size: 80%;">
 <ul>
 <li><font color="green">CSP binarios</font> Cada restricción relaciona a lo sumo dos variables.</li>
@@ -232,8 +235,8 @@ Una asignación es consistente si no viola ninguna restricción y es completa si
 </section>
 </section>
 <section>
-<section id="slide-orgce3bf83">
-<h3 id="orgce3bf83">Variedad de CSPs</h3>
+<section id="slide-org3cdfbb0">
+<h3 id="org3cdfbb0">Variedad de CSPs</h3>
 <p>
 <font color="green">Variables Discretas</font>
 </p>
@@ -252,8 +255,8 @@ Ej. \(StartJob_1 + 5 \leq StartJob_3\)</li>
 </section>
 </section>
 <section>
-<section id="slide-org8a11fda">
-<h3 id="org8a11fda">Variedad de Restricciones</h3>
+<section id="slide-orgac26464">
+<h3 id="orgac26464">Variedad de Restricciones</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in"><b><font color="green">Unaria</font></b> Restricciones que involucran una única variable, e.g.  \(SA\neq green\)</li>
@@ -270,10 +273,10 @@ Ej. \(StartJob_1 + 5 \leq StartJob_3\)</li>
 </section>
 </section>
 <section>
-<section id="slide-org1492cb8">
-<h3 id="org1492cb8">Ejemplo: Criptoaritmética</h3>
+<section id="slide-org7264e11">
+<h3 id="org7264e11">Ejemplo: Criptoaritmética</h3>
 
-<div id="orgf06e4d1" class="figure">
+<div id="orgae8a226" class="figure">
 <p><img src="imagenes/cryptarithmetic.jpg" alt="cryptarithmetic.jpg" height="250" />
 </p>
 </div>
@@ -291,15 +294,15 @@ Ej. \(StartJob_1 + 5 \leq StartJob_3\)</li>
 </section>
 </section>
 <section>
-<section id="slide-org9ebb8c5">
-<h2 id="org9ebb8c5">Backtracking para CSPs</h2>
-<div class="outline-text-2" id="text-org9ebb8c5">
+<section id="slide-org42700fd">
+<h2 id="org42700fd">Backtracking para CSPs</h2>
+<div class="outline-text-2" id="text-org42700fd">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org36aa210">
-<h3 id="org36aa210">Formulación de búsqueda estándar (incremental)</h3>
+<section id="slide-orgffde267">
+<h3 id="orgffde267">Formulación de búsqueda estándar (incremental)</h3>
 <ul>
 <li class="fragment roll-in"><b><font color="green">Estado Inicial:</font></b> La asignación vacía, \(\emptyset\).</li>
 <li class="fragment roll-in"><b><font color="green">Función sucesor: Asignaciones Parciales</font></b>     Asigna un valor a una variable no asignada que no entra en conflicto con la actual asignación \(\implies\) <font color=red>falla</font> si no hay  asignación legal.</li>
@@ -311,8 +314,8 @@ Ej. \(StartJob_1 + 5 \leq StartJob_3\)</li>
 </section>
 </section>
 <section>
-<section id="slide-org20cfc21">
-<h3 id="org20cfc21">Formulación de búsqueda estándar (incremental)</h3>
+<section id="slide-org186e805">
+<h3 id="org186e805">Formulación de búsqueda estándar (incremental)</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in">Es la misma para todo CSP.</li>
@@ -324,7 +327,7 @@ El camino es irrelevante, por lo tanto, podríamos utilizar la formulación de e
 
 </ul>
 </section>
-<section id="slide-org20cfc21-split">
+<section id="slide-org186e805-split">
 <div style="font-size: 80%;">
 <ul>
 <li><p>
@@ -346,8 +349,8 @@ HMMMMMMMMMM!!!!!!!!!!!!!!!!
 </section>
 </section>
 <section>
-<section id="slide-org038bd98">
-<h3 id="org038bd98">Bactracking Search</h3>
+<section id="slide-orgba7eb11">
+<h3 id="orgba7eb11">Bactracking Search</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment roll-in">La asignación de variables es <font color="green">conmutativa</font>. 
@@ -366,10 +369,10 @@ Puede resolver el problema de  <i>n</i>-reinas para  \(n \approx 25\).</li>
 </section>
 </section>
 <section>
-<section id="slide-org6677b26">
-<h3 id="org6677b26">Backtracking search</h3>
+<section id="slide-org268dbd7">
+<h3 id="org268dbd7">Backtracking search</h3>
 
-<div id="orgf183aaa" class="figure">
+<div id="org8bc7a09" class="figure">
 <p><img src="imagenes/backtrsearck.png" alt="backtrsearck.png" height="500" />
 </p>
 </div>
@@ -379,10 +382,10 @@ Puede resolver el problema de  <i>n</i>-reinas para  \(n \approx 25\).</li>
 </section>
 </section>
 <section>
-<section id="slide-org1a12803">
-<h3 id="org1a12803">Ejemplo</h3>
+<section id="slide-org63b224d">
+<h3 id="org63b224d">Ejemplo</h3>
 
-<div id="orgde5dc70" class="figure">
+<div id="orge762058" class="figure">
 <p><img src="imagenes/backtrack-progress1c.jpg" alt="backtrack-progress1c.jpg" height="1000" />
 </p>
 </div>
@@ -390,10 +393,10 @@ Puede resolver el problema de  <i>n</i>-reinas para  \(n \approx 25\).</li>
 </section>
 </section>
 <section>
-<section id="slide-org7d7c2a2">
-<h3 id="org7d7c2a2">Ejemplo</h3>
+<section id="slide-orgb38fd1f">
+<h3 id="orgb38fd1f">Ejemplo</h3>
 
-<div id="org85564a7" class="figure">
+<div id="org71ec9ac" class="figure">
 <p><img src="imagenes/backtrack-progress2c.jpg" alt="backtrack-progress2c.jpg" height="1000" />
 </p>
 </div>
@@ -401,10 +404,10 @@ Puede resolver el problema de  <i>n</i>-reinas para  \(n \approx 25\).</li>
 </section>
 </section>
 <section>
-<section id="slide-org3927b9e">
-<h3 id="org3927b9e">Ejemplo</h3>
+<section id="slide-orgd7c6b07">
+<h3 id="orgd7c6b07">Ejemplo</h3>
 
-<div id="org472c9b8" class="figure">
+<div id="orgdd6229b" class="figure">
 <p><img src="imagenes/backtrack-progress3c.jpg" alt="backtrack-progress3c.jpg" height="1000" />
 </p>
 </div>
@@ -412,10 +415,10 @@ Puede resolver el problema de  <i>n</i>-reinas para  \(n \approx 25\).</li>
 </section>
 </section>
 <section>
-<section id="slide-orga3b754f">
-<h3 id="orga3b754f">Ejemplo</h3>
+<section id="slide-org8e32387">
+<h3 id="org8e32387">Ejemplo</h3>
 
-<div id="orgbfbb3d5" class="figure">
+<div id="orga6b27d0" class="figure">
 <p><img src="imagenes/backtrack-progress4c.jpg" alt="backtrack-progress4c.jpg" height="1000" />
 </p>
 </div>
@@ -423,15 +426,15 @@ Puede resolver el problema de  <i>n</i>-reinas para  \(n \approx 25\).</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb6551f8">
-<h2 id="orgb6551f8">Mejorando la eficiencia del Backtracking</h2>
-<div class="outline-text-2" id="text-orgb6551f8">
+<section id="slide-orgde8ff8d">
+<h2 id="orgde8ff8d">Mejorando la eficiencia del Backtracking</h2>
+<div class="outline-text-2" id="text-orgde8ff8d">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org4c62811">
-<h3 id="org4c62811">Métodos que pueden mejorar la velocidad</h3>
+<section id="slide-org4428455">
+<h3 id="org4428455">Métodos que pueden mejorar la velocidad</h3>
 <div style="font-size: 80%;">
 
 <p>
@@ -449,15 +452,15 @@ Métodos de <font color="purple">propósito general</font> pueden mejorar mucho 
 </section>
 </section>
 <section>
-<section id="slide-org7e6717b">
-<h2 id="org7e6717b">Mínimos valores restantes</h2>
-<div class="outline-text-2" id="text-org7e6717b">
+<section id="slide-orgf17cb8a">
+<h2 id="orgf17cb8a">Mínimos valores restantes</h2>
+<div class="outline-text-2" id="text-orgf17cb8a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org1e6b10e">
-<h3 id="org1e6b10e">Mínimos valores restantes</h3>
+<section id="slide-orge47db30">
+<h3 id="orge47db30">Mínimos valores restantes</h3>
 <p>
 <b><font color="green">Heurística</font></b>
 </p>
@@ -468,7 +471,7 @@ Elegir la variable con menos valores <font color=red>legales</font>.
 </div>
 
 
-<div id="org7db4a9a" class="figure">
+<div id="org30d4b43" class="figure">
 <p><img src="imagenes/australia-most-constrained-variable.jpg" alt="australia-most-constrained-variable.jpg" height="125" />
 </p>
 </div>
@@ -476,15 +479,15 @@ Elegir la variable con menos valores <font color=red>legales</font>.
 </section>
 </section>
 <section>
-<section id="slide-org1b95cb5">
-<h2 id="org1b95cb5">Variable que más restringe las demás</h2>
-<div class="outline-text-2" id="text-org1b95cb5">
+<section id="slide-orgf006c91">
+<h2 id="orgf006c91">Variable que más restringe las demás</h2>
+<div class="outline-text-2" id="text-orgf006c91">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org86505cc">
-<h3 id="org86505cc">Variable que más restringe las demás</h3>
+<section id="slide-org1f019f6">
+<h3 id="org1f019f6">Variable que más restringe las demás</h3>
 <p>
 <b><font color="green">Heurística de Grados</font></b>
 </p>
@@ -496,7 +499,7 @@ restantes.
 
 
 
-<div id="org324680f" class="figure">
+<div id="orga4f530e" class="figure">
 <p><img src="imagenes/australia-most-constraining-variable.jpg" alt="australia-most-constraining-variable.jpg" height="125" />
 </p>
 </div>
@@ -519,15 +522,15 @@ Las demás son de grado 3 o 2.
 </section>
 </section>
 <section>
-<section id="slide-orge943833">
-<h2 id="orge943833">Valor menos restringido</h2>
-<div class="outline-text-2" id="text-orge943833">
+<section id="slide-org0407031">
+<h2 id="org0407031">Valor menos restringido</h2>
+<div class="outline-text-2" id="text-org0407031">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgd2d548d">
-<h3 id="orgd2d548d">Valor menos restringido</h3>
+<section id="slide-org52b1011">
+<h3 id="org52b1011">Valor menos restringido</h3>
 <p>
 <b><font color="green">Heurística</font></b>
 </p>
@@ -539,7 +542,7 @@ menos valores en las variables restantes.
 
 
 
-<div id="org73dc951" class="figure">
+<div id="org41439d1" class="figure">
 <p><img src="imagenes/australia-least-constraining-value.jpg" alt="australia-least-constraining-value.jpg" height="150" />
 </p>
 </div>
@@ -554,15 +557,15 @@ Combinando estas tres heurísticas es posible realizar el problema de
 </section>
 </section>
 <section>
-<section id="slide-org86bf859">
-<h2 id="org86bf859">Chequeo anticipado</h2>
-<div class="outline-text-2" id="text-org86bf859">
+<section id="slide-org3240f04">
+<h2 id="org3240f04">Chequeo anticipado</h2>
+<div class="outline-text-2" id="text-org3240f04">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org83ac90d">
-<h3 id="org83ac90d">Chequeo anticipado</h3>
+<section id="slide-org20286fb">
+<h3 id="org20286fb">Chequeo anticipado</h3>
 <p>
 <b><font color="green">Idea:</font></b>
 </p>
@@ -577,7 +580,7 @@ legales.</li>
 </div>
 
 
-<div id="org738f043" class="figure">
+<div id="org9fbce48" class="figure">
 <p><img src="imagenes/forward-checking-progress1c.jpg" alt="forward-checking-progress1c.jpg" height="170" />
 </p>
 </div>
@@ -585,8 +588,8 @@ legales.</li>
 </section>
 </section>
 <section>
-<section id="slide-org0a48d8c">
-<h3 id="org0a48d8c">Chequeo anticipado</h3>
+<section id="slide-org4112e4b">
+<h3 id="org4112e4b">Chequeo anticipado</h3>
 <p>
 <b><font color="green">Idea:</font></b>
 </p>
@@ -601,7 +604,7 @@ legales.</li>
 </div>
 
 
-<div id="org271805e" class="figure">
+<div id="orgfd6ea5a" class="figure">
 <p><img src="imagenes/forward-checking-progress2c.jpg" alt="forward-checking-progress2c.jpg" height="200" />
 </p>
 </div>
@@ -609,8 +612,8 @@ legales.</li>
 </section>
 </section>
 <section>
-<section id="slide-org1235f77">
-<h3 id="org1235f77">Chequeo anticipado</h3>
+<section id="slide-orgf9924b6">
+<h3 id="orgf9924b6">Chequeo anticipado</h3>
 <p>
 <b><font color="green">Idea:</font></b>
 </p>
@@ -625,7 +628,7 @@ legales.</li>
 </div>
 
 
-<div id="org4e00a29" class="figure">
+<div id="org93601f1" class="figure">
 <p><img src="imagenes/forward-checking-progress3c.jpg" alt="forward-checking-progress3c.jpg" height="230" />
 </p>
 </div>
@@ -633,8 +636,8 @@ legales.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgf271afb">
-<h3 id="orgf271afb">Chequeo anticipado</h3>
+<section id="slide-org00716d8">
+<h3 id="org00716d8">Chequeo anticipado</h3>
 <p>
 <b><font color="green">Idea:</font></b>
 </p>
@@ -649,7 +652,7 @@ legales.</li>
 </div>
 
 
-<div id="org82f6bdd" class="figure">
+<div id="orgb408477" class="figure">
 <p><img src="imagenes/forward-checking-progress4c.jpg" alt="forward-checking-progress4c.jpg" height="260" />
 </p>
 </div>
@@ -658,15 +661,15 @@ legales.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgec6c4fc">
-<h2 id="orgec6c4fc">Propagación de restricciones</h2>
-<div class="outline-text-2" id="text-orgec6c4fc">
+<section id="slide-orgc9cdf20">
+<h2 id="orgc9cdf20">Propagación de restricciones</h2>
+<div class="outline-text-2" id="text-orgc9cdf20">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org40cf185">
-<h3 id="org40cf185">Propagación de restricciones</h3>
+<section id="slide-orgc4f5934">
+<h3 id="orgc4f5934">Propagación de restricciones</h3>
 <div style="font-size: 70%;">
 <p>
 El chequeo anticipado propaga la información desde variables
@@ -676,7 +679,7 @@ para todas las fallas.
 
 
 
-<div id="org77a3f4d" class="figure">
+<div id="org2eee4cb" class="figure">
 <p><img src="imagenes/forward-checking-progress3c.jpg" alt="forward-checking-progress3c.jpg" height="230" />
 </p>
 </div>
@@ -693,15 +696,15 @@ La <font color="blue">propagación de restricciones</font> fuerza repetidamente 
 </section>
 </section>
 <section>
-<section id="slide-orgef614c6">
-<h2 id="orgef614c6">Consistencia de arcos</h2>
-<div class="outline-text-2" id="text-orgef614c6">
+<section id="slide-org4b60aa7">
+<h2 id="org4b60aa7">Consistencia de arcos</h2>
+<div class="outline-text-2" id="text-org4b60aa7">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgf9dac19">
-<h3 id="orgf9dac19">Consistencia de arcos</h3>
+<section id="slide-org7309aa3">
+<h3 id="org7309aa3">Consistencia de arcos</h3>
 <div style="font-size: 70%;">
 <p>
 La  forma más simple de propagación hace a cada arco <font color="blue">consistente</font>.
@@ -714,7 +717,7 @@ Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente
 </p>
 
 
-<div id="org4e504e4" class="figure">
+<div id="org12d6875" class="figure">
 <p><img src="imagenes/ac-example1c.jpg" alt="ac-example1c.jpg" height="200" />
 </p>
 </div>
@@ -722,8 +725,8 @@ Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente
 </section>
 </section>
 <section>
-<section id="slide-org1ce2d2f">
-<h3 id="org1ce2d2f">Consistencia de arcos</h3>
+<section id="slide-orgdf9a60b">
+<h3 id="orgdf9a60b">Consistencia de arcos</h3>
 <div style="font-size: 70%;">
 <p>
 La  forma más simple de propagación hace a cada arco <font color="blue">consistente</font>.
@@ -736,7 +739,7 @@ Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente
 </p>
 
 
-<div id="org4bd103b" class="figure">
+<div id="org37d659b" class="figure">
 <p><img src="imagenes/ac-example2c.jpg" alt="ac-example2c.jpg" height="200" />
 </p>
 </div>
@@ -745,8 +748,8 @@ Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente
 </section>
 </section>
 <section>
-<section id="slide-orgb83a038">
-<h3 id="orgb83a038">Consistencia de arcos</h3>
+<section id="slide-orga11deaf">
+<h3 id="orga11deaf">Consistencia de arcos</h3>
 <div style="font-size: 70%;">
 <p>
 La  forma más simple de propagación hace a cada arco <font color="blue">consistente</font>.
@@ -759,7 +762,7 @@ Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente
 </p>
 
 
-<div id="org7539ab5" class="figure">
+<div id="org54e8387" class="figure">
 <p><img src="imagenes/ac-example3c.jpg" alt="ac-example3c.jpg" height="200" />
 </p>
 </div>
@@ -775,8 +778,8 @@ Si  \(X\) pierde un valor, los vecinos de  \(X\) necesitan ser rechequeados.
 </section>
 </section>
 <section>
-<section id="slide-org718c311">
-<h3 id="org718c311">Consistencia de arcos</h3>
+<section id="slide-org6ba53f0">
+<h3 id="org6ba53f0">Consistencia de arcos</h3>
 <div style="font-size: 70%;">
 <p>
 La  forma más simple de propagación hace a cada arco <font color="blue">consistente</font>.
@@ -789,7 +792,7 @@ Un arco  \(X\rightarrow Y\) es <font color=red>consistente</font> si y solamente
 </p>
 
 
-<div id="orgb2caa5c" class="figure">
+<div id="org38bd778" class="figure">
 <p><img src="imagenes/ac-example4c.jpg" alt="ac-example4c.jpg" height="200" />
 </p>
 </div>
@@ -804,8 +807,8 @@ La consistencia de arcos detecta fallas más temprano que
 </section>
 </section>
 <section>
-<section id="slide-orgf92ff67">
-<h3 id="orgf92ff67">Consistencia de nodos</h3>
+<section id="slide-org21c9fe8">
+<h3 id="org21c9fe8">Consistencia de nodos</h3>
 <div style="font-size: 80%;">
 <ul>
 <li>Una variable simple es <font color=red>nodo consistente</font> si todos los valores en el dominio de la variable  satisfacen  las restricciones unarias  de la variable.</li>
@@ -825,10 +828,10 @@ Luego el dominio de SA  \(\{green, red, blue\}\) no sería nodo consistente ya q
 </section>
 </section>
 <section>
-<section id="slide-org8879f58">
-<h3 id="org8879f58">Algoritmo  Consistencia de Arcos AC-3</h3>
+<section id="slide-orgaa1c1ed">
+<h3 id="orgaa1c1ed">Algoritmo  Consistencia de Arcos AC-3</h3>
 
-<div id="orgcc996bc" class="figure">
+<div id="orgc052af7" class="figure">
 <p><img src="imagenes/ac3.png" alt="ac3.png" height="450" />
 </p>
 </div>
@@ -836,8 +839,8 @@ Luego el dominio de SA  \(\{green, red, blue\}\) no sería nodo consistente ya q
 </section>
 </section>
 <section>
-<section id="slide-org7671ea2">
-<h3 id="org7671ea2">Algoritmo  Consistencia de Arcos AC-3</h3>
+<section id="slide-orgb56ecc7">
+<h3 id="orgb56ecc7">Algoritmo  Consistencia de Arcos AC-3</h3>
 <p>
 <b><font color="green">EJEMPLO</font></b>
 </p>
@@ -859,8 +862,8 @@ Suponga que un robot necesita planificar las actividades de entrega de objetos \
 </section>
 </section>
 <section>
-<section id="slide-org49489bb">
-<h3 id="org49489bb">Algoritmo  Consistencia de Arcos AC-3</h3>
+<section id="slide-orgf10c63e">
+<h3 id="orgf10c63e">Algoritmo  Consistencia de Arcos AC-3</h3>
 <p>
 <b><font color="green">EJEMPLO</font></b>
 </p>
@@ -899,8 +902,8 @@ Solución: A=4, B=2, C=3, D=4, E=1.
 </section>
 </section>
 <section>
-<section id="slide-org92a07b2">
-<h3 id="org92a07b2">Algoritmo  Consistencia de Arcos AC-3</h3>
+<section id="slide-orga5d0021">
+<h3 id="orga5d0021">Algoritmo  Consistencia de Arcos AC-3</h3>
 <p>
 <b><font color="green">Estados en que termina el algoritmo:</font></b>
 </p>
@@ -916,15 +919,15 @@ Solución: A=4, B=2, C=3, D=4, E=1.
 </section>
 </section>
 <section>
-<section id="slide-orgf9a4ed8">
-<h2 id="orgf9a4ed8">Bibliografía</h2>
-<div class="outline-text-2" id="text-orgf9a4ed8">
+<section id="slide-orgee2fe36">
+<h2 id="orgee2fe36">Bibliografía</h2>
+<div class="outline-text-2" id="text-orgee2fe36">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org624dc06">
-<h3 id="org624dc06">Referencia Bibliográfica</h3>
+<section id="slide-org5ace124">
+<h3 id="org5ace124">Referencia Bibliográfica</h3>
 <div style="font-size: 80%;">
 
 <p>
@@ -951,20 +954,16 @@ Solución: A=4, B=2, C=3, D=4, E=1.
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
 transition:'none',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
+
 </script>
 </body>
 </html>

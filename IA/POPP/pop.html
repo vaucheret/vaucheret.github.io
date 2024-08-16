@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <title>Inteligencia Artificial</title>
-<meta name="author" content="(Claudio Vaucheret)"/>
+<meta name="author" content="Germán Braun"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
 <link rel="stylesheet" href="grids.css"/>
 
@@ -28,29 +30,31 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Planificación: POP</h2><p class="date">Created: 2023-12-26 mar 15:58</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><p class="subtitle"></p>
+<h2 class="author">Germán Braun</h2><h2 class="date">Planificación: POP</h2><p class="date">Created: 2024-08-16 vie 12:42</p>
 </section>
-<section id="table-of-contents"><div id="table-of-contents">
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-orga0e143a">Repaso</a></li>
-<li><a href="#/slide-org1712b33">Planificación de Orden Parcial</a></li>
+<li><a href="#/slide-orgff25b1f">Repaso</a></li>
+<li><a href="#/slide-org670bcca">Planificación de Orden Parcial</a></li>
 </ul>
 </div>
 </div>
 </section>
 
+
 <section>
-<section id="slide-orga0e143a">
-<h2 id="orga0e143a">Repaso</h2>
-<div class="outline-text-2" id="text-orga0e143a">
+<section id="slide-orgff25b1f">
+<h2 id="orgff25b1f">Repaso</h2>
+<div class="outline-text-2" id="text-orgff25b1f">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgc01eb3a">
-<h3 id="orgc01eb3a">¿Qué vimos?</h3>
+<section id="slide-org1554408">
+<h3 id="org1554408">¿Qué vimos?</h3>
 <ul>
 <li>Representación de las acciones: STRIPS, Situation Calculus, Event Calculus</li>
 <li>Problemas en la representación del Cambio: Frame, Ramification y Qualification</li>
@@ -68,15 +72,15 @@
 </section>
 </section>
 <section>
-<section id="slide-org1712b33">
-<h2 id="org1712b33">Planificación de Orden Parcial</h2>
-<div class="outline-text-2" id="text-org1712b33">
+<section id="slide-org670bcca">
+<h2 id="org670bcca">Planificación de Orden Parcial</h2>
+<div class="outline-text-2" id="text-org670bcca">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgff5f18b">
-<h3 id="orgff5f18b">Planificación de Orden Parcial</h3>
+<section id="slide-org239b91f">
+<h3 id="org239b91f">Planificación de Orden Parcial</h3>
 <ul>
 <li>Los planificadores dados dan como resultado un plan  totalmente ordenado.</li>
 <li>No utilizan las ventajas de la descomposición del problema.</li>
@@ -88,8 +92,8 @@ orden sobre las acciones cuando realmente fuere necesario.</li>
 </section>
 </section>
 <section>
-<section id="slide-org95506ee">
-<h3 id="org95506ee">Back to Matemática Discreta :)</h3>
+<section id="slide-org686936b">
+<h3 id="org686936b">Back to Matemática Discreta :)</h3>
 <p>
 <span style="color:red;">¿Qué es un orden parcial?</span>
 </p>
@@ -113,8 +117,8 @@ que es irreflexiva, asimétrica y transitiva, es decir es un
 </section>
 </section>
 <section>
-<section id="slide-org244c5fa">
-<h3 id="org244c5fa">Back to the future: IA</h3>
+<section id="slide-org7a5d60b">
+<h3 id="org7a5d60b">Back to the future: IA</h3>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Planificación de Orden Parcial</span></b>
@@ -145,8 +149,8 @@ Si tenemos el siguiente orden parcial entre las acciones:
 </section>
 </section>
 <section>
-<section id="slide-org94cc380">
-<h3 id="org94cc380">Zapatos y Medias</h3>
+<section id="slide-orga53c21e">
+<h3 id="orga53c21e">Zapatos y Medias</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Zapatos y Medias</span></b>
@@ -172,8 +176,8 @@ MediaIzq- MediaDer-ZapDer-ZapIzq
 </section>
 </section>
 <section>
-<section id="slide-org5e08b33">
-<h3 id="org5e08b33">Zapatos y Medias</h3>
+<section id="slide-org4737ffa">
+<h3 id="org4737ffa">Zapatos y Medias</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Orden Parcial</span></b>
@@ -193,8 +197,8 @@ es solución al problema.</li>
 </section>
 </section>
 <section>
-<section id="slide-orga48e900">
-<h3 id="orga48e900">Orden entre las Acciones</h3>
+<section id="slide-orgf566ce9">
+<h3 id="orgf566ce9">Orden entre las Acciones</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">\(A_0 < A_1\)</span></b>
@@ -216,8 +220,8 @@ es solución al problema.</li>
 </section>
 </section>
 <section>
-<section id="slide-org8304f34">
-<h3 id="org8304f34">Acciones Especiales</h3>
+<section id="slide-orge54ac0c">
+<h3 id="orge54ac0c">Acciones Especiales</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">START</span></b>
@@ -246,8 +250,8 @@ resueltas y no tiene efecto.</li>
 </section>
 </section>
 <section>
-<section id="slide-org3f5a867">
-<h3 id="org3f5a867">Acciones Especiales</h3>
+<section id="slide-org4d4e0dc">
+<h3 id="org4d4e0dc">Acciones Especiales</h3>
 <p>
 Para toda acción \(A\) se cumple que: 
 </p>
@@ -261,14 +265,14 @@ Para toda acción \(A\) se cumple que:
 </section>
 </section>
 <section>
-<section id="slide-org22c5a67">
-<h3 id="org22c5a67">Enlace Causal</h3>
+<section id="slide-org39a4ae5">
+<h3 id="org39a4ae5">Enlace Causal</h3>
 <p>
 Para cada precondición \(P\) de la acción \(A_1\) tenemos asociada una  acción \(A_0\):
 </p>
 
 
-<div id="orgabd109a" class="figure">
+<div id="org3b06e68" class="figure">
 <p><img src="imagenes/EnlaceCausal.png" alt="EnlaceCausal.png" />
 </p>
 </div>
@@ -280,15 +284,15 @@ Para cada precondición \(P\) de la acción \(A_1\) tenemos asociada una  acció
 </section>
 </section>
 <section>
-<section id="slide-orgea6c480">
-<h3 id="orgea6c480">Enlace Causal</h3>
+<section id="slide-orgb5b19af">
+<h3 id="orgb5b19af">Enlace Causal</h3>
 <p>
 Cada acción \(A\) que borre a \(P\) tiene que estar antes de \(A_0\) o
 después de \(A_1\):
 </p>
 
 
-<div id="org50d6966" class="figure">
+<div id="orgce52b66" class="figure">
 <p><img src="imagenes/EnlaceCausal2.png" alt="EnlaceCausal2.png" />
 </p>
 </div>
@@ -305,8 +309,8 @@ o bien
 </section>
 </section>
 <section>
-<section id="slide-org24d5ec9">
-<h3 id="org24d5ec9">Enlace Causal</h3>
+<section id="slide-org77287df">
+<h3 id="org77287df">Enlace Causal</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Enlace Causal</span></b>
@@ -332,8 +336,8 @@ acción \(A\) borra la proposición \(P\).</li>
 </section>
 </section>
 <section>
-<section id="slide-orgd32d9d2">
-<h3 id="orgd32d9d2">Amenaza del enlace causal</h3>
+<section id="slide-org83370a8">
+<h3 id="org83370a8">Amenaza del enlace causal</h3>
 <div style="font-size: 90%;">
 <ul>
 <li><b><span style="color:green;">Amenaza</span></b>
@@ -361,7 +365,7 @@ en el enlace causal (de s1 a s2)
 <div class="one_of_2_columns">
 
 
-<div id="orgb3946b5" class="figure">
+<div id="org21133fc" class="figure">
 <p><img src="imagenes/amenazaCausal.png" alt="amenazaCausal.png" />
 </p>
 </div>
@@ -373,8 +377,8 @@ en el enlace causal (de s1 a s2)
 </section>
 </section>
 <section>
-<section id="slide-orgf8f1230">
-<h3 id="orgf8f1230">Amenaza del enlace causal</h3>
+<section id="slide-org124ab70">
+<h3 id="org124ab70">Amenaza del enlace causal</h3>
 <div style="font-size: 80%;">
 <div class="gridded_frame_with_columns">
 <div class="one_of_2_columns">
@@ -392,7 +396,7 @@ en el enlace causal (de s1 a s2)
 <div class="one_of_2_columns">
 
 
-<div id="org240db47" class="figure">
+<div id="orga239148" class="figure">
 <p><img src="imagenes/amenazaCausal.png" alt="amenazaCausal.png" />
 </p>
 </div>
@@ -404,14 +408,14 @@ en el enlace causal (de s1 a s2)
 </section>
 </section>
 <section>
-<section id="slide-org23869bc">
-<h3 id="org23869bc">Amenaza del enlace causal</h3>
+<section id="slide-org007b1c3">
+<h3 id="org007b1c3">Amenaza del enlace causal</h3>
 <div style="font-size: 80%;">
 <div class="gridded_frame_with_columns">
 <div class="one_of_2_columns">
 
 
-<div id="org3eea09b" class="figure">
+<div id="orgcabd98e" class="figure">
 <p><img src="imagenes/arriba.png" alt="arriba.png" />
 </p>
 </div>
@@ -420,7 +424,7 @@ en el enlace causal (de s1 a s2)
 <div class="one_of_2_columns">
 
 
-<div id="orgc8f1c5a" class="figure">
+<div id="org5b3cbbe" class="figure">
 <p><img src="imagenes/abajo.png" alt="abajo.png" />
 </p>
 </div>
@@ -434,8 +438,8 @@ en el enlace causal (de s1 a s2)
 </section>
 </section>
 <section>
-<section id="slide-orgefc90cb">
-<h3 id="orgefc90cb">Amenaza del enlace causal</h3>
+<section id="slide-org1fec9bc">
+<h3 id="org1fec9bc">Amenaza del enlace causal</h3>
 <ul>
 <li>Estas amenazas no se pueden resolver directamente (las dos
 acciones se amenazan mutuamente y ningún orden permite
@@ -444,7 +448,7 @@ resolverlas).</li>
 </ul>
 
 
-<div id="orgb533654" class="figure">
+<div id="orgd5941ac" class="figure">
 <p><img src="imagenes/casa.png" alt="casa.png" />
 </p>
 </div>
@@ -452,10 +456,10 @@ resolverlas).</li>
 </section>
 </section>
 <section>
-<section id="slide-org9d460ab">
-<h3 id="org9d460ab">Amenaza del enlace causal</h3>
+<section id="slide-orge40d5c2">
+<h3 id="orge40d5c2">Amenaza del enlace causal</h3>
 
-<div id="org57a6d0b" class="figure">
+<div id="org4a312d4" class="figure">
 <p><img src="imagenes/solcasa.png" alt="solcasa.png" />
 </p>
 </div>
@@ -463,8 +467,8 @@ resolverlas).</li>
 </section>
 </section>
 <section>
-<section id="slide-org3dec278">
-<h3 id="org3dec278">Plan de Orden Parcial</h3>
+<section id="slide-org3e3383d">
+<h3 id="org3e3383d">Plan de Orden Parcial</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Plan Parcial</span></b>
@@ -488,8 +492,8 @@ deriva que \(A< A_0\) o \(A_1 < A\).</li>
 </section>
 </section>
 <section>
-<section id="slide-org8471991">
-<h3 id="org8471991">Plan de Orden Parcial</h3>
+<section id="slide-org31fbf64">
+<h3 id="org31fbf64">Plan de Orden Parcial</h3>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><b><span style="color:green;">Agenda</span></b>
@@ -521,10 +525,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org603e9c5">
-<h3 id="org603e9c5">Planificador de Orden Parcial</h3>
+<section id="slide-org9085d94">
+<h3 id="org9085d94">Planificador de Orden Parcial</h3>
 
-<div id="org9b60d26" class="figure">
+<div id="orgc038aa7" class="figure">
 <p><img src="imagenes/Pop.png" alt="Pop.png" />
 </p>
 </div>
@@ -532,10 +536,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orga20e87e">
-<h3 id="orga20e87e">Planificador de Orden Parcial</h3>
+<section id="slide-orgf11dce0">
+<h3 id="orgf11dce0">Planificador de Orden Parcial</h3>
 
-<div id="orga635334" class="figure">
+<div id="org78410c3" class="figure">
 <p><img src="imagenes/Pop2.png" alt="Pop2.png" />
 </p>
 </div>
@@ -543,10 +547,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org8f4d1ed">
-<h3 id="org8f4d1ed">Planificador de Orden Parcial</h3>
+<section id="slide-orgaa4cba3">
+<h3 id="orgaa4cba3">Planificador de Orden Parcial</h3>
 
-<div id="orga2cb10c" class="figure">
+<div id="org9b86106" class="figure">
 <p><img src="imagenes/Pop3.png" alt="Pop3.png" />
 </p>
 </div>
@@ -554,10 +558,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgdf65741">
-<h3 id="orgdf65741">Planificador de Orden Parcial</h3>
+<section id="slide-orgfdf4763">
+<h3 id="orgfdf4763">Planificador de Orden Parcial</h3>
 
-<div id="orgbf4701f" class="figure">
+<div id="orgb54677a" class="figure">
 <p><img src="imagenes/Pop4.png" alt="Pop4.png" />
 </p>
 </div>
@@ -565,10 +569,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org65f4097">
-<h3 id="org65f4097">Planificador de Orden Parcial</h3>
+<section id="slide-orgb61cff0">
+<h3 id="orgb61cff0">Planificador de Orden Parcial</h3>
 
-<div id="org5175080" class="figure">
+<div id="orgf697aae" class="figure">
 <p><img src="imagenes/Pop5.png" alt="Pop5.png" />
 </p>
 </div>
@@ -576,10 +580,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org0f73675">
-<h3 id="org0f73675">Planificador de Orden Parcial</h3>
+<section id="slide-orgb2a5c91">
+<h3 id="orgb2a5c91">Planificador de Orden Parcial</h3>
 
-<div id="org519b999" class="figure">
+<div id="org5265ed3" class="figure">
 <p><img src="imagenes/Pop6.png" alt="Pop6.png" />
 </p>
 </div>
@@ -587,10 +591,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org54b1515">
-<h3 id="org54b1515">Planificador de Orden Parcial</h3>
+<section id="slide-org8b489c2">
+<h3 id="org8b489c2">Planificador de Orden Parcial</h3>
 
-<div id="org5ab19c7" class="figure">
+<div id="orgd715e67" class="figure">
 <p><img src="imagenes/Pop7.png" alt="Pop7.png" />
 </p>
 </div>
@@ -598,10 +602,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgd78ad53">
-<h3 id="orgd78ad53">Planificador de Orden Parcial</h3>
+<section id="slide-org27bd912">
+<h3 id="org27bd912">Planificador de Orden Parcial</h3>
 
-<div id="org1c7a74b" class="figure">
+<div id="orge31968f" class="figure">
 <p><img src="imagenes/Pop8.png" alt="Pop8.png" />
 </p>
 </div>
@@ -609,10 +613,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org0b0cdcf">
-<h3 id="org0b0cdcf">Ejemplo</h3>
+<section id="slide-org77c041e">
+<h3 id="org77c041e">Ejemplo</h3>
 
-<div id="org89983f5" class="figure">
+<div id="org36454e1" class="figure">
 <p><img src="imagenes/poppseudo.png" alt="poppseudo.png" />
 </p>
 </div>
@@ -620,10 +624,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org7c69d3a">
-<h3 id="org7c69d3a">Ejemplo</h3>
+<section id="slide-orgcafc783">
+<h3 id="orgcafc783">Ejemplo</h3>
 
-<div id="orge6e10ce" class="figure">
+<div id="org3c91144" class="figure">
 <p><img src="imagenes/pop0.png" alt="pop0.png" />
 </p>
 </div>
@@ -631,10 +635,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org4c805e4">
-<h3 id="org4c805e4">Ejemplo</h3>
+<section id="slide-org74cd4f9">
+<h3 id="org74cd4f9">Ejemplo</h3>
 
-<div id="orgeb013a9" class="figure">
+<div id="orgeeb5d07" class="figure">
 <p><img src="imagenes/pop2.png" alt="pop2.png" />
 </p>
 </div>
@@ -642,10 +646,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org1948d42">
-<h3 id="org1948d42">Ejemplo</h3>
+<section id="slide-orgfe4586c">
+<h3 id="orgfe4586c">Ejemplo</h3>
 
-<div id="org1c5c8fb" class="figure">
+<div id="org54c69fb" class="figure">
 <p><img src="imagenes/pop4.png" alt="pop4.png" />
 </p>
 </div>
@@ -653,10 +657,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org73f8fa8">
-<h3 id="org73f8fa8">Ejemplo</h3>
+<section id="slide-orgc52b4e7">
+<h3 id="orgc52b4e7">Ejemplo</h3>
 
-<div id="org0b49543" class="figure">
+<div id="orgce1ffd6" class="figure">
 <p><img src="imagenes/pop5.png" alt="pop5.png" />
 </p>
 </div>
@@ -664,10 +668,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc859f5a">
-<h3 id="orgc859f5a">Ejemplo</h3>
+<section id="slide-orga0e2f56">
+<h3 id="orga0e2f56">Ejemplo</h3>
 
-<div id="org905847f" class="figure">
+<div id="org6b40bd0" class="figure">
 <p><img src="imagenes/pop6.png" alt="pop6.png" />
 </p>
 </div>
@@ -675,10 +679,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org06ffe68">
-<h3 id="org06ffe68">Ejemplo</h3>
+<section id="slide-orga19a6c1">
+<h3 id="orga19a6c1">Ejemplo</h3>
 
-<div id="orgca58014" class="figure">
+<div id="orgd66d206" class="figure">
 <p><img src="imagenes/pop7.png" alt="pop7.png" />
 </p>
 </div>
@@ -686,10 +690,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgd4f6dd7">
-<h3 id="orgd4f6dd7">Ejemplo</h3>
+<section id="slide-orgf067f69">
+<h3 id="orgf067f69">Ejemplo</h3>
 
-<div id="org2f2c943" class="figure">
+<div id="org866fb11" class="figure">
 <p><img src="imagenes/pop8.png" alt="pop8.png" />
 </p>
 </div>
@@ -697,10 +701,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org5432284">
-<h3 id="org5432284">Ejemplo</h3>
+<section id="slide-org219b734">
+<h3 id="org219b734">Ejemplo</h3>
 
-<div id="org8b5408b" class="figure">
+<div id="org1ba61d0" class="figure">
 <p><img src="imagenes/pop9.png" alt="pop9.png" />
 </p>
 </div>
@@ -708,10 +712,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org6dc5001">
-<h3 id="org6dc5001">Ejemplo</h3>
+<section id="slide-org6d0a5f6">
+<h3 id="org6d0a5f6">Ejemplo</h3>
 
-<div id="org48e2837" class="figure">
+<div id="org07a8dec" class="figure">
 <p><img src="imagenes/pop10.png" alt="pop10.png" />
 </p>
 </div>
@@ -719,10 +723,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org9027b45">
-<h3 id="org9027b45">Ejemplo</h3>
+<section id="slide-orgefd559f">
+<h3 id="orgefd559f">Ejemplo</h3>
 
-<div id="org8a4a54d" class="figure">
+<div id="org380bbbf" class="figure">
 <p><img src="imagenes/pop11.png" alt="pop11.png" />
 </p>
 </div>
@@ -730,10 +734,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org43764f6">
-<h3 id="org43764f6">Ejemplo</h3>
+<section id="slide-org6d18af4">
+<h3 id="org6d18af4">Ejemplo</h3>
 
-<div id="org3169889" class="figure">
+<div id="org79d008a" class="figure">
 <p><img src="imagenes/pop12.png" alt="pop12.png" />
 </p>
 </div>
@@ -741,10 +745,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb66ef80">
-<h3 id="orgb66ef80">Ejemplo</h3>
+<section id="slide-org3da0a91">
+<h3 id="org3da0a91">Ejemplo</h3>
 
-<div id="org82c1e57" class="figure">
+<div id="org8128ab6" class="figure">
 <p><img src="imagenes/pop15.png" alt="pop15.png" />
 </p>
 </div>
@@ -752,10 +756,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orga8036df">
-<h3 id="orga8036df">Ejemplo</h3>
+<section id="slide-org86eac58">
+<h3 id="org86eac58">Ejemplo</h3>
 
-<div id="org730ff13" class="figure">
+<div id="org0fc3b4d" class="figure">
 <p><img src="imagenes/pop16.png" alt="pop16.png" />
 </p>
 </div>
@@ -763,10 +767,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org97b02f3">
-<h3 id="org97b02f3">Ejemplo</h3>
+<section id="slide-org7ddccc9">
+<h3 id="org7ddccc9">Ejemplo</h3>
 
-<div id="org1f7c409" class="figure">
+<div id="org777de2d" class="figure">
 <p><img src="imagenes/pop17.png" alt="pop17.png" />
 </p>
 </div>
@@ -774,10 +778,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org3575064">
-<h3 id="org3575064">Ejemplo</h3>
+<section id="slide-org4f370a7">
+<h3 id="org4f370a7">Ejemplo</h3>
 
-<div id="orgd267258" class="figure">
+<div id="org6bed2a6" class="figure">
 <p><img src="imagenes/pop18.png" alt="pop18.png" />
 </p>
 </div>
@@ -785,10 +789,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org4bf656f">
-<h3 id="org4bf656f">Ejemplo</h3>
+<section id="slide-orgde8e0fa">
+<h3 id="orgde8e0fa">Ejemplo</h3>
 
-<div id="org732a605" class="figure">
+<div id="orgeab06b0" class="figure">
 <p><img src="imagenes/pop19.png" alt="pop19.png" />
 </p>
 </div>
@@ -796,10 +800,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org59ee742">
-<h3 id="org59ee742">Ejemplo</h3>
+<section id="slide-org8b320fa">
+<h3 id="org8b320fa">Ejemplo</h3>
 
-<div id="org9969867" class="figure">
+<div id="orgc6088c3" class="figure">
 <p><img src="imagenes/pop20.png" alt="pop20.png" />
 </p>
 </div>
@@ -807,10 +811,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org9891fa0">
-<h3 id="org9891fa0">Ejemplo</h3>
+<section id="slide-org8edab3c">
+<h3 id="org8edab3c">Ejemplo</h3>
 
-<div id="orgfcac0d9" class="figure">
+<div id="org0cf11c8" class="figure">
 <p><img src="imagenes/pop21.png" alt="pop21.png" />
 </p>
 </div>
@@ -818,10 +822,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orga8d6609">
-<h3 id="orga8d6609">Ejemplo</h3>
+<section id="slide-org829baf5">
+<h3 id="org829baf5">Ejemplo</h3>
 
-<div id="orgd0f7e09" class="figure">
+<div id="orged31122" class="figure">
 <p><img src="imagenes/pop23.png" alt="pop23.png" />
 </p>
 </div>
@@ -829,10 +833,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-org45eb279">
-<h3 id="org45eb279">Ejemplo</h3>
+<section id="slide-orgf84e2ba">
+<h3 id="orgf84e2ba">Ejemplo</h3>
 
-<div id="org7975ea3" class="figure">
+<div id="org05a6030" class="figure">
 <p><img src="imagenes/pop24.png" alt="pop24.png" />
 </p>
 </div>
@@ -840,10 +844,10 @@ agenda vacía.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb5b8489">
-<h3 id="orgb5b8489">Ejemplo</h3>
+<section id="slide-orgdf99980">
+<h3 id="orgdf99980">Ejemplo</h3>
 
-<div id="orgdf53845" class="figure">
+<div id="org9dcd4db" class="figure">
 <p><img src="imagenes/pop25.png" alt="pop25.png" />
 </p>
 </div>
@@ -857,21 +861,17 @@ agenda vacía.</li>
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-transition:'slide',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
+transition:'cube',
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
+
 </script>
 </body>
 </html>

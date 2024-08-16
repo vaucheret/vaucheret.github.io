@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8"/>
 <title>Inteligencia Artificial</title>
-<meta name="author" content="(Claudio Vaucheret)"/>
+<meta name="author" content="Germán Braun"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
 
 <link rel="stylesheet" href="grids.css"/>
 
@@ -28,35 +30,37 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">Planificación: Acciones</h2><p class="date">Created: 2023-11-09 jue 10:46</p>
+<section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><p class="subtitle"></p>
+<h2 class="author">Germán Braun</h2><h2 class="date">Planificación: Acciones</h2><p class="date">Created: 2024-08-16 vie 12:31</p>
 </section>
-<section id="table-of-contents"><div id="table-of-contents">
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org7350031">Búsqueda Vs. Planning</a></li>
-<li><a href="#/slide-org60ffd72">Representación de los diferentes elementos en el Planning</a></li>
-<li><a href="#/slide-orgd5fa9ae">Problemas con la Representación de Acciones</a></li>
-<li><a href="#/slide-orgfc63d41">Encontrando la solución</a></li>
-<li><a href="#/slide-orgcc88958">STRIPS: Standford Research Institute Problem Solver</a></li>
-<li><a href="#/slide-orgd27c083">Situation Calculus</a></li>
-<li><a href="#/slide-org83043ed">Event Calculus</a></li>
-<li><a href="#/slide-org117c88e">Bibliografía</a></li>
+<li><a href="#/slide-org1a5ceaa">Búsqueda Vs. Planning</a></li>
+<li><a href="#/slide-orgd6070b2">Representación de los diferentes elementos en el Planning</a></li>
+<li><a href="#/slide-orga00c340">Problemas con la Representación de Acciones</a></li>
+<li><a href="#/slide-org06418e0">Encontrando la solución</a></li>
+<li><a href="#/slide-orgb664a8d">STRIPS: Standford Research Institute Problem Solver</a></li>
+<li><a href="#/slide-orgb553d0b">Situation Calculus</a></li>
+<li><a href="#/slide-org1c94d42">Event Calculus</a></li>
+<li><a href="#/slide-orge8c77bd">Bibliografía</a></li>
 </ul>
 </div>
 </div>
 </section>
 
+
 <section>
-<section id="slide-org7350031">
-<h2 id="org7350031">Búsqueda Vs. Planning</h2>
-<div class="outline-text-2" id="text-org7350031">
+<section id="slide-org1a5ceaa">
+<h2 id="org1a5ceaa">Búsqueda Vs. Planning</h2>
+<div class="outline-text-2" id="text-org1a5ceaa">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb70ee29">
-<h3 id="orgb70ee29">Búsqueda Vs. Planning: Acciones Irrelevantes</h3>
+<section id="slide-org877d277">
+<h3 id="org877d277">Búsqueda Vs. Planning: Acciones Irrelevantes</h3>
 <div style="font-size: 70%;">
 
 <p>
@@ -65,7 +69,7 @@ Los algoritmos estándar de búsqueda parecen fallar:
 </p>
 
 
-<div id="orge3fc5b2" class="figure">
+<div id="org4b51565" class="figure">
 <p><img src="imagenes/supermarket1.png" alt="supermarket1.png" height="300" />
 </p>
 </div>
@@ -78,8 +82,8 @@ Aún si tuviéramos una heurística.
 </section>
 </section>
 <section>
-<section id="slide-orgbaa13d7">
-<h3 id="orgbaa13d7">Búsqueda Vs. Planning</h3>
+<section id="slide-org64bd18d">
+<h3 id="org64bd18d">Búsqueda Vs. Planning</h3>
 <p>
 Con Planning podemos :
 </p>
@@ -93,8 +97,8 @@ Con Planning podemos :
 </section>
 </section>
 <section>
-<section id="slide-orgc930724">
-<h3 id="orgc930724">Búsqueda Vs. Planning</h3>
+<section id="slide-orga8799da">
+<h3 id="orga8799da">Búsqueda Vs. Planning</h3>
 <div style="font-size: 70%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -144,15 +148,15 @@ Con Planning podemos :
 </section>
 </section>
 <section>
-<section id="slide-org60ffd72">
-<h2 id="org60ffd72">Representación de los diferentes elementos en el Planning</h2>
-<div class="outline-text-2" id="text-org60ffd72">
+<section id="slide-orgd6070b2">
+<h2 id="orgd6070b2">Representación de los diferentes elementos en el Planning</h2>
+<div class="outline-text-2" id="text-orgd6070b2">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org242f3b7">
-<h3 id="org242f3b7">Lenguaje de Representación</h3>
+<section id="slide-org0e780d0">
+<h3 id="org0e780d0">Lenguaje de Representación</h3>
 <p>
 <span style="color:red;">Utilizaremos la Estructura Lógica del Problema</span>
 </p>
@@ -190,8 +194,8 @@ otros).
 </section>
 </section>
 <section>
-<section id="slide-org43545db">
-<h3 id="org43545db">Representación de las Acciones</h3>
+<section id="slide-orgd4f3f8d">
+<h3 id="orgd4f3f8d">Representación de las Acciones</h3>
 <p>
 Las especificamos en términos de Precondiciones/Efectos.
 </p>
@@ -223,8 +227,8 @@ Aquello que será consecuencia de la ejecucción de la acción.
 </section>
 </section>
 <section>
-<section id="slide-org18604a0">
-<h3 id="org18604a0">Representación de las Acciones (Ejemplo)</h3>
+<section id="slide-orgad25270">
+<h3 id="orgad25270">Representación de las Acciones (Ejemplo)</h3>
 <p>
 Las especificamos en términos de Precondiciones/Efectos.
 </p>
@@ -261,15 +265,15 @@ Las especificamos en términos de Precondiciones/Efectos.
 </section>
 </section>
 <section>
-<section id="slide-orgd5fa9ae">
-<h2 id="orgd5fa9ae">Problemas con la Representación de Acciones</h2>
-<div class="outline-text-2" id="text-orgd5fa9ae">
+<section id="slide-orga00c340">
+<h2 id="orga00c340">Problemas con la Representación de Acciones</h2>
+<div class="outline-text-2" id="text-orga00c340">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgf041ef0">
-<h3 id="orgf041ef0">Qualification Problem</h3>
+<section id="slide-orge86b20e">
+<h3 id="orge86b20e">Qualification Problem</h3>
 <p>
 <font color=red>¿Cuáles son las precondiciones para que una acción tenga éxito?</font>
 </p>
@@ -304,8 +308,8 @@ Las especificamos en términos de Precondiciones/Efectos.
 </section>
 </section>
 <section>
-<section id="slide-org5e07ec7">
-<h3 id="org5e07ec7">Qualification Problem</h3>
+<section id="slide-orgf9f2048">
+<h3 id="orgf9f2048">Qualification Problem</h3>
 <p>
 El problema de las circunstancias no representadas que podrían
 <font color=red>causar que una acción falle</font> se conoce como
@@ -315,8 +319,8 @@ El problema de las circunstancias no representadas que podrían
 </section>
 </section>
 <section>
-<section id="slide-orgc0870d9">
-<h3 id="orgc0870d9">Ramification Problem</h3>
+<section id="slide-orgf57afac">
+<h3 id="orgf57afac">Ramification Problem</h3>
 <div style="font-size: 70%;">
 
 <div class="gridded_frame_with_columns">
@@ -357,8 +361,8 @@ El problema de las circunstancias no representadas que podrían
 </section>
 </section>
 <section>
-<section id="slide-orgfd7450d">
-<h3 id="orgfd7450d">Ramification Problem</h3>
+<section id="slide-org9826d74">
+<h3 id="org9826d74">Ramification Problem</h3>
 <p>
 El problema de las circunstancias no representadas que son
 <font color=red>efecto de la ejecución de una acción</font> se conoce como
@@ -368,8 +372,8 @@ El problema de las circunstancias no representadas que son
 </section>
 </section>
 <section>
-<section id="slide-org289d392">
-<h3 id="org289d392">Frame Problem</h3>
+<section id="slide-org874464a">
+<h3 id="org874464a">Frame Problem</h3>
 <div style="font-size: 70%;">
 <p>
 <font color=red>¿Qué elementos permanecen sin cambios cuando una acción es ejecutada?</font>
@@ -417,8 +421,8 @@ El problema de las circunstancias no representadas que son
 </section>
 </section>
 <section>
-<section id="slide-orgda1cfef">
-<h3 id="orgda1cfef">Frame Problem</h3>
+<section id="slide-orgb7acffd">
+<h3 id="orgb7acffd">Frame Problem</h3>
 <p>
 El problema de representar todas las circunstancias que
 <font color=red>permanecen sin cambios</font> se conoce como <font color=red>Problema del Frame</font>.
@@ -433,15 +437,15 @@ mundo real casi todo permanece igual la mayoría del tiempo.
 </section>
 </section>
 <section>
-<section id="slide-orgfc63d41">
-<h2 id="orgfc63d41">Encontrando la solución</h2>
-<div class="outline-text-2" id="text-orgfc63d41">
+<section id="slide-org06418e0">
+<h2 id="org06418e0">Encontrando la solución</h2>
+<div class="outline-text-2" id="text-org06418e0">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org484584c">
-<h3 id="org484584c">Aplicación de una acción</h3>
+<section id="slide-org6cb6f66">
+<h3 id="org6cb6f66">Aplicación de una acción</h3>
 <div style="font-size: 70%;">
 <p>
 <font color=red>Una acción es aplicable en cualquier estado que satisface las precondiciones.</font>
@@ -476,8 +480,8 @@ Luego la acción \(\color{red}{fly(A810,JN,JFK)}\) es aplicable
 </section>
 </section>
 <section>
-<section id="slide-orgdcb164a">
-<h3 id="orgdcb164a">Solución</h3>
+<section id="slide-org0cc32f3">
+<h3 id="org0cc32f3">Solución</h3>
 <p>
 Una secuencia de acciones que cuando es ejecutada desde el estado
 inicial resulta en un estado que satisface la meta.
@@ -486,15 +490,15 @@ inicial resulta en un estado que satisface la meta.
 </section>
 </section>
 <section>
-<section id="slide-orgcc88958">
-<h2 id="orgcc88958">STRIPS: Standford Research Institute Problem Solver</h2>
-<div class="outline-text-2" id="text-orgcc88958">
+<section id="slide-orgb664a8d">
+<h2 id="orgb664a8d">STRIPS: Standford Research Institute Problem Solver</h2>
+<div class="outline-text-2" id="text-orgb664a8d">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orga8f1be1">
-<h3 id="orga8f1be1">STRIPS</h3>
+<section id="slide-org3f08f94">
+<h3 id="org3f08f94">STRIPS</h3>
 <p>
 <b><font color="green">Representación de Estados</font></b>
 </p>
@@ -516,8 +520,8 @@ function-free. Utilizamos CWA
 </section>
 </section>
 <section>
-<section id="slide-org493ff36">
-<h3 id="org493ff36">Representación de la Acciones</h3>
+<section id="slide-orgbfba69b">
+<h3 id="orgbfba69b">Representación de la Acciones</h3>
 <p>
 <b><font color="green">Esquema de Acción</font></b>
 </p>
@@ -549,8 +553,8 @@ STRIPS la representa con tres listas:
 </section>
 </section>
 <section>
-<section id="slide-org7222323">
-<h3 id="org7222323">Representación de la Acciones</h3>
+<section id="slide-org68a9a96">
+<h3 id="org68a9a96">Representación de la Acciones</h3>
 <ul>
 <li class="fragment roll-in"><p>
 <b><font color="green">Lista de Precondiciones</font></b>
@@ -582,8 +586,8 @@ Literales positivos que quitamos porque dejaron de tener efecto en el nuevo esta
 </section>
 </section>
 <section>
-<section id="slide-org26eeb39">
-<h3 id="org26eeb39">Representación de la Acciones</h3>
+<section id="slide-org632874d">
+<h3 id="org632874d">Representación de la Acciones</h3>
 <p>
 <b><font color="green"> Ejemplo</font></b>
 </p>
@@ -620,8 +624,8 @@ Delete List={\(at(p,from)\)
 </section>
 </section>
 <section>
-<section id="slide-org1df3fbc">
-<h3 id="org1df3fbc">Aplicación de una acción</h3>
+<section id="slide-org8dff513">
+<h3 id="org8dff513">Aplicación de una acción</h3>
 <div style="font-size: 70%;">
 <p>
 <b><font color="green">Ejemplo</font></b>
@@ -665,8 +669,8 @@ Nuevo estado \(s^\prime\):
 </section>
 </section>
 <section>
-<section id="slide-orge6f67ad">
-<h3 id="orge6f67ad">STRIPS y los Problemas de la Representación</h3>
+<section id="slide-org2bd77d4">
+<h3 id="org2bd77d4">STRIPS y los Problemas de la Representación</h3>
 <div style="font-size: 70%;">
 <ul>
 <li class="fragment roll-in"><font color="cyan">Qualification Problem:</font> Lista de Precondiciones</li>
@@ -684,8 +688,8 @@ a menos que escribamos uno  a uno estos efectos de la acción.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgdcd7c3b">
-<h3 id="orgdcd7c3b">Action Description Language</h3>
+<section id="slide-orgac61c51">
+<h3 id="orgac61c51">Action Description Language</h3>
 <div style="font-size: 60%;">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -742,8 +746,8 @@ a menos que escribamos uno  a uno estos efectos de la acción.</li>
 </section>
 </section>
 <section>
-<section id="slide-org13015b7">
-<h3 id="org13015b7">Planning Domain Definition Language</h3>
+<section id="slide-org406a501">
+<h3 id="org406a501">Planning Domain Definition Language</h3>
 <p>
 Surge como combinación de STRIPS y ADL.
 </p>
@@ -798,10 +802,10 @@ Surge como combinación de STRIPS y ADL.
 </section>
 </section>
 <section>
-<section id="slide-org04ba794">
-<h3 id="org04ba794">Mundo de Bloques</h3>
+<section id="slide-org401f9f0">
+<h3 id="org401f9f0">Mundo de Bloques</h3>
 
-<div id="orgd6a95a7" class="figure">
+<div id="org3e51fc0" class="figure">
 <p><img src="imagenes/blocks.png" alt="blocks.png" height="300" />
 </p>
 </div>
@@ -810,8 +814,8 @@ Surge como combinación de STRIPS y ADL.
 </section>
 </section>
 <section>
-<section id="slide-org3d5e6b3">
-<h3 id="org3d5e6b3">Mundo de Bloques</h3>
+<section id="slide-orgb8ec5d7">
+<h3 id="orgb8ec5d7">Mundo de Bloques</h3>
 <div style="font-size: 60%;">
 <p>
 Mundo de Bloques: Definición de Dominio
@@ -831,7 +835,7 @@ Mundo de Bloques: Definición de Dominio
 
 </ul>
 
-<div id="orgfc5c258" class="figure">
+<div id="orgbb1ca69" class="figure">
 <p><img src="imagenes/bloqueinit.png" alt="bloqueinit.png" height="200" />
 </p>
 </div>
@@ -853,8 +857,8 @@ Mundo de Bloques: Definición de Dominio
 </section>
 </section>
 <section>
-<section id="slide-org097b394">
-<h3 id="org097b394">Mundo de Bloques</h3>
+<section id="slide-org7031fdb">
+<h3 id="org7031fdb">Mundo de Bloques</h3>
 <div style="font-size: 60%;">
 <p>
 Mundo de Bloques: Definición de Dominio
@@ -874,7 +878,7 @@ Mundo de Bloques: Definición de Dominio
 
 </ul>
 
-<div id="orgd67fdc9" class="figure">
+<div id="orgae74b89" class="figure">
 <p><img src="imagenes/bloqueinit.png" alt="bloqueinit.png" height="200" />
 </p>
 </div>
@@ -896,8 +900,8 @@ Mundo de Bloques: Definición de Dominio
 </section>
 </section>
 <section>
-<section id="slide-orgc375c75">
-<h3 id="orgc375c75">STRIPS</h3>
+<section id="slide-orgb43c0b9">
+<h3 id="orgb43c0b9">STRIPS</h3>
 <div style="font-size: 75%;">
 <ul>
 <li>El tiempo se modela de acuedo a la visión de
@@ -920,8 +924,8 @@ del mundo. Es decir, solo afecta unas pocas relaciones primitivas.</li>
 </section>
 </section>
 <section>
-<section id="slide-orge054863">
-<h3 id="orge054863">Mundo de Bloques: Representación</h3>
+<section id="slide-orgd47e430">
+<h3 id="orgd47e430">Mundo de Bloques: Representación</h3>
 <p>
 <b>\(\color{green}{on(X,Y) \mbox{ o } sobre(X,Y)}\)</b>
 </p>
@@ -944,8 +948,8 @@ Acción de mover el bloque B del tope de X a Y.
 </section>
 </section>
 <section>
-<section id="slide-org975a41f">
-<h3 id="org975a41f">Mundo de Bloques: Move(B,X,Y)</h3>
+<section id="slide-orgfdfb4b1">
+<h3 id="orgfdfb4b1">Mundo de Bloques: Move(B,X,Y)</h3>
 <p>
 <b><font color="green">Precondiciones en ADL</font></b>
 </p>
@@ -979,8 +983,8 @@ Acción de mover el bloque B del tope de X a Y.
 </section>
 </section>
 <section>
-<section id="slide-orgdfae005">
-<h3 id="orgdfae005">Mundo de Bloques: Move(B,X,Y)</h3>
+<section id="slide-org7855f76">
+<h3 id="org7855f76">Mundo de Bloques: Move(B,X,Y)</h3>
 <p>
 <b><font color="green">Efectos en ADL</font></b>
 </p>
@@ -1010,8 +1014,8 @@ Lista de Borrados: {\(Clear(Y), On(B,X)\)}
 </section>
 </section>
 <section>
-<section id="slide-org9179082">
-<h3 id="org9179082">Mundo de Bloques: Move(B,X,Y)</h3>
+<section id="slide-org80e96a6">
+<h3 id="org80e96a6">Mundo de Bloques: Move(B,X,Y)</h3>
 <p>
 Situaciones especiales:
 </p>
@@ -1025,10 +1029,10 @@ Situaciones especiales:
 </section>
 </section>
 <section>
-<section id="slide-org092f3c1">
-<h3 id="org092f3c1">Mundo de Bloques</h3>
+<section id="slide-orgb4ad95d">
+<h3 id="orgb4ad95d">Mundo de Bloques</h3>
 
-<div id="org75a63af" class="figure">
+<div id="orgd1e6ec4" class="figure">
 <p><img src="imagenes/bloquestrips4.png" alt="bloquestrips4.png" height="450" />
 </p>
 </div>
@@ -1036,21 +1040,21 @@ Situaciones especiales:
 </section>
 </section>
 <section>
-<section id="slide-orgd27c083">
-<h2 id="orgd27c083">Situation Calculus</h2>
-<div class="outline-text-2" id="text-orgd27c083">
+<section id="slide-orgb553d0b">
+<h2 id="orgb553d0b">Situation Calculus</h2>
+<div class="outline-text-2" id="text-orgb553d0b">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org525483e">
-<h3 id="org525483e">Situation Calculus</h3>
+<section id="slide-org31f4dba">
+<h3 id="org31f4dba">Situation Calculus</h3>
 <p>
 En vez de concentrarnos en tiempos nos concentramos en situaciones:
 </p>
 
 
-<div id="orge4cc323" class="figure">
+<div id="orgcfb9ee5" class="figure">
 <p><img src="imagenes/situation.png" alt="situation.png" height="400" />
 </p>
 </div>
@@ -1058,8 +1062,8 @@ En vez de concentrarnos en tiempos nos concentramos en situaciones:
 </section>
 </section>
 <section>
-<section id="slide-orgfab20ba">
-<h3 id="orgfab20ba">Situation Calculus</h3>
+<section id="slide-org6e8d73a">
+<h3 id="org6e8d73a">Situation Calculus</h3>
 <div style="font-size: 70%;">
 <ul>
 <li>El tiempo se modela de acuerdo a la visión de
@@ -1078,8 +1082,8 @@ De esta manera es posible representar, <b><font color="green">en</font></b> la l
 </section>
 </section>
 <section>
-<section id="slide-orge389a89">
-<h3 id="orge389a89">Situation Calculus: Representación</h3>
+<section id="slide-org86b25bb">
+<h3 id="org86b25bb">Situation Calculus: Representación</h3>
 <p>
 Representamos a las situaciones como:
 </p>
@@ -1099,8 +1103,8 @@ Representamos a las situaciones como:
 </section>
 </section>
 <section>
-<section id="slide-orgb1bc674">
-<h3 id="orgb1bc674">Situation Calculus: Representación</h3>
+<section id="slide-org0315610">
+<h3 id="org0315610">Situation Calculus: Representación</h3>
 <ul>
 <li><p>
 <b><font color="green">Predicados Atemporales</font></b>
@@ -1128,8 +1132,8 @@ Son predicados que <font color=red>varían</font> desde alguna situación a la s
 </section>
 </section>
 <section>
-<section id="slide-orgd7f448e">
-<h3 id="orgd7f448e">Situation Calculus: Representación</h3>
+<section id="slide-orga0c65d8">
+<h3 id="orga0c65d8">Situation Calculus: Representación</h3>
 <ul>
 <li><p>
 <b><font color="green">Representación de un Estado</font></b>
@@ -1148,10 +1152,10 @@ Son predicados que <font color=red>varían</font> desde alguna situación a la s
 </section>
 </section>
 <section>
-<section id="slide-orgeb702e7">
-<h3 id="orgeb702e7">Situation Calculus</h3>
+<section id="slide-orgd9d8bf1">
+<h3 id="orgd9d8bf1">Situation Calculus</h3>
 
-<div id="orgeeadca2" class="figure">
+<div id="org0fddce3" class="figure">
 <p><img src="imagenes/rlcs.png" alt="rlcs.png" height="450" />
 </p>
 </div>
@@ -1160,8 +1164,8 @@ Son predicados que <font color=red>varían</font> desde alguna situación a la s
 </section>
 </section>
 <section>
-<section id="slide-orga760a3f">
-<h3 id="orga760a3f">Situation Calculus: Representación</h3>
+<section id="slide-org1e228c3">
+<h3 id="org1e228c3">Situation Calculus: Representación</h3>
 <p>
 <b><font color="green">Representación de una Acción</font></b>
 </p>
@@ -1185,8 +1189,8 @@ acción si:
 </section>
 </section>
 <section>
-<section id="slide-org48bf438">
-<h3 id="org48bf438">Situation Calculus: Mundo de Bloques</h3>
+<section id="slide-org39740c0">
+<h3 id="org39740c0">Situation Calculus: Mundo de Bloques</h3>
 <div style="font-size: 60%;">
 <p>
 \(\color{cyan}{Move(B,X,Y)}\)
@@ -1243,15 +1247,15 @@ clear(X,do(A,S))\(\leftarrow\) clear(X,S) \(\wedge\) poss(A,S) \(\wedge\) A \(\n
 </section>
 </section>
 <section>
-<section id="slide-org83043ed">
-<h2 id="org83043ed">Event Calculus</h2>
-<div class="outline-text-2" id="text-org83043ed">
+<section id="slide-org1c94d42">
+<h2 id="org1c94d42">Event Calculus</h2>
+<div class="outline-text-2" id="text-org1c94d42">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgfbde12e">
-<h3 id="orgfbde12e">Event Calculus</h3>
+<section id="slide-orge97ed35">
+<h3 id="orge97ed35">Event Calculus</h3>
 <ul>
 <li>El Cálculo Situacional permite a un agente ejecutar acciones
 discretas instantáneas.</li>
@@ -1268,8 +1272,8 @@ realizan en paralelo.</li>
 </section>
 </section>
 <section>
-<section id="slide-org81a3769">
-<h3 id="org81a3769">Event Calculus: Características</h3>
+<section id="slide-orgaaf52a1">
+<h3 id="orgaaf52a1">Event Calculus: Características</h3>
 <ul>
 <li class="fragment roll-in">Los fluentes  ocurren en un punto en el tiempo</li>
 <li class="fragment roll-in">El cálculo está diseñado para permitir razonamiento sobre intervalos
@@ -1291,8 +1295,8 @@ de tiempos.</li>
 </section>
 </section>
 <section>
-<section id="slide-org9b7b220">
-<h3 id="org9b7b220">Event Calculus: Representación</h3>
+<section id="slide-org5919f47">
+<h3 id="org5919f47">Event Calculus: Representación</h3>
 <p>
 <b>\(\color{green}{event(E,T)}\)</b>
 </p>
@@ -1331,8 +1335,8 @@ Es verdadero si el evento E hace que el predicado P deje de ser verdadero en el 
 </section>
 </section>
 <section>
-<section id="slide-org2fb809c">
-<h3 id="org2fb809c">Event Calculus: Representación</h3>
+<section id="slide-orgbe787d3">
+<h3 id="orgbe787d3">Event Calculus: Representación</h3>
 <div style="font-size: 70%;">
 <p>
 Para cada fluente, deberemos determinar si éste ocurre o no en un
@@ -1374,8 +1378,8 @@ tiempo particular:
 </section>
 </section>
 <section>
-<section id="slide-org377ac02">
-<h3 id="org377ac02">Event Calculus: Mundo de Bloques</h3>
+<section id="slide-org65c6c2b">
+<h3 id="org65c6c2b">Event Calculus: Mundo de Bloques</h3>
 <p>
 <b>\(\color{green}{move(B,X,Y))}\)</b>
 </p>
@@ -1418,8 +1422,8 @@ tiempo particular:
 </section>
 </section>
 <section>
-<section id="slide-org20e915d">
-<h3 id="org20e915d">Rep. de Acciones y Cambio</h3>
+<section id="slide-org6d485c4">
+<h3 id="org6d485c4">Rep. de Acciones y Cambio</h3>
 <div style="font-size: 80%;">
 <ul>
 <li><font color=red>Tiempo Discreto:</font> se modela como saltando de un punto en
@@ -1442,8 +1446,8 @@ estado a otro del mundo. Ej: Cálculo de Situaciones y STRIPS.
 </section>
 </section>
 <section>
-<section id="slide-orgbafb37d">
-<h3 id="orgbafb37d">Rep. de Acciones y Cambio</h3>
+<section id="slide-org1e8d05c">
+<h3 id="org1e8d05c">Rep. de Acciones y Cambio</h3>
 <div style="font-size: 70%;">
 <p>
 El tiempo pude incorporarse a un sistema de Rep. de Conoc. y
@@ -1470,15 +1474,15 @@ cuadra(Mitre, \(200\)), pm(\(15:35\))) Ej <font color="green">Cálculo de Situac
 </section>
 </section>
 <section>
-<section id="slide-org117c88e">
-<h2 id="org117c88e">Bibliografía</h2>
-<div class="outline-text-2" id="text-org117c88e">
+<section id="slide-orge8c77bd">
+<h2 id="orge8c77bd">Bibliografía</h2>
+<div class="outline-text-2" id="text-orge8c77bd">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org81fb078">
-<h3 id="org81fb078">Referencia Bibliográfica</h3>
+<section id="slide-org8d123f8">
+<h3 id="org8d123f8">Referencia Bibliográfica</h3>
 <div style="font-size: 80%;">
 
 <p>
@@ -1506,21 +1510,17 @@ cuadra(Mitre, \(200\)), pm(\(15:35\))) Ej <font color="green">Cálculo de Situac
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-transition:'slide',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
+transition:'cube',
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
+
 </script>
 </body>
 </html>
