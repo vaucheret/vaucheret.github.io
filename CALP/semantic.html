@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html><head><title>Semanticas</title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body><div class="reveal" ><div class="slides" ><section id="sec-title-slide" ><h1 class="title" >Semanticas</h1>
+<h2 class="author" >C. A. L. P.</h2>
+<h3 class="date" >Claudio Vaucheret</h3>
+</section>
+<section><h2>Introducción</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Introducción</h3>
+<ul><li class="fragment appear"><span style="color:blue;"><b>Sintaxis:</b>
+</span>La forma y estructura de las expresiones, sentencias y unidades del programa.</li>
+<li class="fragment appear"><span style="color:green;"><b>Semántica:</b>
+</span>El significado de las expresiones, sentencias, y unidades del programa.</li>
+<li class="fragment appear">Sintaxis y Semántica proveen una Definición del Lenguaje<ul><li class="fragment appear">Usuarios de una Definición del Lenguaje<ul><li class="fragment appear">Otros diseñadores del Lenguaje</li>
+<li class="fragment appear">Implementadores</li>
+<li class="fragment appear">Programadores</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Definición Formal de Lenguajes</h3>
+<div style="font-size: 85%;">
+<ul><li class="fragment appear"><span style="color:blue;"><b>Reconocedores</b>
+</span><ul><li>Un dispositivo de reconocimiento que lee cadenas del lenguaje y decide si las cadenas de entrada pertenecen al Lenguaje.</li>
+<li>Ejemplo, el analizador sintáctico de un compilador.</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:green;"><b>Generadores</b>
+</span><ul><li>Un dispositivo que genera sentencias de un lenguaje</li>
+<li>Se puede determinar si la sintaxis de una sentencia particular                                 es correcta comparándola con la estructura del generador.</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Métodos Formales de Describir la Sintaxis</span></h3>
+<ul><li class="fragment appear"><span style="color:green;">Forma Backus-Naur y gramáticas libres de contexto</span><ul><li class="fragment appear">El método mas conocido para describir la sintaxis de un Lenguaje                                  de Programación.</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:green;">BNF Extendida</span><ul><li class="fragment appear">Mejora la legibilidad de BNF.</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:green;">Gramáticas y Reconocedores</span></li>
+</ul>
+</section>
+<section><h3><span style="color:red;">BNF y Gramáticas Libres de Contexto</span></h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment appear"><span style="color:green;">Gramáticas libres de Contexto</span><ul><li class="fragment appear">Desarrollado por Noam Chomsky a mediados de 1950s</li>
+<li class="fragment appear">Generadores de Lenguajes, medio de  describir la la sintaxis de lenguajes naturales</li>
+<li class="fragment appear">Define clases de lenguajes</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:green;">Forma Backus-Naur (1959)</span><ul><li class="fragment appear">Inventado por John Backus para describir Algol 58</li>
+<li class="fragment appear">Árboles sintacticos - ambiguedad del lenguaje</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h2>Semántica Estática</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Gramáticas con atributos</h3>
+<ul><li class="fragment appear"><span style="color:orange;">Las Gramáticas Libres de Contexto (GLC) no pueden describir toda la sintaxis de los lenguajes de programación.</span></li>
+<li class="fragment appear"><span style="color:brown;">Agregados a GLC para introducir información semántica en los árboles sintácticos</span></li>
+<li class="fragment appear"><span style="color:yellow;">Principal aporte de las Gramáticas con atributos</span><ul><li><span style="color:yellow;">Especificación de la semántica estática</span></li>
+<li><span style="color:yellow;">Diseño de Compiladores (chequeo de semántica estática)</span></li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Gramáticas con atributos: Definición</span></h3>
+<div style="font-size: 80%;">
+<ul><li>Una Gramática con atributos es una gramática libre de contexto \(G =  (S,N,T,P)\) con los siguientes agregados:<ul><li class="fragment highlight-current-red">Por cada símbolo de gramática \(x\) hay un conjunto \(A(x)\) de valores de atributos</li>
+<li class="fragment highlight-current-red">Cada regla tiene un conjunto de funciones que definen ciertos atributos de los no terminales en la regla</li>
+<li class="fragment highlight-current-red">Cada regla tiene un conjunto posiblemente vacío de predicados para chequear la consistencia de los atributos</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Gramáticas con atributos: Definición</span></h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment highlight-current-green">Sea \(X_0 \to X_1 ... X_n\) una regla de la gramática libre de contexto</li>
+<li class="fragment highlight-current-green">Funciones de la forma \(S(X_0) = f(A(X_1), ... , A(X_n))\) definen <span style="color:yellow;"><em>atributos sintetizados</em>
+</span></li>
+<li class="fragment highlight-current-green">Funciones de la forma \(I(X_j) = f(A(X_0)), ... , f(A(X_{j-1}))\) para \(i <= j <= n\), definen <span style="color:yellow;"><em>atributos heredados</em>
+</span></li>
+<li class="fragment highlight-current-green">Inicialmente hay <span style="color:yellow;"><em>atributos intrínsecos</em>
+</span> en las hojas de los árboles sintácticos</li>
+</ul>
+</section>
+<section><h3>Gramáticas con atributos: Un Ejemplo</h3>
+<div style="font-size: 65%;">
+<ul><li>Sintaxis<ul><li>\( < assign > \to < var > = < expr > \)</li>
+<li>\( < expr > \to < var > + < var > | < var > \)</li>
+<li>\( < var > \to A | B | C \)</li>
+</ul>
+</li>
+<li>tipo-real: sintetizado por < var > y < expr ></li>
+<li>tipo-esperado: heredado por < expr ></li>
+</ul>
+<div class="figure">
+<p><img src=attribgram1.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h3>Gramáticas con atributos: Un Ejemplo</h3>
+<div style="font-size: 65%;">
+<ol><li>Regla sintáctica: \( < assign > \to < var > = < expr > \)<ul><li>Regla semántica: \( < expr >.tipo-esperado \leftarrow < var >.tipo-real \)</li>
+</ul>
+</li>
+<li>Regla sintáctica: \( < expr > \to < var > [2] + < var > [3] \)<ul><li>Regla semántica: \( < expr >.tipo-real \leftarrow \)<p>if \( < var >[2].tipo-real = int \)  and \( < var >[3].tipo-real = int \)  then \( int \) else \( real \)  end if  </p>
+</li>
+<li>Predicado: \( < expr >.tipo-real = < expr >.tipo-esperado \)</li>
+</ul>
+</li>
+<li>Regla sintáctica: \( < expr > \to < var > \)<ul><li>Regla semántica: \( < expr >.tipo-real \leftarrow < var >.tipo-real \)</li>
+<li>Predicado: \( < expr >.tipo-real = < expr >.tipo-esperado \)</li>
+</ul>
+</li>
+<li>Regla sintáctica: \( < var > \to A | B | C \)<ul><li>Regla semántica: \( < var >.tipo-real \leftarrow \) lookup \( ( < var >.string) \)</li>
+</ul>
+</li>
+</ol>
+</section>
+<section><h3>Gramáticas con atributos</h3>
+<div style="font-size: 65%;">
+<p><span style="color:red;">¿Cómo se computan los valores de atributos?</span></p>
+<ul><li>Si todos los atributos fueran heredados, el árbol podría ser completado en un orden <em>top-down</em>
+</li>
+<li>Si todos los atributos fueran sintetizados, el árbol podría ser completado en un orden <em>bottom-up</em>
+</li>
+<li>En muchos casos, ambos casos de atributos son utilizados y se necesita una combinación de ambos órdenes.</li>
+</ul>
+<div class="figure">
+<p><img src=attribgram2.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h3>Gramáticas con atributos</h3>
+<div style="font-size: 65%;">
+<ol><li>\( < var >.tipo-real \leftarrow look-up(A) \)  (Regla 4)</li>
+<li>\( < expr >.tipo-esperado \leftarrow < var >.tipo-real \) (Regla 1)</li>
+<li><ul><li>\(  < var >[2].tipo-real \leftarrow look-up(A) \) (Regla 4)</li>
+<li>\(  < var >[3].tipo-real \leftarrow look-up(B) \) (Regla 4)</li>
+</ul>
+</li>
+<li>\( < expr >.tipo-real \leftarrow \) int o real  (Regla 2)</li>
+<li>\( < expr >.tipo-esperado = < expr >.tipo-real  \) es VERDADERO o FALSO (Regla 2)</li>
+</ol>
+<div class="figure">
+<p><img src=attribgram3.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h2>Semántica Dinámica</h2>
+<div class="outline-text-2" ></div>
+</section>
+</div>
+</div>
+<script src="https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>
