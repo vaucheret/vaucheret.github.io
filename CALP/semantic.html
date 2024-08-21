@@ -362,7 +362,7 @@ establece las relaciones y restricciones entre variables que son verdaderas en e
 </ul>
 </section>
 <section><h3>Axiomas</h3>
-<div style="font-size: 90%;">
+<div style="font-size: 80%;">
  \[ \frac{ \{x > 3\} \ x = x - 3 \ \{x > 0\}, (x > 5) \Rightarrow (x > 3), (x > 0) \Rightarrow (x > 0)}{\{x > 5\} \ x = x - 3 \ \{x > 0\}} \]</section>
 <section><h3>Axiomas</h3>
 <ul><li>Una regla de inferencia para secuencias<ul><li>\( \{P1\} S1 \{P2\} \)</li>
@@ -371,6 +371,94 @@ establece las relaciones y restricciones entre variables que son verdaderas en e
 </li>
 </ul>
 \[ \frac{ \{P1\} \ S1 \ \{P2\}, \{P2\} \ S2 \ \{P3\}}{\{P1\} \ S1;S2 \ \{P3\}} \]</section>
+<section><h3>Axiomas</h3>
+<ul><li>\( y = 3 * x + 1  \);</li>
+<li>\( x =  y + 3 \);</li>
+<li>\(\{ x < 10 \}  \)</li>
+</ul>
+<p>La precondición para la segunda asignación es \( y < 7 \) la cual es usada como postcondición para la primer sentencia. La precondición para la primera asignación puede ser computada</p>
+<ul><li>\( 3 * x + 1 < 7  \)</li>
+<li>\( x < 2 \)</li>
+</ul>
+</section>
+<section><h3>Axiomas</h3>
+<p>regla de inferencia para sentencias de selección <em>if</em>
+</p>
+<p>{P} <b>if</b>
+ B <b>then</b>
+ S1 <b>else</b>
+ S2 {Q}</p>
+\[ \frac{ \{B \ and \ P \} \ S1 \ \{Q\}, \{(not B) \ and \ P\} \ S2 \ \{Q\}}{\{P\} \ if \ B \ then \ S1 \ else \ S2 \ \{Q\}}\]</section>
+<section><h3><span style="color:magenta;">Ejemplo</span></h3>
+<b>if</b>
+ \( x > 0 \) <b>then</b>
+ \( y = y -1 \) <b>else</b>
+ \( y = Y + 1 \)<ul><li class="fragment appear">con la postcondición \( \{ y > 0 \} \)</li>
+<li class="fragment appear">el axioma de asignación para la clausula <b>then</b>
+ : \( y = y - 1  \{ y > 0 \} \)  produce \( \{ y - 1 > 0 \} \) o \( \{ y > 1 \} \)</li>
+<li class="fragment appear">el axioma de asignación para la clausula <b>else</b>
+ : \( y = y + 1  \{ y > 0 \} \)  produce \( \{ y + 1 > 0 \} \) o \( \{ y > -1 \} \)</li>
+<li class="fragment appear">Como \( \{ y > 1 \} \Rightarrow \{ y > -1 \}\) la regla de consecuencia nos permite usar \( \{ y > 1 \} \) como precondición del total de la sentencia</li>
+</ul>
+</section>
+<section><h3>Axiomas</h3>
+<p>Una regla de inferencia para un ciclo <em>while</em>
+</p>
+<p>{P} <b>while</b>
+ B <b>do</b>
+ S <b>end</b>
+ {Q}</p>
+\[ \frac{ (I \ and \ B ) S \{I\} }{\{I\} \ while \ B \ do \ S \{I \ and (not B)\}} \]donde <em>I</em>
+ es el <em>invariante</em>
+ (la hipótesis inductiva)</section>
+<section><h3>Axiomas</h3>
+<p>Características del <em>invariante</em>
+: <em>I</em>
+ debe satisfacer las siguientes condiciones:</p>
+<ol><li>\( P \Rightarrow I \) el invariante debe ser inicialmente verdadero</li>
+<li>\( \{I\} \ B \ \{I\}  \) la evaluación de la parte booleana no debe cambiar la validez de <em>I</em>
+</li>
+<li>\( \{I \ and \ B \} \ S \ \{I\}  \) <em>I</em>
+ no cambia por la ejecución del cuerpo del ciclo  iterativo</li>
+<li>\( (I \ and \ (not \ B)) \Rightarrow Q \) si <em>I</em>
+ es verdadero y <em>B</em>
+ es falso es implicado <em>Q</em>
+</li>
+<li>El ciclo termina</li>
+</ol>
+</section>
+<section><h3><span style="color:magenta;">Ejemplo</span></h3>
+<div style="font-size: 65%;">
+<p><b>while</b>
+ \( y <> x \) <b>do</b>
+ \( y = Y + 1 \) <b>end</b>
+ \( \{ y = x \} \)</p>
+<ul><li class="fragment appear">Para cero iteraciones la precondición mas débil es \( \{ y = x \} \)</li>
+<li class="fragment appear">Para una iteración es: \[ wp( y = y + 1, \{y = x\}) = \{ y + 1 = x \} = \{ y = x - 1 \} \]</li>
+<li class="fragment appear">Para dos iteraciones es:\[ wp( y = y + 1, \{y = x - 1\}) = \{ y + 1 = x - 1\} = \{ y = x - 2 \} \]</li>
+<li class="fragment appear">Para tres iteraciones es:\[ wp( y = y + 1, \{y = x - 2\}) = \{ y + 1 = x - 2\} = \{ y = x - 3 \} \]</li>
+<li class="fragment appear">Es obvio que \(\{y <  x \} \)es suficiente para los casos de uno o mas iteraciones. Combinado con \(\{y = x \} \)para el caso base obtenemos  \( \{y <= x \}\), que puede ser el invariante del ciclo.</li>
+</ul>
+</section>
+<section><h3><span style="color:magenta;">Ejemplo</span></h3>
+<div style="font-size: 75%;">
+<ul><li>\( P \Rightarrow I \) \( \{y <= x \} \Rightarrow \{y <= x \} \) </li>
+<li>\( \{I\} \ B \ \{I\}  \)  \( \{y <= x \} \ \{y <> x \}  \ \{y <= x\}  \) </li>
+<li>\( \{I \ and \ B \} \ S \ \{I\}  \) \( \{y <= x \ and \ y <> x \} \ y = y + 1 \ \{y <= x\}  \) aplicando el axioma de asignación a \( y = y + 1 \{ y <= x \} \) tenemos \( \{y + 1 <= x \}\) que es equivalente a \( \{y < x \}\) el cual es implicado por \( \{y < x \ and \ y <> x\}\).</li>
+<li>\( (I \ and \ (not \ B)) \Rightarrow Q \) \( \{(y <= x) \ and \ (not \ y <> x)\} \Rightarrow \{y = x\} \) sigue \( \{(y <= x) \ and \ (y = x)\} \Rightarrow \{y = x\} \) sigue \( \{y = x \} \Rightarrow \{y = x\} \)</li>
+<li>El ciclo termina</li>
+</ul>
+</section>
+<section><h3><span style="color:purple;">Invariante</span></h3>
+<ul><li>El invariante es la versión mas debil de la postcondición del ciclo, y es también una precondición.</li>
+<li>Debe ser lo suficientemente debil para satisfacer a priori el comienzo del ciclo, pero cuando se combina con la condición de salida debe ser los suficientemente fuerte para forzar la verdad de la postcondición</li>
+</ul>
+</section>
+<section><h3><span style="color:purple;">Evaluación</span></h3>
+<ul><li>Desarrollar axiomas y reglas de inferencia para todas las sentencias en un lenguaje es dificultoso</li>
+<li>Es una buena herramienta para la verificación de programas y un excelente marco para razonar los programas, pero no es útil para los usuarios del lenguaje y desarrolladores de compiladores</li>
+</ul>
+</section>
 </section>
 </div>
 </div>

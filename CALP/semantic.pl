@@ -485,7 +485,7 @@ sematincadinamica -->
 				 "\\( y > 13 - x  \\)"
 			     ])
 		       ),
-		  slide("90%","Axiomas",
+		  slide("80%","Axiomas",
 			" \\[ \\frac{ \\{x > 3\\} \\ x = x - 3 \\ \\{x > 0\\}, (x > 5) \\Rightarrow (x > 3), (x > 0) \\Rightarrow (x > 0)}{\\{x > 5\\} \\ x = x - 3 \\ \\{x > 0\\}} \\]"
 		       ),
 		  slide("Axiomas",
@@ -503,7 +503,94 @@ sematincadinamica -->
 				]),
 			    "\\[ \\frac{ \\{P1\\} \\ S1 \\ \\{P2\\}, \\{P2\\} \\ S2 \\ \\{P3\\}}{\\{P1\\} \\ S1;S2 \\ \\{P3\\}} \\]"
 			
-			))
+			)),
+		  slide("Axiomas",
+			(
+			    item(
+				[
+				    "\\( y = 3 * x + 1  \\);",
+				    "\\( x =  y + 3 \\);",
+				    "\\(\\{ x < 10 \\}  \\)"
+				]),
+			    el(p,("La precondición para la segunda asignación es \\( y < 7 \\) la cual es usada como postcondición para la primer sentencia. La precondición para la primera asignación puede ser computada")),
+			    item(
+				[
+				    "\\( 3 * x + 1 < 7  \\)",
+				    "\\( x < 2 \\)"
+				])
+			)),
+		  slide("Axiomas",
+			(
+			    el(p,("regla de inferencia para sentencias de selección ",el(em,"if"))),
+			    el(p,("{P} ",el(b,"if")," B ",el(b,"then")," S1 ",el(b,"else")," S2 {Q}")),
+			    "\\[ \\frac{ \\{B \\ and \\ P \\} \\ S1 \\ \\{Q\\}, \\{(not B) \\ and \\ P\\} \\ S2 \\ \\{Q\\}}{\\{P\\} \\ if \\ B \\ then \\ S1 \\ else \\ S2 \\ \\{Q\\}}\\]"
+			)),
+		  slide(col(magenta,"Ejemplo"),
+			(
+			    (	el(b,"if")," \\( x > 0 \\) ",el(b,"then")," \\( y = y -1 \\) ",el(b,"else")," \\( y = Y + 1 \\)"),
+			    item(appear,
+				 [
+				     "con la postcondición \\( \\{ y > 0 \\} \\)",
+				     (	 "el axioma de asignación para la clausula ",el(b,"then")," : \\( y = y - 1  \\{ y > 0 \\} \\)  produce \\( \\{ y - 1 > 0 \\} \\) o \\( \\{ y > 1 \\} \\)" ),
+				     (	 "el axioma de asignación para la clausula ",el(b,"else")," : \\( y = y + 1  \\{ y > 0 \\} \\)  produce \\( \\{ y + 1 > 0 \\} \\) o \\( \\{ y > -1 \\} \\)"),
+				     "Como \\( \\{ y > 1 \\} \\Rightarrow \\{ y > -1 \\}\\) la regla de consecuencia nos permite usar \\( \\{ y > 1 \\} \\) como precondición del total de la sentencia"
+				 ])
+			)),
+		  slide("Axiomas",
+			(
+			    el(p,("Una regla de inferencia para un ciclo ",el(em,"while"))),
+			    el(p,("{P} ",el(b,"while")," B ",el(b,"do")," S ",el(b,"end")," {Q}")),
+			    "\\[ \\frac{ (I \\ and \\ B ) S \\{I\\} }{\\{I\\} \\ while \\ B \\ do \\ S \\{I \\ and (not B)\\}} \\]",
+			    (	"donde ",el(em,"I")," es el ",el(em,"invariante")," (la hipótesis inductiva)" )
+			)),
+		  slide("Axiomas",
+			(
+			    el(p,("Características del ",el(em,"invariante"),": ",el(em,"I")," debe satisfacer las siguientes condiciones:")),
+			    enum(
+				[
+				    "\\( P \\Rightarrow I \\) el invariante debe ser inicialmente verdadero",
+				    (	"\\( \\{I\\} \\ B \\ \\{I\\}  \\) la evaluación de la parte booleana no debe cambiar la validez de ",el(em,"I")),
+				    (	"\\( \\{I \\ and \\ B \\} \\ S \\ \\{I\\}  \\) ",el(em,"I")," no cambia por la ejecución del cuerpo del ciclo  iterativo"	),
+				    (	"\\( (I \\ and \\ (not \\ B)) \\Rightarrow Q \\) si ",el(em,"I")," es verdadero y ",el(em,"B")," es falso es implicado ",el(em,"Q")),
+				    "El ciclo termina"
+				])
+			)),
+		  slide("65%",col(magenta,"Ejemplo"),
+			(
+			    el(p,(el(b,"while")," \\( y <> x \\) ",el(b,"do")," \\( y = Y + 1 \\) ",el(b,"end")," \\( \\{ y = x \\} \\)")),
+			    item(appear,
+				[
+				    "Para cero iteraciones la precondición mas débil es \\( \\{ y = x \\} \\)",
+				    "Para una iteración es: \\[ wp( y = y + 1, \\{y = x\\}) = \\{ y + 1 = x \\} = \\{ y = x - 1 \\} \\]",
+				    "Para dos iteraciones es:\\[ wp( y = y + 1, \\{y = x - 1\\}) = \\{ y + 1 = x - 1\\} = \\{ y = x - 2 \\} \\]",
+				    "Para tres iteraciones es:\\[ wp( y = y + 1, \\{y = x - 2\\}) = \\{ y + 1 = x - 2\\} = \\{ y = x - 3 \\} \\]",
+				    "Es obvio que \\(\\{y <  x \\} \\)es suficiente para los casos de uno o mas iteraciones. Combinado con \\(\\{y = x \\} \\)para el caso base obtenemos  \\( \\{y <= x \\}\\), que puede ser el invariante del ciclo."
+				])
+			)),
+		  slide("75%",col(magenta,"Ejemplo"),
+			item(
+			    [
+				"\\( P \\Rightarrow I \\) \\( \\{y <= x \\} \\Rightarrow \\{y <= x \\} \\) ",
+				"\\( \\{I\\} \\ B \\ \\{I\\}  \\)  \\( \\{y <= x \\} \\ \\{y <> x \\}  \\ \\{y <= x\\}  \\) ",
+				"\\( \\{I \\ and \\ B \\} \\ S \\ \\{I\\}  \\) \\( \\{y <= x \\ and \\ y <> x \\} \\ y = y + 1 \\ \\{y <= x\\}  \\) aplicando el axioma de asignación a \\( y = y + 1 \\{ y <= x \\} \\) tenemos \\( \\{y + 1 <= x \\}\\) que es equivalente a \\( \\{y < x \\}\\) el cual es implicado por \\( \\{y < x \\ and \\ y <> x\\}\\).",
+				"\\( (I \\ and \\ (not \\ B)) \\Rightarrow Q \\) \\( \\{(y <= x) \\ and \\ (not \\ y <> x)\\} \\Rightarrow \\{y = x\\} \\) sigue \\( \\{(y <= x) \\ and \\ (y = x)\\} \\Rightarrow \\{y = x\\} \\) sigue \\( \\{y = x \\} \\Rightarrow \\{y = x\\} \\)",
+				"El ciclo termina"
+			    ])
+		       ),
+		  slide(col(purple,"Invariante"),
+			item(
+			    [
+				"El invariante es la versión mas debil de la postcondición del ciclo, y es también una precondición.",
+				"Debe ser lo suficientemente debil para satisfacer a priori el comienzo del ciclo, pero cuando se combina con la condición de salida debe ser los suficientemente fuerte para forzar la verdad de la postcondición"
+			    ])
+		       ),
+		  slide(col(purple,"Evaluación"),
+			item(
+			    [
+				"Desarrollar axiomas y reglas de inferencia para todas las sentencias en un lenguaje es dificultoso",
+				"Es una buena herramienta para la verificación de programas y un excelente marco para razonar los programas, pero no es útil para los usuarios del lenguaje y desarrolladores de compiladores"
+			    ])
+		       )
 	      )).
 
 
