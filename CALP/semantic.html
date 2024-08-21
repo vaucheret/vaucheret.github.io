@@ -108,13 +108,13 @@
 </section>
 <section><h3>Gramáticas con atributos: Un Ejemplo</h3>
 <div style="font-size: 65%;">
-<ul><li>Sintaxis<ul><li>\( < assign > \to < var > = < expr > \)</li>
-<li>\( < expr > \to < var > + < var > | < var > \)</li>
-<li>\( < var > \to A | B | C \)</li>
+<ul><li>Sintaxis<ul><li>\( \mbox{&lt;assign&gt;} \to \mbox{&lt;var&gt;} = \mbox{&lt;expr&gt;}\)</li>
+<li>\( \mbox{&lt;expr&gt;} \to \mbox{&lt;var&gt;} + \mbox{&lt;var&gt;} | \mbox{&lt;var&gt;} \)</li>
+<li>\( \mbox{&lt;var&gt;} \to A | B | C \)</li>
 </ul>
 </li>
-<li>tipo-real: sintetizado por < var > y < expr ></li>
-<li>tipo-esperado: heredado por < expr ></li>
+<li>tipo-real: sintetizado por \(\mbox{&lt;var&gt;}\) y \(\mbox{&lt;expr&gt;}\)</li>
+<li>tipo-esperado: heredado por \(\mbox{&lt;expr&gt;}\)</li>
 </ul>
 <div class="figure">
 <p><img src=attribgram1.png  width=auto  height=auto</p>
@@ -122,19 +122,19 @@
 </section>
 <section><h3>Gramáticas con atributos: Un Ejemplo</h3>
 <div style="font-size: 65%;">
-<ol><li>Regla sintáctica: \( < assign > \to < var > = < expr > \)<ul><li>Regla semántica: \( < expr >.tipo-esperado \leftarrow < var >.tipo-real \)</li>
+<ol><li>Regla sintáctica: \( \mbox{&lt;assign&gt;} \to \mbox{&lt;var&gt;} = \mbox{&lt;expr&gt;} \)<ul><li>Regla semántica: \( \mbox{&lt;expr&gt;.tipo-esperado} \leftarrow \mbox{&lt;var&gt;.tipo-real} \)</li>
 </ul>
 </li>
-<li>Regla sintáctica: \( < expr > \to < var > [2] + < var > [3] \)<ul><li>Regla semántica: \( < expr >.tipo-real \leftarrow \)<p>if \( < var >[2].tipo-real = int \)  and \( < var >[3].tipo-real = int \)  then \( int \) else \( real \)  end if  </p>
+<li>Regla sintáctica: \( \mbox{&lt;expr&gt;} \to \mbox{&lt;var&gt;[2]} + \mbox{&lt;var&gt;[3]} \)<ul><li>Regla semántica: \( \mbox{&lt;expr&gt;.tipo-real} \leftarrow \)<p>if \( \mbox{&lt;var&gt;[2].tipo-real} = int \)  and \( \mbox{&lt;var&gt;[3].tipo-real} = int \)  then \( int \) else \( real \)  end if  </p>
 </li>
-<li>Predicado: \( < expr >.tipo-real = < expr >.tipo-esperado \)</li>
+<li>Predicado: \( \mbox{&lt;expr&gt;.tipo-real} = \mbox{&lt;expr&gt;.tipo-esperado } \)</li>
 </ul>
 </li>
-<li>Regla sintáctica: \( < expr > \to < var > \)<ul><li>Regla semántica: \( < expr >.tipo-real \leftarrow < var >.tipo-real \)</li>
-<li>Predicado: \( < expr >.tipo-real = < expr >.tipo-esperado \)</li>
+<li>Regla sintáctica: \( \mbox{&lt;expr&gt;} \to \mbox{&lt;var&gt;} \)<ul><li>Regla semántica: \( \mbox{&lt;expr&gt;.tipo-real } \leftarrow \mbox{&lt;var&gt;.tipo-real } \)</li>
+<li>Predicado: \( \mbox{&lt;expr&gt;.tipo-real } = \mbox{&lt;expr&gt;.tipo-esperado } \)</li>
 </ul>
 </li>
-<li>Regla sintáctica: \( < var > \to A | B | C \)<ul><li>Regla semántica: \( < var >.tipo-real \leftarrow \) lookup \( ( < var >.string) \)</li>
+<li>Regla sintáctica: \( \mbox{&lt;var&gt;} \to A | B | C \)<ul><li>Regla semántica: \( \mbox{&lt;var&gt;.tipo-real } \leftarrow \) lookup \( ( \mbox{&lt;var&gt;.string}) \)</li>
 </ul>
 </li>
 </ol>
@@ -154,14 +154,14 @@
 </section>
 <section><h3>Gramáticas con atributos</h3>
 <div style="font-size: 65%;">
-<ol><li>\( < var >.tipo-real \leftarrow look-up(A) \)  (Regla 4)</li>
-<li>\( < expr >.tipo-esperado \leftarrow < var >.tipo-real \) (Regla 1)</li>
-<li><ul><li>\(  < var >[2].tipo-real \leftarrow look-up(A) \) (Regla 4)</li>
-<li>\(  < var >[3].tipo-real \leftarrow look-up(B) \) (Regla 4)</li>
+<ol><li>\( \mbox{&lt;var&gt;.tipo-real } \leftarrow look-up(A) \)  (Regla 4)</li>
+<li>\( \mbox{&lt;expr&gt;.tipo-esperado } \leftarrow \mbox{&lt;var&gt;.tipo-real } \) (Regla 1)</li>
+<li><ul><li>\(  \mbox{&lt;var&gt;[2].tipo-real }\leftarrow look-up(A) \) (Regla 4)</li>
+<li>\(  \mbox{&lt;var&gt;[3].tipo-real }\leftarrow look-up(B) \) (Regla 4)</li>
 </ul>
 </li>
-<li>\( < expr >.tipo-real \leftarrow \) int o real  (Regla 2)</li>
-<li>\( < expr >.tipo-esperado = < expr >.tipo-real  \) es VERDADERO o FALSO (Regla 2)</li>
+<li>\( \mbox{&lt;expr&gt;.tipo-real }\leftarrow \) int o real  (Regla 2)</li>
+<li>\( \mbox{&lt;expr&gt;.tipo-esperado } = \mbox{&lt;expr&gt;.tipo-real } \) es VERDADERO o FALSO (Regla 2)</li>
 </ol>
 <div class="figure">
 <p><img src=attribgram3.png  width=auto  height=auto</p>
@@ -169,6 +169,208 @@
 </section>
 <section><h2>Semántica Dinámica</h2>
 <div class="outline-text-2" ></div>
+</section>
+<section><h3>Métodos Desarrollados</h3>
+<div style="font-size: 90%;">
+<ul><li><b><span style="color:green;">Semántica Operacional</span></b>
+<ul><li class="fragment appear">Operaciones en una máquina abstracta</li>
+</ul>
+</li>
+<li><b><span style="color:green;">Semántica Denotacional</span></b>
+<ul><li class="fragment appear">Usa funciones para especificar la semántica, los programas se convierten en funciones para poder aplicar la teoría de funciones recursivas</li>
+</ul>
+</li>
+<li><b><span style="color:green;">Semántica Axiomática</span></b>
+<ul><li class="fragment appear">Aplica la lógica formal: afirmaciones (aserciones) para describir suposiciones y resultados deseados</li>
+<li class="fragment appear">Los axiomas o reglas de inferencia son usados en cada tipo de sentencias.</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Semántica Operacional</span></h3>
+<section><h3></h3>
+<div style="font-size: 90%;">
+<p>Describe el significado de un programa ejecutando sus sentencias sobre una máquina, simulada o real. Los cambios en el estado de la máquina (registros, memoria, etc) define el significado de la sentencia.</p>
+<p>Para el uso de una semántica operacional en un lenguaje de alto nivel se necesita una máquina virtual</p>
+<ul><li>Un intérprete de hardware puro podría ser muy costoso.</li>
+<li>Un intérprete de software puro también tiene problemas (dependiente de la máquina )</li>
+</ul>
+</section>
+<section><h3></h3>
+<p>Una mejor alternativa: Una simulación completa de la computadora</p>
+<ul><li>Construir un traductor del codigo fuente a un codigo maquina de una computadora idealizada</li>
+<li>Construir un simulador para la computadora idealizada</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Semántica Operacional</span></h3>
+<ul><li>Simulador de Prolog en Prolog<pre><code>
+mi(true).
+mi((A,B)) :-
+        mi(A),
+        mi(B).
+mi(Goal) :-
+        Goal \= true,
+        Goal \= (_,_),
+        clause(Goal, Body),
+        mi(Body).
+</code></pre>
+</li>
+<li>Evaluación:<ul><li>Bueno usado informalmente.</li>
+<li>Extremadamente complejo usado formalmente.</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:green;">Semántica Denotacional</span></h3>
+<div style="font-size: 85%;">
+<ul><li class="fragment highlight-current-green">Basado en la teoría de funciones recursivas</li>
+<li class="fragment highlight-current-green">El método de descripción semántica mas abstracto</li>
+<li class="fragment highlight-current-green">Originalmente desarrollado por Scott y Strachey (1970)</li>
+<li class="fragment highlight-current-green">El proceso de construir una especificación denotacional para un lenguaje es definir un objeto matemático por cada entidad del Lenguaje<ul><li>Define una función que relaciona instancias de las entidades del lenguaje con instancias de los objetos matemáticos correspondientes</li>
+</ul>
+</li>
+<li class="fragment highlight-current-green">El significado de las construcciones del lenguaje son definidos solo por los valores de las variables del programa</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Semántica Denotacional vs Semántica Operacional</span></h3>
+<div style="font-size: 85%;">
+<ul><li class="fragment highlight-current-green">En la semántica operacional los cambios de estado son definidos por algoritmos codificados</li>
+<li class="fragment highlight-current-green">En la semántica denotacional los cambios de estado son definidos por funciones matemáticas rigurosas.</li>
+<li class="fragment highlight-current-green">El estado de un programa son los valores de todas las variables actuales  \(s = { < i_1,v_1 >,< i_2,v_2 >, ... ,< i_n,v_n > }\)</li>
+<li class="fragment highlight-current-green">Sea \(VARMAP\), una función que, cuando recibe un nombre de variable y un estado retorna el valor actual de esa variable \(VARMAP(i_j, s) = v_j\)</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Números Decimales</span></h3>
+<ul><li>\( \mbox{&lt;dec-num&gt;} \to 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | \)</li>
+<li>\( M_{dec} ('0') = 0,  M_{dec} ('1') = 1, ... , M_{dec} ('9') = 9 \)</li>
+<li>\( M_{dec} ( \mbox{&lt;dec-num&gt;} '0') = 10 * M_{dec} ( \mbox{&lt;dec-num&gt;} ) \)</li>
+<li>\( M_{dec} ( \mbox{&lt;dec-num&gt;} '1') = 10 * M_{dec} ( \mbox{&lt;dec-num&gt;} ) + 1 \)</li>
+<li>\(\ldots\)</li>
+<li>\( M_{dec} ( \mbox{&lt;dec-num&gt;} '9') = 10 * M_{dec} ( \mbox{&lt;dec-num&gt;} ) + 9 \)</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Expresiones</span></h3>
+<p>relaciona expresiones a \(Z \cup \{ error \} \)</p>
+<p>suponiendo que las expresiones son números decimales, variables, o expresiones binarias teniendo un operador aritmético y dos operandos, cada uno de los cuales puede ser una expresión.</p>
+</section>
+<section><h3></h3>
+<div style="font-size: 60%;">
+<ol><li>\( M_e ( \mbox{&lt;expr&gt;}, s) = case \mbox{&lt;expr&gt;} of \)</li>
+<li>\(\qquad \mbox{&lt;dec-num&gt;} \to M_{dec} ( \mbox{&lt;dec-num&gt;} , s)\)</li>
+<li>\(\qquad \mbox{&lt;var&gt;} \to \mbox{ if } VARMAP(\mbox{&lt;var&gt;}, s)\)</li>
+<li>\(\qquad \mbox{&lt;binary-expr&gt;} \to \)</li>
+<li>\(\qquad \qquad \mbox{ if } (M_e(\mbox{&lt;binary-expr&gt;} . \mbox{&lt;left-expr&gt;} , s) = undef\)</li>
+<li>\(\qquad \qquad \qquad \mbox{ OR } M_e(\mbox{&lt;binary-expr&gt;} . \mbox{&lt;right-expr&gt;} , s) = undef)\)</li>
+<li>\(\qquad \qquad \mbox{ then error}\)</li>
+<li>\(\qquad \qquad \mbox{ else}\)</li>
+<li>\(\qquad \qquad \qquad \mbox{ if } (\mbox{&lt;binary-expr&gt;}.\mbox{&lt;operator&gt;} = ‘+’ then \)</li>
+<li>\(\qquad \qquad \qquad  M_e(\mbox{&lt;binary-expr&gt;}.\mbox{&lt;left-expr&gt;}, s) + M_e(\mbox{&lt;binary-expr&gt;}.\mbox{&lt;right-expr&gt;}, s)\)</li>
+<li>\(\qquad \qquad \qquad \mbox{ else }\)</li>
+<li>\(\qquad \qquad \qquad M_e(\mbox{&lt;binary-expr&gt;}.\mbox{&lt;left-expr&gt;}, s) * M_e(\mbox{&lt;binary-expr&gt;}.\mbox{&lt;right-expr&gt;}, s)\)</li>
+<li>\( \ldots \)</li>
+</ol>
+</section>
+<section><h3><span style="color:brown;">asignación</span></h3>
+<div style="font-size: 85%;">
+<ol><li>\( M_a ( X := E, s) = \)</li>
+<li>\(\qquad \mbox{if } M_e(E, s) = error \)</li>
+<li>\(\qquad \qquad \mbox{ then error}\)</li>
+<li>\(\qquad \qquad \mbox{ else } s' = { < i_{1}',v_{1}' >, < i_{2}',v_{2}' >, \ldots , < i_{n}',v_{n}' >},\)</li>
+<li>\(\qquad \qquad \qquad \mbox{ where for } j = 1, 2, \ldots n,\)</li>
+<li>\(\qquad \qquad \qquad \qquad v_{j}' = varmap(i_j, s) \mbox{ if } i_j <> x \)</li>
+<li>\(\qquad \qquad \qquad \qquad \qquad  = M_e(E, s) \mbox{ if } i_j = x\)</li>
+</ol>
+</section>
+<section><h3><span style="color:yellow;">Ciclo 'while'</span></h3>
+<div style="font-size: 85%;">
+<ol><li>\( M_l(\mbox{while B do L}, s) =\)</li>
+<li>\(\qquad \mbox{ if } M_b(B, s) = undef\)</li>
+<li>\(\qquad \qquad \mbox{ then error}\)</li>
+<li>\(\qquad \qquad \mbox{ else if } M_b(B, s) = false\)</li>
+<li>\(\qquad \qquad \qquad \mbox{ then } s\)</li>
+<li>\(\qquad \qquad \qquad \mbox{ else if } M_{sl}(L, s) = error\)</li>
+<li>\(\qquad \qquad \qquad \qquad \mbox{ then error}\)</li>
+<li>\(\qquad \qquad \qquad \qquad \mbox{ else } M_l(\mbox{while B do L}, M_{sl}(L, s))\)</li>
+</ol>
+</section>
+<section><h3>Ciclo</h3>
+<ul><li class="fragment highlight-current-red">El significado del ciclo es el valor de las variables del programa después de que las sentencias del ciclo han sido ejecutadas el número prescrito de veces, asumiendo que no ha habido errores</li>
+<li class="fragment highlight-current-red">En esencia el ciclo ha sido convertido de iterativo a recursivo, donde el control recursivo es definido por otra función recursiva de estados</li>
+<li class="fragment highlight-current-red">La recursión comparada con la iteración es mas facil de describir con rigor matemático</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Evaluación</span></h3>
+<ul><li class="fragment highlight-current-green">Puede ser usado para probar la corrección de programas</li>
+<li class="fragment highlight-current-green">Provee un modo riguroso de pensar los programas</li>
+<li class="fragment highlight-current-green">Puede ser una ayuda al diseño de lenguajes</li>
+<li class="fragment highlight-current-green">Ha sido usado en sistemas de generación de compiladores</li>
+<li class="fragment highlight-current-green">A causa de su complejidad es de poco uso para los usuarios del lenguaje</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Semántica Axiomática</h3>
+<ul><li class="fragment fade-in-then-semi-out">Basado en Lógica Formal (cálculo de predicados)</li>
+<li class="fragment fade-in-then-semi-out">Propósito original: Verificación formal de programas</li>
+<li class="fragment fade-in-then-semi-out">Axiomas o reglas de inferencia son definidas para cada tipo de sentencia del lenguaje (para permitir transformaciones de expresiones a otras expresiones)</li>
+<li class="fragment fade-in-then-semi-out">Las expresiones son llamadas <em>aserciones</em>
+ (afirmaciones) </li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Semántica Axiomática</span></h3>
+<ul><li class="fragment highlight-current-blue">Una aserción antes de una sentencia (una <em>precondición</em>
+establece las relaciones y restricciones entre variables que son verdaderas en ese punto de la ejecución</li>
+<li class="fragment highlight-current-blue">Una aserción que sigue a una sentencia es una <em>postcondición</em>
+</li>
+<li class="fragment highlight-current-blue">Una <em>precondición mas débil</em>
+ es la menos restrictiva precondición que garantiza la postcondición</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Semántica Axiomática</span></h3>
+<ul><li class="fragment appear">La Forma es \({P}\) sentencia \({Q}\)</li>
+<li class="fragment appear">Un ejemplo<ul><li class="fragment appear">\(a = b + 1 \: \{a > 1\} \)</li>
+<li class="fragment appear">una posible precondición: \( \{b > 10\} \)</li>
+<li class="fragment appear"><em>precondición mas débil</em>
+\( \{b > 0\} \)</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:brown;">Proceso de prueba de programa</span></h3>
+<p>La postcondición para el programa entero es el resultado deseado</p>
+<ul><li class="fragment appear">Se trabaja hacia atrás a través del programa hasta la primer sentencia. Si la precondición sobre la primer sentencias está inferida por la especificación de entrada del programa, entonces el programa es correcto.</li>
+</ul>
+</section>
+<section><h3>Axiomas</h3>
+<ul><li class="fragment appear">Un axioma para la asignación<ul><li>( x = E ): \( \{Q_{x \to E}\} \ x = E \ \{Q\} \)</li>
+</ul>
+</li>
+<li class="fragment appear">La regla de la Consecuencia<ul><li> \[ \frac{ \{P\} \ S \ \{Q\}, P' \Rightarrow P, Q \Rightarrow Q'}{\{P'\} \ S \ \{Q'\}} \] </li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Axiomas</h3>
+<ul><li class="fragment appear">\( x = 2 * y - 3 \{x > 25 \}  \)</li>
+<li class="fragment appear">\( 2 * y - 3 > 25  \)</li>
+<li class="fragment appear">\( y > 14  \)</li>
+<li class="fragment appear">\( x = x + y - 3 \{x > 10 \}  \)</li>
+<li class="fragment appear">\( x + y - 3 > 10  \)</li>
+<li class="fragment appear">\( y > 13 - x  \)</li>
+</ul>
+</section>
+<section><h3>Axiomas</h3>
+<div style="font-size: 90%;">
+ \[ \frac{ \{x > 3\} \ x = x - 3 \ \{x > 0\}, (x > 5) \Rightarrow (x > 3), (x > 0) \Rightarrow (x > 0)}{\{x > 5\} \ x = x - 3 \ \{x > 0\}} \]</section>
+<section><h3>Axiomas</h3>
+<ul><li>Una regla de inferencia para secuencias<ul><li>\( \{P1\} S1 \{P2\} \)</li>
+<li>\( \{P2\} S2 \{P3\} \)</li>
+</ul>
+</li>
+</ul>
+\[ \frac{ \{P1\} \ S1 \ \{P2\}, \{P2\} \ S2 \ \{P3\}}{\{P1\} \ S1;S2 \ \{P3\}} \]</section>
 </section>
 </div>
 </div>
