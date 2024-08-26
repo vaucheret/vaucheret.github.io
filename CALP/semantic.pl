@@ -1,4 +1,4 @@
-file("semantic").
+file("semantica").
 title("Semanticas").
 author("C. A. L. P.").
 date("Claudio Vaucheret").
@@ -541,17 +541,17 @@ sematincadinamica -->
 			    el(p,("Una regla de inferencia para un ciclo ",el(em,"while"))),
 			    el(p,("{P} ",el(b,"while")," B ",el(b,"do")," S ",el(b,"end")," {Q}")),
 			    "\\[ \\frac{ (I \\ and \\ B ) S \\{I\\} }{\\{I\\} \\ while \\ B \\ do \\ S \\{I \\ and (not B)\\}} \\]",
-			    (	"donde ",el(em,"I")," es el ",el(em,"invariante")," (la hipótesis inductiva)" )
+			    (	"donde \\(I\\) es el ",el(em,"invariante")," (la hipótesis inductiva)" )
 			)),
 		  slide("Axiomas",
 			(
-			    el(p,("Características del ",el(em,"invariante"),": ",el(em,"I")," debe satisfacer las siguientes condiciones:")),
+			    el(p,("Características del ",el(em,"invariante"),": \\(I\\) debe satisfacer las siguientes condiciones:")),
 			    enum(
 				[
 				    "\\( P \\Rightarrow I \\) el invariante debe ser inicialmente verdadero",
-				    (	"\\( \\{I\\} \\ B \\ \\{I\\}  \\) la evaluación de la parte booleana no debe cambiar la validez de ",el(em,"I")),
-				    (	"\\( \\{I \\ and \\ B \\} \\ S \\ \\{I\\}  \\) ",el(em,"I")," no cambia por la ejecución del cuerpo del ciclo  iterativo"	),
-				    (	"\\( (I \\ and \\ (not \\ B)) \\Rightarrow Q \\) si ",el(em,"I")," es verdadero y ",el(em,"B")," es falso es implicado ",el(em,"Q")),
+				    "\\( \\{I\\} \\ B \\ \\{I\\}  \\) la evaluación de la parte booleana no debe cambiar la validez de \\(I\\)",
+				    "\\( \\{I \\ and \\ B \\} \\ S \\ \\{I\\}  \\) \\(I\\) no cambia por la ejecución del cuerpo del ciclo  iterativo",
+				    "\\( (I \\ and \\ (not \\ B)) \\Rightarrow Q \\) si \\(I\\) es verdadero y \\(B\\) es falso es implicado \\(Q\\)",
 				    "El ciclo termina"
 				])
 			)),
