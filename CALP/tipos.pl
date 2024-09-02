@@ -341,7 +341,7 @@ arreglos -->
 			 [
 			     (	 el(b,col(orange,"APL"))," provee el mas poderoso conjunto de operadores para procesar vectores y matrices y operaciones unarias (por ejemplo revertir elementos de una columna)" ),
 			     (	 el(b,col(orange,"Ada"))," permite asignación de arreglos y concatenación"),
-			     (	 el(b,col(orange,"Fortran"))," provee operaciones /elementales/ a causa de que son entre pares de elementos del arreglo",el(center,"Por ejemplo, el operador + entre dos arreglos resulta en un arreglo con la suma de los pares de elementos de los dos arreglos.") )
+			     (	 el(b,col(orange,"Fortran"))," provee operaciones ",el(em,"elementales")," a causa de que son entre pares de elementos del arreglo",el(center,"Por ejemplo, el operador + entre dos arreglos resulta en un arreglo con la suma de los pares de elementos de los dos arreglos.") )
 			 ])
 		   ),
 	      slide("85%","Arreglos",
