@@ -20,21 +20,638 @@
 <h2 class="author" >C. A. L. P.</h2>
 <h3 class="date" >Claudio Vaucheret</h3>
 </section>
-<section><h3><span style="color:magenta;">Chequeo de Tipos: Coerción</span></h3>
+<section><h2>Introducción</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Tipos de Datos</h3>
+<div style="font-size: 85%;">
+<p>Hemos desarrollado una noción intuitiva de tipo de dato; ¿Que hay  detras de la intuición?</p>
+<ul><li class="fragment fade-in-then-semi-out"> Conjunto de valores de un "dominio" (la aproximación funcional)</li>
+<li class="fragment fade-in-then-semi-out">Estructura interna de un manojo de datos, descripto al nivel de un conjunto pequeño de tipos fundamentales (aproximación estructural)</li>
+<li class="fragment fade-in-then-semi-out">Clase de equivalencia de objetos (aproximación del implementador)</li>
+<li class="fragment fade-in-then-semi-out">Conjunto de operaciones bien-definidas que pueden ser aplicadas a    objetos de ese tipo (aproximación de abstracción)</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Tipos de Datos</span></h3>
+<center><b>Utilidad</b>
+</center>
+<ul><li class="fragment highlight-current-green">Contexto implícito</li>
+<li class="fragment highlight-current-green">Chequeo de tipos<ul><li class="fragment highlight-current-green">Asegura que ciertas operaciones erróneas no ocurran</li>
+<li class="fragment highlight-current-green">aunque no puede prevenir todas</li>
+</ul>
+</li>
+<li class="fragment highlight-current-green">polimorfismo surge cuando el compilador encuentra que no necesita saber ciertas cosas</li>
+</ul>
+</section>
 <section><h3></h3>
-<ul><li>uno</li>
-<li>dos</li>
+<section><h3><span style="color:red;">Tipos de Datos</span></h3>
+<ul><li class="fragment highlight-current-red"><b>Fuetemente Tipado</b>
+se ha vuelto un término popular<ul><li class="fragment highlight-current-red">como <em>programación estructurada</em>
+</li>
+<li class="fragment highlight-current-red">Informalmente, significa que el lenguaje previene al programador  de aplicar operaciones a los datos que no son apropiados</li>
+</ul>
+</li>
+<li class="fragment highlight-current-red"><b>Fuetemente Estático</b>
+significa que el compilador puede realizar todos los chequeos en tiempo de compilación</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Ejemplos</span></h3>
+<ul><li class="fragment highlight-current-red">Common Lisp is fuertemente tipado pero no <b>tipado estaticamente</b>
+</li>
+<li class="fragment highlight-current-red">Ada es estáticamente tipado</li>
+<li class="fragment highlight-current-red">Pascal es casi estáticamente tipado</li>
+<li class="fragment highlight-current-red">Java es fuertemente tipado, con una mezcla no trivial de cosas que pueden ser chequeadas estaticamente y cosas que tienen que ser chequeadas dinámicamente.</li>
+</ul>
+</section>
+</section>
+<section><h3><span style="color:brown;">Tipos de Datos</span></h3>
+<div style="font-size: 90%;">
+<center><b><span style="color:brown;">Simples</span></b>
+</center>
+<ul><li class="fragment appear"><em>Primitivos:</em>
+integer, float, char, enum,</li>
+<li class="fragment appear">Definidos por el Usuario</li>
+</ul>
+<center><b><span style="color:brown;">Compuestos</span></b>
+</center>
+<ul><li class="fragment appear">Arreglos</li>
+<li class="fragment appear"><em>strings</em>
+</li>
+<li class="fragment appear">Arreglos asociativos</li>
+<li class="fragment appear">Registros</li>
+<li class="fragment appear">Union</li>
+<li class="fragment appear">conjuntos</li>
+<li class="fragment appear">listas</li>
+<li class="fragment appear">punteros</li>
+<li class="fragment appear">archivos</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Sistema de Tipos</span></h3>
+<center>Un <b>Sistema de Tipos</b>
+ tiene reglas para:</center>
+<ul><li class="fragment highlight-current-blue">equivalencia de tipos (¿cuándo los tipos de dos valores son el mismo?)</li>
+<li class="fragment highlight-current-blue">compatibilidad de tipos (¿cuándo puede el valor de un tipo A ser usado en un contexto donde se espera el tipo B?)</li>
+<li class="fragment highlight-current-blue">inferencia de tipos (¿Cuál es el tipo de una expresión, dado el tipo de los operandos?)</li>
+</ul>
+</section>
+<section><h3><span style="color:purple;">Chequeo de Tipos</span></h3>
+Dos Aproximaciones: <em>equivalencia estructural</em>
+ y <em>equivalencia por nombre</em>
+<ul><li class="fragment appear">La equivalencia por nombre esta basado en las declaraciones</li>
+<li class="fragment appear">La equivalencia estructural esta basada en la noción de significado detrás de esas declaraciones</li>
+<li class="fragment appear">Equivalencia por nombre es mas preferida hoy en dia.</li>
+</ul>
+</section>
+<section><h3><span style="color:pink;">Estructural vs. por Nombre</span></h3>
+<div style="font-size: 70%;">
+<ul><li class="fragment appear"><p>a veces es preferible estructural</p>
+<pre><code>
+TYPE stack_element = INTEGER; (* or whatever type the user prefers *)
+MODULE stack; 
+IMPORT stack_element;
+EXPORT push, pop; 
+... 
+PROCEDURE push(elem : stack_element); 
+...
+PROCEDURE pop() : stack_element; 
+...
+</code></pre>
+</li>
+<li class="fragment appear"><p>otras veces por nombre</p>
+<pre><code>
+TYPE celsius_temp = REAL;
+fahrenheit_temp = REAL; 
+VAR c : celsius_temp; 
+    f : fahrenheit_temp; 
+ 
+BEGIN (* alias_types *)
+    c := 100.0;
+    f := c;               (* this should probably be an error *)
+</code></pre>
+</li>
+</ul>
+</section>
+<section><h2>Chequeo de Tipos</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:magenta;">Chequeo de Tipos: Coerción</span></h3>
+<div style="font-size: 90%;">
+<center><b>Coerción</b>
+</center>
+<ul><li>Cuando una expresión es usada en un contexto donde un tipo diferente se espera, uno normalmente obtiene un error.</li>
+<li>Pero, ¿y en esta situación?:<pre><code>
+var a : integer; b, c : real;
+...
+
+c := a + b;
+</code></pre>
+</li>
+<li>Muchos Lenguajes lo permiten.</li>
+<li>Puede ser basado solo en los tipos de los operandos (Fortran)</li>
 </ul>
 </section>
 <section><h3><span style="color:magenta;">Chequeo de Tipos: Coerción</span></h3>
-<ul><li>uno</li>
-<li>dos</li>
+<center><b>Coerción</b>
+</center>
+<p><b>C</b>
+ usa mucha coerción, pero con reglas simples:</p>
+<ul><li>todos los <code>float</code>
+ en expresiones se vuelven <code>double</code>
+</li>
+<li><code>short int </code>
+ y <code>char</code>
+ se vuelven <code>int</code>
+ en las expresiones</li>
+<li>Si es necesario, la precisión es removida cuando se asigna a lado izquierdo de la asignación.</li>
+</ul>
+</section>
+<section><h3><span style="color:magenta;">Chequeo de Tipos: Coerción</span></h3>
+<p>De hecho, las reglas de coerción son una relajación del chequeo de tipos:</p>
+<ul><li>Nuevas opiniones lo consideran una mala idea</li>
+<li>Lenguajes como Modula-2 y Ada no permiten coerción</li>
+<li><b>C++</b>
+ sin embargo lo usa en extremo</li>
+</ul>
+</section>
+<section><h3><span style="color:magenta;">Chequeo de Tipos: Coerción</span></h3>
+<p>Es importante entender la diferencia entre:</p>
+<ul><li><b>Conversión de Tipos</b>
+ que es <em>explícito</em>
+ y</li>
+<li><b>Coerción de Tipos</b>
+ que es <em>implícito</em>
+</li>
+<li>para las conversiones a veces se usa la palabra <em>cast</em>
+ por <b>C</b>
+</li>
 </ul>
 </section>
 </section>
-<section><h3><span style="color:magenta;">Punteros y Tipos Recursivos</span></h3>
-<section><h3><span style="color:magenta;">Punteros y Tipos Recursivos</span></h3>
+<section><h2>Arreglos</h2>
+<div class="outline-text-2" ></div>
 </section>
+<section><h3></h3>
+<section><h3>Arreglos</h3>
+<p>Los Arreglos son el tipo compuesto mas importante en los lenguajes de alto nivel. Es una agrupación de elementos (usualmente) homogeneos en la cual los elementos individuales son identificados por su posición en la agrupación relativo a su primer elemento. </p>
+</section>
+<section><h3><span style="color:blue;">Cuestiones de Diseño de Arreglos</span></h3>
+<ul><li class="fragment highlight-current-blue">¿Cuales tipos son legales para ser subíndices?</li>
+<li class="fragment highlight-current-blue">¿Es chequeado que el subíndice cumpla el rango definido?</li>
+<li class="fragment highlight-current-blue">¿Cuándo se liga el rango de subíndices?</li>
+<li class="fragment highlight-current-blue">¿Cuándo tiene lugar el alojamiento de espacio?</li>
+<li class="fragment highlight-current-blue">¿Cual es el número máximo de subíndices?</li>
+<li class="fragment highlight-current-blue">¿Pueden los arreglos ser inicializados?</li>
+<li class="fragment highlight-current-blue">¿Se pueden definir porciones (slices) de arreglos?</li>
+</ul>
+</section>
+<section><h3><span style="color:magenta;">Accediendo a los elementos del Arreglo</span></h3>
+<div style="font-size: 90%;">
+<p>Es una función desde subíndices a elementos</p>
+<span style="color:magenta;"><p><code>array_name(index_value_list)</code>
+ \(\to\) <code>an element</code>
+</p>
+</span><center><b>Sintaxis</b>
+</center>
+<ul><li>FORTRAN, PL/I, Ada usan <em>paréntesis</em>
+</li>
+<li>Ada explícitamente usa paréntesis para mostrar uniformidad entre referencia de arreglos y llamadas a función porque ambas mapean resultados</li>
+<li>La mayoría de los otros lenguajes usan <em>corchetes</em>
+</li>
+</ul>
+</section>
+<section><h3>Tipos de los subíndices de los arreglos</h3>
+<ul><li class="fragment fade-in-then-semi-out">FORTRAN, C: solo enteros (integer)</li>
+<li class="fragment fade-in-then-semi-out">PASCAL: cualquier tipo ordinal (integer, boolean, char, enumeration)</li>
+<li class="fragment fade-in-then-semi-out">Ada: Enteros y enumeración (incluídos char y booleanos)</li>
+<li class="fragment fade-in-then-semi-out">Java: solo tipos enteros</li>
+<li class="fragment fade-in-then-semi-out">C, C++, Perl, y Fortran no especifican chequeo de rango</li>
+<li class="fragment fade-in-then-semi-out">Java, ML, C#, especifican chequeo de rango</li>
+</ul>
+</section>
+<section><h3>Categoría de Arreglos</h3>
+<div style="font-size: 75%;">
+<ul><li class="fragment fade-in-then-semi-out"><b>Estático:</b>
+ rango de subíndices son ligados estáticamente y el alojamiento de memoria es estático (antes del tiempo de ejecución) <em>ventaja:</em>
+ eficiencia (no hay alojamiento dinámico)</li>
+<li class="fragment fade-in-then-semi-out"><b>(stack)dinámico Fijo:</b>
+ los subíndices son ligados estáticamente, pero el alojamiento es hecho en tiempo de declaración <em>ventaja:</em>
+ eficiencia de espacio</li>
+<li class="fragment fade-in-then-semi-out"><b>(stack)dinámico:</b>
+ rangos de subíndices son ligados dinámicamente y el almacenamiento es dinámico (hecho en tiempo de ejecución)</li>
+<li class="fragment fade-in-then-semi-out"><b>(heap)dinámico Fijo:</b>
+ el almacenamiento es ligado dinámicamente pero fijo después del alojamiento.</li>
+<li class="fragment fade-in-then-semi-out"><b>(heap)dinámico:</b>
+ la ligadura de los subíndices y el almacenamiento es dinámico y puede cambiar <em>ventaja:</em>
+ flexibilidad (los arreglos pueden crecer o disminuir durante la ejecución del programa)</li>
+</ul>
+</section>
+<section><h3>Categoría de Arreglos</h3>
+<ul><li class="fragment fade-in-then-semi-out">Los arreglos de <b>C</b>
+ y <b>C++</b>
+ que incluyen el modificador <code>static</code>
+ son <em>Estáticos</em>
+</li>
+<li class="fragment fade-in-then-semi-out">Los arreglos de <b>C</b>
+ y <b>C++</b>
+ sin el modificador <code>static</code>
+ son <em>(stack)dinámicos Fijos</em>
+</li>
+<li class="fragment fade-in-then-semi-out">Los arreglos de <b>Ada</b>
+ pueden ser <em>(stack)dinámicos</em>
+</li>
+<li class="fragment fade-in-then-semi-out"><b>C</b>
+ y <b>C++</b>
+ proveen arreglos <em>(heap)dinámicos Fijos</em>
+ (<b>C#</b>
+ con sus <code>ArrayList</code>
+)</li>
+<li class="fragment fade-in-then-semi-out"><b>Perl</b>
+ y <b>JavaScript</b>
+ soporta arreglos <em>(heap)dinámicos.</em>
+</li>
+</ul>
+</section>
+<section><h3>(Stack) Dinámicos fijos</h3>
+<div class="figure">
+<p><img src=adaarreglo.png  width=auto  height=500</p>
+</div>
+</section>
+<section><h3>Arreglos</h3>
+<p><span style="color:purple;">Elementos Contiguos</span></p>
+<ol><li>Dirigido por Columnas - solo en <b>Fortrand</b>
+</li>
+<li>Dirigido por filas<ul><li>usada por el resto de lenguajes</li>
+<li>hace que el <code>array [a..b,c..d]</code>
+ sea igual a <code>array [a..b] of array [c..d]</code>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section><h3>Arreglos</h3>
+<div class="figure">
+<p><img src=rowcolumnmajor.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h3>Arreglos</h3>
+<div style="font-size: 90%;">
+<p><b>Dos estrategias para arreglos</b>
+</p>
+<ul><li class="fragment appear">Elementos continuos</li>
+<li class="fragment appear">punteros de filas</li>
+</ul>
+<p><b>Punteros de Filas</b>
+</p>
+<ul><li class="fragment appear">una opción en <b>C</b>
+</li>
+<li class="fragment appear">permite a las filas colocarse en cualquier parte de la memoria</li>
+<li class="fragment appear">bueno para matrices cuando las filas son de diferente longitud<p><span style="color:yellow;">ejemplo arreglo de strings</span></p>
+</li>
+<li class="fragment appear">requiere espacio para los punteros</li>
+</ul>
+</section>
+<section><h3>Arreglos</h3>
+<div class="figure">
+<p><img src=arraypontrowc.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h3><span style="color:blue;">Inicialización de Arreglos</span></h3>
+<p>Algunos Lenguajes permiten inicialización en el tiempo de alojamiento.</p>
+<ul><li class="fragment highlight-current-blue">ejemplo de <b>C, C++, Java, C#</b>
+<p><code><span style="color:yellow;">int list [] = {4, 5, 7, 83}</span></code>
+</p>
+</li>
+<li class="fragment highlight-current-blue">cadena de caracteres en <b>C</b>
+ y <b>C++</b>
+<p><code><span style="color:yellow;">char name [] = "freddie";</span></code>
+</p>
+</li>
+<li class="fragment highlight-current-blue">Arreglo of strings en <b>C</b>
+ y <b>C++</b>
+<p><code><span style="color:yellow;">char *names [] = {"bob", "jake", "Joe"};</span></code>
+</p>
+</li>
+<li class="fragment highlight-current-blue"><b>Java</b>
+<p><code><span style="color:yellow;">String[] names = {"Bob", "Jake", "Joe"};</span></code>
+</p>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:orange;">Operaciones de Arreglos</span></h3>
+<div style="font-size: 95%;">
+<ul><li class="fragment appear"><b><span style="color:orange;">APL</span></b>
+ provee el mas poderoso conjunto de operadores para procesar vectores y matrices y operaciones unarias (por ejemplo revertir elementos de una columna)</li>
+<li class="fragment appear"><b><span style="color:orange;">Ada</span></b>
+ permite asignación de arreglos y concatenación</li>
+<li class="fragment appear"><b><span style="color:orange;">Fortran</span></b>
+ provee operaciones /elementales/ a causa de que son entre pares de elementos del arreglo<center>Por ejemplo, el operador + entre dos arreglos resulta en un arreglo con la suma de los pares de elementos de los dos arreglos.</center>
+</li>
+</ul>
+</section>
+<section><h3>Arreglos</h3>
+<div style="font-size: 85%;">
+<p>Ejemplo</p>
+<p><code>A : array [L1..U1] of array [L2::U2] of array [L3..U3] of elem;</code>
+</p>
+<ul><li>\(D1 = U1 - L1 + 1\)</li>
+<li>\(D2 = U2 - L2 + 1\)</li>
+<li>\(D3 = U3 - L3 + 1\)</li>
+<li>\(S3 = \) tamaño de <code>elem</code>
+</li>
+<li>\(S2 = D3 * S3\)</li>
+<li>\(S1 = D2 * S2\)</li>
+</ul>
+<p>\( A(i,j,k) = \mbox{ address of A } + (i * S1) + (j * S2) + (k * S3) - \)</p>
+<p>\( [(L1 * S1) + (L2 * S2) + (L3 * S3)] \)</p>
+</section>
+<section><h3><span style="color:green;">Slices</span></h3>
+<p>Una <em>porción</em>
+ (slice) de un arreglo es una subestructura de un arreglo; un mecanismo de referenciación.</p>
+<p>Los <em>Slices</em>
+ son útilies en lenguages que tienen operaciones sobre arreglos (APL, FORTRAN etc).</p>
+</section>
+<section><h3><span style="color:green;">Slices</span></h3>
+<div class="figure">
+<p><img src=slicesfort.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h3><span style="color:blue;">Descriptores en Tiempo de Compilación</span></h3>
+<div class="figure">
+<p><img src=descriptoresarray.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h3><span style="color:blue;">Arreglos Asociativos</span></h3>
+<div style="font-size: 70%;">
+<ul><li class="fragment highlight-current-blue">Un <em>arreglo asociativo</em>
+ es una colección no ordenada de elementos de datos que son indexados por un numero igual de valores llamados <em>claves</em>
+ (keys)<center>claves definidas por el usuario deben ser almacenadas</center>
+</li>
+<li class="fragment highlight-current-blue">Ahora llamados <em>Diccionarios</em>
+</li>
+<li class="fragment highlight-current-blue">en <b>PERL</b>
+<ul><li class="fragment highlight-current-blue">Nombres comenzando con <code>%;</code>
+ literales son delimitados con paréntesis<p><code>%hi_temps~ = ("Mon" => 77, "Tue" => 79, "Wed" => 65, ... ),</code>
+</p>
+</li>
+<li class="fragment highlight-current-blue">Para acceder se usan llaves y claves: <p><code>%hi_temps{"wed"} = 83;</code>
+</p>
+</li>
+<li class="fragment highlight-current-blue">Los elementos pueden ser removidos con <code>delete</code>
+<p><code>delete %hi_temps{"Tue"}</code>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section><h3>Strings</h3>
+<ul><li><em>Strings</em>
+ son en realidad arreglos de caracteres</li>
+<li>Son frecuentemente casos especiales, para darles flexibilidad (como polimorfismo y tamaño dinámico) que no es disponible para arreglos en general</li>
+<li>Es mas facil proveer estas cosas para <em>strings</em>
+ que para arreglos en general porque los <em>strings</em>
+son de una dimensión y no circulares.</li>
+</ul>
+</section>
+<section><h2>Registros</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:orange;">Tipo Registro</span></h3>
+<ul><li>Un registro es un conjunto posiblemente heterogeneo de elementos de datos en el cual los elementos individuales son identificados por su nombre</li>
+<li><span style="color:orange;">Cuestiones de Diseño</span><ul><li>¿Cual es la sintaxis para referenciar los campos?</li>
+<li>¿Son permitidas las referencias elípticas?</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Tipo Registro</span></h3>
+<div style="font-size: 75%;">
+<ul><li>Cobol<pre><code>
+01 EMPLOYEE-RECORD. 
+   02 EMPLOYEE-NAME. 
+      05 FIRST    PICTURE IS x(20). 
+      05 MIDDLE   PICTURE IS x(10). 
+      05 LAST     PICTURE IS x(20). 
+   02 HOURLY-RATE PICTURE IS 99v99. 
+</code></pre>
+</li>
+<li>Ada<pre><code>
+type Employee_Name_Type is record
+   First : String (1..20);
+   Middle : String (1..10);
+   Last : String (1..20);
+end record;
+type Employee_Record_Type is record 
+   Employee_Name: Employee_Name_Type; 
+   Hourly_Rate: Float;
+end record;
+Employee_Record: Employee_Record_Type; 
+</code></pre>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Registros</span></h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment highlight-current-blue">Referencia a los campos<ul><li class="fragment highlight-current-blue"><b>COBOL </b>
+<p><code>field_name OF record_name_1 OF ... OF record_name_n</code>
+</p>
+</li>
+<li class="fragment highlight-current-blue">Otros (notación con punto) <code>record_name_1.record_name_2. ... record_name_n.field_name</code>
+</li>
+</ul>
+</li>
+<li class="fragment highlight-current-blue">Referencias completamente calificadas: debe incluir todo el camino de nombres de registros.</li>
+<li class="fragment highlight-current-blue">Referencia elíptica: permite no especificar nombres intermedios siempre que la referencia no sea ambigua. Ej: <code>FIRST OF EMP-REC</code>
+ en <b>COBOL</b>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Operaciónes de Registros</span></h3>
+<ul><li class="fragment highlight-current-green">La asignación es muy común si los tipos son identicos</li>
+<li class="fragment highlight-current-green"><b>Ada</b>
+ permite comparación de registros</li>
+<li class="fragment highlight-current-green">Los registros de <b>Ada</b>
+ pueden ser inicializados con conjunto de literales</li>
+<li class="fragment highlight-current-green"><b>COBOL</b>
+ provee <code>MOVE CORRESPONDING</code>
+<p>copia un campo de un registro origen al correspondiente campo en el registro destino.</p>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Comparación con Arreglos</span></h3>
+<ul><li class="fragment highlight-current-red">Tiene un diseño directo y seguro</li>
+<li class="fragment highlight-current-red">Son usados cuando el agrupamiento de datos es heterogeneo</li>
+<li class="fragment highlight-current-red">El acceso es mucho mas rápido que en arreglos porque el acceso a los nombres de los campos es estático</li>
+</ul>
+</section>
+<section><h3><span style="color:purple;">Implementación de Registros</span></h3>
+<div class="figure">
+<p><img src=implementregistros.png  width=auto  height=auto</p>
+</div>
+<p>Un desplazamiento de dirección relativo al comienzo del registro es asociado con cada campo.</p>
+</section>
+<section><h3><span style="color:blue;">Tipo Uniones</span></h3>
+<div style="font-size: 85%;">
+<ul><li class="fragment highlight-current-blue">Una <em>Union</em>
+ es un tipo a cuyas variables se les permite almacenar diferentes valores de tipo (estructura) en diferentes tiempos durantes la ejecución.</li>
+<li class="fragment highlight-current-blue">Cuestiones de Diseño<ul><li class="fragment highlight-current-blue">¿Debería requerirse chequeo de tipos?</li>
+<li class="fragment highlight-current-blue">¿Deberían incluirse como tipos particulares de Registros?</li>
+</ul>
+</li>
+<li class="fragment highlight-current-blue"><b>Fortran, C, y C++</b>
+ proveen constructores de <em>Union</em>
+ sin soporte para chequeo de tipos se llaman <em>uniones libres</em>
+</li>
+<li class="fragment highlight-current-blue">Chequeo de tipos en <em>Uniones</em>
+ requieren que se incluya un indicador de tipo llamado <em>discriminante</em>
+<center>soportado por <em>Ada</em>
+</center>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">tipo Union de Ada</span></h3>
+<div style="font-size: 75%;">
+<pre><code>
+type Shape is (Circle, Triangle, Rectangle); 
+type Colors is (Red, Green, Blue); 
+type Figure (Form: Shape) is record 
+  Filled: Boolean; 
+  Color: Colors; 
+  case Form is  
+      When Circle => Diameter : Float; 
+      When Triangle =>  
+             LeftSide, Rightside: Integer; 
+             Angle: Float; 
+      when Rectangle => Side1,Side2: Integer; 
+  end case; 
+end record; 
+</code></pre>
+<div class="figure">
+<p><img src=adaunion.png  width=auto  height=250</p>
+</div>
+</section>
+<section><h3>Evaluación de Uniones</h3>
+<ul><li class="fragment fade-in-then-semi-out">También llamados registros variantes</li>
+<li class="fragment fade-in-then-semi-out">Es una construcción potencialmente insegura<center>no permite chequeo de tipos o es muy caro</center>
+</li>
+<li class="fragment fade-in-then-semi-out"><b>Java y C#</b>
+ no soportan uniones<center>Como reflejo de la creciente preocupación por la seguridad en los lenguajes de programación</center>
+</li>
+<li class="fragment fade-in-then-semi-out">La falta de discriminante (tag) significa que uno no sabe lo que hay almacenado,</li>
+<li class="fragment fade-in-then-semi-out">La posibilidad de cambiar el discriminante permite acceder a campos erroneamente</li>
+</ul>
+</section>
+</section>
+<section><h2>Punteros y Tipos Recursivos</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:magenta;">Tipo Punteros</span></h3>
+<ul><li>Los Punteros sirven para dos propósitos:<ol><li>acceso eficiente (y a veces intuitivo) a objetos muy elaborados (como en <b>C</b>
+)</li>
+<li>creación dinámica de estructuras ligadas, en conjunción con administración de memoria <em>heap</em>
+</li>
+</ol>
+</li>
+<li>Varios lenguajes (e.g. <b>Pascal</b>
+ restringen los punteros para acceder a cosas en el <em>heap</em>
+</li>
+<li>Los punteros son usados en un modo <em>por valor</em>
+ de las variables<center>No se necesitan como modo <em>por referencia</em>
+</center>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:magenta;">Punteros y Tipos Recursivos</span></h3>
+<div class="figure">
+<p><img src=lisppunt.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h3><span style="color:brown;">Punteros y Tipos Recursivos</span></h3>
+<div style="font-size: 90%;">
+<center><b>C</b>
+ punteros y arreglos</center>
+<ul><li><code>int *a == int a[]</code>
+</li>
+<li><code>int **a == int *a[]</code>
+</li>
+</ul>
+<center>Las equivalencias no siempre ocurren</center>
+<ul><li>Especificamente, una declaración aloja un arreglo si se especifica un tamaño para la primera dimensión</li>
+<li>En caso contrario aloja un puntero<ul><li><code>int **a, int *a[]</code>
+ puntero a puntero a int</li>
+<li><code>int *a[n]</code>
+ arreglo de <em>n</em>
+ elementos de punteros</li>
+<li><code>int a[n][m]</code>
+ arreglo de dos dimensiones</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:brown;">Punteros y Tipos Recursivos</span></h3>
+<div style="font-size: 90%;">
+<p>El compilador tiene que ser capaz de establecer el tamaño de las cosas apuntadas por los punteros</p>
+<ul><li>Por lo tanto las siguientes no son válidas:<ul><li><code>int a[][]</code>
+ mal </li>
+<li><code>int (*a)[]</code>
+ mal </li>
+</ul>
+</li>
+<li>Regla de declaración de <b>C</b>
+: lee a la derecha tanto como puede (sujeto a paréntesis), luego a la izquierda, y luego sube de nivel y repite.<ul><li><code>int *a[n]</code>
+ arreglo de <em>n</em>
+ elementos de punteros a enteros</li>
+<li><code>int (*a)[n]</code>
+ puntero a un arreglo de <em>n</em>
+ elementos de enteros</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:brown;">Punteros y Tipos Recursivos</span></h3>
+<p>Los problemas con punteros <em>colgados</em>
+ se deben a:</p>
+<ul><li>desalojo explícito de objetos del <em>heap</em>
+<center>(solo en lenguajes que tienen desalojo explícito)</center>
+</li>
+<li>desalojo implícito de objetos elaborados</li>
+</ul>
+<p>Dos mecanismos de implementación para atrapar punteros <em>colgados</em>
+</p>
+<ul><li><em>Tombstones</em>
+ lápidas</li>
+<li><em>Locks and Keys</em>
+ llaves y cerraduras</li>
+</ul>
+</section>
+</section>
+<section><h3><span style="color:yellow;">Listas</span></h3>
+<p>Una <em>Lista</em>
+ es definida recursivamente ya sea como una lista vacía o un par consistente de un objeto (que puede ser una lista o un átomo) y otra lista (mas corta)</p>
+<ul><li>Las <em>Listas</em>
+ son ideales para programar en lenguajes lógicos y funcionales<center>En <b>Lisp</b>
+ de hecho un programa<em>es</em>
+ una lista, y puede extenderse a si mismo para contruir una lista y ejecutarla</center>
+</li>
+<li>Las <em>Listas</em>
+ pueden usarse en programas imperativos.</li>
+</ul>
+</section>
+<section><h3><span style="color:yellow;">Archivos y Entrada/Salida</span></h3>
+<div style="font-size: 90%;">
+<ul><li>Entrada/Salida (E/S) facilita al programa a comunicarse con el mundo externo<center>E/S interactiva y E/S con archivos</center>
+</li>
+<li>Interactivo generalmente implica comunicación con usuarios humanos ydispositivos físicos</li>
+<li>Archivos generalmente se refieren a almacenamiento fuera de linea implementado por el sistema operativo.</li>
+<li>Archivos pueden ser categorizados en:<ul><li>Temporarios</li>
+<li>Persistentes</li>
+</ul>
+</li>
+</ul>
 </section>
 </div>
 </div>
