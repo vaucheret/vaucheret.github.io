@@ -1,0 +1,28 @@
+file("subrimp").
+title("Implementación de Subrutinas").
+author("C. A. L. P.").
+date("Claudio Vaucheret").
+theme("night").
+
+slides -->
+    semanticaGeneraldeLlamadayRetorno,
+    subprogramasSimples,
+    subprogramasconVariableslocalesenPilaDinamica,
+    subprogramasimbricados,
+    bloques,
+    implementandoAlcanceDinamico.
+
+
+show :-
+        file(File),
+        append(["xdg-open ",File,".html"],Command),
+	shell(Command).
+	      
+main :-
+        theme(Theme),
+        consult(slideprolog),
+        file(File),
+        append(File,".html",Filehtml),
+	phrase_to_file(presentation(Theme),Filehtml).
+
+    

@@ -1,18 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<title>Conceptos Avanzados en Lenguajes de Programación</title>
-<meta name="author" content="(Implementación de Subrutinas)"/>
-<style type="text/css">
-.underline { text-decoration: underline; }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
-
-<link rel="stylesheet" href="./local.css"/>
-
+<html><head><title>Subrutinas</title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -23,594 +11,343 @@
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
-<meta name="description" content="Org-Reveal Introduction.">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 </head>
-<body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Implementación de Subrutinas</h2><h2 class="date">2016-09-27 mar 00:00</h2><p class="date">Created: 2022-09-12 lun 22:13</p>
+<body><div class="reveal" ><div class="slides" ><section id="sec-title-slide" ><h1 class="title" >Subrutinas</h1>
+<h2 class="author" >C. A. L. P.</h2>
+<h3 class="date" >Claudio Vaucheret</h3>
 </section>
-
-<section>
-<section id="slide-org41655a5">
-<h2 id="org41655a5">Semántica General de Llamada y Retorno</h2>
-<div class="outline-text-2" id="text-org41655a5">
+<section><h2>Semántica General de Llamada y Retorno</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:red;">Semántica General de Llamada y Retorno</span></h3>
+<div style="font-size: 85%;">
+<ul><li class="fragment highlight-current-red">Semánticamente es como si el subprograma se insertara en el punto de su llamada (no es siempre asi)</li>
+<li class="fragment highlight-current-red">En un lenguaje de Programación, las operaciones de llamado y retorno de subprogramas son llamadas en conjunto <em>articulación de subprogramas</em>
+</li>
+<li class="fragment highlight-current-red">La llamada a un subprograma tiene varias acciones asociadas con:<ul><li class="fragment highlight-current-red">El método de pasaje de parámetros</li>
+<li class="fragment highlight-current-red">variables locales estáticas</li>
+<li class="fragment highlight-current-red">Estado de ejecución del programa llamador</li>
+<li class="fragment highlight-current-red">transferencia del control</li>
+<li class="fragment highlight-current-red">Estructura de anidamiento de los subprogramas</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h2>Subprogramas Simples</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:green;">Subprogramas Simples: LLamada</span></h3>
+<ul><li class="fragment highlight-current-green">Grabar el estado de ejecución del llamador</li>
+<li class="fragment highlight-current-green">llevar a cabo el proceso de pasaje de parámetros</li>
+<li class="fragment highlight-current-green">Pasar la dirección de retorno al subprograma llamado</li>
+<li class="fragment highlight-current-green">Transferir el control al programa llamado</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Subprogramas Simples: Retorno</span></h3>
+<ul><li class="fragment highlight-current-green">Si se usó pasaje de parametros por valor-resultado, mover los valores actuales a esos parametors a sus correspondientes parametros reales</li>
+<li class="fragment highlight-current-green">Si es una función, mover el resultado al lugar donde el llamador pueda obtenerlo</li>
+<li class="fragment highlight-current-green">Restaurar el estado de ejecución del llamador</li>
+<li class="fragment highlight-current-green">Retornar el control al llamador</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Subprogramas Simples: Partes</span></h3>
+<ul><li class="fragment highlight-current-green">Dos partes separadas: El Código y los Datos (variables locales y datos que pueden cambiar)</li>
+<li class="fragment highlight-current-green">El formato de la parte de datos de un subprograma en ejecución se llama <em>registro de activación</em>
+</li>
+<li class="fragment highlight-current-green">Una <em>instancia de un registro de activación</em>
+ es un ejemplo concreto de un registro de activación.</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Código y Registros de Activación</span></h3>
+<div style="font-size: 85%;">
+<div class="figure">
+<p><img src=simpleactreg.png  width=auto  height=500</p>
 </div>
 </section>
+<section><h2>Subprogramas con Variables locales en Pila Dinámica</h2>
+<div class="outline-text-2" ></div>
 </section>
-<section>
-<section id="slide-org9121847">
-<h3 id="org9121847">Semántica General de Llamada y Retorno</h3>
-<ul>
-<li>Semánticamente es como si el subprograma se insertara en
-el punto de su llamada (no es siempre asi)</li>
-<li>En un lenguaje de Programación, las operaciones de llamado y retorno
-de subprogramas son llamadas en conjunto <i>articulación de subprogramas</i></li>
-<li>La llamada a un subprograma tiene varias acciones asociadas con:
-<ul>
-<li>El método de pasaje de parámetros</li>
-<li>variables locales estáticas</li>
-<li>Estado de ejecución del programa llamador</li>
-<li>transferencia del control</li>
-<li>Estructura de anidamiento de los subprogramas</li>
-
-</ul></li>
-
+<section><h3><span style="color:blue;">Subprogramas con Variables locales en Pila Dinámica</span></h3>
+<p>Registros de activación mas complejos</p>
+<ul><li class="fragment highlight-current-blue">El compilador debe generar código para alojar y desalojar implícitamente las variables locales</li>
+<li class="fragment highlight-current-blue">Se debe soportar recursividad  (posibilidad de múltiples  simultáneas de un subprograma)</li>
 </ul>
-
+<p>El formato y muchas veces el tamaño es conocido en tiempo de compilación</p>
 </section>
-</section>
-<section>
-<section id="slide-orgf629f0a">
-<h2 id="orgf629f0a">Subprogramas Simples</h2>
-<div class="outline-text-2" id="text-orgf629f0a">
+<section><h3><span style="color:blue;">Típico registro de activación para variables locales alojadas en pila dinamica</span></h3>
+<div class="figure">
+<p><img src=regactpila.png  width=auto  height=auto</p>
 </div>
 </section>
-</section>
-<section>
-<section id="slide-orgae9b362">
-<h3 id="orgae9b362">Subprogramas Simples: LLamada</h3>
-<ul>
-<li>Grabar el estado de ejecución del llamador</li>
-<li>llevar a cabo el proceso de pasaje de parámetros</li>
-<li>Pasar la dirección de retorno al subprograma llamado</li>
-<li>Transferir el control al programa llamado</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org30c6659">
-<h3 id="org30c6659">Subprogramas Simples: Retorno</h3>
-<ul>
-<li>Si se usó pasaje de parametros por valor-resultado, mover los
-valores actuales a esos parametors a sus correspondientes parametros reales</li>
-<li>Si es una función, mover el resultado al lugar donde el llamador
-pueda obtenerlo</li>
-<li>Restaurar el estado de ejecución del llamador</li>
-<li>Retornar el control al llamador</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-orga7d21e2">
-<h3 id="orga7d21e2">Subprogramas Simples: Partes</h3>
-<ul>
-<li>Dos partes separadas: El Código y los Datos (variables locales y
-datos que pueden cambiar)</li>
-<li>El formato de la parte de datos de un subprograma en ejecución se
-llama <i>registro de activación</i>.</li>
-<li>Una <i>instancia de un registro de activación</i> es un ejemplo concreto
-de un registro de activación.</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org5a4680d">
-<h3 id="org5a4680d">Código y Registros de Activación</h3>
-
-<div id="orga44fcdc" class="figure">
-<p><img src="simpleactreg.png" alt="simpleactreg.png" /> 
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgf8f0d20">
-<h2 id="orgf8f0d20">Subprogramas con Variables locales en Pila Dinámica</h2>
-<div class="outline-text-2" id="text-orgf8f0d20">
-</div>
-</section>
-</section>
-<section>
-<section id="slide-org7be26d6">
-<h3 id="org7be26d6">Subprogramas con Variables locales en Pila Dinámica</h3>
-<ul>
-<li>Registros de activación mas complejos
-<ul>
-<li>El compilador debe generar código para alojar y desalojar
-implícitamente las variables locales</li>
-<li>Se debe soportar recursividad  (posibilidad de múltiples activaciones
-simultáneas de un subprograma)</li>
-
-</ul></li>
-<li>El formato y muchas veces el tamaño es conocido en tiempo de compilación</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-orgfe3d023">
-<h3 id="orgfe3d023">Típico registro de activación para variables locales alojadas en pila dinamica</h3>
-
-<div id="org024eb1b" class="figure">
-<p><img src="regactpila.png" alt="regactpila.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org08526ff">
-<h3 id="org08526ff">Ejemplo de Función en <b>C</b></h3>
-<div class="org-src-container">
-
-<pre  class="src src-C"><code trim><span style="color: #98fb98;">void</span> <span style="color: #87cefa;">sub</span>(<span style="color: #98fb98;">float</span> <span style="color: #eedd82;">total</span>, <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">part</span>) {
-  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">list</span>[5];
-  <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">sum</span>;
+<section><h3><span style="color:blue;">Ejemplo de Función en <b>C</b>
+</span></h3>
+<div style="font-size: 90%;">
+<pre><code>
+void sub(float total, int part) {
+  int list[5];
+  float sum;
    ...
 }
 </code></pre>
+<div class="figure">
+<p><img src=ejemregact.png  width=auto  height=380</p>
 </div>
-
-
-<div id="orgc82f893" class="figure">
-<p><img src="ejemregact.png" alt="ejemregact.png" width="250px" />
-</p>
-</div>
-
 </section>
-</section>
-<section>
-<section id="slide-orga5ebe9b">
-<h3 id="orga5ebe9b">Ejemplo sin recursividad</h3>
-<div class="org-src-container">
-
-<pre  class="src src-C"><code trim><span style="color: #98fb98;">void</span> <span style="color: #87cefa;">fun1</span>(<span style="color: #98fb98;">float</span> <span style="color: #eedd82;">r</span>) {
-  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">s</span>, <span style="color: #eedd82;">t</span>;
-   ...  &lt;-------- 1
+<section><h3><span style="color:blue;">Ejemplo sin recursividad</span></h3>
+<pre><code>
+void fun1(float r) {
+  int s, t;
+   ...  <-------- 1
   fun2(s);
   ....
 }
-<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">fun2</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>) {
-  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">y</span>;
-  ... &lt;---------- 2
+void fun2(int x) {
+  int y;
+  ... <---------- 2
   fun3(y)
   ... 
 }
-<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">fun3</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">q</span>) {
-...    &lt;--------- 3
+void fun3(int q) {
+...    <--------- 3
 }
-<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">main</span>() {
-<span style="color: #98fb98;">float</span> <span style="color: #eedd82;">p</span>;
+void main() {
+float p;
 ...
 fun1(p);
 ...
 }
 </code></pre>
+<p>main llama a fun1, fun1 llama a fun2 y fun2 llama a fun3</p>
+</section>
+<section><h3><span style="color:blue;">Ejemplo sin recursividad</span></h3>
+<div class="figure">
+<p><img src=ejemsinrec.png  width=auto  height=auto</p>
 </div>
-
-<p>
-main llama a fun1, fun1 llama a fun2 y fun2 llama a fun3
-</p>
-
 </section>
-</section>
-<section>
-<section id="slide-orgf391653">
-<h3 id="orgf391653">Ejemplo sin recursividad</h3>
-
-<div id="org6e52c25" class="figure">
-<p><img src="ejemsinrec.png" alt="ejemsinrec.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgb71d770">
-<h3 id="orgb71d770">Cadena Dinámica y desplazamiento local</h3>
-<ul>
-<li>el conjunto  de ligaduras dinámicas y la Pila en un tiempo dada se
-llama <i>cadena dinámica</i> o <i>cadena de llamadas</i></li>
-<li>Las variables locales se pueden acceder a partir de su
-desplazamiento desde el comienzo del registro de activación. Se
-llama <i>desplazamiento local</i></li>
-<li>El desplazamiento local puede ser determinado en tiempo de compilación.</li>
-
+<section><h3><span style="color:blue;">Cadena Dinámica y desplazamiento local</span></h3>
+<ul><li class="fragment highlight-current-blue">el conjunto  de ligaduras dinámicas y la Pila en un tiempo dada se llama <em>cadena dinámica</em>
+ o <em>cadena de llamadas</em>
+</li>
+<li class="fragment highlight-current-blue">Las variables locales se pueden acceder a partir de su desplazamiento desde el comienzo del registro de activación. Se  llama <em>desplazamiento local</em>
+</li>
+<li class="fragment highlight-current-blue">El desplazamiento local puede ser determinado en tiempo de compilación.</li>
 </ul>
-
 </section>
-</section>
-<section>
-<section id="slide-org4b45afe">
-<h3 id="org4b45afe">Un Ejemplo con Recursividad</h3>
-<ul>
-<li>El registro de activación del ejemplo previo soporta recursividad,
-e.g.</li>
-
-</ul>
-
-<div class="org-src-container">
-
-<pre  class="src src-C"><code trim><span style="color: #98fb98;">int</span> <span style="color: #87cefa;">factorial</span>(<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">n</span>) {
-  &lt;-------  1
-  <span style="color: #00ffff;">if</span> (n &lt;= 1)
-   <span style="color: #00ffff;">return</span> 1;
-  <span style="color: #00ffff;">else</span> <span style="color: #00ffff;">return</span> (n * factorial(n - 1));
-  &lt;-------- 2
+<section><h3><span style="color:blue;">Un Ejemplo con Recursividad</span></h3>
+<p>El registro de activación del ejemplo previo soporta recursividad, e.g.</p>
+<pre><code>
+int factorial(int n) {
+  <-------  1
+  if (n <= 1)
+   return 1;
+  else return (n * factorial(n - 1));
+  <-------- 2
 }
-<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">main</span>() {
- <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">value</span>;
+void main() {
+ int value;
  value = factorial(3);
-  &lt;--------- 3
+  <--------- 3
 }
-
 </code></pre>
-</div>
-
 </section>
-</section>
-<section>
-<section id="slide-org3b9095c">
-<h3 id="org3b9095c">Un Ejemplo con Recursividad</h3>
-
-<div id="org51651af" class="figure">
-<p><img src="firstfactorial.png" alt="firstfactorial.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orge48168e">
-<h3 id="orge48168e">Un Ejemplo con Recursividad</h3>
-
-<div id="org2eef9a4" class="figure">
-<p><img src="seconfactorial.png" alt="seconfactorial.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org3e49ef9">
-<h3 id="org3e49ef9">Un Ejemplo con Recursividad</h3>
-
-<div id="orgb82a604" class="figure">
-<p><img src="thirdfactorial.png" alt="thirdfactorial.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org03c32b0">
-<h2 id="org03c32b0">Subprogramas imbricados</h2>
-<div class="outline-text-2" id="text-org03c32b0">
+<section><h3><span style="color:blue;">Un Ejemplo con Recursividad</span></h3>
+<div style="font-size: 90%;">
+<div class="figure">
+<p><img src=firstfactorial.png  width=auto  height=550</p>
 </div>
 </section>
+<section><h3><span style="color:blue;">Un Ejemplo con Recursividad</span></h3>
+<div style="font-size: 90%;">
+<div class="figure">
+<p><img src=seconfactorial.png  width=auto  height=auto</p>
+</div>
 </section>
-<section>
-<section id="slide-org9f7b1aa">
-<h3 id="org9f7b1aa">Subprogramas imbricados</h3>
-<ul>
-<li>Algunos lenguajes de alcance estático no basados en C (fortran 95,
-Ada, JavaScript) usan variables locales alojadas en Pila Dinámicas y
-permiten que los subprogramas estén imbricados</li>
-<li>Todas las variables que pueden ser accedidas no localmente residen
-en alguna instancia de un registro de activación en la Pila</li>
-<li>El proceso de localizar una referencia no local incluye:
-<ol>
-<li>Encontrar la instancia del registro de activación correcta</li>
-<li>Determinar el correcto desplazamiento dentro del registro</li>
-
-</ol></li>
-
+<section><h3><span style="color:blue;">Un Ejemplo con Recursividad</span></h3>
+<div style="font-size: 90%;">
+<div class="figure">
+<p><img src=thirdfactorial.png  width=auto  height=auto</p>
+</div>
+</section>
+<section><h2>Subprogramas imbricados</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:pink;">Subprogramas imbricados</span></h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment fade-in-then-semi-out">Algunos lenguajes de alcance estático no basados en C (fortran 95, Ada, JavaScript) usan variables locales alojadas en Pila Dinámicas y permiten que los subprogramas estén imbricados</li>
+<li class="fragment fade-in-then-semi-out">Todas las variables que pueden ser accedidas no localmente residen en alguna instancia de un registro de activación en la Pila</li>
+<li class="fragment fade-in-then-semi-out">El proceso de localizar una referencia no local incluye:<ol><li class="fragment fade-in-then-semi-out">Encontrar la instancia del registro de activación correcta</li>
+<li class="fragment fade-in-then-semi-out">Determinar el correcto desplazamiento dentro del registro</li>
+</ol>
+</li>
 </ul>
-
 </section>
+<section><h3><span style="color:pink;">Localizar una Referencia no local</span></h3>
+<p>Encontrar el desplazamiento es trivial</p>
+<p>Para encontrar la correcta instancia del registro de activación</p>
+<p>Las reglas semánticas del alcance estático garantizan que toda variable no local que pueda ser referenciada ha sido alojada en alguna instancia de un registro de activación en la Pila cuando la referencia es hecha.</p>
 </section>
-<section>
-<section id="slide-orgddb0be4">
-<h3 id="orgddb0be4">Localizar una Referencia no local</h3>
-<ul>
-<li>Encontrar el desplazamiento es trivial</li>
-<li>Para encontrar la correcta instancia del registro de activación
-<ul>
-<li>Las reglas semánticas del alcance estático garantizan que toda
-variable no local que pueda ser referenciada ha sido alojada en
-alguna instancia de un registro de activación en la Pila cuando la
-referencia es hecha.</li>
-
-</ul></li>
-
+<section><h3><span style="color:pink;">Alcance Estático</span></h3>
+<ul><li class="fragment fade-in-then-semi-out">Una <em>cadena estática</em>
+ es una cadena de <em>punteros estáticos</em>
+ que conectan ciertas instancias de registros de activación</li>
+<li class="fragment fade-in-then-semi-out">El puntero estático en una instancia de un registro de activación para un subprograma A apunta a una de las instancias del registro de activación del padre de A en la estructura estática.</li>
+<li class="fragment fade-in-then-semi-out"> La cadena estática de una istancia de un registro de activación la conecta con todos sus ancestros en la estructura estática.</li>
 </ul>
-
 </section>
-</section>
-<section>
-<section id="slide-orgd94f4b0">
-<h3 id="orgd94f4b0">Alcance Estático</h3>
-<ul>
-<li>Una <i>cadena estática</i> es una cadena de <i>punteros estáticos</i> que
-conectan ciertas instancias de registros de activación</li>
-<li>El puntero estático en una instancia de un registro de activación
-para un subprograma A apunta a una de las instancias del registro de
-activación del padre de A en la estructura estática.</li>
-<li>La cadena estática de una istancia de un registro de activación
-la conecta con todos sus ancestros en la estructura estática.</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org1eb9c30">
-<h3 id="org1eb9c30">Ejemplo</h3>
-<div class="org-src-container">
-
-<pre  class="src src-pascal"><code trim><span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">MAIN_2</span> is
-  X : <span style="color: #98fb98;">Integer</span>;
-  <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">Bigsub</span> is
-    A, B, C : <span style="color: #98fb98;">Integer</span>;
-    <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">Sub1</span> is
-      A, D : <span style="color: #98fb98;">Integer</span>;
-      <span style="color: #00ffff;">begin</span> - - <span style="color: #00ffff;">of</span> Sub1
-      A := B + C; &lt;---------- 1
-    <span style="color: #00ffff;">end</span>; - - <span style="color: #00ffff;">of</span> Sub1
-    <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">Sub2</span>(X : <span style="color: #98fb98;">Integer</span>) is
-      B, E : <span style="color: #98fb98;">Integer</span>;
-      <span style="color: #00ffff;">procedure</span> <span style="color: #87cefa;">Sub3</span> is
-         C, E: <span style="color: #98fb98;">Integer</span>;
-         <span style="color: #00ffff;">begin</span>  -- <span style="color: #00ffff;">of</span> Sub3
+<section><h3><span style="color:pink;">Ejemplo</span></h3>
+<pre><code>
+procedure MAIN_2 is
+  X : Integer;
+  procedure Bigsub is
+    A, B, C : Integer;
+    procedure Sub1 is
+      A, D : Integer;
+      begin - - of Sub1
+      A := B + C; <---------- 1
+    end; - - of Sub1
+    procedure Sub2(X : Integer) is
+      B, E : Integer;
+      procedure Sub3 is
+         C, E: Integer;
+         begin  -- of Sub3
          sub1;
-         E := B + A; &lt;--------- 2
-      <span style="color: #00ffff;">end</span>; -- <span style="color: #00ffff;">of</span> Sub3
-      <span style="color: #00ffff;">begin</span>   -- <span style="color: #00ffff;">of</span> Sub2
+         E := B + A; <--------- 2
+      end; -- of Sub3
+      begin   -- of Sub2
       sub3;
-      A := D + E; &lt;-------------3 
-    <span style="color: #00ffff;">end</span>  -- <span style="color: #00ffff;">of</span> Sub2
-    <span style="color: #00ffff;">begin</span> -- <span style="color: #00ffff;">of</span> Bigsub
+      A := D + E; <-------------3 
+    end  -- of Sub2
+    begin -- of Bigsub
     sub2(7);
-  <span style="color: #00ffff;">end</span> -- <span style="color: #00ffff;">of</span> Bigsub
-  <span style="color: #00ffff;">begin</span> -- <span style="color: #00ffff;">of</span> Main_2
+  end -- of Bigsub
+  begin -- of Main_2
   Bigsub;
-<span style="color: #00ffff;">end</span> -- <span style="color: #00ffff;">of</span> Main_2
+end -- of Main_2
 </code></pre>
+</section>
+<section><h3><span style="color:pink;">Contenido de la Pila en pos 1</span></h3>
+<div class="figure">
+<p><img src=ejemploestatico.png  width=auto  height=580</p>
 </div>
-
 </section>
-</section>
-<section>
-<section id="slide-orgc1f2999">
-<h3 id="orgc1f2999">Contenido de la Pila en pos 1</h3>
-
-<div id="orgd21dff5" class="figure">
-<p><img src="ejemploestatico.png" alt="ejemploestatico.png" width="350px" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org381f64f">
-<h3 id="org381f64f">Display</h3>
-<ul>
-<li>Una alternativa a las cadenas estáticas</li>
+<section><h3><span style="color:pink;">Display</span></h3>
+<ul><li>Una alternativa a las cadenas estáticas</li>
 <li>Los punteros estáticos son almacenados en un arreglo único llamado display</li>
-<li>El contenido del display en un tiempo dado es una lista de las
-direcciones de las instancias de los registros de activación accesibles</li>
-
+<li>El contenido del display en un tiempo dado es una lista de las direcciones de las instancias de los registros de activación accesibles</li>
 </ul>
 </section>
+<section><h2>Bloques</h2>
+<div class="outline-text-2" ></div>
 </section>
-<section>
-<section id="slide-orgc83b2fc">
-<h2 id="orgc83b2fc">Bloques</h2>
-<div class="outline-text-2" id="text-orgc83b2fc">
-</div>
-</section>
-</section>
-<section>
-<section id="slide-orgf94d5b9">
-<h3 id="orgf94d5b9">Bloques</h3>
-<ul>
-<li>Los bloques son alcances locales para variables especificados por el usuario</li>
-<li>Un ejemplo en C</li>
-
-</ul>
-<div class="org-src-container">
-
-<pre  class="src src-c"><code trim>{ <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">temp</span>; 
+<section><h3><span style="color:orange;">Bloques</span></h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment fade-in-then-semi-out">Los bloques son alcances locales para variables especificados por el usuario</li>
+<li class="fragment fade-in-then-semi-out">Un ejemplo en C <pre><code>
+{ int temp; 
   temp = list[upper];
   list[upper] = list [lower];
   list[lower] = temp
 }
 </code></pre>
-</div>
-<ul>
-<li>El tiempo de vida de <i>temp</i> en el ejemplo comienza cuando el control
-entra en el bloque</li>
-<li>La ventaja de usar una variable local como temp es que no interfiere
-con otra variable del mismo nombre</li>
-
+</li>
+<li class="fragment fade-in-then-semi-out">El tiempo de vida de <em>temp</em>
+ en el ejemplo comienza cuando el control  entra en el bloque</li>
+<li class="fragment fade-in-then-semi-out">La ventaja de usar una variable local como <em>temp</em>
+ es que no interfiere con otra variable del mismo nombre</li>
 </ul>
 </section>
+<section><h3><span style="color:orange;">Implementando bloques</span></h3>
+<div style="font-size: 85%;">
+<p>Dos métodos</p>
+<ol><li>Tratar a los bloques como subprogramas sin parámetros que son siempre llamados desde la misma ubicación<p>Todo bloque tiene un registro de activación, una instancia es creada cada vez que el bloque es ejecutado</p>
+</li>
+<li>Ya que el máximo de almacenamiento requerido para un bloque puede ser determinado estáticamente, esta cantidad de espacio puede ser alojada después de las variables locales del registro de activación</li>
+</ol>
 </section>
-<section>
-<section id="slide-org57fdc66">
-<h3 id="org57fdc66">Implementando bloques</h3>
-<ul>
-<li>Dos métodos
-<ol>
-<li>Tratar a los bloques como subprogramas sin parámetros que son
-siempre llamados desde la misma ubicación
-<ul>
-<li>Todo bloque tiene un registro de activación, una instancia es
-creada cada vez que el bloque es ejecutado</li>
-
-</ul></li>
-<li>Ya que el máximo de almacenamiento requerido para un bloque puede
-ser determinado estáticamente, esta cantidad de espacio puede ser
-alojada después de las variables locales del registro de activación</li>
-
-</ol></li>
-
-</ul>
-</section>
-</section>
-<section>
-<section id="slide-orgada0def">
-<h3 id="orgada0def">Ejemplo</h3>
-<div class="org-src-container">
-
-<pre  class="src src-c"><code trim><span style="color: #98fb98;">void</span> <span style="color: #87cefa;">main</span>() {
-   <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>, <span style="color: #eedd82;">y</span>, <span style="color: #eedd82;">z</span>;
-   <span style="color: #00ffff;">while</span> ( ... ) {
-     <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">a</span>, <span style="color: #eedd82;">b</span>, <span style="color: #eedd82;">c</span>;
+<section><h3><span style="color:orange;">Ejemplo</span></h3>
+<pre><code>
+void main() {
+   int x, y, z;
+   while ( ... ) {
+     int a, b, c;
      ...
-     <span style="color: #00ffff;">while</span> ( ... ) {
-       <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">d</span>, <span style="color: #eedd82;">e</span>;
+     while ( ... ) {
+       int d, e;
        ...
      }
    }
-   <span style="color: #00ffff;">while</span> ( ... ) {
-      <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">f</span>, <span style="color: #eedd82;">g</span>;
+   while ( ... ) {
+      int f, g;
       ...
    }
 }
 </code></pre>
+</section>
+<section><h3><span style="color:orange;">Ejemplo</span></h3>
+<div class="figure">
+<p><img src=bloque.png  width=auto  height=auto</p>
 </div>
 </section>
+<section><h2>Implementando Alcance Dinámico</h2>
+<div class="outline-text-2" ></div>
 </section>
-<section>
-<section id="slide-orgf7a4a55">
-<h3 id="orgf7a4a55">Ejemplo</h3>
-
-<div id="org77bc174" class="figure">
-<p><img src="bloque.png" alt="bloque.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgc20ab14">
-<h2 id="orgc20ab14">Implementando Alcance Dinámico</h2>
-<div class="outline-text-2" id="text-orgc20ab14">
-</div>
-</section>
-</section>
-<section>
-<section id="slide-orgd471d09">
-<h3 id="orgd471d09">Implementando Alcance Dinámico</h3>
-<ul>
-<li><i>Acceso Profundo</i>: Las referencias no locales son encontradas
-buscando las instancias de los registros de activación en la cadena dinámica</li>
-<li><i>Acceso Superficial</i>: Se colocan las variables locales en una tabla central
-<ul>
-<li>Una pila por cada nombre de variable</li>
+<section><h3><span style="color:yellow;">Implementando Alcance Dinámico</span></h3>
+<ul><li><span style="color:yellow;"><em>Acceso Profundo:</em>
+</span> Las referencias no locales son encontradas buscando las instancias de los registros de activación en la cadena dinámica</li>
+<li><span style="color:yellow;"><em>Acceso Superficial:</em>
+</span> Se colocan las variables locales en una tabla central<ul><li>Una pila por cada nombre de variable</li>
 <li>Tabla central con una entrada por cada nombre de variable</li>
-
-</ul></li>
-
 </ul>
-
+</li>
+</ul>
 </section>
-</section>
-<section>
-<section id="slide-orgc2b1b84">
-<h3 id="orgc2b1b84">Ejemplo</h3>
-<div class="org-src-container">
-
-<pre  class="src src-c"><code trim><span style="color: #98fb98;">void</span> <span style="color: #87cefa;">sub3</span>() {
-  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">x</span>, <span style="color: #eedd82;">z</span>;
+<section><h3><span style="color:yellow;">Ejemplo</span></h3>
+<pre><code>
+void sub3() {
+  int x, z;
   x = u + v;
 }
 
-<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">sub2</span>() {
-  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">w</span>, <span style="color: #eedd82;">x</span>;
+void sub2() {
+  int w, x;
   ... 
 }
 
-<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">sub1</span>() {
-  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">v</span>, <span style="color: #eedd82;">w</span>;
+void sub1() {
+  int v, w;
   ... 
 }
 
-<span style="color: #98fb98;">void</span> <span style="color: #87cefa;">main</span>() {
-  <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">v</span>, <span style="color: #eedd82;">u</span>;
+void main() {
+  int v, u;
   ... 
 }
 </code></pre>
-</div>
-<p>
-<i>main</i> llama a <i>sub1</i>, <i>sub1</i> llama a <i>sub1</i>, <i>sub1</i> llama a <i>sub2</i> y <i>sub2</i> llama a <i>sub3</i>
+<p><em>main</em>
+ llama a <em>sub1</em>
+, <em>sub1</em>
+ llama a <em>sub2</em>
+ y <em>sub2</em>
+ llama a <em>sub3</em>
 </p>
-
 </section>
-</section>
-<section>
-<section id="slide-org1f99875">
-<h3 id="org1f99875">Ejemplo cadena dinámica</h3>
-
-<div id="org64b0089" class="figure">
-<p><img src="dinamicchain.png" alt="dinamicchain.png" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-org3190755">
-<h3 id="org3190755">Ejemplo con tabla central</h3>
-
-<div id="org1dc608a" class="figure">
-<p><img src="tablacentral.png" alt="tablacentral.png" />
-</p>
+<section><h3><span style="color:yellow;">Ejemplo cadena dinámica</span></h3>
+<div class="figure">
+<p><img src=dinamicchain.png  width=auto  height=auto</p>
 </div>
 </section>
+<section><h3><span style="color:yellow;">Ejemplo con tabla central</span></h3>
+<div class="figure">
+<p><img src=tablacentral.png  width=auto  height=auto</p>
+</div>
 </section>
 </div>
 </div>
-<p> Created by yjwen. </p>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
-
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-});
-</script>
+<script src="https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
 </body>
 </html>
