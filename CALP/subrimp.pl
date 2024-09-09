@@ -13,7 +13,8 @@ slides -->
     implementandoAlcanceDinamico.
 
 semanticaGeneraldeLlamadayRetorno -->
-    section("Semántica General de Llamada y Retorno"),
+    section(animate,"Semántica General de Llamada y Retorno"),
+    section(animate,el(em,col(red,"Semántica General de Llamada y Retorno"))),
     slide("85%",col(red,"Semántica General de Llamada y Retorno"),
 	  item('highlight-current-red',
 	       [
@@ -33,7 +34,8 @@ semanticaGeneraldeLlamadayRetorno -->
 
 
 subprogramasSimples -->
-    section("Subprogramas Simples"),
+    section(animate,"Subprogramas Simples"),
+    section(animate,el(em,col(green,"Subprogramas Simples"))),
     slide(col(green,"Subprogramas Simples: LLamada"),
 	  item('highlight-current-green',
 	       [
@@ -66,7 +68,8 @@ subprogramasSimples -->
     
 
 subprogramasconVariableslocalesenPilaDinamica -->
-    section("Subprogramas con Variables locales en Pila Dinámica"),
+    section(animate,"Subprogramas con Variables locales en Pila Dinámica"),
+    section(animate,el(em,col(blue,"Subprogramas con Variables locales en Pila Dinámica"))),
     slide(col(blue,"Subprogramas con Variables locales en Pila Dinámica"),
 	  (
 	      el(p,"Registros de activación mas complejos"),
@@ -168,7 +171,8 @@ subprogramasconVariableslocalesenPilaDinamica -->
 
 
 subprogramasimbricados -->
-    section("Subprogramas imbricados"),
+    section(animate,"Subprogramas imbricados"),
+    section(animate,el(em,col(pink,"Subprogramas imbricados"))),	      
     slide("90%",col(pink,"Subprogramas imbricados"),
 	  item('fade-in-then-semi-out',
 	       [
@@ -243,7 +247,8 @@ subprogramasimbricados -->
 	      ])
 	 ).
 bloques -->
-    section("Bloques"),
+    section(animate,"Bloques"),
+    section(animate,el(em,col(orange,"Bloques"))),
     slide("90%",col(orange,"Bloques"),
 	  item('fade-in-then-semi-out',
 	       [
@@ -301,7 +306,8 @@ bloques -->
 	 ).
 
 implementandoAlcanceDinamico -->
-    section("Implementando Alcance Dinámico"),
+    section(animate,"Implementando Alcance Dinámico"),
+    section(animate,el(em,col(yellow,"Implementando Alcance Dinámico"))),
     slide(col(yellow,"Implementando Alcance Dinámico"),
 	  item(
 	      [

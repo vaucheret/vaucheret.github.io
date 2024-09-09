@@ -137,6 +137,15 @@ col(Col,Text) -->
     Text,
     "</span>".
 
+
+section(animate,Title) -->
+    el(section,['data-auto-animate'],
+       (
+	   el(h2,Title),
+	   "<div class=\"outline-text-2\" ></div>\n"
+       )).
+
+
 section(Title) -->
     el(section,
        (
