@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Conceptos Avanzados en Lenguajes de Programación</title>
-<meta name="author" content="(Tipo de Datos Abstractos y POO)"/>
+<title><span style="font-size:78%;">Conceptos Avanzados en Lenguajes de Programación</span></title>
+<meta name="author" content="Tipo de Datos Abstractos y POO"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/sky.css" id="theme"/>
 
 <link rel="stylesheet" href="./local.css"/>
 
@@ -28,12 +30,13 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Conceptos Avanzados en Lenguajes de Programación</h1><h2 class="author">Tipo de Datos Abstractos y POO</h2><h2 class="date">2017-09-05 mar 00:00</h2><p class="date">Created: 2022-10-11 mar 10:10</p>
+<section id="sec-title-slide"><h1 class="title"><span style="font-size:78%;">Conceptos Avanzados en Lenguajes de Programación</span></h1><p class="subtitle"></p>
+<h2 class="author">Tipo de Datos Abstractos y POO</h2><h2 class="date">2017-09-05 mar 00:00</h2><p class="date">Created: 2024-10-08 mar 10:55</p>
 </section>
 
 <section>
-<section id="slide-org9914878">
-<h2 id="org9914878">El concepto de Abstracción</h2>
+<section id="slide-orgc33f922">
+<h2 id="orgc33f922">El concepto de Abstracción</h2>
 <ul>
 <li>Una abstracción es una vista o representación de una entidad que
 incluye sólo los atributos más significativos</li>
@@ -47,8 +50,8 @@ toda la ciencia de la computación)</li>
 </section>
 </section>
 <section>
-<section id="slide-org7813dc6">
-<h2 id="org7813dc6">Introducción a la Abstracción del Dato</h2>
+<section id="slide-org782fa80">
+<h2 id="org782fa80">Introducción a la Abstracción del Dato</h2>
 <ul>
 <li>Un <i>tipo de datos abstracto</i> (TDA) es un tipo de datos definido por
 el usuario que cumple las dos condiciones siguientes:
@@ -66,8 +69,8 @@ tipo</li>
 </section>
 </section>
 <section>
-<section id="slide-org89503bf">
-<h2 id="org89503bf">Ventajas de la Abstracción</h2>
+<section id="slide-orgf61deb8">
+<h2 id="orgf61deb8">Ventajas de la Abstracción</h2>
 <ul>
 <li>Ventaja de la primera condición
 <ul>
@@ -89,8 +92,8 @@ se cambie sin afectar el código de usuario.</li>
 </section>
 </section>
 <section>
-<section id="slide-org345bc04">
-<h2 id="org345bc04">Cuestiones de Diseño</h2>
+<section id="slide-orgbe854c3">
+<h2 id="orgbe854c3">Cuestiones de Diseño</h2>
 <ul>
 <li>Una unidad sintáctica para definir un TDA</li>
 <li>Operaciones integradas
@@ -114,8 +117,8 @@ se cambie sin afectar el código de usuario.</li>
 </section>
 </section>
 <section>
-<section id="slide-org40bad00">
-<h2 id="org40bad00">Ejemplo en <b>ADA</b></h2>
+<section id="slide-org20c9a0a">
+<h2 id="org20c9a0a">Ejemplo en <b>ADA</b></h2>
 <ul>
 <li>El constructor de encapsulación se denomina <i>package</i>
 <ul>
@@ -140,33 +143,32 @@ estructura apuntada en el paquete del cuerpo</li>
 </section>
 </section>
 <section>
-<section id="slide-org5f549c2">
-<h2 id="org5f549c2">Ejemplo en Ada</h2>
+<section id="slide-org546cc41">
+<h2 id="org546cc41">Ejemplo en Ada</h2>
 <div class="org-src-container">
 
-<pre  class="src src-ada"><code trim>package Stack_Pack is
-	type stack_type is limited private;
-	max_size: constant := 100;
-	function empty(stk: in stack_type) return Boolean;
-	procedure push(stk: in out stack_type; elem:in Integer);
-	procedure pop(stk: in out stack_type);
-	function top(stk: in stack_type) return Integer;
+<pre  class="src src-ada"   ><code trim><span style="color: #00ffff;">package</span> Stack_Pack <span style="color: #00ffff;">is</span>
+        <span style="color: #00ffff;">type</span> stack_type <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">limited</span> <span style="color: #00ffff;">private</span>;
+        max_size: <span style="color: #00ffff;">constant</span> := 100;
+        <span style="color: #00ffff;">function</span> empty(stk: <span style="color: #00ffff;">in</span> stack_type) <span style="color: #00ffff;">return</span> Boolean;
+        <span style="color: #00ffff;">procedure</span> push(stk: <span style="color: #00ffff;">in</span> <span style="color: #00ffff;">out</span> stack_type; elem:<span style="color: #00ffff;">in</span> Integer);
+        <span style="color: #00ffff;">procedure</span> pop(stk: <span style="color: #00ffff;">in</span> <span style="color: #00ffff;">out</span> stack_type);
+        <span style="color: #00ffff;">function</span> top(stk: <span style="color: #00ffff;">in</span> stack_type) <span style="color: #00ffff;">return</span> Integer;
 
-	private  -- hidden from clients
-	type list_type is array (1..max_size) of Integer;
-	type stack_type is record
-		list: list_type;
-		topsub: Integer range 0..max_size) := 0;
-	end record;
-end Stack_Pack
+        <span style="color: #00ffff;">private</span>  <span style="color: #ff0000;">-- </span><span style="color: #ff0000;">hidden from clients</span>
+        <span style="color: #00ffff;">type</span> list_type <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">array</span> (1..max_size) <span style="color: #00ffff;">of</span> Integer;
+        <span style="color: #00ffff;">type</span> stack_type <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">record</span>
+                list: list_type;
+                topsub: Integer <span style="color: #00ffff;">range</span> 0..max_size) := 0;
+        <span style="color: #00ffff;">end</span> <span style="color: #00ffff;">record</span>;
+<span style="color: #00ffff;">end</span> Stack_Pack
 </code></pre>
 </div>
-
 </section>
 </section>
 <section>
-<section id="slide-org6b9ca8f">
-<h2 id="org6b9ca8f">Ejemplo en <b>C++</b></h2>
+<section id="slide-org70a9875">
+<h2 id="org70a9875">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Basado en el tipo <i>struct</i> de <b>C</b> y en las clases de <b>Simula 67</b></li>
 <li>La clase es el dispositivo de encapsulación</li>
@@ -181,8 +183,8 @@ de <i>heap</i></li>
 </section>
 </section>
 <section>
-<section id="slide-org3db54e6">
-<h2 id="org3db54e6">Ejemplo en <b>C++</b></h2>
+<section id="slide-org7695dc8">
+<h2 id="org7695dc8">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Ocultamiento de la Información
 <ul>
@@ -197,8 +199,8 @@ de <i>heap</i></li>
 </section>
 </section>
 <section>
-<section id="slide-orgf82b76c">
-<h2 id="orgf82b76c">Ejemplo en <b>C++</b></h2>
+<section id="slide-org4466885">
+<h2 id="org4466885">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Constructores:
 <ul>
@@ -216,8 +218,8 @@ de <i>heap</i></li>
 </section>
 </section>
 <section>
-<section id="slide-org0cfe541">
-<h2 id="org0cfe541">Ejemplo en <b>C++</b></h2>
+<section id="slide-org3db9c4a">
+<h2 id="org3db9c4a">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Destructores:
 <ul>
@@ -235,8 +237,8 @@ destruye; Por lo general sólo para recuperar el almacenamiento del
 </section>
 </section>
 <section>
-<section id="slide-org24a8ba7">
-<h2 id="org24a8ba7">Ejemplo en <b>C++</b></h2>
+<section id="slide-org19c941c">
+<h2 id="org19c941c">Ejemplo en <b>C++</b></h2>
 <ul>
 <li>Funciones o clases <i>friend</i> - para proporcionar acceso a miembros
 privados a algunas unidades o funciones no relacionadas
@@ -250,24 +252,24 @@ privados a algunas unidades o funciones no relacionadas
 </section>
 </section>
 <section>
-<section id="slide-org4c0b222">
-<h2 id="org4c0b222">Ejemplo en <b>C++</b></h2>
+<section id="slide-org4b2a5d8">
+<h2 id="org4b2a5d8">Ejemplo en <b>C++</b></h2>
 <div class="org-src-container">
 
-<pre  class="src src-c++"><code trim><span style="color: #00ffff;">class</span> <span style="color: #98fb98;">stack</span> {
+<pre  class="src src-c++"   ><code trim><span style="color: #00ffff;">class</span> <span style="color: #ff7f50;">stack</span> {
         <span style="color: #00ffff;">private</span>:
-                <span style="color: #98fb98;">int</span> *<span style="color: #eedd82;">stackPtr</span>, <span style="color: #eedd82;">maxLen</span>, <span style="color: #eedd82;">topPtr</span>;
+                <span style="color: #ff7f50;">int</span> *<span style="color: #ffffff; font-weight: bold;">stackPtr</span>, <span style="color: #ffffff; font-weight: bold;">maxLen</span>, <span style="color: #ffffff; font-weight: bold;">topPtr</span>;
         <span style="color: #00ffff;">public</span>:
-                <span style="color: #87cefa;">stack</span>() { <span style="color: #ff4500;">// </span><span style="color: #ff4500;">a constructor</span>
-                        stackPtr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">int</span> [100];
+                <span style="color: #4186be;">stack</span>() { <span style="color: #ff0000;">// </span><span style="color: #ff0000;">a constructor</span>
+                        stackPtr = <span style="color: #00ffff;">new</span> <span style="color: #ff7f50;">int</span> [100];
                         maxLen = 99;
                         topPtr = -1;
                 };
-                ~<span style="color: #87cefa;">stack</span> () {<span style="color: #00ffff;">delete</span> [] stackPtr;};
-                <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">push</span> (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">num</span>) {&#8230;};
-                <span style="color: #98fb98;">void</span> <span style="color: #87cefa;">pop</span> () {&#8230;};
-                <span style="color: #98fb98;">int</span> <span style="color: #87cefa;">top</span> () {&#8230;};
-                <span style="color: #98fb98;">int</span> <span style="color: #87cefa;">empty</span> () {&#8230;};
+                ~<span style="color: #4186be;">stack</span> () {<span style="color: #00ffff;">delete</span> [] stackPtr;};
+                <span style="color: #ff7f50;">void</span> <span style="color: #4186be;">push</span> (<span style="color: #ff7f50;">int</span> <span style="color: #ffffff; font-weight: bold;">num</span>) {&#8230;};
+                <span style="color: #ff7f50;">void</span> <span style="color: #4186be;">pop</span> () {&#8230;};
+                <span style="color: #ff7f50;">int</span> <span style="color: #4186be;">top</span> () {&#8230;};
+                <span style="color: #ff7f50;">int</span> <span style="color: #4186be;">empty</span> () {&#8230;};
 }
 </code></pre>
 </div>
@@ -275,8 +277,8 @@ privados a algunas unidades o funciones no relacionadas
 </section>
 </section>
 <section>
-<section id="slide-org780168b">
-<h2 id="org780168b">Evaluación de <b>Ada</b> y <b>C++</b></h2>
+<section id="slide-org257aa91">
+<h2 id="org257aa91">Evaluación de <b>Ada</b> y <b>C++</b></h2>
 <ul>
 <li>El soporte de <b>C++</b> para TDAs es similar al poder expresivo de <b>Ada</b></li>
 <li>Ambos proporcionan mecanismos efectivos para la encapsulación y la ocultación de la información</li>
@@ -287,8 +289,8 @@ privados a algunas unidades o funciones no relacionadas
 </section>
 </section>
 <section>
-<section id="slide-orge2d3d9d">
-<h2 id="orge2d3d9d">Ejemplo en <b>java</b></h2>
+<section id="slide-org236bf73">
+<h2 id="org236bf73">Ejemplo en <b>java</b></h2>
 <ul>
 <li>Similar a <b>C++</b>, excepto:
 <ul>
@@ -301,7 +303,7 @@ privados a algunas unidades o funciones no relacionadas
 </ul>
 
 </section>
-<section id="slide-orge2d3d9d-split">
+<section id="slide-org236bf73-split">
 
 <ul>
 <li><b>Java</b> tiene un segundo mecanismo de alcance, el alcance del
@@ -318,22 +320,22 @@ el paquete.</li>
 </section>
 </section>
 <section>
-<section id="slide-org70094a7">
-<h2 id="org70094a7">Ejemplo en <b>java</b></h2>
+<section id="slide-org3be0ccc">
+<h2 id="org3be0ccc">Ejemplo en <b>java</b></h2>
 <div class="org-src-container">
 
-<pre  class="src src-C++"><code trim><span style="color: #00ffff;">class</span> <span style="color: #98fb98;">StackClass</span> {
+<pre  class="src src-C++"   ><code trim><span style="color: #00ffff;">class</span> <span style="color: #ff7f50;">StackClass</span> {
         <span style="color: #00ffff;">private</span>:
-          <span style="color: #00ffff;">private</span> <span style="color: #98fb98;">int</span> [] *stackRef;
-          <span style="color: #00ffff;">private</span> <span style="color: #98fb98;">int</span> [] maxLen, topIndex;
-          <span style="color: #00ffff;">public</span> StackClass() { <span style="color: #ff4500;">// </span><span style="color: #ff4500;">a constructor</span>
-                        stackRef = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">int</span> [100];
+          <span style="color: #00ffff;">private</span> <span style="color: #ff7f50;">int</span> [] *stackRef;
+          <span style="color: #00ffff;">private</span> <span style="color: #ff7f50;">int</span> [] maxLen, topIndex;
+          <span style="color: #00ffff;">public</span> StackClass() { <span style="color: #ff0000;">// </span><span style="color: #ff0000;">a constructor</span>
+                        stackRef = <span style="color: #00ffff;">new</span> <span style="color: #ff7f50;">int</span> [100];
                         maxLen = 99;
                         topPtr = -1;
                 };
-                <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">void</span> push (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">num</span>) {...};
-                <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">void</span> pop () {...};
-                <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">int</span> top () {...};
+                <span style="color: #00ffff;">public</span> <span style="color: #ff7f50;">void</span> push (<span style="color: #ff7f50;">int</span> <span style="color: #ffffff; font-weight: bold;">num</span>) {...};
+                <span style="color: #00ffff;">public</span> <span style="color: #ff7f50;">void</span> pop () {...};
+                <span style="color: #00ffff;">public</span> <span style="color: #ff7f50;">int</span> top () {...};
                 <span style="color: #00ffff;">public</span> boolean empty () {...};
 }
 </code></pre>
@@ -343,8 +345,8 @@ el paquete.</li>
 </section>
 </section>
 <section>
-<section id="slide-orge61ffec">
-<h2 id="orge61ffec">Tipo de Datos Abstracto Parametrizados</h2>
+<section id="slide-org2c6fe50">
+<h2 id="org2c6fe50">Tipo de Datos Abstracto Parametrizados</h2>
 <ul>
 <li>Los TDAs parametrizados permiten diseñar un TDA que puede almacenar
 cualquier tipo de elemento.</li>
@@ -357,8 +359,8 @@ cualquier tipo de elemento.</li>
 </section>
 </section>
 <section>
-<section id="slide-org5578fec">
-<h2 id="org5578fec">TDA parametrizado en <b>Ada</b></h2>
+<section id="slide-org9f7c6ac">
+<h2 id="org9f7c6ac">TDA parametrizado en <b>Ada</b></h2>
 <ul>
 <li>Paquete genérico de <b>Ada</b>
 <ul>
@@ -372,27 +374,27 @@ tipo del elemento y el tamaño de la pila sean genéricos.</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-ada"><code trim>generic
+<pre  class="src src-ada"   ><code trim><span style="color: #00ffff;">generic</span>
 Max_size: Positive;
-type Elem_Type is Private;
-package Generic_Stack is 
-…
-function Top(Stk: in out StackType) return Elem_type;
-…
-end Generic_Stack;
+<span style="color: #00ffff;">type</span> Elem_Type <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">Private</span>;
+<span style="color: #00ffff;">package</span> Generic_Stack <span style="color: #00ffff;">is</span> 
+&#8230;
+<span style="color: #00ffff;">function</span> Top(Stk: <span style="color: #00ffff;">in</span> <span style="color: #00ffff;">out</span> StackType) <span style="color: #00ffff;">return</span> Elem_type;
+&#8230;
+<span style="color: #00ffff;">end</span> Generic_Stack;
 
 
 
-Package Integer_Stack is new Generics_Stack(100,Integer);
-Package Float_Stack is new Generics_Stack(100,Float);
+<span style="color: #00ffff;">Package</span> Integer_Stack <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">new</span> Generics_Stack(100,Integer);
+<span style="color: #00ffff;">Package</span> Float_Stack <span style="color: #00ffff;">is</span> <span style="color: #00ffff;">new</span> Generics_Stack(100,Float);
 </code></pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgd4b14e6">
-<h2 id="orgd4b14e6">TDA parametrizado en <b>C++</b></h2>
+<section id="slide-orga0f1182">
+<h2 id="orga0f1182">TDA parametrizado en <b>C++</b></h2>
 <ul>
 <li>Las clases pueden ser algo genéricas escribiendo constructores
 parametrizados</li>
@@ -401,26 +403,26 @@ parametrizados</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-c++"><code trim><span style="color: #00ffff;">template</span> &lt;<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">type</span>&gt;
-        <span style="color: #00ffff;">class</span> <span style="color: #98fb98;">stack</span> {
+<pre  class="src src-c++"   ><code trim><span style="color: #00ffff;">template</span> &lt;<span style="color: #00ffff;">class</span> <span style="color: #ff7f50;">type</span>&gt;
+        <span style="color: #00ffff;">class</span> <span style="color: #ff7f50;">stack</span> {
         &#8230;
-        stack (<span style="color: #98fb98;">int</span> <span style="color: #eedd82;">size</span>) {
-        stk_ptr = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">int</span> [size]; 
+        stack (<span style="color: #ff7f50;">int</span> <span style="color: #ffffff; font-weight: bold;">size</span>) {
+        stk_ptr = <span style="color: #00ffff;">new</span> <span style="color: #ff7f50;">int</span> [size]; 
         max_len = size - 1;
          top = -1;
         };
                 &#8230;
      }
 
-        <span style="color: #98fb98;">stack</span> <span style="color: #eedd82;">stk</span>(100);
+        <span style="color: #ff7f50;">stack</span> <span style="color: #ffffff; font-weight: bold;">stk</span>(100);
 </code></pre>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgb453c90">
-<h2 id="orgb453c90">Encapsulación</h2>
+<section id="slide-orgd77bf3a">
+<h2 id="orgd77bf3a">Encapsulación</h2>
 <ul>
 <li>Los programas grandes tienen dos necesidades especiales:
 <ul>
@@ -438,8 +440,8 @@ relacionados en una unidad que puede ser compilada por separado
 </section>
 </section>
 <section>
-<section id="slide-org1bb073c">
-<h2 id="org1bb073c">Encapsulación en <b>C</b></h2>
+<section id="slide-org8401b6c">
+<h2 id="org8401b6c">Encapsulación en <b>C</b></h2>
 <ul>
 <li>Los archivos que contengan uno o más subprogramas pueden ser compilados independientemente</li>
 <li>La interfaz se coloca en un archivo de encabezado (<i>header</i>)</li>
@@ -451,8 +453,8 @@ relacionados en una unidad que puede ser compilada por separado
 </section>
 </section>
 <section>
-<section id="slide-org7f610ee">
-<h2 id="org7f610ee">Encapsulación en <b>C++</b></h2>
+<section id="slide-orgd92d8be">
+<h2 id="orgd92d8be">Encapsulación en <b>C++</b></h2>
 <ul>
 <li>Similar a C</li>
 <li>Adición de funciones  <i>friend</i> que tienen acceso a miembros privados de la clase <i>amiga</i></li>
@@ -462,8 +464,8 @@ relacionados en una unidad que puede ser compilada por separado
 </section>
 </section>
 <section>
-<section id="slide-orgee98ce8">
-<h2 id="orgee98ce8">Paquetes de <b>Ada</b></h2>
+<section id="slide-org89d2f94">
+<h2 id="org89d2f94">Paquetes de <b>Ada</b></h2>
 <ul>
 <li>La especificacipon de los paquetes de Ada pueden incluir cualquier número de declaraciones de datos y subprogramas</li>
 <li>Los paquetes Ada pueden ser compilados por separado</li>
@@ -474,8 +476,8 @@ relacionados en una unidad que puede ser compilada por separado
 </section>
 </section>
 <section>
-<section id="slide-org8322647">
-<h2 id="org8322647">El Sistema de Módulos de <b>Ciao Prolog</b></h2>
+<section id="slide-orga02ba02">
+<h2 id="orga02ba02">El Sistema de Módulos de <b>Ciao Prolog</b></h2>
 <ul>
 <li>Basado en Procedimientos
 <ul>
@@ -491,7 +493,7 @@ ese módulo mas los predicados importados de otros módulos.</li>
 </ul>
 
 </section>
-<section id="slide-org8322647-split">
+<section id="slide-orga02ba02-split">
 
 <ul>
 <li>la definición de operadores son locales al módulo</li>
@@ -506,8 +508,8 @@ definen el predicado como multifile puede utilizar ese predicado.
 </section>
 </section>
 <section>
-<section id="slide-org6339325">
-<h2 id="org6339325">Encapsulación de Nombres</h2>
+<section id="slide-org767c9e4">
+<h2 id="org767c9e4">Encapsulación de Nombres</h2>
 <ul>
 <li>Los programas grandes definen muchos nombres globales; Necesitan una manera de dividirse en agrupaciones lógicas</li>
 <li>Un encapsulamiento de nombres utiliza para crear un nuevo ámbito para los nombres
@@ -526,8 +528,8 @@ calificar nombres utilizados fuera del espacio de nombres</li>
 </section>
 </section>
 <section>
-<section id="slide-org3c77a8b">
-<h2 id="org3c77a8b">Encapsulación de Nombres</h2>
+<section id="slide-orgbda7b99">
+<h2 id="orgbda7b99">Encapsulación de Nombres</h2>
 <ul>
 <li>Paquetes de <b>Java</b>
 <ul>
@@ -548,8 +550,8 @@ cláusula <code>with</code></li>
 </section>
 </section>
 <section>
-<section id="slide-orgd3353a3">
-<h2 id="orgd3353a3">Programación Orientada a Objetos</h2>
+<section id="slide-orga63c842">
+<h2 id="orga63c842">Programación Orientada a Objetos</h2>
 <ul>
 <li>Muchos lenguajes de programación orientada a objetos (POO)
 <ul>
@@ -565,8 +567,8 @@ cláusula <code>with</code></li>
 </section>
 </section>
 <section>
-<section id="slide-orgb556015">
-<h2 id="orgb556015">Programación Orientada a Objetos</h2>
+<section id="slide-org50a288c">
+<h2 id="org50a288c">Programación Orientada a Objetos</h2>
 <ul>
 <li>Tipos de datos abstractos</li>
 <li>Herencia
@@ -581,8 +583,8 @@ cláusula <code>with</code></li>
 </section>
 </section>
 <section>
-<section id="slide-org7f1068f">
-<h2 id="org7f1068f">Herencia</h2>
+<section id="slide-org55f909e">
+<h2 id="org55f909e">Herencia</h2>
 <ul>
 <li>Los aumentos de la productividad pueden provenir de la reutilización
 del software
@@ -602,8 +604,8 @@ jerarquía</li>
 </section>
 </section>
 <section>
-<section id="slide-orge3f475c">
-<h2 id="orge3f475c">Conceptos de la orientación a objetos</h2>
+<section id="slide-org362dec8">
+<h2 id="org362dec8">Conceptos de la orientación a objetos</h2>
 <ul>
 <li>Los TDA se llaman clases</li>
 <li>Las instancias de una clase se llaman objetos</li>
@@ -616,8 +618,8 @@ jerarquía</li>
 </section>
 </section>
 <section>
-<section id="slide-org5ea8123">
-<h2 id="org5ea8123">Conceptos de la orientación a objetos</h2>
+<section id="slide-org5487f5b">
+<h2 id="org5487f5b">Conceptos de la orientación a objetos</h2>
 <ul>
 <li>Las llamadas a los métodos se llaman <i>mensajes</i></li>
 <li>Toda la colección de métodos de un objeto se llama su <i>protocolo de mensajes</i> o <i>interfaz de mensajes</i></li>
@@ -629,8 +631,8 @@ jerarquía</li>
 </section>
 </section>
 <section>
-<section id="slide-orgf0f2b20">
-<h2 id="orgf0f2b20">Conceptos de la orientación a objetos</h2>
+<section id="slide-org9a5e1d2">
+<h2 id="org9a5e1d2">Conceptos de la orientación a objetos</h2>
 <ul>
 <li>La herencia puede ser complicada por el control de acceso a las entidades encapsuladas
 <ul>
@@ -651,8 +653,8 @@ jerarquía</li>
 </section>
 </section>
 <section>
-<section id="slide-org8890629">
-<h2 id="org8890629">Conceptos de la orientación a objetos</h2>
+<section id="slide-org3c96529">
+<h2 id="org3c96529">Conceptos de la orientación a objetos</h2>
 <ul>
 <li>Hay dos tipos de variables en una clase:
 <ul>
@@ -679,8 +681,8 @@ mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-org09909e8">
-<h2 id="org09909e8">Ligadura Dinámica</h2>
+<section id="slide-org1511327">
+<h2 id="org1511327">Ligadura Dinámica</h2>
 <ul>
 <li>Una <i>variable polimórfica</i> puede ser definida en una clase que sea
 capaz de referenciar (o apuntar) objetos de la clase y objetos de
@@ -696,8 +698,8 @@ desarrollo y el mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc6dd330">
-<h2 id="orgc6dd330">Ligadura Dinámica</h2>
+<section id="slide-org3a8d41d">
+<h2 id="org3a8d41d">Ligadura Dinámica</h2>
 <ul>
 <li>Un <i>método virtual</i> es aquel que no incluye una definición (sólo define un protocolo)</li>
 <li>Una <i>clase abstracta</i> es aquella que incluye al menos un método virtual</li>
@@ -708,8 +710,8 @@ desarrollo y el mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-org4d968eb">
-<h2 id="org4d968eb">Cuestiones de Diseño para lenguajes de POO</h2>
+<section id="slide-org30ef46f">
+<h2 id="org30ef46f">Cuestiones de Diseño para lenguajes de POO</h2>
 <ul>
 <li>La Exclusividad de Objetos</li>
 <li>Subclases como subtipos</li>
@@ -724,8 +726,8 @@ desarrollo y el mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-org74812e1">
-<h2 id="org74812e1">La Exclusividad de Objetos</h2>
+<section id="slide-org86fa3c1">
+<h2 id="org86fa3c1">La Exclusividad de Objetos</h2>
 <ul>
 <li>Todo es un objeto
 <ul>
@@ -751,8 +753,8 @@ desarrollo y el mantenimiento</li>
 </section>
 </section>
 <section>
-<section id="slide-orge8d2444">
-<h2 id="orge8d2444">Son las sublclases subtipos?</h2>
+<section id="slide-org0be2106">
+<h2 id="org0be2106">Son las sublclases subtipos?</h2>
 <ul>
 <li>¿Existe una relación "is-a" entre un objeto de clase padre y un objeto de la subclase?
 <ul>
@@ -773,8 +775,8 @@ los métodos heredados en formas "compatibles"</li>
 </section>
 </section>
 <section>
-<section id="slide-org5f82ba0">
-<h2 id="org5f82ba0">Chequeo de tipos y Polimorfismo</h2>
+<section id="slide-org0f411d3">
+<h2 id="org0f411d3">Chequeo de tipos y Polimorfismo</h2>
 <ul>
 <li>El polimorfismo puede requerir la comprobación dinámica de los
 parámetros y el valor de retorno
@@ -791,8 +793,8 @@ estática</li>
 </section>
 </section>
 <section>
-<section id="slide-org8d1bc5b">
-<h2 id="org8d1bc5b">Herencia única y múltiple</h2>
+<section id="slide-org002e67d">
+<h2 id="org002e67d">Herencia única y múltiple</h2>
 <ul>
 <li>La herencia múltiple permite que una nueva clase herede de dos o más
 clases</li>
@@ -813,8 +815,8 @@ clases</li>
 </section>
 </section>
 <section>
-<section id="slide-org82e7159">
-<h2 id="org82e7159">Asignación de memoria de objetos y desalojo de memoria</h2>
+<section id="slide-org92700dd">
+<h2 id="org92700dd">Asignación de memoria de objetos y desalojo de memoria</h2>
 <ul>
 <li>¿A dónde se alojan los objetos?
 <ul>
@@ -836,7 +838,7 @@ uniformes a través de un puntero o variable de referencia
 </ul>
 
 </section>
-<section id="slide-org82e7159-split">
+<section id="slide-org92700dd-split">
 
 <ul>
 <li>Si se utiliza sólo la pila central, hay un problema con respecto a los subtipos</li>
@@ -847,8 +849,8 @@ uniformes a través de un puntero o variable de referencia
 </section>
 </section>
 <section>
-<section id="slide-orgd87ff34">
-<h2 id="orgd87ff34">Ligadura dinámica y estática</h2>
+<section id="slide-org48050e8">
+<h2 id="org48050e8">Ligadura dinámica y estática</h2>
 <ul>
 <li>¿Debería ser dinámica toda la vinculación de mensajes a los métodos?
 <ul>
@@ -864,10 +866,10 @@ uniformes a través de un puntero o variable de referencia
 </section>
 </section>
 <section>
-<section id="slide-org5bfddfc">
-<h3 id="org5bfddfc">Implementación de Ligadura Dinámica de Métodos</h3>
+<section id="slide-org3cd6f99">
+<h3 id="org3cd6f99">Implementación de Ligadura Dinámica de Métodos</h3>
 
-<div id="orge9a97cb" class="figure">
+<div id="orgf1ecc4c" class="figure">
 <p><img src="vtable1.png" alt="vtable1.png" />
 </p>
 </div>
@@ -875,10 +877,10 @@ uniformes a través de un puntero o variable de referencia
 </section>
 </section>
 <section>
-<section id="slide-org50ead83">
-<h3 id="org50ead83">Implementación de Ligadura Dinámica de Métodos</h3>
+<section id="slide-orgcfc1060">
+<h3 id="orgcfc1060">Implementación de Ligadura Dinámica de Métodos</h3>
 
-<div id="org38ca785" class="figure">
+<div id="orgb8c359e" class="figure">
 <p><img src="vtable2.png" alt="vtable2.png" />
 </p>
 </div>
@@ -888,8 +890,8 @@ uniformes a través de un puntero o variable de referencia
 </section>
 </section>
 <section>
-<section id="slide-orga779450">
-<h2 id="orga779450">Clases anidadas</h2>
+<section id="slide-orgcd61757">
+<h2 id="orgcd61757">Clases anidadas</h2>
 <ul>
 <li>Si una nueva clase es necesitada por sólo una clase, no hay razón
 para definirla para que pueda ser vista por otras clases
@@ -911,8 +913,8 @@ y viceversa</li>
 </section>
 </section>
 <section>
-<section id="slide-org1bc7029">
-<h2 id="org1bc7029">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<section id="slide-org07ca140">
+<h2 id="org07ca140">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
 <ul>
 <li>Smalltalk es un lenguaje OOP puro.</li>
 <li>Todo es un objeto.</li>
@@ -927,8 +929,8 @@ y viceversa</li>
 </section>
 </section>
 <section>
-<section id="slide-orgea3e4ad">
-<h2 id="orgea3e4ad">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<section id="slide-org0b116c9">
+<h2 id="org0b116c9">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
 <ul>
 <li>Chequeo de Tipos y polimorfismo
 <ul>
@@ -950,8 +952,8 @@ que no tiene ningún método de coincidencia</li>
 </section>
 </section>
 <section>
-<section id="slide-orge9ceda7">
-<h2 id="orge9ceda7">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<section id="slide-org045ce23">
+<h2 id="org045ce23">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
 <ul>
 <li>Herencia
 <ul>
@@ -967,8 +969,8 @@ métodos de instancia y métodos de clase, de su superclase.</li>
 </section>
 </section>
 <section>
-<section id="slide-orga8f1f5e">
-<h2 id="orga8f1f5e">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
+<section id="slide-orga00d080">
+<h2 id="orga00d080">Soporte para orientación a objetos en <b>Smalltalk</b></h2>
 <ul>
 <li>Evaluación de Smalltalk
 <ul>
@@ -985,8 +987,8 @@ métodos de instancia y métodos de clase, de su superclase.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgca397e9">
-<h2 id="orgca397e9">Soporte para orientación a objetos en <b>C++</b></h2>
+<section id="slide-orgba19c7f">
+<h2 id="orgba19c7f">Soporte para orientación a objetos en <b>C++</b></h2>
 <ul>
 <li>Características generales:
 <ul>
@@ -1003,8 +1005,8 @@ métodos de instancia y métodos de clase, de su superclase.</li>
 </section>
 </section>
 <section>
-<section id="slide-org904ab4e">
-<h2 id="org904ab4e">Soporte para orientación a objetos en <b>C++</b></h2>
+<section id="slide-orgba6e568">
+<h2 id="orgba6e568">Soporte para orientación a objetos en <b>C++</b></h2>
 <ul>
 <li>Herencia
 <ul>
@@ -1024,8 +1026,8 @@ métodos de instancia y métodos de clase, de su superclase.</li>
 </section>
 </section>
 <section>
-<section id="slide-org67ce130">
-<h2 id="org67ce130">Soporte para orientación a objetos en <b>C++</b></h2>
+<section id="slide-org2e9978f">
+<h2 id="org2e9978f">Soporte para orientación a objetos en <b>C++</b></h2>
 <ul>
 <li>Además, el proceso de declarar una subclase puede ser con controles de
 acceso (privados o públicos), los cuales definen posibles cambios en
@@ -1042,30 +1044,30 @@ públicos y protegidos en las subclases</li>
 </section>
 </section>
 <section>
-<section id="slide-orgb8b37ac">
-<h2 id="orgb8b37ac">Ejemplo de Herencia en <b>C++</b></h2>
+<section id="slide-orgd463931">
+<h2 id="orgd463931">Ejemplo de Herencia en <b>C++</b></h2>
 <div class="org-src-container">
 
-<pre  class="src src-c++"><code trim><span style="color: #00ffff;">class</span> <span style="color: #98fb98;">base_class</span> {
+<pre  class="src src-c++"   ><code trim><span style="color: #00ffff;">class</span> <span style="color: #ff7f50;">base_class</span> {
   <span style="color: #00ffff;">private</span>:
-    <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">a</span>;
-    <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">x</span>;
+    <span style="color: #ff7f50;">int</span> <span style="color: #ffffff; font-weight: bold;">a</span>;
+    <span style="color: #ff7f50;">float</span> <span style="color: #ffffff; font-weight: bold;">x</span>;
   <span style="color: #00ffff;">protected</span>:
-    <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">b</span>;
-    <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">y</span>;
+    <span style="color: #ff7f50;">int</span> <span style="color: #ffffff; font-weight: bold;">b</span>;
+    <span style="color: #ff7f50;">float</span> <span style="color: #ffffff; font-weight: bold;">y</span>;
   <span style="color: #00ffff;">public</span>:
-    <span style="color: #98fb98;">int</span> <span style="color: #eedd82;">c</span>;
-    <span style="color: #98fb98;">float</span> <span style="color: #eedd82;">z</span>;
+    <span style="color: #ff7f50;">int</span> <span style="color: #ffffff; font-weight: bold;">c</span>;
+    <span style="color: #ff7f50;">float</span> <span style="color: #ffffff; font-weight: bold;">z</span>;
 };
 
-<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">subclass_1</span> : <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">base_class</span> { &#8230; };
-<span style="color: #ff4500;">//     </span><span style="color: #ff4500;">In this one, b and y are protected and</span>
-<span style="color: #ff4500;">//     </span><span style="color: #ff4500;">c and z are public</span>
+<span style="color: #00ffff;">class</span> <span style="color: #ff7f50;">subclass_1</span> : <span style="color: #00ffff;">public</span> <span style="color: #ff7f50;">base_class</span> { &#8230; };
+<span style="color: #ff0000;">//     </span><span style="color: #ff0000;">In this one, b and y are protected and</span>
+<span style="color: #ff0000;">//     </span><span style="color: #ff0000;">c and z are public</span>
 
-<span style="color: #00ffff;">class</span> <span style="color: #98fb98;">subclass_2</span> : <span style="color: #00ffff;">private</span> <span style="color: #98fb98;">base_class</span> { &#8230; };
-<span style="color: #ff4500;">//    </span><span style="color: #ff4500;">In this one, b, y, c, and z are private,</span>
-<span style="color: #ff4500;">//    </span><span style="color: #ff4500;">and no derived class has access to any</span>
-<span style="color: #ff4500;">//    </span><span style="color: #ff4500;">member of base_class</span>
+<span style="color: #00ffff;">class</span> <span style="color: #ff7f50;">subclass_2</span> : <span style="color: #00ffff;">private</span> <span style="color: #ff7f50;">base_class</span> { &#8230; };
+<span style="color: #ff0000;">//    </span><span style="color: #ff0000;">In this one, b, y, c, and z are private,</span>
+<span style="color: #ff0000;">//    </span><span style="color: #ff0000;">and no derived class has access to any</span>
+<span style="color: #ff0000;">//    </span><span style="color: #ff0000;">member of base_class</span>
 
 </code></pre>
 </div>
@@ -1073,8 +1075,8 @@ públicos y protegidos en las subclases</li>
 </section>
 </section>
 <section>
-<section id="slide-org4433fdd">
-<h2 id="org4433fdd">Reexportación en <b>C++</b></h2>
+<section id="slide-orgc11c6df">
+<h2 id="orgc11c6df">Reexportación en <b>C++</b></h2>
 <ul>
 <li>Un miembro que no es accesible en una subclase (debido a la
 derivación privada) se puede declarar visible allí usando el
@@ -1084,8 +1086,8 @@ operador de resolución de alcance (::), por ejemplo,</li>
 
 <div class="org-src-container">
 
-<pre  class="src src-c++"><code trim><span style="color: #00ffff;">class</span> <span style="color: #98fb98;">subclass_3</span> : <span style="color: #00ffff;">private</span> <span style="color: #98fb98;">base_class</span> {
-        <span style="color: #7fffd4;">base_class</span> :: c;
+<pre  class="src src-c++"   ><code trim><span style="color: #00ffff;">class</span> <span style="color: #ff7f50;">subclass_3</span> : <span style="color: #00ffff;">private</span> <span style="color: #ff7f50;">base_class</span> {
+        <span style="color: #00ff00;">base_class</span> :: c;
               &#8230;
 }
 </code></pre>
@@ -1094,8 +1096,8 @@ operador de resolución de alcance (::), por ejemplo,</li>
 </section>
 </section>
 <section>
-<section id="slide-orgdbde82d">
-<h2 id="orgdbde82d">Reexportación</h2>
+<section id="slide-org582ed11">
+<h2 id="org582ed11">Reexportación</h2>
 <ul>
 <li>Una motivación para usar la derivación privada:
 <ul>
@@ -1112,8 +1114,8 @@ en la definición de clase principal.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgd4cd4a2">
-<h2 id="orgd4cd4a2">Soporte de POO en <b>C++</b></h2>
+<section id="slide-org335f974">
+<h2 id="org335f974">Soporte de POO en <b>C++</b></h2>
 <ul>
 <li>Se admite la herencia múltiple
 <ul>
@@ -1127,8 +1129,8 @@ hacer referencia utilizando el operador de resolución de alcance.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgdf93960">
-<h2 id="orgdf93960">Soporte de POO en <b>C++</b></h2>
+<section id="slide-orgc4a3f72">
+<h2 id="orgc4a3f72">Soporte de POO en <b>C++</b></h2>
 <ul>
 <li>Ligadura dinámica
 <ul>
@@ -1145,8 +1147,8 @@ dinámicamente a los mensajes</li>
 </section>
 </section>
 <section>
-<section id="slide-org84b12c9">
-<h2 id="org84b12c9">Soporte de POO en <b>C++</b></h2>
+<section id="slide-orge88e7cc">
+<h2 id="orge88e7cc">Soporte de POO en <b>C++</b></h2>
 <ul>
 <li>Evaluación
 <ul>
@@ -1169,8 +1171,8 @@ dinámicamente
 </section>
 </section>
 <section>
-<section id="slide-org9cf54fa">
-<h2 id="org9cf54fa">Soporte de POO en <b>Java</b></h2>
+<section id="slide-orga4c287a">
+<h2 id="orga4c287a">Soporte de POO en <b>Java</b></h2>
 <ul>
 <li>Debido a su estrecha relación con <b>C++</b>, nos enfocamos en las diferencias de ese lenguaje</li>
 <li>Características generales
@@ -1184,7 +1186,7 @@ dinámicamente
 </ul>
 
 </section>
-<section id="slide-org9cf54fa-split">
+<section id="slide-orga4c287a-split">
 
 <ul>
 <li>El método <code>finalize</code> se llama implícitamente cuando el recolector
@@ -1196,8 +1198,8 @@ el objeto</li>
 </section>
 </section>
 <section>
-<section id="slide-org88efb4c">
-<h2 id="org88efb4c">Soporte de POO en <b>Java</b></h2>
+<section id="slide-orgd109d5a">
+<h2 id="orgd109d5a">Soporte de POO en <b>Java</b></h2>
 <ul>
 <li>Herencia
 <ul>
@@ -1212,8 +1214,8 @@ constantes nombradas, por ejemplo,</li>
 </ul>
 <div class="org-src-container">
 
-<pre  class="src src-c++"><code trim><span style="color: #00ffff;">public</span> interface Comparable {
-                     <span style="color: #00ffff;">public</span> <span style="color: #98fb98;">int</span> comparedTo (<span style="color: #98fb98;">Object</span> <span style="color: #eedd82;">b</span>);
+<pre  class="src src-c++"   ><code trim><span style="color: #00ffff;">public</span> interface Comparable {
+                     <span style="color: #00ffff;">public</span> <span style="color: #ff7f50;">int</span> comparedTo (Object b);
         }
 </code></pre>
 </div>
@@ -1225,8 +1227,8 @@ constantes nombradas, por ejemplo,</li>
 </section>
 </section>
 <section>
-<section id="slide-org6b4f831">
-<h2 id="org6b4f831">Soporte de POO en <b>Java</b></h2>
+<section id="slide-org2a3342c">
+<h2 id="org2a3342c">Soporte de POO en <b>Java</b></h2>
 <ul>
 <li>Ligadura dinámica</li>
 <li>En Java, todos los mensajes se enlazan dinámicamente a los métodos,
@@ -1240,8 +1242,8 @@ o privados, los cuales no permiten sobreescribir</li>
 </section>
 </section>
 <section>
-<section id="slide-org2addb01">
-<h2 id="org2addb01">Soporte de POO en <b>Java</b></h2>
+<section id="slide-orgf22d906">
+<h2 id="orgf22d906">Soporte de POO en <b>Java</b></h2>
 <ul>
 <li>Evaluación
 <ul>
@@ -1259,8 +1261,8 @@ métodos con sus definiciones</li>
 </section>
 </section>
 <section>
-<section id="slide-org0582aa9">
-<h2 id="org0582aa9">Soporte de POO en <b>Ciao Prolog</b></h2>
+<section id="slide-org361e254">
+<h2 id="org361e254">Soporte de POO en <b>Ciao Prolog</b></h2>
 <ul>
 <li><b>O'Ciao</b> es un conjunto de bibliotecas que permite la programación
 orientada a objetos en Ciao Prolog.</li>
@@ -1278,32 +1280,32 @@ tradicionales son polimórficos por naturaleza.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgbae03c3">
-<h2 id="orgbae03c3">Ejemplo POO <b>Ciao Prolog</b></h2>
+<section id="slide-org7595da6">
+<h2 id="org7595da6">Ejemplo POO <b>Ciao Prolog</b></h2>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim>:- class(stack,<span style="color: #00ffff;">[]</span>,<span style="color: #00ffff;">[]</span>).
-:- <span style="color: #b0c4de;">dynamic</span> <span style="color: #87cefa;">storage/1</span>.
-<span style="color: #ff4500;">% </span><span style="color: #ff4500;">Interface declaration: the following predicates will</span>
-<span style="color: #ff4500;">% </span><span style="color: #ff4500;">be available at run-time.</span>
-:- export(<span style="color: #87cefa;">push/1</span>).
-:- export(<span style="color: #87cefa;">pop/1</span>).
-:- export(<span style="color: #87cefa;">top/1</span>).
-:- export(<span style="color: #87cefa;">is_empty/0</span>).
-<span style="color: #ff4500;">% </span><span style="color: #ff4500;">Methods</span>
-<span style="color: #87cefa;">push</span>(<span style="color: #eedd82;">Item</span>) :-
-        nonvar(<span style="color: #eedd82;">Item</span>),
-        asserta_fact(storage(<span style="color: #eedd82;">Item</span>)).
+<pre  class="src src-prolog"   ><code trim>:- class(stack,<span style="color: #00ffff;">[]</span>,<span style="color: #00ffff;">[]</span>).
+:- <span style="color: #ffaa00;">dynamic</span> <span style="color: #4186be;">storage/1</span>.
+<span style="color: #ff0000;">% </span><span style="color: #ff0000;">Interface declaration: the following predicates will</span>
+<span style="color: #ff0000;">% </span><span style="color: #ff0000;">be available at run-time.</span>
+:- export(<span style="color: #4186be;">push/1</span>).
+:- export(<span style="color: #4186be;">pop/1</span>).
+:- export(<span style="color: #4186be;">top/1</span>).
+:- export(<span style="color: #4186be;">is_empty/0</span>).
+<span style="color: #ff0000;">% </span><span style="color: #ff0000;">Methods</span>
+<span style="color: #4186be;">push</span>(<span style="color: #ffffff; font-weight: bold;">Item</span>) :-
+        nonvar(<span style="color: #ffffff; font-weight: bold;">Item</span>),
+        asserta_fact(storage(<span style="color: #ffffff; font-weight: bold;">Item</span>)).
 
-<span style="color: #87cefa;">pop</span>(<span style="color: #eedd82;">Item</span>) :-
-        var(<span style="color: #eedd82;">Item</span>),
-        retract_fact(storage(<span style="color: #eedd82;">Item</span>)).
+<span style="color: #4186be;">pop</span>(<span style="color: #ffffff; font-weight: bold;">Item</span>) :-
+        var(<span style="color: #ffffff; font-weight: bold;">Item</span>),
+        retract_fact(storage(<span style="color: #ffffff; font-weight: bold;">Item</span>)).
 
-<span style="color: #87cefa;">top</span>(<span style="color: #eedd82;">Top</span>) :-
-        storage(<span style="color: #eedd82;">Top</span>), <span style="color: #00ffff;">!</span>.
+<span style="color: #4186be;">top</span>(<span style="color: #ffffff; font-weight: bold;">Top</span>) :-
+        storage(<span style="color: #ffffff; font-weight: bold;">Top</span>), <span style="color: #00ffff;">!</span>.
 
-<span style="color: #87cefa;">is_empty</span> :-
-        storage(<span style="color: #eedd82;">_</span>), <span style="color: #00ffff;">!</span>, fail.
+<span style="color: #4186be;">is_empty</span> :-
+        storage(<span style="color: #ffffff; font-weight: bold;">_</span>), <span style="color: #00ffff;">!</span>, fail.
 is_empty.
 </code></pre>
 </div>
@@ -1311,11 +1313,11 @@ is_empty.
 </section>
 </section>
 <section>
-<section id="slide-org6aaf66d">
-<h2 id="org6aaf66d">Ejemplo POO <b>Ciao Prolog</b></h2>
+<section id="slide-orge6d9b54">
+<h2 id="orge6d9b54">Ejemplo POO <b>Ciao Prolog</b></h2>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim>?- use_package(objects).
+<pre  class="src src-prolog"   ><code trim>?- use_package(objects).
 
 yes
 ?- use_class(library(class/examples/stack)).
@@ -1323,24 +1325,24 @@ yes
 yes
 ?-
 
-?- <span style="color: #eedd82;">St1</span> new stack,<span style="color: #eedd82;">St2</span> new stack.
+?- <span style="color: #ffffff; font-weight: bold;">St1</span> new stack,<span style="color: #ffffff; font-weight: bold;">St2</span> new stack.
 
-<span style="color: #eedd82;">St1</span> = stack(<span style="color: #ffa07a;">'9254074093385163'</span>),
-<span style="color: #eedd82;">St2</span> = stack(<span style="color: #ffa07a;">'9254074091'</span>) ? ,
+<span style="color: #ffffff; font-weight: bold;">St1</span> = stack(<span style="color: #ffff00;">'9254074093385163'</span>),
+<span style="color: #ffffff; font-weight: bold;">St2</span> = stack(<span style="color: #ffff00;">'9254074091'</span>) ? ,
 
 
-1 ?- <span style="color: #eedd82;">St1</span>:push(8),<span style="color: #eedd82;">St2</span>:push(9).
+1 ?- <span style="color: #ffffff; font-weight: bold;">St1</span>:push(8),<span style="color: #ffffff; font-weight: bold;">St2</span>:push(9).
 
-<span style="color: #eedd82;">St1</span> = stack(<span style="color: #ffa07a;">'9254074093385163'</span>),
-<span style="color: #eedd82;">St2</span> = stack(<span style="color: #ffa07a;">'9254074091'</span>) ?
+<span style="color: #ffffff; font-weight: bold;">St1</span> = stack(<span style="color: #ffff00;">'9254074093385163'</span>),
+<span style="color: #ffffff; font-weight: bold;">St2</span> = stack(<span style="color: #ffff00;">'9254074091'</span>) ?
 
 yes
-1 ?- <span style="color: #eedd82;">St1</span>:top(<span style="color: #eedd82;">I</span>),<span style="color: #eedd82;">St2</span>:top(<span style="color: #eedd82;">K</span>).
+1 ?- <span style="color: #ffffff; font-weight: bold;">St1</span>:top(<span style="color: #ffffff; font-weight: bold;">I</span>),<span style="color: #ffffff; font-weight: bold;">St2</span>:top(<span style="color: #ffffff; font-weight: bold;">K</span>).
 
-<span style="color: #eedd82;">I</span> = 8,
-<span style="color: #eedd82;">K</span> = 9,
-<span style="color: #eedd82;">St1</span> = stack(<span style="color: #ffa07a;">'9254074093385163'</span>),
-<span style="color: #eedd82;">St2</span> = stack(<span style="color: #ffa07a;">'9254074091'</span>) ?
+<span style="color: #ffffff; font-weight: bold;">I</span> = 8,
+<span style="color: #ffffff; font-weight: bold;">K</span> = 9,
+<span style="color: #ffffff; font-weight: bold;">St1</span> = stack(<span style="color: #ffff00;">'9254074093385163'</span>),
+<span style="color: #ffffff; font-weight: bold;">St2</span> = stack(<span style="color: #ffff00;">'9254074091'</span>) ?
 
 yes
 1 ?-
@@ -1350,21 +1352,21 @@ yes
 </section>
 </section>
 <section>
-<section id="slide-org57273af">
-<h2 id="org57273af">Herencia en <b>Ciao Prolog</b></h2>
+<section id="slide-org9b5c782">
+<h2 id="org9b5c782">Herencia en <b>Ciao Prolog</b></h2>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim>:- class(specific).
+<pre  class="src src-prolog"   ><code trim>:- class(specific).
 
-<span style="color: #ff4500;">% </span><span style="color: #ff4500;">Establish an inheritance relationship with class "generic".</span>
+<span style="color: #ff0000;">% </span><span style="color: #ff0000;">Establish an inheritance relationship with class "generic".</span>
 :- inherit_class(library(class/examples/generic)).
 
-     <span style="color: #ff4500;">% </span><span style="color: #ff4500;">Override inherited </span><span style="color: #87cefa;">datum/1</span><span style="color: #ff4500;">.</span>
-     <span style="color: #ff4500;">% </span><span style="color: #87cefa;">datum/1</span><span style="color: #ff4500;"> is said to be overriden because there are both an</span>
-     <span style="color: #ff4500;">% </span><span style="color: #ff4500;">inherited definition (from class "generic") and a local one,</span>
-     <span style="color: #ff4500;">% </span><span style="color: #ff4500;">which overrides the one inherited.</span>
-     :- data <span style="color: #87cefa;">datum/1</span>.
-     :- inheritable <span style="color: #87cefa;">datum/1</span>.
+     <span style="color: #ff0000;">% </span><span style="color: #ff0000;">Override inherited </span><span style="color: #4186be;">datum/1</span><span style="color: #ff0000;">.</span>
+     <span style="color: #ff0000;">% </span><span style="color: #4186be;">datum/1</span><span style="color: #ff0000;"> is said to be overriden because there are both an</span>
+     <span style="color: #ff0000;">% </span><span style="color: #ff0000;">inherited definition (from class "generic") and a local one,</span>
+     <span style="color: #ff0000;">% </span><span style="color: #ff0000;">which overrides the one inherited.</span>
+     :- data <span style="color: #4186be;">datum/1</span>.
+     :- inheritable <span style="color: #4186be;">datum/1</span>.
 </code></pre>
 </div>
 </section>
@@ -1378,19 +1380,16 @@ yes
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
+width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'slide',
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
+
 </script>
 </body>
 </html>

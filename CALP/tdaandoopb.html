@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html><head><title>TDA y POO</title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body><div class="reveal" ><div class="slides" ><section id="sec-title-slide" ><h1 class="title" >TDA y POO</h1>
+<h2 class="author" >C. A. L. P.</h2>
+<h3 class="date" >Claudio Vaucheret</h3>
+</section>
+<section data-auto-animate ><h2>Abstracción</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate ><h2><em><span style="color:red;">Abstracción</span></em>
+</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:red;">El concepto de Abstracción</span></h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment highlight-current-red">Una abstracción es una vista o representación de una entidad que incluye sólo los atributos más significativos</li>
+<li class="fragment highlight-current-red">El concepto de abstracción es fundamental en la programación (y en toda la ciencia de la computación)</li>
+<li class="fragment highlight-current-red">Casi todos los lenguajes de programación admiten la abstracción de procesos con subprogramas</li>
+<li class="fragment highlight-current-red">Casi todos los lenguajes de programación diseñados desde 1980 soportan la abstracción de datos</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Introducción a la Abstracción del Dato</span></h3>
+<div style="font-size: 90%;">
+<p>Un <em>tipo de datos abstracto</em>
+ (TDA) es un tipo de datos definido por el usuario que cumple las dos condiciones siguientes:</p>
+<ul><li class="fragment highlight-current-red">La representación y las operaciones sobre los objetos del tipo se definen en una única unidad sintáctica</li>
+<li class="fragment highlight-current-red">La representación de objetos del tipo está oculta a las unidades de programa que utilizan estos objetos, por lo que las únicas operaciones posibles son las proporcionadas en la definición del tipo</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Ventajas de la Abstracción</span></h3>
+<div style="font-size: 90%;">
+<p>Ventaja de la primera condición</p>
+<ul><li class="fragment highlight-current-red">Organización del programa, modificabilidad (todo lo relacionado con la estructura de datos está junto), y compilación separada</li>
+</ul>
+<p>Ventaja de la segunda condición</p>
+<ul><li class="fragment highlight-current-red">Fiabilidad - ocultando las representaciones de datos, el código de usuario no puede acceder directamente a objetos del tipo y asi depender de la representación, permitiendo que la representación se cambie sin afectar el código de usuario.</li>
+</ul>
+</section>
+<section data-auto-animate ><h2>Cuestiones de Diseño</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate ><h2><em><span style="color:green;">Cuestiones de Diseño</span></em>
+</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:green;">Cuestiones de Diseño</span></h3>
+<ul><li class="fragment highlight-current-green">Una unidad sintáctica para definir un TDA</li>
+<li class="fragment highlight-current-green">Operaciones integradas<ol><li class="fragment highlight-current-green">Asignación</li>
+<li class="fragment highlight-current-green">Comparación</li>
+</ol>
+</li>
+<li class="fragment highlight-current-green">Operaciones comunes<ol><li class="fragment highlight-current-green">Iteradores</li>
+<li class="fragment highlight-current-green">Accesores</li>
+<li class="fragment highlight-current-green">Constructores</li>
+<li class="fragment highlight-current-green">Destructores</li>
+</ol>
+</li>
+<li class="fragment highlight-current-green">TDA parametrizados</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Ejemplo en <b>ADA</b>
+</span></h3>
+<div style="font-size: 80%;">
+<p><span style="color:green;">El constructor de encapsulación se denomina <em>package</em>
+</span></p>
+<ul><li class="fragment highlight-current-green">Especificación del <em>package</em>
+ (la interfaz)</li>
+<li class="fragment highlight-current-green">Cuerpo del <em>package</em>
+ (implementación de las entidades nombradas en la especificación)</li>
+</ul>
+<p><span style="color:green;">Ocultamiento de la información</span></p>
+<ul><li class="fragment highlight-current-green">La representación de tipo aparece en una parte de la especificación llamada la parte <em>privada</em>
+</li>
+<li class="fragment highlight-current-green">Una forma más restringida con tipos privados <em>limitados</em>
+ Define el TDA como un puntero y proporciona la definición de la estructura apuntada en el paquete del cuerpo</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Ejemplo en <b>ADA</b>
+</span></h3>
+<pre><code>
+package Stack_Pack is 
+       type stack_type is limited private;
+       max_size: constant := 100;
+       function empty(stk: in stack_type) return Boolean;
+       procedure push(stk: in out stack_type; elem:in Integer);
+       procedure pop(stk: in out stack_type);
+       function top(stk: in stack_type) return Integer;
+
+       private  -- hidden from clients
+       type list_type is array (1..max_size) of Integer;
+       type stack_type is record
+               list: list_type;
+               topsub: Integer range 0..max_size) := 0;
+       end record;
+end Stack_Pack
+</code></pre>
+</section>
+<section data-auto-animate ><h2>Ejemplo en <b>C++</b>
+</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate ><h2><em><span style="color:blue;">Ejemplo en <b>C++</b>
+</span></em>
+</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:blue;">Ejemplo en <b>C++</b>
+</span></h3>
+<ul><li class="fragment appear">Basado en el tipo <em>struct</em>
+ de <b>C</b>
+ y en las clases de <b>Simula 67</b>
+</li>
+<li class="fragment appear">La clase es el dispositivo de encapsulación</li>
+<li class="fragment appear">Todas las <em>instancias</em>
+ de una  clase comparten una copia única de las funciones miembro</li>
+<li class="fragment appear">Cada instancia de una clase tiene su propia copia de los miembros de datos de la clase</li>
+<li class="fragment appear">Las instancias pueden ser estáticas, dinámicas de pila o dinámicas  de <em>heap</em>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Ejemplo en <b>C++</b>
+</span></h3>
+<p>Ocultamiento de la Información</p>
+<ul><li class="fragment appear">cláusula <em>Private</em>
+ para entidades ocultas</li>
+<li class="fragment appear">cláusula <em>Public</em>
+ para interface de entidades</li>
+<li class="fragment appear">cláusula <em>Protected</em>
+ para herencia</li>
+</ul>
+</section>
+</div>
+</div>
+<script src="https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>

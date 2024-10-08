@@ -1,6 +1,21 @@
-:- module(two2,_).
+:- module(two2,[ttf/0]).
 
-ttf :- solve(_F,_T,_U,_W,_R,_O).
+:- use_module(library(clpz)).
+    
+
+ttf :- solve2(_F,_T,_U,_W,_R,_O).
+
+solve2(F,T,U,W,R,O) :- 
+    Vars = [F,T,U,W,R,O],
+    Vars ins 0..9,
+    all_different(Vars),
+    T*100 + W*10 + O +
+    T*100 + W*10 + O #=
+    F*1000 + O*100 + U*10 + R,
+    F #> 0, T #> 0,
+    label(Vars),
+    print_out(Vars).
+
 
 solve(F,T,U,W,R,O) :- 
     Vars = [F,T,U,W,R,O],
