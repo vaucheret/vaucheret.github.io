@@ -208,7 +208,7 @@
        candidatos para ser reciclados.
      - El conjunto negro, es el conjunto de objetos que alcanzables
        desde la raiz y no referencian a objetos del conjunto
-       blanco. Estos objetos no son cadidatos para recolectar.
+       blanco. Estos objetos no son candidatos para recolectar.
      - El conjunto gris contiene todos los objetos alcanzables desde
        la raiz pero que aun tienen que verificarse por referencias al
        conjunto "blanco".
@@ -221,7 +221,7 @@
 
      1. Toma un objeto del conjunto gris y lo mueve al conjunto negro
 
-     2. Mueve cada objeto blanco referenciado por él al conjutno gris.
+     2. Mueve cada objeto blanco referenciado por él al conjunto gris.
 
      3. Repetir los pasos 1 y 2 hasta que el conjunto gris esté vacio.
     
