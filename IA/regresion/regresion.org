@@ -24,7 +24,7 @@
 * Mundo de Bloques
 
 ** Estado Inicial
-    #+REVEAL_HTML: <div style="font-size: 70%;">
+    #+REVEAL_HTML: <div style="font-size: 65%;">
      #+ATTR_REVEAL: :frag (fade-in-then-semi-out)
    - *[[color:green][Estado Inicial]]*
      #+BEGIN_QUOTE
@@ -68,7 +68,7 @@
     - Los nodos están etiquetados  con conjuntos de metas y los arcos corresponden a las acciones.
     - Un nodo etiquetado con el conjunto de metas G tiene un nodo vecino por cada acción A que logre una de las metas  en G.
     #+REVEAL_HTML: </div>
-    #+BEGIN_SRC dot :file imagenes/grbus.png :cmdline -Kdot -Tpng
+    #+BEGIN_SRC dot :file imagenes/grbus.png :cmdline -Kdot -Tpng :exports results
       digraph G  {
 	G[label=G,color=blue shape=circle];
 	P1[label=<P¹<SUB>G</SUB>>,color=blue shape=circle];
@@ -92,7 +92,7 @@
 - Es la más débil ya que cualquier otra precondición debe implicarla.
     #+REVEAL_HTML: </div>
     #+REVEAL_HTML: <div class="column" float:right; width: 20%">    
-    #+begin_src dot :file imagenes/prec.png :cmdline -Kdot -Tpng
+    #+begin_src dot :file imagenes/prec.png :cmdline -Kdot -Tpng  :exports results
       digraph G  {
 	GL[label="GL",color=blue shape=circle];
 	GA[label=<G<SUB>A</SUB>>,color=blue shape=circle];
@@ -113,7 +113,7 @@
   donde precondiciones(A) es la lista de precondiciones de A y $add\_list(A)$  es el conjunto de condiciones que agrega la acción A.
     #+REVEAL_HTML: </div>
     #+REVEAL_HTML: <div class="column" style="float:right; width: 20%">    
-    #+begin_src dot :file imagenes/prec2.png :cmdline -Kdot -Tpng
+    #+begin_src dot :file imagenes/prec2.png :cmdline -Kdot -Tpng :exports results
       digraph G  {
 	GL[label="GL",color=blue shape=circle];
 	GA[label=<G<SUB>A</SUB>>,color=blue shape=circle];
@@ -123,7 +123,8 @@
 
     #+RESULTS:
     [[file:imagenes/prec2.png]]
-
+    #+REVEAL_HTML: </div>
+    
 ** Precondición más débil
    - *[[color:green][Ejemplo sobre el mundo de bloques]]*
      #+REVEAL_HTML: <div style="font-size: 55%;">
