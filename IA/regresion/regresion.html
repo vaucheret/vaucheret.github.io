@@ -30,17 +30,17 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Inteligencia Artificial</h1><p class="subtitle"></p>
-<h2 class="author">Germán Braun</h2><h2 class="date">Planificación: Regresión</h2><p class="date">Created: 2024-11-06 mié 18:24</p>
+<h2 class="author">Germán Braun</h2><h2 class="date">Planificación: Regresión</h2><p class="date">Created: 2024-11-07 jue 11:28</p>
 </section>
 <section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-orgf0f3a9e">Repaso</a></li>
-<li><a href="#/slide-org2b36550">Mundo de Bloques</a></li>
-<li><a href="#/slide-org7803bae">Planificadores</a></li>
-<li><a href="#/slide-org5ea5a51">Planificación por Regresión</a></li>
-<li><a href="#/slide-org3284546">Bibliografía</a></li>
+<li><a href="#/slide-orgc4785d6">Repaso</a></li>
+<li><a href="#/slide-org02a670f">Mundo de Bloques</a></li>
+<li><a href="#/slide-org0a134fd">Planificadores</a></li>
+<li><a href="#/slide-org687ed62">Planificación por Regresión</a></li>
+<li><a href="#/slide-org3e0fe98">Bibliografía</a></li>
 </ul>
 </div>
 </div>
@@ -48,15 +48,15 @@
 
 
 <section>
-<section id="slide-orgf0f3a9e">
-<h2 id="orgf0f3a9e">Repaso</h2>
-<div class="outline-text-2" id="text-orgf0f3a9e">
+<section id="slide-orgc4785d6">
+<h2 id="orgc4785d6">Repaso</h2>
+<div class="outline-text-2" id="text-orgc4785d6">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgc937963">
-<h3 id="orgc937963">¿Qué vimos?</h3>
+<section id="slide-orgf427a34">
+<h3 id="orgf427a34">¿Qué vimos?</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out">Representación de las acciones: STRIPS, Situation Calculus, Event Calculus</li>
 <li class="fragment fade-in-then-semi-out">Problemas en la representación del Cambio: Frame, Ramification y Qualification</li>
@@ -70,15 +70,15 @@
 </section>
 </section>
 <section>
-<section id="slide-org2b36550">
-<h2 id="org2b36550">Mundo de Bloques</h2>
-<div class="outline-text-2" id="text-org2b36550">
+<section id="slide-org02a670f">
+<h2 id="org02a670f">Mundo de Bloques</h2>
+<div class="outline-text-2" id="text-org02a670f">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org6f4fc73">
-<h3 id="org6f4fc73">Estado Inicial</h3>
+<section id="slide-org1096190">
+<h3 id="org1096190">Estado Inicial</h3>
 <div style="font-size: 65%;">
 <ul>
 <li class="fragment fade-in-then-semi-out"><p>
@@ -111,15 +111,15 @@
 </section>
 </section>
 <section>
-<section id="slide-org7803bae">
-<h2 id="org7803bae">Planificadores</h2>
-<div class="outline-text-2" id="text-org7803bae">
+<section id="slide-org0a134fd">
+<h2 id="org0a134fd">Planificadores</h2>
+<div class="outline-text-2" id="text-org0a134fd">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org00b8406">
-<h3 id="org00b8406">Problemas con los Planificadores</h3>
+<section id="slide-org1f89fe4">
+<h3 id="org1f89fe4">Problemas con los Planificadores</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out">Existen planificadores forward pero tienen problemas con el tamaño
 del espacio de búsqueda que generan.</li>
@@ -132,15 +132,15 @@ un problema que no es trivial: <span style="color:red;">algunas acciones pueden 
 </section>
 </section>
 <section>
-<section id="slide-org5ea5a51">
-<h2 id="org5ea5a51">Planificación por Regresión</h2>
-<div class="outline-text-2" id="text-org5ea5a51">
+<section id="slide-org687ed62">
+<h2 id="org687ed62">Planificación por Regresión</h2>
+<div class="outline-text-2" id="text-org687ed62">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org27d94f7">
-<h3 id="org27d94f7">Regresión</h3>
+<section id="slide-org6188955">
+<h3 id="org6188955">Regresión</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out">Este algoritmo reduce el factor de ramificación porque trabaja desde
 las metas hacia atrás, eligiendo solamente aquellas acciones que
@@ -155,8 +155,8 @@ pista a todas las metas que tiene que lograr.</li>
 </section>
 </section>
 <section>
-<section id="slide-org940686e">
-<h3 id="org940686e">Planificación por Regresión</h3>
+<section id="slide-org67f7617">
+<h3 id="org67f7617">Planificación por Regresión</h3>
 <div style="font-size: 70%;">
 <ul>
 <li>Podemos analizar el algoritmo en términos de un grafo de búsqueda.</li>
@@ -166,7 +166,7 @@ pista a todas las metas que tiene que lograr.</li>
 </ul>
 </div>
 
-<div id="orge272f5f" class="figure">
+<div id="org70931dc" class="figure">
 <p><img src="imagenes/grbus.png" alt="grbus.png" />
 </p>
 </div>
@@ -174,8 +174,8 @@ pista a todas las metas que tiene que lograr.</li>
 </section>
 </section>
 <section>
-<section id="slide-orgc0f141c">
-<h3 id="orgc0f141c">Precondición más débil</h3>
+<section id="slide-org7ce3452">
+<h3 id="org7ce3452">Precondición más débil</h3>
 <div class="column" style="font-size: 70%; float:left; width: 80%">
 <ul>
 <li>El vecino que corresponde  a la acción A es etiquetado como <span style="color:red;">\(G_A\)</span>.</li>
@@ -188,7 +188,7 @@ Es la más débil ya que cualquier otra precondición debe implicarla.
 </div>
 <div class="column" float:right; width: 20%">
 
-<div id="org89aafb9" class="figure">
+<div id="orgb5afd5a" class="figure">
 <p><img src="imagenes/prec.png" alt="prec.png" />
 </p>
 </div></li>
@@ -198,8 +198,8 @@ Es la más débil ya que cualquier otra precondición debe implicarla.
 </section>
 </section>
 <section>
-<section id="slide-org8b68143">
-<h3 id="org8b68143">Precondición más débil</h3>
+<section id="slide-org92de513">
+<h3 id="org92de513">Precondición más débil</h3>
 <div class="column" style="font-size: 70%; float:left; width: 80%">
 <p>
 En STRIPS, <span style="color:red;">\(wp(A,GL,WP)\)</span> se define como sigue: 
@@ -215,7 +215,7 @@ donde precondiciones(A) es la lista de precondiciones de A y \(add\_list(A)\)  e
 </div>
 <div class="column" style="float:right; width: 20%">
 
-<div id="org4ba8f21" class="figure">
+<div id="org23176a9" class="figure">
 <p><img src="imagenes/prec2.png" alt="prec2.png" />
 </p>
 </div>
@@ -226,8 +226,8 @@ donde precondiciones(A) es la lista de precondiciones de A y \(add\_list(A)\)  e
 </section>
 </section>
 <section>
-<section id="slide-org091ba18">
-<h3 id="org091ba18">Precondición más débil</h3>
+<section id="slide-orgfe23c39">
+<h3 id="orgfe23c39">Precondición más débil</h3>
 <ul>
 <li><p>
 <b><span style="color:green;">Ejemplo sobre el mundo de bloques</span></b>
@@ -266,8 +266,8 @@ de la acción A.
 </section>
 </section>
 <section>
-<section id="slide-org851468f">
-<h3 id="org851468f">Precondición más débil</h3>
+<section id="slide-org791fbfc">
+<h3 id="org791fbfc">Precondición más débil</h3>
 <ul>
 <li><p>
 <b><span style="color:green;">Ejemplo sobre el mundo de bloques</span></b>
@@ -302,8 +302,8 @@ con la acción \(move(a,mesa,b)\).
 </section>
 </section>
 <section>
-<section id="slide-org8b55966">
-<h3 id="org8b55966">Precondición más débil</h3>
+<section id="slide-orgffcc590">
+<h3 id="orgffcc590">Precondición más débil</h3>
 <ul>
 <li><p>
 <b><span style="color:green;">Ejemplo sobre el mundo de bloques</span></b>
@@ -341,8 +341,8 @@ de la acción A.
 </section>
 </section>
 <section>
-<section id="slide-org13f3738">
-<h3 id="org13f3738">Precondición más débil: Algoritmo</h3>
+<section id="slide-org3a158c0">
+<h3 id="org3a158c0">Precondición más débil: Algoritmo</h3>
 <p>
 El algoritmo que se presenta a continuación tiene algunas simplificaciones:
 </p>
@@ -355,8 +355,8 @@ El algoritmo que se presenta a continuación tiene algunas simplificaciones:
 </section>
 </section>
 <section>
-<section id="slide-org29b6d52">
-<h3 id="org29b6d52">Precondición más débil: Algoritmo</h3>
+<section id="slide-org836f453">
+<h3 id="org836f453">Precondición más débil: Algoritmo</h3>
 <div class="org-src-container">
 
 <pre  class="src src-prolog"   ><code trim><span style="color: #ff0000;">%  </span><span style="color: #ff0000;">wp( A, GL, WP ) es verdadera si WP es la precondici&#243;n</span>
@@ -378,8 +378,8 @@ El algoritmo que se presenta a continuación tiene algunas simplificaciones:
 </section>
 </section>
 <section>
-<section id="slide-org42ac0d8">
-<h3 id="org42ac0d8">Precondición más débil: Algoritmo</h3>
+<section id="slide-orgabbac67">
+<h3 id="orgabbac67">Precondición más débil: Algoritmo</h3>
 <div class="org-src-container">
 
 <pre  class="src src-prolog"   ><code trim><span style="color: #ff0000;">% </span><span style="color: #ff0000;">regress(G,A,P0,P1) es verdadera si P1 es una lista de</span>
@@ -400,8 +400,8 @@ El algoritmo que se presenta a continuación tiene algunas simplificaciones:
 </section>
 </section>
 <section>
-<section id="slide-org63bf1be">
-<h3 id="org63bf1be">Precondición más débil: Algoritmo</h3>
+<section id="slide-org330987a">
+<h3 id="org330987a">Precondición más débil: Algoritmo</h3>
 <div class="org-src-container">
 
 <pre  class="src src-prolog"   ><code trim><span style="color: #ff0000;">% </span><span style="color: #ff0000;">Si G no est&#225; entre las metas que se logran con la acci&#243;n A</span>
@@ -430,8 +430,8 @@ El algoritmo que se presenta a continuación tiene algunas simplificaciones:
 </section>
 </section>
 <section>
-<section id="slide-orgc939a66">
-<h3 id="orgc939a66">Planificador por Regresión</h3>
+<section id="slide-org93c792d">
+<h3 id="org93c792d">Planificador por Regresión</h3>
 <ul>
 <li class="fragment fade-in-then-semi-out">Un problema de planificación se resuelve con un <span style="color:red;">planificador por
 regresión</span> dándole un conjunto de metas que deben ser <span style="color:red;">verdaderas
@@ -446,8 +446,8 @@ metas a ser alcanzadas en un momento dado.</li>
 </section>
 </section>
 <section>
-<section id="slide-org39f16d4">
-<h3 id="org39f16d4">Planificador por Regresión</h3>
+<section id="slide-orgd4c35fa">
+<h3 id="orgd4c35fa">Planificador por Regresión</h3>
 <ul>
 <li><p>
 <b><span style="color:green;">IDEA</span></b>
@@ -484,8 +484,8 @@ estado inicial.
 </section>
 </section>
 <section>
-<section id="slide-orge8ed724">
-<h3 id="orge8ed724">Planificación por Regresión</h3>
+<section id="slide-org654f749">
+<h3 id="org654f749">Planificación por Regresión</h3>
 <div class="org-src-container">
 
 <pre  class="src src-prolog"   ><code trim><span style="color: #ff0000;">% </span><span style="color: #ff0000;">solve(GL,W) es verdadero si todo elemento de la lista GL</span>
@@ -505,8 +505,8 @@ estado inicial.
 </section>
 </section>
 <section>
-<section id="slide-orgf20d85b">
-<h3 id="orgf20d85b">Planificador por Regresión</h3>
+<section id="slide-orgffe7dd7">
+<h3 id="orgffe7dd7">Planificador por Regresión</h3>
 <div style="font-size: 70%;">
 <p>
 Algunas consideraciones:
@@ -538,11 +538,11 @@ tiende a incrementar la complejidad del espacio de búsqueda.
 </section>
 </section>
 <section>
-<section id="slide-org86bcd43">
-<h3 id="org86bcd43">Mundo de Bloques: Ejemplo</h3>
+<section id="slide-org1ccd262">
+<h3 id="org1ccd262">Mundo de Bloques: Ejemplo</h3>
 <div class="column" style="float:left; width: 60%">
 
-<div id="org5d02cbe" class="figure">
+<div id="org4f4ac95" class="figure">
 <p><img src="imagenes/MundoBloquesInit.png" alt="MundoBloquesInit.png" />
 </p>
 </div>
@@ -553,7 +553,7 @@ Estado Inicial
 </div>
 <div class="column" style="float:right; width: 40%">
 
-<div id="org2f13741" class="figure">
+<div id="orge045939" class="figure">
 <p><img src="imagenes/MundoBloquesFinal.png" alt="MundoBloquesFinal.png" />
 </p>
 </div>
@@ -566,8 +566,8 @@ Estado Final
 </section>
 </section>
 <section>
-<section id="slide-org4b96b15">
-<h3 id="org4b96b15">Mundo de Bloques: Ejemplo</h3>
+<section id="slide-org669befa">
+<h3 id="org669befa">Mundo de Bloques: Ejemplo</h3>
 <div style="font-size: 70%;">
 <p class="fragment (fade-in-then-semi-out)">
 \[\{sobre(b,c), \color{red}{sobre(a,b)},libre(a),sobre(c,mesa),bloque(b),bloque(a),bloque(c)\}\]
@@ -595,15 +595,15 @@ Estado Final
 </section>
 </section>
 <section>
-<section id="slide-org3284546">
-<h2 id="org3284546">Bibliografía</h2>
-<div class="outline-text-2" id="text-org3284546">
+<section id="slide-org3e0fe98">
+<h2 id="org3e0fe98">Bibliografía</h2>
+<div class="outline-text-2" id="text-org3e0fe98">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orge729abf">
-<h3 id="orge729abf">Referencia Bibliográfica</h3>
+<section id="slide-org3ce6c3a">
+<h3 id="org3ce6c3a">Referencia Bibliográfica</h3>
 <div style="font-size: 80%;">
 
 <p>
