@@ -49,7 +49,10 @@ introduccion -->
 
 
 
-tiposdeenergia --> 
+tiposdeenergia -->
+    slide("La Energía: Motor de la Producción",
+	  el(p,"La energía es esencial en todo proceso de producción porque impulsa maquinaria, permite la transformación de materiales, asegura el transporte y almacenamiento, y soporta la tecnología y automatización. Es el 'combustible' que hace posible la conversión de materias primas en bienes y servicios de manera eficiente.")
+	 ),
     section("Fuentes de Energía"),
     slide("Fuentes de Energía",
 	  split(
@@ -86,14 +89,65 @@ tiposdeenergia -->
 	      el(p,[class='r-fit-text'],"Energía Fósil")
 	      ,
 	      fig(img("energiafosil.jpeg","auto","500"))	
-	  )).
+	  )),
+		slide("Fuentes de Energía",
+	  split(
+	      fig(img("hidroelectrica.jpeg","auto","500"))
+	      ,
+	      el(p,[class='r-fit-text'],"Energía Hidroeléctrica")
+	  )),
+		slide("Fuentes de Energía",
+	  split(
+	      el(p,[class='r-fit-text'],"Energía Mareomotriz")
+	      ,
+	      fig(img("marea.jpeg","auto","500"))	
+	  )),
+		slide("En el mundo",
+		      (
+			  el(p,el(b,"2050 – próximos 25 años")),
+			  el(p,"Según las proyecciones de organismos internacionales:"),
+			  item(grow,
+			       [
+				   "Se duplicaría el parque automotor",
+				   "Aumentaría la población mundial en unos 2000 millones de personas",
+				   "Se duplicaría la demanda de energía",
+				   "El cambio climático exige revisar cómo generar y usar esa energía"
+			       ])
+		      )),
+		slide("Matriz Energética Argentina",
+	  split(
+	      fig(img("energiaargentina.jpg","auto","500"))
+	      ,
+	      fig(img("tablaenergia.png","auto","300"))
+	      
+	  )),
+		slide("80%",col(blue,"Desafíos para Argentina"),
+		      item('highlight-current-blue',
+			   [
+			       (   "Acelerar la extracción de hidrocarburo en un contexto de transición",
+				   item(
+				       [
+					   "Vaca Muerta, principal yacimiento de hidrocarburos",
+					   "Cuenca Golfo San Jorge, 30 % de la producción de petróleo",
+					   "Cuenca Austral, 20 % del gas"
+				       ])
+			       ),
+			       "Acelerar el camino hacia las Energías Renovables",
+			       "Transporte. Cómo transportar todo lo que se genere", 
+			       (   "Recursos Humanos formados",
+				   item(
+				       [
+					   "perfiles para la transición que sepan de todas las energías",
+					   "en los próximos dos años el 25 % de los trabajadores se jubila"
+				       ])
+			       )
+
+			   ])).
+
+		      
 
 
-
-
-
-
-
+		
 
 
 
