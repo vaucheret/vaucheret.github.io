@@ -116,11 +116,22 @@ tiposdeenergia -->
 		      )),
 		slide("Matriz Energética Argentina",
 	  split(
-	      fig(img("energiaargentina.jpg","auto","500"))
-	      ,
-	      fig(img("tablaenergia.png","auto","300"))
-	      
-	  )),
+	      fig(img("energiaargentina.jpg","auto","500")),
+	       el(table,
+		     (	 
+			el(tr,( el(th,"Fuente"), el(th,"Porcentaje"))),
+			el(tr,(el(td,"Gas Natural"),el(td,[style='text-align:right;'],"53,20%"))),
+			el(tr,(el(td,"Petroleo"),el(td,[style='text-align:right;'],"31,30%"))),
+			el(tr,(el(td,"Biomasa"),el(td,[style='text-align:right;'],"5,80%"))),
+			el(tr,(el(td,"Hidroeléctrica"),el(td,[style='text-align:right;'],"3,20%"))),
+			el(tr,(el(td,"Nuclear"),el(td,[style='text-align:right;'],"2,60%"))),
+			el(tr,(el(td,"Renovables"),el(td,[style='text-align:right;'],"2,30%"))),
+			el(tr,(el(td,"Carbón"),el(td,[style='text-align:right;'],"1,60%")))
+		     )  
+		     )
+
+	      )
+	  ),
 		slide("80%",col(blue,"Desafíos para Argentina"),
 		      item('highlight-current-blue',
 			   [
