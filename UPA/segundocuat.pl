@@ -36,7 +36,7 @@ class_subject_teacher_times('2Psicolog','T.PsicoanaI','M. Jensen',5).
 class_subject_teacher_times('2Psicolog','PsicEvolutI','N. Menichetti',4).
 class_subject_teacher_times('2Psicolog','NeurobioPsi','S. LLanos',4).
 
-
+teacher_freeday('G. Pagnos', 0).
 
 
 same_class(fi,'Física_I',['2Cinf','2Cind','2Cene']).
