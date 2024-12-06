@@ -3,6 +3,7 @@ title("Semanticas").
 author("C. A. L. P.").
 date("Claudio Vaucheret").
 theme("night").
+transition("slide").
 
 
 slides -->
@@ -606,8 +607,7 @@ show :-
 	shell(Command).
 	      
 main :-
-        theme(Theme),
         consult(slideprolog),
         file(File),
         append(File,".html",Filehtml),
-	phrase_to_file(presentation(Theme),Filehtml).
+	phrase_to_file(presentation,Filehtml).

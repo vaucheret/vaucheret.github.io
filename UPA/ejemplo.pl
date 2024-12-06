@@ -150,6 +150,24 @@ conclusion -->
 		  "    section(\"Conclusion\"),\n",
 		  "    slide(\"latex\","
 	      ))),
+    		slide("Tabla",
+	  split(
+	      fig(img("energiaargentina.jpg","auto","500")),
+	       el(table,
+		     (	 
+			el(tr,( el(th,"Fuente"), el(th,"Porcentaje"))),
+			el(tr,(el(td,"Gas Natural"),el(td,[style='text-align:right;'],"53,20%"))),
+			el(tr,(el(td,"Petroleo"),el(td,[style='text-align:right;'],"31,30%"))),
+			el(tr,(el(td,"Biomasa"),el(td,[style='text-align:right;'],"5,80%"))),
+			el(tr,(el(td,"Hidroeléctrica"),el(td,[style='text-align:right;'],"3,20%"))),
+			el(tr,(el(td,"Nuclear"),el(td,[style='text-align:right;'],"2,60%"))),
+			el(tr,(el(td,"Renovables"),el(td,[style='text-align:right;'],"2,30%"))),
+			el(tr,(el(td,"Carbón"),el(td,[style='text-align:right;'],"1,60%")))
+		     )  
+		     )
+
+	      )
+	  ),
     slide("ultima diapositiva",
 	  (
 	      "Fin"
@@ -182,10 +200,8 @@ show :-
 	shell(Command).
 	      
 main :-
-        theme(Theme),
-	transition(Transition),
 	consult(slideprologupa),
 	file(File),
 	append(File,".html",Filehtml),
-	phrase_to_file(presentation(Theme,Transition),Filehtml).
+	phrase_to_file(presentation,Filehtml).
 

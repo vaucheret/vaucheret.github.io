@@ -284,9 +284,7 @@ show :-
 	shell(Command).
 	      
 main :-
-        theme(Theme),
-	transition(Transition),
 	consult(slideprologupa),
 	file(File),
 	append(File,".html",Filehtml),
-	phrase_to_file(presentation(Theme,Transition),Filehtml).
+	phrase_to_file(presentation,Filehtml).

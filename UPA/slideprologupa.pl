@@ -3,10 +3,12 @@
 
 
 
-presentation(Theme,Transition) -->
+presentation -->
     {title(T),
      author(A),
-     date(D)},
+     date(D),
+     theme(Theme),
+     transition(Transition)},
     "<!DOCTYPE html>\n",
     el(html,
        (
@@ -34,7 +36,7 @@ presentation(Theme,Transition) -->
 "<style>",
 "    .reveal {",
 "      background-image: url('logo.png');",
-"      background-size: 12%;",
+"      background-size: 10%;",
 "      background-position: top left;",
 "      background-repeat: no-repeat;",
 "    }",

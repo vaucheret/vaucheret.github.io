@@ -3,10 +3,12 @@
 
 
 
-presentation(Theme) -->
+presentation -->
     {title(T),
      author(A),
-     date(D)},
+     date(D),
+     theme(Theme),
+     transition(Transition)},
     "<!DOCTYPE html>\n",
     el(html,
        (
@@ -51,7 +53,7 @@ presentation(Theme) -->
 	      el(script,
 		 (
 		     "Reveal.initialize({",
-		     "      transition: 'slide'",
+		     "      transition: '",Transition,"'",
 		     "});"
 		 ))
 	     ))
