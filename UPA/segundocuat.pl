@@ -67,7 +67,7 @@ coupling('2Cinf','Alg_y_Geo', 5, 6).
 
 
 coupling('2Cinf','Prograc_I', 0, 1). 
-coupling('2Cinf','Prograc_I', 1, 2). % 5 alt 1
+coupling('2Cinf','Prograc_I', 2, 3). % 5 alt 1
 coupling('2Cinf','Prograc_I', 3, 4). 
 
 coupling('2Cinf','Sis_deC_I', 0, 1). 
