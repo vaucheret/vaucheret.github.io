@@ -410,7 +410,7 @@ format_html_teachers_([T|Ts], Rs) -->
                  el(table,[width='"50%"'],
                     (   
                         weekdays_html_header,
-                        html_rows(Days)
+                        html_rows(Days,17)
                     ))),
               "</td></tr>\n"
           ))),
@@ -430,17 +430,23 @@ format_html_classes_([Class|Classes],Rs) -->
                      el(table,[width='"50%"'],
                         (   
                             weekdays_html_header,
-	                    html_rows(Days)
+	                    html_rows(Days,17)
                         ))),
 	          "</td></tr>\n"
               ))),
 	"<br>\n<br>\n\n",
 	format_html_classes_(Classes,Rs).
 
-html_rows([]) --> [].
-html_rows([R|Rs]) -->
-    el(tr,html_row(R)),
-    html_rows(Rs).
+html_rows([],_) --> [].
+html_rows([R|Rs],Hora) -->
+    {
+	number_chars(Hora,SH),
+	append(SH,"hs",SH1),
+	atom_chars(AHora,SH1),
+	Hora1 #= Hora + 1
+    },
+    el(tr,html_row([hora(AHora)|R])),
+    html_rows(Rs,Hora1).
 
 
 html_row([]) --> [].
@@ -454,12 +460,13 @@ html_(class_subject(_C,S)) --> html_(verbatim(S)).
 html_(subject(S))         --> html_(verbatim(S)).
 html_(bold(Element))      --> format_("<td><b>~w</b></td>", [Element]).
 html_(verbatim(Element))  --> format_("<td class=\"~w\"><span class=\"lesson\">~w</span></td>", [Element,Element]).
-
+html_(hora(Element)) --> format_("<td>~w</td>",[Element]).
+    
 
 weekdays_html_header -->
     {
 	days_week(ListDays),
-	maplist(with_bold,ListDays,
+	maplist(with_bold,['hora'|ListDays],
 %                  ['Lunes','Martes','Miercoles','Jueves','Viernes'],
 %                  ['Jueves','Viernes','Sabado'],		  
                   Vs) },
