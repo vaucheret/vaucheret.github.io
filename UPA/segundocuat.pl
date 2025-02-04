@@ -13,7 +13,7 @@ class_subject_teacher_times('2Cind','Sis_y_Mod','G. Mannuc',5).  % 2 5
 class_subject_teacher_times('2Cind','Mat_y_Pro','G. Mannuc',5).  % 2 5
 
 class_subject_teacher_times('2Cene','Física_I' ,'C. Mesqui',7). % 3 7
-class_subject_teacher_times('2Cene','Sist.Tec' ,'P. Malian',5). % 2 5
+class_subject_teacher_times('2Cene','Sist.Tec' ,'O.Castillo',5). % 2 5
 class_subject_teacher_times('2Cene','Alg_y_Geo','C. Ocampo',7). % 3 7
 class_subject_teacher_times('2Cene','Fund_Tier','J. Contre',5). % 2 5
 
