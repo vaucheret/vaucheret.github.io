@@ -2,6 +2,7 @@ slots_per_week(25).  % 25 10
 slots_per_day(5).   % 5 2
 days_week(['Lunes','Martes','Miercoles','Jueves','Viernes']).
 
+
 class_subject_teacher_times('1Cinf','Cálculo_I','C. Ocampo',7). % 3 7
 class_subject_teacher_times('1Cinf','Int_Infor','M. Monser',7). % 3 7
 class_subject_teacher_times('1Cinf','Mat_Discr','P. Bohosl',5). % 2 5
@@ -56,6 +57,12 @@ same_class(qg,'Quím_Gen', ['1Cind','1Cene']).
 
 
 %% teacher_freeday('P. Bohosl', 4).
+subject_freeslot('Cálculo_I',0).
+%% subject_freeslot('Cálculo_I',1).
+%% subject_freeslot('Cálculo_I',2).
+
+
+
 
 coupling('1Cinf','Cálculo_I', 0, 1).
 coupling('1Cinf','Cálculo_I', 1, 2). 

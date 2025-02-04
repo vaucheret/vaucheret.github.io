@@ -42,6 +42,7 @@
 :- dynamic(slots_per_week/1).
 :- dynamic(days_week/1).
 :- dynamic(class_freeslot/2).
+:- dynamic(subject_freeslot/2).
 :- dynamic(room_alloc/4).
 
 :- discontiguous(class_subject_teacher_times/4).
@@ -133,9 +134,11 @@ requirements_variables(Rs, Vars) :-
         maplist(constrain_subject, Rs),
         classes(Classes),
         teachers(Teachers),
+	subjects(Subjects),
         rooms(Rooms),
         maplist(constrain_teacher(Rs), Teachers),
         maplist(constrain_class(Rs), Classes),
+	maplist(constrain_subject(Rs),Subjects),
         maplist(constrain_room(Rs), Rooms).
 
 slot_quotient(S, Q) :-
@@ -179,6 +182,15 @@ constrain_subject(req(Class,Subj,_Teacher,_Num)-Slots) :-
 
 all_diff_from(Vs, F) :- maplist(#\=(F), Vs).
 
+
+constrain_subject(Rs, Subject) :-
+        tfilter(subject_req(Subject), Rs, Sub),
+        pairs_slots(Sub, Vs),
+        findall(S, subject_freeslot(Subject,S), Frees),
+        maplist(all_diff_from(Vs), Frees).
+
+
+
 constrain_class(Rs, Class) :-
         tfilter(class_req(Class), Rs, Sub),
         pairs_slots(Sub, Vs),
@@ -211,7 +223,9 @@ constrain_room(Reqs, Room) :-
 
 strictly_ascending(Ls) :- chain(#<, Ls).
 
-class_req(C0, req(C1,_S,_T,_N)-_, T) :- =(C0, C1, T). 
+class_req(C0, req(C1,_S,_T,_N)-_, T) :- =(C0, C1, T).
+
+subject_req(S0, req(_C,S1,_T,_N)-_, T) :- =(S0, S1, T). 
 
 teacher_req(T0, req(_C,_S,T1,_N)-_, T) :- =(T0,T1,T).
 
