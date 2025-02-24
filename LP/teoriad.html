@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html><head><title>Lenguajes Declarativos</title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Lenguajes Declarativos</h1>
+<h2 class = "author" >Claudio Vaucheret</h2>
+<h3 class = "date" >Semanticas</h3>
+</section>
+<section><h2>SEMANTICAS</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:green;">Arbol SLD</span></h3>
+<div style="font-size: 70%;">
+<p>Un árbol (de búsqueda) <span style="color:red;">\(SLD\) \(\tau_\varphi\)</span>  para <span style="color:red;">\(\Pi \cup \{{\cal G}\}\)</span> (usando la regla de computación <span style="color:red;">\(\varphi\)</span>) es un conjunto de nodos que cumplen:</p>
+<ol><li>El nodo raíz de <span style="color:red;">\(\tau_\varphi\)</span> es la meta inicial <span style="color:red;">\({\cal G}\)</span>;</li>
+<li>Si <span style="color:red;">\({\cal G}_i \equiv\leftarrow {\cal A}_1 \wedge \ldots \wedge{\cal A}_n\)</span> es un nodo de <span style="color:red;">\(\tau_\varphi\)</span> y suponiendo que <span style="color:red;">\(\varphi({\cal G}_i) = {\cal A}_k\)</span>, entonces para cada cláusula <span style="color:red;">\({\cal C} \equiv {\cal A} \leftarrow {\cal Q}\)</span> de <span style="color:red;">\(\Pi\)</span> (con sus variables renombradas si hace falta) t.q. <span style="color:red;">\(\theta = mgu({\cal A},{\cal A}_k) \not\equiv fail\)</span>, el resolvente <span style="color:red;">\({\cal G}_{ij} \equiv \leftarrow \theta({\cal A}_1 \wedge \ldots \wedge {\cal A}_{k-1} \wedge {\cal Q} \wedge {\cal A}_{k+1} \wedge \ldots \wedge {\cal A}_n\)</span> es un nodo de <span style="color:red;">\(\tau_\varphi\)</span></li>
+</ol>
+</section>
+<section><h3><span style="color:green;">Arbol SLD</span></h3>
+<ul><li class="fragment highlight-current-green">Cada nodo del árbol es una cláusula meta. <span style="color:red;">\({\cal G}_{i}\)</span> es el <em>nodo padre</em>
+ de <span style="color:red;">\({\cal G}_{ij}\)</span> y <span style="color:red;">\({\cal G}_{ij}\)</span> es <em>nodo hijo</em>
+ de <span style="color:red;">\({\cal G}_{i}\)</span>.</li>
+<li class="fragment highlight-current-green">Los nodos hojas son o bien la cláusula vacía o nodos fallidos.</li>
+<li class="fragment highlight-current-green">Cada rama de un árbol <span style="color:red;">\(SLD\)</span> es una derivación <span style="color:red;">\(SLD\)</span> para <span style="color:red;">\(\Pi \cup \{{\cal G}\}\)</span>.</li>
+<li class="fragment highlight-current-green">Ramas <b><span style="color:yellow;">infinitas</span></b>
+ de <b><span style="color:yellow;">éxito</span></b>
+ y de <b><span style="color:yellow;">fallo</span></b>
+.</li>
+<li class="fragment highlight-current-green">Arboles <b><span style="color:yellow;">infinitos</span></b>
+ de <b><span style="color:yellow;">éxito</span></b>
+ y de <b><span style="color:yellow;">fallo</span></b>
+.</li>
+<li class="fragment highlight-current-green">Cada regla de computación <span style="color:red;">\(\varphi\)</span> da lugar a un árbol <span style="color:red;">\(SLD\)</span> para <span style="color:red;">\(\Pi \cup \{{\cal G}\}\)</span> distinto.</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Ejemplo</span></h3>
+<p><span style="color:yellow;">Sea el programa definido</span></p>
+<p>\[\Pi = \{ {\cal C}_1 : p(X,Z) \leftarrow q(X,Y) \wedge p(Y,Z) \\ {\cal C}_2 : p(X,X) \leftarrow  \\ {\cal C}_3 : q(a,b) \leftarrow \} \]</p>
+<p>y la meta definida \({\cal G} \equiv\leftarrow p(X,b)\).</p>
+</section>
+<section><h3><span style="color:green;">Ejemplo</span></h3>
+<div style="font-size: 50%;">
+<p>Un árbol de búsqueda \(SLD\) para \(\Pi \cup \{{\cal G}\}\) usando una regla de computación que selecciona el átomo más a la izquierda dentro de la meta considerada.</p>
+<div class="figure">
+<p><img src=sld1.png  width=auto  height=500</p>
+</div>
+</section>
+<section><h3><span style="color:green;">Ejemplo</span></h3>
+<p>Un <b>procedimiento de prueba por refutación</b>
+ \(SLD\) queda completamente especificado fijando:</p>
+<ol><li class="fragment highlight-current-green">una regla de computación;</li>
+<li class="fragment highlight-current-green">una regla de ordenación; y</li>
+<li class="fragment highlight-current-green">una regla de búsqueda.</li>
+</ol>
+</section>
+<section><h3><span style="color:red;">Semántica de Modelos Mínimos</span></h3>
+<div style="font-size: 90%;">
+<p>Sea \(I\) un conjunto índices y conjunto no vacío de modelos de Herbrand de un programa \(\Pi\), \(\{{\cal M}_i \mid (i \in I) \wedge ({\cal M}_i\) es modelo de \(\Pi)\}\). Entonces, el conjunto \(\bigcap_{i \in I} {\cal M}_i\) es un modelo de Herbrand de \(\Pi\).</p>
+<p>donde</p>
+<p>\({\cal M}_i(\Pi) = \{{\cal A} \mid  {\cal A} \in {\cal B}_{\cal L}(\Pi) \wedge \Pi \models {\cal A}\}\)</p>
+</section>
+<section><h3><span style="color:red;">EJEMPLO</span></h3>
+<div style="font-size: 70%;">
+<p>\(\Pi = \{{\cal C}_1 : q(X) \leftarrow p(X), {\cal C}_2 : p(a) \leftarrow , {\cal C}_3 : q(b) \leftarrow \}\).</p>
+<ol><li>\({\cal U}_{\cal L}(\Pi) = \{a,b\} y {\cal B}_{\cal L}(\Pi) = \{p(a),p(b),q(a),q(b)\}\).</li>
+<li>\({\cal I}_1 = \varnothing\), \({\cal I}_2 = \{p(b)\}\), \({\cal I}_3 = \{p(a)\}\), \({\cal I}_4 = \{q(a)\}\), \({\cal I}_5 = \{q(b)\}\), \({\cal I}_6 = \{p(a),p(b)\}\), \({\cal I}_7 = \{p(a),q(a)\}\), \({\cal I}_8 = \{p(a),q(b)\}\), \({\cal I}_9 = \{p(b),q(a)\}\), \({\cal I}_{10} = \{p(b),q(b)\}\), \({\cal I}_{11} = \{q(a),q(b)\}\), \({\cal I}_{12} = \{p(a),p(b),q(a)\}\), \({\cal I}_{13} = \{p(a),p(b),q(b)\}\), \({\cal I}_{14} = \{p(a),q(a),q(b)\}\), \({\cal I}_{15} = \{p(b),q(a),q(b)\}\), \({\cal I}_{16} = \{p(a),p(b),q(a),q(b)\}\).</li>
+<li>Las únicas H-interpretación modelos de \(\Pi\) son: \({\cal I}_{14}\) e \({\cal I}_{16}\).</li>
+</ol>
+<p>La interpretación modelo mínimo de Herbrand es:</p>
+\[{\cal M}(\Pi) = {\cal I}_{14} \cap {\cal I}_{16} = \{p(a),q(a),q(b)\}\]</section>
+<section><h3><span style="color:blue;">Semántica de Punto Fijo</span></h3>
+<div style="font-size: 75%;">
+<p>Sea \(\Pi\) un programa definido. El operador de consecuencias lógicas inmediatas \(T_{\Pi}\) es una aplicación \(T_{\Pi} : \wp({\cal B}_{\cal L}(\Pi)) \longrightarrow \wp({\cal B}_{\cal L}(\Pi))\) definida como:</p>
+<p>\[T_{\Pi}({\cal I}) = \{ {\cal A} \mid {\cal A} \in {\cal B}_{\cal L}(\Pi) \wedge ({\cal A} \leftarrow {\cal A}_1 \wedge \ldots \wedge {\cal A}_n ) \in {\cal B}asicas(\Pi) \\  \wedge \{{\cal A}_1, \ldots, {\cal A}_n \} \subseteq {\cal I} \}\]</p>
+<p>donde \({\cal I}\) es una interpretación de Herbrand para \(\Pi\) y \({\cal B}asicas(\Pi)\) es el conjunto de instancias básicas de las cláusulas de \(\Pi\).</p>
+<p>\[{\cal M}_{\Pi} = mfp(T_{\Pi}) = T_{\Pi} \uparrow \omega\]</p>
+</section>
+<section><h3><span style="color:blue;">EJEMPLO</span></h3>
+<div style="font-size: 75%;">
+<p> \(\Pi = \{{\cal C}_1 : q(X) \leftarrow p(X), {\cal C}_2 : p(a) \leftarrow , {\cal C}_3 : q(b) \leftarrow \}\).</p>
+<ul><li>\(T_{\Pi} \uparrow 0 = \varnothing\)</li>
+<li>\(T_{\Pi} \uparrow 1 = T_{\Pi}(\varnothing) = \{p(a),q(b)\}\)</li>
+<li>\(T_{\Pi} \uparrow 2 = T_{\Pi}(T_{\Pi} \uparrow 1)  = \{p(a),q(b)\} \cap \{q(a)\} = \{p(a),q(b),q(a)\}\)</li>
+<li>\(T_{\Pi} \uparrow 3 = T_{\Pi}(T_{\Pi} \uparrow 2) = T_{\Pi} \uparrow 2\)</li>
+</ul>
+<p>Se alcanza el punto fijo en la tercera iteración y por consiguiente,</p>
+<p>\[{\cal M}_{\Pi} = \{p(a),q(b),q(a)\}\].</p>
+</section>
+</div>
+</div>
+<script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>

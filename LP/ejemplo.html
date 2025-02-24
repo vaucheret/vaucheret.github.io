@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html><head><title>Slides en Prolog</title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Slides en Prolog</h1>
+<h2 class = "author" >Claudio Vaucheret</h2>
+<h3 class = "date" >17/8/2024</h3>
+</section>
+<section><h2>Introduccion</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate  ><h3>diapositiva</h3>
+<p>Esto es muy importante</p>
+<p>Para mi</p>
+</section>
+<section data-auto-animate  ><h3>diapositiva</h3>
+<p>Para mi</p>
+<p>Esto es muy importante</p>
+</section>
+<section><h2>Contenido</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Dos Columnas</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<ol><li class="fragment appear"><span style="color:orange;">uno</span></li>
+<li class="fragment appear"><span style="color:green;">dos</span></li>
+<li class="fragment appear"><span style="color:yellow;">tres</span></li>
+</ol>
+</div>
+<div class="one_of_2_columns">
+<ul><li class="fragment appear"><span style="color:blue;">cuatro</span></li>
+<li class="fragment appear"><span style="color:red;">cinco</span></li>
+<li class="fragment appear"><span style="color:brown;">seis</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section><h3>tabla</h3>
+<table><tr><th>Fuente</th>
+<th>Porcentaje</th>
+</tr>
+<tr><td>Gas Natural</td>
+<td style = "text-align:right;" >53,20%</td>
+</tr>
+<tr><td>Petroleo</td>
+<td style = "text-align:right;" >31,30%</td>
+</tr>
+<tr><td>Biomasa</td>
+<td style = "text-align:right;" >5,80%</td>
+</tr>
+<tr><td>Hidroeléctrica</td>
+<td style = "text-align:right;" >3,20%</td>
+</tr>
+<tr><td>Nuclear</td>
+<td style = "text-align:right;" >2,60%</td>
+</tr>
+<tr><td>Renovables</td>
+<td style = "text-align:right;" >2,30%</td>
+</tr>
+<tr><td>Carbón</td>
+<td style = "text-align:right;" >1,60%</td>
+</tr>
+</table>
+</section>
+<section><h3>horizontal slide</h3>
+</section>
+<section><h3></h3>
+<section><h3>vertical slide</h3>
+vertical slide</section>
+<section><h3>vertical slide</h3>
+another vertical slide</section>
+</section>
+<section data-auto-animate  ><h3>Imagen</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<div class="figure">
+<p><img src=9dejulio.jpg  width=auto  height=400</p>
+</div>
+</div>
+<div class="one_of_2_columns">
+<ol><li>El obelisco</li>
+<li><span style="color:red;">esta muy bien</span></li>
+<li><span style="color:brown;"><-</span></li>
+<li><span style="color:green;">\( \to \)</span></li>
+<li><span style="color:green;">\( \leftarrow \)</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section data-auto-animate  ><h3>Imagen</h3>
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<div class="figure">
+<p><img src=9dejulio.jpg  width=auto  height=400</p>
+</div>
+</div>
+<div class="one_of_2_columns">
+<ol><li><span style="color:green;">\( \to \)</span></li>
+<li><span style="color:brown;"><-</span></li>
+<li>El obelisco</li>
+<li><span style="color:green;">\( \leftarrow \)</span></li>
+<li><span style="color:red;">esta muy bien</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section><h2>Otros</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Definición Formal de Lenguajes</h3>
+<div style="font-size: 85%;">
+<ul><li class="fragment appear"><span style="color:blue;"><b>Reconocedores</b>
+</span><ul><li>Un dispositivo de reconocimiento que lee cadenas del lenguaje y decide si las cadenas de entrada pertenecen al Lenguaje.</li>
+<li>Ejemplo, el analizador sintáctico de un compilador.</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:green;"><b>Generadores</b>
+</span><ul><li>Un dispositivo que genera sentencias de un lenguaje</li>
+<li>Se puede determinar si la sintaxis de una sentencia particular                                 es correcta comparándola con la estructura del generador.</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">BNF y Gramáticas Libres de Contexto</span></h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment appear"><span style="color:green;">Gramáticas libres de Contexto</span><ul><li class="fragment appear">Desarrollado por Noam Chomsky a mediados de 1950s</li>
+<li class="fragment appear">Generadores de Lenguajes, medio de  describir la la sintaxis de lenguajes naturales</li>
+<li class="fragment appear">Define clases de lenguajes</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:green;">Forma Backus-Naur (1959)</span><ul><li class="fragment appear">Inventado por John Backus para describir Algol 58</li>
+<li class="fragment appear">Árboles sintacticos - ambiguedad del lenguaje</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Gramáticas con atributos: Definición</span></h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment highlight-current-green">Sea \(X_0 \to X_1 ... X_n\) una regla de la gramática libre de contexto</li>
+<li class="fragment highlight-current-green">Funciones de la forma \(S(X_0) = f(A(X_1), ... , A(X_n))\) definen <span style="color:yellow;"><em>atributos sintetizados</em>
+</span></li>
+<li class="fragment highlight-current-green">Funciones de la forma \(I(X_j) = f(A(X_0)), ... , f(A(X_{j-1}))\) para \(i <= j <= n\), definen <span style="color:yellow;"><em>atributos heredados</em>
+</span></li>
+<li class="fragment highlight-current-green">Inicialmente hay <span style="color:yellow;"><em>atributos intrínsecos</em>
+</span> en las hojas de los árboles sintácticos</li>
+</ul>
+</section>
+<section><h2>Conclusion</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>latex</h3>
+<p>\[ a = f(z) \left\{ \begin{array}{ll} 1    &  z \ge 0 \\  0  &  z < 0  \end{array}  \right. \]</p>
+<p>o sea en su definición mas simple con dos entradas</p>
+<p>\[ a =  \left\{ \begin{array}{ll} 1    &  \mathrm{si\ } b + w_1x_1 + w_2x_2  \ge 0 \\  0  &  \mathrm{si\ } b + w_1x_1 + w_2x_2 < 0  \end{array}  \right. \]</p>
+</section>
+<section><h3>code</h3>
+<pre><code>
+main:- display('hola').
+sort([X|Y]) :- sort(Y).
+conclusion -->
+    section("Conclusion"),
+    slide("latex",</code></pre>
+</section>
+<section><h3>ultima diapositiva</h3>
+Fin</section>
+<section data-auto-animate  ><h2>Semántica General de Llamada y Retorno</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate  ><h2><em><span style="color:red;">Semántica General de Llamada y Retorno</span></em>
+</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:red;">Semántica General de Llamada y Retorno</span></h3>
+<div style="font-size: 85%;">
+<ul><li class="fragment highlight-current-red">Semánticamente es como si el subprograma se insertara en el punto de su llamada (no es siempre asi)</li>
+<li class="fragment highlight-current-red">En un lenguaje de Programación, las operaciones de llamado y retorno de subprogramas son llamadas en conjunto <em>articulación de subprogramas</em>
+</li>
+<li class="fragment highlight-current-red">La llamada a un subprograma tiene varias acciones asociadas con:<ul><li class="fragment highlight-current-red">El método de pasaje de parámetros</li>
+<li class="fragment highlight-current-red">variables locales estáticas</li>
+<li class="fragment highlight-current-red">Estado de ejecución del programa llamador</li>
+<li class="fragment highlight-current-red">transferencia del control</li>
+<li class="fragment highlight-current-red">Estructura de anidamiento de los subprogramas</li>
+</ul>
+</li>
+</ul>
+</section>
+</div>
+</div>
+<script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>

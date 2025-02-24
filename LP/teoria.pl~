@@ -1,0 +1,17 @@
+file("teoriad").
+title("Lenguajes Declarativos").
+author("Claudio Vaucheret").
+date("Semanticas").
+theme("night").
+transition("slide").
+
+show :-
+        file(File),
+        append(["xdg-open ",File,".html"],Command),
+	shell(Command).
+	      
+main :-
+	consult(slideprolog),
+	file(File),
+	append(File,".html",Filehtml),
+	phrase_to_file(presentation,Filehtml).

@@ -31,14 +31,14 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Lenguajes Declarativos</h1><p class="subtitle"></p>
-<h2 class="author">Claudio Vaucheret</h2><h2 class="date">2024-03-11 lun 00:00</h2><p class="date">Created: 2024-06-04 mar 13:55</p>
+<h2 class="author">Claudio Vaucheret</h2><h2 class="date">2024-03-11 lun 00:00</h2><p class="date">Created: 2025-02-20 jue 20:52</p>
 </section>
-<section id="sec-table-of-contents"><div id="table-of-contents">
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org1d01b65">Lenguajes Declarativos</a></li>
-<li><a href="#/slide-org8e64960">Prolog</a></li>
+<li><a href="#/slide-org760a998">Lenguajes Declarativos</a></li>
+<li><a href="#/slide-org51a32b4">Prolog</a></li>
 </ul>
 </div>
 </div>
@@ -47,15 +47,15 @@
 
 
 <section>
-<section id="slide-org1d01b65">
-<h2 id="org1d01b65">Lenguajes Declarativos</h2>
-<div class="outline-text-2" id="text-org1d01b65">
+<section id="slide-org760a998">
+<h2 id="org760a998">Lenguajes Declarativos</h2>
+<div class="outline-text-2" id="text-org760a998">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org32026ce">
-<h3 id="org32026ce">Características</h3>
+<section id="slide-org295121d">
+<h3 id="org295121d">Características</h3>
 <ul>
 <li class="fragment roll-in">Programa es Lógica + Control (Kowalski)</li>
 
@@ -74,8 +74,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org1c0b985">
-<h3 id="org1c0b985">Lenguajes</h3>
+<section id="slide-orge851a13">
+<h3 id="orge851a13">Lenguajes</h3>
 <ul>
 <li class="fragment roll-in">Relacional (Prolog)
 <ul>
@@ -109,15 +109,15 @@
 </section>
 </section>
 <section>
-<section id="slide-org8e64960">
-<h2 id="org8e64960">Prolog</h2>
-<div class="outline-text-2" id="text-org8e64960">
+<section id="slide-org51a32b4">
+<h2 id="org51a32b4">Prolog</h2>
+<div class="outline-text-2" id="text-org51a32b4">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgefa292a">
-<h3 id="orgefa292a">Programación en Lógica</h3>
+<section id="slide-org1e067f5">
+<h3 id="org1e067f5">Programación en Lógica</h3>
 <ul>
 <li class="fragment roll-in">Cláusulas de Horn</li>
 <li class="fragment roll-in">Resolución SLD (basado en resolución de Robinson)</li>
@@ -128,13 +128,13 @@
 </section>
 </section>
 <section>
-<section id="slide-org969fb03">
-<h3 id="org969fb03">Ejemplo fibonacci</h3>
-<div class="outline-text-3" id="text-org969fb03">
+<section id="slide-org7168e80">
+<h3 id="org7168e80">Ejemplo fibonacci</h3>
+<div class="outline-text-3" id="text-org7168e80">
 </div>
 </section>
-<section id="slide-org35637c5">
-<h4 id="org35637c5">sucesion de fibonacci</h4>
+<section id="slide-org84f2020">
+<h4 id="org84f2020">sucesion de fibonacci</h4>
 <p>
 En matemáticas, la sucesión de Fibonacci (a veces llamada erróneamente
 serie de Fibonacci) es la siguiente sucesión infinita de números
@@ -152,7 +152,7 @@ recurrencia que la define.
 </p>
 
 </section>
-<section id="slide-org35637c5-split">
+<section id="slide-org84f2020-split">
 
 <p>
 A los elementos de esta sucesión se les llama números de
@@ -167,8 +167,8 @@ configuración de las piñas de las coníferas.
 </p>
 
 </section>
-<section id="slide-org34457aa">
-<h4 id="org34457aa">Conejos</h4>
+<section id="slide-org40bea24">
+<h4 id="org40bea24">Conejos</h4>
 <p>
 una forma de exponer la sucesión de fibonacci es presentando el
 crecimiento de una población de conejos con las siguientes reglas:
@@ -260,21 +260,21 @@ conejo joven.</li>
 
 
 </section>
-<section id="slide-org0c35d5a">
-<h4 id="org0c35d5a">programa</h4>
+<section id="slide-org9f7d0f3">
+<h4 id="org9f7d0f3">programa</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim>:- <span style="color: #87cefa; text-decoration: underline;">module</span>(fibonacci,<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">f/2</span><span style="color: #ffb6c1; font-size: 105%;">]</span>).
+<pre  class="src src-prolog"   ><code trim>:- <span style="color: #ff00ff;">module</span>(fibonacci,<span style="color: #ff0000;">[</span><span style="color: #a020f0;">f/2</span><span style="color: #ff0000;">]</span>).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">f</span>(0,1).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">f</span>(1,1).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">f</span>(<span style="color: #ffd700;">N</span>,<span style="color: #ffd700;">R</span>):-
-    <span style="color: #ffd700;">N</span> &gt;= 2,
-    <span style="color: #ffd700;">N1</span> is <span style="color: #ffd700;">N</span> - 1,
-    <span style="color: #ffd700;">N2</span> is <span style="color: #ffd700;">N</span> - 2,
-    f(<span style="color: #ffd700;">N1</span>,<span style="color: #ffd700;">F1</span>),
-    f(<span style="color: #ffd700;">N2</span>,<span style="color: #ffd700;">F2</span>),
-    <span style="color: #ffd700;">R</span> is <span style="color: #ffd700;">F1</span> + <span style="color: #ffd700;">F2</span>.
+<span style="color: #a020f0;">f</span>(0,1).
+<span style="color: #a020f0;">f</span>(1,1).
+<span style="color: #a020f0;">f</span>(<span style="color: #ee82ee;">N</span>,<span style="color: #ee82ee;">R</span>):-
+    <span style="color: #ee82ee;">N</span> &gt;= 2,
+    <span style="color: #ee82ee;">N1</span> is <span style="color: #ee82ee;">N</span> - 1,
+    <span style="color: #ee82ee;">N2</span> is <span style="color: #ee82ee;">N</span> - 2,
+    f(<span style="color: #ee82ee;">N1</span>,<span style="color: #ee82ee;">F1</span>),
+    f(<span style="color: #ee82ee;">N2</span>,<span style="color: #ee82ee;">F2</span>),
+    <span style="color: #ee82ee;">R</span> is <span style="color: #ee82ee;">F1</span> + <span style="color: #ee82ee;">F2</span>.
 </code></pre>
 </div>
 
@@ -282,8 +282,8 @@ conejo joven.</li>
 </section>
 </section>
 <section>
-<section id="slide-org1937f7c">
-<h3 id="org1937f7c">Sintaxis</h3>
+<section id="slide-org501dd9b">
+<h3 id="org501dd9b">Sintaxis</h3>
 <p>
 Términos:
 </p>
@@ -300,8 +300,8 @@ los caracteres válidos son:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #ffd700;">A</span> , <span style="color: #ffd700;">B</span>  ...  <span style="color: #ffd700;">Z</span>
-a , b  ...  <span style="color: #1e90ff; font-size: 105%; font-weight: bold;">z</span>
+<pre  class="src src-prolog"   ><code trim><span style="color: #ee82ee;">A</span> , <span style="color: #ee82ee;">B</span>  ...  <span style="color: #ee82ee;">Z</span>
+a , b  ...  <span style="color: #a020f0;">z</span>
 + , - , * , / , &lt; , &gt; , = , : , . , &amp; , ~
 </code></pre>
 </div>
@@ -309,8 +309,8 @@ a , b  ...  <span style="color: #1e90ff; font-size: 105%; font-weight: bold;">z<
 
 
 </section>
-<section id="slide-orga999376">
-<h4 id="orga999376">Atomos</h4>
+<section id="slide-org45852fd">
+<h4 id="org45852fd">Atomos</h4>
 <p>
 Un átomo es:
 </p>
@@ -332,14 +332,14 @@ ejemplos:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #ffa07a;">'Alberto'</span> <span style="color: #ffa07a;">'Dolar21'</span> <span style="color: #ffa07a;">'EL Paso'</span> <span style="color: #ffa07a;">'&amp;^%si'</span>
+<pre  class="src src-prolog"   ><code trim><span style="color: #00ffff;">'Alberto'</span> <span style="color: #00ffff;">'Dolar21'</span> <span style="color: #00ffff;">'EL Paso'</span> <span style="color: #00ffff;">'&amp;^%si'</span>
 </code></pre>
 </div></li>
 
 </ul>
 
 </section>
-<section id="slide-orga999376-split">
+<section id="slide-org45852fd-split">
 
 <ul>
 <li><p>
@@ -355,8 +355,8 @@ ejemplos
 </ul>
 
 </section>
-<section id="slide-org04c44b9">
-<h4 id="org04c44b9">Números</h4>
+<section id="slide-org0e136f8">
+<h4 id="org0e136f8">Números</h4>
 <p>
 ejemplos
 </p>
@@ -367,8 +367,8 @@ ejemplos
 </div>
 
 </section>
-<section id="slide-orge09643c">
-<h4 id="orge09643c">Variables</h4>
+<section id="slide-orgf2591ae">
+<h4 id="orgf2591ae">Variables</h4>
 <p>
 Una variable es una cadena de caracteres de letras mayúsculas,
 minúsculas, digitos, guión bajo, que comience con una letra mayúscula
@@ -377,13 +377,13 @@ ejemplos:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #ffd700;">X</span> <span style="color: #ffd700;">Y</span> <span style="color: #ffd700;">Variable</span> <span style="color: #ffd700;">_etiqueta</span> <span style="color: #ffd700;">X_526</span> <span style="color: #ffd700;">List</span> <span style="color: #ffd700;">HEAD</span>
+<pre  class="src src-prolog"   ><code trim><span style="color: #ee82ee;">X</span> <span style="color: #ee82ee;">Y</span> <span style="color: #ee82ee;">Variable</span> <span style="color: #ee82ee;">_etiqueta</span> <span style="color: #ee82ee;">X_526</span> <span style="color: #ee82ee;">List</span> <span style="color: #ee82ee;">HEAD</span>
 </code></pre>
 </div>
 
 </section>
-<section id="slide-org461d409">
-<h4 id="org461d409">Términos Complejos</h4>
+<section id="slide-orgcadfbde">
+<h4 id="orgcadfbde">Términos Complejos</h4>
 <p>
 Un término se compone de un functor seguido de cero a N argumentos entre paréntesis y separados
 por comas. Cada argumento es un término.
@@ -395,14 +395,14 @@ ejemplos:
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">fecha</span>(12,octubre,2016)
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">animal_peligroso</span>(<span style="color: #ffa07a;">'Leon'</span>)
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">arbol</span>(23,arbol(12,nil,nil),nil)
+<pre  class="src src-prolog"   ><code trim><span style="color: #a020f0;">fecha</span>(12,octubre,2016)
+<span style="color: #a020f0;">animal_peligroso</span>(<span style="color: #00ffff;">'Leon'</span>)
+<span style="color: #a020f0;">arbol</span>(23,arbol(12,nil,nil),nil)
 </code></pre>
 </div>
 
 
-<div class="figure">
+<div id="org7d1c7ae" class="figure">
 <p><img src="compoundterms.png" alt="compoundterms.png" />
 </p>
 </div>
@@ -411,8 +411,8 @@ ejemplos:
 </section>
 </section>
 <section>
-<section id="slide-org8548707">
-<h3 id="org8548707">Listas</h3>
+<section id="slide-orgcd9f68e">
+<h3 id="orgcd9f68e">Listas</h3>
 <ul>
 <li class="fragment roll-in">.(1,.(2,.(3,.(4,[]))))   dos argumentos Cabeza y Cola ./2</li>
 <li class="fragment roll-in">[1|[2|[3|[4|[]]]]]    notacion alternativa [|]</li>
@@ -425,10 +425,10 @@ ejemplos:
 </section>
 </section>
 <section>
-<section id="slide-orgb79738c">
-<h3 id="orgb79738c">Ejemplo Autómata Finito</h3>
+<section id="slide-org78c7280">
+<h3 id="org78c7280">Ejemplo Autómata Finito</h3>
 
-<div class="figure">
+<div id="org8538621" class="figure">
 <p><img src="automata.png" alt="automata.png" />
 </p>
 </div>
@@ -454,36 +454,36 @@ aabb, aa, bb, ababa
 
 
 </section>
-<section id="slide-orgfcfaee2">
-<h4 id="orgfcfaee2">Código</h4>
+<section id="slide-org5df444d">
+<h4 id="org5df444d">Código</h4>
 <p>
 El código en prolog que representa el autómata es
 </p>
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">final</span>(s3).
+<pre  class="src src-prolog"   ><code trim><span style="color: #a020f0;">final</span>(s3).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">trans</span>(s1,a,s1).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">trans</span>(s1,a,s2).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">trans</span>(s1,b,s1).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">trans</span>(s2,b,s3).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">trans</span>(s3,b,s4).
+<span style="color: #a020f0;">trans</span>(s1,a,s1).
+<span style="color: #a020f0;">trans</span>(s1,a,s2).
+<span style="color: #a020f0;">trans</span>(s1,b,s1).
+<span style="color: #a020f0;">trans</span>(s2,b,s3).
+<span style="color: #a020f0;">trans</span>(s3,b,s4).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">silent</span>(s2,s4).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">silent</span>(s3,s1).
+<span style="color: #a020f0;">silent</span>(s2,s4).
+<span style="color: #a020f0;">silent</span>(s3,s1).
 
 </code></pre>
 </div>
 
-<div class="figure">
+<div id="orgb8773aa" class="figure">
 <p><img src="automata.png" alt="automata.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgabaffb0">
-<h4 id="orgabaffb0">Código</h4>
+<section id="slide-orga18e1af">
+<h4 id="orga18e1af">Código</h4>
 <p>
 el código que representa el reconocedor de las cadenas es
 </p>
@@ -491,23 +491,23 @@ el código que representa el reconocedor de las cadenas es
 <div class="org-src-container">
 
 <pre  class="src src-prolog"   ><code trim>
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accepts_</span>(<span style="color: #ffd700;">State</span>,<span style="color: #ffb6c1; font-size: 105%;">[]</span>):-
-        final(<span style="color: #ffd700;">State</span>).
+<span style="color: #a020f0;">accepts_</span>(<span style="color: #ee82ee;">State</span>,<span style="color: #ff0000;">[]</span>):-
+        final(<span style="color: #ee82ee;">State</span>).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accepts_</span>(<span style="color: #ffd700;">State</span>,<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">X</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Rest</span><span style="color: #ffb6c1; font-size: 105%;">]</span>):-
-        trans(<span style="color: #ffd700;">State</span>,<span style="color: #ffd700;">X</span>,<span style="color: #ffd700;">State1</span>),
-        accepts_(<span style="color: #ffd700;">State1</span>,<span style="color: #ffd700;">Rest</span>).
+<span style="color: #a020f0;">accepts_</span>(<span style="color: #ee82ee;">State</span>,<span style="color: #ff0000;">[</span><span style="color: #ee82ee;">X</span><span style="color: #ff0000;">|</span><span style="color: #ee82ee;">Rest</span><span style="color: #ff0000;">]</span>):-
+        trans(<span style="color: #ee82ee;">State</span>,<span style="color: #ee82ee;">X</span>,<span style="color: #ee82ee;">State1</span>),
+        accepts_(<span style="color: #ee82ee;">State1</span>,<span style="color: #ee82ee;">Rest</span>).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accepts_</span>(<span style="color: #ffd700;">State</span>,<span style="color: #ffd700;">String</span>):-
-        silent(<span style="color: #ffd700;">State</span>,<span style="color: #ffd700;">State1</span>),
-        accepts_(<span style="color: #ffd700;">State1</span>,<span style="color: #ffd700;">String</span>).
+<span style="color: #a020f0;">accepts_</span>(<span style="color: #ee82ee;">State</span>,<span style="color: #ee82ee;">String</span>):-
+        silent(<span style="color: #ee82ee;">State</span>,<span style="color: #ee82ee;">State1</span>),
+        accepts_(<span style="color: #ee82ee;">State1</span>,<span style="color: #ee82ee;">String</span>).
 
 </code></pre>
 </div>
 
 </section>
-<section id="slide-orgad0e958">
-<h4 id="orgad0e958">Código</h4>
+<section id="slide-org7c6d6ab">
+<h4 id="org7c6d6ab">Código</h4>
 <p>
 el código principal es 
 </p>
@@ -515,96 +515,96 @@ el código principal es
 <div class="org-src-container">
 
 <pre  class="src src-prolog"   ><code trim>
-:- <span style="color: #87cefa; text-decoration: underline;">module</span>(automata,<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">main/1</span><span style="color: #ffb6c1; font-size: 105%;">]</span>,<span style="color: #ffd700;">_</span>).
+:- <span style="color: #ff00ff;">module</span>(automata,<span style="color: #ff0000;">[</span><span style="color: #a020f0;">main/1</span><span style="color: #ff0000;">]</span>,<span style="color: #ee82ee;">_</span>).
 :- use_module(library(iso_char)).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">main</span>(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">State</span>,<span style="color: #ffd700;">Chain</span><span style="color: #ffb6c1; font-size: 105%;">]</span>):-
-        ( accepts(<span style="color: #ffd700;">State</span>,<span style="color: #ffd700;">Chain</span>) <span style="color: #ffb6c1; font-size: 105%;">-&gt;</span> display(<span style="color: #ffa07a;">'aceptada '</span>),nl
-        <span style="color: #ffb6c1; font-size: 105%;">;</span>
-            display(<span style="color: #ffa07a;">'rechazada '</span>),nl
+<span style="color: #a020f0;">main</span>(<span style="color: #ff0000;">[</span><span style="color: #ee82ee;">State</span>,<span style="color: #ee82ee;">Chain</span><span style="color: #ff0000;">]</span>):-
+        ( accepts(<span style="color: #ee82ee;">State</span>,<span style="color: #ee82ee;">Chain</span>) <span style="color: #ff0000;">-&gt;</span> display(<span style="color: #00ffff;">'aceptada '</span>),nl
+        <span style="color: #ff0000;">;</span>
+            display(<span style="color: #00ffff;">'rechazada '</span>),nl
         ).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">main</span>(<span style="color: #ffd700;">_</span>):- display(<span style="color: #ffa07a;">'especificar estado y cadena '</span>),nl.
+<span style="color: #a020f0;">main</span>(<span style="color: #ee82ee;">_</span>):- display(<span style="color: #00ffff;">'especificar estado y cadena '</span>),nl.
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accepts</span>(<span style="color: #ffd700;">State</span>,<span style="color: #ffd700;">String</span>):-
-        atom_chars(<span style="color: #ffd700;">String</span>, <span style="color: #ffd700;">Chars</span>),
-        accepts_(<span style="color: #ffd700;">State</span>,<span style="color: #ffd700;">Chars</span>).
+<span style="color: #a020f0;">accepts</span>(<span style="color: #ee82ee;">State</span>,<span style="color: #ee82ee;">String</span>):-
+        atom_chars(<span style="color: #ee82ee;">String</span>, <span style="color: #ee82ee;">Chars</span>),
+        accepts_(<span style="color: #ee82ee;">State</span>,<span style="color: #ee82ee;">Chars</span>).
 
 </code></pre>
 </div>
 
 </section>
-<section id="slide-org6db6168">
-<h4 id="org6db6168">Arbol SLD</h4>
+<section id="slide-orgb24a5d9">
+<h4 id="orgb24a5d9">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accept</span>(s1,<span style="color: #ffb6c1; font-size: 105%;">[</span>a,a,b<span style="color: #ffb6c1; font-size: 105%;">]</span>).
+<pre  class="src src-prolog"   ><code trim><span style="color: #a020f0;">accept</span>(s1,<span style="color: #ff0000;">[</span>a,a,b<span style="color: #ff0000;">]</span>).
 </code></pre>
 </div>
 
-<div class="figure">
+<div id="org578abcd" class="figure">
 <p><img src="acceptaab.png" alt="acceptaab.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgcace610">
-<h4 id="orgcace610">Arbol SLD</h4>
+<section id="slide-org3294369">
+<h4 id="org3294369">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accept</span>(s1,<span style="color: #ffb6c1; font-size: 105%;">[</span>a,b<span style="color: #ffb6c1; font-size: 105%;">]</span>).
+<pre  class="src src-prolog"   ><code trim><span style="color: #a020f0;">accept</span>(s1,<span style="color: #ff0000;">[</span>a,b<span style="color: #ff0000;">]</span>).
 </code></pre>
 </div>
 
-<div class="figure">
+<div id="orga05f104" class="figure">
 <p><img src="accepts1ab.png" alt="accepts1ab.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org334d081">
-<h4 id="org334d081">Arbol SLD</h4>
+<section id="slide-org31ea0c5">
+<h4 id="org31ea0c5">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accept</span>(s1,<span style="color: #ffb6c1; font-size: 105%;">[</span>b<span style="color: #ffb6c1; font-size: 105%;">]</span>).
+<pre  class="src src-prolog"   ><code trim><span style="color: #a020f0;">accept</span>(s1,<span style="color: #ff0000;">[</span>b<span style="color: #ff0000;">]</span>).
 </code></pre>
 </div>
 
-<div class="figure">
+<div id="org3f63b0b" class="figure">
 <p><img src="accepts1b.png" alt="accepts1b.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org24d0907">
-<h4 id="org24d0907">Arbol SLD</h4>
+<section id="slide-orgdb3f714">
+<h4 id="orgdb3f714">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accept</span>(s2,<span style="color: #ffb6c1; font-size: 105%;">[</span>b<span style="color: #ffb6c1; font-size: 105%;">]</span>).
+<pre  class="src src-prolog"   ><code trim><span style="color: #a020f0;">accept</span>(s2,<span style="color: #ff0000;">[</span>b<span style="color: #ff0000;">]</span>).
 </code></pre>
 </div>
 
-<div class="figure">
+<div id="org0a02e35" class="figure">
 <p><img src="accepts2b.png" alt="accepts2b.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgf47d505">
-<h4 id="orgf47d505">Arbol SLD</h4>
+<section id="slide-org48da073">
+<h4 id="org48da073">Arbol SLD</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim><span style="color: #1e90ff; font-size: 105%; font-weight: bold;">accept</span>(s4,<span style="color: #ffb6c1; font-size: 105%;">[</span>b<span style="color: #ffb6c1; font-size: 105%;">]</span>).
+<pre  class="src src-prolog"   ><code trim><span style="color: #a020f0;">accept</span>(s4,<span style="color: #ff0000;">[</span>b<span style="color: #ff0000;">]</span>).
 </code></pre>
 </div>
 
-<div class="figure">
+<div id="org89b5638" class="figure">
 <p><img src="accepts4b.png" alt="accepts4b.png" />
 </p>
 </div>
 
 </section>
-<section id="slide-org07d7e77">
-<h4 id="org07d7e77">\(Tp^n\)</h4>
+<section id="slide-orgccbb39e">
+<h4 id="orgccbb39e">\(Tp^n\)</h4>
 <div style="font-size: 70%;">
 
 <p>
@@ -628,7 +628,7 @@ el código principal es
 </p>
 
 </section>
-<section id="slide-org07d7e77-split">
+<section id="slide-orgccbb39e-split">
 
 <div style="font-size: 70%;">
 
@@ -670,8 +670,8 @@ el código principal es
 </section>
 </section>
 <section>
-<section id="slide-org8e4dece">
-<h3 id="org8e4dece">Máquina de Turing</h3>
+<section id="slide-orgeddabca">
+<h3 id="orgeddabca">Máquina de Turing</h3>
 <div style="font-size: 60%;">
 <p>
 Una máquina de Turing con una sola cinta puede definirse como una \(7-tupla\):
@@ -702,88 +702,88 @@ donde:
 </div>
 
 </section>
-<section id="slide-orgf56a73c">
-<h4 id="orgf56a73c">Código</h4>
+<section id="slide-org7935f2f">
+<h4 id="org7935f2f">Código</h4>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"   ><code trim>:- <span style="color: #87cefa; text-decoration: underline;">module</span>(tur,<span style="color: #ffd700;">_</span>).
+<pre  class="src src-prolog"   ><code trim>:- <span style="color: #ff00ff;">module</span>(tur,<span style="color: #ee82ee;">_</span>).
 
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">turing</span>(<span style="color: #ffd700;">Tape0</span>, <span style="color: #ffd700;">Tape</span>) :-
-       perform(q0, <span style="color: #ffb6c1; font-size: 105%;">[]</span>, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Tape0</span>, <span style="color: #ffd700;">Rs</span>),
-       reverse(<span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Ls1</span>),
-       append(<span style="color: #ffd700;">Ls1</span>, <span style="color: #ffd700;">Rs</span>, <span style="color: #ffd700;">Tape</span>).
+<span style="color: #a020f0;">turing</span>(<span style="color: #ee82ee;">Tape0</span>, <span style="color: #ee82ee;">Tape</span>) :-
+       perform(q0, <span style="color: #ff0000;">[]</span>, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Tape0</span>, <span style="color: #ee82ee;">Rs</span>),
+       reverse(<span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Ls1</span>),
+       append(<span style="color: #ee82ee;">Ls1</span>, <span style="color: #ee82ee;">Rs</span>, <span style="color: #ee82ee;">Tape</span>).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">perform</span>(qf, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Rs</span>, <span style="color: #ffd700;">Rs</span>) :- <span style="color: #ffb6c1; font-size: 105%;">!</span>.
+<span style="color: #a020f0;">perform</span>(qf, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Rs</span>, <span style="color: #ee82ee;">Rs</span>) :- <span style="color: #ff0000;">!</span>.
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">perform</span>(<span style="color: #ffd700;">Q0</span>, <span style="color: #ffd700;">Ls0</span>, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Rs0</span>, <span style="color: #ffd700;">Rs</span>) :-
-       symbol(<span style="color: #ffd700;">Rs0</span>, <span style="color: #ffd700;">Sym</span>, <span style="color: #ffd700;">RsRest</span>),
-       once(rule(<span style="color: #ffd700;">Q0</span>, <span style="color: #ffd700;">Sym</span>, <span style="color: #ffd700;">Q1</span>, <span style="color: #ffd700;">NewSym</span>, <span style="color: #ffd700;">Action</span>)),
-       action(<span style="color: #ffd700;">Action</span>, <span style="color: #ffd700;">Ls0</span>, <span style="color: #ffd700;">Ls1</span>, <span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">NewSym</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">RsRest</span><span style="color: #ffb6c1; font-size: 105%;">]</span>, <span style="color: #ffd700;">Rs1</span>),
-       perform(<span style="color: #ffd700;">Q1</span>, <span style="color: #ffd700;">Ls1</span>, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Rs1</span>, <span style="color: #ffd700;">Rs</span>).
+<span style="color: #a020f0;">perform</span>(<span style="color: #ee82ee;">Q0</span>, <span style="color: #ee82ee;">Ls0</span>, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Rs0</span>, <span style="color: #ee82ee;">Rs</span>) :-
+       symbol(<span style="color: #ee82ee;">Rs0</span>, <span style="color: #ee82ee;">Sym</span>, <span style="color: #ee82ee;">RsRest</span>),
+       once(rule(<span style="color: #ee82ee;">Q0</span>, <span style="color: #ee82ee;">Sym</span>, <span style="color: #ee82ee;">Q1</span>, <span style="color: #ee82ee;">NewSym</span>, <span style="color: #ee82ee;">Action</span>)),
+       action(<span style="color: #ee82ee;">Action</span>, <span style="color: #ee82ee;">Ls0</span>, <span style="color: #ee82ee;">Ls1</span>, <span style="color: #ff0000;">[</span><span style="color: #ee82ee;">NewSym</span><span style="color: #ff0000;">|</span><span style="color: #ee82ee;">RsRest</span><span style="color: #ff0000;">]</span>, <span style="color: #ee82ee;">Rs1</span>),
+       perform(<span style="color: #ee82ee;">Q1</span>, <span style="color: #ee82ee;">Ls1</span>, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Rs1</span>, <span style="color: #ee82ee;">Rs</span>).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">symbol</span>(<span style="color: #ffb6c1; font-size: 105%;">[]</span>, b, <span style="color: #ffb6c1; font-size: 105%;">[]</span>).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">symbol</span>(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">Sym</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Rs</span><span style="color: #ffb6c1; font-size: 105%;">]</span>, <span style="color: #ffd700;">Sym</span>, <span style="color: #ffd700;">Rs</span>).
+<span style="color: #a020f0;">symbol</span>(<span style="color: #ff0000;">[]</span>, b, <span style="color: #ff0000;">[]</span>).
+<span style="color: #a020f0;">symbol</span>(<span style="color: #ff0000;">[</span><span style="color: #ee82ee;">Sym</span><span style="color: #ff0000;">|</span><span style="color: #ee82ee;">Rs</span><span style="color: #ff0000;">]</span>, <span style="color: #ee82ee;">Sym</span>, <span style="color: #ee82ee;">Rs</span>).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">action</span>(left, <span style="color: #ffd700;">Ls0</span>, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Rs0</span>, <span style="color: #ffd700;">Rs</span>) :- left(<span style="color: #ffd700;">Ls0</span>, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Rs0</span>, <span style="color: #ffd700;">Rs</span>).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">action</span>(stay, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Rs</span>, <span style="color: #ffd700;">Rs</span>).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">action</span>(right, <span style="color: #ffd700;">Ls0</span>, <span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">Sym</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Ls0</span><span style="color: #ffb6c1; font-size: 105%;">]</span>, <span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">Sym</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Rs</span><span style="color: #ffb6c1; font-size: 105%;">]</span>, <span style="color: #ffd700;">Rs</span>).
+<span style="color: #a020f0;">action</span>(left, <span style="color: #ee82ee;">Ls0</span>, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Rs0</span>, <span style="color: #ee82ee;">Rs</span>) :- left(<span style="color: #ee82ee;">Ls0</span>, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Rs0</span>, <span style="color: #ee82ee;">Rs</span>).
+<span style="color: #a020f0;">action</span>(stay, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Rs</span>, <span style="color: #ee82ee;">Rs</span>).
+<span style="color: #a020f0;">action</span>(right, <span style="color: #ee82ee;">Ls0</span>, <span style="color: #ff0000;">[</span><span style="color: #ee82ee;">Sym</span><span style="color: #ff0000;">|</span><span style="color: #ee82ee;">Ls0</span><span style="color: #ff0000;">]</span>, <span style="color: #ff0000;">[</span><span style="color: #ee82ee;">Sym</span><span style="color: #ff0000;">|</span><span style="color: #ee82ee;">Rs</span><span style="color: #ff0000;">]</span>, <span style="color: #ee82ee;">Rs</span>).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">left</span>(<span style="color: #ffb6c1; font-size: 105%;">[]</span>, <span style="color: #ffb6c1; font-size: 105%;">[]</span>, <span style="color: #ffd700;">Rs0</span>, <span style="color: #ffb6c1; font-size: 105%;">[</span>b<span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Rs0</span><span style="color: #ffb6c1; font-size: 105%;">]</span>).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">left</span>(<span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">L</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Ls</span><span style="color: #ffb6c1; font-size: 105%;">]</span>, <span style="color: #ffd700;">Ls</span>, <span style="color: #ffd700;">Rs</span>, <span style="color: #ffb6c1; font-size: 105%;">[</span><span style="color: #ffd700;">L</span><span style="color: #ffb6c1; font-size: 105%;">|</span><span style="color: #ffd700;">Rs</span><span style="color: #ffb6c1; font-size: 105%;">]</span>).
+<span style="color: #a020f0;">left</span>(<span style="color: #ff0000;">[]</span>, <span style="color: #ff0000;">[]</span>, <span style="color: #ee82ee;">Rs0</span>, <span style="color: #ff0000;">[</span>b<span style="color: #ff0000;">|</span><span style="color: #ee82ee;">Rs0</span><span style="color: #ff0000;">]</span>).
+<span style="color: #a020f0;">left</span>(<span style="color: #ff0000;">[</span><span style="color: #ee82ee;">L</span><span style="color: #ff0000;">|</span><span style="color: #ee82ee;">Ls</span><span style="color: #ff0000;">]</span>, <span style="color: #ee82ee;">Ls</span>, <span style="color: #ee82ee;">Rs</span>, <span style="color: #ff0000;">[</span><span style="color: #ee82ee;">L</span><span style="color: #ff0000;">|</span><span style="color: #ee82ee;">Rs</span><span style="color: #ff0000;">]</span>).
 
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">rule</span>(q0, 1, q0, 1, right).
-<span style="color: #1e90ff; font-size: 105%; font-weight: bold;">rule</span>(q0, b, qf, 1, stay).
-
-
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q0, 1, q0,  1,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q0, 0, q0,  0,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q0,b,q1,c,left).</span>
-
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q1, 0, q1,  0,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q1, 1, q1,  1,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q1,b,q2,b,right).</span>
-
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q2, 0, q3,y,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q2, 1, q7,x,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q2,c, q11,c,left).</span>
+<span style="color: #a020f0;">rule</span>(q0, 1, q0, 1, right).
+<span style="color: #a020f0;">rule</span>(q0, b, qf, 1, stay).
 
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q3, 0, q3,  0,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q3, 1, q3,  1,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q3,c,q4,c,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q0, 1, q0,  1,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q0, 0, q0,  0,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q0,b,q1,c,left).</span>
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q4,  0,q4,  0,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q4,  1,q4,  1,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q4,b,q5,  0,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q1, 0, q1,  0,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q1, 1, q1,  1,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q1,b,q2,b,right).</span>
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q5,  0,q5,  0,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q5,  1,q5,  1,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q5,c,q6,c,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q2, 0, q3,y,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q2, 1, q7,x,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q2,c, q11,c,left).</span>
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q6,  0,q6,  0,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q6,  1,q6,  1,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q6,y,q2,y,right).</span>
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q7, 0, q7,  0,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q7, 1, q7,  1,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q7,c,q8,c,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q3, 0, q3,  0,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q3, 1, q3,  1,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q3,c,q4,c,right).</span>
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q8,  0,q8,  0,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q8,  1,q8,  1,right).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q8,b,q9,  1,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q4,  0,q4,  0,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q4,  1,q4,  1,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q4,b,q5,  0,left ).</span>
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q9,  0,q9,  0,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q9,  1,q9,  1,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q9,c,q10,c,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q5,  0,q5,  0,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q5,  1,q5,  1,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q5,c,q6,c,left ).</span>
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q10,  0,q10,  0,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q10,  1,q10,  1,left ).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q10,x,q2,x,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q6,  0,q6,  0,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q6,  1,q6,  1,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q6,y,q2,y,right).</span>
 
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q11,x,q11,1,left).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q11,y,q11,0,left).</span>
-<span style="color: #90ee90; font-style: italic;">%% </span><span style="color: #90ee90; font-style: italic;">rule(q11,b,qf,b,stay).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q7, 0, q7,  0,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q7, 1, q7,  1,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q7,c,q8,c,right).</span>
+
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q8,  0,q8,  0,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q8,  1,q8,  1,right).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q8,b,q9,  1,left ).</span>
+
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q9,  0,q9,  0,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q9,  1,q9,  1,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q9,c,q10,c,left ).</span>
+
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q10,  0,q10,  0,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q10,  1,q10,  1,left ).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q10,x,q2,x,right).</span>
+
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q11,x,q11,1,left).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q11,y,q11,0,left).</span>
+<span style="color: #ff1493;">%% </span><span style="color: #ff1493;">rule(q11,b,qf,b,stay).</span>
 </code></pre>
 </div>
 </section>

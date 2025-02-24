@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html><head><title>Lenguajes Declarativos</title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Lenguajes Declarativos</h1>
+<h2 class = "author" >Claudio Vaucheret</h2>
+<h3 class = "date" >10/03/2024</h3>
+</section>
+<section><h2>Lenguajes Declarativos</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Características</h3>
+<ul><li class="fragment appear"><span style="color:green;">Programa es Lógica + Control (Kowalski)</span></li>
+<li class="fragment appear"><span style="color:yellow;">X = X + 1 ¿que significa?</span></li>
+<li class="fragment appear"><span style="color:green;">Semánticas equivalentes a la operacional</span></li>
+<li class="fragment appear"><span style="color:yellow;">Programa es Algoritmo + Estructura de Datos (Wirth)</span></li>
+<li class="fragment appear"><span style="color:green;">Debugging, Correctitud, Prueba de Programas</span></li>
+<li class="fragment appear"><span style="color:yellow;">Análisis de Programas, Web Semantics</span></li>
+</ul>
+</section>
+<section><h3><span style="color:brown;">Lenguajes</span></h3>
+<div style="font-size: 95%;">
+<ul><li class="fragment appear">Relacional (Prolog)<ul><li>Swi Prolog<a href=
+http://www.swi-prolog.org/>
+http://www.swi-prolog.org/</a>
+</li>
+<li>Ciao Prolog<a href=
+http://ciao-lang.org/>
+http://ciao-lang.org/</a>
+</li>
+<li>Scryer Prolog<a href=
+https://www.scryer.pl/>
+https://www.scryer.pl/</a>
+</li>
+</ul>
+</li>
+<li class="fragment appear">Funcional<ul><li>scheme (lisp)<a href=
+https://racket-lang.org/>
+https://racket-lang.org/</a>
+</li>
+<li>erlang (concurrency)<ul><li><a href=
+https://www.erlang.org/>
+https://www.erlang.org/</a>
+</li>
+<li><a href=
+https://adoptingerlang.org/>
+https://adoptingerlang.org/</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="fragment appear">Typed declarative languages<ul><li>Haskell<a href=
+https://www.haskell.org/>
+https://www.haskell.org/</a>
+</li>
+<li>Mercury<a href=
+https://mercurylang.org>
+https://mercurylang.org</a>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h2>Prolog</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:red;">Programación en Lógica</span></h3>
+<ul><li class="fragment appear">Cláusulas de Horn</li>
+<li class="fragment appear">Resolución SLD (basado en resolución de Robinson)</li>
+<li class="fragment appear">Lógica como lenguaje de programación</li>
+</ul>
+</section>
+<section><h3>Ejemplo fibonacci</h3>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:lime;">Sucesion de Fibonacci</span></h3>
+En matemáticas, la sucesión de Fibonacci (a veces llamada erróneamente serie de Fibonacci) es la siguiente sucesión infinita de números naturales: <p><span style="color:lime;">\[1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597 \ldots\]</span></p>
+La sucesión comienza con los números 1 y 1 y a partir de estos,<b>cada término es la suma de los dos anteriores</b>
+,es la relación de recurrencia que la define.</section>
+<section><h3><span style="color:lime;">Sucesion de Fibonacci</span></h3>
+A los elementos de esta sucesión se les llama números de Fibonacci. Esta sucesión fue descrita en Europa por Leonardo de Pisa, matemático italiano del siglo XIII también conocido como Fibonacci. Tiene numerosas aplicaciones en ciencias de la computación, matemáticas y teoría de juegos. También aparece en configuraciones biológicas, como por ejemplo en las ramas de los árboles, en la disposición de las hojas en el tallo, en las flores de alcachofas y girasoles, en las inflorescencias del brécol romanesco y en la configuración de las piñas de las coníferas.</section>
+<section><h3>Conejos</h3>
+<p>una forma de exponer la sucesión de fibonacci es presentando el crecimiento de una población de conejos con las siguientes reglas:</p>
+<ul><li><span style="color:purple;">un conejo adulto, cada mes se reproduce a si mismo generando un conejo joven.</span></li>
+<li><span style="color:purple;">un conejo joven se vuelve adulto en un mes.</span></li>
+</ul>
+<table><tr><th>mes</th>
+<th>O</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+<tr><td>adultos</td>
+<td> </td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>8</td>
+<td>13</td>
+</tr>
+<tr><td>jovenes</td>
+<td>1</td>
+<td> </td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td> 8</td>
+</tr>
+<tr><td>total</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>8</td>
+<td>13</td>
+<td>21</td>
+</tr>
+</table>
+</section>
+<section><h3>Programa</h3>
+<pre><code>
+:- module(fibonacci,[f/2]).
+
+f(0,1).
+f(1,1).
+f(N,R):-
+    N >= 2,
+    N1 is N - 1,
+    N2 is N - 2,
+    f(N1,F1),
+    f(N2,F2),
+    R is F1 + F2.</code></pre>
+</section>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:green;">Sintaxis</span></h3>
+<p>Términos:</p>
+<ul><li>Atomos</li>
+<li>Numeros</li>
+<li>Varibles</li>
+<li>Términos Complejos</li>
+</ul>
+<p>los caracteres válidos son:</p>
+<pre><code>
+A , B  ...  Z
+a , b  ...  z
++ , - , * , / , < , > , = , : , . , & , ~
+</code></pre>
+</section>
+<section><h3><span style="color:yellow;">Atomos</span></h3>
+<div style="font-size: 75%;">
+<p>Un átomo es:</p>
+<ul><li>Una cadena de caracteres de letras mayúsculas, minusculas, digitos y guión bajo, que comience con una letra minúscula.<p><span style="color:yellow;">ejemplos</span></p>
+<pre><code>
+casa trabajo alberto eLLio x21
+</code></pre>
+</li>
+<li>Una secuencia arbitraria de caracteres encerrado en comillas simples.<p><span style="color:yellow;">ejemplos:</span></p>
+<pre><code>
+'Alberto' 'Dolar21' 'EL Paso' '&^%si'
+</code></pre>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:yellow;">Atomos</span></h3>
+<p>Un átomo es:</p>
+<ul><li>una cadena de solo caracteres especiales.<p><span style="color:yellow;">ejemplos:</span></p>
+<pre><code>
+@= ===> :- 
+</code></pre>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:yellow;">Números</span></h3>
+<p>Ejemplos:</p>
+<pre><code>
+-8 -1 34 23.98 10001 1697.877443
+</code></pre>
+</section>
+<section><h3><span style="color:yellow;">Variables</span></h3>
+<p>Una variable es una cadena de caracteres de letras mayúsculas, minúsculas, digitos, guión bajo, que comience con una letra mayúscula o con un guión bajo.</p>
+<p><span style="color:yellow;">ejemplos:</span></p>
+<pre><code>
+X Y Variable _etiqueta X_526 List HEAD
+</code></pre>
+</section>
+<section><h3><span style="color:yellow;">Términos Complejos</span></h3>
+<div style="font-size: 95%;">
+<p>Un término se compone de un functor seguido de cero a N argumentos entre paréntesis y separados por comas. Cada argumento es un término.</p>
+<p><span style="color:yellow;">ejemplos:</span></p>
+<pre><code>
+fecha(12,octubre,2016)
+animal_peligroso('Leon')
+arbol(23,arbol(12,nil,nil),nil)
+</code></pre>
+<div class="figure">
+<p><img src=compoundterms.png  width=auto  height=180</p>
+</div>
+</section>
+</section>
+<section><h3><span style="color:green;">Listas</span></h3>
+<ul><li class="fragment highlight-current-green">.(1,.(2,.(3,.(4,[]))))   dos argumentos Cabeza y Cola ./2</li>
+<li class="fragment highlight-current-green">[1|[2|[3|[4|[]]]]]    notacion alternativa [|]</li>
+<li class="fragment highlight-current-green">[1,2|[3|[4|[]]]]  = [1,2,3|[4|[]]] = [1,2,3,4|[]] = [1,2,3,4]</li>
+<li class="fragment highlight-current-green">Unificar [a,1,b,4,c] = [X,Y|Z] ---> X=a, Y=1, Z=[b,4,c]</li>
+</ul>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:red;">Ejemplo Autómata Finito</span></h3>
+<div style="font-size: 75%;">
+<div class="figure">
+<p><img src=automata.png  width=auto  height=230</p>
+</div>
+<ul><li><p>Ejemplos de cadenas aceptadas:</p>
+<pre><code>
+aabbab, ab, aaab, babab
+</code></pre>
+</li>
+<li><p>Ejemplos de cadenas rechazadas:</p>
+<pre><code>
+aabb, aa, bb, ababa
+</code></pre>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Código</span></h3>
+<div style="font-size: 90%;">
+<p>El código en prolog que representa el autómata es</p>
+<pre><code>
+final(s3).
+
+trans(s1,a,s1).
+trans(s1,a,s2).
+trans(s1,b,s1).
+trans(s2,b,s3).
+trans(s3,b,s4).
+
+silent(s2,s4).
+silent(s3,s1).
+</code></pre>
+<div class="figure">
+<p><img src=automata.png  width=auto  height=200</p>
+</div>
+</section>
+<section><h3><span style="color:red;">Código</span></h3>
+<p>el código que representa el reconocedor de las cadenas es</p>
+<pre><code>
+accepts(State,[]):-
+       final(State).
+
+accepts(State,[X|Rest]):-
+       trans(State,X,State1),
+       accepts(State1,Rest).
+
+accepts(State,String):-
+       silent(State,State1),
+       accepts(State1,String).
+</code></pre>
+</section>
+<section><h3><span style="color:red;">Código</span></h3>
+<p>el código principal es:</p>
+<pre><code>
+main:-
+    argv([State,Chain]),
+    atom_chars(S, State),
+        ( accepts(S,Chain) -> format("aceptada ",[]),nl
+        ;
+            format("rechazada ",[]),nl
+        ).
+main:- format("especificar estado y cadena ",[]),nl.
+</code></pre>
+</section>
+<section><h3><span style="color:red;">Arbol SLD</span></h3>
+<pre><code>
+accept(s1,[a,a,b]).
+</code></pre>
+<div class="figure">
+<p><img src=acceptaab.png  width=auto  height=400</p>
+</div>
+</section>
+<section><h3><span style="color:red;">Arbol SLD</span></h3>
+<pre><code>
+accept(s1,[a,b]).
+</code></pre>
+<div class="figure">
+<p><img src=accepts1ab.png  width=auto  height=400</p>
+</div>
+</section>
+<section><h3><span style="color:red;">Arbol SLD</span></h3>
+<pre><code>
+accept(s1,[b]).
+</code></pre>
+<div class="figure">
+<p><img src=accepts1b.png  width=auto  height=480</p>
+</div>
+</section>
+<section><h3><span style="color:red;">Arbol SLD</span></h3>
+<pre><code>
+accept(s2,[b]).
+</code></pre>
+<div class="figure">
+<p><img src=accepts2b.png  width=auto  height=480</p>
+</div>
+</section>
+<section><h3><span style="color:red;">Arbol SLD</span></h3>
+<pre><code>
+accept(s4,[b]).
+</code></pre>
+<div class="figure">
+<p><img src=accepts4b.png  width=auto  height=400</p>
+</div>
+</section>
+<section><h3><span style="color:red;">\(Tp^n\)</span></h3>
+<div style="font-size: 80%;">
+<p>\(U = \{ a,b,s1,s2,s3,s4,[],[a],[b],[s1],\ldots,[a,a],[a,b],\ldots\}\)</p>
+<p>\(Bp = \{final(a),final(b),\ldots, trans(a,a,a) , trans(a,b,a) , \ldots\)</p>
+<p>\(accepts(a,a), accepts(a,[]) \ldots \}\)</p>
+<p>\(Tp(\{\}) = \{final(s3),trans(s1,a,s1),trans(s1,a,s2),trans(s1,b,s1),\)</p>
+<p>\(trans(s2,b,s3),trans(s3,b,s4),silent(s2,s4),silent(s3,s1)\}\)</p>
+</section>
+<section><h3><span style="color:red;">\(Tp^n\)</span></h3>
+<div style="font-size: 80%;">
+<p>\(Tp^1(\{\}) = Tp(\{\}) \cup \{accepts(s3,[])\}\)</p>
+<p>\(Tp^2(\{\}) = Tp^1(\{\}) \cup \{accepts(s2,[b]\}\)</p>
+<p>\(Tp^3(\{\}) = Tp^2(\{\}) \cup \{accepts(s1,[a,b])\}\)</p>
+<p>\(Tp^4(\{\}) = Tp^3(\{\}) \cup \{accepts(s3,[a,b])\)</p>
+<p>\(accepts(s1,[a,a,b]),accepts(s1,[b,a,b])\}\)</p>
+<p>\(Tp^5(\{\}) = Tp^4(\{\}) \cup \{accepts(s2,[b,a,b])\)</p>
+<p>\(accepts(s3,[a,a,b]),accepts(s3,[b,a,b]),accepts(s1,[a,a,a,b])\)</p>
+<p>\(accepts(s1,[b,a,a,b]),accepts(s1,[a,b,a,b]),accepts(s1,[b,b,a,b])\}\)</p>
+</section>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:blue;">Máquina de Turing</span></h3>
+<div style="font-size: 60%;">
+<p>Una máquina de Turing con una sola cinta puede definirse como una \(7-tupla\):</p>
+<p>\[M=(Q,\Sigma ,\Gamma ,s,b,F,\delta )\]</p>
+<p>donde:</p>
+<ul><li>\(Q\) es un conjunto finito de estados.</li>
+<li>\(\Sigma\) es un conjunto finito de símbolos distinto del espacio en blanco, denominado alfabeto de máquina o de entrada.</li>
+<li>\(\Gamma\) es un conjunto finito de símbolos de cinta, denominado alfabeto de cinta</li>
+<li>\(\Sigma \subseteq \Gamma\)</li>
+<li>\(s\in Q\) es el estado inicial.</li>
+<li>\(b\in \Gamma\) es un símbolo denominado blanco, y es el único símbolo que se puede repetir un número infinito de veces.</li>
+<li>\(F\subseteq Q\) es el conjunto de estados finales de aceptación.</li>
+<li>\(\delta :Q\times \Gamma \rightarrow Q\times \Gamma \times \{L,R\}\) es una <em>función parcial</em>
+ denominada función de transición, donde:</li>
+</ul>
+<p>\(L\) es un movimiento a la izquierda y \(R\) es el movimiento a la derecha.</p>
+</section>
+<section><h3><span style="color:blue;">CÓDIGO</span></h3>
+<pre><code>
+turing(Tape0, Tape) :-
+       perform(q0, [], Ls, Tape0, Rs),
+       reverse(Ls, Ls1),
+       append(Ls1, Rs, Tape).
+
+perform(qf, Ls, Ls, Rs, Rs) :- !.
+
+perform(Q0, Ls0, Ls, Rs0, Rs) :-
+       symbol(Rs0, Sym, RsRest),
+       once(rule(Q0, Sym, Q1, NewSym, Action)),
+       action(Action, Ls0, Ls1, [NewSym|RsRest], Rs1),
+       perform(Q1, Ls1, Ls, Rs1, Rs).
+
+symbol([], b, []).
+symbol([Sym|Rs], Sym, Rs).
+
+action(left, Ls0, Ls, Rs0, Rs) :- left(Ls0, Ls, Rs0, Rs).
+action(stay, Ls, Ls, Rs, Rs).
+action(right, Ls0, [Sym|Ls0], [Sym|Rs], Rs).
+
+left([], [], Rs0, [b|Rs0]).
+left([L|Ls], Ls, Rs, [L|Rs]).
+
+rule(q0, 1, q0, 1, right).
+rule(q0, b, qf, 1, stay).
+
+
+%% rule(q0, 1, q0,  1,right).
+%% rule(q0, 0, q0,  0,right).
+%% rule(q0,b,q1,c,left).
+
+%% rule(q1, 0, q1,  0,left ).
+%% rule(q1, 1, q1,  1,left ).
+%% rule(q1,b,q2,b,right).
+
+%% rule(q2, 0, q3,y,right).
+%% rule(q2, 1, q7,x,right).
+%% rule(q2,c, q11,c,left).
+
+
+%% rule(q3, 0, q3,  0,right).
+%% rule(q3, 1, q3,  1,right).
+%% rule(q3,c,q4,c,right).
+
+%% rule(q4,  0,q4,  0,right).
+%% rule(q4,  1,q4,  1,right).
+%% rule(q4,b,q5,  0,left ).
+
+%% rule(q5,  0,q5,  0,left ).
+%% rule(q5,  1,q5,  1,left ).
+%% rule(q5,c,q6,c,left ).
+
+%% rule(q6,  0,q6,  0,left ).
+%% rule(q6,  1,q6,  1,left ).
+%% rule(q6,y,q2,y,right).
+
+%% rule(q7, 0, q7,  0,right).
+%% rule(q7, 1, q7,  1,right).
+%% rule(q7,c,q8,c,right).
+
+%% rule(q8,  0,q8,  0,right).
+%% rule(q8,  1,q8,  1,right).
+%% rule(q8,b,q9,  1,left ).
+
+%% rule(q9,  0,q9,  0,left ).
+%% rule(q9,  1,q9,  1,left ).
+%% rule(q9,c,q10,c,left ).
+
+%% rule(q10,  0,q10,  0,left ).
+%% rule(q10,  1,q10,  1,left ).
+%% rule(q10,x,q2,x,right).
+
+%% rule(q11,x,q11,1,left).
+%% rule(q11,y,q11,0,left).
+%% rule(q11,b,qf,b,stay).
+</code></pre>
+</section>
+</section>
+</div>
+</div>
+<script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>
