@@ -1,0 +1,40 @@
+:- use_module(library(http/http_server)).
+:- use_module('teruel.pl').
+  
+
+
+handlerfibo(Request, Response) :-
+    http_body(Request,form(FORM)),
+    (   (   member("numero"-SN,FORM), SN \= "")
+    -> number_chars(N,SN),f(N,F),number_chars(F,SF)
+    ; SF = ""
+    ),
+    http_status_code(Response, 200),
+    html_render_response(Response,"fibo.html", ["factorial"-SF]).
+
+
+
+handlerfibog(_Request, Response) :-
+    http_status_code(Response, 200),
+    html_render_response(Response, "fibo1.html").
+
+
+f(0,1).
+f(1,1).
+f(N,R):-
+    N >=2,
+    faux(2,N,1,1,R).
+
+faux(N,N,A1,A2,R) :- R is A1 + A2.
+faux(I,N,A1,A2,R) :-
+    I1 is I + 1,
+    A is A1 + A2,
+    faux(I1,N,A2,A,R).
+
+
+main :-
+    shell("xdg-open http://localhost:7000/fibonacchi"),
+    http_listen(7000, [get(fibonacchi,handlerfibog),post(fibonacchi,handlerfibo)]).
+
+:- initialization(main).
+
