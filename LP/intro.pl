@@ -228,7 +228,7 @@ listas -->
 		   ".(1,.(2,.(3,.(4,[]))))   dos argumentos Cabeza y Cola ./2",
 		   "[1|[2|[3|[4|[]]]]]    notacion alternativa [|]",
 		   "[1,2|[3|[4|[]]]]  = [1,2,3|[4|[]]] = [1,2,3,4|[]] = [1,2,3,4]",
-		   "Unificar [a,1,b,4,c] = [X,Y|Z] ---> X=a, Y=1, Z=[b,4,c]"
+		   (   "Unificar [a,1,b,4,c] = [X,Y|Z]","\\( \\to \\)"," X=a, Y=1, Z=[b,4,c]" )
 	       ]
 	      )
 	 ).
