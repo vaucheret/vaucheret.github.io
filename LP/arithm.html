@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html><head><title>Lenguajes Declarativos</title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Lenguajes Declarativos</h1>
+<h2 class = "author" >Claudio Vaucheret</h2>
+<h3 class = "date" >Aritmética Entera Declarativa</h3>
+</section>
+<section><h2>Introducción</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:red;">CLP(\(\mathbb{Z}\))</span></h3>
+<ul><li class="fragment highlight-current-red">Constraint Logic Programming over Integers</li>
+<li class="fragment highlight-current-red">CLP(FD)</li>
+<li class="fragment highlight-current-red">Sictus, Ciao, Swi (CLP(FD))</li>
+<li class="fragment highlight-current-red">Scryer, Trealla (CLP(\(\mathbb{Z}\)))</li>
+</ul>
+</section>
+<section><h2>Restricciones</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:green;">Restricciones</span></h3>
+<ul><li class="fragment highlight-current-green">Resticciones aritméticas como (#=)/2, (#>)/2 y (#\=)/2</li>
+<li class="fragment highlight-current-green">Restricciones de dominio (in)/2 y (ins)/2</li>
+<li class="fragment highlight-current-green">Predicados de enumeración  indomain/1, label/1 y labeling/2</li>
+<li class="fragment highlight-current-green">restricciones combinatorias como  all_distinct/1 y global_cardinality/2</li>
+<li class="fragment highlight-current-green">predicados de reificación tales como (#<==>)/2</li>
+<li class="fragment highlight-current-green">predicados de reflexión tales como fd_dom/2</li>
+</ul>
+</section>
+<section><h3><span style="color:yellow;">Resticciones aritméticas</span></h3>
+<p>En total  las restricciones aritméticas son:</p>
+<table><tr><td><span style="color:yellow;">Expr1 #= Expr2</span></td>
+<td><span style="color:yellow;">Expr1 es igual a Expr2</span></td>
+</tr>
+<tr><td>Expr1 #\= Expr2</td>
+<td>Expr1 no es igual a Expr2</td>
+</tr>
+<tr><td><span style="color:yellow;">Expr1 #>= Expr2</span></td>
+<td><span style="color:yellow;">Expr1 is mayor o igual a Expr2</span></td>
+</tr>
+<tr><td>Expr1 #=< Expr2</td>
+<td>Expr1 is menor o igual a Expr2</td>
+</tr>
+<tr><td><span style="color:yellow;">Expr1 #> Expr2</span></td>
+<td><span style="color:yellow;">Expr1 is mayor que Expr2</span></td>
+</tr>
+<tr><td>Expr1 #< Expr2</td>
+<td>Expr1 is menor que Expr2</td>
+</tr>
+</table>
+</section>
+<section><h3><span style="color:blue;">Expresiones aritméticas</span></h3>
+<div style="font-size: 50%;">
+<p>Las expresiones aritméticas son:</p>
+<table><tr><td><span style="color:blue;">Entero</span></td>
+<td><span style="color:blue;">Valor dado</span></td>
+</tr>
+<tr><td>Variable</td>
+<td>Entero desconocido</td>
+</tr>
+<tr><td><span style="color:blue;">#(variable)</span></td>
+<td><span style="color:blue;">Entero desconocido</span></td>
+</tr>
+<tr><td>-Expr</td>
+<td>Menos unario</td>
+</tr>
+<tr><td><span style="color:blue;">Expr</span></td>
+<td><span style="color:blue;">+ Expr Suma</span></td>
+</tr>
+<tr><td>Expr</td>
+<td>* Expr Multiplication</td>
+</tr>
+<tr><td><span style="color:blue;">Expr</span></td>
+<td><span style="color:blue;">- Expr Resta</span></td>
+</tr>
+<tr><td>Expr</td>
+<td>^ Expr Exponenciación</td>
+</tr>
+<tr><td><span style="color:blue;">min(Expr,Expr)</span></td>
+<td><span style="color:blue;">Minimo de dos expresiones</span></td>
+</tr>
+<tr><td>max(Expr,Expr)</td>
+<td>Maximo de dos expresiones</td>
+</tr>
+<tr><td><span style="color:blue;">Expr</span></td>
+<td><span style="color:blue;">mod Expr Modulo inducido por division piso</span></td>
+</tr>
+<tr><td>Expr </td>
+<td>rem Expr Modulo inducido por division truncada</td>
+</tr>
+<tr><td><span style="color:blue;">abs(Expr)</span></td>
+<td><span style="color:blue;">Valor Absoluto</span></td>
+</tr>
+<tr><td>sign(Expr)</td>
+<td>Sign (-1, 0, 1) de Expr</td>
+</tr>
+<tr><td><span style="color:blue;">Expr</span></td>
+<td><span style="color:blue;">// Expr  Division entera truncada</span></td>
+</tr>
+<tr><td>Expr</td>
+<td>div Expr Division entera piso</td>
+</tr>
+</table>
+</section>
+<section><h2>Ejemplos</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Evaluando Expresiones Enteras</h3>
+<pre><code>
+?- X #= 5 + 3.
+X = 8.
+
+?- 2 #= X + 9.
+X = -7.
+
+?- 1 #= 1 + Y.
+Y = 0.
+</code></pre>
+</section>
+<section><h3>Ejemplo relacion Factorial</h3>
+<pre><code>
+n_factorial(0, 1).
+n_factorial(N, F) :-
+      N #> 0,
+      N1 #= N - 1,
+      n_factorial(N1, F1),
+      F #= N * F1.
+
+
+?- n_factorial(47, F).
+F = 258623241511168180642964355153611979969197632389120000000000
+;  false.     
+
+n_factorial(0, 1).
+n_factorial(N, F) :-
+      N #> 0,
+      N1 #= N - 1,
+      F #= N * F1,
+      n_factorial(N1, F1).
+
+
+?- n_factorial(N, 1).
+N = 0
+;  N = 1
+;  false.
+
+?- n_factorial(N, 3).
+false.
+
+</code></pre>
+</section>
+<section><h3>Ejemplo Longitud de una Lista</h3>
+<pre><code>
+list_length([], 0).
+list_length([_|Ls], Length) :-
+        Length #= Length0 + 1,
+        list_length(Ls, Length0).
+
+?- list_length("abcd", Length).
+Length = 4.
+
+?- list_length(Ls, Length).
+Ls = [], Length = 0
+;  Ls = [_A], Length = 1
+;  Ls = [_A,_B], Length = 2
+;  Ls = [_A,_B,_C], Length = 3
+;  ... .      
+
+?- list_length(Ls, 3).
+Ls = [_A,_B,_C]
+;  ... .
+
+?- list_length(Ls, 3), false.
+nontermination  
+
+list_length(Ls, L) :-
+list_length_(Ls, 0, L).
+
+list_length_([], L, L).
+list_length_([_|Ls], L0, L) :-
+L1 #= L0 + 1,
+list_length_(Ls, L1, L).
+</code></pre>
+</section>
+<section><h2>Dominios</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Dominios</h3>
+<pre><code>
+?- V in 0..2.
+clpz:(V in 0..2).
+
+
+?- V in 0..2, V #= 3.
+false.
+
+
+?- V in 0..2, V #= 1.
+V = 1.
+
+
+?- X in 0..2, Y in 0..2.
+clpz:(X in 0..2), clpz:(Y in 0..2).
+
+?- [X,Y] ins 0..2.
+clpz:(X in 0..2), clpz:(Y in 0..2).
+</code></pre>
+</section>
+<section><h3>Labeling</h3>
+<pre><code>
+?- V in 0..2, indomain(V).
+V = 0
+;  V = 1
+;  V = 2.
+
+
+?- [X,Y] ins 0..1, label([X,Y]).
+X = 0, Y = 0
+;  X = 0, Y = 1
+;  X = 1, Y = 0
+;  X = 1, Y = 1.
+</code></pre>
+</section>
+<section><h3>Propagración de las Restricciones</h3>
+<pre><code>
+?- [X,Y] ins 0..2, Z #= X + Y.
+clpz:(X+Y#=Z), clpz:(X in 0..2), clpz:(Y in 0..2), clpz:(Z in 0..4).
+
+
+?- [X,Y] ins 0..2, Z #= X + Y, Z #= 0.
+X = 0, Y = 0, Z = 0.
+
+
+?- X in 0..1, X #> 2.
+false.
+
+
+?- [X,Y] ins 0..2, Z #= X + Y, Z #= 1.
+Z = 1, clpz:(X+Y#=1), clpz:(Y in 0..1), clpz:(X in 0..1).
+
+
+?- [X,Y,Z] ins 0..1, all_different([X,Y,Z]).
+clpz:all_different([X,Y,Z]), clpz:(X in 0..1), clpz:(Y in 0..1), clpz:(Z in 0..1).
+
+
+?- [X,Y,Z] ins 0..1, all_distinct([X,Y,Z]).
+false.
+</code></pre>
+</section>
+<section><h2>Problemas</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Granjero</h3>
+<p> Un granjero tiene en  entre vacas y gallinas un total de 30 animales,que tienen 74 patas en total. ¿Cuantas gallinas y vacas tiene?</p>
+<pre><code>
+vacas_gallinas(V,G) :-
+    G  + V #= 30,
+    G * 2 + V * 4 #= 74,
+    [V,G] ins 0..sup.
+
+?- vacas_gallinas(V,G).
+V = 7, G = 23.
+</code></pre>
+</section>
+<section><h3>Sudoku</h3>
+<pre><code>
+sudoku(Rows) :-
+        length(Rows, 9), maplist(same_length(Rows), Rows),
+        append(Rows, Vs), Vs ins 1..9,
+        maplist(all_distinct, Rows),
+        transpose(Rows, Columns),
+        maplist(all_distinct, Columns),
+        Rows = [As,Bs,Cs,Ds,Es,Fs,Gs,Hs,Is],
+        blocks(As, Bs, Cs),
+        blocks(Ds, Es, Fs),
+        blocks(Gs, Hs, Is).
+
+blocks([], [], []).
+blocks([N1,N2,N3|Ns1], [N4,N5,N6|Ns2], [N7,N8,N9|Ns3]) :-
+        all_distinct([N1,N2,N3,N4,N5,N6,N7,N8,N9]),
+        blocks(Ns1, Ns2, Ns3).
+
+problem(1, [[_,_,_,_,_,_,_,_,_],
+            [_,_,_,_,_,3,_,8,5],
+            [_,_,1,_,2,_,_,_,_],
+            [_,_,_,5,_,7,_,_,_],
+            [_,_,4,_,_,_,1,_,_],
+            [_,9,_,_,_,_,_,_,_],
+            [5,_,_,_,_,_,_,7,3],
+            [_,_,2,_,1,_,_,_,_],
+            [_,_,_,_,4,_,_,_,9]]).
+
+
+?- problem(1, Rows), sudoku(Rows), maplist(portray_clause, Rows).
+[9,8,7,6,5,4,3,2,1].
+[2,4,6,1,7,3,9,8,5].
+[3,5,1,9,2,8,7,4,6].
+[1,2,8,5,3,7,6,9,4].
+[6,3,4,8,9,2,1,5,7].
+[7,9,5,4,6,1,8,3,2].
+[5,1,9,2,8,6,4,7,3].
+[4,7,2,3,1,9,5,6,8].
+[8,6,3,7,4,5,2,1,9].
+   Rows = [[9,8,7,6,5,4,3,2,1]|...].
+</code></pre>
+</section>
+<section><h3>puzzle</h3>
+<p>puzzle SEND + MORE = MONEY</p>
+<pre><code>
+puzzle([S,E,N,D] + [M,O,R,E] = [M,O,N,E,Y]) :-
+        Vars = [S,E,N,D,M,O,R,Y],
+        Vars ins 0..9,
+        all_different(Vars),
+                S*1000 + E*100 + N*10 + D +
+                M*1000 + O*100 + R*10 + E #=
+        M*10000 + O*1000 + N*100 + E*10 + Y,
+        M #\= 0, S #\= 0.
+
+
+?- puzzle(As+Bs=Cs).
+As = [9, A2, A3, A4],
+Bs = [1, 0, B3, A2],
+Cs = [1, 0, A3, A2, C5],
+A2 in 4..7,
+all_different([9, A2, A3, A4, 1, 0, B3, C5]),
+91*A2+A4+10*B3#=90*A3+C5,
+A3 in 5..8,
+A4 in 2..8,
+B3 in 2..8,
+C5 in 2..8.
+
+?- puzzle(As+Bs=Cs), label(As).
+As = [9,5,6,7], Bs = [1,0,8,5], Cs = [1,0,6,5,2]
+;  false.
+</code></pre>
+</section>
+</div>
+</div>
+<script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>

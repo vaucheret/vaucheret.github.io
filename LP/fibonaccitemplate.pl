@@ -1,19 +1,6 @@
 :- use_module(library(http/http_server)).
 :- use_module('teruel.pl').
   
-pagina(F) -->
-    html(
-        (   head(title("Numero de Fibonacci")),
-            body(
-                (   h1("Numero de Fibonacci"),
-                    "<br>","<br>",
-                    form((method="post",action="/fibonacchi"),
-                         (   
-                         "El numero de Fibonacci de\n",
-                         input((type="text",name="numero",size="6"," autofocus"),""),
-                         "<br>\n",
-                         format_("es el numero <b>~s</b>\n",[F]),
-                         p(input((type="submit",value="Calcular"),"")))))))).
 
 
 handlerfibo(Request, Response) :-
@@ -49,5 +36,5 @@ main :-
     shell("xdg-open http://localhost:7000/fibonacchi"),
     http_listen(7000, [get(fibonacchi,handlerfibog),post(fibonacchi,handlerfibo)]).
 
-%:- initialization(main).
+
 

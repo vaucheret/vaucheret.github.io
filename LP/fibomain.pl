@@ -1,8 +1,9 @@
+
 main :-
     argv([Number]),
     number_chars(N,Number),
     f(N,F),
-    format("El numero de fibonacci correspondiente a ~d es ~d\n",[N,F]),
+    format("El numero de fib correspondiente a ~d es ~d\n",[N,F]),
     halt.
 main :-
     format("debe ingresar un argumento\n",[]),halt.

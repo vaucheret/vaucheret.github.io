@@ -49,7 +49,7 @@ main :-
     shell("xdg-open http://localhost:7000/fibonacchi"),
     http_listen(7000, [get(fibonacchi,handlerfibog),post(fibonacchi,handlerfibo)]).
 
-:- initialization(main).
+%:- initialization(main).
 
 
 
