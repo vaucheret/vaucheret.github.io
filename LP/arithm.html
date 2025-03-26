@@ -236,7 +236,7 @@ X = 0, Y = 0
 ;  X = 1, Y = 1.
 </code></pre>
 </section>
-<section><h3>Propagración de las Restricciones</h3>
+<section><h3>Propagación de las Restricciones</h3>
 <pre><code>
 ?- [X,Y] ins 0..2, Z #= X + Y.
 clpz:(X+Y#=Z), clpz:(X in 0..2), clpz:(Y in 0..2), clpz:(Z in 0..4).

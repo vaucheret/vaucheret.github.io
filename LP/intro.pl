@@ -456,15 +456,13 @@ maquina -->
          ).
 
 
-
-
 show :-
-        file(File),
-        append(["xdg-open ",File,".html"],Command),
-	shell(Command).
+    file(File),
+    phrase(format_("xdg-open ~s.html",[File]),Command),
+    shell(Command).
 	      
 main :-
 	consult(slideprolog),
 	file(File),
-	append(File,".html",Filehtml),
+	phrase(format_("~s.html",[File]),Filehtml),
 	phrase_to_file(presentation,Filehtml).

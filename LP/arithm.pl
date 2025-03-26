@@ -6,14 +6,14 @@ theme("night").
 transition("slide").
 
 show :-
-        file(File),
-        append(["xdg-open ",File,".html"],Command),
-	shell(Command).
+    file(File),
+    phrase(format_("xdg-open ~s.html",[File]),Command),
+    shell(Command).
 	      
 main :-
 	consult(slideprolog),
 	file(File),
-	append(File,".html",Filehtml),
+	phrase(format_("~s.html",[File]),Filehtml),
 	phrase_to_file(presentation,Filehtml).
 
 slides -->
@@ -211,7 +211,7 @@ domains -->
 		  ";  X = 1, Y = 1.\n"
 		  ))
 	 ),
-    slide("Propagración de las Restricciones",
+    slide("Propagación de las Restricciones",
 	  code((
 		      "?- [X,Y] ins 0..2, Z #= X + Y.\n",
 		      "clpz:(X+Y#=Z), clpz:(X in 0..2), clpz:(Y in 0..2), clpz:(Z in 0..4).\n",
