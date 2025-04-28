@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html><head><title><span style="color:red;">Lenguajes Declarativos</span></title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" ><span style="color:red;">Lenguajes Declarativos</span></h1>
+<h2 class = "author" ><span style="color:pink;">Claudio Vaucheret</span></h2>
+<h3 class = "date" ><span style="color:violet;">Scheme</span></h3>
+</section>
+<section><h2><span style="color:violet;">Lenguaje Scheme</span></h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:pink;">Lenguajes Funcionales</span></h3>
+<div style="font-size: 80%;">
+<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<ul><li class="fragment appear"><p><span style="color:lightgreen;">Calculo Lambda</span></p>
+<div class="figure">
+<img src=Alonzo_Church.jpg  width=auto  height=150</div>
+<p>Alonzo Church</p>
+</li>
+</ul>
+</div>
+<div class="one_of_2_columns">
+<ul><li class="fragment appear"><p><span style="color:lightgreen;">Lisp</span></p>
+<div class="figure">
+<img src=John_McCarthy_Stanford.jpg  width=auto  height=150</div>
+<p>John McCarthy</p>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section><h3><span style="color:pink;">Lenguajes Funcionales</span></h3>
+<div style="font-size: 80%;">
+<ul><li class="fragment appear"><p><span style="color:lightgreen;">Scheme</span></p>
+<figure>
+<img src=Guy_Steele.jpg  width=auto  height=150<figcaption>
+Guy L. Steele, Jr. y</figcaption>
+</figure>
+<figure>
+<img src=Jerry_Sussman.jpg  width=auto  height=150<figcaption>
+Gerald Sussman</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+</section>
+<section><h3><span style="color:pink;">Calculo Lambda</span></h3>
+<ul><li><b><span style="color:violet;">Abstracción:</span></b>
+ Dar a algo un <em>nombre</em>
+</li>
+<li><b><span style="color:violet;">Referencia:</span></b>
+ Mencionar algo por su nombre</li>
+<li><b><span style="color:violet;">Sintesis:</span></b>
+ Combinar dos cosas para hacer una mas compleja</li>
+</ul>
+</section>
+<section><h2><span style="color:violet;">Sintaxis</span></h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:pink;">Numeros y Símbolos</span></h3>
+<div style="font-size: 65%;">
+<ul><li class="fragment appear"><p>Los siguientes caracteres tienen un significado especial y no pueden aparecer en simbolos</p>
+<pre><code class="language-scheme">
+()[]{};."''#\
+</code></pre>
+</li>
+<li class="fragment appear"><p>y los siguientes son usados en números y no pueden aparecer como primer caracter de un símbolo</p>
+<pre><code class="language-scheme">
++ - .
+</code></pre>
+</li>
+<li class="fragment appear"><p>Ejemplos de simbolos en Scheme son:</p>
+<pre><code class="language-scheme">
+abed r cdr p2q4 bugs? one-two *now&
+</code></pre>
+</li>
+<li class="fragment appear"><p>Los números no se consideran símbolos y son una categoría separada</p>
+<pre><code class="language-scheme">
+10, -763, 31.5
+</code></pre>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:pink;">Scheme REPL </span></h3>
+<p>Read-Eval-Print Loop</p>
+<p>top level de scheme.</p>
+<pre><code class="language-scheme">
+     ; 
+     ; Welcome to Racket v7.9 [bc].
+     ; 
+     > 7
+     7
+     > 
+     > ten
+     ; ten: undefined;
+     ;   cannot reference an identifier before its definition
+     ;   in module: top-level
+     >
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Scheme REPL</span></h3>
+<p>(define <em>var expr</em>
+ )</p>
+<pre><code class="language-scheme">
+> (define ten 10)
+> ten
+10
+> 
+</code></pre>
+<p>(quote <em>symbol</em>
+ )</p>
+<pre><code class="language-scheme">
+> (quote ten)
+'ten
+> 
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Aritmética</span></h3>
+<pre><code class="language-scheme">
+> (+ 4 7)
+11
+> '(+ 4 7)
+'(+ 4 7)
+>
+> (* 3 (- 12 5))
+21
+> (+ 2 (/ 30 15))
+4
+> 
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Listas</span></h3>
+<p><span style="color:red;">LIS</span>t <span style="color:red;">P</span>rocessing</p>
+<pre><code class="language-scheme">
+> (cons 1 '())
+'(1)
+> (define ls1 (cons 1 '()))
+> ls1
+'(1)
+> (cons 2 ls1)
+'(2 1)
+> (cons 'a (cons 'b (cons 'c '())))
+'(a b c)
+> 
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Listas</span></h3>
+<p>IBM 704 "<span style="color:red;">C</span>ontents of <span style="color:red;">A</span>ddress <span style="color:red;">R</span>egister" "<span style="color:red;">C</span>ontents of <span style="color:red;">D</span>ecrement <span style="color:red;">R</span>egister"</p>
+<pre><code class="language-scheme">
+> (car '(1 2 3 4))
+1
+> (car '((1 2) 3 (4 5)))
+'(1 2)
+> (car '(ab (cd ef) gh))
+'ab
+> (cdr '(1 2 4))
+'(2 4)
+> (car (cdr '(a b c d)))
+'b
+> (cadr '(a b c d))
+'b
+> 
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Tests Numeros</span></h3>
+<pre><code class="language-scheme">
+> (define num 35.4)
+> (define twelve 'dozen)
+> (number? '3 )
+#t
+> (number? num)
+#t
+> (number? twelve)
+#f
+> (number? -45.67)
+#t  
+> (number? 'twelve)
+#f
+> (number? (+2 3))
+#t
+> (number? #t)
+#f
+> (number? (car '(15.3 -31.7)))
+#t
+> (number? (cdr '(15.3 -31.7)))
+#f
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Tests Simbolos</span></h3>
+<pre><code class="language-scheme">
+> (define num 35.4)
+> (define twelve 'dozen)
+> (symbol? 15 )
+#f
+> (symbol? num)
+#f
+> (symbol? 'num)
+#t
+> (symbol? twelve)
+#t  
+> (symbol? 'twelve)
+#t
+> (symbol? #f)
+#f
+> (symbol? (car '(banana cream)))
+#t
+> (symbol? (cdr '(banana cream)))
+#f
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Tests Listas</span></h3>
+<pre><code class="language-scheme">
+> (pair? '(Ann Ben Carl))
+#t
+> (pair? '(1))
+#t
+> (pair? '())
+#f
+> (pair? '(()))
+#t  
+> (pair? '(a (b c) d))
+#t
+> (pair? (cons 'a '()))
+#t
+> (pair? (cons 3 4))
+#t
+> (pair? 'pair)
+#f
+> (null? '())
+#t
+> (null? (cdr '(cat)))
+#t
+> (null? (car '((ab))))
+#f
+</code></pre>
+</section>
+<section><h2><span style="color:violet;">Procedimientos y Recursión</span></h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:pink;">Expresión Lambda</span></h3>
+<ul><li>(λ ( <em>parameters</em>
+) <em>body</em>
+ )</li>
+<li>(lambda ( <em>parameters</em>
+) <em>body</em>
+ )</li>
+</ul>
+<pre><code class="language-scheme">
+> (cons 19 '())
+'(19)
+> (cons 'bit '())
+'(bit)
+> ((λ (item) (cons item '())) 19)
+'(19)
+> ((lambda (item) (cons item '())) 'bit)
+'(bit)
+> ((lambda (item) (cons item '())) (* 5 6))
+'(30)
+> (define make-singleton (lambda (item) (cons item '())))
+> (make-singleton 19)
+'(19)
+> (make-singleton 'bit)
+'(bit)
+> (define (make-singleton item) (cons item '()))
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Procedimientos</span></h3>
+<pre><code class="language-scheme">
+       (define make-singleton
+       (lambda (item)
+       (cons item '())
+           )
+          )
+
+       (define (make-singleton item)
+        (cons item '())
+         )
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">Condicional</span></h3>
+<pre><code class="language-scheme">
+         (define car-if-pair
+            (lambda (item)
+               (cond
+                (pair? item) (car item))
+                (else item))
+               )
+             )
+
+         (define singleton-list?
+            (lambda (ls)
+              (and (pair? ls) (null? (cdr ls)))
+              )
+            )
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">fibonacci</span></h3>
+<pre><code class="language-scheme">
+(define fib
+  (λ (n)
+    (cond
+      ((= n 0) 1)
+      ((= n 1) 1)
+      (else (+ (fib (- n 1)) (fib (- n 2))))
+      )
+    )
+  )
+
+(define (fib n)
+  (cond
+    ((= n 0) 1)
+    ((= n 1) 1)
+    (else (+ (fib (- n 1)) (fib (- n 2))))
+    )
+  )
+</code></pre>
+</section>
+<section><h3><span style="color:pink;">fibonacci</span></h3>
+<pre><code class="language-scheme">
+(define (fibi n)
+  (define (fibaux m a1 a2)
+    (cond
+      ((= n m) (+ a1 a2))
+      (else (fibaux (+ m 1) a2 (+ a1 a2)))
+      )
+    )
+  (cond
+    ((= n 0) 1)
+    ((= n 1) 1)
+    (else (fibaux 2 1 1))
+    )
+    )
+
+(define (fibb n)
+  (cond
+    ((= n 0) 1)
+    ((= n 1) 1)
+    (else (let fibaux ((m 2) (a1 1) (a2 1))
+       (cond
+      ((= n m) (+ a1 a2))
+      (else (fibaux (+ m 1) a2 (+ a1 a2)))
+      )     
+       )
+          )
+    )
+  )
+</code></pre>
+</section>
+</div>
+</div>
+<script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>

@@ -137,16 +137,25 @@ fig(A) -->
     A,
     "</div>\n".
 
+fig(A,Caption) -->
+    "<figure>\n",
+    A,
+    "<figcaption>\n",
+    Caption,
+    "</figcaption>\n",
+    "</figure>\n".
+    
+
+
 img(File,Width,Height) -->
-    el(p,
-       (
 	   "<img src=",
 	   File,
 	   "  width=",
 	   Width,
 	   "  height=",
-	   Height
-       )).
+	   Height.
+
+
 
 link(Ref,Text) -->
     "<a href=\n",

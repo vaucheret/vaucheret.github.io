@@ -9,7 +9,7 @@ pagina(F) -->
                     form((method="post",action="/fibonacchi"),
                          (   
                          "El numero de Fibonacci de\n",
-                         input((type="text",name="numero",size="6"," autofocus"),""),
+                         input((type="text",name="numero",placeholder="Entre el Numero",size="6"," autofocus required"),""),
                          "<br>\n",
                          format_("es el numero <b>~s</b>\n",[F]),
                          p(input((type="submit",value="Calcular"),"")))))))).
@@ -49,7 +49,7 @@ main :-
     shell("xdg-open http://localhost:7000/fibonacchi"),
     http_listen(7000, [get(fibonacchi,handlerfibog),post(fibonacchi,handlerfibo)]).
 
-%:- initialization(main).
+:- initialization(main).
 
 
 
