@@ -21,7 +21,9 @@ main :-
 slides -->
     lenguaescheme,
     sintaxis,
-    procedimientosyrecursion.
+    procedimientosyrecursion,
+    procedimientosdeflocal.
+
 
 lenguaescheme -->
     section(col(violet,"Lenguaje Scheme")),
@@ -374,6 +376,42 @@ procedimientosyrecursion -->
 
     
 	  
+procedimientosdeflocal -->
+    section(col(violet,"Procedimientos Definidos Localmente")),
+    slide(col(pink,"Let y Letrec"),
+	  (
+	      item(
+		  [
+		      (	  "\\((let \\ ((var \\  val)) \\  body))\\)"),
+		      (	  "\\((let \\ ((var_1 val_1) \\  (var_2 val_2) \\ldots (var_n val_n)) \\ body)\\)")
+		  ]
+	      ),
+	      code("language-scheme",(
+"> ((lambda (x y) (+ x y)) 2 3)\n",
+"5\n",
+"> (define z '(4))\n",
+"> (define a 1)\n",
+"> ((lambda (f y) (f a (f y z))) cons 3)\n",
+"'(1 3 4)\n",
+"> ((lambda (x)\n",
+"((lambda (y)\n",
+"(- X y))\n",
+"15))\n",
+"20)\n",
+"> ((lambda (x)\n",
+"((lambda (y)\n",
+"(- x y))\n",
+"15))\n",
+"20)\n",
+"5\n",
+"> (let ((a 2)\n",
+"(b 3))\n",
+"(+ a b))\n",
+"5\n",
+"> ((lambda (a b) (+ a b)) 2 3)\n",
+"5\n"
+		      ))
+	  )).
 
 	  
 		  
