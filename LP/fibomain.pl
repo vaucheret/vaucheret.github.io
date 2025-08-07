@@ -1,11 +1,14 @@
+#!/usr/bin/env swipl
 
-main :-
-    argv([Number]),
-    number_chars(N,Number),
+:- initialization(main, main).
+
+
+main([Number]) :-
+    atom_number(Number,N),
     f(N,F),
     format("El numero de fib correspondiente a ~d es ~d\n",[N,F]),
     halt.
-main :-
+main(_) :-
     format("debe ingresar un argumento\n",[]),halt.
 
 

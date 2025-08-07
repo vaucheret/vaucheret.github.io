@@ -11,7 +11,7 @@ show :-
     shell(Command).
 	      
 main :-
-	consult(slideprolog),
+    consult('slideprolog.pl'),
 	file(File),
 	phrase(format_("~s.html",[File]),Filehtml),
 	phrase_to_file(presentation,Filehtml).

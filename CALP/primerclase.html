@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html><head><title>Inroduccion</title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Inroduccion</h1>
+<h2 class = "author" >C. A. L. P.</h2>
+<h3 class = "date" >Claudio Vaucheret</h3>
+</section>
+<section><h2>Introducción</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:violet;">Razones para estudiar Conceptos de Lenguajes de Programación</span></h3>
+<ul><li class="fragment appear">Incrementa la habilidad para expresar ideas</li>
+<li class="fragment appear">Mejora la capacidad de elegir el lenguaje apropiado</li>
+<li class="fragment appear">Incrementa la capacidad de aprender nuevos lenguajes</li>
+<li class="fragment appear">Mejora el entendimiento del funcionamiento interno del lenguaje (implementación)</li>
+</ul>
+</section>
+<section><h3><span style="color:violet;">Dominios de Programación</span></h3>
+<div style="font-size: 65%;">
+<ul><li class="fragment appear"><span style="color:blue;">Aplicaciones Científicas</span><ul><li>Gran número de computación de punto flotante</li>
+<li>Fortran</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:blue;">Aplicaciones Empresariales</span><ul><li>Producción de Reportes, uso de números decimales y caracteres</li>
+<li>Cobol</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:blue;">Inteligencia Artificial</span><ul><li>Manipulación simbólica (en lugar de números)</li>
+<li>LISP / Prolog</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:blue;">Sistemas de Programación</span><ul><li>Necesidad de eficiencia (debido al uso continuo)</li>
+<li>C</li>
+</ul>
+</li>
+<li class="fragment appear"><span style="color:blue;">Software para la WEB</span><ul><li>Colección ecléctica de lenguajes: markup (e.g. HTML5), scripting (e.g. PHP), de propósito general (e.g. Java)</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:violet;">Criterios de Evaluación de Lenguajes</span></h3>
+<ul><li class="fragment fade-in-then-semi-out"><b><span style="color:blue;">Legibilidad</span></b>
+: la facilidad con la cual los programas pueden ser leídos y entendidos.</li>
+<li class="fragment fade-in-then-semi-out"><b>Escribilidad</b>
+: la facilidad con la cual los programas pueden ser leídos y entendidos.</li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Confiabilidad</span></b>
+: El grado en que el lenguaje funciona de acuerdo a sus especificaciones.</li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:red;">Costo</span></b>
+: de uso, compilación, mantenimiento etc.</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Legibilidad</span></h3>
+<div style="font-size: 65%;">
+<ul><li class="fragment fade-in-then-semi-out"><span style="color:blue;"><b>Simplicidad</b>
+</span><ul><li>Un conjunto manejable de características y construcciones</li>
+<li>Poca multiplicidad de características (medios de realizar la misma operación)</li>
+<li>Minima sobrecarga de operadores</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:blue;"><b>Ortogonalidad</b>
+</span><ul><li>Un conjunto relativamente pequeño de construcciones primitivas que puedan ser combinadas en un numero pequeño de modos</li>
+<li>Toda posible combinación sea legal.</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:blue;"><b>Sentencias de Control</b>
+</span><ul><li>La presencia de bien conocidas estructuras de control</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:blue;"><b>Tipos de Datos y Estructuras</b>
+</span><ul><li>La presencia de facilidades adecuadas para definir estructuras de datos</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:blue;"><b>Consideraciones sintácticas</b>
+</span><ul><li>Composición flexible de identificadores</li>
+<li>Palabras especiales y métodos para formar sentencias compuestas</li>
+<li>Construcciones autodescriptivas, palabras reservadas significativas</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Escribilidad</h3>
+<div style="font-size: 80%;">
+<ul><li class="fragment fade-in-then-semi-out"><b>Simplicidad y ortogonalidad</b>
+<ul><li>Pocas constucciones, numero pequeño de primitivas y pocas reglas para combinarlas.</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><b>Soporte para la abstracción</b>
+<ul><li>La habilidad para definir y usar estructuras complejas u operaciones de modo que los detalles puedan ser ignorados.</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><b>Expresibilidad</b>
+<ul><li>Un conjunto conveniente de modos de especificar operaciones</li>
+<li>Ejemplo: La inclusión de la sentencia <b>FOR</b>
+ en  muchos lenguajes modernos</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:orange;">Confiabilidad</span></h3>
+<div style="font-size: 70%;">
+<ul><li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Chequeo de Tipos</span></b>
+<ul><li>verificación de errores de tipos</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Manejo de Excepciones</span></b>
+<ul><li>interceptar errores en ejecución y tomar medidas correctivas</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Aliasing</span></b>
+<ul><li>Presencia de dos o mas distintas referencias para el mismo lugar de memoria</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Legibilidad y Escribilidad</span></b>
+<ul><li>Un lenguage que no soporta modos "naturales" de expresar un algoritmo necesariamente usará aproximaciones "no naturales" y asi reducirá la confiabilidad</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:red;">Costo</span></h3>
+<div style="font-size: 80%;">
+<p><b>Costo de</b>
+</p>
+<ul><li class="fragment fade-in-then-semi-out">Entrenar programadores para usar un lenguaje</li>
+<li class="fragment fade-in-then-semi-out">Escribir programas (cercano a aplicaciones particulares)</li>
+<li class="fragment fade-in-then-semi-out">Compilar programas</li>
+<li class="fragment fade-in-then-semi-out">Ejecutar programas</li>
+<li class="fragment fade-in-then-semi-out">Implementar Lenguajes (disponibilidad de compiladores libres)</li>
+<li class="fragment fade-in-then-semi-out">Confiabilidad: Confiabilidad pobre lleva a altos costos</li>
+<li class="fragment fade-in-then-semi-out">Mantener programas</li>
+</ul>
+</section>
+<section><h3>Otros</h3>
+<ul><li class="fragment fade-in-then-semi-out"><b>Portabildad</b>
+<ul><li>La facilidad con que los programas puedan moverse de una implementación a otra</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><b>Generalidad</b>
+<ul><li>Su aplicabilidad a un amplio rango de aplicaciones.</li>
+</ul>
+</li>
+<li class="fragment fade-in-then-semi-out"><b>Bien definido</b>
+<ul><li>La completitud y precisión de la definición oficial del lenguaje</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Influencias en el diseño de los lenguajes</h3>
+<div style="font-size: 90%;">
+<ul><li class="fragment highlight-current-blue"><b>Arquitectura de Computadoras</b>
+<ul><li>Lenguajes son desarrollados alrededor de la arquitectura de computadora prevaleciente, conocida como arquitectura de <em>von Neumann</em>
+</li>
+</ul>
+</li>
+</ul>
+<ul><li class="fragment highlight-current-green"><b>Metodologías de Programación</b>
+<ul><li>Nuevas metodologías de desarrollo de software (e.g. desarrollo de software orientado a objetos) llevan a nuevos paradigmas y por extensión a nuevos lenguajes de programación</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Influencia de la Arquitectura de Computadoras</span></h3>
+<div style="font-size: 90%;">
+<ul><li>Arquitectura de Computadora bien conocida: Von Neumann</li>
+<li>Lenguajes Imperativos mas dominantes debido a la arquitectura dominante<ul><li>Datos y Programas almacenados en memoria</li>
+<li>Memoria Separada de la CPU</li>
+<li>Instrucciones y Datos son conducidos desde la Memoria a la CPU</li>
+<li>Bases para los lenguajes imperativos<ul><li>Variables modelan celdas de memoria</li>
+<li>La iteración es eficiente</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">Arquitectura de Von Neumann</span></h3>
+<div class="figure">
+<p><img src=vonneumann.png  width=auto  height=auto</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>

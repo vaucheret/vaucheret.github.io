@@ -1,8 +1,4 @@
 
-
-
-
-
 presentation -->
     {title(T),
      author(A),
@@ -36,20 +32,20 @@ presentation -->
   	      )),
 	   el(body,
 	      (	  
-	      el(div,[class='"reveal"'],
+	      el(div,class="reveal",
 		 (
-		     el(div,[class='"slides"'],
+		     el(div,class="slides",
 			(
-			    el(section,[id='"sec-title-slide"'],
+			    el(section,id="sec-title-slide",
 			       (   
-				   el(h1,[class='"title"'],T),
-				   el(h2,[class='"author"'],A),
-				   el(h3,[class='"date"'],D))
+				   el(h1,class="title",T),
+				   el(h2,class="author",A),
+				   el(h3,class="date",D))
 			      ),
 			    slides
 			))
 		 )),
-	      el(script,[src='"https://unpkg.com/reveal.js/dist/reveal.js"'],[]),
+	      el(script,src="https://unpkg.com/reveal.js/dist/reveal.js",[]),
 	      el(script,
 		 (
 		     "Reveal.initialize({",
@@ -68,18 +64,58 @@ el(Tag,Body) -->
 
 el(Tag,Opt,Body) -->
      format_("<~w",[Tag]),
-     { length(Opt,N),
-     listN(N," ~w","",Ss) },
-     format_(Ss,Opt),
+     Opt,
      format_(" >",[]),
      Body,
      format_("</~w>\n",[Tag]).
 
-listN(0,_,A,A).
-listN(N,A,Ac,S) :-
-    N1 #= N - 1,
-    append(Ac,A,Ac1),
-    listN(N1,A,Ac1,S).
+=(A,S) -->
+    format_(" ~a = \"",[A]),
+    S,
+    "\"".
+
+
+p(Body) -->
+    el(p,Body).
+p(Opt,Body) -->
+    el(p,Opt,Body).
+
+table(Body) -->
+    el(table,Body).
+table(Opt,Body) -->
+    el(table,Opt,Body).
+
+thead(Body) -->
+    el(thead,Body).
+thead(Opt,Body) -->
+    el(thead,Opt,Body).
+
+
+tr(Body) -->
+    el(tr,Body).
+tr(Opt,Body) -->
+    el(tr,Opt,Body).
+
+
+th(Body) -->
+    el(th,Body).
+th(Opt,Body) -->
+    el(th,Opt,Body).
+
+td(Body) -->
+    el(td,Body).
+td(Opt,Body) -->
+    el(td,Opt,Body).
+
+b(Body) -->
+    el(b,Body).
+b(Opt,Body) -->
+    el(b,Opt,Body).
+
+em(Body) -->
+    el(em,Body).
+em(Opt,Body) -->
+    el(em,Opt,Body).
 
 
 code(Language,Code) -->
@@ -132,7 +168,7 @@ split(A,B) -->
     
 
 col(Col,Text) -->
-   { atom_chars(Col,Color)},
+   { atom_codes(Col,Color)},
     "<span style=\"color:",
     Color,
     ";\">",
@@ -141,7 +177,7 @@ col(Col,Text) -->
 
 
 section(animate,Title) -->
-    el(section,['data-auto-animate'],
+    el(section," data-auto-animate ",
        (
 	   el(h2,Title),
 	   "<div class=\"outline-text-2\" ></div>\n"
@@ -156,7 +192,7 @@ section(Title) -->
        )).
 
 slide(animate,Title,Body) -->
-    el(section,['data-auto-animate'],
+    el(section," data-auto-animate ",
        (
 	   el(h3,Title),
 	   Body
@@ -181,13 +217,13 @@ slide(Title,Body) -->
        )).
 
 enum(Fragm,L) -->
-    { atom_chars(Fragm,Frag)},
+    { atom_codes(Fragm,Frag)},
     "<ol>",
     items(Frag,L),
     "</ol>\n".
 
 item(Fragm,L) -->
-    { atom_chars(Fragm,Frag)},
+    { atom_codes(Fragm,Frag)},
     "<ul>",
     items(Frag,L),
     "</ul>\n".

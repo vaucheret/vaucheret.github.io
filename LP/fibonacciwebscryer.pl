@@ -46,8 +46,8 @@ faux(I,N,A1,A2,R) :-
 
 main :-
     consult(htmlscryer),
-    shell("xdg-open http://localhost:7000/fibonacchi"),
-    http_listen(7000, [get(fibonacchi,handlerfibog),post(fibonacchi,handlerfibo)]).
+    shell("xdg-open http://localhost:6500/fibonacchi"),
+    http_listen(6500, [get(fibonacchi,handlerfibog),post(fibonacchi,handlerfibo)]).
 
 :- initialization(main).
 

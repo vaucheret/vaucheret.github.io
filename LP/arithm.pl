@@ -44,7 +44,7 @@ predicates -->
     slide(col(green,"Restricciones"),
 	  item('highlight-current-green',
 	       [
-		   "Resticciones aritméticas como (#=)/2, (#>)/2 y (#\\=)/2",
+		   "Restricciones aritméticas como (#=)/2, (#>)/2 y (#\\=)/2",
 		   "Restricciones de dominio (in)/2 y (ins)/2",
 		   "Predicados de enumeración  indomain/1, label/1 y labeling/2",
 		   "restricciones combinatorias como  all_distinct/1 y global_cardinality/2",

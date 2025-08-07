@@ -673,11 +673,12 @@ entsal -->
 
 show :-
         file(File),
-        append(["xdg-open ",File,".html"],Command),
-	shell(Command).
+    phrase(format_("xdg-open ~s.html",[File]),Command),
+    shell(Command).
+
 	      
 main :-
         consult(slideprolog),
         file(File),
-        append(File,".html",Filehtml),
+        string_concat(File,".html",Filehtml),
 	phrase_to_file(presentation,Filehtml).

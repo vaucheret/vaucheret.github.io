@@ -177,7 +177,7 @@ split(A,B) -->
     
 
 col(Col,Text) -->
-   { atom_chars(Col,Color)},
+   { atom_codes(Col,Color)},
     "<span style=\"color:",
     Color,
     ";\">",
@@ -226,13 +226,13 @@ slide(Title,Body) -->
        )).
 
 enum(Fragm,L) -->
-    { atom_chars(Fragm,Frag)},
+    { atom_codes(Fragm,Frag)},
     "<ol>",
     items(Frag,L),
     "</ol>\n".
 
 item(Fragm,L) -->
-    { atom_chars(Fragm,Frag)},
+    { atom_codes(Fragm,Frag)},
     "<ul>",
     items(Frag,L),
     "</ul>\n".

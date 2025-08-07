@@ -1,7 +1,5 @@
-:- use_module(library(clpz)).
 
-
-
+:- table f/2.
 
 f(0,1).
 f(1,1).

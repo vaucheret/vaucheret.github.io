@@ -1,0 +1,31 @@
+:- use_module(library(http/thread_httpd)).
+:- use_module(library(http/http_dispatch)).
+:- use_module(library(http/http_parameters)).
+:- use_module(library(www_browser)).
+
+:- http_handler(root(fibonacchi),handlerfibo,[]).
+
+server(Port) :-
+    http_server(http_dispatch, [port(Port)]).
+
+
+:- server(6500).
+:- www_open_url('http:/localhost:6500/fibonacchi').
+
+
+
+f(0,1).
+f(1,1).
+f(N,R):-
+    N >=2,
+    faux(2,N,1,1,R).
+
+faux(N,N,A1,A2,R) :- R is A1 + A2.
+faux(I,N,A1,A2,R) :-
+    I1 is I + 1,
+    A is A1 + A2,
+    faux(I1,N,A2,A,R).
+
+
+
+
