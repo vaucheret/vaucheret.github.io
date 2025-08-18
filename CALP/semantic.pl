@@ -1,5 +1,5 @@
 file("semantica").
-title("Semanticas").
+title("Semantica").
 author("C. A. L. P.").
 date("Claudio Vaucheret").
 theme("night").
@@ -50,7 +50,7 @@ introduccion -->
 		       item(
 			   [
 			       "Un dispositivo que genera sentencias de un lenguaje",
-			       "Se puede determinar si la sintaxis de una sentencia particular\
+			       "Se puede determinar si la sintaxis de una sentencia particular\c
                                  es correcta comparándola con la estructura del generador."
 			   ])
 		   )
@@ -62,7 +62,7 @@ introduccion -->
 		      col(green,"Forma Backus-Naur y gramáticas libres de contexto"),
 		       item(appear,
 			    [
-				"El método mas conocido para describir la sintaxis de un Lenguaje\
+				"El método mas conocido para describir la sintaxis de un Lenguaje\c
                                   de Programación."
 			    ]
 			   )
@@ -602,12 +602,14 @@ sematincadinamica -->
 
 
 show :-
-        file(File),
-        append(["xdg-open ",File,".html"],Command),
+    file(File),
+    phrase(format_("xdg-open ~s.html",[File]),Command),
+%        append(["xdg-open ",File,".html"],Command),
 	shell(Command).
 	      
 main :-
         consult(slideprolog),
         file(File),
-        append(File,".html",Filehtml),
+	string_concat(File,".html",Filehtml),
+%        append(File,".html",Filehtml),
 	phrase_to_file(presentation,Filehtml).
