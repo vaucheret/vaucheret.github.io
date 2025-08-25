@@ -9,7 +9,10 @@ transition("slide").
 slides -->
     introduccion,
     semanticaestatica,
-    sematincadinamica.
+    semanticadinamica.
+
+
+
 
 introduccion -->
     section("Introducción"),
@@ -232,10 +235,7 @@ semanticaestatica -->
 	  )).
 
 	  
-
-	  
-
-sematincadinamica -->
+semanticadinamica -->
     section("Semántica Dinámica"),
     slide("90%","Métodos Desarrollados",
 	  item(
@@ -263,6 +263,7 @@ sematincadinamica -->
 			   ])
 		  )
 	      ])
+	
 	 ),
     slide(col(green,"Semántica Operacional"),
 	  (
@@ -285,7 +286,12 @@ sematincadinamica -->
 				"Construir un simulador para la computadora idealizada"
 			    ])
 		    )),
-	      slide(col(green,"Semántica Operacional"),
+	      slide("",
+		    (
+			el(p,"Ejemplo: sentencia  for"),
+			fig(img("senteciafor.png","auto","400"))
+		    )),
+		 slide(col(green,"Semántica Operacional"),
 		    item(
 			[
 			    (
