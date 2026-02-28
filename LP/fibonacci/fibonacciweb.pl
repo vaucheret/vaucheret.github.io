@@ -25,7 +25,7 @@ handlerfibo(Request) :-
 			form([method="post",action="/fibonacchi"],
 			     [
 				 "El numero de Fibonacci de",
-				 input([type="text",name="numero",placeholder="Entre el Numero",size="6",autofocus, required],[]),
+				 input([type="text",name="numero",placeholder="Entre el Numero",size="12",autofocus, required],[]),
                          \['<br>'],
                          "es el numero ",\['<b>~s</b>' - [SF]],
                          p(input([type="submit",value="Calcular"],[]))

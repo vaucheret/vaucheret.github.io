@@ -7,8 +7,8 @@ transition("slide").
 
 show :-
     file(File),
-    phrase(format_("xdg-open ~s.html",[File]),Command),
-    shell(Command).
+    phrase(format_("~s.html",[File]),Command),
+    command('xdg-open',Command).
 	      
 main :-
 	consult(slideprolog),

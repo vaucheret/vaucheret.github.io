@@ -6,6 +6,19 @@ theme("night").
 transition("slide").
 
 
+show :-
+    file(File),
+    phrase(format_("~s.pdf",[File]),Command),
+    command('xdg-open',Command).
+
+	      
+main :-
+        consult(slideprolog),
+        file(File),
+        string_concat(File,".html",Filehtml),
+	phrase_to_file(presentation,Filehtml).
+
+
 slides -->
     abstraccion,
     tdaparametrizados,
@@ -161,19 +174,3 @@ poo -->
     [].
 
 
-
-
-
-
-show :-
-        file(File),
-        append(["xdg-open ",File,".html"],Command),
-	shell(Command).
-	      
-main :-
-        consult(slideprolog),
-        file(File),
-        append(File,".html",Filehtml),
-	phrase_to_file(presentation,Filehtml).
-
-    

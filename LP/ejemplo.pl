@@ -106,7 +106,7 @@ otros -->
 		       item(
 			   [
 			       "Un dispositivo que genera sentencias de un lenguaje",
-			       "Se puede determinar si la sintaxis de una sentencia particular\
+			       "Se puede determinar si la sintaxis de una sentencia particular\c
                                  es correcta comparándola con la estructura del generador."
 			   ])
 		   )
@@ -189,15 +189,14 @@ semanticaGeneraldeLlamadayRetorno -->
 		       )
 	       ])).
 
-
 show :-
-        file(File),
-        append(["xdg-open ",File,".html"],Command),
-	shell(Command).
+    file(File),
+    phrase(format_("~s.html",[File]),Command),
+    command('xdg-open',Command).
 	      
 main :-
 	consult(slideprolog),
 	file(File),
-	append(File,".html",Filehtml),
+	phrase(format_("~s.html",[File]),Filehtml),
 	phrase_to_file(presentation,Filehtml).
 

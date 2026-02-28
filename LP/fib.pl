@@ -1,4 +1,4 @@
-:- use_module(etrace).
+%:- use_module(etrace).
 
 :- dynamic f/2.
 

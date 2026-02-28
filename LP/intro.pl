@@ -39,7 +39,7 @@ lenguajesDeclarativos -->
 			   [
 			       (   "Swi Prolog", link("http://www.swi-prolog.org/","http://www.swi-prolog.org/") ),
 			       (   "Ciao Prolog", link("http://ciao-lang.org/","http://ciao-lang.org/") ) ,
-			       (   "Scryer Prolog", link("https://www.scryer.pl/","https://www.scryer.pl/") )    
+			       (   "Scryer Prolog", link("https://www.scryer.pl/","https://www.scryer.pl/") )
 			   ]
 		       )
 		   ),
@@ -131,7 +131,105 @@ prolog -->
 			    "    R is F1 + F2."
 			)
 		    )
+		   ),
+	      slide("Fibonacci Iterativo",
+		    code(
+			(
+			    ":- module(fibonacci,[fi/2]).\n",
+			    "\n",
+			    "fi(0,1).\n",
+			    "fi(1,1).\n",
+			    "f(N,R):-\n",
+			    "    N >= 2,\n",
+			    "    fi_aux(2,N,1,1,R).\n",
+			    "\n",
+			    "fi_aux(N,N,A1,A2,R):- R is A1 + A2.\n",
+			    "fi_aux(I,N,A1,A2,R):-\n",
+			    "    I1 is I + 1,\n",
+			    "    A is A1 + A2,\n",
+			    "    fi_aux(I1,N,A2,A,R)."
+			)
+		    )
+		   ),
+	      slide("Tabling",
+		    (
+			p("Recuperamos la declaratividad"),
+		    code(
+			(
+			    ":- module(fibonacci,[f/2]).\n",
+			    "\n",
+			    ":- table f/2.\n",
+			    "\n",
+			    "f(0,1).\n",
+			    "f(1,1).\n",
+			    "f(N,R):-\n",
+			    "    N >= 2,\n",
+			    "    N1 is N - 1,\n",
+			    "    N2 is N - 2,\n",
+			    "    f(N1,F1),\n",
+			    "    f(N2,F2),\n",
+			    "    R is F1 + F2."
+			)
+		    )
+		    )
+		   ),
+	      	      slide("Memoizing",
+		    (
+			p("Si no tenemos tabling, podemos recuperar la declaratividad con memoizing"),
+		    code(
+			(
+			    ":- module(fibonacci,[f/2]).\n",
+			    "\n",
+			    ":- dynamic f/2.\n",
+			    "\n",
+			    "f(0,1).\n",
+			    "f(1,1).\n",
+			    "f(N,R):-\n",
+			    "    N >= 2,\n",
+			    "    N1 is N - 1,\n",
+			    "    N2 is N - 2,\n",
+			    "    f(N1,F1),\n",
+			    "    f(N2,F2),\n",
+			    "    R is F1 + F2,\n",
+			    "    assertz(f(N,R))."
+			)
+		    )
+		    )
+			   ),
+		      slide("CLP(Z) o CLP(fd)",
+		    (
+			p("podemos hacerlo reversible usando CLP(Z) o CLP(fd)"),
+		    code(
+			(
+			    ":- module(fibonacci,[f/2,fi/2]).\n",
+			    "\n",
+			    "f(0,1).\n",
+			    "f(1,1).\n",
+			    "f(N,R):-\n",
+			    "    N #>= 2,\n",
+			    "    N1 #= N - 1,\n",
+			    "    N2 #= N - 2,\n",
+			    "    f(N1,F1),\n",
+			    "    f(N2,F2),\n",
+			    "    R #= F1 + F2.",
+			    "\n",
+			    "\n",
+			    "fi(0,1).\n",
+			    "fi(1,1).\n",
+			    "fi(N,R):-\n",
+			    "    N #>= 2,\n",
+			    "    fi_aux(2,N,1,1,R).\n",
+			    "\n",
+			    "fi_aux(N,N,A1,A2,R):- R is A1 + A2.\n",
+			    "fi_aux(I,N,A1,A2,R):-\n",
+			    "    I1 #= I + 1,\n",
+			    "    A  #= A1 + A2,\n",
+			    "    fi_aux(I1,N,A2,A,R)."
+			)
+		    )
+		    )
 		   )
+
 	  )
 	 ).
 
@@ -295,14 +393,13 @@ automata -->
 	            (
 	        	p("el código principal es:"),
 	        	code((
-	        		    "main:-\n",
-                                    "    argv([State,Chain]),\n",
-                                    "    atom_chars(S, State),\n",
-	        		    "        ( accepts(S,Chain) -> format(\"aceptada \",[]),nl\n",
+	        		    "main([S,Chain]):-\n",
+                                    "    atom_chars(Chain, Codes),\n",
+	        		    "        ( accepts(S,Codes) -> format(\"aceptada \",[]),nl\n",
 	        		    "        ;\n",
 	        		    "            format(\"rechazada \",[]),nl\n",
 	        		    "        ).\n",
-	        		    "main:- format(\"especificar estado y cadena \",[]),nl.\n"
+	        		    "main(_):- format(\"especificar estado y cadena \",[]),nl.\n"
 	        		    ))
 			
 	            )),
@@ -455,11 +552,10 @@ maquina -->
           ))
          ).
 
-
 show :-
     file(File),
-    phrase(format_("xdg-open ~s.html",[File]),Command),
-    shell(Command).
+    phrase(format_("~s.html",[File]),Command),
+    command('xdg-open',Command).
 	      
 main :-
 	consult(slideprolog),

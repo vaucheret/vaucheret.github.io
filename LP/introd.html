@@ -155,6 +155,84 @@ f(N,R):-
     f(N2,F2),
     R is F1 + F2.</code></pre>
 </section>
+<section><h3>Fibonacci Iterativo</h3>
+<pre><code>
+:- module(fibonacci,[fi/2]).
+
+fi(0,1).
+fi(1,1).
+f(N,R):-
+    N >= 2,
+    fi_aux(2,N,1,1,R).
+
+fi_aux(N,N,A1,A2,R):- R is A1 + A2.
+fi_aux(I,N,A1,A2,R):-
+    I1 is I + 1,
+    A is A1 + A2,
+    fi_aux(I1,N,A2,A,R).</code></pre>
+</section>
+<section><h3>Tabling</h3>
+<p>Recuperamos la declaratividad</p>
+<pre><code>
+:- module(fibonacci,[f/2]).
+
+:- table f/2.
+
+f(0,1).
+f(1,1).
+f(N,R):-
+    N >= 2,
+    N1 is N - 1,
+    N2 is N - 2,
+    f(N1,F1),
+    f(N2,F2),
+    R is F1 + F2.</code></pre>
+</section>
+<section><h3>Memoizing</h3>
+<p>Si no tenemos tabling, podemos recuperar la declaratividad con memoizing</p>
+<pre><code>
+:- module(fibonacci,[f/2]).
+
+:- dynamic f/2.
+
+f(0,1).
+f(1,1).
+f(N,R):-
+    N >= 2,
+    N1 is N - 1,
+    N2 is N - 2,
+    f(N1,F1),
+    f(N2,F2),
+    R is F1 + F2,
+    assertz(f(N,R)).</code></pre>
+</section>
+<section><h3>CLP(Z) o CLP(fd)</h3>
+<p>podemos hacerlo reversible usando CLP(Z) o CLP(fd)</p>
+<pre><code>
+:- module(fibonacci,[f/2,fi/2]).
+
+f(0,1).
+f(1,1).
+f(N,R):-
+    N #>= 2,
+    N1 #= N - 1,
+    N2 #= N - 2,
+    f(N1,F1),
+    f(N2,F2),
+    R #= F1 + F2.
+
+fi(0,1).
+fi(1,1).
+fi(N,R):-
+    N #>= 2,
+    fi_aux(2,N,1,1,R).
+
+fi_aux(N,N,A1,A2,R):- R is A1 + A2.
+fi_aux(I,N,A1,A2,R):-
+    I1 #= I + 1,
+    A  #= A1 + A2,
+    fi_aux(I1,N,A2,A,R).</code></pre>
+</section>
 </section>
 <section><h3></h3>
 <section><h3><span style="color:green;">Sintaxis</span></h3>
@@ -218,8 +296,7 @@ animal_peligroso('Leon')
 arbol(23,arbol(12,nil,nil),nil)
 </code></pre>
 <div class="figure">
-<p><img src=compoundterms.png  width=auto  height=180</p>
-</div>
+<img src=compoundterms.png  width=auto  height=180</div>
 </section>
 </section>
 <section><h3><span style="color:green;">Listas</span></h3>
@@ -233,8 +310,7 @@ arbol(23,arbol(12,nil,nil),nil)
 <section><h3><span style="color:red;">Ejemplo Autómata Finito</span></h3>
 <div style="font-size: 75%;">
 <div class="figure">
-<p><img src=automata.png  width=auto  height=230</p>
-</div>
+<img src=automata.png  width=auto  height=230</div>
 <ul><li><p>Ejemplos de cadenas aceptadas:</p>
 <pre><code>
 aabbab, ab, aaab, babab
@@ -263,8 +339,7 @@ silent(s2,s4).
 silent(s3,s1).
 </code></pre>
 <div class="figure">
-<p><img src=automata.png  width=auto  height=200</p>
-</div>
+<img src=automata.png  width=auto  height=200</div>
 </section>
 <section><h3><span style="color:red;">Código</span></h3>
 <p>el código que representa el reconocedor de las cadenas es</p>
@@ -284,14 +359,13 @@ accepts(State,String):-
 <section><h3><span style="color:red;">Código</span></h3>
 <p>el código principal es:</p>
 <pre><code>
-main:-
-    argv([State,Chain]),
-    atom_chars(S, State),
-        ( accepts(S,Chain) -> format("aceptada ",[]),nl
+main([S,Chain]):-
+    atom_chars(Chain, Codes),
+        ( accepts(S,Codes) -> format("aceptada ",[]),nl
         ;
             format("rechazada ",[]),nl
         ).
-main:- format("especificar estado y cadena ",[]),nl.
+main(_):- format("especificar estado y cadena ",[]),nl.
 </code></pre>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
@@ -299,40 +373,35 @@ main:- format("especificar estado y cadena ",[]),nl.
 accept(s1,[a,a,b]).
 </code></pre>
 <div class="figure">
-<p><img src=acceptaab.png  width=auto  height=400</p>
-</div>
+<img src=acceptaab.png  width=auto  height=400</div>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
 <pre><code>
 accept(s1,[a,b]).
 </code></pre>
 <div class="figure">
-<p><img src=accepts1ab.png  width=auto  height=400</p>
-</div>
+<img src=accepts1ab.png  width=auto  height=400</div>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
 <pre><code>
 accept(s1,[b]).
 </code></pre>
 <div class="figure">
-<p><img src=accepts1b.png  width=auto  height=480</p>
-</div>
+<img src=accepts1b.png  width=auto  height=480</div>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
 <pre><code>
 accept(s2,[b]).
 </code></pre>
 <div class="figure">
-<p><img src=accepts2b.png  width=auto  height=480</p>
-</div>
+<img src=accepts2b.png  width=auto  height=480</div>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
 <pre><code>
 accept(s4,[b]).
 </code></pre>
 <div class="figure">
-<p><img src=accepts4b.png  width=auto  height=400</p>
-</div>
+<img src=accepts4b.png  width=auto  height=400</div>
 </section>
 <section><h3><span style="color:red;">\(Tp^n\)</span></h3>
 <div style="font-size: 80%;">

@@ -1,4 +1,6 @@
-:- use_module(etrace).
+#!/usr/bin/env swipl
+
+:- initialization(main,main).
 
 
 final(s3).
@@ -23,16 +25,15 @@ accepts(State,String):-
 	silent(State,State1),
 	accepts(State1,String).
 
-main :-
-    argv([State,Chain]),
-    atom_chars(S, State),
-	(   accepts(S,Chain) -> format("aceptada ",[]),nl
+main([S,Chain]) :-
+        atom_chars(Chain, Codes),
+	(   accepts(S,Codes) -> format("aceptada "),nl
 	;
-	    format("rechazada ",[]),nl
+	    format("rechazada "),nl
 	),
         halt.
 
-main :- format("especificar estado y cadena ",[]),nl,halt.
+main(_) :- format("especificar estado y cadena "),nl,halt.
 
 % versiones
 % 1) con dcg y estado

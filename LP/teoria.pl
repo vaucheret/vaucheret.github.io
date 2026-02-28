@@ -6,14 +6,14 @@ theme("night").
 transition("slide").
 
 show :-
-        file(File),
-        append(["xdg-open ",File,".html"],Command),
-	shell(Command).
+    file(File),
+    phrase(format_("~s.html",[File]),Command),
+    command('xdg-open',Command).
 	      
 main :-
-	consult(slideprolog),
-	file(File),
-	append(File,".html",Filehtml),
+    consult('slideprolog.pl'),
+    file(File),
+    phrase(format_("~s.html",[File]),Filehtml),
 	phrase_to_file(presentation,Filehtml).
 
 slides -->

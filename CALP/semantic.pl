@@ -605,13 +605,10 @@ semanticadinamica -->
 
 
 
-
-
 show :-
     file(File),
-    phrase(format_("xdg-open ~s.html",[File]),Command),
-%        append(["xdg-open ",File,".html"],Command),
-	shell(Command).
+    phrase(format_("~s.pdf",[File]),Command),
+    command('xdg-open',Command).
 	      
 main :-
         consult(slideprolog),

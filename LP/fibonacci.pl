@@ -15,15 +15,6 @@ f(N,R):-
 
 
 
-
-
-
-
-
-
-
-
-
 % versiones
 % 1) reversible con clpz
 % 2) tail recursivo (iterativo)
