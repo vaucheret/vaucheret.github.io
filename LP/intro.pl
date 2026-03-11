@@ -31,7 +31,7 @@ lenguajesDeclarativos -->
 		   col(yellow,"Análisis de Programas, Web Semantics")
 	       ]
 	      )),
-    slide("95%",col(brown,"Lenguajes"),
+    slide("85%",col(brown,"Lenguajes"),
 	  item(appear,
 	       [
 		   (   "Relacional (Prolog)",
@@ -139,7 +139,7 @@ prolog -->
 			    "\n",
 			    "fi(0,1).\n",
 			    "fi(1,1).\n",
-			    "f(N,R):-\n",
+			    "fi(N,R):-\n",
 			    "    N >= 2,\n",
 			    "    fi_aux(2,N,1,1,R).\n",
 			    "\n",

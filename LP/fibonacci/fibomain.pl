@@ -2,7 +2,7 @@
 %% swipl -o fibomain -c fibomain.pl
 
 
-%% :- initialization(main,main).
+ :- initialization(main,main).
 
 
 main([Number]) :-
