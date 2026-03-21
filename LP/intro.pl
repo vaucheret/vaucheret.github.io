@@ -31,7 +31,7 @@ lenguajesDeclarativos -->
 		   col(yellow,"Análisis de Programas, Web Semantics")
 	       ]
 	      )),
-    slide("85%",col(brown,"Lenguajes"),
+    slide("80%",col(brown,"Lenguajes"),
 	  item(appear,
 	       [
 		   (   "Relacional (Prolog)",
@@ -39,7 +39,8 @@ lenguajesDeclarativos -->
 			   [
 			       (   "Swi Prolog", link("http://www.swi-prolog.org/","http://www.swi-prolog.org/") ),
 			       (   "Ciao Prolog", link("http://ciao-lang.org/","http://ciao-lang.org/") ) ,
-			       (   "Scryer Prolog", link("https://www.scryer.pl/","https://www.scryer.pl/") )
+			       (   "Scryer Prolog", link("https://www.scryer.pl/","https://www.scryer.pl/") ),
+			       (   "trealla Prolog", link("https://github.com/trealla-prolog/trealla","https://github.com/trealla-prolog/trealla") )
 			   ]
 		       )
 		   ),

@@ -1,4 +1,4 @@
-%% #!/usr/bin/env swipl
+#!/usr/bin/env swipl
 %% swipl -o fibomain -c fibomain.pl
 
 
@@ -8,7 +8,7 @@
 main([Number]) :-
     atom_number(Number,N),
     f(N,F),
-    format("El numero de fib correspondiente a ~d es ~d\n",[N,F]),
+    format("El numero de fibonacci correspondiente a ~d es ~d\n",[N,F]),
     halt.
 main(_) :-
     format("debe ingresar un argumento\n"),halt.

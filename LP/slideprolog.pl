@@ -1,3 +1,17 @@
+%% show :-
+%%     file(File),
+%%     phrase(format_("~s.html",[File]),Command),
+%%     command('xdg-open',Command).
+show :-
+    file(File),
+    phrase(format_("xdg-open ~s.html",[File]),Command),
+    shell(Command).
+
+
+main :-
+	file(File),
+	phrase(format_("~s.html",[File]),Filehtml),
+	phrase_to_file(presentation,Filehtml),!.
 
 presentation -->
     {title(T),
@@ -153,7 +167,8 @@ img(File,Width,Height) -->
 	   "  width=",
 	   Width,
 	   "  height=",
-	   Height.
+	   Height,
+	   ">\n</img>\n".
 
 
 
@@ -199,6 +214,13 @@ section(Title) -->
 	   el(h2,Title),
 	   "<div class=\"outline-text-2\" ></div>\n"
        )).
+
+slide(none,Title,Body) -->
+    el(section," data-transition=\"none\"",
+			 (
+	   el(h3,Title),
+	   Body
+			 )).
 
 slide(animate,Title,Body) -->
     el(section," data-auto-animate ",

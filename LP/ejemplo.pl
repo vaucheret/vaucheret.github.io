@@ -149,6 +149,13 @@ otros -->
 
 conclusion -->
     section("Conclusion"),
+    slide(none,col(yellow,"Concatenar dos listas"),
+	  fig(img("concdif1.png","auto","450"),"Concatenar A - B y B - C")),
+    slide(none,col(yellow,"Concatenar dos listas"),
+	  fig(img("concdif2.png","auto","450"),"Concatenar A - B y B - C")),
+    slide(none,col(yellow,"Concatenar dos listas"),
+	  fig(img("concdif3.png","auto","450"),"Resultado es A - C")),
+
     slide("latex",
 	  (   
 	  p("\\[ a = f(z) \\left\\{ \\begin{array}{ll} 1    &  z \\ge 0 \\\\  0  &  z < 0  \\end{array}  \\right. \\]"),
