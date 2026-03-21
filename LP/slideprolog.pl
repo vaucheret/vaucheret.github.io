@@ -1,7 +1,5 @@
-%% show :-
-%%     file(File),
-%%     phrase(format_("~s.html",[File]),Command),
-%%     command('xdg-open',Command).
+:- use_module(library(www_browser)).
+
 show :-
     file(File),
     phrase(format_("xdg-open ~s.html",[File]),Command),
@@ -9,9 +7,11 @@ show :-
 
 
 main :-
+%	consult(slideprolog),
 	file(File),
 	phrase(format_("~s.html",[File]),Filehtml),
 	phrase_to_file(presentation,Filehtml),!.
+
 
 presentation -->
     {title(T),
@@ -42,7 +42,15 @@ presentation -->
 "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n",
 "<link rel=\"stylesheet\" href=\"https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css\">\n",
 "<script src=\"https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js\"></script>\n",
-"<script>hljs.highlightAll();</script>\n"
+"<script>hljs.highlightAll();</script>\n",
+"<style>",
+"    .reveal {",
+"      background-image: url('bitmap.png');",
+"      background-size: 102%;",
+"      background-position: top left;",
+"      background-repeat: no-repeat;",
+"    }",
+"</style>"
   	      )),
 	   el(body,
 	      (	  

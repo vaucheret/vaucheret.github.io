@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><title>Lenguajes Declarativos</title>
+<html><head><title><span style="color:lightblue;">Lenguajes Declarativos</span></title>
 <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -15,12 +15,15 @@
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-</head>
-<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Lenguajes Declarativos</h1>
+<style>    .reveal {      background-image: url('bitmap.png');      background-size: 102%;      background-position: top left;      background-repeat: no-repeat;    }</style></head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" ><span style="color:lightblue;">Lenguajes Declarativos</span></h1>
 <h2 class = "author" >Claudio Vaucheret</h2>
-<h3 class = "date" >Tail Recursivo y DCG</h3>
+<h3 class = "date" ><span style="color:violet;">Tail Recursivo y DCG</span></h3>
 </section>
-<section><h2>Tail Recursion</h2>
+<section data-auto-animate  ><h2>Tail Recursion</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate  ><h2>Recursivo a la Cola</h2>
 <div class="outline-text-2" ></div>
 </section>
 <section><h3><span style="color:red;">Tail Recursion</span></h3>
@@ -35,6 +38,7 @@ solo si:</p>
 <li class="fragment highlight-current-red">Cuando Prolog detecta que una relación es tail recursive, transforma la llamada recursiva en una iteración.</li>
 </ul>
 </section>
+<section><h3></h3>
 <section><h3><span style="color:blue;">Ejemplo de Tail Recursion</span></h3>
 <p>Sumatoria de una lista de números:</p>
 <pre><code>
@@ -54,6 +58,8 @@ sum_helper([H|T], Acc, S) :-
     Acc1 is Acc + H,
     sum_helper(T, Acc1, S).</code></pre>
 </section>
+</section>
+<section><h3></h3>
 <section><h3><span style="color:green;">Ejemplo de Tail Recursion</span></h3>
 <pre><code>
 factorial(0, 1).
@@ -76,6 +82,8 @@ factorial_helper(N, Acc, F) :-
     N1 is N - 1,
     factorial_helper(N1, Acc1, F).</code></pre>
 </section>
+</section>
+<section><h3></h3>
 <section><h3><span style="color:red;">Ultimo Ejemplo: Fibonacci</span></h3>
 <pre><code>
 fibonacci(0, 0).
@@ -101,6 +109,7 @@ fibonacci_helper(N, A, B, F) :-
     B1 is A + B,
     N1 is N - 1,
     fibonacci_helper(N1, A1, B1, F).</code></pre>
+</section>
 </section>
 <section><h3><span style="color:red;">Ventajas de Tail Recursion</span></h3>
 <ul><li class="fragment highlight-current-red">Reduce el consumo de memoria al evitar el crecimiento de la pila de llamadas.</li>
@@ -167,7 +176,10 @@ rev_listAux([H|T], A, R) :-
 </img>
 </div>
 </section>
-<section><h2>Diferencia de Listas</h2>
+<section data-auto-animate  ><h2>Diferencia de Listas</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate  ><h2>List Difference</h2>
 <div class="outline-text-2" ></div>
 </section>
 <section><h3><span style="color:purple;">Diferencia de Listas</span></h3>

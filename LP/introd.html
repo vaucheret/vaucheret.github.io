@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-</head>
+<style>    .reveal {      background-image: url('bitmap.png');      background-size: 102%;      background-position: top left;      background-repeat: no-repeat;    }</style></head>
 <body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Lenguajes Declarativos</h1>
 <h2 class = "author" >Claudio Vaucheret</h2>
 <h3 class = "date" >Introducción</h3>
@@ -33,7 +33,7 @@
 </ul>
 </section>
 <section><h3><span style="color:brown;">Lenguajes</span></h3>
-<div style="font-size: 85%;">
+<div style="font-size: 80%;">
 <ul><li class="fragment appear">Relacional (Prolog)<ul><li>Swi Prolog<a href=
 http://www.swi-prolog.org/>
 http://www.swi-prolog.org/</a>
@@ -300,7 +300,9 @@ animal_peligroso('Leon')
 arbol(23,arbol(12,nil,nil),nil)
 </code></pre>
 <div class="figure">
-<img src=compoundterms.png  width=auto  height=180</div>
+<img src=compoundterms.png  width=auto  height=180>
+</img>
+</div>
 </section>
 </section>
 <section><h3><span style="color:green;">Listas</span></h3>
@@ -314,7 +316,9 @@ arbol(23,arbol(12,nil,nil),nil)
 <section><h3><span style="color:red;">Ejemplo Autómata Finito</span></h3>
 <div style="font-size: 75%;">
 <div class="figure">
-<img src=automata.png  width=auto  height=230</div>
+<img src=automata.png  width=auto  height=230>
+</img>
+</div>
 <ul><li><p>Ejemplos de cadenas aceptadas:</p>
 <pre><code>
 aabbab, ab, aaab, babab
@@ -343,7 +347,9 @@ silent(s2,s4).
 silent(s3,s1).
 </code></pre>
 <div class="figure">
-<img src=automata.png  width=auto  height=200</div>
+<img src=automata.png  width=auto  height=200>
+</img>
+</div>
 </section>
 <section><h3><span style="color:red;">Código</span></h3>
 <p>el código que representa el reconocedor de las cadenas es</p>
@@ -377,35 +383,45 @@ main(_):- format("especificar estado y cadena ",[]),nl.
 accept(s1,[a,a,b]).
 </code></pre>
 <div class="figure">
-<img src=acceptaab.png  width=auto  height=400</div>
+<img src=acceptaab.png  width=auto  height=400>
+</img>
+</div>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
 <pre><code>
 accept(s1,[a,b]).
 </code></pre>
 <div class="figure">
-<img src=accepts1ab.png  width=auto  height=400</div>
+<img src=accepts1ab.png  width=auto  height=400>
+</img>
+</div>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
 <pre><code>
 accept(s1,[b]).
 </code></pre>
 <div class="figure">
-<img src=accepts1b.png  width=auto  height=480</div>
+<img src=accepts1b.png  width=auto  height=480>
+</img>
+</div>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
 <pre><code>
 accept(s2,[b]).
 </code></pre>
 <div class="figure">
-<img src=accepts2b.png  width=auto  height=480</div>
+<img src=accepts2b.png  width=auto  height=480>
+</img>
+</div>
 </section>
 <section><h3><span style="color:red;">Arbol SLD</span></h3>
 <pre><code>
 accept(s4,[b]).
 </code></pre>
 <div class="figure">
-<img src=accepts4b.png  width=auto  height=400</div>
+<img src=accepts4b.png  width=auto  height=400>
+</img>
+</div>
 </section>
 <section><h3><span style="color:red;">\(Tp^n\)</span></h3>
 <div style="font-size: 80%;">

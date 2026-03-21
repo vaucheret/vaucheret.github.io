@@ -2,9 +2,9 @@
      
 
 file("tailrdcg").
-title("Lenguajes Declarativos").
+title(col(lightblue,"Lenguajes Declarativos")).
 author("Claudio Vaucheret").
-date("Tail Recursivo y DCG").
+date(col(violet,"Tail Recursivo y DCG")).
 theme("night").
 transition("slide").
 
@@ -15,7 +15,8 @@ slides -->
     dcg.
 
 tailrecursion -->
-    section("Tail Recursion"),
+    section(animate,"Tail Recursion"),
+    section(animate,"Recursivo a la Cola"),
     slide(col(red,"Tail Recursion"),
 	  item('highlight-current-red',
 	       [
@@ -31,6 +32,8 @@ tailrecursion -->
 		   "Cuando Prolog detecta que una relación es tail recursive, transforma la llamada recursiva en una iteración."
 	       ]
 	      )),
+    slide("",
+	  (
     slide(col(blue,"Ejemplo de Tail Recursion"),
 	  (
 	      p("Sumatoria de una lista de números:"),
@@ -51,7 +54,10 @@ tailrecursion -->
 			  "sum_helper([H|T], Acc, S) :-\n",
 			  "    Acc1 is Acc + H,\n",
 			  "    sum_helper(T, Acc1, S)."
-		      )))),
+		      ))))
+	  )),
+    slide("",
+	  (
     slide(col(green,"Ejemplo de Tail Recursion"),
 	  code((
                       "factorial(0, 1).\n",
@@ -73,7 +79,10 @@ tailrecursion -->
 		      "    Acc1 is Acc * N,\n",
 		      "    N1 is N - 1,\n",
 		      "    factorial_helper(N1, Acc1, F)."
-		  ))),
+		  )))
+	  )),
+    slide("",
+	  (
     slide(col(red,"Ultimo Ejemplo: Fibonacci"),
 	  code((
 											"fibonacci(0, 0).\n",
@@ -99,7 +108,8 @@ tailrecursion -->
 		      "    B1 is A + B,\n",
 		      "    N1 is N - 1,\n",
 		      "    fibonacci_helper(N1, A1, B1, F)."
-		  ))),
+		  )))
+	  )),
     slide(col(red,"Ventajas de Tail Recursion"),
 	  item('highlight-current-red',
 	       [
@@ -144,7 +154,8 @@ tailrecursion -->
 
 
 listdifferences -->
-    section("Diferencia de Listas"),
+    section(animate,"Diferencia de Listas"),
+    section(animate,"List Difference"),
     slide(col(purple,"Diferencia de Listas"),
 	  (
 	      p("La diferencia de listas es una técnica utilizada en Prolog para representar listas con punteros a la cabeza y la cola de la lista. Esto permite realizar operaciones de concatenación y manipulación de listas de manera eficiente.")
