@@ -183,7 +183,24 @@ rev_listAux([H|T], A, R) :-
 <div class="outline-text-2" ></div>
 </section>
 <section><h3><span style="color:purple;">Diferencia de Listas</span></h3>
-<p>La diferencia de listas es una técnica utilizada en Prolog para representar listas con punteros a la cabeza y la cola de la lista. Esto permite realizar operaciones de concatenación y manipulación de listas de manera eficiente.</p>
+<p>La diferencia de listas es una <span style="color:red;"><em>técnica</em>
+</span> utilizada en <span style="color:red;"><b>Prolog</b>
+</span> para representar listas con punteros a la cabeza y la cola de la lista. Esto permite realizar operaciones de concatenación y manipulación de listas de manera eficiente.</p>
+</section>
+<section><h3><span style="color:green;">Lista [a,b,c] como diferencia de listas</span></h3>
+<p>La lista [a,b,c] se puede representar como una diferencia de listas de la siguiente manera:</p>
+<ul><li class="fragment highlight-current-green">[a,b,c,d,e] - [d,e]</li>
+<li class="fragment highlight-current-green">[a,b,c] - []</li>
+<li class="fragment highlight-current-green">[a,b,c,1] - [1]</li>
+<li class="fragment highlight-current-green">[a,b,c|T] - T</li>
+</ul>
+</section>
+<section><h3><span style="color:blue;">La lista vacia como diferencia de listas</span></h3>
+<p>La lista vacía se puede representar como una diferencia de listas de la siguiente manera</p>
+<ul><li class="fragment highlight-current-blue">[] - []</li>
+<li class="fragment highlight-current-blue">[a,b,c] - [a,b,c]</li>
+<li class="fragment highlight-current-blue">L - L</li>
+</ul>
 </section>
 <section data-transition="none" ><h3><span style="color:green;">Agregar un elemento a una lista</span></h3>
 <figure>
@@ -239,20 +256,13 @@ add_back(X, [H|T], [H|R]) :-
 add_back_dif(X, L - [X|R], L - R).</code></pre>
 </section>
 </section>
-<section><h3><span style="color:green;">Lista [a,b,c] como diferencia de listas</span></h3>
-<p>La lista [a,b,c] se puede representar como una diferencia de listas de la siguiente manera:</p>
-<ul><li class="fragment highlight-current-green">[a,b,c,d,e] - [d,e]</li>
-<li class="fragment highlight-current-green">[a,b,c] - []</li>
-<li class="fragment highlight-current-green">[a,b,c,1] - [1]</li>
-<li class="fragment highlight-current-green">[a,b,c|T] - T</li>
-</ul>
-</section>
-<section><h3><span style="color:blue;">La lista vacia como diferencia de listas</span></h3>
-<p>La lista vacía se puede representar como una diferencia de listas de la siguiente manera</p>
-<ul><li class="fragment highlight-current-blue">[] - []</li>
-<li class="fragment highlight-current-blue">[a,b,c] - [a,b,c]</li>
-<li class="fragment highlight-current-blue">L - L</li>
-</ul>
+<section><h3></h3>
+<section><h3><span style="color:yellow;">Concatenar dos listas</span></h3>
+<p>La concatenación de dos listas recorriendo la lista hasta el final se puede realizar de la siguiente manera:</p>
+<pre><code>
+concatenate([], L, L).
+concatenate([H|T], L2, [H|R]) :-
+    concatenate(T, L2, R).</code></pre>
 </section>
 <section data-transition="none" ><h3><span style="color:yellow;">Concatenar dos listas</span></h3>
 <figure>
@@ -278,18 +288,245 @@ Concatenar A - B y B - C</figcaption>
 Resultado es A - C</figcaption>
 </figure>
 </section>
-<section><h3></h3>
 <section><h3><span style="color:yellow;">Concatenar dos listas</span></h3>
-<p>La concatenación de dos listas recorriendo la lista hasta el final se puede realizar de la siguiente manera:</p>
-<pre><code>
-concatenate([], L, L).
-concatenate([H|T], L2, [H|R]) :-
-    concatenate(T, L2, R).</code></pre>
-</section>
-<section><h3><span style="color:green;">Concatenar dos listas</span></h3>
 <p>La concatenación de dos listas representadas como diferencias de listas se puede realizar de la siguiente manera:</p>
 <pre><code>
 concatenate(A - B, B - C, A - C).</code></pre>
+</section>
+</section>
+<section><h3><span style="color:red;">Ventajas de la diferencia de listas</span></h3>
+<ul><li class="fragment highlight-current-red">Permite realizar operaciones de concatenación y manipulación de listas de manera eficiente.</li>
+<li class="fragment highlight-current-red">Evita la necesidad de recorrer toda la lista para agregar elementos al final.</li>
+<li class="fragment highlight-current-red">Facilita la implementación de algoritmos que requieren manipulación de listas.</li>
+</ul>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:green;">Ejemplo con <span style="color:violet;">qsort/2</span> utilizando <span style="color:violet;">append/3</span></span></h3>
+<pre><code>
+qsort([], []).
+qsort([H|T], Sorted) :-
+    partition(>=(H), T, Less, Greater),
+    qsort(Less, SortedLess),
+    qsort(Greater, SortedGreater),
+    append(SortedLess, [H|SortedGreater], Sorted).</code></pre>
+</section>
+<section><h3><span style="color:green;">Ejemplo con <span style="color:violet;">qsort/2</span> utilizando diferencia de listas</span></h3>
+<pre><code>
+qsort([], L - L).
+qsort([H|T], Sorted - Rest) :-
+    partition(>=(H), T, Less, Greater),
+    qsort(Less, Sorted - [H|SortedGreater]),
+    qsort(Greater, SortedGreater - Rest).</code></pre>
+</section>
+</section>
+<section data-auto-animate  ><h2><span style="color:red;">D</span> <span style="color:red;">C</span> <span style="color:red;">G</span></h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate  ><h2><span style="color:red;">D</span>efinite <span style="color:red;">C</span>lause <span style="color:red;">G</span>rammars</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section data-auto-animate  ><h2><span style="color:red;">G</span>ramática de <span style="color:red;">C</span>láusulas <span style="color:red;">D</span>efinidas</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3><span style="color:red;">Definite Clause Grammars</span></h3>
+<p>Las <span style="color:red;"><em>Definite Clause Grammars (DCG)
+</em>
+</span> son una extensión de Prolog que permite describir gramáticas formales de manera
+ más natural y legible. Las DCG se utilizan comúnmente para el análisis sintáctico de lenguajes formales, como los
+ lenguajes de programación y los lenguajes naturales. Las DCG se basan en la idea de que una gramática puede ser representada como un conjunto de cláusulas definidas en Prolog, donde cada cláusula representa una regla de producción de la gramática.</p>
+</section>
+<section><h3><span style="color:green;">Ejemplo de DCG</span></h3>
+<p>Una gramática simple para reconocer cadenas formadas por 'a' y 'b' se puede definir utilizando DCG de la siguiente manera:</p>
+<pre><code>
+s --> [a], s, [b].
+s --> [].</code></pre>
+</section>
+<section><h3><span style="color:blue;">Explicación del Ejemplo</span></h3>
+<p>En este ejemplo, la regla <span style="color:green;">'s --> [a], s, [b].'</span> indica que una cadena válida puede consistir en una <span style="color:green;">a</span>, seguida de otra cadena válida (representada por <span style="color:green;">s</span>), seguida de una <span style="color:green;">b</span>. La regla <span style="color:green;">'s --> []'</span> indica que una cadena vacía también es válida. Por lo tanto, esta gramática reconoce cadenas como <span style="color:green;">[a,b]</span>, <span style="color:green;">[a,a,b,b]</span>, <span style="color:green;">[a,a,a,b,b,b]</span>, etc.</p>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:magenta;">Describiendo sequencias con seq//1, seq//2, y ...//0</span></h3>
+<p>Definimos un noterminal <span style="color:magenta;">seq//1</span> para describir una secuencia de elementos:</p>
+<pre><code>
+seq([]) --> [].
+seq([E|Es]) --> [E], seq(Es).</code></pre>
+<p>Ejemplo de uso:</p>
+<pre><code>
+?- phrase((`Hello, `,seq(Cs),`!`), `Hello, world!`),string_codes(C,Cs).
+Cs = [119, 111, 114, 108, 100]
+C = "world"
+</code></pre>
+</section>
+<section><h3><span style="color:magenta;">Describiendo sequencias con seq//1, seq//2, y ...//0</span></h3>
+<p>usando <span style="color:magenta;">seq//1</span> podemos definir <span style="color:magenta;">seq//2</span> para describir una secuencia de secuencias:</p>
+<pre><code>
+seq2([]) --> [].
+seq2([Es|Ess]) --> seq(Es), seq2(Ess).</code></pre>
+<p>Ejemplo de uso:</p>
+<pre><code>
+?- phrase(seqq([`ab`, `cd`, `ef`]), Es), string_codes(S,Es)).
+Es = [97, 98, 99, 100, 101,102]
+S = "abcdef"
+</code></pre>
+</section>
+<section><h3><span style="color:magenta;">Describiendo sequencias con seq//1, seq//2, y ...//0</span></h3>
+<div style="font-size: 90%;">
+<p>a veces es util describir "cualquier secuencia" y podemos hacerlo con el noterminal <span style="color:magenta;">...//0</span> que es equivalente a <span style="color:magenta;">seq(_)</span>:</p>
+<pre><code>
+... --> [] | [_], ... . 
+</code></pre>
+<p>Por ejemplo, el último elemento de una lista se puede describir con:</p>
+<pre><code>
+?- phrase((..., [Last]), `hello`), char_code(Char, Last).
+Last = 111
+Char = 'o'</code></pre>
+</section>
+<section><h3><span style="color:magenta;">Describiendo sequencias con seq//1, seq//2, y ...//0</span></h3>
+<p>Como otro ejemplo, elementos repetidos consecutivamente se pueden describir con:</p>
+<pre><code>
+?- phrase((..., [X,X], ...), `mississippi`), char_code(Char, X).
+X = 115
+Char = 's' ;
+X = 115
+Char = 's' ;
+X = 112
+Char = 'p' ;
+false.</code></pre>
+</section>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:yellow;">Inversión de listas, palíndromos y otros ejercicios.</span></h3>
+<div style="font-size: 85%;">
+<p>DCG se pueden utilizar para describir una amplia variedad de estructuras de datos y patrones, como la inversión de listas, palíndromos, y otros ejercicios relacionados con cadenas y secuencias. Por ejemplo, para describir una lista que es un palíndromo (es decir, que se lee igual de izquierda a derecha que de derecha a izquierda), podemos definir la siguiente gramática:</p>
+<pre><code>
+palindrome --> [] .
+palindrome --> [_] .
+palindrome --> [X], palindrome, [X].</code></pre>
+</section>
+<section><h3><span style="color:yellow;">Inversión de listas, palíndromos y otros ejercicios.</span></h3>
+<p>Esta gramática reconoce cadenas como <span style="color:green;">[]</span>, <span style="color:green;">[a]</span>, <span style="color:green;">[a,b,a]</span>, <span style="color:green;">[a,b,b,a]</span>, etc.</p>
+<pre><code>
+?- phrase(palindrome, `neuquen`),
+true. ;
+false.</code></pre>
+</section>
+<section><h3><span style="color:yellow;">Inversión de listas, palíndromos y otros ejercicios.</span></h3>
+<p>También podemos describir la inversión de una lista utilizando DCG:</p>
+<pre><code>
+reversal([] --> [].
+reversal([H|T]) --> reversal(T), [H].</code></pre>
+<p>Ejemplo de uso:</p>
+<pre><code>
+?- phrase(reversal(`abcd`, RevCodes), string_codes(Rev, RevCodes)).
+RevCodes = [100, 99, 98, 97]
+Rev = "dcba"</code></pre>
+</section>
+<section><h3><span style="color:yellow;">Inversión de listas, palíndromos y otros ejercicios.</span></h3>
+<div style="font-size: 70%;">
+<p>DCG también se pueden utilizar para relacionar árboles binarios con sus recorridos en preorden, inorden y postorden. Por ejemplo, para describir el recorrido en inorden de un árbol binario, podemos definir la siguiente gramática:</p>
+<pre><code>
+tree_nodes(nil) --> [] .
+          tree_nodes(node(Value, Left, Right)) --> 
+          tree_nodes(Left),
+          [Value],
+          tree_nodes(Right).</code></pre>
+<p>Ejemplo:</p>
+<pre><code>
+?- phrase(tree_nodes(node(a, node(b, nil,
+                     node(c, nil, nil)),
+                     node(d, nil, nil))), Codes), string_codes(S, Codes)).
+Codes = [98, 99, 97, 100]
+S = "bcad"</code></pre>
+</section>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:teal;">Notación semicontextual</span></h3>
+<div style="font-size: 90%;">
+<p>usar <b><span style="color:teal;">notación semicontextual</span></b>
+ podemos insertar elementos de la lista que inicialmente no estaban en la lista que se está analizando. Una regla DCG de la forma:</p>
+<pre><code>
+Head, [T1,...,Tn] --> Body.</code></pre>
+<p>puede leerse como: parsear la lista usando Body, luego agregar los terminos T1,...,Tn al resto de la lista. Por ejemplo:</p>
+<pre><code>
+nt1, [b] --> [a].
+nt2      --> [b].</code></pre>
+</section>
+<section><h3><span style="color:teal;">Notación semicontextual</span></h3>
+<div style="font-size: 80%;">
+<p>El cuerpo de <span style="color:teal;">nt1//0</span> describe una lista con un unico elemento <span style="color:green;">a</span>. Operacionalmente, despues de que <span style="color:teal;">nt1//0</span> consume el atomo <span style="color:green;">a</span>, inserta el atomo <span style="color:green;">b</span> al frente del resto de la lista:</p>
+<pre><code>
+?- phrase((nt1, nt2), [a]).
+true.
+
+?- phrase(nt1, [a]).
+false.</code></pre>
+<p>la version <span style="color:teal;">phrase/3</span> muestra lo que queda de la lista despues de que <span style="color:teal;">nt1//0</span> tiene éxito:</p>
+<pre><code>
+?- phrase(nt1, [a], Rest).
+Rest = [b]</code></pre>
+</section>
+<section><h3><span style="color:teal;">Notación semicontextual</span></h3>
+<p>Usando <b><span style="color:teal;">notación semicontextual</span></b>
+, podemos implementar <em>look-ahead</em>
+ para inspeccionar el siguiente elemento de la lista sin consumirlo:</p>
+<pre><code>
+look_ahead(T), [T] --> [T].</code></pre>
+<p>Ejemplo:</p>
+<pre><code>
+?- phrase(look_ahead(T), [a],Rest]).
+T = a,
+Rest = [a]</code></pre>
+</section>
+</section>
+<section><h3></h3>
+<section><h3><span style="color:fuchsia;">Pasando estados implícitamente</span></h3>
+<p>la <b><span style="color:fuchsia;">notación semicontextual</span></b>
+ es util para el pasaje de estados implícita. Por ejemplo el siguiente contador de hojas de un árbol binario:</p>
+<pre><code>
+num_leaves(Tree, N) :-
+            num_leaves_(Tree,0,N).
+
+num_leaves_(nil, N0, N) :- N is N0 + 1.
+num_leaves_(node(_,Left,Right), N0, N) :-
+             num_leaves_(Left, N0, N1),
+             num_leaves_(Right, N1, N).
+</code></pre>
+</section>
+<section><h3><span style="color:fuchsia;">Pasando estados implícitamente</span></h3>
+<p>siendo los estados una lista de un unico elemento entero:</p>
+<pre><code>
+num_leaves(Tree, N) :-
+                phrase(num_leaves_(Tree), [0], [N]).
+
+num_leaves_(nil), [N] --> [N0], { N is N0 + 1 }.
+num_leaves_(node(_,Left,Right)) -->
+              num_leaves_(Left),
+              num_leaves_(Right).
+</code></pre>
+</section>
+<section><h3><span style="color:fuchsia;">Pasando estados implícitamente</span></h3>
+<p>Ejemplo de query:</p>
+<pre><code>
+?- num_leaves(node(a, node(b, nil, nil),
+                 node(c, nil, 
+                     node(d, nil, nil))), N).
+N = 5.</code></pre>
+<p>los siguientes noterminales son utiles para describir estados con DCGs:</p>
+<pre><code>
+state(S), [S] --> [S].
+state(S0, S), [S] --> [S0].
+</code></pre>
+</section>
+<section><h3><span style="color:fuchsia;">Pasando estados implícitamente</span></h3>
+<p>usando <b><span style="color:fuchsia;">state//2</span></b>
+ podemos escribir <b><span style="color:fuchsia;">num_leaves_//1</span></b>
+ de la siguiente manera:</p>
+<pre><code>
+num_leaves_(nil) --> state(N0, N), { N is N0 + 1 }.
+num_leaves_(node(_,Left,Right)) -->
+              num_leaves_(Left),
+              num_leaves_(Right).
+</code></pre>
 </section>
 </section>
 </div>
