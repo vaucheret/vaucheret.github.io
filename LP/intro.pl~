@@ -1,4 +1,4 @@
-:- include("slideprolog.pl").
+:- include('slideprolog').
 
 
 file("introd").
@@ -24,18 +24,18 @@ slides -->
 lenguajesDeclarativos -->
     section("Lenguajes Declarativos"),
     slide("Características",
-	  item("appear",
+	  item(appear,
 	       [
-		   col("green","Programa es Lógica + Control (Kowalski)"),
-		   col("yellow","X = X + 1 ¿que significa?"),
-		   col("green","Semánticas equivalentes a la operacional"),
-		   col("yellow","Programa es Algoritmo + Estructura de Datos (Wirth)"),
-		   col("green","Debugging, Correctitud, Prueba de Programas"),
-		   col("yellow","Análisis de Programas, Web Semantics")
+		   col(green,"Programa es Lógica + Control (Kowalski)"),
+		   col(yellow,"X = X + 1 ¿que significa?"),
+		   col(green,"Semánticas equivalentes a la operacional"),
+		   col(yellow,"Programa es Algoritmo + Estructura de Datos (Wirth)"),
+		   col(green,"Debugging, Correctitud, Prueba de Programas"),
+		   col(yellow,"Análisis de Programas, Web Semantics")
 	       ]
 	      )),
-    slide("90%",col("brown","Lenguajes"),
-	  item("appear",
+    slide(col(brown,"Lenguajes"),
+	  item(appear,
 	       [
 		   (   "Relacional (Prolog)",
 		       item(
@@ -77,8 +77,8 @@ lenguajesDeclarativos -->
 
 prolog -->
     section("Prolog"),
-    slide(col("red","Programación en Lógica"),
-	  item("appear",
+    slide(col(red,"Programación en Lógica"),
+	  item(appear,
 	       [
 		   "Cláusulas de Horn",
 		   "Resolución SLD (basado en resolución de Robinson)",
@@ -89,14 +89,14 @@ prolog -->
     slide("Ejemplo fibonacci",""),
     slide("",
 	  (
-	      slide(col("lime","Sucesion de Fibonacci"),
+	      slide(col(lime,"Sucesion de Fibonacci"),
 		    (
 			 "En matemáticas, la sucesión de Fibonacci (a veces llamada erróneamente serie de Fibonacci) es la siguiente sucesión infinita de números naturales: ",
-			 p(col("lime","\\[1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597 \\ldots\\]")),
+			 p(col(lime,"\\[1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597 \\ldots\\]")),
 			(   "La sucesión comienza con los números 1 y 1 y a partir de estos,",b("cada término es la suma de los dos anteriores"),",es la relación de recurrencia que la define.")
 		    )
 		   ),
-	      slide(col("lime","Sucesion de Fibonacci"),
+	      slide(col(lime,"Sucesion de Fibonacci"),
 		    "A los elementos de esta sucesión se les llama números de Fibonacci. Esta sucesión fue descrita en Europa por Leonardo de Pisa, matemático italiano del siglo XIII también conocido como Fibonacci. Tiene numerosas aplicaciones en ciencias de la computación, matemáticas y teoría de juegos. También aparece en configuraciones biológicas, como por ejemplo en las ramas de los árboles, en la disposición de las hojas en el tallo, en las flores de alcachofas y girasoles, en las inflorescencias del brécol romanesco y en la configuración de las piñas de las coníferas."
 		   ),
 	      slide("Conejos",
@@ -104,8 +104,8 @@ prolog -->
 			p("una forma de exponer la sucesión de fibonacci es presentando el crecimiento de una población de conejos con las siguientes reglas:"),
 			item(
 			    [
-				col("purple","un conejo adulto, cada mes se reproduce a si mismo generando un conejo joven."),
-				col("purple","un conejo joven se vuelve adulto en un mes.")
+				col(purple,"un conejo adulto, cada mes se reproduce a si mismo generando un conejo joven."),
+				col(purple,"un conejo joven se vuelve adulto en un mes.")
 			    ]
 			),
 			table(
@@ -241,7 +241,7 @@ prolog -->
 sintaxis -->
     slide("",
 	  (
-	      slide(col("green","Sintaxis"),
+	      slide(col(green,"Sintaxis"),
 		    (
 			p("Términos:"),
 			item([ "Atomos","Numeros","Varibles","Términos Complejos"]),
@@ -254,19 +254,19 @@ sintaxis -->
 			    ))
 		    )
 		   ),
-	      slide("75%",col("yellow","Atomos"),
+	      slide("75%",col(yellow,"Atomos"),
 		    (
 			p("Un átomo es:"),
 			item(
 			    [
 				(   "Una cadena de caracteres de letras mayúsculas, minusculas, digitos y guión bajo, que comience con una letra minúscula.",
-				    p(col("yellow","ejemplos")),
+				    p(col(yellow,"ejemplos")),
 				    code(
 					(
 					    "casa trabajo alberto eLLio x21\n"
 					))),
 				(   "Una secuencia arbitraria de caracteres encerrado en comillas simples.",
-				    p(col("yellow","ejemplos:")),
+				    p(col(yellow,"ejemplos:")),
 				    code(
 					(
 					    "'Alberto' 'Dolar21' 'EL Paso' '&^%si'\n"
@@ -274,13 +274,13 @@ sintaxis -->
 			    ])
 		    )
 		   ),
-	      slide(col("yellow","Atomos"),
+	      slide(col(yellow,"Atomos"),
 		    (
 			p("Un átomo es:"),
 			item(
 			    [
 				(   "una cadena de solo caracteres especiales.",
-				    p(col("yellow","ejemplos:")),
+				    p(col(yellow,"ejemplos:")),
 				    code(
 					(
 					    "@= ===> :- \n"
@@ -288,7 +288,7 @@ sintaxis -->
 			    ])
 		    )
 		   ),
-	      slide(col("yellow","Números"),
+	      slide(col(yellow,"Números"),
 		    (
 			p("Ejemplos:"),
 			code(
@@ -296,19 +296,19 @@ sintaxis -->
 				"-8 -1 34 23.98 10001 1697.877443\n"
 			    )))
 		   ),
-	      slide(col("yellow","Variables"),
+	      slide(col(yellow,"Variables"),
 		    (
 			p("Una variable es una cadena de caracteres de letras mayúsculas, minúsculas, digitos, guión bajo, que comience con una letra mayúscula o con un guión bajo."),
-			p(col("yellow","ejemplos:")),
+			p(col(yellow,"ejemplos:")),
 			code(
 			    (
 				"X Y Variable _etiqueta X_526 List HEAD\n"
 			    )))
 		   ),
-	      slide("95%",col("yellow","Términos Complejos"),
+	      slide("95%",col(yellow,"Términos Complejos"),
 		    (
 			p("Un término se compone de un functor seguido de cero a N argumentos entre paréntesis y separados por comas. Cada argumento es un término."),
-			p(col("yellow","ejemplos:")),
+			p(col(yellow,"ejemplos:")),
 			code(
 			    (
 				"fecha(12,octubre,2016)\n",
@@ -323,8 +323,8 @@ sintaxis -->
 
 
 listas -->
-    slide(col("green","Listas"),
-	  item("highlight-current-green",
+    slide(col(green,"Listas"),
+	  item('highlight-current-green',
 	       [
 		   ".(1,.(2,.(3,.(4,[]))))   dos argumentos Cabeza y Cola ./2",
 		   "[1|[2|[3|[4|[]]]]]    notacion alternativa [|]",
@@ -338,7 +338,7 @@ listas -->
 automata -->
     slide("",
 	  (
-	      slide("75%",col("red","Ejemplo Autómata Finito"),
+	      slide("75%",col(red,"Ejemplo Autómata Finito"),
 		    (
 			fig(img("automata.png","auto","230")),
 			item(
@@ -357,7 +357,7 @@ automata -->
 				)
 			    ])
 		    )),
-	      slide("90%",col("red","Código"),
+	      slide("90%",col(red,"Código"),
 		    (
 			p("El código en prolog que representa el autómata es"),
 			code((
@@ -375,7 +375,7 @@ automata -->
 			fig(img("automata.png","auto","200"))
 		    )
 		   ),
-	      slide(col("red","Código"),
+	      slide(col(red,"Código"),
 		    (
 			p("el código que representa el reconocedor de las cadenas es"),
 			code((
@@ -392,7 +392,7 @@ automata -->
 				))
 
 		    )),
-	      slide(col("red","Código"),
+	      slide(col(red,"Código"),
 	            (
 			p("el código principal es:"),
 			code((
@@ -406,32 +406,32 @@ automata -->
 				    ))
 
 	            )),
-              slide(col("red","Arbol SLD"),
+              slide(col(red,"Arbol SLD"),
                     (
                         code(("accept(s1,[a,a,b]).\n")),
                         fig(img("acceptaab.png","auto","400"))
                     )),
-              slide(col("red","Arbol SLD"),
+              slide(col(red,"Arbol SLD"),
                     (
                         code(("accept(s1,[a,b]).\n")),
                         fig(img("accepts1ab.png","auto","400"))
                     )),
-              slide(col("red","Arbol SLD"),
+              slide(col(red,"Arbol SLD"),
                     (
                         code(("accept(s1,[b]).\n")),
                         fig(img("accepts1b.png","auto","480"))
                     )),
-              slide(col("red","Arbol SLD"),
+              slide(col(red,"Arbol SLD"),
                     (
                         code(("accept(s2,[b]).\n")),
                         fig(img("accepts2b.png","auto","480"))
                     )),
-              slide(col("red","Arbol SLD"),
+              slide(col(red,"Arbol SLD"),
                     (
                         code(("accept(s4,[b]).\n")),
                         fig(img("accepts4b.png","auto","400"))
                     )),
-              slide("80%",col("red","\\(Tp^n\\)"),
+              slide("80%",col(red,"\\(Tp^n\\)"),
                     (
                        p("\\(U = \\{ a,b,s1,s2,s3,s4,[],[a],[b],[s1],\\ldots,[a,a],[a,b],\\ldots\\}\\)"),
                        p( "\\(Bp = \\{final(a),final(b),\\ldots, trans(a,a,a) , trans(a,b,a) , \\ldots\\)"),
@@ -439,7 +439,7 @@ automata -->
                        p("\\(Tp(\\{\\}) = \\{final(s3),trans(s1,a,s1),trans(s1,a,s2),trans(s1,b,s1),\\)"),
                        p("\\(trans(s2,b,s3),trans(s3,b,s4),silent(s2,s4),silent(s3,s1)\\}\\)")
                     )),
-              slide("80%",col("red","\\(Tp^n\\)"),
+              slide("80%",col(red,"\\(Tp^n\\)"),
                     (
                        p("\\(Tp^1(\\{\\}) = Tp(\\{\\}) \\cup \\{accepts(s3,[])\\}\\)"),
                        p( "\\(Tp^2(\\{\\}) = Tp^1(\\{\\}) \\cup \\{accepts(s2,[b]\\}\\)"),
@@ -456,7 +456,7 @@ automata -->
 maquina -->
     slide("",
           (
-              slide("60%",col("blue","Máquina de Turing"),
+              slide("60%",col(blue,"Máquina de Turing"),
                     (
                         p("Una máquina de Turing con una sola cinta puede definirse como una \\(7-tupla\\):"),
                         p("\\[M=(Q,\\Sigma ,\\Gamma ,s,b,F,\\delta )\\]"),
@@ -474,7 +474,7 @@ maquina -->
                         p("\\(L\\) es un movimiento a la izquierda y \\(R\\) es el movimiento a la derecha.")
                     )
                    ),
-              slide(col("blue","CÓDIGO"),
+              slide(col(blue,"CÓDIGO"),
                     code((
 "turing(Tape0, Tape) :-\n",
 "       perform(q0, [], Ls, Tape0, Rs),\n",

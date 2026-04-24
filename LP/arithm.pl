@@ -21,8 +21,8 @@ slides -->
 
 introduccion -->
     section("Introducción"),
-    slide(col(red,"CLP(\\(\\mathbb{Z}\\))"),
-	  item('highlight-current-red',
+    slide(col("red","CLP(\\(\\mathbb{Z}\\))"),
+	  item("highlight-current-red",
 	       [
 		   "Constraint Logic Programming over Integers",
 		   "CLP(FD)",
@@ -34,8 +34,8 @@ introduccion -->
 
 predicates -->
     section("Restricciones"),
-    slide(col(green,"Restricciones"),
-	  item('highlight-current-green',
+    slide(col("green","Restricciones"),
+	  item("highlight-current-green",
 	       [
 		   "Restricciones aritméticas como (#=)/2, (#>)/2 y (#\\=)/2",
 		   "Restricciones de dominio (in)/2 y (ins)/2",
@@ -46,38 +46,38 @@ predicates -->
 	       ]
 	      )
 	 ),
-    slide(col(yellow,"Resticciones aritméticas"),
+    slide(col("yellow","Resticciones aritméticas"),
 	  (
 	      p("En total  las restricciones aritméticas son:"),
 	      table((
-		  tr((td(col(yellow,"Expr1 #= Expr2")),td(col(yellow,"Expr1 es igual a Expr2")))),
+		  tr((td(col("yellow","Expr1 #= Expr2")),td(col("yellow","Expr1 es igual a Expr2")))),
 		  tr((td("Expr1 #\\= Expr2"),td("Expr1 no es igual a Expr2"))),
-		  tr((td(col(yellow,"Expr1 #>= Expr2")),td(col(yellow,"Expr1 is mayor o igual a Expr2")))),
+		  tr((td(col("yellow","Expr1 #>= Expr2")),td(col("yellow","Expr1 is mayor o igual a Expr2")))),
 		  tr((td("Expr1 #=< Expr2"),td("Expr1 is menor o igual a Expr2"))),
-		  tr((td(col(yellow,"Expr1 #> Expr2")),td(col(yellow,"Expr1 is mayor que Expr2")))),
+		  tr((td(col("yellow","Expr1 #> Expr2")),td(col("yellow","Expr1 is mayor que Expr2")))),
 		  tr((td("Expr1 #< Expr2"),td("Expr1 is menor que Expr2")))
 		       ))
 	  )	  
 	  ),
-    slide("50%",col(blue,"Expresiones aritméticas"),
+    slide("50%",col("blue","Expresiones aritméticas"),
 	  (
 	      p("Las expresiones aritméticas son:"),
 	      table((
-		  tr((td(col(blue,"Entero")),td(col(blue,"Valor dado")))),
+		  tr((td(col("blue","Entero")),td(col("blue","Valor dado")))),
 		  tr((td("Variable"),td("Entero desconocido"))),
-		  tr((td(col(blue,"#(variable)")),td(col(blue,"Entero desconocido")))),
+		  tr((td(col("blue","#(variable)")),td(col("blue","Entero desconocido")))),
 		  tr((td("-Expr"),td("Menos unario"))),
-		  tr((td(col(blue,"Expr")),td(col(blue,"+ Expr Suma")))),
+		  tr((td(col("blue","Expr")),td(col("blue","+ Expr Suma")))),
 		  tr((td("Expr"),td("* Expr Multiplication"))),
-		  tr((td(col(blue,"Expr")),td(col(blue,"- Expr Resta")))),
+		  tr((td(col("blue","Expr")),td(col("blue","- Expr Resta")))),
 		  tr((td("Expr"),td("^ Expr Exponenciación"))),
-		  tr((td(col(blue,"min(Expr,Expr)")),td(col(blue,"Minimo de dos expresiones")))),
+		  tr((td(col("blue","min(Expr,Expr)")),td(col("blue","Minimo de dos expresiones")))),
 		  tr((td("max(Expr,Expr)"),td("Maximo de dos expresiones"))),
-		  tr((td(col(blue,"Expr")),td(col(blue,"mod Expr Modulo inducido por division piso")))),
+		  tr((td(col("blue","Expr")),td(col("blue","mod Expr Modulo inducido por division piso")))),
 		  tr((td("Expr "),td("rem Expr Modulo inducido por division truncada"))),
-		  tr((td(col(blue,"abs(Expr)")),td(col(blue,"Valor Absoluto")))),
+		  tr((td(col("blue","abs(Expr)")),td(col("blue","Valor Absoluto")))),
 		  tr((td("sign(Expr)"),td("Sign (-1, 0, 1) de Expr"))),
-		  tr((td(col(blue,"Expr")),td(col(blue,"// Expr  Division entera truncada")))),
+		  tr((td(col("blue","Expr")),td(col("blue","// Expr  Division entera truncada")))),
 		  tr((td("Expr"),td("div Expr Division entera piso")))
 	      ))
 	 )).

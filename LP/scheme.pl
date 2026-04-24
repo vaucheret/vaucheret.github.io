@@ -1,20 +1,12 @@
+ :- include(slideprolog).
+     
+
 file("schemep").
-title(col(red,"Lenguajes Declarativos")).
-author(col(pink,"Claudio Vaucheret")).
-date(col(violet,"Scheme")).
+title(col("red","Lenguajes Declarativos")).
+author(col("pink","Claudio Vaucheret")).
+date(col("violet","Scheme")).
 theme("night").
 transition("slide").
-
-show :-
-    file(File),
-    phrase(format_("~s.html",[File]),Command),
-    command('xdg-open',Command).
-	      
-main :-
-    consult('slideprolog.pl'),
-	file(File),
-	phrase(format_("~s.html",[File]),Filehtml),
-	phrase_to_file(presentation,Filehtml).
 
 
 
@@ -26,49 +18,49 @@ slides -->
 
 
 lenguaescheme -->
-    section(col(violet,"Lenguaje Scheme")),
+    section(col("violet","Lenguaje Scheme")),
     slide("",
 	  (   
-	      slide("80%",col(pink,"Lenguajes Funcionales"),
-		    split(
-			item(appear,
+	      slide("80%",col("pink","Lenguajes Funcionales"),
+		    dividir(
+			item("appear",
 			     [
-				 (   p(col(lightgreen,"Calculo Lambda")),
+				 (   p(col("lightgreen","Calculo Lambda")),
 				     fig(img("Alonzo_Church.jpg","auto","150")),p("Alonzo Church")
 				 )
 			     ]),
-			item(appear,
+			item("appear",
 			     [
-				 (   p(col(lightgreen,"Lisp")),
+				 (   p(col("lightgreen","Lisp")),
 				     fig(img("John_McCarthy_Stanford.jpg","auto","150")),p("John McCarthy")
 				 )
 			     ]))
 		   ),
-	  slide("80%",col(pink,"Lenguajes Funcionales"),
-	  item(appear,
+	  slide("80%",col("pink","Lenguajes Funcionales"),
+	  item("appear",
 	       [
-		   (   p(col(lightgreen,"Scheme")),
+		   (   p(col("lightgreen","Scheme")),
 		       fig(img("Guy_Steele.jpg","auto","150"),"Guy L. Steele, Jr. y"),
 		       fig(img("Jerry_Sussman.jpg","auto","150"),"Gerald Sussman")
 		   )
 	       ]
 	      ))
 	  )),
-    slide(col(pink,"Calculo Lambda"),
+    slide(col("pink","Calculo Lambda"),
 	  item(
 	      [
-		  (   b(col(violet,"Abstracción:"))," Dar a algo un ",em("nombre") ),
-		  (   b(col(violet,"Referencia:"))," Mencionar algo por su nombre" ),
-		  (   b(col(violet,"Sintesis:"))," Combinar dos cosas para hacer una mas compleja" )
+		  (   b(col("violet","Abstracción:"))," Dar a algo un ",em("nombre") ),
+		  (   b(col("violet","Referencia:"))," Mencionar algo por su nombre" ),
+		  (   b(col("violet","Sintesis:"))," Combinar dos cosas para hacer una mas compleja" )
 	      ]
 	  )).
 
 
 
 sintaxis -->
-    section(col(violet,"Sintaxis")),
-    slide("65%",col(pink,"Numeros y Símbolos"),
-	  item(appear,
+    section(col("violet","Sintaxis")),
+    slide("65%",col("pink","Numeros y Símbolos"),
+	  item("appear",
 	       [
 		   (   p("Los siguientes caracteres tienen un significado especial y no pueden aparecer en simbolos"),
 		       code("language-scheme",(
@@ -93,7 +85,7 @@ sintaxis -->
 		   
 	       ]
 	      )),
-    slide(col(pink,"Scheme REPL "),
+    slide(col("pink","Scheme REPL "),
 	  (
 	      p("Read-Eval-Print Loop"),
 	      p("top level de scheme."),
@@ -111,7 +103,7 @@ sintaxis -->
 "     >\n"
 		      ))
 	  )),
-    slide(col(pink,"Scheme REPL"),
+    slide(col("pink","Scheme REPL"),
 	  (
 	      p(("(define ",em("var expr")," )")),
 	      code("language-scheme",(
@@ -129,7 +121,7 @@ sintaxis -->
 		      ))
 	  )
 	  )),
-    slide(col(pink,"Aritmética"),
+    slide(col("pink","Aritmética"),
 	  code("language-scheme",(
 "> (+ 4 7)\n",
 "11\n",
@@ -143,9 +135,9 @@ sintaxis -->
 "> \n"
 		  ))
 	 ),
-    slide(col(pink,"Listas"),
+    slide(col("pink","Listas"),
 	  (
-	      p((col(red,"LIS"),"t ",col(red,"P"),"rocessing")),
+	      p((col("red","LIS"),"t ",col("red","P"),"rocessing")),
 	      code("language-scheme",(
 "> (cons 1 '())\n",
 "'(1)\n",
@@ -159,11 +151,11 @@ sintaxis -->
 "> \n"
 		      ))
 	  )),
-    slide(col(pink,"Listas"),
+    slide(col("pink","Listas"),
 	  (
 	      p((
-		       "IBM 704 \"",col(red,"C"),
-		       "ontents of ",col(red,"A"),"ddress ",col(red,"R"),"egister\" \"",col(red,"C"),"ontents of ",col(red,"D"),"ecrement ",col(red,"R"),"egister\"" )),
+		       "IBM 704 \"",col("red","C"),
+		       "ontents of ",col("red","A"),"ddress ",col("red","R"),"egister\" \"",col("red","C"),"ontents of ",col("red","D"),"ecrement ",col("red","R"),"egister\"" )),
 	      code("language-scheme",(
 "> (car '(1 2 3 4))\n",
 "1\n",
@@ -180,7 +172,7 @@ sintaxis -->
 "> \n"
 		      ))
 	  )),
-    slide(col(pink,"Tests Numeros"),
+    slide(col("pink","Tests Numeros"),
 	  code("language-scheme",(
 "> (define num 35.4)\n",
 "> (define twelve 'dozen)\n",
@@ -204,7 +196,7 @@ sintaxis -->
 "#f\n"
 		  ))
 	 ),
-    slide(col(pink,"Tests Simbolos"),
+    slide(col("pink","Tests Simbolos"),
 	  code("language-scheme",(
 "> (define num 35.4)\n",
 "> (define twelve 'dozen)\n",
@@ -226,7 +218,7 @@ sintaxis -->
 "#f\n"
 		  ))
 	 ),
-        slide(col(pink,"Tests Listas"),
+        slide(col("pink","Tests Listas"),
 	  code("language-scheme",(
 "> (pair? '(Ann Ben Carl))\n",
 "#t\n",
@@ -263,8 +255,8 @@ sintaxis -->
 
 
 procedimientosyrecursion -->
-    section(col(violet,"Procedimientos y Recursión")),
-    slide(col(pink,"Expresión Lambda"),
+    section(col("violet","Procedimientos y Recursión")),
+    slide(col("pink","Expresión Lambda"),
 	  (
 	      item(
 		  [
@@ -291,7 +283,7 @@ procedimientosyrecursion -->
 "> (define (make-singleton item) (cons item '()))\n"
 		      ))
 	  )),
-    slide(col(pink,"Procedimientos"),
+    slide(col("pink","Procedimientos"),
 	  code("language-scheme",(
 "       (define make-singleton\n",
 "       (lambda (item)\n",
@@ -304,7 +296,7 @@ procedimientosyrecursion -->
 "         )\n"
 		  ))
 	 ),
-    slide(col(pink,"Condicional"),
+    slide(col("pink","Condicional"),
 	  code("language-scheme",(
 "         (define car-if-pair\n",
 "            (lambda (item)\n",
@@ -321,7 +313,7 @@ procedimientosyrecursion -->
 "            )\n"
 		  ))
 	 ),
-    slide(col(pink,"fibonacci"),
+    slide(col("pink","fibonacci"),
 	  code("language-scheme",(
 "(define fib\n",
 "  (λ (n)\n",
@@ -342,7 +334,7 @@ procedimientosyrecursion -->
 "  )\n"
 		  ))
 	 ),
-    slide(col(pink,"fibonacci"),
+    slide(col("pink","fibonacci"),
 	  code("language-scheme",(
 "(define (fibi n)\n",
 "  (define (fibaux m a1 a2)\n",
@@ -377,8 +369,8 @@ procedimientosyrecursion -->
     
 	  
 procedimientosdeflocal -->
-    section(col(violet,"Procedimientos Definidos Localmente")),
-    slide(col(pink,"Let y Letrec"),
+    section(col("violet","Procedimientos Definidos Localmente")),
+    slide(col("pink","Let y Letrec"),
 	  (
 	      item(
 		  [

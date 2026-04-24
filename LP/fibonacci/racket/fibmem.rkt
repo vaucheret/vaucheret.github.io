@@ -1,0 +1,33 @@
+#lang racket
+
+(define lookup
+  (lambda (obj table success-proc failure-proc)
+    (letrec ((lookup (lambda (table)
+                       (if (null? table)
+                           (failure-proc)
+                           (let ((pr (car table)))
+                             (if (equal? (car pr) obj)
+                                 (success-proc pr)
+                                 (lookup (cdr table))))))))
+      (lookup table))))
+
+(define memoize
+  (lambda (proc)
+           (let ((table '()))
+             (lambda (arg)
+                      (lookup arg table
+                      (lambda (pr) (cdr pr))
+                               (lambda ()
+                                 (let ((val (proc arg)))
+                                   (set! table (cons (cons arg val) table))
+                                   val)))))))
+
+
+
+(define memo-fib
+  (memoize (lambda (n)
+             (cond [(< n 2)  1]
+                   [else (+ (memo-fib (- n 1))
+                            (memo-fib (- n 2)))]))))
+
+

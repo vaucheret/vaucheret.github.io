@@ -1,0 +1,15 @@
+#lang web-server/insta
+
+
+
+
+
+(define (fibi n)
+  (define (fibaux m a1 a2)
+    (cond [(= n m) (+ a1 a2)]
+          [else (fibaux (+ m 1) a2 (+ a1 a2))]))
+  (cond
+    [(= n 0) 1]
+    [(= n 1) 1]
+    [else (fibaux 2 1 1)])
+  )

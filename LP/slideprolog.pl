@@ -1,4 +1,4 @@
-:- use_module(library(www_browser)).
+%:- use_module(library(www_browser)).
 
 show :-
     file(File),
@@ -188,7 +188,7 @@ link(Ref,Text) -->
     "</a>\n".
 	   
 
-split(A,B) -->
+dividir(A,B) -->
     "<div class=\"gridded_frame_with_columns\">\n",
     "<div class=\"one_of_2_columns\">\n",
     A,
@@ -200,9 +200,9 @@ split(A,B) -->
     
 
 col(Col,Text) -->
-   { atom_codes(Col,Color)},
+%   { atom_codes(Col,Color)},
     "<span style=\"color:",
-    Color,
+    Col,
     ";\">",
     Text,
     "</span>".
@@ -256,15 +256,15 @@ slide(Title,Body) -->
        )).
 
 enum(Fragm,L) -->
-    { atom_codes(Fragm,Frag)},
+%    { atom_codes(Fragm,Frag)},
     "<ol>",
-    items(Frag,L),
+    items(Fragm,L),
     "</ol>\n".
 
 item(Fragm,L) -->
-    { atom_codes(Fragm,Frag)},
+%    { atom_chars(Fragm,Frag)},
     "<ul>",
-    items(Frag,L),
+    items(Fragm,L),
     "</ul>\n".
 
 
