@@ -21,7 +21,7 @@ fi(N,R):-
     N #>= 2,
     fi_aux(2,N,1,1,R).
 
-fi_aux(N,N,A1,A2,R) :- R is A1 + A2.
+fi_aux(N,N,A1,A2,R) :- !,R is A1 + A2.
 fi_aux(I,N,A1,A2,R) :-
     I1 #= I + 1,
     A  #= A1 + A2,

@@ -1,4 +1,4 @@
- :- include(slideprolog).
+ :- include("slideprolog").
      
 
 file("schemep").
@@ -91,7 +91,7 @@ sintaxis -->
 	      p("top level de scheme."),
 	      code("language-scheme",(
 "     ; \n",
-"     ; Welcome to Racket v7.9 [bc].\n",
+"     ; Welcome to Racket v9.1 [cs].\n",
 "     ; \n",
 "     > 7\n",
 "     7\n",

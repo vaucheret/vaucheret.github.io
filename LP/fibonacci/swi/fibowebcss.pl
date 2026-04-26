@@ -45,7 +45,7 @@ f(N,R):-
     N >=2,
     faux(2,N,1,1,R).
 
-faux(N,N,A1,A2,R) :- R is A1 + A2.
+faux(N,N,A1,A2,R) :- !,R is A1 + A2.
 faux(I,N,A1,A2,R) :-
     I1 is I + 1,
     A is A1 + A2,

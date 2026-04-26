@@ -2,7 +2,7 @@
 
 :- use_module(library(pce)).
 
-:- fibodialogo.
+
 
 fibodialogo :-
     new(D,dialog('fibonacci')),
