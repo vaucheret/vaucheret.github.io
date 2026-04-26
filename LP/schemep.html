@@ -84,22 +84,22 @@ Gerald Sussman</figcaption>
 <section><h3><span style="color:pink;">Numeros y Símbolos</span></h3>
 <div style="font-size: 65%;">
 <ul><li class="fragment appear"><p>Los siguientes caracteres tienen un significado especial y no pueden aparecer en simbolos</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 ()[]{};."''#\
 </code></pre>
 </li>
 <li class="fragment appear"><p>y los siguientes son usados en números y no pueden aparecer como primer caracter de un símbolo</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 + - .
 </code></pre>
 </li>
 <li class="fragment appear"><p>Ejemplos de simbolos en Scheme son:</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 </li>
 <li class="fragment appear"><p>Los números no se consideran símbolos y son una categoría separada</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 10, -763, 31.5
 </code></pre>
 </li>
@@ -108,7 +108,7 @@ abed r cdr p2q4 bugs? one-two *now&
 <section><h3><span style="color:pink;">Scheme REPL </span></h3>
 <p>Read-Eval-Print Loop</p>
 <p>top level de scheme.</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
      ; 
      ; Welcome to Racket v9.1 [cs].
      ; 
@@ -125,7 +125,7 @@ abed r cdr p2q4 bugs? one-two *now&
 <section><h3><span style="color:pink;">Scheme REPL</span></h3>
 <p>(define <em>var expr</em>
  )</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (define ten 10)
 > ten
 10
@@ -133,14 +133,14 @@ abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 <p>(quote <em>symbol</em>
  )</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (quote ten)
 'ten
 > 
 </code></pre>
 </section>
 <section><h3><span style="color:pink;">Aritmética</span></h3>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (+ 4 7)
 11
 > '(+ 4 7)
@@ -155,7 +155,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </section>
 <section><h3><span style="color:pink;">Listas</span></h3>
 <p><span style="color:red;">LIS</span>t <span style="color:red;">P</span>rocessing</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (cons 1 '())
 '(1)
 > (define ls1 (cons 1 '()))
@@ -170,7 +170,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </section>
 <section><h3><span style="color:pink;">Listas</span></h3>
 <p>IBM 704 "<span style="color:red;">C</span>ontents of <span style="color:red;">A</span>ddress <span style="color:red;">R</span>egister" "<span style="color:red;">C</span>ontents of <span style="color:red;">D</span>ecrement <span style="color:red;">R</span>egister"</p>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (car '(1 2 3 4))
 1
 > (car '((1 2) 3 (4 5)))
@@ -187,7 +187,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 </section>
 <section><h3><span style="color:pink;">Tests Numeros</span></h3>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (define num 35.4)
 > (define twelve 'dozen)
 > (number? '3 )
@@ -211,7 +211,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 </section>
 <section><h3><span style="color:pink;">Tests Simbolos</span></h3>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (define num 35.4)
 > (define twelve 'dozen)
 > (symbol? 15 )
@@ -233,7 +233,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 </section>
 <section><h3><span style="color:pink;">Tests Listas</span></h3>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (pair? '(Ann Ben Carl))
 #t
 > (pair? '(1))
@@ -269,7 +269,7 @@ abed r cdr p2q4 bugs? one-two *now&
 ) <em>body</em>
  )</li>
 </ul>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > (cons 19 '())
 '(19)
 > (cons 'bit '())
@@ -289,7 +289,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 </section>
 <section><h3><span style="color:pink;">Procedimientos</span></h3>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
        (define make-singleton
        (lambda (item)
        (cons item '())
@@ -302,7 +302,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 </section>
 <section><h3><span style="color:pink;">Condicional</span></h3>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
          (define car-if-pair
             (lambda (item)
                (cond
@@ -319,7 +319,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 </section>
 <section><h3><span style="color:pink;">fibonacci</span></h3>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 (define fib
   (λ (n)
     (cond
@@ -340,7 +340,7 @@ abed r cdr p2q4 bugs? one-two *now&
 </code></pre>
 </section>
 <section><h3><span style="color:pink;">fibonacci</span></h3>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 (define (fibi n)
   (define (fibaux m a1 a2)
     (cond
@@ -377,7 +377,7 @@ abed r cdr p2q4 bugs? one-two *now&
 <ul><li>\((let \ ((var \  val)) \  body))\)</li>
 <li>\((let \ ((var_1 val_1) \  (var_2 val_2) \ldots (var_n val_n)) \ body)\)</li>
 </ul>
-<pre><code class="language-scheme">
+<pre><code class="src src-scheme">
 > ((lambda (x y) (+ x y)) 2 3)
 5
 > (define z '(4))

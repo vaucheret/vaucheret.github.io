@@ -5,18 +5,18 @@
 
 
 fibodialogo :-
-    new(D,dialog('fibonacci')),
-    send_list(D,append,
-	      [
-		  new(N1,text_item(numero)),
-		  new(L,label),
-		  new(L2,label),
-		  button(calcular,message(@prolog,calcfib,L2,N1?selection)),
-		  button(salir,message(D,destroy))
-	      ]),
-    send(L,selection('Resultado:')),
-    send(D,default_button,calcular),
-    send(D,open).
+     new(D,dialog('fibonacci')),
+     send_list(D,append,
+ 	      [
+ 		  new(N1,text_item(numero)),
+ 		  new(L,label),
+ 		  new(L2,label),
+ 		  button(calcular,message(@prolog,calcfib,L2,N1?selection)),
+ 		  button(salir,message(D,destroy))
+ 	      ]),
+     send(L,selection('Resultado:')),
+     send(D,default_button,calcular),
+     send(D,open).
 
 
 

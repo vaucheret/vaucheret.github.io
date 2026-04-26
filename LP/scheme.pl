@@ -1,6 +1,4 @@
  :- include("slideprolog").
-     
-
 file("schemep").
 title(col("red","Lenguajes Declarativos")).
 author(col("pink","Claudio Vaucheret")).
@@ -63,22 +61,22 @@ sintaxis -->
 	  item("appear",
 	       [
 		   (   p("Los siguientes caracteres tienen un significado especial y no pueden aparecer en simbolos"),
-		       code("language-scheme",(
+		       code("src src-scheme",(
 "()[]{};.\"''#\\\n"
 			       ))
 		   ),
 		   (   p("y los siguientes son usados en números y no pueden aparecer como primer caracter de un símbolo"),
-		       code("language-scheme",(
+		       code("src src-scheme",(
 "+ - .\n"
 			       ))
 		   ),
 		   (   p("Ejemplos de simbolos en Scheme son:"),
-		       code("language-scheme",(
+		       code("src src-scheme",(
 "abed r cdr p2q4 bugs? one-two *now&\n"
 			       ))
 		   ),
 		   (   p("Los números no se consideran símbolos y son una categoría separada"),
-		       code("language-scheme",(
+		       code("src src-scheme",(
 "10, -763, 31.5\n"
 			       ))
 		   )
@@ -89,7 +87,7 @@ sintaxis -->
 	  (
 	      p("Read-Eval-Print Loop"),
 	      p("top level de scheme."),
-	      code("language-scheme",(
+	      code("src src-scheme",(
 "     ; \n",
 "     ; Welcome to Racket v9.1 [cs].\n",
 "     ; \n",
@@ -106,7 +104,7 @@ sintaxis -->
     slide(col("pink","Scheme REPL"),
 	  (
 	      p(("(define ",em("var expr")," )")),
-	      code("language-scheme",(
+	      code("src src-scheme",(
 "> (define ten 10)\n",
 "> ten\n",
 "10\n",
@@ -114,7 +112,7 @@ sintaxis -->
 		      )),
 	  (
 	      p(("(quote ",em("symbol")," )")),
-	      code("language-scheme",(
+	      code("src src-scheme",(
 "> (quote ten)\n",
 "'ten\n",
 "> \n"
@@ -122,7 +120,7 @@ sintaxis -->
 	  )
 	  )),
     slide(col("pink","Aritmética"),
-	  code("language-scheme",(
+	  code("src src-scheme",(
 "> (+ 4 7)\n",
 "11\n",
 "> '(+ 4 7)\n",
@@ -138,7 +136,7 @@ sintaxis -->
     slide(col("pink","Listas"),
 	  (
 	      p((col("red","LIS"),"t ",col("red","P"),"rocessing")),
-	      code("language-scheme",(
+	      code("src src-scheme",(
 "> (cons 1 '())\n",
 "'(1)\n",
 "> (define ls1 (cons 1 '()))\n",
@@ -156,7 +154,7 @@ sintaxis -->
 	      p((
 		       "IBM 704 \"",col("red","C"),
 		       "ontents of ",col("red","A"),"ddress ",col("red","R"),"egister\" \"",col("red","C"),"ontents of ",col("red","D"),"ecrement ",col("red","R"),"egister\"" )),
-	      code("language-scheme",(
+	      code("src src-scheme",(
 "> (car '(1 2 3 4))\n",
 "1\n",
 "> (car '((1 2) 3 (4 5)))\n",
@@ -173,7 +171,7 @@ sintaxis -->
 		      ))
 	  )),
     slide(col("pink","Tests Numeros"),
-	  code("language-scheme",(
+	  code("src src-scheme",(
 "> (define num 35.4)\n",
 "> (define twelve 'dozen)\n",
 "> (number? '3 )\n",
@@ -197,7 +195,7 @@ sintaxis -->
 		  ))
 	 ),
     slide(col("pink","Tests Simbolos"),
-	  code("language-scheme",(
+	  code("src src-scheme",(
 "> (define num 35.4)\n",
 "> (define twelve 'dozen)\n",
 "> (symbol? 15 )\n",
@@ -219,7 +217,7 @@ sintaxis -->
 		  ))
 	 ),
         slide(col("pink","Tests Listas"),
-	  code("language-scheme",(
+	  code("src src-scheme",(
 "> (pair? '(Ann Ben Carl))\n",
 "#t\n",
 "> (pair? '(1))\n",
@@ -264,7 +262,7 @@ procedimientosyrecursion -->
 		      (	  "(lambda ( ",em("parameters"),") ",em("body")," )")
 		  ]
 	      ),
-	      code("language-scheme",(
+	      code("src src-scheme",(
 "> (cons 19 '())\n",
 "'(19)\n",
 "> (cons 'bit '())\n",
@@ -284,7 +282,7 @@ procedimientosyrecursion -->
 		      ))
 	  )),
     slide(col("pink","Procedimientos"),
-	  code("language-scheme",(
+	  code("src src-scheme",(
 "       (define make-singleton\n",
 "       (lambda (item)\n",
 "       (cons item '())\n",
@@ -297,7 +295,7 @@ procedimientosyrecursion -->
 		  ))
 	 ),
     slide(col("pink","Condicional"),
-	  code("language-scheme",(
+	  code("src src-scheme",(
 "         (define car-if-pair\n",
 "            (lambda (item)\n",
 "               (cond\n",
@@ -314,7 +312,7 @@ procedimientosyrecursion -->
 		  ))
 	 ),
     slide(col("pink","fibonacci"),
-	  code("language-scheme",(
+	  code("src src-scheme",(
 "(define fib\n",
 "  (λ (n)\n",
 "    (cond\n",
@@ -335,7 +333,7 @@ procedimientosyrecursion -->
 		  ))
 	 ),
     slide(col("pink","fibonacci"),
-	  code("language-scheme",(
+	  code("src src-scheme",(
 "(define (fibi n)\n",
 "  (define (fibaux m a1 a2)\n",
 "    (cond\n",
@@ -378,7 +376,7 @@ procedimientosdeflocal -->
 		      (	  "\\((let \\ ((var_1 val_1) \\  (var_2 val_2) \\ldots (var_n val_n)) \\ body)\\)")
 		  ]
 	      ),
-	      code("language-scheme",(
+	      code("src src-scheme",(
 "> ((lambda (x y) (+ x y)) 2 3)\n",
 "5\n",
 "> (define z '(4))\n",

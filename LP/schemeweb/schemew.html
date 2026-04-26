@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html><head><title><span style="color:red;">Lenguajes Declarativos</span></title>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<style>    .reveal {      background-image: url('bitmap.png');      background-size: 102%;      background-position: top left;      background-repeat: no-repeat;    }</style></head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" ><span style="color:red;">Lenguajes Declarativos</span></h1>
+<h2 class = "author" ><span style="color:pink;">Claudio Vaucheret</span></h2>
+<h3 class = "date" ><span style="color:violet;">Aplicaciones Web en Racket</span></h3>
+</section>
+<section><h2><span style="color:violet;">Aplicaciones Web en Racket</span></h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Comienzo</h3>
+<p>Introduzca las siguientes lineas de código. Y ejecute en el REPL</p>
+<pre><code class="src src-scheme">
+#lang web-server/insta
+(define (start request)
+   (response/xexpr
+	'(html
+          (head (title "My Blog"))
+          (body (h1 "Under construction")))))
+</code></pre>
+</section>
+<section><h3>La Aplicación</h3>
+<div style="font-size: 80%;">
+<p>En éste tutorial se muesta cómo desarrollar un <span style="color:blue;">Blog</span> Usuarios del Blog deberían ser capaz de crear nuevas Publicaciones y agregar comentarios a las publicaciones existentes. Mostraremos el desarrollo incrementalmente. Realizando las siguientes tareas:</p>
+<ul><li class="fragment appear"><span style="color:blue;">Muestra una lista estática de publicaciones.</span></li>
+<li class="fragment appear"><span style="color:blue;">Permitir que un usuario agregue nuevas publicaciones al sistema.</span></li>
+<li class="fragment appear"><span style="color:blue;">Amplíe el modelo para permitir que un usuario agregue comentarios a una publicación.</span></li>
+<li class="fragment appear"><span style="color:blue;">Permita que todos los usuarios compartan el mismo conjunto de publicaciones.</span></li>
+<li class="fragment appear"><span style="color:blue;">Guardar los datos en disco.</span></li>
+</ul>
+</section>
+</div>
+</div>
+<script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script>Reveal.initialize({      transition: 'slide'});</script>
+</body>
+</html>
