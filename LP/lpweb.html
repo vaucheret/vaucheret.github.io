@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <title>programación web con Programación Lógica</title>
-<meta name="author" content="(Claudio Vaucheret)"/>
+<meta name="author" content="Claudio Vaucheret"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -26,22 +28,19 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">programación web con Programación Lógica</h1><h2 class="author">Claudio Vaucheret</h2><h2 class="date">2017-05-11 jue 00:00</h2><p class="date">Created: 2023-05-03 mié 17:04</p>
+<section id="sec-title-slide"><h1 class="title">programación web con Programación Lógica</h1><p class="subtitle"></p>
+<h2 class="author">Claudio Vaucheret</h2><h2 class="date">2017-05-11 jue 00:00</h2><p class="date">Created: 2026-05-11 lun 12:11</p>
 </section>
-
-
-
-
 <section>
-<section id="slide-org139b345">
-<h2 id="org139b345">¿LP puede ser una alternativa atractiva para Web Programming?</h2>
-<div class="outline-text-2" id="text-org139b345">
+<section id="slide-org6bb88a1">
+<h2 id="org6bb88a1">¿LP puede ser una alternativa atractiva para Web Programming?</h2>
+<div class="outline-text-2" id="text-org6bb88a1">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgf6696ca">
-<h3 id="orgf6696ca">Modelo LAMP Clasico</h3>
+<section id="slide-orgea1f095">
+<h3 id="orgea1f095">Modelo LAMP Clasico</h3>
 <ul>
 <li class="fragment roll-in">Linux (el Sistema Operativo)</li>
 
@@ -52,14 +51,11 @@
 <li class="fragment roll-in">PHP (Lenguaje de scripting)</li>
 
 </ul>
-
-
-
 </section>
 </section>
 <section>
-<section id="slide-org937b873">
-<h3 id="org937b873">Alternativas</h3>
+<section id="slide-org850f144">
+<h3 id="org850f144">Alternativas</h3>
 <ul>
 <li class="fragment roll-in"><p>
 Tomcat 
@@ -94,26 +90,22 @@ MEAN / MongoDB, Express.js, Angular JS, Node.js
 </p></li>
 
 </ul>
-
-
 </section>
 </section>
 <section>
-<section id="slide-org4d350d9">
-<h3 id="org4d350d9">LP comparte con otras alternativas</h3>
+<section id="slide-orgc3e7534">
+<h3 id="orgc3e7534">LP comparte con otras alternativas</h3>
 <ul>
 <li class="fragment roll-in">Administración Dinámica de Memoria</li>
 <li class="fragment roll-in">Fortaleza Compilación a bytecode independiente de la arquitectura</li>
 <li class="fragment roll-in">Estructura bien establecida y manipulación de punteros</li>
 
 </ul>
-
-
 </section>
 </section>
 <section>
-<section id="slide-orgff84f87">
-<h3 id="orgff84f87">LP tiene como ventajas</h3>
+<section id="slide-org46ae3fa">
+<h3 id="org46ae3fa">LP tiene como ventajas</h3>
 <ul>
 <li class="fragment roll-in">Poderosa capacidad de procesamiento simbólico</li>
 <li class="fragment roll-in">Base de Datos Dinámica</li>
@@ -125,31 +117,28 @@ MEAN / MongoDB, Express.js, Angular JS, Node.js
 <li class="fragment roll-in">native Web Semantic</li>
 
 </ul>
-
-
 </section>
 </section>
 <section>
-<section id="slide-orgb6c3b66">
-<h2 id="orgb6c3b66">Pillow / Ciao Prolog</h2>
-<div class="outline-text-2" id="text-orgb6c3b66">
+<section id="slide-org96935fb">
+<h2 id="org96935fb">Pillow / Ciao Prolog</h2>
+<div class="outline-text-2" id="text-org96935fb">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgec08c60">
-<h3 id="orgec08c60">Escribiendo Cgi-scripts</h3>
+<section id="slide-orga5ab388">
+<h3 id="orga5ab388">Escribiendo Cgi-scripts</h3>
 
-<div id="orgf2b5e61" class="figure">
+<div id="org19c28f8" class="figure">
 <p><img src="cgiinterface.png" alt="cgiinterface.png" />
 </p>
 </div>
-
 </section>
 </section>
 <section>
-<section id="slide-orge88549a">
-<h3 id="orge88549a">Escribiendo Cgi-scripts</h3>
+<section id="slide-org7d158b3">
+<h3 id="org7d158b3">Escribiendo Cgi-scripts</h3>
 <ol>
 <li>La dirección de la aplicación CGI es seleccionada en el Navegador. Es
 un URL estandard. El Navegador lo envía a al servidor HTTP correspondiente.</li>
@@ -166,20 +155,18 @@ El Código mas simple podría ser:
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim><span style="color: #cd9b1d;">main</span>(<span style="color: #2e8b57;">_</span>) :-
-        write(<span style="color: #8b7355;">'Content-type: text/html'</span>), nl,nl,
-        write(<span style="color: #8b7355;">'&lt;HTML&gt;'</span>),
-        write(<span style="color: #8b7355;">'Hello world.'</span>),
-        write(<span style="color: #8b7355;">'&lt;/HTML&gt;'</span>).
+<pre  class="src src-prolog"   ><code trim><span style="color: #a020f0;">main</span>(<span style="color: #ee82ee;">_</span>) :-
+        write(<span style="color: #00ffff;">'Content-type: text/html'</span>), nl,nl,
+        write(<span style="color: #00ffff;">'&lt;HTML&gt;'</span>),
+        write(<span style="color: #00ffff;">'Hello world.'</span>),
+        write(<span style="color: #00ffff;">'&lt;/HTML&gt;'</span>).
 </code></pre>
 </div>
-
-
 </section>
 </section>
 <section>
-<section id="slide-orgcaef19e">
-<h3 id="orgcaef19e">Documentos estructurados HTML como términos Herbrand</h3>
+<section id="slide-org96ba6dc">
+<h3 id="org96ba6dc">Documentos estructurados HTML como términos Herbrand</h3>
 <ul>
 <li><p>
 <code>output_html(HTMLTerm)</code> 
@@ -220,95 +207,89 @@ Reversible
 
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim>:- use_package(library(pillow)).
+<pre  class="src src-prolog"   ><code trim>:- use_package(library(pillow)).
 
-<span style="color: #cd9b1d;">main</span>(<span style="color: #2e8b57;">_</span>) :-
-        <span style="color: #2e8b57;">T</span> = <span style="color: #1c86ee;">[</span> cgi_reply,
-        html( <span style="color: #1c86ee;">[</span>
-                  <span style="color: #8b7355;">'Hello'</span>,
+<span style="color: #a020f0;">main</span>(<span style="color: #ee82ee;">_</span>) :-
+        <span style="color: #ee82ee;">T</span> = <span style="color: #ff0000;">[</span> cgi_reply,
+        html( <span style="color: #ff0000;">[</span>
+                  <span style="color: #00ffff;">'Hello'</span>,
                   b(world)
-              <span style="color: #1c86ee;">]</span>),
-        output_html(<span style="color: #2e8b57;">T</span>).
+              <span style="color: #ff0000;">]</span>),
+        output_html(<span style="color: #ee82ee;">T</span>).
 </code></pre>
 </div>
-
 </section>
 </section>
 <section>
-<section id="slide-org975a20a">
-<h3 id="org975a20a">Produciendo Formularios</h3>
+<section id="slide-orgd68f949">
+<h3 id="orgd68f949">Produciendo Formularios</h3>
 
-<div id="orged43d78" class="figure">
+<div id="orgd47f27d" class="figure">
 <p><img src="forminterface.png" alt="forminterface.png" />
 </p>
 </div>
-
 </section>
 </section>
 <section>
-<section id="slide-orgcdec614">
-<h3 id="orgcdec614">Produciendo Formularios</h3>
+<section id="slide-orgf7ef44a">
+<h3 id="orgf7ef44a">Produciendo Formularios</h3>
 <div class="org-src-container">
 
-<pre  class="src src-prolog"><code trim>:- use_package(library(pillow)).
-:- use_module(library(write)).
+<pre  class="src src-prolog"   ><code trim>:- use_package(library(pillow)).
+:- <span style="color: #ff00ff;">use_module</span>(library(write)).
 
-<span style="color: #cd9b1d;">main</span>(<span style="color: #2e8b57;">_</span>):-
-        output_html(<span style="color: #1c86ee;">[</span>
+<span style="color: #a020f0;">main</span>(<span style="color: #ee82ee;">_</span>):-
+        output_html(<span style="color: #ff0000;">[</span>
                 cgi_reply,
                 start,
-                title(<span style="color: #8b7355;">'Telephone database'</span>),
-                heading(2,<span style="color: #8b7355;">'Telephone database'</span>),
+                title(<span style="color: #00ffff;">'Telephone database'</span>),
+                heading(2,<span style="color: #00ffff;">'Telephone database'</span>),
                 $,
-                start_form(<span style="color: #8b7355;">'http://localhost/~claudio/cgi-bin/phonedb3.pl'</span>),
-                <span style="color: #8b7355;">'Click here, enter name of clip member, and press Return:'</span>,
+                start_form(<span style="color: #00ffff;">'http://localhost/~claudio/cgi-bin/phonedb3.pl'</span>),
+                <span style="color: #00ffff;">'Click here, enter name of clip member, and press Return:'</span>,
                 \\,
-                input(text,<span style="color: #1c86ee;">[</span>name=person_name,size=20<span style="color: #1c86ee;">]</span>),
+                input(text,<span style="color: #ff0000;">[</span>name=person_name,size=20<span style="color: #ff0000;">]</span>),
                 end_form,
-                end<span style="color: #1c86ee;">]</span>).
+                end<span style="color: #ff0000;">]</span>).
 
 </code></pre>
 </div>
+</section>
+</section>
+<section>
+<section id="slide-orgc3dc9cd">
+<h3 id="orgc3dc9cd">Escribiendo Controladores de Formularios</h3>
 
 </section>
 </section>
 <section>
-<section id="slide-orged317e8">
-<h3 id="orged317e8">Escribiendo Controladores de Formularios</h3>
+<section id="slide-org2ca2406">
+<h3 id="org2ca2406">Modulos Activos</h3>
 
-</section>
-</section>
-<section>
-<section id="slide-orgdcfd4cd">
-<h3 id="orgdcfd4cd">Modulos Activos</h3>
-
-<div id="org6cf5946" class="figure">
+<div id="org5b49f68" class="figure">
 <p><img src="forminterfaceactivemod.png" alt="forminterfaceactivemod.png" /> 
 </p>
 </div>
-
 </section>
 </section>
 <section>
-<section id="slide-org2c03d8b">
-<h3 id="org2c03d8b">Descarga de Código automático</h3>
+<section id="slide-org45c67d6">
+<h3 id="org45c67d6">Descarga de Código automático</h3>
 
-<div id="org132f1e3" class="figure">
+<div id="org2a9f7ca" class="figure">
 <p><img src="automcodedownlarq.png" alt="automcodedownlarq.png" /> 
 </p>
 </div>
-
 </section>
 </section>
 <section>
-<section id="slide-org1c81bea">
-<h3 id="org1c81bea">Acceso a código publicado en HTTP</h3>
-
+<section id="slide-orgf7b9955">
+<h3 id="orgf7b9955">Acceso a código publicado en HTTP</h3>
 </section>
 </section>
 <section>
-<section id="slide-orgfdff361">
-<h2 id="orgfdff361">Preguntas?</h2>
+<section id="slide-org2ee1771">
+<h2 id="org2ee1771">Preguntas?</h2>
 </section>
 </section>
 </div>
@@ -320,20 +301,16 @@ Reversible
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
 transition:'cube',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
  { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
 });
+
 </script>
 </body>
 </html>

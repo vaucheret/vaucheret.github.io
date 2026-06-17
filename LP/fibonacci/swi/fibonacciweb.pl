@@ -1,7 +1,7 @@
 :- use_module(library(http/http_server)).
 :- use_module(library(http/html_write)).
 :- use_module(library(www_browser)).
-:- use_module(library(http/html_head)).
+
 
 :- http_handler(root(fibonacchi),handlerfibo,[]).
 

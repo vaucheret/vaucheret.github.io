@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><title><span style="color:red;">Lenguajes Declarativos</span></title>
-<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/simple.css"><link rel="stylesheet" href="grids.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -17,10 +17,10 @@
 <script>hljs.highlightAll();</script>
 <style>    .reveal {      background-image: url('bitmap.png');      background-size: 102%;      background-position: top left;      background-repeat: no-repeat;    }</style></head>
 <body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" ><span style="color:red;">Lenguajes Declarativos</span></h1>
-<h2 class = "author" ><span style="color:pink;">Claudio Vaucheret</span></h2>
+<h2 class = "author" ><span style="color:green;">Claudio Vaucheret</span></h2>
 <h3 class = "date" ><span style="color:violet;">Aplicaciones Web en Racket</span></h3>
 </section>
-<section><h2><span style="color:violet;">Aplicaciones Web en Racket</span></h2>
+<section><h2>Aplicaciones Web en <span style="color:orange;">Racket</span></h2>
 <div class="outline-text-2" ></div>
 </section>
 <section><h3>Comienzo</h3>
@@ -44,9 +44,71 @@
 <li class="fragment appear"><span style="color:blue;">Guardar los datos en disco.</span></li>
 </ul>
 </section>
+<section><h3>Blog Básico</h3>
+<p>Necesitamos una estructura de datos para representar el <span style="color:blue;">Blog</span></p>
+<pre><code class="src src-scheme">
+(struct post (title body))
+</code></pre>
+<p>- Ejemplo:</p>
+<pre><code class="src src-scheme">
+(define BLOG (list (post "first post!" 
+            "Hey, this is my first post!")))
+</code></pre>
+</section>
+<section><h3></h3>
+<section><h3>"Rendering" HTML</h3>
+<ul><li><span style="color:orange;">racket</span> usa la función <span style="color:blue;">response/xexpr</span> que toma una X-epression para representar una expresion <span style="color:blue;">HTML</span>.</li>
+<li>Ejemplo:<div class="gridded_frame_with_columns">
+<div class="one_of_2_columns">
+<pre><code class="src src-html">
+&lt;p&gt;This is an example&lt;/p&gt;
+</code></pre>
+</div>
+<div class="one_of_2_columns">
+<pre><code class="src src-scheme">
+'(p "This is an example")
+</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</section>
+<section><h3>"Rendering" HTML</h3>
+<div style="font-size: 80%;">
+<ul><li>Otro Ejemplo:<pre><code class="src src-html">
+&lt;p&gt;This is &lt;div classs="emph"&gt;another&lt;/div&gt; example&lt;/p&gt;</code></pre>
+es representado por:<pre><code class="src src-scheme">
+(p "This is " (div ((class "emph")) "another") " example")
+</code></pre>
+</li>
+<li>las siguientes expresiones evalúan a la misma <code>X-expression</code>
+<pre><code class="src src-scheme">
+(list 'html (list 'head (list 'title "Some title")) 
+       (list 'body (list 'p "This is a simple static page")))
+ 
+'(html (head (title "Some title")) 
+       (body (p "This is a simple static page")))
+</code></pre>
+</li>
+</ul>
+</section>
+</section>
+<section><h3>Contenido Dinámico</h3>
+<ul><li>Para evaluar expresiones se usa <span style="color:red;"><code>,(</code>
+</span><pre><code class="src src-scheme">
+; render-greeting: string -> response
+; Consumes a name, and produces a dynamic response.
+(define (render-greeting a-name)
+    (response/xexpr
+        `(html (head (title "Welcome"))
+                         (body (p ,(string-append "Hello " a-name))))))
+</code></pre>
+</li>
+</ul>
+</section>
 </div>
 </div>
 <script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
-<script>Reveal.initialize({      transition: 'slide'});</script>
+<script>Reveal.initialize({      transition: 'cube'});</script>
 </body>
 </html>

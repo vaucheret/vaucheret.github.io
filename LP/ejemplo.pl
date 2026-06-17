@@ -30,14 +30,14 @@ introduccion -->
 contenido -->
     section("Contenido"),
     slide("Dos Columnas",
-	  split(
-	      enum(appear,
+	  dividir(
+	      enum("appear",
 		   [
 		       col(orange,"uno"),
 		       col(green,"dos"),
 		       col(yellow,"tres")
 		   ]),
-	      item(appear,
+	      item("appear",
 		   [
 		       col(blue,"cuatro"),
 		       col(red,"cinco"),
@@ -65,7 +65,7 @@ contenido -->
 	  )),
 
     slide(animate,"Imagen",
-	  split(
+	  dividir(
 	      fig(img("9dejulio.jpg","auto","400")),
 	      enum(
 		   [
@@ -76,7 +76,7 @@ contenido -->
 		       col(green,"\\( \\leftarrow \\)")
 		   ]))),
         slide(animate,"Imagen",
-	  split(
+	  dividir(
 	      fig(img("9dejulio.jpg","auto","400")),
 	      enum(
 		   [
@@ -91,7 +91,7 @@ contenido -->
 otros -->
     section("Otros"),
         slide("85%","Definición Formal de Lenguajes",
-	  item(appear,
+	  item("appear",
 	       [
 		   (
 		       col(blue,b("Reconocedores")),
@@ -112,7 +112,7 @@ otros -->
 		   )
 	       ])),
 	    slide("90%",col(red,"BNF y Gramáticas Libres de Contexto"),
-	  item(appear,
+	  item("appear",
 	       [
 		   (
 		      col(green,"Gramáticas libres de Contexto"),

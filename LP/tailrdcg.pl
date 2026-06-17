@@ -2,10 +2,10 @@
      
 
 file("tailrdcg").
-title(col("lightblue","Lenguajes Declarativos")).
+title(col("blue","Lenguajes Declarativos")).
 author("Claudio Vaucheret").
 date(col("violet","Tail Recursivo y DCG")).
-theme("night").
+theme("simple").
 transition("slide").
 
 
@@ -17,7 +17,7 @@ slides -->
 tailrecursion -->
     section(animate,"Tail Recursion"),
     section(animate,"Recursivo a la Cola"),
-    slide(col("red","Tail Recursion"),
+    slide("80%",col("red","Tail Recursion"),
 	  item("highlight-current-red",
 	       [
 		   (   p(("Una relacion recursiva es ",em("tail recursive"),"solo si:")),
@@ -506,5 +506,13 @@ dcg -->
 				      "              num_leaves_(Right).\n"
 				  ))
 		      ))
-		      )).
+		      )),
+		slide(col("red","Ventajas de las DCG"),
+	  item("highlight-current-red",
+	       [
+		   "Permiten describir gramáticas formales de manera más natural y legible.",
+		   "Facilitan el análisis sintáctico de lenguajes formales.",
+		   "Pueden ser utilizadas para describir una amplia variedad de estructuras de datos y patrones."
+	       ]
+	      )).
 
