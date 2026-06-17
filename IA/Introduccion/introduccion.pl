@@ -45,7 +45,7 @@ introduccion -->
 turing -->
     section(animate,"Alan Turing"),
     section(animate,em(col("red","Alan Turing"))),
-    slide("80%",col("blue","Alan Turing (1912-1954)"),
+    slide("75%",col("blue","Alan Turing (1912-1954)"),
           dividir(
               fig(img("Alan_turing_header.jpg","auto","200")),
               (
@@ -60,7 +60,7 @@ turing -->
                       )
               )
           )),
-    slide("90%",col("purple","Contribuciones de Alan Turing"),
+    slide("85%",col("purple","Contribuciones de Alan Turing"),
           (
               p(("Las contribuciones de Turing abarcan múltiples áreas del conocimiento:")),
               item("highlight-current-red",
@@ -72,10 +72,11 @@ turing -->
                    ]
                   )
           )),
-    slide(col("teal","La Máquina de Turing"),
+    slide("85%",col("teal","La Máquina de Turing"),
           (
+	      item("appear",[
               p(("Una ",col("teal",em("Máquina de Turing"))," es un modelo matemático de computación que define una máquina abstracta que manipula símbolos en una cinta de acuerdo a una tabla de reglas.")),
-              item("highlight-current-teal",
+              item("appear",
                    [
                        "Una cinta infinita dividida en celdas.",
                        "Un cabezal de lectura/escritura.",
@@ -84,7 +85,7 @@ turing -->
                    ]
                   ),
               p(("A pesar de su simplicidad, una Máquina de Turing puede simular cualquier algoritmo computable. Este resultado se conoce como la ",col("red",em("Tesis de Church-Turing")),"."))
-          )).
+        ]) )).
 
 turingtest -->
     section(animate,"El Test de Turing"),
