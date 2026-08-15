@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><title>Inroduccion</title>
+<html><head><title>C.A.L.P.</title>
 <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -15,22 +15,22 @@
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-</head>
-<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Inroduccion</h1>
-<h2 class = "author" >C. A. L. P.</h2>
-<h3 class = "date" >Claudio Vaucheret</h3>
+<style>    .reveal {      background-image: url('bitmap.png');      background-size: 102%;      background-position: top left;      background-repeat: no-repeat;    }</style></head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >C.A.L.P.</h1>
+<h2 class = "author" >Claudio Vaucheret</h2>
+<h3 class = "date" >2025-08-18 lun 00:00</h3>
 </section>
 <section><h2>Introducción</h2>
 <div class="outline-text-2" ></div>
 </section>
-<section><h3><span style="color:violet;">Razones para estudiar Conceptos de Lenguajes de Programación</span></h3>
+<section><h3>Razones para estudiar Conceptos de Lenguajes de Programación</h3>
 <ul><li class="fragment appear">Incrementa la habilidad para expresar ideas</li>
 <li class="fragment appear">Mejora la capacidad de elegir el lenguaje apropiado</li>
 <li class="fragment appear">Incrementa la capacidad de aprender nuevos lenguajes</li>
 <li class="fragment appear">Mejora el entendimiento del funcionamiento interno del lenguaje (implementación)</li>
 </ul>
 </section>
-<section><h3><span style="color:violet;">Dominios de Programación</span></h3>
+<section><h3>Dominios de Programación</h3>
 <div style="font-size: 65%;">
 <ul><li class="fragment appear"><span style="color:blue;">Aplicaciones Científicas</span><ul><li>Gran número de computación de punto flotante</li>
 <li>Fortran</li>
@@ -54,19 +54,19 @@
 </ul>
 </section>
 <section><h3></h3>
-<section><h3><span style="color:violet;">Criterios de Evaluación de Lenguajes</span></h3>
-<ul><li class="fragment fade-in-then-semi-out"><b><span style="color:blue;">Legibilidad</span></b>
-: la facilidad con la cual los programas pueden ser leídos y entendidos.</li>
+<section><h3>Criterios de Evaluación de Lenguajes</h3>
+<ul><li class="fragment fade-in-then-semi-out"><span style="color:blue;"><b>Legibilidad</b>
+</span>: la facilidad con la cual los programas pueden ser leídos y entendidos.</li>
 <li class="fragment fade-in-then-semi-out"><b>Escribilidad</b>
-: la facilidad con la cual los programas pueden ser leídos y entendidos.</li>
-<li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Confiabilidad</span></b>
-: El grado en que el lenguaje funciona de acuerdo a sus especificaciones.</li>
-<li class="fragment fade-in-then-semi-out"><b><span style="color:red;">Costo</span></b>
-: de uso, compilación, mantenimiento etc.</li>
+: la facilidad con la cual un lenguaje puede ser usado para crear programas</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:orange;"><b>Confiabilidad</b>
+</span>: El grado en que el lenguaje funciona de acuerdo a sus especificaciones.</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:red;"><b>Costo</b>
+</span>: de uso, compilación, mantenimiento etc.</li>
 </ul>
 </section>
 <section><h3><span style="color:blue;">Legibilidad</span></h3>
-<div style="font-size: 65%;">
+<div style="font-size: 60%;">
 <ul><li class="fragment fade-in-then-semi-out"><span style="color:blue;"><b>Simplicidad</b>
 </span><ul><li>Un conjunto manejable de características y construcciones</li>
 <li>Poca multiplicidad de características (medios de realizar la misma operación)</li>
@@ -101,7 +101,7 @@
 </ul>
 </li>
 <li class="fragment fade-in-then-semi-out"><b>Soporte para la abstracción</b>
-<ul><li>La habilidad para definir y usar estructuras complejas u operaciones de modo que los detalles puedan ser ignorados.</li>
+<ul><li>La habilidad para definir y usar estructuras complejas u operaciones de modo que los detalles puedan ser ignorados</li>
 </ul>
 </li>
 <li class="fragment fade-in-then-semi-out"><b>Expresibilidad</b>
@@ -114,28 +114,29 @@
 </section>
 <section><h3><span style="color:orange;">Confiabilidad</span></h3>
 <div style="font-size: 70%;">
-<ul><li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Chequeo de Tipos</span></b>
-<ul><li>verificación de errores de tipos</li>
+<ul><li class="fragment fade-in-then-semi-out"><span style="color:orange;"><b>Chequeo de Tipos</b>
+</span><ul><li>verificación de errores de tipos</li>
 </ul>
 </li>
-<li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Manejo de Excepciones</span></b>
-<ul><li>interceptar errores en ejecución y tomar medidas correctivas</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:orange;"><b>Manejo de Excepciones</b>
+</span><ul><li>interceptar errores en ejecución y tomar medidas correctivas</li>
 </ul>
 </li>
-<li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Aliasing</span></b>
-<ul><li>Presencia de dos o mas distintas referencias para el mismo lugar de memoria</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:orange;"><b>Aliasing</b>
+</span><ul><li>Presencia de dos o mas distintas referencias para el mismo lugar de memoria</li>
 </ul>
 </li>
-<li class="fragment fade-in-then-semi-out"><b><span style="color:orange;">Legibilidad y Escribilidad</span></b>
-<ul><li>Un lenguage que no soporta modos "naturales" de expresar un algoritmo necesariamente usará aproximaciones "no naturales" y asi reducirá la confiabilidad</li>
+<li class="fragment fade-in-then-semi-out"><span style="color:orange;"><b>Legibilidad y Escribilidad</b>
+</span><ul><li>Un lenguage que no soporta modos "naturales" de expresar un algoritmo necesariamente usará aproximaciones "no naturales" y asi reducirá la confiabilidad</li>
 </ul>
 </li>
 </ul>
 </section>
 <section><h3><span style="color:red;">Costo</span></h3>
 <div style="font-size: 80%;">
-<p><b>Costo de</b>
-</p>
+<ul><li><b>Costo de &#x2026;</b>
+</li>
+</ul>
 <ul><li class="fragment fade-in-then-semi-out">Entrenar programadores para usar un lenguaje</li>
 <li class="fragment fade-in-then-semi-out">Escribir programas (cercano a aplicaciones particulares)</li>
 <li class="fragment fade-in-then-semi-out">Compilar programas</li>
@@ -192,8 +193,912 @@
 </section>
 <section><h3><span style="color:blue;">Arquitectura de Von Neumann</span></h3>
 <div class="figure">
-<p><img src=vonneumann.png  width=auto  height=auto</p>
+<img src=vonneumann.png  width=auto  height=auto>
+</img>
 </div>
+</section>
+<section><h3><span style="color:green;">Influencia de las Metodogías de Programación</span></h3>
+<div style="font-size: 80%;">
+<ul><li><span style="color:green;">Décadas de los 50 y 60:</span> Simples aplicaciones; preocupación principal la eficiencia</li>
+<li><span style="color:green;">Finales de los 60:</span> Eficiencia de programación toma importancia: legibilidad, mejores estructuras de control<ul><li>Programación Estructurada</li>
+<li>Diseño <em>top-down</em>
+ y refinamiento <em>step-wise</em>
+</li>
+</ul>
+</li>
+<li><span style="color:green;">Finales de los 70:</span> De Orientación a Procesos a Orientación a Datos.<ul><li>Abstracción de Datos</li>
+</ul>
+</li>
+<li><span style="color:green;">Mediados de los 80:</span> Programación orientada a Objetos<ul><li>Abstracción de Datos + Herencia + Polimorfismo</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Categoría de Lenguajes</span></h3>
+<div style="font-size: 65%;">
+<ul><li><b>Imperativa</b>
+<ul><li>Variables, sentencias de asignación e iteración</li>
+<li>Ejemplos: C, Pascal</li>
+</ul>
+</li>
+<li><b>Funcional</b>
+<ul><li>Principal medio de computación es aplicar funciones a parámetros</li>
+<li>Ejemplos: LISP, Scheme</li>
+</ul>
+</li>
+<li><b>Lógica</b>
+<ul><li>Basado en Reglas</li>
+<li>Ejemplo: Prolog</li>
+</ul>
+</li>
+<li><b>Orientado a Objetos</b>
+<ul><li>abstracción de datos, herencia, ligadura tardía</li>
+<li>Ejemplos: Java, C++</li>
+</ul>
+</li>
+<li><b>Marcado</b>
+<ul><li>No programación per se, pero usados para especificar la información mostrada en documentos web</li>
+<li>Ejemplos: XHTML, XML</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:green;">Compromisos en el diseño de Lenguajes</span></h3>
+<div style="font-size: 80%;">
+<ul><li><b>Confiabilidad vs. Costo de ejecución</b>
+<ul><li>Ejemplo: Java exige que todas las referencias a elementos de los arreglos sean chequeadas si la indexación es correcta, pero esto incrementa el costo de ejecución</li>
+</ul>
+</li>
+<li><b>Legibilidad vs. Escribilidad</b>
+<ul><li>Ejemplo: APL provee muchos operadores poderosos (y un gran numero de nuevos simbolos) permitiendo que complejas operaciones sean escritas en un programa compacto pero con el costo de pobre legibilidad</li>
+</ul>
+</li>
+<li><b>Flexibilidad vs. Confiabilidad</b>
+<ul><li>Ejemplo: Los punteros de C++ son poderosos y muy flexibles pero de un uso poco confiable.</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Métodos de Implementación</h3>
+<ul><li><span style="color:orange;"><b>Compilación</b>
+</span><ul><li>Los programas son traducidos al lenguaje máquina</li>
+</ul>
+</li>
+<li><span style="color:brown;"><b>Interpretación Pura</b>
+</span><ul><li>Los programas son interpretados por otro programa llamado intérprete</li>
+</ul>
+</li>
+<li><span style="color:purple;"><b>Sistemas de implementación híbridos</b>
+</span><ul><li>Un compromiso entre compilación y interpretación pura</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Capas de Implementación de Lenguajes</h3>
+<div class="figure">
+<img src=interfacecapas.png  width=70%  height=auto>
+</img>
+</div>
+</section>
+<section><h3><span style="color:orange;">Compilación</span></h3>
+<div style="font-size: 90%;">
+<ul><li>Traduce programas de alto nivel (lenguaje fuente) en codigo máquina</li>
+<li>Traducción lenta, ejecución rápida</li>
+<li>El proceso de compilación tiene varias faces:<ul><li>análisis lexico: convierte caracteres del programa fuente en unidades léxicas</li>
+<li>análisis sintáctico: Transforma unidades léxicas en árboles sintácticos <em>parse trees</em>
+</li>
+<li>análisis semántico: Genera código intermedio</li>
+<li>generación de código: Codigo máquina es generado</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:orange;">El proceso de compilación</span></h3>
+<div class="figure">
+<img src=procesocomp.png  width=auto  height=auto>
+</img>
+</div>
+</section>
+<section><h3><span style="color:orange;">Terminología Adicional de Compilación</span></h3>
+<ul><li>Módulo de carga (imagen ejecutable) : El código del usuario y del sistema juntos</li>
+<li><em>linking and loading</em>
+ Enlazado y Carga: El proceso de recolectar los programas del sistema y enlazarlo al programa del usuario</li>
+</ul>
+</section>
+<section><h3><span style="color:orange;">Ejecución del Código Máquina</span></h3>
+<ul><li>ciclo de traer y ejecutar (sobre una arquitectura Von Neumann)</li>
+</ul>
+<pre><code class="ada">
+repeat  por siempre
+   traer la instrucción apuntada por el contador
+   incrementar el contador
+   decodificar la instrucción
+   ejecutar la instrucción
+end repeat
+</code></pre>
+</section>
+<section><h3><span style="color:orange;"><em>Cuello de botella</em>
+ de Von Neumann</span></h3>
+<ul><li>La velocidad de conección entre la memoria de la computadora y su procesador determina la velocidad de la computadora</li>
+<li>Las intrucciones del programa son ejecutadas mucho mas rápido que la velocidad de conección; por lo tanto ésta se vuelve el <em>cuello de botella</em>
+</li>
+<li>Es conocido que <em>cuello de botella</em>
+ de la arquitectura de Von Neumann es el principal factor en la velocidad de las computadoras</li>
+</ul>
+</section>
+<section><h3><span style="color:brown;">Interpretación Pura</span></h3>
+<ul><li>Sin traducción</li>
+<li>Facil implementación de programas. Errores de tiempo de ejecución pueden ser facilmente reconocidos</li>
+<li>Ejecución mas lenta (10 a 100 veces mas lenta que programas compilados)</li>
+<li>Frecuentemente requiere mas espacio</li>
+<li>Se volvio infrecuente en lenguajes de alto nivel</li>
+<li>Han retornado con lenguajes de <em>sripting</em>
+ para la Web (e.g. JavaScript)</li>
+</ul>
+</section>
+<section><h3><span style="color:brown;">Proceso de Interpretación Pura</span></h3>
+<div class="figure">
+<img src=procesointerppuro.png  width=auto  height=auto>
+</img>
+</div>
+</section>
+<section><h3><span style="color:purple;">Sistemas de Implementación Híbrida</span></h3>
+<div style="font-size: 80%;">
+<ul><li>Un compromiso entre compilador y intérprete puro</li>
+<li>El programa en lenguaje de alto nivel es traducido a un lenguaje intermedio que permite facil interpretación</li>
+<li>Mucho mas rápido que interpretación pura</li>
+<li>Ejemplos<ul><li>Programas en Perl son parcialmente compilados para detectar errores antes de la interpretación</li>
+<li>Implementaciones iniciales de Java fueron híbridas, la forma intermedia <em>byte code</em>
+, proveyó portabilidad a toda máquina que tenía un interprete de <em>byte code</em>
+ y un sistema de <em>run time</em>
+ (juntos son llamados la máquina virtual de java)</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3><span style="color:purple;">Proceso de Implementación Híbrida</span></h3>
+<div class="figure">
+<img src=procesohibrido.png  width=23%  height=auto>
+</img>
+</div>
+</section>
+<section><h3><span style="color:purple;">Sistemas de Implementación <em>Just in Time</em>
+</span></h3>
+<ul><li>Inicialmente Los programas se traducen a un lenguaje intermedio</li>
+<li>Luego el lenguaje intermedio se compila a código máquina</li>
+<li>La versión en máquina se conserva para llamadas subsecuentes</li>
+<li>Sistemas JIT son ampliamente usados para programas Java</li>
+<li>Lenguajes .NET son implementados con sistemas JIT</li>
+</ul>
+</section>
+<section><h3>Preprocesadores</h3>
+<ul><li>Macros de preprocesamiento (instrucciones) son comunmente usadas para especificar que código de otros archivos sean incluidos</li>
+<li>Un preprocesador procesa un programa inmediatamente antes de que el programa se compile para expandir las macros incluídas</li>
+<li>Un ejemplo conocido: El preprocesador de C<ul><li>expands #include, #define, y macros similares</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Entornos de Programación</h3>
+<div style="font-size: 80%;">
+<ul><li>Una colección de herramientas usadas en el desarrollo de software</li>
+<li>UNIX<ul><li>un tradicional sistema operativo y colección de herramientas</li>
+<li>hoy en dia frecuentemente usado a través de un GUI que corren sobre UNIX</li>
+</ul>
+</li>
+<li>Borland JBuilder<ul><li>Un entorno de programación integrado para Java</li>
+</ul>
+</li>
+<li>Microsoft Visual Studio .NET<ul><li>Un complejo entorno visual de desarrollo</li>
+<li>Usado para programar en C#, Visual Basic .NET, jscript, J# o C++</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section><h2>Evolución de los Lenguajes de Programación</h2>
+<div class="outline-text-2" ></div>
+</section>
+<section><h3>Lenguajes de Programación</h3>
+<div class="figure">
+<a href=
+https://ingenieriadesoftware.es/wp-content/uploads/2019/04/diagram-languages-light.png>
+<img src=diagram-languages-light.png  width=auto  height=570>
+</img>
+</a>
+</div>
+</section>
+<section><h3>Lenguajes de Programación</h3>
+<div class="figure">
+<a href=
+https://ingenieriadesoftware.es/wp-content/uploads/2019/04/diagram-languages-full.png>
+<img src=diagram-languages-full.png  width=auto  height=570>
+</img>
+</a>
+</div>
+</section>
+<section><h3>Evolución de los primeros lenguajes</h3>
+</section>
+<section><h3></h3>
+<section><h3>Konrad Zuse's language de la computadora Z4.</h3>
+<div class="figure">
+<img src=z4.png  width=auto  height=auto>
+</img>
+</div>
+</section>
+<section><h3>Zuse's Plankalkül</h3>
+<ul><li>Desarrollado en 1945</li>
+<li>Nunca implementado</li>
+<li>Su descripción fue publicada en 1972.</li>
+<li>Tipos de datos: bit, Integer and float tipos compuestos.</li>
+<li>arreglos y registros</li>
+</ul>
+<pre><code class="lisp">
+  | A + 1 =&gt; A
+V | 4        5
+S | 1.n      1.n
+</code></pre>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Codigo Máquina: pseudocodigos ¿?</h3>
+</section>
+<section><h3>Escribir en lenguaje máquina</h3>
+<ul><li>poco legibles y modificables</li>
+<li>sin indices ni punto flotante</li>
+<li>direccionamiento absoluto</li>
+</ul>
+</section>
+<section><h3>Shorte Code Mauchly (1949)</h3>
+<ul><li>computadora BINAC</li>
+<li>Expresiones eran codificadas de izquierda a derecha</li>
+<li>Ejemplos de operaciones:</li>
+</ul>
+<pre><code class="lisp">
+01 - 06 abs value 1n (n+2)nd power
+02 ) 07 +         2n (n+2)nd root
+03 = 08 pause     4n if &lt;= n
+04 / 09 (         58 print and tab
+</code></pre>
+<p>La sentencia X0 = SQRT(ABS(Y0)) podria ser codificada como:</p>
+<pre><code class="lisp">
+00 X0 03 20 06 Y0
+</code></pre>
+</section>
+<section><h3>Speedcoding</h3>
+<ul><li>Desarrollado por John Backus en 1954 para IBM 701</li>
+<li>Pseudo operaciones para funciones aritméticas y matemáticas<ul><li>bifurcación condicional e incondicional</li>
+<li>registros autoincrementales para acceso a arreglos</li>
+<li>4.2 millisegundos la instruccion de suma y 700 palabras para el programa</li>
+<li>2 semanas de programación en pocas horas!!!</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Otros sistemas relacionados</h3>
+<ul><li>Sistema de "compilación" UNIVAC<ul><li>Desarrollado por el equipo de Brace Hopper</li>
+<li>Pseudocodigo expandido en código máquina (macros)</li>
+</ul>
+</li>
+<li>David J Wheeler (Universidad de Cambridge) (1950)<ul><li>Desarrollo un método de usar bloques de direccionamiento reubicables</li>
+</ul>
+</li>
+<li>Wilkes (1951-1957) desarrolló el lenguaje <em>assembler</em>
+ con estas ideas</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>IBM 704 y Fortran</h3>
+<div class="figure">
+<img src=ibm704.jpg  width=auto  height=570>
+</img>
+</div>
+</section>
+<section><h3>Fortan</h3>
+<div style="font-size: 90%;">
+<ul><li>Fortran 0: 1954 - no implementado</li>
+<li>Fortran 1 1957<ul><li>Diseñado para la nueva IBM 704, que tenía registros y aritmética de punto flotante</li>
+<li>Entorno de Desarrollo<ul><li>Las Computadoras eran pequeñas y confiables</li>
+<li>Las aplicaciones eran científicas</li>
+<li>Sin metodología ni herramientas de programación</li>
+<li>Importancia en <b>eficiencia</b>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Proceso de Diseño</h3>
+<ul><li>El impacto del entorno en el diseño de Fortran<ul><li>Sin necesidad de almacenamiento dinámico</li>
+<li>Necesidad de un buen manejo de arreglos y ciclos</li>
+<li>Sin manejo de cadenas, aritmética decimal o herramientas de entrada/salida (de uso comercial)</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Fortran I</h3>
+<ul><li>Primera versión implementada de Fortrand<ul><li>Nombres hasta 6 caracteres</li>
+<li>Ciclos iterativos con post condición (<b>DO</b>
+)</li>
+<li>I/O formateada</li>
+<li>subprogramas definidos por el usuario</li>
+<li>Sentencias condicionales de tres modos (<b>IF</b>
+ aritmético)</li>
+<li>sentencias sin tipo de datos</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Fortran I</h3>
+<ul><li>Primera versión implementada<ul><li>Sin compilación separada</li>
+<li>Compilador distribuido en Abril de 1957,</li>
+<li>Programas de mas de 400 lineas raramente compilaban correctamente, principalmente debido a la pobre confiabilidad de la IBM 704</li>
+<li>La Codificación era verdaderamente rápida</li>
+<li>Rapidamente se volvió ampliamente usado</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Fortran II</h3>
+<ul><li>Distribuido en 1958<ul><li>Compilación independiente</li>
+<li>Se corrigieron muchos errores</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Fortran IV</h3>
+<ul><li>Desarrollado durante 1960-1962<ul><li>Declaración explicita de tipos</li>
+<li>Sentencia de selección lógica</li>
+<li>Nombres de programas podian ser pasados como parámetros</li>
+<li>ANSI standard en 1966</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Fortran 77</h3>
+<ul><li>Se volvió el nuevo estandard en 1978<ul><li>Manejo de cadenas de caracteres</li>
+<li>sentencia de control de ciclos lógico</li>
+<li>sentencia <b>IF-THEN-ELSE</b>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Fortran 90</h3>
+<ul><li>Con los mas significativos cámbios desde el Fortran 77<ul><li>Módulos</li>
+<li>Arreglos dinámicos</li>
+<li>Punteros</li>
+<li>Recursión</li>
+<li>sentencia <b>CASE</b>
+</li>
+<li>chequeo de tipos en los parametros</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Evaluación de Fortran</h3>
+<ul><li>Compiladores altamente optimizados (todas las versiones anteriores a 90)<ul><li>Los tipos y almacenamiento de todas las variables eran fijas antes del tiempo de ejecución.</li>
+</ul>
+</li>
+<li>Dramaticamente cambió para siempre el modo en que las computadoras fueron usadas</li>
+<li>Caracterizados como la <em>lingua franca</em>
+ del mundo de la computación</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Programación Funcional: LISP</h3>
+<div class="figure">
+<img src=McCarthy-.jpg  width=auto  height=570>
+</img>
+</div>
+<p>John McCarthy</p>
+</section>
+<section><h3>LISP</h3>
+<ul><li><em>LISt Processing Language</em>
+<ul><li>Diseñado en el MIT por McCarthy</li>
+</ul>
+</li>
+<li>Investigación en AI necesitaba un lenguaje<ul><li>Procesamiento de datos en Listas (en lugar de arreglos)</li>
+<li>Computación simbólica (en lugar de numérica)</li>
+</ul>
+</li>
+<li>Solo dos tipos de datos: átomos y listas</li>
+<li>Basado en el <b>Lambda calculus</b>
+</li>
+</ul>
+</section>
+<section><h3>Representación de Listas LISP</h3>
+<div class="figure">
+<img src=represlistas.png  width=auto  height=auto>
+</img>
+</div>
+</section>
+<section><h3>Evaluación de LISP</h3>
+<ul><li>Pionero en programación funcional<ul><li>Sin necesidad de variables o asignación</li>
+<li>Control via recursión y expresiones condicionales</li>
+</ul>
+</li>
+<li>Aún un lenguaje dominante para IA</li>
+<li>COMMON LISP y Scheme son dialectos contemporaneos de LISP</li>
+<li>ML, Miranda, Haskell son lenguajes relacionados</li>
+</ul>
+</section>
+<section><h3>Scheme</h3>
+<ul><li>Desarrollado en el MIT a mediados de los 70</li>
+<li>Pequeño</li>
+<li>Extensivo uso de alcance estático</li>
+<li>Funciones como entidades de primera clase</li>
+<li>Sintaxis simple, ideal para aplicaciones educativas</li>
+</ul>
+</section>
+<section><h3>COMMON LISP</h3>
+<ul><li>Un esfuerzo por combinar características de varios dialectos de LISP en un solo lenguaje</li>
+<li>Grande y Complejo</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Primera sofisticación: ALGOL 60</h3>
+</section>
+<section><h3>Algol 60</h3>
+<ul><li>Entorno de Desarrollo<ul><li>FORTRAN había arribado para las IBM 70x</li>
+<li>Muchos lenguajes se habían desarrollado para máquinas específicas</li>
+<li>Ningún lenguaje era portable; todos eran dependiente de las máquinas</li>
+<li>No existía ningún lenguaje universal para comunicar algoritmos</li>
+</ul>
+</li>
+<li>ALGOL 60 fue el resultado del esfuerzo de designar un lenguaje universal</li>
+</ul>
+</section>
+<section><h3>Primitivo proceso de diseño</h3>
+<ul><li>Encuentro de ACM y GAMM para cuatro dias de diseño (27 de Mayo al 1 de Junio de 1958)</li>
+<li>Metas del Lenguaje<ul><li>Cercano a la notación matemática</li>
+<li>Bueno para describir algoritmos</li>
+<li>Traducible a lenguaje máquina</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>ALGOL 58</h3>
+<div style="font-size: 80%;">
+<ul><li>El concepto de tipos fue formalizado</li>
+<li>Los nombre podrían tener cualquier longitud</li>
+<li>Los arreglos podrían tener cualquier número de subíndices</li>
+<li>Los parámetros fueron separados por modo (Entrada y Salida)</li>
+<li>Subíndices fueron colocados entre corchetes</li>
+<li>Sentencias compuestas (<b>begin &#x2026; end</b>
+)</li>
+<li>Punto y coma como separador de sentencias</li>
+<li>Operador de asignación fue <b>:=</b>
+</li>
+<li><b>if</b>
+ tenía una cláusula <b>else-if</b>
+</li>
+<li>Sin E/S - "podría hacerlo dependiente de la máquina"</li>
+</ul>
+</section>
+<section><h3>Implementación de ALGOL 58</h3>
+<ul><li>Sin intención de ser implementado, sin embargo variaciones de él si lo fueron (MAD, JOVIAL)</li>
+<li>Aunque IBM fue inicialmente entusiasta, todo soporte fue quitado a mediados de 1959</li>
+</ul>
+</section>
+<section><h3>ALGOL 60</h3>
+<ul><li>Se modificó ALGOL 58 en una reunión de 6 dias en Paris</li>
+<li>Nuevas Características<ul><li>Estructura de bloques (alcance local)</li>
+<li>Dos métodos de pasaje de parámetros</li>
+<li>Recursión de subprogramas</li>
+<li>arreglos dinámicos (basados en pilas)</li>
+<li>Todavía sin E/S ni manejo de cadenas de caracteres</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Evaluación de ALGOL 60</h3>
+<ul><li>Exitoso<ul><li>Fue el modo estándar de publicar algoritmos por los siguientes 20 años</li>
+<li>Todo subsecuente lenguaje imperativo fue basado en él</li>
+<li>Primer lenguaje independiente de la máquina</li>
+<li>Primer lenguaje cuya sintaxis fue formalmente definida (BNF)</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Evaluación de ALGOL 60</h3>
+<ul><li>Fracaso<ul><li>Nunca fue ampliamente usado, especialmente en U.S.</li>
+<li>Razones:<ul><li>Falta de E/S y el conjunto de caracteres lo hacía no portable</li>
+<li>Demasiado flexible para implementar</li>
+<li>atrincheramiento de Fortran</li>
+<li>Falta de soporte de IBM</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Aplicaciones Comerciales: COBOL</h3>
+<div class="figure">
+<img src=gracehopper.webp  width=auto  height=570>
+</img>
+</div>
+<p>Grace Hopper</p>
+</section>
+<section><h3>COBOL Commercial Buisness Language</h3>
+<ul><li>Entorno de Desarrollo<ul><li>UNIVAC comenzó a usar FLOW-MATIC</li>
+<li>USAF comenzó a usar AIMACO</li>
+<li>IBM desarrolló COMTRAN</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>COBOL Historia</h3>
+<ul><li>Basado en FLOW-MATIC</li>
+<li>características de FLOW-MATIC:<ul><li>Nombres de mas de 12 caracteres, con guiones incluidos</li>
+<li>Nombres en Inglés para los operadores aritméticos</li>
+<li>Datos y códigos completamente separados</li>
+<li>Verbos eran las primeras palabras en toda sentencia</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>COBOL proceso de diseño</h3>
+<div style="font-size: 80%;">
+<ul><li>Primera reunión de diseño (Pentagon) - Mayo de 1959</li>
+<li>Metas de Diseño<ul><li>Debe lucir como simple Ingles</li>
+<li>Facil de usar, aún si esto significara menor potencia</li>
+<li>Debe ampliar la base de los usuarios de computadoras</li>
+<li>No debe estar sesgado por los actuales problemas de compiladores.</li>
+</ul>
+</li>
+<li>Los miembros del comité eran todos de los fabricantes de computadoras y divisiones del DoD</li>
+<li>Problemas de Diseño: expresiones aritméticas? Desacuerdo entre fabricantes</li>
+</ul>
+</section>
+<section><h3>Evaluación de COBOL</h3>
+<ul><li>Contribuciones<ul><li>Primeras facilidades de Macros en un lenguaje de alto nivel</li>
+<li>Estructuras de datos jerárquicos (registros)</li>
+<li>Sentencias de selección anidadas</li>
+<li>Nombres largos (mas de 30 caracteres), con guiones</li>
+<li>División de Datos separadas</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Influencia del Departamento de Defensa</h3>
+<ul><li>Primer lenguaje requerido por DoD<ul><li>Podría haber fallado sin Dod</li>
+</ul>
+</li>
+<li>Aún es el lenguaje mas usado en aplicaciones comerciales</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Comienzo de tiempo compartido: BASIC</h3>
+</section>
+<section><h3>BASIC</h3>
+<ul><li>Diseñado por Kemeny &amp; Kurtz en Dartmouth</li>
+<li>Metas de diseño<ul><li>Facil de aprender y usar por estudiantes que no sean de ciencias</li>
+<li>Debe ser placentero y amigable</li>
+<li>Acceso Libre</li>
+<li>El tiempo del usuario es mas importatne que el tiempo de computación</li>
+</ul>
+</li>
+<li>Dialecto popular actual: Visual BASIC</li>
+<li>Primer lenguaje ampliamente usado con tiempo compartido</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Todo para Todos: PL/I</h3>
+</section>
+<section><h3>PL/I</h3>
+<ul><li>Diseñado por IBM y SHARE</li>
+<li>Situación de la computación en 1964 (desde el punto de vista de IBM)<ul><li>Computación científica<ul><li>Computadoras IBM 1620 y 7090</li>
+<li>FORTRAN</li>
+<li>grupo de usuarios SHARE</li>
+</ul>
+</li>
+<li>Computación de empresas<ul><li>Computadoras IBM 1401, 7080</li>
+<li>COBOL</li>
+<li>grupo de usuarios GUIDE</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Antecedentes PL/I</h3>
+<div style="font-size: 80%;">
+<ul><li>En 1965<ul><li>usuarios científicos comenzaron a necesitar Entrada/Salida mas elaborada, como tenía COBOL; y usuarios empresariales comenzaron a necesitar aritmética de punto flotante y arreglos</li>
+<li>Muchas empresas empezaron a necesitar dos clases de computadoras, lenguajes y personal de soporte. Demasiado Costo.</li>
+</ul>
+</li>
+<li>La solución mas obvia:<ul><li>Construir una nueva computadora para ambas clases de aplicaciones</li>
+<li>Diseñar un nuevo lenguaje para ambas clases de aplicaciones.</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Proceso de diseño</h3>
+<ul><li>Diseñado en 5 meses por un comité bipartito:<ul><li>tres miembros de IBM y tres miembros de SHARE</li>
+</ul>
+</li>
+<li>Concepto inicial<ul><li>Una extensión de Fortran IV</li>
+</ul>
+</li>
+<li>Inicialmente llamado NPL (Nuevo Lenguaje de Programación)</li>
+<li>El nombre cambió a PL/I en 1965</li>
+</ul>
+</section>
+<section><h3>Evaluación de PL/I</h3>
+<ul><li>contribuciones de PL/I<ul><li>Primer nivel de concurrencia</li>
+<li>Primer manejador de excepciones</li>
+<li>llave de selección de recursión</li>
+<li>Primer tipo de dato puntero</li>
+</ul>
+</li>
+<li>Muchas características fueron pobremente diseñadas</li>
+<li>Demasiado grande y demasiado complejo</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Lenguajes Dinámicos</h3>
+</section>
+<section><h3>APL y SNOBOL</h3>
+<ul><li>Caracterizados por tipos dinámicos y administración dinámica de memoria</li>
+<li>Las Variables son sin tipos<ul><li>Una variable adquiere un tipo cuando se le asigna un valor</li>
+</ul>
+</li>
+<li>El almacenamiento se le asigna a una variable cuando se le asigna un valor</li>
+</ul>
+</section>
+<section><h3>APL: (<em>A Programming Language</em>
+)</h3>
+<ul><li>Diseñado como un lenguaje de descripción de hardware en IBM por Ken Iverson alrededor de 1960<ul><li>Altamente expresivo (muchos operadores, tambien para arreglos de varias dimensiones)</li>
+<li>Programas muy difíciles de leer</li>
+</ul>
+</li>
+<li>Aún en uso con mínimos cambios</li>
+</ul>
+</section>
+<section><h3>SNOBOL</h3>
+<ul><li>Diseñado como un lenguaje de manipulación de cadena de caracteres en los laboratorios BELL por Farber, Griswold y Polensky</li>
+<li>Operaciones poderosas para comparar patrones de cadenas de caracteres</li>
+<li>Mas lento que los lenguajes alternativos (y por lo tanto no usado para escribir editores)</li>
+<li>Aún usado para tareas de procesamiento de texto</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>El comienzo de la Abstracción de Datos</h3>
+</section>
+<section><h3>Simula 67</h3>
+<ul><li>Diseñado originalmente para sistemas de simulación en Noruega por Nygaard y Dahl</li>
+<li>Basado en Algol 60 y Simla I</li>
+<li>Principales contribuciones<ul><li>Co-rutinas, una clase de subprogramas</li>
+<li>Implementado en una estructura llamada <em>class</em>
+</li>
+<li>Las <em>Classes</em>
+ son la base para la abstracción de datos</li>
+<li>Las <em>Classes</em>
+ son las estructuras tanto para los datos locales y la funcionalidad</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Diseño Ortogonal</h3>
+</section>
+<section><h3>ALGOL 68</h3>
+<ul><li>Continúa el desarrollo de ALGOL 60 pero no es un superconjunto de ese lenguaje</li>
+<li>Fuente de muchas nuevas ideas (aún cuando el lenguaje mismo nunca fue ampliamente usado)</li>
+<li>El diseño es basado en el concepto de ortogonalidad<ul><li>Pocos conceptos principales, con pocos mecanismos de combinación</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Evaluación de ALGOL 68</h3>
+<ul><li>Contribuciones<ul><li>Estructuras de datos definidas por el usuario</li>
+<li>Tipos Referencias</li>
+<li>Arreglos dinámicos</li>
+</ul>
+</li>
+<li>Comentarios<ul><li>Menor uso que ALGOL 60</li>
+<li>Tuvo gran influencia en los lenguajes subsecuentes, especialmente Pascal, C y Ada</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Principales Descendientes de ALGOL</h3>
+<ul><li>El lenguaje ALGOL impactó en todos los lenguajes imperativos<ul><li>Pascal</li>
+<li>C</li>
+<li>Modula/Modula 2</li>
+<li>Ada</li>
+<li>Oberon</li>
+<li>C++/Java</li>
+<li>Perl</li>
+<li>&#x2026;</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>PASCAL - 1971</h3>
+<ul><li>Desarrollado por Wirth (un miembro del comité de Algol 68)</li>
+<li>Diseñado para enseñar programación estructurada</li>
+<li>Pequeño, simple, nada realmente nuevo</li>
+<li>Gran impacto en la enseñanza de la programación<ul><li>Desde mediados de los 70 hasta fines de los 90, fue el lenguaje mas ampliamente usado para enseñar programación.</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>C - 1971</h3>
+<ul><li>Diseñado para programar sistemas (en los laboratorios DELL por Dennis Richie)</li>
+<li>Evolución de BCLP, B, pero también de ALGOL 68</li>
+<li>Poderoso conjunto de operadores, pero con débil chequeo de tipos.</li>
+<li>Inicialmente difundido a través de UNIX</li>
+<li>Muchas areas de aplicación</li>
+</ul>
+</section>
+<section><h3>PERL</h3>
+<div style="font-size: 80%;">
+<ul><li>Relacionado a ALGOL solo a través de C</li>
+<li>Un lenguaje de <em>scripting</em>
+<ul><li>un <em>script</em>
+ es un archivo que contiene instrucciones para ser ejecutadas</li>
+<li>otros ejemplos: sh, awk, tcl/tk</li>
+</ul>
+</li>
+<li>Desarrollado por Larry Wall</li>
+<li>Las variables de Perl estan estáticamente tipeadas y declaradas implicitamente.<ul><li>Tres espacios de nombres definidos denotados por el primer caracter del nombre de la variable</li>
+</ul>
+</li>
+<li>Poderoso pero también peligroso</li>
+<li>Ampliamente usado como lenguaje de propósito general</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Programación basado en la Lógica</h3>
+</section>
+<section><h3>Prolog</h3>
+<ul><li>Desarrollado por Comerauer y Roussel (Universidad de Aix-Marseille), con ayuda de Kowalski (Universidad de Edinburgh)</li>
+<li>Basado en lógica formal</li>
+<li>No es procedural</li>
+<li>Puede se resumido como un sistema de base de datos inteligente que usa procesos de inferir la verdad de consultas dadas</li>
+<li><em>Constraint Logic Programming</em>
+</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Historia del mas grande esfuerzo de diseño</h3>
+</section>
+<section><h3>Ada</h3>
+<div style="font-size: 90%;">
+<ul><li>Enorme esfuerzo de Diseño, involucrando cientos de personas, mucho dinero y alrededor de 8 años<ul><li>requerimientos de Strawman (Abril de 1975)</li>
+<li>requerimientos de Woodman (Agosto de 1975)</li>
+<li>requerimientos de Tinman (1976)</li>
+<li>equipamiento de Ironman (1977)</li>
+<li>requerimeintos de Stellman (1978)</li>
+</ul>
+</li>
+<li>Nombrado Ada por Augusta Ada Byron conocida por ser la primera programadora</li>
+</ul>
+</section>
+<section><h3>Evaluación de Ada</h3>
+<div style="font-size: 80%;">
+<ul><li>Contribuciones<ul><li><em>Packages</em>
+ soporte para abstraccion de datos</li>
+<li>Manejo de excepciones - muy elaborado</li>
+<li>Unidad de programas genérico</li>
+<li>Concurrencia - a través del modelo de tareas</li>
+</ul>
+</li>
+<li>Comentarios<ul><li>Diseño Competitivo</li>
+<li>Incluye todo lo conocido de ingeniería de software y diseño de lenguajes</li>
+<li>Los primeros compiladores fueron muy dificultosos: el primero realmente usable apareció recién 5 años despues que el diseño fue completado</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Ada 95</h3>
+<ul><li>Ada 95 (comenzó en 1988)<ul><li>Soporte para OOP a través de derivación de tipos</li>
+<li>Mejores mecanismos de control para compartir datos</li>
+<li>Nuevas características de concurrencia</li>
+<li>Librerías mas flexibles</li>
+</ul>
+</li>
+<li>Su popularidad sufrió debido a que el DoD no requirió mas su uso y también debido a la popularidad de C++</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Programación Orientada a Objetos (OOP)</h3>
+</section>
+<section><h3>Smalltalk</h3>
+<ul><li>Desarrollado en Xerox PARC, inicialmente pro Alan Kay, luego por Adele Goldberg</li>
+<li>Primera implementación completa de un lenguaje orientado a objetos (abstracción de datos, herencia y ligadura dinámica de tipos)</li>
+<li>Pionero en el diseñode interface gráfica del usuario</li>
+<li>Promocionó OOP</li>
+</ul>
+</section>
+<section><h3>Combinando OOP y Programación Imperativa: C++</h3>
+<ul><li>Desarrollado en Laboratorios BELL por Stroustrup en 1980</li>
+<li>Evolución desde C y SIMULA 67</li>
+<li>Facilidades para oop, tomadas paralelamente de SIMULA 67</li>
+<li>Provee manejo de excepciones</li>
+<li>Un lenguaje grande y complejo, porque soporta tanto programacion procedural como OO</li>
+<li>Rápidamente creció en popularidad</li>
+<li>estandar ANSI aprobado en Noviembre de 1997</li>
+</ul>
+</section>
+<section><h3>Lenguajes OOP relacionados</h3>
+<div style="font-size: 80%;">
+<ul><li>Eiffel (diseñado por Bertrand Meyer 1992)<ul><li>No directamente derivado de otros lenguajes</li>
+<li>mas pequeño y simple que C++, pero aún con la mayoría de su potencia</li>
+<li>Falta de popularidad con respecto a C++ debido a que los entusiastas de C++ eran ya programadores de C.</li>
+</ul>
+</li>
+<li>Delphi (Borland)<ul><li>Pascal mas características para soportar OOP</li>
+<li>mas elegante y seguro que C++</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Un lenguaje imperativo orientado a Objetos: Java</h3>
+<div style="font-size: 90%;">
+<ul><li>Desarrollado en Sun a principios de los 90<ul><li>C y C++ no era satisfactorio para dispositivos electrónicos embebidos</li>
+</ul>
+</li>
+<li>Basado en C++<ul><li>Simplificado significativamente (no incluye <b>struct</b>
+, <b>union</b>
+, <b>enum</b>
+, punteros aritméticos y la mitad de las asignaciones coercitivas de C++)</li>
+<li>soporta <em>solo</em>
+ OOP</li>
+<li>Tiene referencias, pero no punteros</li>
+<li>Incluye soporte para applets y formas de concurrencias</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h3>Evaluación de Java</h3>
+<ul><li>Elimina características inseguras de C++</li>
+<li>Características de concurrencia</li>
+<li>Librerías para applets, GUI's, acceso a base de datos</li>
+<li>Portable: concepto de Máquina Virtual, compilador JIT</li>
+<li>Ampliamente usado para paginas de la WWW</li>
+<li>El uso en otras áreas se incrementó mas rápido que otros lenguajes</li>
+</ul>
+</section>
+</section>
+<section><h3></h3>
+<section><h3>Lenguajes de <em>Scripting</em>
+ para la WWW</h3>
+</section>
+<section><h3><em>Scripting</em>
+</h3>
+<div style="font-size: 80%;">
+<ul><li>JavaScript<ul><li>Una aventura en conjunto de Netscape y Sun Microsystem</li>
+<li>Usada en programación WEB (del lado del cliente) para crear documentos HTML dinámicos</li>
+<li>Relacionado a Java, solo a través de la sintaxis similar</li>
+</ul>
+</li>
+<li>PHP<ul><li>PHP: Preprocesador Hipertexto</li>
+<li>Usado para programación WEB (del lado del servidor), produce codigo HTML como salida</li>
+</ul>
+</li>
+<li>Python<ul><li>Un lenguaje orientado a objetos interpretado</li>
+<li>chequeo de tipos pero tipeado dinámicamente</li>
+<li>Soporta CGI y procesamiento de formularios</li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 </div>

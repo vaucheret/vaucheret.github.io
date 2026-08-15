@@ -1,3 +1,17 @@
+%:- use_module(library(www_browser)).
+
+show :-
+    file(File),
+    phrase(format_("xdg-open ~s.html",[File]),Command),
+    shell(Command).
+
+
+main :-
+%	consult(slideprolog),
+	file(File),
+	phrase(format_("~s.html",[File]),Filehtml),
+	phrase_to_file(presentation,Filehtml),!.
+
 
 presentation -->
     {title(T),
@@ -28,7 +42,15 @@ presentation -->
 "<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n",
 "<link rel=\"stylesheet\" href=\"https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css\">\n",
 "<script src=\"https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js\"></script>\n",
-"<script>hljs.highlightAll();</script>\n"
+"<script>hljs.highlightAll();</script>\n",
+"<style>",
+"    .reveal {",
+"      background-image: url('bitmap.png');",
+"      background-size: 102%;",
+"      background-position: top left;",
+"      background-repeat: no-repeat;",
+"    }",
+"</style>"
   	      )),
 	   el(body,
 	      (	  
@@ -137,16 +159,26 @@ fig(A) -->
     A,
     "</div>\n".
 
+fig(A,Caption) -->
+    "<figure>\n",
+    A,
+    "<figcaption>\n",
+    Caption,
+    "</figcaption>\n",
+    "</figure>\n".
+    
+
+
 img(File,Width,Height) -->
-    el(p,
-       (
 	   "<img src=",
 	   File,
 	   "  width=",
 	   Width,
 	   "  height=",
-	   Height
-       )).
+	   Height,
+	   ">\n</img>\n".
+
+
 
 link(Ref,Text) -->
     "<a href=\n",
@@ -156,7 +188,7 @@ link(Ref,Text) -->
     "</a>\n".
 	   
 
-split(A,B) -->
+dividir(A,B) -->
     "<div class=\"gridded_frame_with_columns\">\n",
     "<div class=\"one_of_2_columns\">\n",
     A,
@@ -168,9 +200,9 @@ split(A,B) -->
     
 
 col(Col,Text) -->
-   { atom_codes(Col,Color)},
+%   { atom_codes(Col,Color)},
     "<span style=\"color:",
-    Color,
+    Col,
     ";\">",
     Text,
     "</span>".
@@ -190,6 +222,13 @@ section(Title) -->
 	   el(h2,Title),
 	   "<div class=\"outline-text-2\" ></div>\n"
        )).
+
+slide(none,Title,Body) -->
+    el(section," data-transition=\"none\"",
+			 (
+	   el(h3,Title),
+	   Body
+			 )).
 
 slide(animate,Title,Body) -->
     el(section," data-auto-animate ",
@@ -217,15 +256,15 @@ slide(Title,Body) -->
        )).
 
 enum(Fragm,L) -->
-    { atom_codes(Fragm,Frag)},
+%    { atom_codes(Fragm,Frag)},
     "<ol>",
-    items(Frag,L),
+    items(Fragm,L),
     "</ol>\n".
 
 item(Fragm,L) -->
-    { atom_codes(Fragm,Frag)},
+%    { atom_chars(Fragm,Frag)},
     "<ul>",
-    items(Frag,L),
+    items(Fragm,L),
     "</ul>\n".
 
 
