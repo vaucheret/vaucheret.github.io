@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><title>Semantica</title>
-<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/simple.css"><link rel="stylesheet" href="grids.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-</head>
+<style>    .reveal {      background-image: url('bitmap.png');      background-size: 102%;      background-position: top left;      background-repeat: no-repeat;    }</style></head>
 <body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Semantica</h1>
 <h2 class = "author" >C. A. L. P.</h2>
 <h3 class = "date" >Claudio Vaucheret</h3>
@@ -117,7 +117,8 @@
 <li>tipo-esperado: heredado por \(\mbox{&lt;expr&gt;}\)</li>
 </ul>
 <div class="figure">
-<p><img src=attribgram1.png  width=auto  height=auto</p>
+<img src=attribgram1.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3>Gramáticas con atributos: Un Ejemplo</h3>
@@ -149,7 +150,8 @@
 <li>En muchos casos, ambos casos de atributos son utilizados y se necesita una combinación de ambos órdenes.</li>
 </ul>
 <div class="figure">
-<p><img src=attribgram2.png  width=auto  height=auto</p>
+<img src=attribgram2.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3>Gramáticas con atributos</h3>
@@ -164,7 +166,8 @@
 <li>\( \mbox{&lt;expr&gt;.tipo-esperado } = \mbox{&lt;expr&gt;.tipo-real } \) es VERDADERO o FALSO (Regla 2)</li>
 </ol>
 <div class="figure">
-<p><img src=attribgram3.png  width=auto  height=auto</p>
+<img src=attribgram3.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h2>Semántica Dinámica</h2>
@@ -205,7 +208,8 @@
 <section><h3></h3>
 <p>Ejemplo: sentencia  for</p>
 <div class="figure">
-<p><img src=senteciafor.png  width=auto  height=400</p>
+<img src=senteciafor.png  width=auto  height=400>
+</img>
 </div>
 </section>
 <section><h3><span style="color:green;">Semántica Operacional</span></h3>

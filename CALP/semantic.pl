@@ -1,8 +1,10 @@
+:- include("slideprolog.pl").
+
 file("semantica").
 title("Semantica").
 author("C. A. L. P.").
 date("Claudio Vaucheret").
-theme("night").
+theme("simple").
 transition("slide").
 
 
@@ -17,16 +19,16 @@ slides -->
 introduccion -->
     section("Introducción"),
     slide("Introducción",
-	  item(appear,
+	  item("appear",
 	       [
-		   (   col(blue,el(b,"Sintaxis:")), "La forma y estructura de las expresiones, sentencias y unidades del programa." ),
-                   (   col(green,el(b,"Semántica:")), "El significado de las expresiones, sentencias, y unidades del programa."),
+		   (   col("blue",el(b,"Sintaxis:")), "La forma y estructura de las expresiones, sentencias y unidades del programa." ),
+                   (   col("green",el(b,"Semántica:")), "El significado de las expresiones, sentencias, y unidades del programa."),
 		   (   "Sintaxis y Semántica proveen una Definición del Lenguaje",
-		       item(appear,
+		       item("appear",
 			    [
 				(
 				    "Usuarios de una Definición del Lenguaje",
-				    item(appear,
+				    item("appear",
 					 [
 					     "Otros diseñadores del Lenguaje",
 					     "Implementadores",
@@ -38,10 +40,10 @@ introduccion -->
 	       ])
 	 ),
     slide("85%","Definición Formal de Lenguajes",
-	  item(appear,
+	  item("appear",
 	       [
 		   (
-		       col(blue,el(b,"Reconocedores")),
+		       col("blue",el(b,"Reconocedores")),
 		       item(
 			   [
 			       "Un dispositivo de reconocimiento que lee cadenas del lenguaje y decide si las cadenas de entrada pertenecen al Lenguaje.",
@@ -49,7 +51,7 @@ introduccion -->
 			   ])
 		   ),
 		   (
-		       col(green,el(b,"Generadores")),
+		       col("green",el(b,"Generadores")),
 		       item(
 			   [
 			       "Un dispositivo que genera sentencias de un lenguaje",
@@ -58,12 +60,12 @@ introduccion -->
 			   ])
 		   )
 	       ])),
-    slide(col(red,"Métodos Formales de Describir la Sintaxis"),
-	  item(appear,
+    slide(col("red","Métodos Formales de Describir la Sintaxis"),
+	  item("appear",
 	       [
 		   (
-		      col(green,"Forma Backus-Naur y gramáticas libres de contexto"),
-		       item(appear,
+		      col("green","Forma Backus-Naur y gramáticas libres de contexto"),
+		       item("appear",
 			    [
 				"El método mas conocido para describir la sintaxis de un Lenguaje\c
                                   de Programación."
@@ -71,22 +73,22 @@ introduccion -->
 			   )
 		   ),
 		   (
-		      col(green,"BNF Extendida"),
-		       item(appear,
+		      col("green","BNF Extendida"),
+		       item("appear",
 			    [
 				"Mejora la legibilidad de BNF."
 			    ]
 			   )
 		   ),
-		      col(green,"Gramáticas y Reconocedores")
+		      col("green","Gramáticas y Reconocedores")
 	       ])
 	 ),
-    slide("90%",col(red,"BNF y Gramáticas Libres de Contexto"),
-	  item(appear,
+    slide("90%",col("red","BNF y Gramáticas Libres de Contexto"),
+	  item("appear",
 	       [
 		   (
-		      col(green,"Gramáticas libres de Contexto"),
-		       item(appear,
+		      col("green","Gramáticas libres de Contexto"),
+		       item("appear",
 			    [
 				"Desarrollado por Noam Chomsky a mediados de 1950s",
 				"Generadores de Lenguajes, medio de  describir la la sintaxis de lenguajes naturales",
@@ -95,8 +97,8 @@ introduccion -->
 			   )
 		   ),
 		   (
-		      col(green,"Forma Backus-Naur (1959)"),
-		       item(appear,
+		      col("green","Forma Backus-Naur (1959)"),
+		       item("appear",
 			    [
 				"Inventado por John Backus para describir Algol 58",
 				"Árboles sintacticos - ambiguedad del lenguaje"
@@ -110,26 +112,26 @@ introduccion -->
 semanticaestatica -->
     section("Semántica Estática"),
     slide("Gramáticas con atributos",
-	  item(appear,
+	  item("appear",
 	       [
-		   col(orange,"Las Gramáticas Libres de Contexto (GLC) no pueden describir toda la sintaxis de los lenguajes de programación."),
-		   col(brown,"Agregados a GLC para introducir información semántica en los árboles sintácticos"),
+		   col("orange","Las Gramáticas Libres de Contexto (GLC) no pueden describir toda la sintaxis de los lenguajes de programación."),
+		   col("brown","Agregados a GLC para introducir información semántica en los árboles sintácticos"),
 		   (   
-		       col(yellow,"Principal aporte de las Gramáticas con atributos"),
+		       col("yellow","Principal aporte de las Gramáticas con atributos"),
 		       item(
 			   [
-			       col(yellow,"Especificación de la semántica estática"),
-			       col(yellow,"Diseño de Compiladores (chequeo de semántica estática)")
+			       col("yellow","Especificación de la semántica estática"),
+			       col("yellow","Diseño de Compiladores (chequeo de semántica estática)")
 			   ])
 		   )
 	       ])
 	 ),
-    slide("80%",col(red,"Gramáticas con atributos: Definición"),
+    slide("80%",col("red","Gramáticas con atributos: Definición"),
 	  item(
 	       [
 		   (   
 		       "Una Gramática con atributos es una gramática libre de contexto \\(G =  (S,N,T,P)\\) con los siguientes agregados:",
-		       item('highlight-current-red',
+		       item("highlight-current-red",
 			   [
 			       "Por cada símbolo de gramática \\(x\\) hay un conjunto \\(A(x)\\) de valores de atributos",
 			       "Cada regla tiene un conjunto de funciones que definen ciertos atributos de los no terminales en la regla",
@@ -138,13 +140,13 @@ semanticaestatica -->
 		   )
 	       ])
 	 ),
-    slide("90%",col(green,"Gramáticas con atributos: Definición"),
-	  item('highlight-current-green',
+    slide("90%",col("green","Gramáticas con atributos: Definición"),
+	  item("highlight-current-green",
 	      [
 		  "Sea \\(X_0 \\to X_1 ... X_n\\) una regla de la gramática libre de contexto",
-		  (   "Funciones de la forma \\(S(X_0) = f(A(X_1), ... , A(X_n))\\) definen ",col(yellow,el(em,"atributos sintetizados")) ),
-		  (   "Funciones de la forma \\(I(X_j) = f(A(X_0)), ... , f(A(X_{j-1}))\\) para \\(i <= j <= n\\), definen ", col(yellow,el(em,"atributos heredados"))  ),
-		  (   "Inicialmente hay ", col(yellow,el(em,"atributos intrínsecos")), " en las hojas de los árboles sintácticos")
+		  (   "Funciones de la forma \\(S(X_0) = f(A(X_1), ... , A(X_n))\\) definen ",col("yellow",el(em,"atributos sintetizados")) ),
+		  (   "Funciones de la forma \\(I(X_j) = f(A(X_0)), ... , f(A(X_{j-1}))\\) para \\(i <= j <= n\\), definen ", col("yellow",el(em,"atributos heredados"))  ),
+		  (   "Inicialmente hay ", col("yellow",el(em,"atributos intrínsecos")), " en las hojas de los árboles sintácticos")
 	      ])
 	 ),
     slide("65%","Gramáticas con atributos: Un Ejemplo",
@@ -208,7 +210,7 @@ semanticaestatica -->
 	 ),
     slide("65%","Gramáticas con atributos",
 	  (
-	      el(p,col(red,"¿Cómo se computan los valores de atributos?")),
+	      el(p,col("red","¿Cómo se computan los valores de atributos?")),
 	      item(
 		  [
 		      (	  "Si todos los atributos fueran heredados, el árbol podría ser completado en un orden ", el(em,"top-down") ),
@@ -241,22 +243,22 @@ semanticadinamica -->
 	  item(
 	      [
 		  (
-		      el(b,col(green, "Semántica Operacional")),
-		      item(appear,
+		      el(b,col("green", "Semántica Operacional")),
+		      item("appear",
 			   [
 			       "Operaciones en una máquina abstracta"
 			   ])
 		  ),
 		  (
-		      el(b,col(green, "Semántica Denotacional")),
-		      item(appear,
+		      el(b,col("green", "Semántica Denotacional")),
+		      item("appear",
 			   [
 			       "Usa funciones para especificar la semántica, los programas se convierten en funciones para poder aplicar la teoría de funciones recursivas"
 			   ])
 		  ),
 		  (
-		      el(b,col(green, "Semántica Axiomática")),
-		      item(appear,
+		      el(b,col("green", "Semántica Axiomática")),
+		      item("appear",
 			   [
 			       "Aplica la lógica formal: afirmaciones (aserciones) para describir suposiciones y resultados deseados",
 			       "Los axiomas o reglas de inferencia son usados en cada tipo de sentencias."
@@ -265,7 +267,7 @@ semanticadinamica -->
 	      ])
 	
 	 ),
-    slide(col(green,"Semántica Operacional"),
+    slide(col("green","Semántica Operacional"),
 	  (
 	      slide("90%","",
 		    (
@@ -291,7 +293,7 @@ semanticadinamica -->
 			el(p,"Ejemplo: sentencia  for"),
 			fig(img("senteciafor.png","auto","400"))
 		    )),
-		 slide(col(green,"Semántica Operacional"),
+		 slide(col("green","Semántica Operacional"),
 		    item(
 			[
 			    (
@@ -322,8 +324,8 @@ semanticadinamica -->
 	  )),
     slide("",
 	  (
-	      slide("85%",col(green,"Semántica Denotacional"),
-		    item('highlight-current-green',
+	      slide("85%",col("green","Semántica Denotacional"),
+		    item("highlight-current-green",
 			 [
 			     "Basado en la teoría de funciones recursivas",
 			     "El método de descripción semántica mas abstracto",
@@ -333,8 +335,8 @@ semanticadinamica -->
 			     "El significado de las construcciones del lenguaje son definidos solo por los valores de las variables del programa"
 			 ])
 		   ),
-	      slide("85%",col(green,"Semántica Denotacional vs Semántica Operacional"),
-		    item('highlight-current-green',
+	      slide("85%",col("green","Semántica Denotacional vs Semántica Operacional"),
+		    item("highlight-current-green",
 			 [
 			     "En la semántica operacional los cambios de estado son definidos por algoritmos codificados",
 			     "En la semántica denotacional los cambios de estado son definidos por funciones matemáticas rigurosas.",
@@ -342,7 +344,7 @@ semanticadinamica -->
 			     	 "Sea \\(VARMAP\\), una función que, cuando recibe un nombre de variable y un estado retorna el valor actual de esa variable \\(VARMAP(i_j, s) = v_j\\)" 
 			 ])
 		   ),
-	      slide(col(red,"Números Decimales"),
+	      slide(col("red","Números Decimales"),
 		    item(
 			[
 			    "\\( \\mbox{&lt;dec-num&gt;} \\to 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | \\)",
@@ -353,7 +355,7 @@ semanticadinamica -->
 			    "\\( M_{dec} ( \\mbox{&lt;dec-num&gt;} '9') = 10 * M_{dec} ( \\mbox{&lt;dec-num&gt;} ) + 9 \\)"
 			])
 		   ),
-	      slide(col(blue,"Expresiones"),
+	      slide(col("blue","Expresiones"),
 		    (
 			el(p,"relaciona expresiones a \\(Z \\cup \\{ error \\} \\)"),
 			el(p,"suponiendo que las expresiones son números decimales, variables, o expresiones binarias teniendo un operador aritmético y dos operandos, cada uno de los cuales puede ser una expresión.")
@@ -376,7 +378,7 @@ semanticadinamica -->
 			    "\\( \\ldots \\)"
 			])
 		   ),
-	      slide("85%",col(brown,"asignación"),
+	      slide("85%",col("brown","asignación"),
 		    enum(
 			[
 			    "\\( M_a ( X := E, s) = \\)",
@@ -388,7 +390,7 @@ semanticadinamica -->
 			    "\\(\\qquad \\qquad \\qquad \\qquad \\qquad  = M_e(E, s) \\mbox{ if } i_j = x\\)"
 			])
 		   ),
-	      slide("85%",col(yellow,"Ciclo 'while'"),
+	      slide("85%",col("yellow","Ciclo 'while'"),
 		    enum(
 			[
 			    "\\( M_l(\\mbox{while B do L}, s) =\\)",
@@ -402,15 +404,15 @@ semanticadinamica -->
 			])
 		   ),
 	      slide("Ciclo",
-		    item('highlight-current-red',
+		    item("highlight-current-red",
 			 [
 			     "El significado del ciclo es el valor de las variables del programa después de que las sentencias del ciclo han sido ejecutadas el número prescrito de veces, asumiendo que no ha habido errores",
 			     "En esencia el ciclo ha sido convertido de iterativo a recursivo, donde el control recursivo es definido por otra función recursiva de estados",
 			     "La recursión comparada con la iteración es mas facil de describir con rigor matemático"
 			 ])
 		   ),
-	      slide(col(green,"Evaluación"),
-		    item('highlight-current-green',
+	      slide(col("green","Evaluación"),
+		    item("highlight-current-green",
 			 [
 			     "Puede ser usado para probar la corrección de programas",
 			     "Provee un modo riguroso de pensar los programas",
@@ -423,7 +425,7 @@ semanticadinamica -->
         slide("",
 	      (
 		  slide("Semántica Axiomática",
-			item('fade-in-then-semi-out',
+			item("fade-in-then-semi-out",
 			    [
 				"Basado en Lógica Formal (cálculo de predicados)",
 				"Propósito original: Verificación formal de programas",
@@ -431,20 +433,20 @@ semanticadinamica -->
 				(   "Las expresiones son llamadas ", el(em,"aserciones"), " (afirmaciones) " )
 			    ])
 		       ),
-		  slide(col(blue,"Semántica Axiomática"),
-			item('highlight-current-blue',
+		  slide(col("blue","Semántica Axiomática"),
+			item("highlight-current-blue",
 			     [
 				 (   "Una aserción antes de una sentencia (una ", el(em,"precondición"), "establece las relaciones y restricciones entre variables que son verdaderas en ese punto de la ejecución" ),
 				 (   "Una aserción que sigue a una sentencia es una ", el(em,"postcondición") ),
 				 (   "Una ", el(em,"precondición mas débil"), " es la menos restrictiva precondición que garantiza la postcondición" )
 			    ])
 		       ),
-		  slide(col(red,"Semántica Axiomática"),
-			item(appear,
+		  slide(col("red","Semántica Axiomática"),
+			item("appear",
 			     [
 				 "La Forma es \\({P}\\) sentencia \\({Q}\\)",
 				 (   "Un ejemplo" ,
-				     item(appear,
+				     item("appear",
 					  [
 					      "\\(a = b + 1 \\: \\{a > 1\\} \\)",
 					      "una posible precondición: \\( \\{b > 10\\} \\)",
@@ -453,17 +455,17 @@ semanticadinamica -->
 				 )
 			     ])
 		       ),
-		  slide(col(brown,"Proceso de prueba de programa"),
+		  slide(col("brown","Proceso de prueba de programa"),
 			(
 			    el(p,"La postcondición para el programa entero es el resultado deseado"),
-			    item(appear,
+			    item("appear",
 				 [
 				     "Se trabaja hacia atrás a través del programa hasta la primer sentencia. Si la precondición sobre la primer sentencias está inferida por la especificación de entrada del programa, entonces el programa es correcto."
 				 ])
 			)
 		       ),
 		  slide("Axiomas",
-			item(appear,
+			item("appear",
 			    [
 				(   
 				    "Un axioma para la asignación",
@@ -482,7 +484,7 @@ semanticadinamica -->
 			    ])
 		       ),
 		  slide("Axiomas",
-			item(appear,
+			item("appear",
 			     [
 				 "\\( x = 2 * y - 3 \\{x > 25 \\}  \\)",
 				 "\\( 2 * y - 3 > 25  \\)",
@@ -532,10 +534,10 @@ semanticadinamica -->
 			    el(p,("{P} ",el(b,"if")," B ",el(b,"then")," S1 ",el(b,"else")," S2 {Q}")),
 			    "\\[ \\frac{ \\{B \\ and \\ P \\} \\ S1 \\ \\{Q\\}, \\{(not B) \\ and \\ P\\} \\ S2 \\ \\{Q\\}}{\\{P\\} \\ if \\ B \\ then \\ S1 \\ else \\ S2 \\ \\{Q\\}}\\]"
 			)),
-		  slide(col(magenta,"Ejemplo"),
+		  slide(col("magenta","Ejemplo"),
 			(
 			    (	el(b,"if")," \\( x > 0 \\) ",el(b,"then")," \\( y = y -1 \\) ",el(b,"else")," \\( y = Y + 1 \\)"),
-			    item(appear,
+			    item("appear",
 				 [
 				     "con la postcondición \\( \\{ y > 0 \\} \\)",
 				     (	 "el axioma de asignación para la clausula ",el(b,"then")," : \\( y = y - 1  \\{ y > 0 \\} \\)  produce \\( \\{ y - 1 > 0 \\} \\) o \\( \\{ y > 1 \\} \\)" ),
@@ -562,10 +564,10 @@ semanticadinamica -->
 				    "El ciclo termina"
 				])
 			)),
-		  slide("65%",col(magenta,"Ejemplo"),
+		  slide("65%",col("magenta","Ejemplo"),
 			(
 			    el(p,(el(b,"while")," \\( y <> x \\) ",el(b,"do")," \\( y = Y + 1 \\) ",el(b,"end")," \\( \\{ y = x \\} \\)")),
-			    item(appear,
+			    item("appear",
 				[
 				    "Para cero iteraciones la precondición mas débil es \\( \\{ y = x \\} \\)",
 				    "Para una iteración es: \\[ wp( y = y + 1, \\{y = x\\}) = \\{ y + 1 = x \\} = \\{ y = x - 1 \\} \\]",
@@ -574,7 +576,7 @@ semanticadinamica -->
 				    "Es obvio que \\(\\{y <  x \\} \\)es suficiente para los casos de uno o mas iteraciones. Combinado con \\(\\{y = x \\} \\)para el caso base obtenemos  \\( \\{y <= x \\}\\), que puede ser el invariante del ciclo."
 				])
 			)),
-		  slide("75%",col(magenta,"Ejemplo"),
+		  slide("75%",col("magenta","Ejemplo"),
 			item(
 			    [
 				"\\( P \\Rightarrow I \\) \\( \\{y <= x \\} \\Rightarrow \\{y <= x \\} \\) ",
@@ -584,14 +586,14 @@ semanticadinamica -->
 				"El ciclo termina"
 			    ])
 		       ),
-		  slide(col(purple,"Invariante"),
+		  slide(col("purple","Invariante"),
 			item(
 			    [
 				"El invariante es la versión mas debil de la postcondición del ciclo, y es también una precondición.",
 				"Debe ser lo suficientemente debil para satisfacer a priori el comienzo del ciclo, pero cuando se combina con la condición de salida debe ser los suficientemente fuerte para forzar la verdad de la postcondición"
 			    ])
 		       ),
-		  slide(col(purple,"Evaluación"),
+		  slide(col("purple","Evaluación"),
 			item(
 			    [
 				"Desarrollar axiomas y reglas de inferencia para todas las sentencias en un lenguaje es dificultoso",
@@ -602,17 +604,3 @@ semanticadinamica -->
 
 
 
-
-
-
-show :-
-    file(File),
-    phrase(format_("~s.pdf",[File]),Command),
-    command('xdg-open',Command).
-	      
-main :-
-        consult(slideprolog),
-        file(File),
-	string_concat(File,".html",Filehtml),
-%        append(File,".html",Filehtml),
-	phrase_to_file(presentation,Filehtml).

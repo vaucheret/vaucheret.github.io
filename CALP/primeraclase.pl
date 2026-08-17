@@ -6,7 +6,7 @@ file("primerclase").
 title("C.A.L.P.").
 author("Claudio Vaucheret").
 date("2026-08-18 mar").
-theme("night").
+theme("simple").
 transition("slide").
 
 slides -->
