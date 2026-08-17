@@ -232,7 +232,7 @@ introduccion -->
 					"Ejemplos: XHTML, XML"
 				    ]))
 			])),
-	      slide("80%",col("green","Compromisos en el diseño de Lenguajes"),
+	      slide("75%",col("green","Compromisos en el diseño de Lenguajes"),
 		    item(
 			[
 			    (   el(b,"Confiabilidad vs. Costo de ejecución"),
@@ -250,7 +250,9 @@ introduccion -->
 				    [
 					"Ejemplo: Los punteros de C++ son poderosos y muy flexibles pero de un uso poco confiable."
 				    ]))
-			])),
+			])))),
+        slide("",
+	  (
 	      slide("Métodos de Implementación",
 		    item(
 			[
@@ -270,8 +272,8 @@ introduccion -->
 					"Un compromiso entre compilación y interpretación pura"
 				    ]))
 			])),
-	      slide("Capas de Implementación de Lenguajes",
-		    fig(img("interfacecapas.png","70%","auto"))
+	      slide("85%","Capas de Implementación de Lenguajes",
+		    fig(img("interfacecapas.png","60%","auto"))
 		   ),
 	      slide("90%",col("orange","Compilación"),
 		    item(
@@ -346,7 +348,7 @@ introduccion -->
 				    ]))
 			])),
 	      slide(col("purple","Proceso de Implementación Híbrida"),
-		    fig(img("procesohibrido.png","23%","auto"))
+		    fig(img("procesohibrido.png","20%","auto"))
 		   ),
 	      slide(col("purple",("Sistemas de Implementación ",el(em,"Just in Time"))),
 		    item(
@@ -634,7 +636,7 @@ lisp -->
 	  (
 	      slide("Programación Funcional: LISP",
 		    (
-			fig(img("McCarthy-.jpg","auto","570")),
+			fig(img("McCarthy-.jpg","auto","500")),
 			el(p,"John McCarthy")
 		    )),
 	      slide("LISP",
@@ -783,9 +785,9 @@ algol -->
 cobol -->
     slide("",
 	  (
-	      slide("Aplicaciones Comerciales: COBOL",
+	      slide("70%","Aplicaciones Comerciales: COBOL",
 		    (
-			fig(img("gracehopper.webp","auto","570")),
+			fig(img("gracehopper.webp","auto","449")),
 			el(p,"Grace Hopper")
 		    )),
 	      slide("COBOL Commercial Buisness Language",
@@ -1173,7 +1175,7 @@ oop -->
 			    "Pionero en el diseñode interface gráfica del usuario",
 			    "Promocionó OOP"
 			])),
-	      slide("Combinando OOP y Programación Imperativa: C++",
+	      slide("85%","Combinando OOP y Programación Imperativa: C++",
 		    item(
 			[
 			    "Desarrollado en Laboratorios BELL por Stroustrup en 1980",
