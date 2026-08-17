@@ -5,7 +5,7 @@
 file("primerclase").
 title("C.A.L.P.").
 author("Claudio Vaucheret").
-date("2025-08-18 lun 00:00").
+date("2026-08-18 mar").
 theme("night").
 transition("slide").
 
