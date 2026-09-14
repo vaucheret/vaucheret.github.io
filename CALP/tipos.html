@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><title>Tipos de Datos</title>
-<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css"><link rel="stylesheet" href="grids.css"/>
+<link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css"><link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/simple.css"><link rel="stylesheet" href="grids.css"/>
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-</head>
+<style>    .reveal {      background-image: url('bitmap.png');      background-size: 102%;      background-position: top left;      background-repeat: no-repeat;    }</style></head>
 <body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Tipos de Datos</h1>
 <h2 class = "author" >C. A. L. P.</h2>
 <h3 class = "date" >Claudio Vaucheret</h3>
@@ -45,13 +45,13 @@
 </section>
 <section><h3></h3>
 <section><h3><span style="color:red;">Tipos de Datos</span></h3>
-<ul><li class="fragment highlight-current-red"><b>Fuetemente Tipado</b>
+<ul><li class="fragment highlight-current-red"><b>Fuertemente Tipado</b>
 se ha vuelto un término popular<ul><li class="fragment highlight-current-red">como <em>programación estructurada</em>
 </li>
 <li class="fragment highlight-current-red">Informalmente, significa que el lenguaje previene al programador  de aplicar operaciones a los datos que no son apropiados</li>
 </ul>
 </li>
-<li class="fragment highlight-current-red"><b>Fuetemente Estático</b>
+<li class="fragment highlight-current-red"><b>Fuertemente Estático</b>
 significa que el compilador puede realizar todos los chequeos en tiempo de compilación</li>
 </ul>
 </section>
@@ -274,7 +274,8 @@ c := a + b;
 </section>
 <section><h3>(Stack) Dinámicos fijos</h3>
 <div class="figure">
-<p><img src=adaarreglo.png  width=auto  height=500</p>
+<img src=adaarreglo.png  width=auto  height=500>
+</img>
 </div>
 </section>
 <section><h3>Arreglos</h3>
@@ -291,7 +292,8 @@ c := a + b;
 </section>
 <section><h3>Arreglos</h3>
 <div class="figure">
-<p><img src=rowcolumnmajor.png  width=auto  height=auto</p>
+<img src=rowcolumnmajor.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3>Arreglos</h3>
@@ -313,7 +315,8 @@ c := a + b;
 </section>
 <section><h3>Arreglos</h3>
 <div class="figure">
-<p><img src=arraypontrowc.png  width=auto  height=auto</p>
+<img src=arraypontrowc.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3><span style="color:blue;">Inicialización de Arreglos</span></h3>
@@ -374,12 +377,14 @@ c := a + b;
 </section>
 <section><h3><span style="color:green;">Slices</span></h3>
 <div class="figure">
-<p><img src=slicesfort.png  width=auto  height=auto</p>
+<img src=slicesfort.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3><span style="color:blue;">Descriptores en Tiempo de Compilación</span></h3>
 <div class="figure">
-<p><img src=descriptoresarray.png  width=auto  height=auto</p>
+<img src=descriptoresarray.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3><span style="color:blue;">Arreglos Asociativos</span></h3>
@@ -490,7 +495,8 @@ Employee_Record: Employee_Record_Type;
 </section>
 <section><h3><span style="color:purple;">Implementación de Registros</span></h3>
 <div class="figure">
-<p><img src=implementregistros.png  width=auto  height=auto</p>
+<img src=implementregistros.png  width=auto  height=auto>
+</img>
 </div>
 <p>Un desplazamiento de dirección relativo al comienzo del registro es asociado con cada campo.</p>
 </section>
@@ -531,7 +537,8 @@ type Figure (Form: Shape) is record
 end record; 
 </code></pre>
 <div class="figure">
-<p><img src=adaunion.png  width=auto  height=250</p>
+<img src=adaunion.png  width=auto  height=250>
+</img>
 </div>
 </section>
 <section><h3>Evaluación de Uniones</h3>
@@ -568,7 +575,8 @@ end record;
 </section>
 <section><h3><span style="color:magenta;">Punteros y Tipos Recursivos</span></h3>
 <div class="figure">
-<p><img src=lisppunt.png  width=auto  height=auto</p>
+<img src=lisppunt.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3><span style="color:brown;">Punteros y Tipos Recursivos</span></h3>
