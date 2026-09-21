@@ -15,15 +15,15 @@
 <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-</head>
-<body><div class="reveal" ><div class="slides" ><section id="sec-title-slide" ><h1 class="title" >Subrutinas</h1>
-<h2 class="author" >C. A. L. P.</h2>
-<h3 class="date" >Claudio Vaucheret</h3>
+<style>    .reveal {      background-image: url('bitmap.png');      background-size: 102%;      background-position: top left;      background-repeat: no-repeat;    }</style></head>
+<body><div class = "reveal" ><div class = "slides" ><section id = "sec-title-slide" ><h1 class = "title" >Subrutinas</h1>
+<h2 class = "author" >C. A. L. P.</h2>
+<h3 class = "date" >Claudio Vaucheret</h3>
 </section>
-<section data-auto-animate ><h2>Semántica General de Llamada y Retorno</h2>
+<section data-auto-animate  ><h2>Semántica General de Llamada y Retorno</h2>
 <div class="outline-text-2" ></div>
 </section>
-<section data-auto-animate ><h2><em><span style="color:red;">Semántica General de Llamada y Retorno</span></em>
+<section data-auto-animate  ><h2><em><span style="color:red;">Semántica General de Llamada y Retorno</span></em>
 </h2>
 <div class="outline-text-2" ></div>
 </section>
@@ -41,10 +41,10 @@
 </li>
 </ul>
 </section>
-<section data-auto-animate ><h2>Subprogramas Simples</h2>
+<section data-auto-animate  ><h2>Subprogramas Simples</h2>
 <div class="outline-text-2" ></div>
 </section>
-<section data-auto-animate ><h2><em><span style="color:green;">Subprogramas Simples</span></em>
+<section data-auto-animate  ><h2><em><span style="color:green;">Subprogramas Simples</span></em>
 </h2>
 <div class="outline-text-2" ></div>
 </section>
@@ -73,13 +73,14 @@
 <section><h3><span style="color:green;">Código y Registros de Activación</span></h3>
 <div style="font-size: 85%;">
 <div class="figure">
-<p><img src=simpleactreg.png  width=auto  height=500</p>
+<img src=simpleactreg.png  width=auto  height=500>
+</img>
 </div>
 </section>
-<section data-auto-animate ><h2>Subprogramas con Variables locales en Pila Dinámica</h2>
+<section data-auto-animate  ><h2>Subprogramas con Variables locales en Pila Dinámica</h2>
 <div class="outline-text-2" ></div>
 </section>
-<section data-auto-animate ><h2><em><span style="color:blue;">Subprogramas con Variables locales en Pila Dinámica</span></em>
+<section data-auto-animate  ><h2><em><span style="color:blue;">Subprogramas con Variables locales en Pila Dinámica</span></em>
 </h2>
 <div class="outline-text-2" ></div>
 </section>
@@ -92,7 +93,8 @@
 </section>
 <section><h3><span style="color:blue;">Típico registro de activación para variables locales alojadas en pila dinamica</span></h3>
 <div class="figure">
-<p><img src=regactpila.png  width=auto  height=auto</p>
+<img src=regactpila.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3><span style="color:blue;">Ejemplo de Función en <b>C</b>
@@ -106,7 +108,8 @@ void sub(float total, int part) {
 }
 </code></pre>
 <div class="figure">
-<p><img src=ejemregact.png  width=auto  height=380</p>
+<img src=ejemregact.png  width=auto  height=380>
+</img>
 </div>
 </section>
 <section><h3><span style="color:blue;">Ejemplo sin recursividad</span></h3>
@@ -137,7 +140,8 @@ fun1(p);
 </section>
 <section><h3><span style="color:blue;">Ejemplo sin recursividad</span></h3>
 <div class="figure">
-<p><img src=ejemsinrec.png  width=auto  height=auto</p>
+<img src=ejemsinrec.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3><span style="color:blue;">Cadena Dinámica y desplazamiento local</span></h3>
@@ -169,25 +173,28 @@ void main() {
 <section><h3><span style="color:blue;">Un Ejemplo con Recursividad</span></h3>
 <div style="font-size: 90%;">
 <div class="figure">
-<p><img src=firstfactorial.png  width=auto  height=550</p>
+<img src=firstfactorial.png  width=auto  height=550>
+</img>
 </div>
 </section>
 <section><h3><span style="color:blue;">Un Ejemplo con Recursividad</span></h3>
 <div style="font-size: 90%;">
 <div class="figure">
-<p><img src=seconfactorial.png  width=auto  height=auto</p>
+<img src=seconfactorial.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3><span style="color:blue;">Un Ejemplo con Recursividad</span></h3>
 <div style="font-size: 90%;">
 <div class="figure">
-<p><img src=thirdfactorial.png  width=auto  height=auto</p>
+<img src=thirdfactorial.png  width=auto  height=auto>
+</img>
 </div>
 </section>
-<section data-auto-animate ><h2>Subprogramas imbricados</h2>
+<section data-auto-animate  ><h2>Subprogramas imbricados</h2>
 <div class="outline-text-2" ></div>
 </section>
-<section data-auto-animate ><h2><em><span style="color:pink;">Subprogramas imbricados</span></em>
+<section data-auto-animate  ><h2><em><span style="color:pink;">Subprogramas imbricados</span></em>
 </h2>
 <div class="outline-text-2" ></div>
 </section>
@@ -247,7 +254,8 @@ end -- of Main_2
 </section>
 <section><h3><span style="color:pink;">Contenido de la Pila en pos 1</span></h3>
 <div class="figure">
-<p><img src=ejemploestatico.png  width=auto  height=580</p>
+<img src=ejemploestatico.png  width=auto  height=580>
+</img>
 </div>
 </section>
 <section><h3><span style="color:pink;">Display</span></h3>
@@ -256,10 +264,10 @@ end -- of Main_2
 <li>El contenido del display en un tiempo dado es una lista de las direcciones de las instancias de los registros de activación accesibles</li>
 </ul>
 </section>
-<section data-auto-animate ><h2>Bloques</h2>
+<section data-auto-animate  ><h2>Bloques</h2>
 <div class="outline-text-2" ></div>
 </section>
-<section data-auto-animate ><h2><em><span style="color:orange;">Bloques</span></em>
+<section data-auto-animate  ><h2><em><span style="color:orange;">Bloques</span></em>
 </h2>
 <div class="outline-text-2" ></div>
 </section>
@@ -309,13 +317,14 @@ void main() {
 </section>
 <section><h3><span style="color:orange;">Ejemplo</span></h3>
 <div class="figure">
-<p><img src=bloque.png  width=auto  height=auto</p>
+<img src=bloque.png  width=auto  height=auto>
+</img>
 </div>
 </section>
-<section data-auto-animate ><h2>Implementando Alcance Dinámico</h2>
+<section data-auto-animate  ><h2>Implementando Alcance Dinámico</h2>
 <div class="outline-text-2" ></div>
 </section>
-<section data-auto-animate ><h2><em><span style="color:yellow;">Implementando Alcance Dinámico</span></em>
+<section data-auto-animate  ><h2><em><span style="color:yellow;">Implementando Alcance Dinámico</span></em>
 </h2>
 <div class="outline-text-2" ></div>
 </section>
@@ -361,17 +370,19 @@ void main() {
 </section>
 <section><h3><span style="color:yellow;">Ejemplo cadena dinámica</span></h3>
 <div class="figure">
-<p><img src=dinamicchain.png  width=auto  height=auto</p>
+<img src=dinamicchain.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 <section><h3><span style="color:yellow;">Ejemplo con tabla central</span></h3>
 <div class="figure">
-<p><img src=tablacentral.png  width=auto  height=auto</p>
+<img src=tablacentral.png  width=auto  height=auto>
+</img>
 </div>
 </section>
 </div>
 </div>
-<script src="https://unpkg.com/reveal.js/dist/reveal.js" ></script>
+<script src = "https://unpkg.com/reveal.js/dist/reveal.js" ></script>
 <script>Reveal.initialize({      transition: 'slide'});</script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+:- include("slideprolog.pl").
+
 file("subrimp").
 title("Subrutinas").
 author("C. A. L. P.").
@@ -16,14 +18,14 @@ slides -->
 
 semanticaGeneraldeLlamadayRetorno -->
     section(animate,"Semántica General de Llamada y Retorno"),
-    section(animate,el(em,col(red,"Semántica General de Llamada y Retorno"))),
-    slide("85%",col(red,"Semántica General de Llamada y Retorno"),
-	  item('highlight-current-red',
+    section(animate,el(em,col("red","Semántica General de Llamada y Retorno"))),
+    slide("85%",col("red","Semántica General de Llamada y Retorno"),
+	  item("highlight-current-red",
 	       [
 		   "Semánticamente es como si el subprograma se insertara en el punto de su llamada (no es siempre asi)",
 		   (   "En un lenguaje de Programación, las operaciones de llamado y retorno de subprogramas son llamadas en conjunto ",el(em,"articulación de subprogramas")  ),
 		       (   "La llamada a un subprograma tiene varias acciones asociadas con:",
-			   item('highlight-current-red',
+			   item("highlight-current-red",
 			       [
 				   "El método de pasaje de parámetros",
 				   "variables locales estáticas",
@@ -37,9 +39,9 @@ semanticaGeneraldeLlamadayRetorno -->
 
 subprogramasSimples -->
     section(animate,"Subprogramas Simples"),
-    section(animate,el(em,col(green,"Subprogramas Simples"))),
-    slide(col(green,"Subprogramas Simples: LLamada"),
-	  item('highlight-current-green',
+    section(animate,el(em,col("green","Subprogramas Simples"))),
+    slide(col("green","Subprogramas Simples: LLamada"),
+	  item("highlight-current-green",
 	       [
 		   "Grabar el estado de ejecución del llamador",
 		   "llevar a cabo el proceso de pasaje de parámetros",
@@ -47,8 +49,8 @@ subprogramasSimples -->
 		   "Transferir el control al programa llamado"
 	       ])
 	 ),
-    slide(col(green,"Subprogramas Simples: Retorno"),
-	  item('highlight-current-green',
+    slide(col("green","Subprogramas Simples: Retorno"),
+	  item("highlight-current-green",
 	       [
 		   "Si se usó pasaje de parametros por valor-resultado, mover los valores actuales a esos parametors a sus correspondientes parametros reales",
 		   "Si es una función, mover el resultado al lugar donde el llamador pueda obtenerlo",
@@ -56,36 +58,36 @@ subprogramasSimples -->
 		   "Retornar el control al llamador"
 	       ])
 	 ),
-    slide(col(green,"Subprogramas Simples: Partes"),
-	  item('highlight-current-green',
+    slide(col("green","Subprogramas Simples: Partes"),
+	  item("highlight-current-green",
 	       [
 		   "Dos partes separadas: El Código y los Datos (variables locales y datos que pueden cambiar)",
 		   (   "El formato de la parte de datos de un subprograma en ejecución se llama ",el(em,"registro de activación") ) ,
 		   (   "Una ",el(em,"instancia de un registro de activación")," es un ejemplo concreto de un registro de activación." )
 	       ])
 	 ),
-    slide("85%",col(green,"Código y Registros de Activación"),
+    slide("85%",col("green","Código y Registros de Activación"),
 	  fig(img("simpleactreg.png","auto","500"))).
 
     
 
 subprogramasconVariableslocalesenPilaDinamica -->
     section(animate,"Subprogramas con Variables locales en Pila Dinámica"),
-    section(animate,el(em,col(blue,"Subprogramas con Variables locales en Pila Dinámica"))),
-    slide(col(blue,"Subprogramas con Variables locales en Pila Dinámica"),
+    section(animate,el(em,col("blue","Subprogramas con Variables locales en Pila Dinámica"))),
+    slide(col("blue","Subprogramas con Variables locales en Pila Dinámica"),
 	  (
 	      el(p,"Registros de activación mas complejos"),
-	      item('highlight-current-blue',
+	      item("highlight-current-blue",
 		  [
 		      "El compilador debe generar código para alojar y desalojar implícitamente las variables locales",
 		      "Se debe soportar recursividad  (posibilidad de múltiples  simultáneas de un subprograma)"
 		  ]),
 	      el(p,"El formato y muchas veces el tamaño es conocido en tiempo de compilación")
 	  )),
-    slide(col(blue,"Típico registro de activación para variables locales alojadas en pila dinamica"),
+    slide(col("blue","Típico registro de activación para variables locales alojadas en pila dinamica"),
 	  fig(img("regactpila.png","auto","auto"))
 	 ),
-    slide("90%",col(blue,("Ejemplo de Función en ",el(b,"C"))),
+    slide("90%",col("blue",("Ejemplo de Función en ",el(b,"C"))),
 	  (   
 	  code(
 	      (
@@ -99,7 +101,7 @@ subprogramasconVariableslocalesenPilaDinamica -->
 	  fig(img("ejemregact.png","auto","380"))
 	  )
 	 ),
-    slide(col(blue,"Ejemplo sin recursividad"),
+    slide(col("blue","Ejemplo sin recursividad"),
 	  (   
 	  code(
 	      (
@@ -128,18 +130,18 @@ subprogramasconVariableslocalesenPilaDinamica -->
 	  ),
 	  el(p,"main llama a fun1, fun1 llama a fun2 y fun2 llama a fun3")
 	  )),
-    slide(col(blue,"Ejemplo sin recursividad"),
+    slide(col("blue","Ejemplo sin recursividad"),
 	  fig(img("ejemsinrec.png","auto","auto"))
 	 ),
-    slide(col(blue,"Cadena Dinámica y desplazamiento local"),
-	  item('highlight-current-blue',
+    slide(col("blue","Cadena Dinámica y desplazamiento local"),
+	  item("highlight-current-blue",
 	      [
 		  (   "el conjunto  de ligaduras dinámicas y la Pila en un tiempo dada se llama ",el(em,"cadena dinámica")," o ",el(em,"cadena de llamadas") ),
 		  (   "Las variables locales se pueden acceder a partir de su desplazamiento desde el comienzo del registro de activación. Se  llama ",el(em,"desplazamiento local")),
 		  "El desplazamiento local puede ser determinado en tiempo de compilación."
 	      ])
 	 ),
-    slide(col(blue,"Un Ejemplo con Recursividad"),
+    slide(col("blue","Un Ejemplo con Recursividad"),
 	  (
 	      el(p,"El registro de activación del ejemplo previo soporta recursividad, e.g."),
 	      code(
@@ -160,13 +162,13 @@ subprogramasconVariableslocalesenPilaDinamica -->
 	      )
 	  )
 	 ),
-    slide("90%",col(blue,"Un Ejemplo con Recursividad"),
+    slide("90%",col("blue","Un Ejemplo con Recursividad"),
 	  fig(img("firstfactorial.png","auto","550"))
 	 ),
-    slide("90%",col(blue,"Un Ejemplo con Recursividad"),
+    slide("90%",col("blue","Un Ejemplo con Recursividad"),
 	  fig(img("seconfactorial.png","auto","auto"))
 	 ),
-    slide("90%",col(blue,"Un Ejemplo con Recursividad"),
+    slide("90%",col("blue","Un Ejemplo con Recursividad"),
 	  fig(img("thirdfactorial.png","auto","auto"))
 	 ).
 
@@ -174,15 +176,15 @@ subprogramasconVariableslocalesenPilaDinamica -->
 
 subprogramasimbricados -->
     section(animate,"Subprogramas imbricados"),
-    section(animate,el(em,col(pink,"Subprogramas imbricados"))),	      
-    slide("90%",col(pink,"Subprogramas imbricados"),
-	  item('fade-in-then-semi-out',
+    section(animate,el(em,col("pink","Subprogramas imbricados"))),	      
+    slide("90%",col("pink","Subprogramas imbricados"),
+	  item("fade-in-then-semi-out",
 	       [
 		   "Algunos lenguajes de alcance estático no basados en C (fortran 95, Ada, JavaScript) usan variables locales alojadas en Pila Dinámicas y permiten que los subprogramas estén imbricados",
 		   "Todas las variables que pueden ser accedidas no localmente residen en alguna instancia de un registro de activación en la Pila",
 		   (
 		       "El proceso de localizar una referencia no local incluye:",
-		       enum('fade-in-then-semi-out',
+		       enum("fade-in-then-semi-out",
 			    [
 				"Encontrar la instancia del registro de activación correcta",
 				"Determinar el correcto desplazamiento dentro del registro"
@@ -190,22 +192,22 @@ subprogramasimbricados -->
 		   )
 	       ])
 	 ),
-    slide(col(pink,"Localizar una Referencia no local"),
+    slide(col("pink","Localizar una Referencia no local"),
 	  (
 	      el(p,"Encontrar el desplazamiento es trivial"),
 	      el(p,"Para encontrar la correcta instancia del registro de activación"),
 	      el(p,"Las reglas semánticas del alcance estático garantizan que toda variable no local que pueda ser referenciada ha sido alojada en alguna instancia de un registro de activación en la Pila cuando la referencia es hecha.")
 	  )
 	 ),
-    slide(col(pink,"Alcance Estático"),
-	  item('fade-in-then-semi-out',
+    slide(col("pink","Alcance Estático"),
+	  item("fade-in-then-semi-out",
 	       [
 		   (   "Una ",el(em,"cadena estática")," es una cadena de ",el(em,"punteros estáticos")," que conectan ciertas instancias de registros de activación"),
 		   (   "El puntero estático en una instancia de un registro de activación para un subprograma A apunta a una de las instancias del registro de activación del padre de A en la estructura estática." ),
 		   " La cadena estática de una istancia de un registro de activación la conecta con todos sus ancestros en la estructura estática."
 	       ])
 	 ),
-    slide(col(pink,"Ejemplo"),
+    slide(col("pink","Ejemplo"),
 	  code(
 	      (
 "procedure MAIN_2 is\n",
@@ -237,10 +239,10 @@ subprogramasimbricados -->
 "end -- of Main_2\n"
 	      )
 	  )),
-    slide(col(pink,"Contenido de la Pila en pos 1"),
+    slide(col("pink","Contenido de la Pila en pos 1"),
 	  fig(img("ejemploestatico.png","auto","580"))
 	 ),
-    slide(col(pink,"Display"),
+    slide(col("pink","Display"),
 	  item(
 	      [
 		  "Una alternativa a las cadenas estáticas",
@@ -250,9 +252,9 @@ subprogramasimbricados -->
 	 ).
 bloques -->
     section(animate,"Bloques"),
-    section(animate,el(em,col(orange,"Bloques"))),
-    slide("90%",col(orange,"Bloques"),
-	  item('fade-in-then-semi-out',
+    section(animate,el(em,col("orange","Bloques"))),
+    slide("90%",col("orange","Bloques"),
+	  item("fade-in-then-semi-out",
 	       [
 		   "Los bloques son alcances locales para variables especificados por el usuario",
 		   (
@@ -271,7 +273,7 @@ bloques -->
 		   (   "La ventaja de usar una variable local como ",el(em,"temp")," es que no interfiere con otra variable del mismo nombre" )
 	       ])
 	 ),
-    slide("85%",col(orange,"Implementando bloques"),
+    slide("85%",col("orange","Implementando bloques"),
 	  (
 	      el(p,"Dos métodos"),
 	      enum(
@@ -283,7 +285,7 @@ bloques -->
 		  ])
 	  )
 	 ),
-    slide(col(orange,"Ejemplo"),
+    slide(col("orange","Ejemplo"),
 	  code(
 	      (
 "void main() {\n",
@@ -303,18 +305,18 @@ bloques -->
 "}\n"
 	      )
 	  )),
-    slide(col(orange,"Ejemplo"),
+    slide(col("orange","Ejemplo"),
 	  fig(img("bloque.png","auto","auto"))
 	 ).
 
 implementandoAlcanceDinamico -->
     section(animate,"Implementando Alcance Dinámico"),
-    section(animate,el(em,col(yellow,"Implementando Alcance Dinámico"))),
-    slide(col(yellow,"Implementando Alcance Dinámico"),
+    section(animate,el(em,col("yellow","Implementando Alcance Dinámico"))),
+    slide(col("yellow","Implementando Alcance Dinámico"),
 	  item(
 	      [
-		  (   col(yellow,el(em,"Acceso Profundo:"))," Las referencias no locales son encontradas buscando las instancias de los registros de activación en la cadena dinámica" ),
-		  (   col(yellow,el(em,"Acceso Superficial:"))," Se colocan las variables locales en una tabla central",
+		  (   col("yellow",el(em,"Acceso Profundo:"))," Las referencias no locales son encontradas buscando las instancias de los registros de activación en la cadena dinámica" ),
+		  (   col("yellow",el(em,"Acceso Superficial:"))," Se colocan las variables locales en una tabla central",
 		      item(
 			  [
 			      "Una pila por cada nombre de variable",
@@ -323,7 +325,7 @@ implementandoAlcanceDinamico -->
 		  )
 	      ])
 	 ),
-    slide(col(yellow,"Ejemplo"),
+    slide(col("yellow","Ejemplo"),
 	  (   
 	      code(
 		  (
@@ -351,26 +353,13 @@ implementandoAlcanceDinamico -->
 	       el(p,(el(em,"main")," llama a ",el(em,"sub1"),", ",el(em,"sub1")," llama a ",el(em,"sub2")," y ",el(em,"sub2")," llama a ",el(em,"sub3")))  
 	  )
 	 ),
-    slide(col(yellow,"Ejemplo cadena dinámica"),
+    slide(col("yellow","Ejemplo cadena dinámica"),
 	  fig(img("dinamicchain.png","auto","auto"))
 	 ),
-    slide(col(yellow,"Ejemplo con tabla central"),
+    slide(col("yellow","Ejemplo con tabla central"),
 	  fig(img("tablacentral.png","auto","auto"))
 	 ).
 
 
-
-
-
-show :-
-    file(File),
-    phrase(format_("~s.pdf",[File]),Command),
-    command('xdg-open',Command).
-	      
-main :-
-        consult(slideprolog),
-        file(File),
-        append(File,".html",Filehtml),
-	phrase_to_file(presentation,Filehtml).
 
     
