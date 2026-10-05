@@ -1,3 +1,5 @@
+:- include("slideprolog.pl").
+
 file("tdaandoopb").
 title("TDA y POO").
 author("C. A. L. P.").
@@ -5,18 +7,6 @@ date("Claudio Vaucheret").
 theme("night").
 transition("slide").
 
-
-show :-
-    file(File),
-    phrase(format_("~s.pdf",[File]),Command),
-    command('xdg-open',Command).
-
-	      
-main :-
-        consult(slideprolog),
-        file(File),
-        string_concat(File,".html",Filehtml),
-	phrase_to_file(presentation,Filehtml).
 
 
 slides -->
@@ -27,49 +17,49 @@ slides -->
 
 abstraccion -->
     section(animate,"Abstracción"),
-    section(animate,el(em,col(red,"Abstracción"))),
-    slide("90%",col(red,"El concepto de Abstracción"),
-	  item('highlight-current-red',
+    section(animate,el(em,col("red","Abstracción"))),
+    slide("90%",col("red","El concepto de Abstracción"),
+	  item("highlight-current-red",
 	       [
                   "Una abstracción es una vista o representación de una entidad que incluye sólo los atributos más significativos",
                   "El concepto de abstracción es fundamental en la programación (y en toda la ciencia de la computación)",
 		  "Casi todos los lenguajes de programación admiten la abstracción de procesos con subprogramas",
                    "Casi todos los lenguajes de programación diseñados desde 1980 soportan la abstracción de datos"
 	       ])),
-    slide("90%",col(red,"Introducción a la Abstracción del Dato"),
+    slide("90%",col("red","Introducción a la Abstracción del Dato"),
 	  (
 	      el(p,("Un ",el(em,"tipo de datos abstracto")," (TDA) es un tipo de datos definido por el usuario que cumple las dos condiciones siguientes:")),
-	  item('highlight-current-red',
+	  item("highlight-current-red",
 	       [
 		   "La representación y las operaciones sobre los objetos del tipo se definen en una única unidad sintáctica",
 		   "La representación de objetos del tipo está oculta a las unidades de programa que utilizan estos objetos, por lo que las únicas operaciones posibles son las proporcionadas en la definición del tipo"
 	       ])
 	  )
 	 ),
-    slide("90%",col(red,"Ventajas de la Abstracción"),
+    slide("90%",col("red","Ventajas de la Abstracción"),
 	  (
 	      el(p,"Ventaja de la primera condición"),
-	      item('highlight-current-red',
+	      item("highlight-current-red",
 		   [
 		       "Organización del programa, modificabilidad (todo lo relacionado con la estructura de datos está junto), y compilación separada"		       
 		   ]
 		  ),
 	      el(p,"Ventaja de la segunda condición"),
-	      item('highlight-current-red',
+	      item("highlight-current-red",
 		   [
 		       "Fiabilidad - ocultando las representaciones de datos, el código de usuario no puede acceder directamente a objetos del tipo y asi depender de la representación, permitiendo que la representación se cambie sin afectar el código de usuario."
 		   ]
 	      	  )
 	  )),
     section(animate,"Cuestiones de Diseño"),
-    section(animate,el(em,col(green,"Cuestiones de Diseño"))),
-    slide(col(green,"Cuestiones de Diseño"),
-	  item('highlight-current-green',
+    section(animate,el(em,col("green","Cuestiones de Diseño"))),
+    slide(col("green","Cuestiones de Diseño"),
+	  item("highlight-current-green",
 	       [
 		   "Una unidad sintáctica para definir un TDA",
 		   (
 		       "Operaciones integradas",
-		       enum('highlight-current-green',
+		       enum("highlight-current-green",
 			    [
 				"Asignación",
 				"Comparación"
@@ -78,7 +68,7 @@ abstraccion -->
 		   ),
 		   (
 		       "Operaciones comunes",
-		       enum('highlight-current-green',
+		       enum("highlight-current-green",
 			    [
 				"Iteradores",
 				"Accesores",
@@ -90,17 +80,17 @@ abstraccion -->
 		   "TDA parametrizados"
 	       ])
 	 ),
-    slide("80%",col(green,("Ejemplo en ",el(b,"ADA"))),
+    slide("80%",col("green",("Ejemplo en ",el(b,"ADA"))),
 	  (
-	      el(p,col(green,("El constructor de encapsulación se denomina ",el(em,"package")))),
-	      item('highlight-current-green',
+	      el(p,col("green",("El constructor de encapsulación se denomina ",el(em,"package")))),
+	      item("highlight-current-green",
 		   [
 		       (   "Especificación del ",el(em,"package")," (la interfaz)"),
 		       (   "Cuerpo del ",el(em,"package")," (implementación de las entidades nombradas en la especificación)")
 		   ]
 		  ),
-	      el(p,col(green,"Ocultamiento de la información")),
-	      item('highlight-current-green',
+	      el(p,col("green","Ocultamiento de la información")),
+	      item("highlight-current-green",
 		   [
 		       (   "La representación de tipo aparece en una parte de la especificación llamada la parte ",el(em,"privada")),
 		       (   "Una forma más restringida con tipos privados ",el(em,"limitados"), " Define el TDA como un puntero y proporciona la definición de la estructura apuntada en el paquete del cuerpo")
@@ -108,7 +98,7 @@ abstraccion -->
 		  )
 	  )
 	 ),
-    slide(col(green,("Ejemplo en ",el(b,"ADA"))),
+    slide(col("green",("Ejemplo en ",el(b,"ADA"))),
 	  code(
 	      (
 "package Stack_Pack is \n",
@@ -130,9 +120,9 @@ abstraccion -->
 	  )
 	 ),
     section(animate,("Ejemplo en ",el(b,"C++"))),
-    section(animate,el(em,col(blue,("Ejemplo en ",el(b,"C++"))))),
-    slide(col(blue,("Ejemplo en ",el(b,"C++"))),
-	  item(appear,
+    section(animate,el(em,col("blue",("Ejemplo en ",el(b,"C++"))))),
+    slide(col("blue",("Ejemplo en ",el(b,"C++"))),
+	  item("appear",
 	       [
 		   (   "Basado en el tipo ",el(em,"struct")," de ",el(b,"C")," y en las clases de ",el(b,"Simula 67")),
 		   "La clase es el dispositivo de encapsulación",
@@ -141,10 +131,10 @@ abstraccion -->
 		   (   "Las instancias pueden ser estáticas, dinámicas de pila o dinámicas  de ",el(em,"heap"))
 	       ])
 	 ),
-    slide(col(blue,("Ejemplo en ",el(b,"C++"))),
+    slide(col("blue",("Ejemplo en ",el(b,"C++"))),
 	  (
 	      el(p,"Ocultamiento de la Información"),
-	  item(appear,
+	  item("appear",
 	       [
 		   (   "cláusula ",el(em,"Private")," para entidades ocultas"),
 		   (   "cláusula ",el(em,"Public")," para interface de entidades"),
